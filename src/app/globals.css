@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --sand: #f4efe5;
-  --sand-muted: #d9d1c1;
+  --sand: #f5f1e9;
+  --sand-muted: #ded7c9;
   --surface: #fffdf8;
-  --surface-muted: #ece7dc;
+  --surface-muted: #ebe5d9;
   --ink: #142c39;
-  --ink-soft: #34505b;
-  --muted: #6b7b7e;
-  --line: #d8d9cf;
+  --ink-soft: #3c555d;
+  --muted: #708084;
+  --line: #d9d9d1;
   --sea: #178b91;
   --sea-deep: #0b5967;
   --sea-soft: #d9efeb;
-  --sun: #f6b64a;
+  --sun: #f5b84e;
   --sun-soft: #f8dfac;
   --sun-dark: #a66e16;
   --background: var(--sand);
   --foreground: var(--ink);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
@@ -36,9 +37,11 @@ html {
 }
 
 body {
+  min-width: 320px;
   background: var(--sand);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -51,21 +54,32 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-.contour-lines {
-  background-image:
-    repeating-radial-gradient(
-      ellipse at 50% 45%,
-      transparent 0,
-      transparent 24px,
-      rgba(255, 253, 248, 0.14) 25px,
-      transparent 26px,
-      transparent 52px
-    );
-  transform: rotate(-12deg) scale(1.4);
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--sun);
+  outline-offset: 3px;
 }
 
-.sea-glow {
-  background: #208d91;
-  filter: blur(56px);
-  opacity: 0.7;
+.day-picker {
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+}
+
+.day-picker::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
