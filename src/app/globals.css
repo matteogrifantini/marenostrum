@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --sand: #f4efe5;
+  --sand-muted: #d9d1c1;
+  --surface: #fffdf8;
+  --surface-muted: #ece7dc;
+  --ink: #142c39;
+  --ink-soft: #34505b;
+  --muted: #6b7b7e;
+  --line: #d8d9cf;
+  --sea: #178b91;
+  --sea-deep: #0b5967;
+  --sea-soft: #d9efeb;
+  --sun: #f6b64a;
+  --sun-soft: #f8dfac;
+  --sun-dark: #a66e16;
+  --background: var(--sand);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--sand);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--sun);
+  color: var(--ink);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.contour-lines {
+  background-image:
+    repeating-radial-gradient(
+      ellipse at 50% 45%,
+      transparent 0,
+      transparent 24px,
+      rgba(255, 253, 248, 0.14) 25px,
+      transparent 26px,
+      transparent 52px
+    );
+  transform: rotate(-12deg) scale(1.4);
+}
+
+.sea-glow {
+  background: #208d91;
+  filter: blur(56px);
+  opacity: 0.7;
+}
