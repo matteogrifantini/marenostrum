@@ -1,5 +1,7 @@
 export type BeachAccess = "facile" | "moderato" | "difficile";
 
+export type BeachPeriod = "all-day" | "morning" | "afternoon";
+
 export type UserIntent = "relax" | "family" | "explore" | "water-sport";
 
 export type SourceQuality = "high" | "medium" | "low";
@@ -14,6 +16,16 @@ export type Beach = {
   shelter: string[];
   tags: string[];
   access: BeachAccess;
+  image?: string;
+  imageAlt?: string;
+  imageCredit?: string;
+  imageLicense?: string;
+  latitude?: number;
+  longitude?: number;
+  orientationLabel?: string;
+  services?: string[];
+  warnings?: string[];
+  facts?: string[];
 };
 
 export type BeachConditions = {
@@ -25,6 +37,20 @@ export type BeachConditions = {
   waveHeightMeters: number;
   weather: "sereno" | "poco nuvoloso" | "nuvoloso" | "pioggia";
   temperatureCelsius: number;
+  date?: string;
+  period?: BeachPeriod;
+  feelsLikeCelsius?: number;
+  waterTemperatureCelsius?: number;
+  cloudCoverPercent?: number;
+  seaState?: "calmo" | "mosso" | "agitato";
+  hourly?: Array<{
+    time: string;
+    windSpeedKmh: number;
+    gustSpeedKmh: number;
+    waveHeightMeters: number;
+    temperatureCelsius: number;
+    cloudCoverPercent: number;
+  }>;
 };
 
 export type ScoreConfidence = "alta" | "media" | "bassa";
