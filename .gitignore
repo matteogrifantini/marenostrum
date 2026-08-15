@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local feature worktrees
+/.worktrees/
+
 # Supabase CLI local link metadata
 /supabase/.temp/
 
