@@ -120,7 +120,7 @@ function createConditions(
     base.temperatureCelsius + dayDelta.temperature + periodDelta.temperature,
   );
   const cloudCoverPercent = Math.round(
-    clamp(base.cloudCoverPercent + dayDelta.cloud + periodDelta.cloud, 0, 100),
+    clamp((base.cloudCoverPercent ?? 0) + dayDelta.cloud + periodDelta.cloud, 0, 100),
   );
 
   return {
