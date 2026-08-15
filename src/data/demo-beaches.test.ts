@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   demoRecommendations,
@@ -68,5 +70,26 @@ describe("dated demo forecasts", () => {
     expect(morning?.conditions.windSpeedKmh).not.toBe(
       afternoon?.conditions.windSpeedKmh,
     );
+  });
+});
+
+describe("published beach image metadata", () => {
+  it("keeps every local image present, descriptive, and attributed", () => {
+    const attribution = readFileSync(
+      resolve(process.cwd(), "public/images/beaches/ATTRIBUTIONS.md"),
+      "utf8",
+    );
+
+    for (const recommendation of demoRecommendations) {
+      const { beach } = recommendation;
+      const imagePath = beach.image?.replace(/^\//, "");
+
+      expect(imagePath).toBe(`images/beaches/${beach.slug}.jpg`);
+      expect(existsSync(resolve(process.cwd(), "public", imagePath ?? ""))).toBe(
+        true,
+      );
+      expect(beach.imageAlt).toBeTruthy();
+      expect(attribution).toContain(`\`${beach.slug}.jpg\``);
+    }
   });
 });
