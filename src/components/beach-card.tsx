@@ -97,7 +97,7 @@ export function BeachCard({ recommendation, date, period }: BeachCardProps) {
           <BeachScore score={recommendation.score} label={recommendation.label} />
         </div>
 
-        <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 border-y border-[var(--line)] py-4 sm:grid-cols-4">
+        <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 border-y border-[var(--line)] py-4">
           <ConditionMetric
             icon={<Wind aria-hidden="true" size={17} />}
             label="Vento"
