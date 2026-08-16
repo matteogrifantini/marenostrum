@@ -1,0 +1,36 @@
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import type { BeachConditions } from "../domain/beach";
+import { HourlyForecast } from "./hourly-forecast";
+
+const hourly: NonNullable<BeachConditions["hourly"]> = [
+  {
+    time: "08:00",
+    windSpeedKmh: 5,
+    gustSpeedKmh: 8,
+    waveHeightMeters: 0.2,
+    temperatureCelsius: 28,
+    cloudCoverPercent: 10,
+  },
+  {
+    time: "10:00",
+    windSpeedKmh: 6,
+    gustSpeedKmh: 9,
+    waveHeightMeters: 0.2,
+    temperatureCelsius: 30,
+    cloudCoverPercent: 12,
+  },
+];
+
+describe("HourlyForecast", () => {
+  it("presents the next hours as a connected timeline", () => {
+    render(<HourlyForecast hourly={hourly} />);
+
+    const timeline = screen.getByRole("list", { name: "Previsioni orarie" });
+
+    expect(timeline).toBeInTheDocument();
+    expect(screen.getAllByRole("listitem")).toHaveLength(2);
+    expect(screen.getByText("08:00")).toBeInTheDocument();
+    expect(screen.getByText("10:00")).toBeInTheDocument();
+  });
+});

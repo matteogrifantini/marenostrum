@@ -8,8 +8,6 @@ import {
   DEMO_DATE_OPTIONS,
   getDemoRecommendationFor,
 } from "../data/demo-beaches";
-import { getPeriodLabel } from "../domain/date-selection";
-import { BeachScore } from "./beach-score";
 import { ConditionMetric } from "./condition-metric";
 import { DetailHero } from "./detail-hero";
 import { DetailTabs, type DetailTab } from "./detail-tabs";
@@ -49,9 +47,6 @@ export function BeachDetailExperience({
   const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<DetailTab>("oggi");
   const { beach } = recommendation;
-  const selectedOption = DEMO_DATE_OPTIONS.find((option) => option.iso === date) ?? DEMO_DATE_OPTIONS[0];
-  const morning = getDemoRecommendationFor(beach.slug, { date, period: "morning" });
-  const afternoon = getDemoRecommendationFor(beach.slug, { date, period: "afternoon" });
   const days = useMemo<NextDay[]>(
     () =>
       DEMO_DATE_OPTIONS.map((option) => {
@@ -84,14 +79,9 @@ export function BeachDetailExperience({
           <DetailHero recommendation={recommendation} date={date} period={period} />
 
           <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(19rem,0.7fr)]">
-            <section className="rounded-[1.75rem] bg-[var(--surface)] p-5 shadow-[0_18px_60px_rgba(20,44,57,0.08)] sm:p-7">
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-                    {selectedOption.label} · {getPeriodLabel(period)}
-                  </p>
-                  <h2 className="mt-2 font-serif text-3xl font-semibold tracking-[-0.05em]">Condizioni leggibili</h2>
-                </div>
+            <section className="min-w-0 overflow-hidden rounded-[1.75rem] bg-[var(--surface)] p-5 shadow-[0_18px_60px_rgba(20,44,57,0.08)] sm:p-7">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-sm font-bold text-[var(--sea-deep)]">Previsioni</p>
                 <PeriodPicker value={period} onChange={handlePeriodChange} />
               </div>
 
@@ -100,7 +90,7 @@ export function BeachDetailExperience({
               </div>
 
               {activeTab === "oggi" ? (
-                <TodayPanel recommendation={recommendation} morning={morning} afternoon={afternoon} />
+                <TodayPanel recommendation={recommendation} />
               ) : null}
               {activeTab === "info" ? <InfoPanel recommendation={recommendation} /> : null}
               {activeTab === "vento" ? <WindPanel recommendation={recommendation} /> : null}
@@ -137,30 +127,16 @@ export function BeachDetailExperience({
 
 function TodayPanel({
   recommendation,
-  morning,
-  afternoon,
 }: {
   recommendation: BeachRecommendation;
-  morning?: BeachRecommendation;
-  afternoon?: BeachRecommendation;
 }) {
   const { conditions } = recommendation;
 
   return (
     <div className="mt-7">
-      <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--muted)]">Sicilia score</p>
-          <div className="mt-2 flex items-end gap-4">
-            <BeachScore score={recommendation.score} label={recommendation.label} />
-            <p className="max-w-xs pb-1 text-sm leading-6 text-[var(--muted)]">{recommendation.reason}</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-2">
-          <PeriodScore label="Mattina" recommendation={morning} />
-          <PeriodScore label="Pomeriggio" recommendation={afternoon} />
-        </div>
-      </div>
+      <p className="rounded-[1.25rem] bg-[var(--sea-soft)]/70 p-4 text-sm font-semibold leading-6 text-[var(--ink-soft)]">
+        {recommendation.reason}
+      </p>
 
       <div className="mt-7 grid grid-cols-2 gap-x-4 gap-y-5 border-y border-[var(--line)] py-5 sm:grid-cols-4">
         <ConditionMetric
@@ -248,15 +224,6 @@ function WindPanel({ recommendation }: { recommendation: BeachRecommendation }) 
           {beach.shelter.length ? `Riparata da ${beach.shelter.join(", ")}.` : "Nessuna direzione riparata registrata."} {beach.orientationLabel ?? beach.coast}.
         </p>
       </div>
-    </div>
-  );
-}
-
-function PeriodScore({ label, recommendation }: { label: string; recommendation?: BeachRecommendation }) {
-  return (
-    <div className="min-w-[6.5rem] rounded-[1rem] bg-[var(--surface-muted)] px-3 py-2.5">
-      <span className="block text-xs font-bold text-[var(--muted)]">{label}</span>
-      <strong className="mt-1 block font-serif text-2xl leading-none tracking-[-0.05em]">{recommendation ? (recommendation.score / 10).toFixed(1) : "—"}</strong>
     </div>
   );
 }

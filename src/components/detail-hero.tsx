@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowLeft, Check, Heart, MapPin, Share2, TriangleAlert } from "lucide-react";
 import { useState } from "react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
-import { getPeriodLabel } from "../domain/date-selection";
 import { BeachScore } from "./beach-score";
 
 type DetailHeroProps = {
@@ -91,8 +90,6 @@ export function DetailHero({ recommendation, date, period }: DetailHeroProps) {
               <MapPin aria-hidden="true" size={15} />
               {beach.municipality} · {beach.coast}
             </span>
-            <span aria-hidden="true" className="size-1 rounded-full bg-white/50" />
-            <span>{getPeriodLabel(period)}</span>
           </div>
           <h1 className="font-serif text-[clamp(3.2rem,8vw,7rem)] font-semibold leading-[0.84] tracking-[-0.075em]">
             {beach.name}

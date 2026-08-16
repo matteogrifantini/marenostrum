@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
-  Compass,
   Heart,
   MapPin,
   ThermometerSun,
@@ -13,25 +12,26 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
-import { BeachScore } from "./beach-score";
 import { ConditionMetric } from "./condition-metric";
 
 type BeachCardProps = {
   recommendation: BeachRecommendation;
   date: string;
   period: BeachPeriod;
+  featured?: boolean;
 };
 
-export function BeachCard({ recommendation, date, period }: BeachCardProps) {
+export function BeachCard({ recommendation, date, period, featured = false }: BeachCardProps) {
   const { beach, conditions } = recommendation;
   const [favorite, setFavorite] = useState(false);
   const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=${period}`;
   const image = beach.image ?? "/images/beaches/cala-del-gelsomino.jpg";
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
+  const displayScore = (Math.max(0, Math.min(100, recommendation.score)) / 10).toFixed(1);
 
   return (
     <article className="group overflow-hidden rounded-[1.75rem] bg-[var(--surface)] shadow-[0_18px_60px_rgba(20,44,57,0.1)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_24px_68px_rgba(20,44,57,0.14)] focus-within:-translate-y-0.5">
-      <div className="relative h-[220px] overflow-hidden sm:h-[245px]">
+      <div className={featured ? "relative h-[290px] overflow-hidden sm:h-[370px]" : "relative h-[220px] overflow-hidden sm:h-[245px]"}>
         <Link
           href={detailHref}
           aria-label={`Apri la scheda di ${beach.name}`}
@@ -67,8 +67,8 @@ export function BeachCard({ recommendation, date, period }: BeachCardProps) {
           </button>
         </div>
 
-        <div className="pointer-events-none absolute inset-x-4 bottom-4 flex items-end justify-between gap-3 text-white">
-          <div>
+        <div className="pointer-events-none absolute inset-x-4 bottom-4 flex items-end gap-3 text-white">
+          <div className="min-w-0 pr-24">
             <p className="flex items-center gap-1.5 text-xs font-semibold text-white/80">
               <MapPin aria-hidden="true" size={14} />
               {beach.municipality} · {beach.coast}
@@ -77,27 +77,25 @@ export function BeachCard({ recommendation, date, period }: BeachCardProps) {
               {beach.name}
             </h3>
           </div>
-          <span className="rounded-full bg-black/25 px-2.5 py-1 text-xs font-bold backdrop-blur-sm">
-            {conditions.date === date ? "Aggiornato" : "Previsione"}
+        </div>
+        <div
+          aria-label={`Sicilia score ${displayScore} su 10, ${recommendation.label}`}
+          className="pointer-events-none absolute bottom-4 right-4 rounded-[1.1rem] bg-white/92 px-3 py-2 text-[var(--ink)] shadow-[0_8px_20px_rgba(10,28,35,0.16)] backdrop-blur-md"
+        >
+          <span className="block text-[0.55rem] font-bold uppercase tracking-[0.14em] text-[var(--muted)]">
+            Sicilia score
+          </span>
+          <span className="mt-0.5 flex items-baseline gap-1">
+            <strong className="font-serif text-2xl font-semibold leading-none tracking-[-0.06em]">
+              {displayScore}
+            </strong>
+            <span className="text-xs font-semibold text-[var(--muted)]">/10</span>
           </span>
         </div>
       </div>
 
       <div className="p-5 sm:p-6">
-        <div className="flex items-start justify-between gap-5">
-          <div className="min-w-0">
-            <p className="flex items-center gap-1.5 text-sm font-semibold text-[var(--muted)]">
-              <Compass aria-hidden="true" size={15} className="text-[var(--sea-deep)]" />
-              Esposta a {beach.orientationLabel ?? beach.coast}
-            </p>
-            <p className="mt-2 max-w-[18rem] text-sm leading-6 text-[var(--ink-soft)]">
-              {recommendation.reason}
-            </p>
-          </div>
-          <BeachScore score={recommendation.score} label={recommendation.label} />
-        </div>
-
-        <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 border-y border-[var(--line)] py-4">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-4 border-y border-[var(--line)] py-4">
           <ConditionMetric
             icon={<Wind aria-hidden="true" size={17} />}
             label="Vento"

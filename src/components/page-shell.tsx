@@ -24,9 +24,6 @@ export function PageShell({ children }: { children: ReactNode }) {
             <a className="transition-colors duration-200 hover:text-[var(--ink)]" href="#classifica">
               Spiagge
             </a>
-            <a className="transition-colors duration-200 hover:text-[var(--ink)]" href="#come-funziona">
-              Come funziona
-            </a>
             <a
               className="inline-flex min-h-11 items-center rounded-full bg-[var(--ink)] px-4 py-2.5 text-white transition-[transform,background-color] duration-200 ease-out hover:bg-[var(--sea-deep)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
               href="#classifica"

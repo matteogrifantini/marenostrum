@@ -20,15 +20,20 @@ describe("BeachCard", () => {
       "src",
       expect.stringContaining("cala-del-gelsomino.jpg"),
     );
-    expect(screen.getAllByText("Ottima scelta")).toHaveLength(2);
+    expect(screen.getAllByText("Ottima scelta")).toHaveLength(1);
+    expect(screen.queryByText("Informazioni aggiornate")).not.toBeInTheDocument();
+    expect(screen.queryByText(/ore 07:00/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/riparata dal Maestrale/i)).not.toBeInTheDocument();
+    expect(screen.queryByText("Aggiornato")).not.toBeInTheDocument();
+    expect(screen.queryByText("Previsione")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Esposta a/i)).not.toBeInTheDocument();
     expect(screen.getByText("10.0")).toBeInTheDocument();
     expect(screen.getByText(/Noto/)).toBeInTheDocument();
-    expect(screen.getAllByText(/Sud-est/)).toHaveLength(2);
+    expect(screen.getAllByText(/Sud-est/)).toHaveLength(1);
     expect(screen.getByText("7 km/h")).toBeInTheDocument();
     expect(screen.getByText("12 km/h")).toBeInTheDocument();
     expect(screen.getByText("0.2 m")).toBeInTheDocument();
     expect(screen.getByText("30°")).toBeInTheDocument();
-    expect(screen.getByText(/riparata dal Maestrale/i)).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: /scopri la spiaggia/i }),
     ).toHaveAttribute(
