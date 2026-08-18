@@ -1,4 +1,4 @@
-# Sicilia Beach
+# Mare Nostrum
 
 Guida ragionata alle spiagge siciliane: condizioni del mare, vento, accessibilità e una spiegazione semplice del perché una spiaggia è una buona scelta oggi.
 

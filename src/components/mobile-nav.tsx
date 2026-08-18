@@ -1,18 +1,17 @@
-import { Compass, Map, Settings, Sun } from "lucide-react";
+import { Map, Settings, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type MobileNavProps = {
-  active?: "oggi" | "zone" | "mappa" | "impostazioni";
+  active?: "oggi" | "mappa" | "impostazioni";
 };
 
 const items: Array<{
-  id: "oggi" | "zone" | "mappa" | "impostazioni";
+  id: "oggi" | "mappa" | "impostazioni";
   label: string;
   icon: LucideIcon;
   href?: string;
 }> = [
   { id: "oggi", label: "Oggi", icon: Sun, href: "#classifica" },
-  { id: "zone", label: "Zone", icon: Compass },
   { id: "mappa", label: "Mappa", icon: Map },
   { id: "impostazioni", label: "Impostazioni", icon: Settings },
 ] as const;
@@ -21,7 +20,7 @@ export function MobileNav({ active = "oggi" }: MobileNavProps) {
   return (
     <nav
       aria-label="Navigazione mobile"
-      className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-4 rounded-[1.4rem] bg-[rgba(255,253,248,0.92)] p-1.5 shadow-[0_18px_50px_rgba(20,44,57,0.18)] backdrop-blur-xl md:hidden"
+      className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-3 rounded-[1.4rem] bg-[rgba(255,253,248,0.92)] p-1.5 shadow-[0_18px_50px_rgba(20,44,57,0.18)] backdrop-blur-xl md:hidden"
     >
       {items.map(({ id, label, icon: Icon, href }) => {
         const isActive = id === active;

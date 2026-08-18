@@ -17,7 +17,8 @@
   --sun-dark: #a66e16;
   --background: var(--sand);
   --foreground: var(--ink);
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @theme inline {
@@ -37,7 +38,8 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: 0;
+  overflow-x: clip;
   background: var(--sand);
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
@@ -69,6 +71,87 @@ a:focus-visible {
   display: none;
 }
 
+.detail-surface {
+  border: 1px solid rgba(8, 47, 61, 0.055);
+  border-radius: 1.3rem;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(8, 47, 61, 0.072);
+}
+
+.detail-emoji {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.65rem;
+  background: var(--surface-muted);
+  box-shadow: inset 0 0 0 1px rgba(8, 47, 61, 0.04);
+  font-size: 1rem;
+  transform: rotate(-3deg);
+}
+
+.detail-press {
+  transition:
+    scale 120ms var(--ease-out),
+    color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.detail-press:active {
+  scale: 0.97;
+}
+
+.detail-segment {
+  transition:
+    scale 120ms var(--ease-out),
+    color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.detail-enter {
+  animation: detail-rise-in 300ms var(--ease-out) both;
+}
+
+.detail-reel-dialog {
+  transform-origin: center;
+  animation: detail-modal-in 250ms var(--ease-out) both;
+}
+
+.detail-photo-rail {
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+}
+
+@keyframes detail-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes detail-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .detail-press:hover {
+    scale: 1.015;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -82,4 +165,19 @@ a:focus-visible {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+
+  .detail-enter,
+  .detail-reel-dialog {
+    animation: detail-fade-in 180ms ease both;
+  }
+
+  .detail-press:active,
+  .detail-press:hover {
+    scale: 1;
+  }
+}
+
+@keyframes detail-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

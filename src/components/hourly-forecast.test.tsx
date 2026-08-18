@@ -29,8 +29,13 @@ describe("HourlyForecast", () => {
     const timeline = screen.getByRole("list", { name: "Previsioni orarie" });
 
     expect(timeline).toBeInTheDocument();
+    expect(timeline).toHaveClass("gap-3");
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     expect(screen.getByText("08:00")).toBeInTheDocument();
     expect(screen.getByText("10:00")).toBeInTheDocument();
+    expect(screen.queryByText("Andamento")).not.toBeInTheDocument();
+    expect(screen.queryByText("Le prossime ore")).not.toBeInTheDocument();
+    expect(screen.queryByText("ogni 2 ore")).not.toBeInTheDocument();
+    expect(screen.queryByText("Scorri per vedere le altre ore")).not.toBeInTheDocument();
   });
 });

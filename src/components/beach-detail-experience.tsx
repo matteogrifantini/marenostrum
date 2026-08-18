@@ -1,20 +1,17 @@
 "use client";
 
-import { Compass, Droplets, ShieldCheck, Sun, ThermometerSun, Waves, Wind } from "lucide-react";
-import { useMemo, useState } from "react";
+import { CloudSun, Droplets, Sparkles, Waves, Wind } from "lucide-react";
+import { useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
-import {
-  DEMO_DATE_OPTIONS,
-  getDemoRecommendationFor,
-} from "../data/demo-beaches";
-import { ConditionMetric } from "./condition-metric";
+import { getBeachAiComment } from "../domain/beach-comment";
+import { DEMO_DATE_OPTIONS, getDemoRecommendationFor } from "../data/demo-beaches";
+import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { DetailHero } from "./detail-hero";
-import { DetailTabs, type DetailTab } from "./detail-tabs";
 import { HourlyForecast } from "./hourly-forecast";
-import { NextDays, type NextDay } from "./next-days";
 import { PageShell } from "./page-shell";
-import { PeriodPicker } from "./period-picker";
+import { BeachLiveSections } from "./beach-live-sections";
+import { BeachCommunitySections } from "./beach-community-sections";
 
 type BeachDetailExperienceProps = {
   recommendation: BeachRecommendation;
@@ -22,224 +19,240 @@ type BeachDetailExperienceProps = {
   period: BeachPeriod;
 };
 
+const periods: Array<{ value: BeachPeriod; label: string }> = [
+  { value: "all-day", label: "Tutto il giorno" },
+  { value: "morning", label: "Mattina" },
+  { value: "afternoon", label: "Pomeriggio" },
+];
+
 const directionNames = [
-  "Tramontana",
-  "Grecale",
-  "Levante",
-  "Scirocco",
-  "Ostro",
-  "Libeccio",
-  "Ponente",
-  "Maestrale",
+  "N",
+  "NE",
+  "E",
+  "SE",
+  "S",
+  "SO",
+  "O",
+  "NO",
 ];
 
 function directionName(degrees: number) {
   return directionNames[Math.round((degrees % 360) / 45) % directionNames.length];
 }
 
-export function BeachDetailExperience({
-  recommendation,
-  date,
-  period,
-}: BeachDetailExperienceProps) {
+function displayScore(score: number) {
+  return (Math.max(0, Math.min(100, score)) / 10).toFixed(1);
+}
+
+function scoreHeadline(score: number) {
+  if (score >= 80) return "Ottima scelta";
+  if (score >= 70) return "Condizioni accettabili";
+  if (score >= 55) return "Da valutare con attenzione";
+  return "Meglio scegliere un’altra spiaggia";
+}
+
+function periodSummary(recommendation: BeachRecommendation | undefined, period: "morning" | "afternoon") {
+  if (!recommendation) return "Dati non disponibili";
+
+  if (period === "morning") {
+    return recommendation.conditions.windSpeedKmh <= 12
+      ? "Vento leggero fino alle 12"
+      : `Vento ${recommendation.conditions.windSpeedKmh} km/h`;
+  }
+
+  return recommendation.conditions.gustSpeedKmh >= 25
+    ? `Raffiche fino a ${recommendation.conditions.gustSpeedKmh} km/h`
+    : `Vento ${recommendation.conditions.windSpeedKmh} km/h`;
+}
+
+export function BeachDetailExperience({ recommendation, date, period }: BeachDetailExperienceProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState<DetailTab>("oggi");
-  const { beach } = recommendation;
-  const days = useMemo<NextDay[]>(
-    () =>
-      DEMO_DATE_OPTIONS.map((option) => {
-        const daily = getDemoRecommendationFor(beach.slug, {
-          date: option.iso,
-          period: "all-day",
-        });
-
-        return {
-          iso: option.iso,
-          label: option.label,
-          score: daily?.score ?? 0,
-          wind: daily ? `${daily.conditions.windSpeedKmh} km/h vento` : "Dati non disponibili",
-        };
-      }),
-    [beach.slug],
+  const detail = getDemoBeachDetail(recommendation.beach.slug);
+  const periodRecommendations = useMemo(
+    () => ({
+      morning: getDemoRecommendationFor(recommendation.beach.slug, { date, period: "morning" }),
+      afternoon: getDemoRecommendationFor(recommendation.beach.slug, { date, period: "afternoon" }),
+    }),
+    [date, recommendation.beach.slug],
   );
 
-  const handlePeriodChange = (nextPeriod: BeachPeriod) => {
-    const nextParams = new URLSearchParams(searchParams.toString());
-    nextParams.set("date", date);
-    nextParams.set("period", nextPeriod);
-    router.replace(`${pathname}?${nextParams.toString()}`);
+  if (!detail) return null;
+
+  const replaceSelection = (nextDate: string, nextPeriod: BeachPeriod) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("date", nextDate);
+    params.set("period", nextPeriod);
+    router.replace(`${pathname}?${params.toString()}`);
   };
 
   return (
     <PageShell>
-      <main className="min-h-screen pb-14">
-        <div className="mx-auto max-w-[1440px] px-4 py-4 sm:px-8 sm:py-6">
-          <DetailHero recommendation={recommendation} date={date} period={period} />
+      <main className="min-h-screen pb-16">
+        <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
+          <DetailHero recommendation={recommendation} detail={detail} date={date} period={period} />
 
-          <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(19rem,0.7fr)]">
-            <section className="min-w-0 overflow-hidden rounded-[1.75rem] bg-[var(--surface)] p-5 shadow-[0_18px_60px_rgba(20,44,57,0.08)] sm:p-7">
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-bold text-[var(--sea-deep)]">Previsioni</p>
-                <PeriodPicker value={period} onChange={handlePeriodChange} />
-              </div>
+          <div className="relative z-10 -mt-3 rounded-t-[1.65rem] bg-[var(--sand)] px-1 pt-3 sm:px-2">
+            <SelectionControls
+              date={date}
+              period={period}
+              onDateChange={(nextDate) => replaceSelection(nextDate, period)}
+              onPeriodChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
+            />
 
-              <div className="mt-6">
-                <DetailTabs active={activeTab} onChange={setActiveTab} />
-              </div>
-
-              {activeTab === "oggi" ? (
-                <TodayPanel recommendation={recommendation} />
-              ) : null}
-              {activeTab === "info" ? <InfoPanel recommendation={recommendation} /> : null}
-              {activeTab === "vento" ? <WindPanel recommendation={recommendation} /> : null}
-            </section>
-
-            <aside className="h-fit rounded-[1.75rem] bg-[var(--surface-muted)] p-5 sm:p-7">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Perché questo score</p>
-                  <h2 className="mt-2 font-serif text-3xl font-semibold tracking-[-0.05em]">Il segnale di oggi</h2>
-                </div>
-                <span className="grid size-11 place-items-center rounded-full bg-[var(--sun-soft)] text-[var(--ink)]">
-                  <ShieldCheck aria-hidden="true" size={19} />
-                </span>
-              </div>
-              <div className="mt-7 space-y-5">
-                <ScoreLine label="Vento" value={recommendation.factors.wind} max={45} />
-                <ScoreLine label="Mare" value={recommendation.factors.sea} max={25} />
-                <ScoreLine label="Meteo" value={recommendation.factors.weather} max={20} />
-                <ScoreLine label="Accesso" value={recommendation.factors.access} max={10} />
-              </div>
-              <p className="mt-7 border-t border-[var(--line)] pt-5 text-sm leading-6 text-[var(--muted)]">
-                {recommendation.reason} Il numero sintetizza le condizioni, la spiegazione resta visibile.
-              </p>
-            </aside>
+            <AdviceCard recommendation={recommendation} />
+            <ConditionsCard
+              recommendation={recommendation}
+              period={period}
+              morningRecommendation={periodRecommendations.morning}
+              afternoonRecommendation={periodRecommendations.afternoon}
+            />
+            <BeachLiveSections beach={recommendation.beach} detail={detail} />
+            <BeachCommunitySections detail={detail} />
           </div>
-
-          <NextDays slug={beach.slug} days={days} selectedDate={date} period={period} />
         </div>
       </main>
     </PageShell>
   );
 }
 
-function TodayPanel({
+function SelectionControls({
+  date,
+  period,
+  onDateChange,
+  onPeriodChange,
+}: {
+  date: string;
+  period: BeachPeriod;
+  onDateChange: (date: string) => void;
+  onPeriodChange: (period: BeachPeriod) => void;
+}) {
+  const dayOptions = DEMO_DATE_OPTIONS.slice(0, 2);
+
+  return (
+    <div className="grid grid-cols-[0.78fr_1.35fr] gap-2" aria-label="Data e fascia oraria">
+      <div className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]">
+        {dayOptions.map((option) => (
+          <button
+            key={option.iso}
+            type="button"
+            aria-pressed={date === option.iso}
+            onClick={() => onDateChange(option.iso)}
+            className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-[0.68rem] font-extrabold ${date === option.iso ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+      <div className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]">
+        {periods.map((option) => (
+          <button
+            key={option.value}
+            type="button"
+            aria-pressed={period === option.value}
+            onClick={() => onPeriodChange(option.value)}
+            className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-[0.6rem] font-extrabold sm:text-xs ${period === option.value ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AdviceCard({ recommendation }: { recommendation: BeachRecommendation }) {
+  const comment = getBeachAiComment(recommendation);
+
+  return (
+    <article
+      role="note"
+      aria-labelledby="mare-nostrum-advice-title"
+      className="detail-enter mt-3 rounded-[1.3rem] border border-[rgba(8,47,61,0.065)] bg-[linear-gradient(145deg,#e1dccf,#d9d3c6)] p-4 shadow-[0_9px_24px_rgba(8,47,61,0.075)] sm:p-5"
+    >
+      <div className="flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <p id="mare-nostrum-advice-title" className="flex items-center gap-2 text-[0.68rem] font-extrabold uppercase tracking-[0.1em] text-[var(--muted)]">
+            <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-[0.65rem] bg-white/45 text-base shadow-[inset_0_0_0_1px_rgba(8,47,61,0.04)]"><Sparkles size={16} /></span>
+            Il consiglio di Mare Nostrum
+          </p>
+          <strong className="mt-2 block text-xl tracking-[-0.035em] text-[var(--ink)]">{scoreHeadline(recommendation.score)}</strong>
+        </div>
+        <span className="grid size-14 shrink-0 place-items-center rounded-full bg-[var(--sun)] text-xl font-black text-[#5c4009] shadow-[0_7px_16px_rgba(134,92,9,0.15)]">
+          {displayScore(recommendation.score)}
+        </span>
+      </div>
+      <p className="mt-3 text-sm font-medium leading-6 text-[var(--ink-soft)]">{comment.text}</p>
+    </article>
+  );
+}
+
+function ConditionsCard({
   recommendation,
+  period,
+  morningRecommendation,
+  afternoonRecommendation,
 }: {
   recommendation: BeachRecommendation;
+  period: BeachPeriod;
+  morningRecommendation?: BeachRecommendation;
+  afternoonRecommendation?: BeachRecommendation;
 }) {
   const { conditions } = recommendation;
+  const rainChance = conditions.weather === "pioggia" ? 65 : conditions.weather === "nuvoloso" ? 25 : 5;
 
   return (
-    <div className="mt-7">
-      <p className="rounded-[1.25rem] bg-[var(--sea-soft)]/70 p-4 text-sm font-semibold leading-6 text-[var(--ink-soft)]">
-        {recommendation.reason}
-      </p>
-
-      <div className="mt-7 grid grid-cols-2 gap-x-4 gap-y-5 border-y border-[var(--line)] py-5 sm:grid-cols-4">
-        <ConditionMetric
-          icon={<Sun aria-hidden="true" size={17} />}
-          label="Cielo"
-          value={conditions.weather}
-          description={conditions.cloudCoverPercent !== undefined ? `${conditions.cloudCoverPercent}% nuvole` : undefined}
-        />
-        <ConditionMetric
-          icon={<Wind aria-hidden="true" size={17} />}
-          label="Vento"
-          value={`${conditions.windSpeedKmh} km/h`}
-          description={`${conditions.gustSpeedKmh} raffiche`}
-        />
-        <ConditionMetric
-          icon={<Waves aria-hidden="true" size={17} />}
-          label="Mare"
-          value={`${conditions.waveHeightMeters.toFixed(1)} m`}
-          description={conditions.seaState}
-        />
-        <ConditionMetric
-          icon={<ThermometerSun aria-hidden="true" size={17} />}
-          label="Temperatura"
-          value={`${conditions.temperatureCelsius}°`}
-          description={conditions.waterTemperatureCelsius ? `acqua ${conditions.waterTemperatureCelsius}°` : undefined}
-        />
-      </div>
-
-      <HourlyForecast hourly={conditions.hourly} />
-
-      {recommendation.beach.warnings?.length ? (
-        <div className="mt-7 rounded-[1.25rem] bg-[var(--sun-soft)] p-4 text-sm leading-6 text-[var(--ink)]">
-          <p className="font-bold">Da sapere prima di partire</p>
-          <ul className="mt-2 space-y-1 text-[var(--ink-soft)]">
-            {recommendation.beach.warnings.map((warning) => (
-              <li key={warning}>· {warning}</li>
-            ))}
-          </ul>
+    <>
+      <SectionHeading title="Condizioni" meta="ore 11:20" />
+      <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-4 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-5">
+        <div className="flex items-center gap-3">
+          <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-lg">🌊</span>
+          <div><h2 className="text-base font-bold tracking-[-0.025em]">Oggi al mare</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Previsioni per la selezione attiva</p></div>
         </div>
-      ) : null}
+
+        {period === "all-day" ? (
+          <div role="group" aria-label="Confronto mattina e pomeriggio" className="mt-4 grid grid-cols-2 gap-2 border-b border-[var(--line)] pb-4">
+            <DayPart label="Mattina" emoji="☀️" recommendation={morningRecommendation} summary={periodSummary(morningRecommendation, "morning")} />
+            <DayPart label="Pomeriggio" emoji="🌬️" recommendation={afternoonRecommendation} summary={periodSummary(afternoonRecommendation, "afternoon")} />
+          </div>
+        ) : null}
+
+        <div className="mt-2 grid grid-cols-2">
+          <ConditionItem icon={<Wind size={17} />} label="Vento" value={`${directionName(conditions.windDirectionDegrees)} · ${conditions.windSpeedKmh} km/h`} detail={conditions.gustSpeedKmh >= 25 ? "raffiche sostenute" : "intensità regolare"} border="right-bottom" />
+          <ConditionItem icon={<Waves size={17} />} label="Onde" value={`${conditions.waveHeightMeters.toFixed(1)} m`} detail={conditions.seaState ?? "calmo"} border="bottom" />
+          <ConditionItem icon={<Droplets size={17} />} label="Acqua" value={conditions.waterTemperatureCelsius ? `${conditions.waterTemperatureCelsius}°` : "—"} detail="stima superficiale" border="right" />
+          <ConditionItem icon={<CloudSun size={17} />} label="Meteo" value={conditions.weather} detail={`pioggia ${rainChance}%`} />
+        </div>
+
+        <div className="border-t border-[var(--line)] pt-1">
+          <HourlyForecast hourly={conditions.hourly} />
+        </div>
+      </section>
+    </>
+  );
+}
+
+function DayPart({ label, emoji, recommendation, summary }: { label: string; emoji: string; recommendation?: BeachRecommendation; summary: string }) {
+  return (
+    <div className="rounded-[0.9rem] bg-[var(--surface-muted)]/70 p-3">
+      <div className="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]"><span>{label}</span><span aria-hidden="true">{emoji}</span></div>
+      <strong className="mt-2 block text-3xl leading-none tracking-[-0.05em]">{recommendation ? displayScore(recommendation.score) : "—"}</strong>
+      <p className="mt-2 text-[0.68rem] leading-4 text-[var(--muted)]">{summary}</p>
     </div>
   );
 }
 
-function InfoPanel({ recommendation }: { recommendation: BeachRecommendation }) {
-  const { beach } = recommendation;
-
+function ConditionItem({ icon, label, value, detail, border = "" }: { icon: React.ReactNode; label: string; value: string; detail: string; border?: "right-bottom" | "bottom" | "right" | "" }) {
+  const borderClasses = border === "right-bottom" ? "border-b border-r" : border === "bottom" ? "border-b" : border === "right" ? "border-r" : "";
   return (
-    <div className="mt-7 grid gap-7 sm:grid-cols-2">
-      <div>
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--muted)]">La spiaggia</p>
-        <p className="mt-3 text-base leading-7 text-[var(--ink-soft)]">{beach.description}</p>
-        <p className="mt-5 text-sm leading-6 text-[var(--muted)]">
-          Accesso {beach.access}. Orientamento {beach.orientationLabel ?? beach.coast.toLowerCase()}.
-        </p>
-      </div>
-      <div>
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--muted)]">Cosa trovi</p>
-        <ul className="mt-3 space-y-3 text-sm font-semibold text-[var(--ink-soft)]">
-          {beach.services?.map((service) => <li key={service}>· {service}</li>)}
-          {beach.facts?.map((fact) => <li key={fact}>· {fact}</li>)}
-        </ul>
-      </div>
-      <div className="sm:col-span-2 border-t border-[var(--line)] pt-5 text-xs leading-5 text-[var(--muted)]">
-        Foto: {beach.imageCredit ?? "Archivio locale"} · {beach.imageLicense ?? "Asset locale"}. Le immagini sono attribuite nel repository.
-      </div>
+    <div className={`grid min-w-0 grid-cols-[1.8rem_1fr] items-center gap-2 border-[var(--line)] px-2 py-4 ${borderClasses}`}>
+      <span aria-hidden="true" className="grid size-7 place-items-center rounded-[0.55rem] bg-[var(--surface-muted)] text-[var(--sea-deep)]">{icon}</span>
+      <div className="min-w-0"><span className="block text-[0.62rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]">{label}</span><strong className="mt-1 block truncate text-sm">{value}</strong><span className="mt-0.5 block text-[0.65rem] text-[var(--muted)]">{detail}</span></div>
     </div>
   );
 }
 
-function WindPanel({ recommendation }: { recommendation: BeachRecommendation }) {
-  const { beach, conditions } = recommendation;
-
-  return (
-    <div className="mt-7">
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <ConditionMetric icon={<Compass aria-hidden="true" size={17} />} label="Direzione" value={directionName(conditions.windDirectionDegrees)} />
-        <ConditionMetric icon={<Wind aria-hidden="true" size={17} />} label="Vento" value={`${conditions.windSpeedKmh} km/h`} description="medio" />
-        <ConditionMetric icon={<Wind aria-hidden="true" size={17} />} label="Raffiche" value={`${conditions.gustSpeedKmh} km/h`} />
-        <ConditionMetric icon={<Droplets aria-hidden="true" size={17} />} label="Mare" value={conditions.seaState ?? "calmo"} description={`${conditions.waveHeightMeters.toFixed(1)} m`} />
-      </div>
-      <div className="mt-7 rounded-[1.25rem] bg-[var(--surface-muted)] p-5">
-        <p className="text-sm font-bold text-[var(--ink)]">Esposizione della spiaggia</p>
-        <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-          {beach.shelter.length ? `Riparata da ${beach.shelter.join(", ")}.` : "Nessuna direzione riparata registrata."} {beach.orientationLabel ?? beach.coast}.
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function ScoreLine({ label, value, max }: { label: string; value: number; max: number }) {
-  const percentage = Math.min(100, Math.round((value / max) * 100));
-
-  return (
-    <div>
-      <div className="mb-2 flex items-center justify-between text-sm font-bold">
-        <span>{label}</span>
-        <span className="text-[var(--muted)]">{value}/{max}</span>
-      </div>
-      <div className="h-2 overflow-hidden rounded-full bg-white/70">
-        <div className="h-full rounded-full bg-[var(--sea)]" style={{ width: `${percentage}%` }} />
-      </div>
-    </div>
-  );
+function SectionHeading({ title, meta }: { title: string; meta: string }) {
+  return <div className="mx-1 mb-2 mt-5 flex items-center justify-between"><h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2><span className="text-xs font-bold text-[var(--sea)]">{meta}</span></div>;
 }

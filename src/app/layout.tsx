@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sicilia Beach — scegli il mare giusto oggi",
+  title: "Mare Nostrum — scegli il mare giusto oggi",
   description:
     "Condizioni, vento e accessibilità delle spiagge siciliane in un’unica scelta chiara.",
 };

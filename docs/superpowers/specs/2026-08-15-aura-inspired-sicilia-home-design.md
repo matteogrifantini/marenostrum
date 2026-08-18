@@ -1,8 +1,8 @@
-# Sicilia Beach — Aura-inspired home and beach detail
+# Mare Nostrum — Aura-inspired home and beach detail
 
 ## Obiettivo
 
-Rifare la home e la scheda spiaggia di Sicilia Beach seguendo il modello di
+Rifare la home e la scheda spiaggia di Mare Nostrum seguendo il modello di
 prodotto verificato su AURA Beach Advisor: aiutare a scegliere dove andare al
 mare in base al giorno e alle condizioni, con una classifica immediata e dati
 leggibili. L'implementazione avrà identità, dati e asset propri della Sicilia;
@@ -45,7 +45,7 @@ una decorazione generica:
 
 ### Header
 
-Desktop: logo Sicilia Beach, link `Oggi`, `Esplora`, `Mappa` e azioni
+Desktop: logo Mare Nostrum, link `Oggi`, `Esplora`, `Mappa` e azioni
 preferiti/impostazioni. Mobile: logo, preferiti e accesso rapido; navigazione
 persistente in una toolbar inferiore con `Oggi`, `Zone`, `Mappa`, `Impostazioni`.
 

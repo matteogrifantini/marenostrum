@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
+import { getBeachLiveSignals } from "../domain/beach-signals";
 import { ConditionMetric } from "./condition-metric";
 
 type BeachCardProps = {
@@ -28,6 +29,7 @@ export function BeachCard({ recommendation, date, period, featured = false }: Be
   const image = beach.image ?? "/images/beaches/cala-del-gelsomino.jpg";
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
   const displayScore = (Math.max(0, Math.min(100, recommendation.score)) / 10).toFixed(1);
+  const liveSignals = getBeachLiveSignals(recommendation);
 
   return (
     <article className="group overflow-hidden rounded-[1.75rem] bg-[var(--surface)] shadow-[0_18px_60px_rgba(20,44,57,0.1)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_24px_68px_rgba(20,44,57,0.14)] focus-within:-translate-y-0.5">
@@ -79,13 +81,10 @@ export function BeachCard({ recommendation, date, period, featured = false }: Be
           </div>
         </div>
         <div
-          aria-label={`Sicilia score ${displayScore} su 10, ${recommendation.label}`}
+          aria-label={`Voto ${displayScore} su 10, ${recommendation.label}`}
           className="pointer-events-none absolute bottom-4 right-4 rounded-[1.1rem] bg-white/92 px-3 py-2 text-[var(--ink)] shadow-[0_8px_20px_rgba(10,28,35,0.16)] backdrop-blur-md"
         >
-          <span className="block text-[0.55rem] font-bold uppercase tracking-[0.14em] text-[var(--muted)]">
-            Sicilia score
-          </span>
-          <span className="mt-0.5 flex items-baseline gap-1">
+          <span className="flex items-baseline gap-1">
             <strong className="font-serif text-2xl font-semibold leading-none tracking-[-0.06em]">
               {displayScore}
             </strong>
@@ -125,14 +124,21 @@ export function BeachCard({ recommendation, date, period, featured = false }: Be
           />
         </div>
 
-        {beach.facts?.length ? (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {beach.facts.slice(0, 3).map((fact) => (
+        {liveSignals.length ? (
+          <div aria-label="Segnali aggiornati" className="mt-4 flex flex-wrap gap-2">
+            {liveSignals.map((signal) => (
               <span
-                key={fact}
-                className="rounded-full bg-[var(--surface-muted)] px-3 py-1.5 text-xs font-semibold text-[var(--ink-soft)]"
+                key={signal.label}
+                className={[
+                  "rounded-full px-3 py-1.5 text-xs font-semibold",
+                  signal.tone === "warning"
+                    ? "bg-[var(--sun-soft)] text-[var(--sun-dark)]"
+                    : signal.tone === "sun"
+                      ? "bg-[var(--sand-muted)] text-[var(--ink-soft)]"
+                      : "bg-[var(--sea-soft)] text-[var(--sea-deep)]",
+                ].join(" ")}
               >
-                {fact}
+                {signal.label}
               </span>
             ))}
           </div>

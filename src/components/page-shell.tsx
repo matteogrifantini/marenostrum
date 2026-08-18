@@ -1,6 +1,6 @@
-import { Waves } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { BrandMark } from "./brand-mark";
 
 export function PageShell({ children }: { children: ReactNode }) {
   return (
@@ -9,14 +9,12 @@ export function PageShell({ children }: { children: ReactNode }) {
         <div className="mx-auto flex min-h-[4.5rem] max-w-[1440px] items-center justify-between gap-5 px-4 sm:px-8">
           <Link
             href="/"
-            aria-label="Sicilia Beach, home"
+            aria-label="Mare Nostrum, home"
             className="inline-flex min-h-11 items-center gap-3 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)]"
           >
-            <span className="grid size-9 place-items-center rounded-full bg-[var(--ink)] text-[var(--sand)]">
-              <Waves aria-hidden="true" size={17} strokeWidth={2.4} />
-            </span>
+            <BrandMark className="size-9" iconSize={17} />
             <span className="font-serif text-[1.15rem] font-semibold tracking-[-0.04em]">
-              Sicilia Beach
+              Mare Nostrum
             </span>
           </Link>
 

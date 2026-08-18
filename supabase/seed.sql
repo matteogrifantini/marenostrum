@@ -1,6 +1,6 @@
 insert into public.data_sources (id, slug, name, url, quality, is_public, last_checked_at)
 values
-  ('00000000-0000-0000-0000-000000000001', 'demo', 'Dati dimostrativi Sicilia Beach', 'https://example.com/demo', 'low', true, '2026-08-14T08:00:00Z')
+  ('00000000-0000-0000-0000-000000000001', 'demo', 'Dati dimostrativi Mare Nostrum', 'https://example.com/demo', 'low', true, '2026-08-14T08:00:00Z')
 on conflict (slug) do nothing;
 
 insert into public.beaches (

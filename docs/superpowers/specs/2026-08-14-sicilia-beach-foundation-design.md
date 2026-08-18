@@ -1,4 +1,4 @@
-# Sicilia Beach Foundation Design
+# Mare Nostrum Foundation Design
 
 ## Objective
 
@@ -45,4 +45,3 @@ Use an original “editorial coastal atlas” direction: warm sand background, d
 - The demo data uses the same TypeScript contract as future Supabase rows.
 - The migration creates stable beach data, condition snapshots, source records, and RLS policies without exposing secrets.
 - A future Vercel project only needs public Supabase URL/key variables to switch from demo data to live reads.
-

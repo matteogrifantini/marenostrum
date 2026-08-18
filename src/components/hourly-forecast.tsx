@@ -9,19 +9,17 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
   if (!hourly?.length) return null;
 
   return (
-    <section aria-labelledby="hourly-title" className="mt-7">
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--sea-deep)]">Andamento</p>
-          <h3 id="hourly-title" className="mt-1 font-serif text-2xl font-semibold tracking-[-0.04em]">Le prossime ore</h3>
-        </div>
-        <span className="text-xs font-semibold text-[var(--muted)]">ogni 2 ore</span>
-      </div>
-      <div className="relative mt-5 overflow-x-auto pb-2">
+    <section aria-label="Previsioni orarie" className="mt-7">
+      <div
+        aria-label="Previsioni orarie scorrevoli"
+        className="relative overflow-x-auto rounded-[1.25rem] pb-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)]"
+        role="region"
+        tabIndex={0}
+      >
         <div
           role="list"
           aria-label="Previsioni orarie"
-          className="relative flex min-w-max items-start px-2"
+          className="relative flex min-w-max items-start gap-3 px-2 pr-8"
         >
           <div
             aria-hidden="true"
@@ -31,7 +29,7 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
             <div
               key={item.time}
               role="listitem"
-              className="relative w-[7.75rem] shrink-0 text-center"
+              className="relative w-[7.75rem] shrink-0 snap-start text-center"
             >
               <div
                 aria-hidden="true"
@@ -41,7 +39,7 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
                 ].join(" ")}
               />
               <p className="mt-4 text-xs font-bold text-[var(--ink)]">{item.time}</p>
-              <div className="mt-3 rounded-[1.25rem] bg-[var(--sea-soft)]/65 p-3 text-left">
+                <div className="mt-3 rounded-[1.25rem] border border-[var(--sea)]/15 bg-[var(--sea-soft)]/65 p-3 text-left shadow-[0_6px_18px_rgba(20,88,104,0.06)]">
                 <p className="flex items-center gap-1 text-sm font-bold text-[var(--ink)]">
                   <ThermometerSun aria-hidden="true" size={14} className="text-[var(--sea-deep)]" />
                   {item.temperatureCelsius}°
@@ -62,6 +60,10 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
             </div>
           ))}
         </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[var(--surface)] via-[var(--surface)]/80 to-transparent"
+        />
       </div>
     </section>
   );
