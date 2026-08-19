@@ -27,7 +27,7 @@ describe("HomeExperience", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Domani" }));
 
-    expect(screen.getAllByRole("link", { name: /scopri la spiaggia/i })[0]).toHaveAttribute(
+    expect(screen.getAllByRole("link", { name: /apri la scheda/i })[0]).toHaveAttribute(
       "href",
       expect.stringContaining("date=2026-08-16"),
     );
@@ -69,5 +69,22 @@ describe("HomeExperience", () => {
 
     expect(screen.getByRole("heading", { name: "Tonnara di Vendicari" })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "Cala del Gelsomino" })).not.toBeInTheDocument();
+  });
+
+  it("uses a compact two-column beach grid without a featured card", () => {
+    render(
+      <HomeExperience initialDate="2026-08-15" initialPeriod="all-day" />,
+    );
+
+    const list = screen.getByRole("list", { name: "Spiagge consigliate" });
+
+    expect(list).toHaveClass("grid-cols-2");
+    expect(screen.getAllByRole("listitem")).toHaveLength(3);
+    screen.getAllByRole("img").forEach((image) => {
+      expect(image).toHaveAttribute("loading", "eager");
+    });
+    expect(screen.getByText("Noto · 18 km")).toBeInTheDocument();
+    expect(screen.getByText("Avola · 12 km")).toBeInTheDocument();
+    expect(screen.getByText("Noto · 14 km")).toBeInTheDocument();
   });
 });

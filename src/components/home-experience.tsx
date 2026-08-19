@@ -14,6 +14,7 @@ import {
   DEMO_TODAY,
   getDemoRecommendationsFor,
 } from "../data/demo-beaches";
+import { getDemoBeachDetail } from "../data/demo-beach-details";
 import type { BeachPeriod } from "../domain/beach";
 
 type HomeExperienceProps = {
@@ -120,24 +121,22 @@ export function HomeExperience({ initialDate, initialPeriod }: HomeExperiencePro
 
           <section id="classifica" className="scroll-mt-6 py-5 sm:py-7">
             {filteredRecommendations.length ? (
-              <div className="grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
-                <BeachCard
-                  recommendation={filteredRecommendations[0]}
-                  date={date}
-                  period={period}
-                  featured
-                />
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-                  {filteredRecommendations.slice(1).map((recommendation) => (
+              <ul
+                aria-label="Spiagge consigliate"
+                className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5"
+              >
+                {filteredRecommendations.map((recommendation, index) => (
+                  <li key={recommendation.beach.slug} className="min-w-0">
                     <BeachCard
-                      key={recommendation.beach.slug}
                       recommendation={recommendation}
                       date={date}
                       period={period}
+                      distanceKm={getDemoBeachDetail(recommendation.beach.slug)?.distanceKm ?? 0}
+                      eager={index < 4}
                     />
-                  ))}
-                </div>
-              </div>
+                  </li>
+                ))}
+              </ul>
             ) : (
               <div className="rounded-[1.75rem] bg-[var(--surface)] p-8 text-center shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
                 <h3 className="font-serif text-3xl font-semibold tracking-[-0.05em]">

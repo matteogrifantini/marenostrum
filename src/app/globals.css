@@ -15,6 +15,10 @@
   --sun: #f5b84e;
   --sun-soft: #f8dfac;
   --sun-dark: #a66e16;
+  --score-excellent: #174f3c;
+  --score-good: #438963;
+  --score-caution: #e2b94c;
+  --score-poor: #ce6256;
   --background: var(--sand);
   --foreground: var(--ink);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -69,6 +73,17 @@ a:focus-visible {
 
 .day-picker::-webkit-scrollbar {
   display: none;
+}
+
+.home-beach-card {
+  transition:
+    transform 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out);
+  will-change: transform;
+}
+
+.home-beach-card:active {
+  transform: scale(0.985);
 }
 
 .detail-surface {
@@ -147,6 +162,15 @@ a:focus-visible {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .home-beach-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 38px rgba(20, 44, 57, 0.13);
+  }
+
+  .home-beach-card:hover img {
+    transform: scale(1.025);
+  }
+
   .detail-press:hover {
     scale: 1.015;
   }
@@ -172,8 +196,11 @@ a:focus-visible {
   }
 
   .detail-press:active,
-  .detail-press:hover {
+  .detail-press:hover,
+  .home-beach-card:active,
+  .home-beach-card:hover {
     scale: 1;
+    transform: none;
   }
 }
 

@@ -1,157 +1,117 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Heart,
-  MapPin,
-  ThermometerSun,
-  Waves,
-  Wind,
-} from "lucide-react";
-import { useState } from "react";
+import { Waves, Wind } from "lucide-react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
-import { getBeachLiveSignals } from "../domain/beach-signals";
-import { ConditionMetric } from "./condition-metric";
 
 type BeachCardProps = {
   recommendation: BeachRecommendation;
   date: string;
   period: BeachPeriod;
-  featured?: boolean;
+  distanceKm: number;
+  eager?: boolean;
 };
 
-export function BeachCard({ recommendation, date, period, featured = false }: BeachCardProps) {
+type ScoreTone = "excellent" | "good" | "caution" | "poor";
+
+const SCORE_TONE_CLASSES: Record<ScoreTone, string> = {
+  excellent: "bg-[var(--score-excellent)] text-white",
+  good: "bg-[var(--score-good)] text-white",
+  caution: "bg-[var(--score-caution)] text-[var(--ink)]",
+  poor: "bg-[var(--score-poor)] text-white",
+};
+
+const IMAGE_POSITIONS: Record<string, string> = {
+  "cala-del-gelsomino": "center 72%",
+  "spiaggia-della-marchesa": "center 68%",
+  "tonnara-di-vendicari": "center 70%",
+};
+
+function scoreTone(score: number): ScoreTone {
+  if (score >= 90) return "excellent";
+  if (score >= 75) return "good";
+  if (score >= 60) return "caution";
+  return "poor";
+}
+
+function windDirection(degrees: number) {
+  const directions = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"];
+  const normalized = ((degrees % 360) + 360) % 360;
+  return directions[Math.round(normalized / 45) % directions.length];
+}
+
+export function BeachCard({
+  recommendation,
+  date,
+  period,
+  distanceKm,
+  eager = false,
+}: BeachCardProps) {
   const { beach, conditions } = recommendation;
-  const [favorite, setFavorite] = useState(false);
   const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=${period}`;
   const image = beach.image ?? "/images/beaches/cala-del-gelsomino.jpg";
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
   const displayScore = (Math.max(0, Math.min(100, recommendation.score)) / 10).toFixed(1);
-  const liveSignals = getBeachLiveSignals(recommendation);
+  const tone = scoreTone(recommendation.score);
+  const direction = windDirection(conditions.windDirectionDegrees);
 
   return (
-    <article className="group overflow-hidden rounded-[1.75rem] bg-[var(--surface)] shadow-[0_18px_60px_rgba(20,44,57,0.1)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_24px_68px_rgba(20,44,57,0.14)] focus-within:-translate-y-0.5">
-      <div className={featured ? "relative h-[290px] overflow-hidden sm:h-[370px]" : "relative h-[220px] overflow-hidden sm:h-[245px]"}>
-        <Link
-          href={detailHref}
-          aria-label={`Apri la scheda di ${beach.name}`}
-          className="absolute inset-0 block focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--sun)]"
-        >
+    <article className="home-beach-card h-full min-w-0 overflow-hidden rounded-[1.25rem] bg-[var(--surface)] shadow-[0_10px_32px_rgba(20,44,57,0.09)]">
+      <Link
+        href={detailHref}
+        aria-label={`Apri la scheda di ${beach.name}`}
+        className="flex h-full min-w-0 flex-col focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[var(--sun)]"
+      >
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--surface-muted)]">
           <Image
             src={image}
             alt={imageAlt}
             fill
-            sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            loading={eager ? "eager" : "lazy"}
+            sizes="(max-width: 639px) 46vw, (max-width: 1023px) 31vw, 28vw"
+            className="object-cover transition-transform duration-500 ease-out"
+            style={{ objectPosition: IMAGE_POSITIONS[beach.slug] ?? "center" }}
           />
-          <span className="absolute inset-0 bg-gradient-to-t from-[rgba(10,28,35,0.68)] via-transparent to-[rgba(10,28,35,0.08)]" />
-        </Link>
-
-        <div className="pointer-events-none absolute inset-x-4 top-4 flex items-start justify-between gap-3">
-          <span className="rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-[var(--ink)] shadow-[0_6px_16px_rgba(20,44,57,0.12)] backdrop-blur-sm">
-            {recommendation.label}
-          </span>
-          <button
-            type="button"
-            aria-label={favorite ? `Rimuovi ${beach.name} dai preferiti` : `Salva ${beach.name}`}
-            aria-pressed={favorite}
-            onClick={() => setFavorite((current) => !current)}
-            className="pointer-events-auto grid size-11 shrink-0 place-items-center rounded-full bg-white/90 text-[var(--ink)] shadow-[0_6px_16px_rgba(20,44,57,0.12)] backdrop-blur-sm transition-[transform,background-color,color] duration-200 ease-out hover:bg-white active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
-          >
-            <Heart
-              aria-hidden="true"
-              size={18}
-              fill={favorite ? "currentColor" : "none"}
-              strokeWidth={2.1}
-            />
-          </button>
+          <span className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
 
-        <div className="pointer-events-none absolute inset-x-4 bottom-4 flex items-end gap-3 text-white">
-          <div className="min-w-0 pr-24">
-            <p className="flex items-center gap-1.5 text-xs font-semibold text-white/80">
-              <MapPin aria-hidden="true" size={14} />
-              {beach.municipality} · {beach.coast}
-            </p>
-            <h3 className="mt-1 font-serif text-2xl font-semibold tracking-[-0.04em]">
-              {beach.name}
-            </h3>
-          </div>
-        </div>
-        <div
-          aria-label={`Voto ${displayScore} su 10, ${recommendation.label}`}
-          className="pointer-events-none absolute bottom-4 right-4 rounded-[1.1rem] bg-white/92 px-3 py-2 text-[var(--ink)] shadow-[0_8px_20px_rgba(10,28,35,0.16)] backdrop-blur-md"
-        >
-          <span className="flex items-baseline gap-1">
-            <strong className="font-serif text-2xl font-semibold leading-none tracking-[-0.06em]">
-              {displayScore}
-            </strong>
-            <span className="text-xs font-semibold text-[var(--muted)]">/10</span>
-          </span>
-        </div>
-      </div>
+        <div className="flex flex-1 flex-col p-3 sm:p-4">
+          <h3 className="line-clamp-2 min-h-[2.35rem] font-serif text-[1.03rem] font-semibold leading-[1.15] tracking-[-0.035em] text-[var(--ink)] sm:text-lg">
+            {beach.name}
+          </h3>
+          <p className="mt-1 truncate text-[0.7rem] font-semibold text-[var(--muted)] sm:text-xs">
+            {beach.municipality} · {distanceKm} km
+          </p>
 
-      <div className="p-5 sm:p-6">
-        <div className="grid grid-cols-2 gap-x-4 gap-y-4 border-y border-[var(--line)] py-4">
-          <ConditionMetric
-            icon={<Wind aria-hidden="true" size={17} />}
-            label="Vento"
-            value={`${conditions.windSpeedKmh} km/h`}
-            description="medio"
-          />
-          <ConditionMetric
-            icon={<Wind aria-hidden="true" size={17} />}
-            label="Raffiche"
-            value={`${conditions.gustSpeedKmh} km/h`}
-          />
-          <ConditionMetric
-            icon={<Waves aria-hidden="true" size={17} />}
-            label="Onde"
-            value={`${conditions.waveHeightMeters.toFixed(1)} m`}
-            description={conditions.seaState}
-          />
-          <ConditionMetric
-            icon={<ThermometerSun aria-hidden="true" size={17} />}
-            label="Aria"
-            value={`${conditions.temperatureCelsius}°`}
-            description={
-              conditions.waterTemperatureCelsius
-                ? `acqua ${conditions.waterTemperatureCelsius}°`
-                : undefined
-            }
-          />
-        </div>
+          <div className="mt-auto flex min-w-0 items-end gap-1.5 pt-3 sm:gap-3">
+            <div
+              aria-label={`Voto ${displayScore} su 10, ${recommendation.label}`}
+              data-score-tone={tone}
+              className={`grid size-[2.65rem] shrink-0 place-items-center rounded-full shadow-[0_5px_14px_rgba(20,44,57,0.14)] sm:size-14 ${SCORE_TONE_CLASSES[tone]}`}
+            >
+              <strong className="font-serif text-base font-semibold leading-none tracking-[-0.055em] sm:text-xl">
+                {displayScore}
+              </strong>
+            </div>
 
-        {liveSignals.length ? (
-          <div aria-label="Segnali aggiornati" className="mt-4 flex flex-wrap gap-2">
-            {liveSignals.map((signal) => (
-              <span
-                key={signal.label}
-                className={[
-                  "rounded-full px-3 py-1.5 text-xs font-semibold",
-                  signal.tone === "warning"
-                    ? "bg-[var(--sun-soft)] text-[var(--sun-dark)]"
-                    : signal.tone === "sun"
-                      ? "bg-[var(--sand-muted)] text-[var(--ink-soft)]"
-                      : "bg-[var(--sea-soft)] text-[var(--sea-deep)]",
-                ].join(" ")}
+            <div className="min-w-0 flex-1 space-y-1.5 pb-0.5 text-[0.68rem] font-bold leading-none text-[var(--ink-soft)] sm:text-xs">
+              <div
+                aria-label={`Vento: ${direction}, ${conditions.windSpeedKmh} km/h`}
+                className="flex min-w-0 items-center gap-1.5"
               >
-                {signal.label}
-              </span>
-            ))}
+                <Wind aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={16} strokeWidth={2.2} />
+                <span className="truncate">{direction} · {conditions.windSpeedKmh} km/h</span>
+              </div>
+              <div
+                aria-label={`Onde: ${conditions.waveHeightMeters.toFixed(1)} m`}
+                className="flex min-w-0 items-center gap-1.5"
+              >
+                <Waves aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={16} strokeWidth={2.2} />
+                <span className="truncate">{conditions.waveHeightMeters.toFixed(1)} m</span>
+              </div>
+            </div>
           </div>
-        ) : null}
-
-        <Link
-          href={detailHref}
-          className="mt-5 inline-flex min-h-11 w-full items-center justify-between rounded-full bg-[var(--ink)] px-5 py-3 text-sm font-bold text-white transition-[transform,background-color] duration-200 ease-out hover:bg-[var(--sea-deep)] active:scale-[0.985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
-        >
-          Scopri la spiaggia
-          <ArrowUpRight aria-hidden="true" size={17} />
-        </Link>
-      </div>
+        </div>
+      </Link>
     </article>
   );
 }
