@@ -188,11 +188,14 @@ describe("HomeExperience", () => {
       "/#classifica",
     );
     expect(
-      within(desktopNavigation).getByRole("button", { name: "Esplora, disponibile prossimamente" }),
-    ).toHaveAttribute("aria-disabled", "true");
+      within(desktopNavigation).queryByRole("button", {
+        name: "Esplora, disponibile prossimamente",
+      }),
+    ).not.toBeInTheDocument();
     expect(
-      within(desktopHeader!).getByRole("status", { name: "Condizioni meteo live" }),
-    ).toHaveTextContent("Live");
+      within(desktopHeader!).getByRole("status", { name: "Condizioni meteo aggiornate" }),
+    ).toBeInTheDocument();
+    expect(within(desktopHeader!).queryByText("Live")).not.toBeInTheDocument();
     expect(
       within(desktopHeader!).getByRole("button", {
         name: "Preferiti, disponibile prossimamente",
