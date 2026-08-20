@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { ThumbsDown, ThumbsUp } from "lucide-react";
-import { useState } from "react";
 import type { BeachDetailContent } from "../data/demo-beach-details";
 
 type BeachCommunitySectionsProps = {
@@ -10,7 +8,6 @@ type BeachCommunitySectionsProps = {
 };
 
 export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) {
-  const [vote, setVote] = useState<"like" | "dislike" | null>(null);
   const { reviews, webcam } = detail;
 
   return (
@@ -20,8 +17,7 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
         <article className="detail-surface detail-enter p-4 sm:p-5">
           {reviews ? (
             <>
-              <div className="flex items-end justify-between gap-4">
-                <h2 className="text-xl font-extrabold tracking-[-0.035em]">Recensioni</h2>
+              <div className="flex justify-end">
                 <div className="text-right">
                   <strong className="text-3xl tracking-[-0.05em]">{reviews.rating.toFixed(1)}</strong>
                   <span aria-label={`${reviews.rating.toFixed(1)} stelle su 5`} className="block text-xs tracking-[0.08em] text-[var(--sun-dark)]">★★★★★</span>
@@ -39,19 +35,8 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
               ))}
             </>
           ) : (
-            <><h2 className="text-xl font-extrabold tracking-[-0.035em]">Recensioni</h2><p className="mt-3 text-sm leading-6 text-[var(--muted)]">Nessuna recensione disponibile per questa spiaggia.</p></>
+            <p className="text-sm leading-6 text-[var(--muted)]">Nessuna recensione disponibile per questa spiaggia.</p>
           )}
-          <div className="mt-5 border-t border-[var(--line)] pt-4">
-            <p className="text-sm font-bold">Questa spiaggia fa per te?</p>
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              <button type="button" aria-pressed={vote === "like"} onClick={() => setVote("like")} className={`detail-press inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.85rem] text-sm font-extrabold ${vote === "like" ? "bg-[var(--sea)] text-white" : "bg-[var(--surface-muted)] text-[var(--ink)]"}`}>
-                <ThumbsUp aria-hidden="true" size={16} /> Mi piace
-              </button>
-              <button type="button" aria-pressed={vote === "dislike"} onClick={() => setVote("dislike")} className={`detail-press inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.85rem] text-sm font-extrabold ${vote === "dislike" ? "bg-[var(--ink)] text-white" : "bg-[var(--surface-muted)] text-[var(--ink)]"}`}>
-                <ThumbsDown aria-hidden="true" size={16} /> Non mi piace
-              </button>
-            </div>
-          </div>
         </article>
       </section>
 
@@ -87,5 +72,5 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
 }
 
 function SectionHeading({ title, meta }: { title: string; meta: string }) {
-  return <div className="mx-1 mb-2 mt-5 flex items-center justify-between"><h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2><span className="text-xs font-bold text-[var(--sea)]">{meta}</span></div>;
+  return <div className="mx-1 mb-2 mt-5 flex items-center justify-between"><h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2>{meta ? <span className="text-xs font-bold text-[var(--sea)]">{meta}</span> : null}</div>;
 }

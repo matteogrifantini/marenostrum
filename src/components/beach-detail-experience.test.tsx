@@ -73,13 +73,11 @@ function renderDetail(
 }
 
 describe("BeachDetailExperience", () => {
-  it("shows stale-data copy beside the timestamp only for low confidence", () => {
+  it("shows stale-data copy without the routine timestamp", () => {
     renderDetail({ recommendation: { ...selected, confidence: "bassa" } });
 
-    const timestamp = screen.getByText("aggiornate 10:45");
-    expect(timestamp.parentElement).toHaveTextContent(
-      "Dati non recenti: verifica le condizioni prima di partire.",
-    );
+    expect(screen.queryByText("aggiornate 10:45")).not.toBeInTheDocument();
+    expect(screen.getByText("Dati non recenti: verifica le condizioni prima di partire.")).toBeInTheDocument();
   });
 
   it("renders compact attribution after the conditions section", () => {
@@ -107,8 +105,6 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute("aria-pressed", "false");
     expect(screen.getByRole("button", { name: "Tutto il giorno" })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByText("aggiornate 10:45")).toBeInTheDocument();
-
     const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
     const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });

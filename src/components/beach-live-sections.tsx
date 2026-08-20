@@ -20,9 +20,8 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
 
   return (
     <>
-      <SectionHeading title="In tempo reale" meta="3 più recenti" />
-      <section className="detail-surface detail-enter p-4 sm:p-5" aria-labelledby="reports-title">
-        <CardTitle emoji="📡" title="Segnalazioni" subtitle="Aggiornamenti da chi è sul posto" id="reports-title" />
+      <SectionHeading title="Segnalazioni" />
+      <section className="detail-surface detail-enter p-4 sm:p-5" aria-label="Segnalazioni">
         <ul role="list" aria-label="Segnalazioni recenti" className="mt-3">
           {reports.map((report) => (
             <li key={report.id} className="grid grid-cols-[2.2rem_1fr_auto] items-start gap-3 border-b border-[var(--line)] py-3 last:border-b-0">
@@ -96,6 +95,6 @@ function CardTitle({ emoji, title, subtitle, id }: { emoji: string; title: strin
   return <div className="flex items-center gap-3"><span aria-hidden="true" className="detail-emoji">{emoji}</span><div><h2 id={id} className="text-base font-extrabold tracking-[-0.025em]">{title}</h2><p className="mt-0.5 text-xs text-[var(--muted)]">{subtitle}</p></div></div>;
 }
 
-function SectionHeading({ title, meta }: { title: string; meta: string }) {
-  return <div className="mx-1 mb-2 mt-5 flex items-center justify-between"><h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2><span className="text-xs font-bold text-[var(--sea)]">{meta}</span></div>;
+function SectionHeading({ title, meta = "" }: { title: string; meta?: string }) {
+  return <div className="mx-1 mb-2 mt-5 flex items-center justify-between"><h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2>{meta ? <span className="text-xs font-bold text-[var(--sea)]">{meta}</span> : null}</div>;
 }

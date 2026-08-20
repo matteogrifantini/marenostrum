@@ -74,21 +74,6 @@ const scoreBadgeClasses: Record<ScoreTone, string> = {
   poor: "bg-[var(--score-poor)] text-white",
 };
 
-function formatObservedAt(observedAt: string) {
-  const date = new Date(observedAt);
-
-  if (Number.isNaN(date.getTime())) return "";
-
-  const time = new Intl.DateTimeFormat("it-IT", {
-    hour: "2-digit",
-    hourCycle: "h23",
-    minute: "2-digit",
-    timeZone: "Europe/Rome",
-  }).format(date);
-
-  return `aggiornate ${time}`;
-}
-
 function scoreHeadline(score: number) {
   if (score >= 80) return "Ottima scelta";
   if (score >= 70) return "Condizioni accettabili";
@@ -138,7 +123,7 @@ export function BeachDetailExperience({
         <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
           <DetailHero beach={beach} detail={detail} date={date} period={period} />
 
-          <div className="relative z-10 -mt-3 rounded-t-[1.65rem] bg-[var(--sand)] px-1 pt-3 sm:px-2">
+          <div className="relative z-10 mt-3 rounded-t-[1.65rem] bg-[var(--sand)] px-1 pt-3 sm:px-2">
             <DaySelection
               date={date}
               dateOptions={dateOptions}
@@ -289,7 +274,7 @@ function ConditionsCard({
   if (!recommendation || dataUnavailable) {
     return (
       <>
-        <SectionHeading title="Condizioni" meta="" />
+        <SectionHeading title="Condizioni" />
         <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-3 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-4">
           <p className="text-sm font-medium leading-6 text-[var(--ink-soft)]">Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.</p>
         </section>
@@ -310,7 +295,6 @@ function ConditionsCard({
     <>
       <SectionHeading
         title="Condizioni"
-        meta={formatObservedAt(conditions.observedAt)}
         stale={recommendation.confidence === "bassa"}
       />
       <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-3 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-4">
@@ -361,14 +345,11 @@ function ConditionItem({ icon, label, value, detail, border = "" }: { icon: Reac
   );
 }
 
-function SectionHeading({ title, meta, stale = false }: { title: string; meta: string; stale?: boolean }) {
+function SectionHeading({ title, stale = false }: { title: string; stale?: boolean }) {
   return (
     <div className="mx-1 mb-2 mt-4 flex items-center justify-between gap-3">
       <h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2>
-      <div className="flex flex-wrap justify-end gap-x-2 gap-y-1 text-right text-xs font-bold text-[var(--sea)]">
-        <span>{meta}</span>
-        {stale ? <span>Dati non recenti: verifica le condizioni prima di partire.</span> : null}
-      </div>
+      {stale ? <span className="text-right text-xs font-bold text-[var(--sea)]">Dati non recenti: verifica le condizioni prima di partire.</span> : null}
     </div>
   );
 }

@@ -1,24 +1,23 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { BeachCommunitySections } from "./beach-community-sections";
 
 describe("BeachCommunitySections", () => {
-  it("shows review previews and records a local like or dislike", () => {
+  it("shows review previews without duplicate headings or voting copy", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(<BeachCommunitySections detail={detail} />);
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
+    expect(within(reviews).getAllByRole("heading", { name: "Recensioni" })).toHaveLength(1);
     expect(within(reviews).getByText(detail.reviews.rating.toFixed(1))).toBeInTheDocument();
     expect(within(reviews).getByText(`${detail.reviews.total} recensioni`)).toBeInTheDocument();
     for (const review of detail.reviews.items.slice(0, 2)) {
       expect(within(reviews).getByText(`“${review.text}”`)).toBeInTheDocument();
     }
-
-    const like = within(reviews).getByRole("button", { name: "Mi piace" });
-    fireEvent.click(like);
-    expect(like).toHaveAttribute("aria-pressed", "true");
-    expect(within(reviews).getByRole("button", { name: "Non mi piace" })).toHaveAttribute("aria-pressed", "false");
+    expect(within(reviews).queryByText("Questa spiaggia fa per te?")).not.toBeInTheDocument();
+    expect(within(reviews).queryByRole("button", { name: "Mi piace" })).not.toBeInTheDocument();
+    expect(within(reviews).queryByRole("button", { name: "Non mi piace" })).not.toBeInTheDocument();
   });
 
   it("keeps recent photos separate from the nearest webcam", () => {

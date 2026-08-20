@@ -5,10 +5,15 @@ import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { BeachLiveSections } from "./beach-live-sections";
 
 describe("BeachLiveSections", () => {
-  it("shows three live reports first and expands to the full list", () => {
+  it("shows three reports first without redundant live-status copy", () => {
     const recommendation = demoRecommendations[0];
     const detail = getDemoBeachDetail(recommendation.beach.slug)!;
     render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
+
+    expect(screen.getByRole("heading", { name: "Segnalazioni" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "In tempo reale" })).not.toBeInTheDocument();
+    expect(screen.queryByText("3 più recenti")).not.toBeInTheDocument();
+    expect(screen.queryByText("Aggiornamenti da chi è sul posto")).not.toBeInTheDocument();
 
     const reports = screen.getByRole("list", { name: "Segnalazioni recenti" });
     expect(within(reports).getAllByRole("listitem")).toHaveLength(3);
