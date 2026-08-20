@@ -35,6 +35,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
             </li>
           ))}
         </ul>
+        {reports.length === 0 ? <p className="mt-3 text-sm text-[var(--muted)]">Nessuna segnalazione recente disponibile.</p> : null}
         <div className="mt-3 grid grid-cols-2 gap-2">
           {showAllReports ? (
             <span className="grid min-h-11 place-items-center rounded-[0.85rem] bg-[var(--surface-muted)] text-xs font-bold text-[var(--muted)]">Tutte visibili</span>
@@ -67,6 +68,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
             </article>
           ))}
         </div>
+        {detail.parkings.length === 0 ? <p className="detail-surface detail-enter p-4 text-sm text-[var(--muted)]">Nessun parcheggio disponibile.</p> : null}
       </section>
 
       <section aria-label="Informazioni generali">
@@ -83,6 +85,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
               </div>
             ))}
           </div>
+          {detail.facts.length === 0 ? <p className="mt-4 text-sm text-[var(--muted)]">Nessuna informazione aggiuntiva disponibile.</p> : null}
         </article>
       </section>
     </>

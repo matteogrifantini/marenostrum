@@ -61,10 +61,12 @@ export function DetailHero({ beach, detail, date, period, distanceKm }: DetailHe
           </div>
         </div>
 
-        <button type="button" onClick={() => setShowReels(true)} aria-label={`Guarda i video · ${detail.reels.length}`} className="detail-press absolute left-1/2 top-[42%] z-10 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/40 bg-black/28 py-1.5 pl-1.5 pr-3 text-xs font-bold text-white backdrop-blur-md">
-          <span className="grid size-8 place-items-center rounded-full bg-white text-[var(--ink)]"><Play aria-hidden="true" size={15} fill="currentColor" /></span>
-          Guarda i video · {detail.reels.length}
-        </button>
+        {detail.reels.length > 0 ? (
+          <button type="button" onClick={() => setShowReels(true)} aria-label={`Guarda i video · ${detail.reels.length}`} className="detail-press absolute left-1/2 top-[42%] z-10 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/40 bg-black/28 py-1.5 pl-1.5 pr-3 text-xs font-bold text-white backdrop-blur-md">
+            <span className="grid size-8 place-items-center rounded-full bg-white text-[var(--ink)]"><Play aria-hidden="true" size={15} fill="currentColor" /></span>
+            Guarda i video · {detail.reels.length}
+          </button>
+        ) : null}
 
         <div className="absolute inset-x-5 bottom-5 z-10">
           <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.1em] text-white/78">
@@ -76,7 +78,7 @@ export function DetailHero({ beach, detail, date, period, distanceKm }: DetailHe
         </div>
       </section>
 
-      {showReels ? <BeachVideoReel beachName={beach.name} reels={detail.reels} onClose={() => setShowReels(false)} /> : null}
+      {showReels && detail.reels.length > 0 ? <BeachVideoReel beachName={beach.name} reels={detail.reels} onClose={() => setShowReels(false)} /> : null}
     </>
   );
 }

@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation";
 import { BeachDetailExperience } from "../../../components/beach-detail-experience";
-import { getDemoBeachDetail } from "../../../data/demo-beach-details";
+import {
+  emptyBeachDetailContent,
+  getDemoBeachDetail,
+} from "../../../data/demo-beach-details";
 import { getBeachForecastBundleBySlug } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
 import { normalizeDetailQuery } from "../../../domain/detail-query";
@@ -33,7 +36,7 @@ export default async function BeachPage({
 
   if (!bundle) notFound();
 
-  const detail = getDemoBeachDetail(slug)!;
+  const detail = getDemoBeachDetail(slug) ?? emptyBeachDetailContent;
 
   return (
     <BeachDetailExperience

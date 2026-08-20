@@ -5,11 +5,15 @@ import type { BeachForecastBundle } from "../../../data/beach-repository";
 const {
   getBeachForecastBundleBySlugMock,
   notFoundMock,
+  renderedDetailProps,
 } = vi.hoisted(() => ({
   getBeachForecastBundleBySlugMock: vi.fn(),
   notFoundMock: vi.fn(() => {
     throw new Error("not found");
   }),
+  renderedDetailProps: {
+    current: undefined as unknown,
+  },
 }));
 
 vi.mock("next/navigation", () => ({ notFound: notFoundMock }));
@@ -17,19 +21,20 @@ vi.mock("../../../data/beach-repository", () => ({
   getBeachForecastBundleBySlug: getBeachForecastBundleBySlugMock,
 }));
 vi.mock("../../../components/beach-detail-experience", () => ({
-  BeachDetailExperience: ({
-    beach,
-    dataUnavailable,
-  }: {
+  BeachDetailExperience: (props: {
     beach: { name: string };
     dataUnavailable?: boolean;
-  }) => (
-    <output>
-      {beach.name}: {dataUnavailable
+  }) => {
+    renderedDetailProps.current = props;
+
+    return (
+      <output>
+        {props.beach.name}: {props.dataUnavailable
         ? "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto."
         : "condizioni disponibili"}
-    </output>
-  ),
+      </output>
+    );
+  },
 }));
 
 import BeachPage from "./page";
@@ -75,6 +80,7 @@ describe("BeachPage", () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-08-20T08:00:00+02:00"));
     notFoundMock.mockClear();
+    renderedDetailProps.current = undefined;
   });
 
   afterEach(() => vi.useRealTimers());
@@ -95,6 +101,32 @@ describe("BeachPage", () => {
       period: "morning",
     });
     expect(screen.getByText(`${beach.name}: condizioni disponibili`)).toBeInTheDocument();
+    expect(renderedDetailProps.current).toMatchObject({
+      beach,
+      recommendation: bundle.selected,
+      morningRecommendation: bundle.morning,
+      afternoonRecommendation: bundle.afternoon,
+      date: "2026-08-20",
+      period: "morning",
+      dataUnavailable: false,
+    });
+    const props = renderedDetailProps.current as {
+      dateOptions: Array<{ iso: string }>;
+      detail: Record<string, unknown>;
+    };
+    expect(props.dateOptions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ iso: "2026-08-20" }),
+      expect.objectContaining({ iso: "2026-08-21" }),
+    ]));
+    expect(props.detail).toMatchObject({
+      reports: expect.any(Array),
+      parkings: expect.any(Array),
+      facts: expect.any(Array),
+      reviews: expect.any(Object),
+      recentPhotos: expect.any(Array),
+      reels: expect.any(Array),
+      webcam: expect.any(Object),
+    });
   });
 
   it("uses notFound only when the beach slug is unknown", async () => {
@@ -131,5 +163,43 @@ describe("BeachPage", () => {
       ),
     ).toBeInTheDocument();
     expect(notFoundMock).not.toHaveBeenCalled();
+  });
+
+  it("keeps a known beach with no community fixture on its live detail page", async () => {
+    const repositoryBeach = {
+      ...beach,
+      slug: "spiaggia-pubblicata-senza-fixture",
+      name: "Spiaggia pubblicata",
+    };
+    const repositoryBundle: BeachForecastBundle = {
+      ...bundle,
+      beach: repositoryBeach,
+      selected: bundle.selected ? { ...bundle.selected, beach: repositoryBeach } : undefined,
+    };
+    getBeachForecastBundleBySlugMock.mockResolvedValue(repositoryBundle);
+
+    render(
+      await BeachPage({
+        params: Promise.resolve({ slug: repositoryBeach.slug }),
+        searchParams: Promise.resolve({ period: "afternoon" }),
+      }),
+    );
+
+    expect(screen.getByText(`${repositoryBeach.name}: condizioni disponibili`)).toBeInTheDocument();
+    expect(notFoundMock).not.toHaveBeenCalled();
+    expect(renderedDetailProps.current).toMatchObject({
+      beach: repositoryBeach,
+      recommendation: repositoryBundle.selected,
+      period: "afternoon",
+      detail: {
+        reports: [],
+        parkings: [],
+        facts: [],
+        reviews: null,
+        recentPhotos: [],
+        reels: [],
+        webcam: null,
+      },
+    });
   });
 });

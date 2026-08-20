@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { getDemoBeachDetail } from "../data/demo-beach-details";
+import { emptyBeachDetailContent, getDemoBeachDetail } from "../data/demo-beach-details";
 import type { BeachRecommendation } from "../domain/beach";
 import { getDateOptions } from "../domain/date-selection";
 import { BeachDetailExperience } from "./beach-detail-experience";
@@ -109,6 +109,16 @@ describe("BeachDetailExperience", () => {
     expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(2);
     expect(screen.getByRole("region", { name: "Informazioni generali" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
+  });
+
+  it("renders safe empty states when the beach has no community fixture", () => {
+    renderDetail({ detail: emptyBeachDetailContent });
+
+    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(2);
+    expect(screen.getByText("Nessuna segnalazione recente disponibile.")).toBeInTheDocument();
+    expect(screen.getByText("Nessuna recensione disponibile per questa spiaggia.")).toBeInTheDocument();
+    expect(screen.getByText("Nessuna webcam disponibile.")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Guarda i video/ })).not.toBeInTheDocument();
   });
 
   it("updates the URL from the supplied day and period selectors", () => {

@@ -40,27 +40,45 @@ export type BeachReel = BeachMedia & {
   caption: string;
 };
 
-export type BeachDetailContent = {
+export type BeachReviews = {
+  rating: number;
+  recommendedPercent: number;
+  total: number;
+  items: BeachReview[];
+};
+
+export type BeachWebcam = {
+  name: string;
   distanceKm: number;
+  image: string;
+  alt: string;
+  updated: string;
+  live: boolean;
+};
+
+export type BeachDetailContent = {
   reports: BeachDetailReport[];
   parkings: BeachParking[];
   facts: BeachFact[];
-  reviews: {
-    rating: number;
-    recommendedPercent: number;
-    total: number;
-    items: BeachReview[];
-  };
+  reviews: BeachReviews | null;
   recentPhotos: BeachMedia[];
   reels: BeachReel[];
-  webcam: {
-    name: string;
-    distanceKm: number;
-    image: string;
-    alt: string;
-    updated: string;
-    live: boolean;
-  };
+  webcam: BeachWebcam | null;
+};
+
+export const emptyBeachDetailContent: BeachDetailContent = {
+  reports: [],
+  parkings: [],
+  facts: [],
+  reviews: null,
+  recentPhotos: [],
+  reels: [],
+  webcam: null,
+};
+
+type BeachDetailFixture = BeachDetailContent & {
+  reviews: BeachReviews;
+  webcam: BeachWebcam;
 };
 
 const sharedMedia = {
@@ -69,9 +87,8 @@ const sharedMedia = {
   marchesa: "/images/beaches/spiaggia-della-marchesa.jpg",
 };
 
-const details: Record<string, BeachDetailContent> = {
+const details: Record<string, BeachDetailFixture> = {
   "cala-del-gelsomino": {
-    distanceKm: 18,
     reports: [
       { id: "cg-1", emoji: "🅿️", title: "Parcheggio quasi pieno", detail: "Confermato da 3 persone", age: "12 min fa" },
       { id: "cg-2", emoji: "👥", title: "Affollamento moderato", detail: "9 segnalazioni nell’ultima ora", age: "18 min fa" },
@@ -111,7 +128,6 @@ const details: Record<string, BeachDetailContent> = {
     webcam: { name: "Arenella", distanceKm: 6.2, image: sharedMedia.gelsomino, alt: "Anteprima della webcam di Arenella", updated: "Immagine aggiornata pochi secondi fa", live: true },
   },
   "tonnara-di-vendicari": {
-    distanceKm: 14,
     reports: [
       { id: "tv-1", emoji: "🅿️", title: "Parcheggio disponibile", detail: "Circa 40 posti liberi", age: "9 min fa" },
       { id: "tv-2", emoji: "👥", title: "Affollamento moderato", detail: "Flusso regolare all’ingresso", age: "21 min fa" },
@@ -150,7 +166,6 @@ const details: Record<string, BeachDetailContent> = {
     webcam: { name: "Lido di Noto", distanceKm: 11.4, image: sharedMedia.vendicari, alt: "Anteprima della webcam di Lido di Noto", updated: "Immagine aggiornata 2 minuti fa", live: true },
   },
   "spiaggia-della-marchesa": {
-    distanceKm: 12,
     reports: [
       { id: "sm-1", emoji: "🅿️", title: "Parcheggio quasi pieno", detail: "Ultimi posti vicino all’ingresso", age: "12 min fa" },
       { id: "sm-2", emoji: "👥", title: "Affollamento moderato", detail: "Più spazio sul lato nord", age: "18 min fa" },
