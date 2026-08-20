@@ -41,6 +41,8 @@ export type BeachConditions = {
   period?: BeachPeriod;
   feelsLikeCelsius?: number;
   waterTemperatureCelsius?: number;
+  precipitationProbabilityPercent?: number;
+  waveDirectionDegrees?: number;
   cloudCoverPercent?: number;
   seaState?: "calmo" | "mosso" | "agitato";
   hourly?: Array<{
@@ -50,6 +52,11 @@ export type BeachConditions = {
     waveHeightMeters: number;
     temperatureCelsius: number;
     cloudCoverPercent: number;
+    precipitationProbabilityPercent?: number;
+    waveDirectionDegrees?: number;
+    windDirectionDegrees?: number;
+    waterTemperatureCelsius?: number;
+    weather?: BeachConditions["weather"];
   }>;
 };
 

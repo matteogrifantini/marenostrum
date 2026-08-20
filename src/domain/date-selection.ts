@@ -19,8 +19,14 @@ const PERIOD_LABELS: Record<BeachPeriod, string> = {
 };
 
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const DEFAULT_TIME_ZONE = "Europe/Rome";
 const ITALIAN_DAY_FORMATTER = new Intl.DateTimeFormat("it-IT", {
   day: "numeric",
+  weekday: "short",
+});
+const UTC_ITALIAN_DAY_FORMATTER = new Intl.DateTimeFormat("it-IT", {
+  day: "numeric",
+  timeZone: "UTC",
   weekday: "short",
 });
 
@@ -28,7 +34,31 @@ function atLocalMidnight(date: Date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
+function calendarDateInTimeZone(date: Date, timeZone: string) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    day: "2-digit",
+    month: "2-digit",
+    timeZone,
+    year: "numeric",
+  }).formatToParts(date);
+  const value = Object.fromEntries(
+    parts.map((part) => [part.type, part.value]),
+  );
+
+  return new Date(
+    Date.UTC(Number(value.year), Number(value.month) - 1, Number(value.day), 12),
+  );
+}
+
 function toIsoDate(date: Date) {
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+function toLocalIsoDate(date: Date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
@@ -53,16 +83,20 @@ function parseLocalIsoDate(value: string | null | undefined) {
   return atLocalMidnight(parsed);
 }
 
-function formatRelativeLabel(date: Date) {
-  return ITALIAN_DAY_FORMATTER.format(date).replace(/\.$/, "");
+function formatRelativeLabel(date: Date, timeZone?: string) {
+  const formatter = timeZone ? UTC_ITALIAN_DAY_FORMATTER : ITALIAN_DAY_FORMATTER;
+  return formatter.format(date).replace(/\.$/, "");
 }
 
-export function getDateOptions(baseDate: Date): DateOption[] {
-  const start = atLocalMidnight(baseDate);
+export function getDateOptions(
+  baseDate: Date,
+  timeZone = DEFAULT_TIME_ZONE,
+): DateOption[] {
+  const start = calendarDateInTimeZone(baseDate, timeZone);
 
   return Array.from({ length: 4 }, (_, index) => {
     const date = new Date(start);
-    date.setDate(start.getDate() + index);
+    date.setUTCDate(start.getUTCDate() + index);
 
     return {
       iso: toIsoDate(date),
@@ -71,8 +105,8 @@ export function getDateOptions(baseDate: Date): DateOption[] {
           ? "Oggi"
           : index === 1
             ? "Domani"
-            : formatRelativeLabel(date),
-      relativeLabel: formatRelativeLabel(date),
+            : formatRelativeLabel(date, timeZone),
+      relativeLabel: formatRelativeLabel(date, timeZone),
     };
   });
 }
@@ -86,7 +120,7 @@ export function parseDateParam(value: string | null, fallback: string) {
   const validDates = new Set(
     getDateOptions(fallbackDate).map((option) => option.iso),
   );
-  const candidate = toIsoDate(candidateDate);
+  const candidate = toLocalIsoDate(candidateDate);
 
   return validDates.has(candidate) ? candidate : fallback;
 }

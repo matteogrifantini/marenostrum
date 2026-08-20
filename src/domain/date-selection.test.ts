@@ -15,6 +15,19 @@ describe("getDateOptions", () => {
       { iso: "2026-08-18", label: "mar 18", relativeLabel: "mar 18" },
     ]);
   });
+
+  it("uses the Sicily calendar date when UTC is still on the previous day", () => {
+    expect(getDateOptions(new Date("2026-08-19T22:30:00.000Z"))[0]).toMatchObject({
+      iso: "2026-08-20",
+      label: "Oggi",
+    });
+  });
+
+  it("allows an explicit timezone for deterministic tests", () => {
+    expect(
+      getDateOptions(new Date("2026-08-20T00:30:00.000Z"), "America/New_York")[0].iso,
+    ).toBe("2026-08-19");
+  });
 });
 
 describe("query parsing", () => {
