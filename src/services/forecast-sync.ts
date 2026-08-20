@@ -1,5 +1,6 @@
 import type { ForecastPoint } from "../domain/forecast";
 import { fetchOpenMeteoForecasts } from "../lib/open-meteo/open-meteo";
+import type { createSupabaseAdminClient } from "../lib/supabase/admin";
 
 type PublishedBeach = {
   id: string;
@@ -14,6 +15,8 @@ export type ForecastWriteStore = {
   markSourceChecked(sourceId: string, checkedAt: string): Promise<void>;
   deleteSourceForecastsBefore(sourceId: string, cutoff: string): Promise<void>;
 };
+
+export type ForecastWriteClient = ReturnType<typeof createSupabaseAdminClient>;
 
 export type ForecastSyncResult = {
   beaches: number;
@@ -67,9 +70,11 @@ function throwWriteError(message: string): never {
   throw new Error(message);
 }
 
-export async function createSupabaseForecastWriteStore(): Promise<ForecastWriteStore> {
-  const { createSupabaseAdminClient } = await import("../lib/supabase/admin");
-  const client = createSupabaseAdminClient();
+export async function createSupabaseForecastWriteStore(
+  injectedClient?: ForecastWriteClient,
+): Promise<ForecastWriteStore> {
+  const client =
+    injectedClient ?? (await import("../lib/supabase/admin")).createSupabaseAdminClient();
 
   return {
     async getPublishedBeaches() {

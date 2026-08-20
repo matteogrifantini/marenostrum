@@ -235,7 +235,7 @@ export async function fetchOpenMeteoForecasts(
   const marineLocations = parseLocations(marinePayload, "marine", beaches.length);
   const weatherHours = weatherLocations.map(parseWeatherHourly);
   const marineHours = marineLocations.map(parseMarineHourly);
-  const observedAt = toUtcIso(options.observedAt?.getTime() ?? Date.now(), "observedAt");
+  const observedAt = (options.observedAt ?? new Date()).toISOString();
 
   return beaches.flatMap((beach, locationIndex) => {
     const weatherHourly = weatherHours[locationIndex];

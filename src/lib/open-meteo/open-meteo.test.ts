@@ -119,6 +119,7 @@ describe("fetchOpenMeteoForecasts", () => {
     expect(points[0]).toMatchObject({
       beachId: "b1",
       sourceId: "open-meteo-source",
+      observedAt: "2026-08-20T05:00:00.000Z",
       forecastAt: "2026-08-20T06:00:00.000Z",
       windSpeedKmh: 9,
       gustSpeedKmh: 17,

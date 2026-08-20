@@ -29,6 +29,25 @@ describe("handleForecastCron", () => {
     expect(deps.synchronize).not.toHaveBeenCalled();
   });
 
+  it.each([
+    "Basic correct-secret",
+    "Bearer wrong-secret",
+    "Bearer  correct-secret",
+    "Bearer\tcorrect-secret",
+    "bearer correct-secret",
+  ])("rejects malformed or incorrect bearer credentials: %s", async (authorization) => {
+    const deps = dependencies();
+
+    const response = await handleForecastCron(
+      new Request(url, { headers: { authorization } }),
+      deps,
+    );
+
+    expect(response.status).toBe(401);
+    expect(await response.json()).toEqual({ ok: false });
+    expect(deps.synchronize).not.toHaveBeenCalled();
+  });
+
   it("returns only the synchronization result to an authorized request", async () => {
     const deps = dependencies();
 

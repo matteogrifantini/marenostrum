@@ -1,7 +1,12 @@
 import { describe, expect, it, vi } from "vitest";
 
 import type { ForecastPoint } from "../domain/forecast";
-import { synchronizeForecasts, type ForecastWriteStore } from "./forecast-sync";
+import {
+  createSupabaseForecastWriteStore,
+  synchronizeForecasts,
+  type ForecastWriteClient,
+  type ForecastWriteStore,
+} from "./forecast-sync";
 
 const now = new Date("2026-08-20T06:00:00.000Z");
 
@@ -39,6 +44,98 @@ function createStore(): ForecastWriteStore {
     markSourceChecked: vi.fn(async () => undefined),
     deleteSourceForecastsBefore: vi.fn(async () => undefined),
   };
+}
+
+function createProductionClient() {
+  const state = {
+    beachSelects: [] as string[],
+    sourceUpserts: [] as Array<{ values: unknown; options: unknown }>,
+    sourceUpdates: [] as Array<{ values: unknown; column: string; value: unknown }>,
+    forecastUpserts: [] as Array<{ rows: unknown; options: unknown }>,
+    cleanupFilters: [] as Array<{
+      sourceColumn: string;
+      sourceId: unknown;
+      cutoffColumn: string;
+      cutoff: unknown;
+    }>,
+    conditionRows: new Map<string, unknown>(),
+  };
+
+  const client = {
+    from(table: string) {
+      if (table === "beaches") {
+        return {
+          select(columns: string) {
+            state.beachSelects.push(columns);
+            return {
+              async eq() {
+                return {
+                  data: [{ id: "beach-1", latitude: "36.8", longitude: "15.1" }],
+                  error: null,
+                };
+              },
+            };
+          },
+        };
+      }
+
+      if (table === "data_sources") {
+        return {
+          upsert(values: unknown, options: unknown) {
+            state.sourceUpserts.push({ values, options });
+            return {
+              select() {
+                return {
+                  async single() {
+                    return { data: { id: "open-meteo-source" }, error: null };
+                  },
+                };
+              },
+            };
+          },
+          update(values: unknown) {
+            return {
+              async eq(column: string, value: unknown) {
+                state.sourceUpdates.push({ values, column, value });
+                return { error: null };
+              },
+            };
+          },
+        };
+      }
+
+      if (table === "beach_conditions") {
+        return {
+          async upsert(rows: Array<Record<string, unknown>>, options: unknown) {
+            state.forecastUpserts.push({ rows, options });
+            for (const row of rows) {
+              state.conditionRows.set(
+                `${row.beach_id}:${row.source_id}:${row.forecast_at}`,
+                row,
+              );
+            }
+            return { error: null };
+          },
+          delete() {
+            return {
+              eq(sourceColumn: string, sourceId: unknown) {
+                return {
+                  async lt(cutoffColumn: string, cutoff: unknown) {
+                    state.cleanupFilters.push({ sourceColumn, sourceId, cutoffColumn, cutoff });
+                    return { error: null };
+                  },
+                };
+              },
+            };
+          },
+        };
+      }
+
+      throw new Error(`Unexpected table ${table}`);
+    },
+  };
+
+  return { client: client as unknown as ForecastWriteClient, state };
 }
 
 describe("synchronizeForecasts", () => {
@@ -99,5 +196,131 @@ describe("synchronizeForecasts", () => {
 
     expect(store.markSourceChecked).not.toHaveBeenCalled();
     expect(store.deleteSourceForecastsBefore).not.toHaveBeenCalled();
+  });
+
+  it("persists idempotent production rows through an injected Supabase client", async () => {
+    const { client, state } = createProductionClient();
+    const createStoreWithClient: (client: ForecastWriteClient) => Promise<ForecastWriteStore> =
+      createSupabaseForecastWriteStore;
+    const store = await createStoreWithClient(client);
+    const points = [point(0)];
+    points[0].sourceId = "open-meteo-source";
+    const provider = { fetch: vi.fn(async () => points) };
+
+    await synchronizeForecasts({ store, provider, now });
+    await synchronizeForecasts({ store, provider, now });
+
+    expect(state.beachSelects).toEqual(["id, latitude, longitude", "id, latitude, longitude"]);
+    expect(state.sourceUpserts).toEqual([
+      {
+        values: {
+          slug: "open-meteo",
+          name: "Open-Meteo",
+          url: "https://open-meteo.com/",
+          quality: "high",
+          is_public: true,
+        },
+        options: { onConflict: "slug" },
+      },
+      {
+        values: {
+          slug: "open-meteo",
+          name: "Open-Meteo",
+          url: "https://open-meteo.com/",
+          quality: "high",
+          is_public: true,
+        },
+        options: { onConflict: "slug" },
+      },
+    ]);
+    expect(provider.fetch).toHaveBeenNthCalledWith(
+      1,
+      [{ id: "beach-1", latitude: 36.8, longitude: 15.1 }],
+      { sourceId: "open-meteo-source", observedAt: now },
+    );
+    expect(provider.fetch).toHaveBeenNthCalledWith(
+      2,
+      [{ id: "beach-1", latitude: 36.8, longitude: 15.1 }],
+      { sourceId: "open-meteo-source", observedAt: now },
+    );
+    expect(state.forecastUpserts).toEqual([
+      {
+        rows: [
+          {
+            beach_id: "beach-1",
+            source_id: "open-meteo-source",
+            observed_at: "2026-08-20T06:00:00.000Z",
+            forecast_at: "2026-08-20T06:00:00.000Z",
+            wind_direction_degrees: 180,
+            wind_speed_kmh: 14,
+            gust_speed_kmh: 20,
+            wave_height_meters: 0.4,
+            wave_direction_degrees: 160,
+            weather: "sereno",
+            weather_code: 0,
+            temperature_celsius: 28,
+            apparent_temperature_celsius: 29,
+            water_temperature_celsius: 25,
+            cloud_cover_percent: 15,
+            precipitation_probability_percent: 0,
+            computed_score: null,
+            score_version: "real-1.0",
+          },
+        ],
+        options: { onConflict: "beach_id,source_id,forecast_at" },
+      },
+      {
+        rows: [
+          {
+            beach_id: "beach-1",
+            source_id: "open-meteo-source",
+            observed_at: "2026-08-20T06:00:00.000Z",
+            forecast_at: "2026-08-20T06:00:00.000Z",
+            wind_direction_degrees: 180,
+            wind_speed_kmh: 14,
+            gust_speed_kmh: 20,
+            wave_height_meters: 0.4,
+            wave_direction_degrees: 160,
+            weather: "sereno",
+            weather_code: 0,
+            temperature_celsius: 28,
+            apparent_temperature_celsius: 29,
+            water_temperature_celsius: 25,
+            cloud_cover_percent: 15,
+            precipitation_probability_percent: 0,
+            computed_score: null,
+            score_version: "real-1.0",
+          },
+        ],
+        options: { onConflict: "beach_id,source_id,forecast_at" },
+      },
+    ]);
+    expect(state.conditionRows).toHaveLength(1);
+    expect(state.sourceUpdates).toEqual([
+      {
+        values: { last_checked_at: "2026-08-20T06:00:00.000Z" },
+        column: "id",
+        value: "open-meteo-source",
+      },
+      {
+        values: { last_checked_at: "2026-08-20T06:00:00.000Z" },
+        column: "id",
+        value: "open-meteo-source",
+      },
+    ]);
+    expect(state.cleanupFilters).toEqual([
+      {
+        sourceColumn: "source_id",
+        sourceId: "open-meteo-source",
+        cutoffColumn: "forecast_at",
+        cutoff: "2026-08-18T06:00:00.000Z",
+      },
+      {
+        sourceColumn: "source_id",
+        sourceId: "open-meteo-source",
+        cutoffColumn: "forecast_at",
+        cutoff: "2026-08-18T06:00:00.000Z",
+      },
+    ]);
   });
 });

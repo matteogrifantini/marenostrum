@@ -5,6 +5,8 @@ on:
     - cron: "7 */6 * * *"
   workflow_dispatch:
 
+permissions: {}
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -14,6 +16,6 @@ jobs:
           FORECAST_SYNC_URL: ${{ secrets.FORECAST_SYNC_URL }}
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: |
-          curl --fail-with-body --retry 3 \
+          curl --fail-with-body --retry 3 --connect-timeout 10 --max-time 60 \
             --header "Authorization: Bearer ${CRON_SECRET}" \
             "${FORECAST_SYNC_URL%/}/api/cron/forecast"
