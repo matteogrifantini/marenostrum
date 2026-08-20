@@ -31,30 +31,38 @@ npm run build
 
 ## Configurazione runtime
 
-Configura in Vercel queste variabili d'ambiente, senza inserire valori reali nel repository.
+Il progetto Supabase usato da Mare Nostrum è `hivenxncleensmvvhkou`.
+Il file `.env.example` contiene solo nomi e un URL pubblico: copialo in
+`.env.local` per lo sviluppo locale e inserisci i valori senza committare
+`.env.local`.
 
-Client (esposte al browser):
+| Variabile | Dove va | Tipo | Nota |
+| --- | --- | --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | `.env.local` + Vercel Production | Pubblica | URL Supabase; può essere esposta al browser |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | `.env.local` + Vercel Production | Pubblica | Publishable key Supabase |
+| `SUPABASE_SERVICE_ROLE_KEY` | `.env.local` + Vercel Production | **Secret** | Secret key Supabase o legacy `service_role`; server-only |
+| `CRON_SECRET` | `.env.local` + Vercel Production + GitHub Actions Secrets | **Secret** | Lo stesso valore deve essere presente in Vercel e GitHub |
+
+Su Vercel apri il progetto `marenostrum` → Settings → Environment Variables
+e aggiungi le quattro variabili nell’ambiente `Production`. Dopo averle
+modificate serve un nuovo deployment.
+
+Su GitHub apri `matteogrifantini/marenostrum` → Settings → Secrets and
+variables → Actions → New repository secret e aggiungi soltanto:
 
 ~~~text
-NEXT_PUBLIC_SUPABASE_URL
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+FORECAST_SYNC_URL=https://marenostrum-theta.vercel.app
+CRON_SECRET=<lo stesso valore impostato su Vercel>
 ~~~
 
-Server (mai esposte al browser):
+`FORECAST_SYNC_URL` non è una password, ma va comunque inserita tra i
+repository secrets perché il workflow la legge da `secrets.FORECAST_SYNC_URL`.
+Il workflow aggiunge automaticamente `/api/cron/forecast`.
 
-~~~text
-SUPABASE_SERVICE_ROLE_KEY
-CRON_SECRET
-~~~
-
-Le variabili `SUPABASE_SERVICE_ROLE_KEY` e `CRON_SECRET` restano solo lato server. L’endpoint cron è protetto da `CRON_SECRET`; non inserire valori o segreti nel repository e non usare segreti in variabili `NEXT_PUBLIC_*`.
-
-Configura inoltre nei repository secrets di GitHub Actions:
-
-~~~text
-FORECAST_SYNC_URL
-CRON_SECRET
-~~~
+Non inserire mai `SUPABASE_SERVICE_ROLE_KEY`, `CRON_SECRET`, la password del
+database o `SUPABASE_ACCESS_TOKEN` in variabili `NEXT_PUBLIC_*`, nel repository
+GitHub o nel codice sorgente. Il cron può essere avviato manualmente da
+Actions → `Sync beach forecasts` → `Run workflow`.
 
 La prima migrazione è in supabase/migrations/ e contiene:
 
