@@ -50,12 +50,12 @@ export type BeachConditionRow = {
   wave_height_meters: number | string | null;
   wave_direction_degrees: number | string | null;
   weather: ForecastPoint["weather"];
-  weather_code: number | string;
+  weather_code: number | string | null;
   temperature_celsius: number | string;
-  apparent_temperature_celsius: number | string;
+  apparent_temperature_celsius: number | string | null;
   water_temperature_celsius: number | string | null;
-  cloud_cover_percent: number | string;
-  precipitation_probability_percent: number | string;
+  cloud_cover_percent: number | string | null;
+  precipitation_probability_percent: number | string | null;
 };
 
 export type ForecastReadStore = {
@@ -94,8 +94,20 @@ export class ForecastDataUnavailableError extends Error {
   }
 }
 
-function finiteNumber(value: number | string, field: string) {
-  const parsed = typeof value === "number" ? value : Number(value);
+function finiteNumber(value: number | string | null, field: string) {
+  if (value === null || (typeof value === "string" && value.trim() === "")) {
+    throw new ForecastDataUnavailableError(`Forecast data has an invalid ${field}`);
+  }
+
+  if (typeof value === "number") {
+    if (!Number.isFinite(value)) {
+      throw new ForecastDataUnavailableError(`Forecast data has an invalid ${field}`);
+    }
+
+    return value;
+  }
+
+  const parsed = Number(value);
 
   if (!Number.isFinite(parsed)) {
     throw new ForecastDataUnavailableError(`Forecast data has an invalid ${field}`);

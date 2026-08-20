@@ -53,6 +53,19 @@ const sourceRow: DataSourceRow = {
   quality: "high",
 };
 
+const invalidRequiredForecastNumbers: Array<[
+  string,
+  BeachConditionRow["weather_code"],
+]> = [
+  ["null", null],
+  ["an empty string", ""],
+  ["a whitespace-only string", "   "],
+  ["NaN", Number.NaN],
+  ["Infinity", Number.POSITIVE_INFINITY],
+  ["a NaN string", "NaN"],
+  ["an Infinity string", "Infinity"],
+];
+
 function conditionRow(
   beachId: string,
   overrides: Partial<BeachConditionRow> = {},
@@ -130,6 +143,34 @@ describe("Supabase forecast repository", () => {
     });
   });
 
+  it.each(invalidRequiredForecastNumbers)("rejects %s for a required forecast number", (_description, value) => {
+    expect(() =>
+      mapForecastRow(
+        conditionRow(beachRow.id, {
+          weather_code: value,
+        }),
+        "high",
+      ),
+    ).toThrow(ForecastDataUnavailableError);
+  });
+
+  it("preserves null marine values", () => {
+    expect(
+      mapForecastRow(
+        conditionRow(beachRow.id, {
+          wave_height_meters: null,
+          wave_direction_degrees: null,
+          water_temperature_celsius: null,
+        }),
+        "high",
+      ),
+    ).toMatchObject({
+      waveHeightMeters: null,
+      waveDirectionDegrees: null,
+      waterTemperatureCelsius: null,
+    });
+  });
+
   it("aggregates, scores, and sorts recommendations for the requested Rome date", async () => {
     const store = new FakeForecastReadStore(
       [beachRow, vendicariRow],
@@ -179,6 +220,21 @@ describe("Supabase forecast repository", () => {
 
   it("reports a recoverable error when the Open-Meteo source is missing", async () => {
     const store = new FakeForecastReadStore([beachRow], null, []);
+
+    await expect(
+      getBeachRecommendations(
+        { date: "2026-08-20", period: "morning" },
+        store,
+      ),
+    ).rejects.toBeInstanceOf(ForecastDataUnavailableError);
+  });
+
+  it("reports a recoverable error instead of zero-filling incomplete forecast rows", async () => {
+    const store = new FakeForecastReadStore(
+      [beachRow],
+      sourceRow,
+      [conditionRow(beachRow.id, { weather_code: null })],
+    );
 
     await expect(
       getBeachRecommendations(
