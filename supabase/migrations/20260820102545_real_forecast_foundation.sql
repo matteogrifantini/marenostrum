@@ -42,8 +42,9 @@ grant select on table
   public.data_sources, public.beaches, public.beach_conditions
   to anon, authenticated;
 
-insert into public.data_sources (slug, name, url, quality, is_public)
+insert into public.data_sources (id, slug, name, url, quality, is_public)
 values (
+  '00000000-0000-0000-0000-000000000002',
   'open-meteo',
   'Open-Meteo',
   'https://open-meteo.com/',
