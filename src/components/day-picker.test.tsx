@@ -38,4 +38,21 @@ describe("DayPicker", () => {
       );
     }
   });
+
+  it("keeps the desktop date control on one line without repeating future dates", () => {
+    const options = getDateOptions(new Date("2026-08-15T10:00:00+02:00"));
+
+    render(<DayPicker options={options} value="2026-08-15" onChange={vi.fn()} />);
+
+    expect(screen.getByRole("group", { name: "Scegli il giorno" })).toHaveClass(
+      "lg:flex-1",
+      "lg:pb-0",
+    );
+    expect(screen.getByRole("button", { name: "Oggi" })).toHaveClass(
+      "lg:flex",
+      "lg:whitespace-nowrap",
+    );
+    expect(screen.getAllByText("lun 17")).toHaveLength(1);
+    expect(screen.getAllByText("mar 18")).toHaveLength(1);
+  });
 });

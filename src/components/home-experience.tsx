@@ -127,10 +127,10 @@ export function HomeExperience({
             </div>
           </section>
 
-          <section className="mt-3 overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,253,248,0.82)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4">
+          <section className="mt-3 overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,253,248,0.82)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3">
             <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 
-            <div className="mt-3 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-3">
+            <div className="mt-3 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">
               <PeriodPicker value={period} onChange={handlePeriodChange} />
               <button
                 type="button"
