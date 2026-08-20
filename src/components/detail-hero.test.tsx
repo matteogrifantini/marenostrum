@@ -1,25 +1,36 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { demoRecommendations } from "../data/demo-beaches";
 import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { DetailHero } from "./detail-hero";
 
+const beach = {
+  slug: "cala-del-gelsomino",
+  name: "Cala del Gelsomino",
+  municipality: "Noto",
+  coast: "Sud-est",
+  description: "Una baia luminosa.",
+  orientationDegrees: 120,
+  shelter: ["maestrale"],
+  tags: ["relax"],
+  access: "facile" as const,
+  image: "/images/beaches/cala-del-gelsomino.jpg",
+};
+
 describe("DetailHero", () => {
-  it("keeps the score out of the hero and opens the vertical beach feed", () => {
-    const recommendation = demoRecommendations[0];
-    const detail = getDemoBeachDetail(recommendation.beach.slug)!;
+  it("shows the municipality without an invented user distance and opens the vertical beach feed", () => {
+    const detail = getDemoBeachDetail(beach.slug)!;
 
     render(
       <DetailHero
-        recommendation={recommendation}
+        beach={beach}
         detail={detail}
-        date="2026-08-15"
+        date="2026-08-20"
         period="all-day"
       />,
     );
 
-    expect(screen.queryByLabelText(/Voto .* su 10/)).not.toBeInTheDocument();
-    expect(screen.getByText(`${detail.distanceKm} km da te`)).toBeInTheDocument();
+    expect(screen.getByText("Noto")).toBeInTheDocument();
+    expect(screen.queryByText(/km da te/)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: `Guarda i video · ${detail.reels.length}` }));
     expect(screen.getByRole("dialog", { name: "Video della spiaggia" })).toBeInTheDocument();

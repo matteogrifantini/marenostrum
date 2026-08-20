@@ -1,12 +1,11 @@
 "use client";
 
 import { CloudSun, Droplets, Sparkles, Waves, Wind } from "lucide-react";
-import { useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
+import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { getBeachAiComment } from "../domain/beach-comment";
-import { DEMO_DATE_OPTIONS, getDemoRecommendationFor } from "../data/demo-beaches";
-import { getDemoBeachDetail } from "../data/demo-beach-details";
+import type { BeachDetailContent } from "../data/demo-beach-details";
+import type { DateOption } from "../domain/date-selection";
 import { DetailHero } from "./detail-hero";
 import { HourlyForecast } from "./hourly-forecast";
 import { PageShell } from "./page-shell";
@@ -14,9 +13,15 @@ import { BeachLiveSections } from "./beach-live-sections";
 import { BeachCommunitySections } from "./beach-community-sections";
 
 type BeachDetailExperienceProps = {
-  recommendation: BeachRecommendation;
+  beach: Beach;
+  recommendation?: BeachRecommendation;
+  morningRecommendation?: BeachRecommendation;
+  afternoonRecommendation?: BeachRecommendation;
+  dateOptions: DateOption[];
+  detail: BeachDetailContent;
   date: string;
   period: BeachPeriod;
+  dataUnavailable?: boolean;
 };
 
 const periods: Array<{ value: BeachPeriod; label: string }> = [
@@ -44,6 +49,21 @@ function displayScore(score: number) {
   return (Math.max(0, Math.min(100, score)) / 10).toFixed(1);
 }
 
+function formatObservedAt(observedAt: string) {
+  const date = new Date(observedAt);
+
+  if (Number.isNaN(date.getTime())) return "";
+
+  const time = new Intl.DateTimeFormat("it-IT", {
+    hour: "2-digit",
+    hourCycle: "h23",
+    minute: "2-digit",
+    timeZone: "Europe/Rome",
+  }).format(date);
+
+  return `aggiornate ${time}`;
+}
+
 function scoreHeadline(score: number) {
   if (score >= 80) return "Ottima scelta";
   if (score >= 70) return "Condizioni accettabili";
@@ -65,20 +85,20 @@ function periodSummary(recommendation: BeachRecommendation | undefined, period: 
     : `Vento ${recommendation.conditions.windSpeedKmh} km/h`;
 }
 
-export function BeachDetailExperience({ recommendation, date, period }: BeachDetailExperienceProps) {
+export function BeachDetailExperience({
+  beach,
+  recommendation,
+  morningRecommendation,
+  afternoonRecommendation,
+  dateOptions,
+  detail,
+  date,
+  period,
+  dataUnavailable = false,
+}: BeachDetailExperienceProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const detail = getDemoBeachDetail(recommendation.beach.slug);
-  const periodRecommendations = useMemo(
-    () => ({
-      morning: getDemoRecommendationFor(recommendation.beach.slug, { date, period: "morning" }),
-      afternoon: getDemoRecommendationFor(recommendation.beach.slug, { date, period: "afternoon" }),
-    }),
-    [date, recommendation.beach.slug],
-  );
-
-  if (!detail) return null;
 
   const replaceSelection = (nextDate: string, nextPeriod: BeachPeriod) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -91,24 +111,26 @@ export function BeachDetailExperience({ recommendation, date, period }: BeachDet
     <PageShell>
       <main className="min-h-screen pb-16">
         <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
-          <DetailHero recommendation={recommendation} detail={detail} date={date} period={period} />
+          <DetailHero beach={beach} detail={detail} date={date} period={period} />
 
           <div className="relative z-10 -mt-3 rounded-t-[1.65rem] bg-[var(--sand)] px-1 pt-3 sm:px-2">
             <SelectionControls
               date={date}
               period={period}
+              dateOptions={dateOptions}
               onDateChange={(nextDate) => replaceSelection(nextDate, period)}
               onPeriodChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
             />
 
-            <AdviceCard recommendation={recommendation} />
+            <AdviceCard recommendation={recommendation} dataUnavailable={dataUnavailable} />
             <ConditionsCard
               recommendation={recommendation}
               period={period}
-              morningRecommendation={periodRecommendations.morning}
-              afternoonRecommendation={periodRecommendations.afternoon}
+              morningRecommendation={morningRecommendation}
+              afternoonRecommendation={afternoonRecommendation}
+              dataUnavailable={dataUnavailable}
             />
-            <BeachLiveSections beach={recommendation.beach} detail={detail} />
+            <BeachLiveSections beach={beach} detail={detail} />
             <BeachCommunitySections detail={detail} />
           </div>
         </div>
@@ -120,15 +142,17 @@ export function BeachDetailExperience({ recommendation, date, period }: BeachDet
 function SelectionControls({
   date,
   period,
+  dateOptions,
   onDateChange,
   onPeriodChange,
 }: {
   date: string;
   period: BeachPeriod;
+  dateOptions: DateOption[];
   onDateChange: (date: string) => void;
   onPeriodChange: (period: BeachPeriod) => void;
 }) {
-  const dayOptions = DEMO_DATE_OPTIONS.slice(0, 2);
+  const dayOptions = dateOptions.slice(0, 2);
 
   return (
     <div className="grid grid-cols-[0.78fr_1.35fr] gap-2" aria-label="Data e fascia oraria">
@@ -162,7 +186,21 @@ function SelectionControls({
   );
 }
 
-function AdviceCard({ recommendation }: { recommendation: BeachRecommendation }) {
+function AdviceCard({
+  recommendation,
+  dataUnavailable,
+}: {
+  recommendation?: BeachRecommendation;
+  dataUnavailable: boolean;
+}) {
+  if (!recommendation || dataUnavailable) {
+    return (
+      <article role="note" aria-labelledby="mare-nostrum-advice-title" className="detail-enter mt-3 rounded-[1.3rem] border border-[rgba(8,47,61,0.065)] bg-[linear-gradient(145deg,#e1dccf,#d9d3c6)] p-4 shadow-[0_9px_24px_rgba(8,47,61,0.075)] sm:p-5">
+        <p id="mare-nostrum-advice-title" className="text-sm font-medium leading-6 text-[var(--ink-soft)]">Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.</p>
+      </article>
+    );
+  }
+
   const comment = getBeachAiComment(recommendation);
 
   return (
@@ -193,18 +231,31 @@ function ConditionsCard({
   period,
   morningRecommendation,
   afternoonRecommendation,
+  dataUnavailable,
 }: {
-  recommendation: BeachRecommendation;
+  recommendation?: BeachRecommendation;
   period: BeachPeriod;
   morningRecommendation?: BeachRecommendation;
   afternoonRecommendation?: BeachRecommendation;
+  dataUnavailable: boolean;
 }) {
+  if (!recommendation || dataUnavailable) {
+    return (
+      <>
+        <SectionHeading title="Condizioni" meta="" />
+        <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-4 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-5">
+          <p className="text-sm font-medium leading-6 text-[var(--ink-soft)]">Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.</p>
+        </section>
+      </>
+    );
+  }
+
   const { conditions } = recommendation;
-  const rainChance = conditions.weather === "pioggia" ? 65 : conditions.weather === "nuvoloso" ? 25 : 5;
+  const rainChance = conditions.precipitationProbabilityPercent ?? 0;
 
   return (
     <>
-      <SectionHeading title="Condizioni" meta="ore 11:20" />
+      <SectionHeading title="Condizioni" meta={formatObservedAt(conditions.observedAt)} />
       <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-4 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-5">
         <div className="flex items-center gap-3">
           <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-lg">🌊</span>

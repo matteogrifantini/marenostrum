@@ -4,19 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Check, Heart, MapPin, Play, Share2 } from "lucide-react";
 import { useState } from "react";
-import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
+import type { Beach, BeachPeriod } from "../domain/beach";
 import type { BeachDetailContent } from "../data/demo-beach-details";
 import { BeachVideoReel } from "./beach-video-reel";
 
 type DetailHeroProps = {
-  recommendation: BeachRecommendation;
+  beach: Beach;
   detail: BeachDetailContent;
   date: string;
   period: BeachPeriod;
+  distanceKm?: number;
 };
 
-export function DetailHero({ recommendation, detail, date, period }: DetailHeroProps) {
-  const { beach } = recommendation;
+export function DetailHero({ beach, detail, date, period, distanceKm }: DetailHeroProps) {
   const [favorite, setFavorite] = useState(false);
   const [shared, setShared] = useState(false);
   const [showReels, setShowReels] = useState(false);
@@ -69,7 +69,8 @@ export function DetailHero({ recommendation, detail, date, period }: DetailHeroP
         <div className="absolute inset-x-5 bottom-5 z-10">
           <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.1em] text-white/78">
             <MapPin aria-hidden="true" size={14} />
-            <span>{beach.municipality}</span><span aria-hidden="true">·</span><span>{detail.distanceKm} km da te</span>
+            <span>{beach.municipality}</span>
+            {distanceKm === undefined ? null : <><span aria-hidden="true">·</span><span>{distanceKm} km da te</span></>}
           </div>
           <h1 className="mt-2 max-w-[32rem] font-serif text-[clamp(2.7rem,11vw,4.8rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{beach.name}</h1>
         </div>

@@ -1,10 +1,8 @@
 import { notFound } from "next/navigation";
 import { BeachDetailExperience } from "../../../components/beach-detail-experience";
-import {
-  DEMO_TODAY,
-  demoBeachInputs,
-  getDemoRecommendationFor,
-} from "../../../data/demo-beaches";
+import { getDemoBeachDetail } from "../../../data/demo-beach-details";
+import { getBeachForecastBundleBySlug } from "../../../data/beach-repository";
+import { getDateOptions } from "../../../domain/date-selection";
 import { normalizeDetailQuery } from "../../../domain/detail-query";
 
 type DetailSearchParams = {
@@ -16,10 +14,6 @@ function firstParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
 
-export function generateStaticParams() {
-  return demoBeachInputs.map(({ beach }) => ({ slug: beach.slug }));
-}
-
 export default async function BeachPage({
   params,
   searchParams,
@@ -29,20 +23,29 @@ export default async function BeachPage({
 }) {
   const { slug } = await params;
   const query = await searchParams;
+  const dateOptions = getDateOptions(new Date());
   const normalized = normalizeDetailQuery(
     firstParam(query.date),
     firstParam(query.period),
-    DEMO_TODAY,
+    dateOptions[0].iso,
   );
-  const recommendation = getDemoRecommendationFor(slug, normalized);
+  const bundle = await getBeachForecastBundleBySlug({ slug, ...normalized });
 
-  if (!recommendation) notFound();
+  if (!bundle) notFound();
+
+  const detail = getDemoBeachDetail(slug)!;
 
   return (
     <BeachDetailExperience
-      recommendation={recommendation}
+      beach={bundle.beach}
+      recommendation={bundle.selected}
+      morningRecommendation={bundle.morning}
+      afternoonRecommendation={bundle.afternoon}
+      dateOptions={dateOptions}
+      detail={detail}
       date={normalized.date}
       period={normalized.period}
+      dataUnavailable={!bundle.selected}
     />
   );
 }
