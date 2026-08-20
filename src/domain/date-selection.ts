@@ -30,10 +30,6 @@ const UTC_ITALIAN_DAY_FORMATTER = new Intl.DateTimeFormat("it-IT", {
   weekday: "short",
 });
 
-function atLocalMidnight(date: Date) {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-}
-
 function calendarDateInTimeZone(date: Date, timeZone: string) {
   const parts = new Intl.DateTimeFormat("en-CA", {
     day: "2-digit",
@@ -58,29 +54,21 @@ function toIsoDate(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
-function toLocalIsoDate(date: Date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-}
-
-function parseLocalIsoDate(value: string | null | undefined) {
+function parseCalendarIsoDate(value: string | null | undefined) {
   if (!value || !ISO_DATE_PATTERN.test(value)) return undefined;
 
   const [year, month, day] = value.split("-").map(Number);
-  const parsed = new Date(year, month - 1, day);
+  const parsed = new Date(Date.UTC(year, month - 1, day, 12));
 
   if (
-    parsed.getFullYear() !== year ||
-    parsed.getMonth() !== month - 1 ||
-    parsed.getDate() !== day
+    parsed.getUTCFullYear() !== year ||
+    parsed.getUTCMonth() !== month - 1 ||
+    parsed.getUTCDate() !== day
   ) {
     return undefined;
   }
 
-  return atLocalMidnight(parsed);
+  return parsed;
 }
 
 function formatRelativeLabel(date: Date, timeZone?: string) {
@@ -112,15 +100,15 @@ export function getDateOptions(
 }
 
 export function parseDateParam(value: string | null, fallback: string) {
-  const fallbackDate = parseLocalIsoDate(fallback);
-  const candidateDate = parseLocalIsoDate(value);
+  const fallbackDate = parseCalendarIsoDate(fallback);
+  const candidateDate = parseCalendarIsoDate(value);
 
   if (!fallbackDate || !candidateDate) return fallback;
 
   const validDates = new Set(
     getDateOptions(fallbackDate).map((option) => option.iso),
   );
-  const candidate = toLocalIsoDate(candidateDate);
+  const candidate = toIsoDate(candidateDate);
 
   return validDates.has(candidate) ? candidate : fallback;
 }

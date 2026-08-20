@@ -31,6 +31,10 @@ describe("getDateOptions", () => {
 });
 
 describe("query parsing", () => {
+  it("accepts a valid date range when the process timezone is UTC+14", () => {
+    expect(parseDateParam("2026-08-18", "2026-08-15")).toBe("2026-08-18");
+  });
+
   it("falls back safely for invalid date and period parameters", () => {
     expect(parseDateParam("2026-09-01", "2026-08-15")).toBe("2026-08-15");
     expect(parsePeriodParam("night")).toBe("all-day");
