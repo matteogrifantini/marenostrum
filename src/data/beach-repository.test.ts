@@ -265,6 +265,24 @@ describe("Supabase forecast repository", () => {
       ),
     ).resolves.toEqual({
       beach: mapBeachRow(beachRow),
+      dataUnavailable: true,
+      selected: undefined,
+      morning: undefined,
+      afternoon: undefined,
+    });
+  });
+
+  it("keeps a published beach available when its forecast source is unavailable", async () => {
+    const store = new FakeForecastReadStore([beachRow], null, []);
+
+    await expect(
+      getBeachForecastBundleBySlug(
+        { slug: beachRow.slug, date: "2026-08-20", period: "all-day" },
+        store,
+      ),
+    ).resolves.toEqual({
+      beach: mapBeachRow(beachRow),
+      dataUnavailable: true,
       selected: undefined,
       morning: undefined,
       afternoon: undefined,

@@ -38,4 +38,19 @@ describe("HourlyForecast", () => {
     expect(screen.queryByText("ogni 2 ore")).not.toBeInTheDocument();
     expect(screen.queryByText("Scorri per vedere le altre ore")).not.toBeInTheDocument();
   });
+
+  it("renders an em dash for a missing hourly wave value", () => {
+    render(
+      <HourlyForecast
+        hourly={[
+          {
+            ...hourly[0],
+            waveHeightMeters: null,
+          },
+        ]}
+      />,
+    );
+
+    expect(screen.getByText("—")).toBeInTheDocument();
+  });
 });

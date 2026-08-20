@@ -82,6 +82,11 @@ function worstSourceQuality(points: ForecastPoint[]): SourceQuality {
   points[0].sourceQuality);
 }
 
+function degradeSourceQuality(quality: SourceQuality): SourceQuality {
+  if (quality === "high") return "medium";
+  return "low";
+}
+
 function seaStateFor(waveHeightMeters: number): BeachConditions["seaState"] {
   if (waveHeightMeters >= 0.8) return "agitato";
   if (waveHeightMeters >= 0.45) return "mosso";
@@ -125,14 +130,14 @@ export function aggregateForecast(
   const waterTemperature = meanNullable(
     selectedPoints.map((point) => point.waterTemperatureCelsius),
   );
+  const hasPartialWaveData = wavePoints.length < selected.length;
   const timeline = selected
     .filter(({ hour }) => hour % 2 === 0)
-    .filter(({ point }) => point.waveHeightMeters !== null && Number.isFinite(point.waveHeightMeters))
     .map(({ point, hour, minute }) => ({
       time: `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`,
       windSpeedKmh: point.windSpeedKmh,
       gustSpeedKmh: point.gustSpeedKmh,
-      waveHeightMeters: point.waveHeightMeters as number,
+      waveHeightMeters: point.waveHeightMeters,
       temperatureCelsius: point.temperatureCelsius,
       cloudCoverPercent: point.cloudCoverPercent,
       precipitationProbabilityPercent: point.precipitationProbabilityPercent,
@@ -149,7 +154,9 @@ export function aggregateForecast(
 
   return {
     observedAt: selectedPoints[0].observedAt,
-    sourceQuality: worstSourceQuality(selectedPoints),
+    sourceQuality: hasPartialWaveData
+      ? degradeSourceQuality(worstSourceQuality(selectedPoints))
+      : worstSourceQuality(selectedPoints),
     windDirectionDegrees: circularMeanDegrees(
       selectedPoints.map((point) => point.windDirectionDegrees),
     ),

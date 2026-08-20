@@ -71,7 +71,8 @@ function response(body: unknown, status = 200) {
 }
 
 function createFetcher(weather: unknown, marine: unknown) {
-  return vi.fn(async (input: RequestInfo | URL, _init?: RequestInit) => {
+  return vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+    void init;
     const url = new URL(
       typeof input === "string" ? input : input instanceof URL ? input.href : input.url,
     );
@@ -87,6 +88,10 @@ describe("mapWmoWeatherCode", () => {
     expect(mapWmoWeatherCode(2)).toBe("poco nuvoloso");
     expect(mapWmoWeatherCode(45)).toBe("nuvoloso");
     expect(mapWmoWeatherCode(63)).toBe("pioggia");
+    expect(mapWmoWeatherCode(71)).toBe("nuvoloso");
+    expect(mapWmoWeatherCode(77)).toBe("nuvoloso");
+    expect(mapWmoWeatherCode(85)).toBe("nuvoloso");
+    expect(mapWmoWeatherCode(86)).toBe("nuvoloso");
   });
 });
 

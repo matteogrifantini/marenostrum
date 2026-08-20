@@ -50,7 +50,9 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
                 </p>
                 <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[var(--ink-soft)]">
                   <Waves aria-hidden="true" size={13} />
-                  {item.waveHeightMeters.toFixed(1)} m
+                  {item.waveHeightMeters === null
+                    ? "—"
+                    : `${item.waveHeightMeters.toFixed(1)} m`}
                 </p>
                 <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[var(--ink-soft)]">
                   <CloudSun aria-hidden="true" size={13} />

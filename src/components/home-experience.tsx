@@ -81,6 +81,7 @@ export function HomeExperience({
     },
     [filters, recommendations, searchQuery],
   );
+  const forecastUnavailable = dataUnavailable || recommendations.length === 0;
 
   const updateQuery = (nextDate: string, nextPeriod: BeachPeriod) => {
     const nextParams = new URLSearchParams(searchParams.toString());
@@ -165,16 +166,16 @@ export function HomeExperience({
             ) : (
               <div className="rounded-[1.75rem] bg-[var(--surface)] p-8 text-center shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
                 <h3 className="font-serif text-3xl font-semibold tracking-[-0.05em]">
-                  {dataUnavailable
+                  {forecastUnavailable
                     ? "Condizioni non disponibili"
                     : "Nessuna spiaggia corrisponde"}
                 </h3>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
-                  {dataUnavailable
+                  {forecastUnavailable
                     ? "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto."
                     : "Prova un altro nome, comune o costa, oppure rimuovi un filtro per vedere di nuovo tutte le condizioni disponibili."}
                 </p>
-                {!dataUnavailable && (
+                {!forecastUnavailable && (
                   <button
                     type="button"
                     onClick={() => {

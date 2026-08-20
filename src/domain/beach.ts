@@ -49,7 +49,7 @@ export type BeachConditions = {
     time: string;
     windSpeedKmh: number;
     gustSpeedKmh: number;
-    waveHeightMeters: number;
+    waveHeightMeters: number | null;
     temperatureCelsius: number;
     cloudCoverPercent: number;
     precipitationProbabilityPercent?: number;

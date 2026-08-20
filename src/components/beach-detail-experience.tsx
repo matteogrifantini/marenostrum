@@ -157,10 +157,10 @@ function SelectionControls({
   onDateChange: (date: string) => void;
   onPeriodChange: (period: BeachPeriod) => void;
 }) {
-  const dayOptions = dateOptions.slice(0, 2);
+  const dayOptions = dateOptions;
 
   return (
-    <div className="grid grid-cols-[0.78fr_1.35fr] gap-2" aria-label="Data e fascia oraria">
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-[0.78fr_1.35fr]" aria-label="Data e fascia oraria">
       <div className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]">
         {dayOptions.map((option) => (
           <button

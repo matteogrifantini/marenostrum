@@ -247,4 +247,16 @@ describe("HomeExperience", () => {
       ),
     ).toBeInTheDocument();
   });
+
+  it("treats zero forecast recommendations as unavailable data without offering to clear filters", () => {
+    renderHome({ recommendations: [] });
+
+    expect(screen.getByRole("heading", { name: "Condizioni non disponibili" })).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.",
+      ),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Azzera ricerca e filtri" })).not.toBeInTheDocument();
+  });
 });

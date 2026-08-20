@@ -65,7 +65,14 @@ export function mapWmoWeatherCode(code: number): BeachConditions["weather"] {
     return "poco nuvoloso";
   }
 
-  if (code === 3 || code === 45 || code === 48) {
+  if (
+    code === 3 ||
+    code === 45 ||
+    code === 48 ||
+    (code >= 71 && code <= 77) ||
+    code === 85 ||
+    code === 86
+  ) {
     return "nuvoloso";
   }
 

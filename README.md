@@ -20,8 +20,6 @@ cp .env.example .env.local
 npm run dev
 ~~~
 
-Senza variabili Supabase l’app usa intenzionalmente tre record demo, quindi la home resta esplorabile anche prima di creare il progetto remoto.
-
 ## Comandi
 
 ~~~bash
@@ -33,16 +31,30 @@ npm run build
 
 ## Configurazione runtime
 
-Le variabili runtime sono:
+Configura in Vercel queste variabili d'ambiente, senza inserire valori reali nel repository.
+
+Client (esposte al browser):
 
 ~~~text
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+~~~
+
+Server (mai esposte al browser):
+
+~~~text
 SUPABASE_SERVICE_ROLE_KEY
 CRON_SECRET
 ~~~
 
 Le variabili `SUPABASE_SERVICE_ROLE_KEY` e `CRON_SECRET` restano solo lato server. L’endpoint cron è protetto da `CRON_SECRET`; non inserire valori o segreti nel repository e non usare segreti in variabili `NEXT_PUBLIC_*`.
+
+Configura inoltre nei repository secrets di GitHub Actions:
+
+~~~text
+FORECAST_SYNC_URL
+CRON_SECRET
+~~~
 
 La prima migrazione è in supabase/migrations/ e contiene:
 
@@ -54,7 +66,7 @@ La prima migrazione è in supabase/migrations/ e contiene:
 
 Il seed contiene contenuti dimostrativi: non rappresenta ancora dati operativi né fonti definitive. Le sezioni community restano una demo in questa release.
 
-Le previsioni Open-Meteo sono usate per una demo non commerciale. L’automazione locale usa lo scheduler gratuito di GitHub Actions per chiamare periodicamente l’endpoint protetto; URL e segreti restano configurati nelle GitHub Actions secrets.
+Le previsioni sono ottenute da Open-Meteo per uso non commerciale. Lo scheduler gratuito di GitHub Actions chiama periodicamente l’endpoint protetto usando `FORECAST_SYNC_URL` e `CRON_SECRET`, configurati come repository secrets.
 
 ## Architettura iniziale
 
@@ -69,7 +81,7 @@ La prima superficie è:
 
 ## CI e deploy
 
-La pipeline GitHub esegue test, lint e build senza segreti. Il collegamento a Vercel va fatto importando la repository GitHub e impostando, nell’ambiente Vercel, le stesse due variabili pubbliche Supabase.
+La pipeline GitHub esegue test, lint e build senza segreti. Il collegamento a Vercel va fatto importando la repository GitHub e impostando tutte le variabili runtime elencate sopra nel rispettivo ambiente.
 
 Prima del collegamento remoto servono:
 

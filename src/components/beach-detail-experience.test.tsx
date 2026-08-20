@@ -187,4 +187,19 @@ describe("BeachDetailExperience", () => {
       "/spiagge/cala-del-gelsomino?date=2026-08-20&period=morning",
     );
   });
+
+  it("navigates to the third and fourth Home dates while preserving the selected period", () => {
+    replaceMock.mockClear();
+    renderDetail({ period: "morning" });
+
+    fireEvent.click(screen.getByRole("button", { name: "sab 22" }));
+    expect(replaceMock).toHaveBeenLastCalledWith(
+      "/spiagge/cala-del-gelsomino?date=2026-08-22&period=morning",
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "dom 23" }));
+    expect(replaceMock).toHaveBeenLastCalledWith(
+      "/spiagge/cala-del-gelsomino?date=2026-08-23&period=morning",
+    );
+  });
 });

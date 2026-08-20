@@ -98,4 +98,29 @@ describe("aggregateForecast", () => {
       ).toBeUndefined();
     },
   );
+
+  it("keeps partial marine gaps visible in the timeline and degrades confidence", () => {
+    const partialWaves = points.map((point, index) =>
+      index === 1
+        ? {
+            ...point,
+            waveHeightMeters: null,
+            waveDirectionDegrees: null,
+          }
+        : point,
+    );
+
+    const allDay = aggregateForecast(partialWaves, {
+      date: "2026-08-20",
+      period: "all-day",
+    });
+
+    expect(allDay?.sourceQuality).toBe("medium");
+    expect(allDay?.hourly).toHaveLength(6);
+    expect(allDay?.hourly?.[1]).toMatchObject({
+      time: "10:00",
+      waveHeightMeters: null,
+    });
+    expect(allDay?.waveHeightMeters).toBe(0.9);
+  });
 });

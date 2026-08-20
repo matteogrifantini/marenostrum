@@ -18,6 +18,7 @@ const {
 
 vi.mock("next/navigation", () => ({ notFound: notFoundMock }));
 vi.mock("../../../data/beach-repository", () => ({
+  ForecastDataUnavailableError: class ForecastDataUnavailableError extends Error {},
   getBeachForecastBundleBySlug: getBeachForecastBundleBySlugMock,
 }));
 vi.mock("../../../components/beach-detail-experience", () => ({
@@ -37,6 +38,7 @@ vi.mock("../../../components/beach-detail-experience", () => ({
   },
 }));
 
+import { ForecastDataUnavailableError } from "../../../data/beach-repository";
 import BeachPage from "./page";
 
 const beach = {
@@ -53,6 +55,7 @@ const beach = {
 };
 const bundle: BeachForecastBundle = {
   beach,
+  dataUnavailable: false,
   selected: {
     beach,
     conditions: {
@@ -145,6 +148,7 @@ describe("BeachPage", () => {
   it("renders a known beach with unavailable forecast copy", async () => {
     getBeachForecastBundleBySlugMock.mockResolvedValue({
       beach,
+      dataUnavailable: true,
       selected: undefined,
       morning: undefined,
       afternoon: undefined,
@@ -162,6 +166,42 @@ describe("BeachPage", () => {
         `${beach.name}: Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.`,
       ),
     ).toBeInTheDocument();
+    expect(notFoundMock).not.toHaveBeenCalled();
+  });
+
+  it("passes a repository-declared forecast outage through to the detail experience", async () => {
+    getBeachForecastBundleBySlugMock.mockResolvedValue({
+      ...bundle,
+      dataUnavailable: true,
+    });
+
+    render(
+      await BeachPage({
+        params: Promise.resolve({ slug: beach.slug }),
+        searchParams: Promise.resolve({}),
+      }),
+    );
+
+    expect(renderedDetailProps.current).toMatchObject({ dataUnavailable: true });
+    expect(notFoundMock).not.toHaveBeenCalled();
+  });
+
+  it("renders a generic degraded state when even the published catalog is unavailable", async () => {
+    getBeachForecastBundleBySlugMock.mockRejectedValue(
+      new ForecastDataUnavailableError("Supabase public configuration is missing"),
+    );
+
+    render(
+      await BeachPage({
+        params: Promise.resolve({ slug: beach.slug }),
+        searchParams: Promise.resolve({}),
+      }),
+    );
+
+    expect(
+      screen.getByRole("heading", { name: "Condizioni non disponibili" }),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/Supabase/)).not.toBeInTheDocument();
     expect(notFoundMock).not.toHaveBeenCalled();
   });
 

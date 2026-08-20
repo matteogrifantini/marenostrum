@@ -4,7 +4,10 @@ import {
   emptyBeachDetailContent,
   getDemoBeachDetail,
 } from "../../../data/demo-beach-details";
-import { getBeachForecastBundleBySlug } from "../../../data/beach-repository";
+import {
+  ForecastDataUnavailableError,
+  getBeachForecastBundleBySlug,
+} from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
 import { normalizeDetailQuery } from "../../../domain/detail-query";
 
@@ -32,7 +35,28 @@ export default async function BeachPage({
     firstParam(query.period),
     dateOptions[0].iso,
   );
-  const bundle = await getBeachForecastBundleBySlug({ slug, ...normalized });
+  let bundle;
+
+  try {
+    bundle = await getBeachForecastBundleBySlug({ slug, ...normalized });
+  } catch (error) {
+    if (!(error instanceof ForecastDataUnavailableError)) {
+      throw error;
+    }
+
+    return (
+      <main className="grid min-h-screen place-items-center bg-[var(--sand)] px-6 text-center">
+        <section className="max-w-md rounded-[1.75rem] bg-[var(--surface)] p-8 shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
+          <h1 className="font-serif text-3xl font-semibold tracking-[-0.05em] text-[var(--ink)]">
+            Condizioni non disponibili
+          </h1>
+          <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+            Non riusciamo a caricare questa spiaggia in questo momento. Riprova tra qualche minuto.
+          </p>
+        </section>
+      </main>
+    );
+  }
 
   if (!bundle) notFound();
 
@@ -48,7 +72,7 @@ export default async function BeachPage({
       detail={detail}
       date={normalized.date}
       period={normalized.period}
-      dataUnavailable={!bundle.selected}
+      dataUnavailable={bundle.dataUnavailable}
     />
   );
 }

@@ -19,6 +19,20 @@ describe("ForecastAttribution", () => {
     ).toBeInTheDocument();
   });
 
+  it("credits the data providers, license, and Mare Nostrum processing", () => {
+    render(<ForecastAttribution />);
+
+    expect(screen.getByRole("link", { name: "Open-Meteo" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "DWD" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "CC BY 4.0" })).toHaveAttribute(
+      "href",
+      "https://creativecommons.org/licenses/by/4.0/",
+    );
+    expect(
+      screen.getByText("Mare Nostrum aggrega ed elabora i dati."),
+    ).toBeInTheDocument();
+  });
+
   it("is a neutral footer rather than a card", () => {
     render(<ForecastAttribution />);
 

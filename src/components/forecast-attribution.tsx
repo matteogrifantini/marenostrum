@@ -25,7 +25,18 @@ export function ForecastAttribution() {
             </a>
           </span>
         ))}
+        {" · "}
+        <a
+          href="https://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold underline decoration-[var(--line)] underline-offset-2 hover:text-[var(--ink)]"
+        >
+          CC BY 4.0
+        </a>
       </p>
+      <span aria-hidden="true">·</span>
+      <p>Mare Nostrum aggrega ed elabora i dati.</p>
     </footer>
   );
 }

@@ -82,6 +82,7 @@ export type RecommendationBySlugQuery = RecommendationQuery & {
 
 export type BeachForecastBundle = {
   beach: Beach;
+  dataUnavailable: boolean;
   selected?: BeachRecommendation;
   morning?: BeachRecommendation;
   afternoon?: BeachRecommendation;
@@ -278,15 +279,29 @@ export async function getBeachForecastBundleBySlug(
 
   if (!beachRow) return null;
 
-  const { source, rows } = await loadSourceAndRows(store, query.date, beachRow.id);
   const beach = mapBeachRow(beachRow);
-  const points = rows.map((row) => mapForecastRow(row, source.quality));
-  const now = query.now ?? new Date();
 
-  return {
-    beach,
-    selected: recommendationFor(beach, points, query, query.period, now),
-    morning: recommendationFor(beach, points, query, "morning", now),
-    afternoon: recommendationFor(beach, points, query, "afternoon", now),
-  };
+  try {
+    const { source, rows } = await loadSourceAndRows(store, query.date, beachRow.id);
+    const points = rows.map((row) => mapForecastRow(row, source.quality));
+    const now = query.now ?? new Date();
+    const selected = recommendationFor(beach, points, query, query.period, now);
+
+    return {
+      beach,
+      dataUnavailable: !selected,
+      selected,
+      morning: recommendationFor(beach, points, query, "morning", now),
+      afternoon: recommendationFor(beach, points, query, "afternoon", now),
+    };
+  } catch (error) {
+    if (error instanceof ForecastDataUnavailableError) {
+      return {
+        beach,
+        dataUnavailable: true,
+      };
+    }
+
+    throw error;
+  }
 }
