@@ -10,5 +10,6 @@ describe("MobileNav", () => {
     expect(screen.getByRole("button", { name: /Mappa/ })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Impostazioni/ })).toBeInTheDocument();
     expect(screen.queryByText("Zone")).not.toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: "Navigazione mobile" })).toHaveClass("lg:hidden");
   });
 });

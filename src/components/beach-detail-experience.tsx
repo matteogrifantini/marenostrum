@@ -119,7 +119,7 @@ export function BeachDetailExperience({
 
   return (
     <PageShell>
-      <main className="min-h-screen pb-16">
+      <main className="min-h-screen pb-24 lg:pb-8">
         <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
           <DetailHero beach={beach} detail={detail} date={date} period={period} />
 

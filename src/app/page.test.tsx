@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { HomeExperience } from "../components/home-experience";
 import type { BeachRecommendation } from "../domain/beach";
@@ -170,6 +170,51 @@ describe("HomeExperience", () => {
       expect.stringContaining("date=2026-08-21"),
     );
     expect(replace).toHaveBeenCalledWith("/?date=2026-08-21&period=all-day");
+  });
+
+  it("uses one clear desktop navigation and marks future destinations as unavailable", () => {
+    renderHome();
+
+    const desktopNavigation = screen.getByRole("navigation", { name: "Navigazione desktop" });
+    const desktopHeader = desktopNavigation.parentElement;
+
+    expect(desktopNavigation).toBeInTheDocument();
+    expect(desktopHeader).not.toBeNull();
+    expect(within(desktopNavigation).getByRole("link", { name: "Oggi" })).toHaveAttribute(
+      "href",
+      "/#classifica",
+    );
+    expect(
+      within(desktopNavigation).getByRole("button", { name: "Mappa, disponibile prossimamente" }),
+    ).toHaveAttribute("aria-disabled", "true");
+    expect(
+      within(desktopNavigation).getByRole("button", { name: "Blog, disponibile prossimamente" }),
+    ).toHaveAttribute("aria-disabled", "true");
+    expect(
+      within(desktopNavigation).getByRole("button", { name: "Regioni, disponibile prossimamente" }),
+    ).toHaveAttribute("aria-disabled", "true");
+    expect(
+      within(desktopHeader!).getByRole("button", {
+        name: "Lingua: Italiano, disponibile prossimamente",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      within(desktopHeader!).getByRole("button", {
+        name: "Preferiti, disponibile prossimamente",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      within(desktopHeader!).getByRole("button", {
+        name: "Impostazioni, disponibile prossimamente",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      within(desktopHeader!).getByRole("button", {
+        name: "Accedi, disponibile prossimamente",
+      }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Spiagge" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Esplora la costa" })).not.toBeInTheDocument();
   });
 
   it("keeps the decision controls compact and removes editorial clutter", () => {

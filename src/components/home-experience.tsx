@@ -102,7 +102,7 @@ export function HomeExperience({
 
   return (
     <PageShell>
-      <main className="min-h-screen pb-24 md:pb-8">
+      <main className="min-h-screen pb-24 lg:pb-8">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8">
           <section className="mt-4 sm:mt-6">
             <label htmlFor="beach-search" className="sr-only">
