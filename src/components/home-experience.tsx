@@ -1,7 +1,7 @@
 "use client";
 
 import { Search, SlidersHorizontal } from "lucide-react";
-import { useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { BeachCard } from "./beach-card";
 import { DayPicker } from "./day-picker";
@@ -9,35 +9,42 @@ import { FilterSheet, type BeachFilters } from "./filter-sheet";
 import { MobileNav } from "./mobile-nav";
 import { PageShell } from "./page-shell";
 import { PeriodPicker } from "./period-picker";
-import {
-  DEMO_DATE_OPTIONS,
-  DEMO_TODAY,
-  getDemoRecommendationsFor,
-} from "../data/demo-beaches";
-import { getDemoBeachDetail } from "../data/demo-beach-details";
-import type { BeachPeriod } from "../domain/beach";
+import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
+import type { DateOption } from "../domain/date-selection";
 
 type HomeExperienceProps = {
   initialDate: string;
   initialPeriod: BeachPeriod;
+  dateOptions: DateOption[];
+  recommendations: BeachRecommendation[];
+  dataUnavailable?: boolean;
 };
 
 const DEFAULT_FILTERS: BeachFilters = { access: "all", service: "all" };
 
-export function HomeExperience({ initialDate, initialPeriod }: HomeExperienceProps) {
+export function HomeExperience({
+  initialDate,
+  initialPeriod,
+  dateOptions,
+  recommendations,
+  dataUnavailable = false,
+}: HomeExperienceProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [date, setDate] = useState(initialDate || DEMO_TODAY);
+  const [date, setDate] = useState(initialDate);
   const [period, setPeriod] = useState<BeachPeriod>(initialPeriod);
   const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState<BeachFilters>(DEFAULT_FILTERS);
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
 
-  const recommendations = useMemo(
-    () => getDemoRecommendationsFor({ date, period }),
-    [date, period],
-  );
+  useEffect(() => {
+    startTransition(() => {
+      setDate(initialDate);
+      setPeriod(initialPeriod);
+    });
+  }, [initialDate, initialPeriod]);
+
   const filteredRecommendations = useMemo(
     () => {
       const normalizedSearchQuery = searchQuery.trim().toLowerCase();
@@ -104,7 +111,7 @@ export function HomeExperience({ initialDate, initialPeriod }: HomeExperiencePro
           </section>
 
           <section className="mt-3 overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,253,248,0.82)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4">
-            <DayPicker options={DEMO_DATE_OPTIONS} value={date} onChange={handleDateChange} />
+            <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 
             <div className="mt-3 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-3">
               <PeriodPicker value={period} onChange={handlePeriodChange} />
@@ -131,7 +138,6 @@ export function HomeExperience({ initialDate, initialPeriod }: HomeExperiencePro
                       recommendation={recommendation}
                       date={date}
                       period={period}
-                      distanceKm={getDemoBeachDetail(recommendation.beach.slug)?.distanceKm ?? 0}
                       eager={index < 4}
                     />
                   </li>
@@ -140,21 +146,27 @@ export function HomeExperience({ initialDate, initialPeriod }: HomeExperiencePro
             ) : (
               <div className="rounded-[1.75rem] bg-[var(--surface)] p-8 text-center shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
                 <h3 className="font-serif text-3xl font-semibold tracking-[-0.05em]">
-                  Nessuna spiaggia corrisponde
+                  {dataUnavailable
+                    ? "Condizioni non disponibili"
+                    : "Nessuna spiaggia corrisponde"}
                 </h3>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
-                  Prova un altro nome, comune o costa, oppure rimuovi un filtro per vedere di nuovo tutte le condizioni disponibili.
+                  {dataUnavailable
+                    ? "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto."
+                    : "Prova un altro nome, comune o costa, oppure rimuovi un filtro per vedere di nuovo tutte le condizioni disponibili."}
                 </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSearchQuery("");
-                    setFilters(DEFAULT_FILTERS);
-                  }}
-                  className="mt-6 min-h-11 rounded-full bg-[var(--ink)] px-5 text-sm font-bold text-white transition-[transform,background-color] duration-200 ease-out hover:bg-[var(--sea-deep)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
-                >
-                  Azzera ricerca e filtri
-                </button>
+                {!dataUnavailable && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setFilters(DEFAULT_FILTERS);
+                    }}
+                    className="mt-6 min-h-11 rounded-full bg-[var(--ink)] px-5 text-sm font-bold text-white transition-[transform,background-color] duration-200 ease-out hover:bg-[var(--sea-deep)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+                  >
+                    Azzera ricerca e filtri
+                  </button>
+                )}
               </div>
             )}
           </section>

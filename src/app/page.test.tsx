@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { HomeExperience } from "../components/home-experience";
+import type { BeachRecommendation } from "../domain/beach";
+import { getDateOptions } from "../domain/date-selection";
 
 const replace = vi.fn();
 
@@ -10,17 +12,121 @@ vi.mock("next/navigation", () => ({
   useSearchParams: () => new URLSearchParams(),
 }));
 
+const dateOptions = getDateOptions(new Date("2026-08-20T08:00:00+02:00"));
+
+const recommendations: BeachRecommendation[] = [
+  {
+    beach: {
+      slug: "cala-del-gelsomino",
+      name: "Cala del Gelsomino",
+      municipality: "Noto",
+      coast: "Sud-est",
+      description: "Una baia luminosa.",
+      orientationDegrees: 120,
+      shelter: ["maestrale"],
+      tags: ["relax"],
+      access: "facile",
+      image: "/images/beaches/cala-del-gelsomino.jpg",
+    },
+    conditions: {
+      observedAt: "2026-08-20T08:00:00+02:00",
+      sourceQuality: "high",
+      windDirectionDegrees: 315,
+      windSpeedKmh: 7,
+      gustSpeedKmh: 10,
+      waveHeightMeters: 0.2,
+      weather: "sereno",
+      temperatureCelsius: 28,
+    },
+    score: 100,
+    label: "Ottima scelta",
+    reason: "Mare calmo.",
+    confidence: "alta",
+    factors: { wind: 100, sea: 100, weather: 100, access: 100, fit: 100 },
+  },
+  {
+    beach: {
+      slug: "tonnara-di-vendicari",
+      name: "Tonnara di Vendicari",
+      municipality: "Noto",
+      coast: "Sud-est",
+      description: "Costa aperta.",
+      orientationDegrees: 160,
+      shelter: ["tramontana"],
+      tags: ["esplora"],
+      access: "moderato",
+      image: "/images/beaches/tonnara-di-vendicari.jpg",
+    },
+    conditions: {
+      observedAt: "2026-08-20T08:00:00+02:00",
+      sourceQuality: "high",
+      windDirectionDegrees: 90,
+      windSpeedKmh: 11,
+      gustSpeedKmh: 16,
+      waveHeightMeters: 0.4,
+      weather: "poco nuvoloso",
+      temperatureCelsius: 27,
+    },
+    score: 82,
+    label: "Buona scelta",
+    reason: "Condizioni favorevoli.",
+    confidence: "alta",
+    factors: { wind: 80, sea: 85, weather: 85, access: 70, fit: 90 },
+  },
+  {
+    beach: {
+      slug: "spiaggia-della-marchesa",
+      name: "Spiaggia della Marchesa",
+      municipality: "Avola",
+      coast: "Sud-est",
+      description: "Sabbia e pineta.",
+      orientationDegrees: 95,
+      shelter: ["ponente"],
+      tags: ["famiglie"],
+      access: "facile",
+      image: "/images/beaches/spiaggia-della-marchesa.jpg",
+    },
+    conditions: {
+      observedAt: "2026-08-20T08:00:00+02:00",
+      sourceQuality: "high",
+      windDirectionDegrees: 45,
+      windSpeedKmh: 9,
+      gustSpeedKmh: 13,
+      waveHeightMeters: 0.3,
+      weather: "sereno",
+      temperatureCelsius: 29,
+    },
+    score: 76,
+    label: "Buona scelta",
+    reason: "Mare piacevole.",
+    confidence: "alta",
+    factors: { wind: 78, sea: 80, weather: 82, access: 95, fit: 72 },
+  },
+];
+
+function renderHome(
+  props: Partial<React.ComponentProps<typeof HomeExperience>> = {},
+) {
+  return render(
+    <HomeExperience
+      initialDate="2026-08-20"
+      initialPeriod="all-day"
+      dateOptions={dateOptions}
+      recommendations={recommendations}
+      {...props}
+    />,
+  );
+}
+
 describe("HomeExperience", () => {
   it("shows four days and updates the beach links when the day changes", () => {
-    render(
-      <HomeExperience initialDate="2026-08-15" initialPeriod="all-day" />,
-    );
+    renderHome();
 
     expect(screen.getByRole("button", { name: "Oggi" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Mare Nostrum, home" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Domani" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "lun 17" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "mar 18" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "sab 22" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "dom 23" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Cala del Gelsomino" })).toBeInTheDocument();
     expect(screen.queryByText(/Consigliate/i)).not.toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: /Le migliori scelte/i })).not.toBeInTheDocument();
@@ -29,15 +135,13 @@ describe("HomeExperience", () => {
 
     expect(screen.getAllByRole("link", { name: /apri la scheda/i })[0]).toHaveAttribute(
       "href",
-      expect.stringContaining("date=2026-08-16"),
+      expect.stringContaining("date=2026-08-21"),
     );
-    expect(replace).toHaveBeenCalledWith("/?date=2026-08-16&period=all-day");
+    expect(replace).toHaveBeenCalledWith("/?date=2026-08-21&period=all-day");
   });
 
   it("keeps the decision controls compact and removes editorial clutter", () => {
-    render(
-      <HomeExperience initialDate="2026-08-15" initialPeriod="all-day" />,
-    );
+    renderHome();
 
     expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("all-day");
     expect(screen.getByRole("button", { name: "Filtri" })).toBeInTheDocument();
@@ -54,9 +158,7 @@ describe("HomeExperience", () => {
   });
 
   it("starts with search, filters the beach list, and removes the hero", () => {
-    render(
-      <HomeExperience initialDate="2026-08-15" initialPeriod="all-day" />,
-    );
+    renderHome();
 
     const search = screen.getByRole("searchbox", { name: "Cerca una spiaggia" });
 
@@ -72,9 +174,7 @@ describe("HomeExperience", () => {
   });
 
   it("uses a compact two-column beach grid without a featured card", () => {
-    render(
-      <HomeExperience initialDate="2026-08-15" initialPeriod="all-day" />,
-    );
+    renderHome();
 
     const list = screen.getByRole("list", { name: "Spiagge consigliate" });
 
@@ -83,8 +183,36 @@ describe("HomeExperience", () => {
     screen.getAllByRole("img").forEach((image) => {
       expect(image).toHaveAttribute("loading", "eager");
     });
-    expect(screen.getByText("Noto · 18 km")).toBeInTheDocument();
-    expect(screen.getByText("Avola · 12 km")).toBeInTheDocument();
-    expect(screen.getByText("Noto · 14 km")).toBeInTheDocument();
+    expect(screen.getAllByText("Noto")).toHaveLength(2);
+    expect(screen.getByText("Avola")).toBeInTheDocument();
+  });
+
+  it("synchronizes local controls when navigation provides a new server response", () => {
+    const { rerender } = renderHome();
+
+    rerender(
+      <HomeExperience
+        initialDate="2026-08-21"
+        initialPeriod="morning"
+        dateOptions={dateOptions}
+        recommendations={recommendations}
+      />,
+    );
+
+    expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("morning");
+  });
+
+  it("shows the temporary-unavailable copy for unavailable forecast data", () => {
+    renderHome({ recommendations: [], dataUnavailable: true });
+
+    expect(
+      screen.getByText(
+        "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.",
+      ),
+    ).toBeInTheDocument();
   });
 });

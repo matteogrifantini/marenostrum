@@ -1,7 +1,15 @@
 import { Suspense } from "react";
 import { HomeExperience } from "../components/home-experience";
-import { DEMO_TODAY } from "../data/demo-beaches";
-import { parseDateParam, parsePeriodParam } from "../domain/date-selection";
+import {
+  ForecastDataUnavailableError,
+  getBeachRecommendations,
+} from "../data/beach-repository";
+import {
+  getDateOptions,
+  parseDateParam,
+  parsePeriodParam,
+} from "../domain/date-selection";
+import type { BeachRecommendation } from "../domain/beach";
 
 type HomeSearchParams = {
   date?: string | string[];
@@ -18,8 +26,25 @@ export default async function HomePage({
   searchParams: Promise<HomeSearchParams>;
 }) {
   const query = await searchParams;
-  const initialDate = parseDateParam(firstParam(query.date) ?? null, DEMO_TODAY);
+  const dateOptions = getDateOptions(new Date());
+  const initialDate = parseDateParam(firstParam(query.date) ?? null, dateOptions[0].iso);
   const initialPeriod = parsePeriodParam(firstParam(query.period) ?? null);
+  let recommendations: BeachRecommendation[];
+  let dataUnavailable = false;
+
+  try {
+    recommendations = await getBeachRecommendations({
+      date: initialDate,
+      period: initialPeriod,
+    });
+  } catch (error) {
+    if (!(error instanceof ForecastDataUnavailableError)) {
+      throw error;
+    }
+
+    recommendations = [];
+    dataUnavailable = true;
+  }
 
   return (
     <Suspense
@@ -29,7 +54,13 @@ export default async function HomePage({
         </main>
       }
     >
-      <HomeExperience initialDate={initialDate} initialPeriod={initialPeriod} />
+      <HomeExperience
+        initialDate={initialDate}
+        initialPeriod={initialPeriod}
+        dateOptions={dateOptions}
+        recommendations={recommendations}
+        dataUnavailable={dataUnavailable}
+      />
     </Suspense>
   );
 }

@@ -41,6 +41,18 @@ describe("BeachCard", () => {
     );
   });
 
+  it("shows the municipality without a fabricated distance when it is unavailable", () => {
+    render(
+      <BeachCard
+        recommendation={demoRecommendations[0]}
+        date="2026-08-20"
+        period="all-day"
+      />,
+    );
+
+    expect(screen.getByText("Noto")).not.toHaveTextContent("km");
+  });
+
   it.each([
     [95, "excellent"],
     [80, "good"],

@@ -7,7 +7,7 @@ type BeachCardProps = {
   recommendation: BeachRecommendation;
   date: string;
   period: BeachPeriod;
-  distanceKm: number;
+  distanceKm?: number;
   eager?: boolean;
 };
 
@@ -79,7 +79,9 @@ export function BeachCard({
             {beach.name}
           </h3>
           <p className="mt-1 truncate text-[0.7rem] font-semibold text-[var(--muted)] sm:text-xs">
-            {beach.municipality} · {distanceKm} km
+            {distanceKm == null
+              ? beach.municipality
+              : `${beach.municipality} · ${distanceKm} km`}
           </p>
 
           <div className="mt-auto flex min-w-0 items-end gap-1.5 pt-3 sm:gap-3">
