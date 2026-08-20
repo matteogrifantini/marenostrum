@@ -48,6 +48,7 @@ export function NextDays({ slug, days, selectedDate, period }: NextDaysProps) {
               />
               <Link
                 href={buildNextDayHref(slug, day.iso, period)}
+                scroll={false}
                 aria-current={selected ? "date" : undefined}
                 className={[
                   "block min-h-[7.4rem] rounded-[1.25rem] border p-4 transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",

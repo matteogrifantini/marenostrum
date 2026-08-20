@@ -169,10 +169,13 @@ describe("HomeExperience", () => {
       "href",
       expect.stringContaining("date=2026-08-21"),
     );
-    expect(replace).toHaveBeenCalledWith("/?date=2026-08-21&period=all-day");
+    expect(replace).toHaveBeenCalledWith(
+      "/?date=2026-08-21&period=all-day",
+      { scroll: false },
+    );
   });
 
-  it("uses one clear desktop navigation and marks future destinations as unavailable", () => {
+  it("uses a Mare Nostrum desktop navigation instead of an Aura-like link row", () => {
     renderHome();
 
     const desktopNavigation = screen.getByRole("navigation", { name: "Navigazione desktop" });
@@ -185,19 +188,11 @@ describe("HomeExperience", () => {
       "/#classifica",
     );
     expect(
-      within(desktopNavigation).getByRole("button", { name: "Mappa, disponibile prossimamente" }),
+      within(desktopNavigation).getByRole("button", { name: "Esplora, disponibile prossimamente" }),
     ).toHaveAttribute("aria-disabled", "true");
     expect(
-      within(desktopNavigation).getByRole("button", { name: "Blog, disponibile prossimamente" }),
-    ).toHaveAttribute("aria-disabled", "true");
-    expect(
-      within(desktopNavigation).getByRole("button", { name: "Regioni, disponibile prossimamente" }),
-    ).toHaveAttribute("aria-disabled", "true");
-    expect(
-      within(desktopHeader!).getByRole("button", {
-        name: "Lingua: Italiano, disponibile prossimamente",
-      }),
-    ).toBeInTheDocument();
+      within(desktopHeader!).getByRole("status", { name: "Condizioni meteo live" }),
+    ).toHaveTextContent("Live");
     expect(
       within(desktopHeader!).getByRole("button", {
         name: "Preferiti, disponibile prossimamente",
@@ -205,14 +200,14 @@ describe("HomeExperience", () => {
     ).toBeInTheDocument();
     expect(
       within(desktopHeader!).getByRole("button", {
-        name: "Impostazioni, disponibile prossimamente",
-      }),
-    ).toBeInTheDocument();
-    expect(
-      within(desktopHeader!).getByRole("button", {
         name: "Accedi, disponibile prossimamente",
       }),
     ).toBeInTheDocument();
+    expect(within(desktopNavigation).queryByText("Mappa")).not.toBeInTheDocument();
+    expect(within(desktopNavigation).queryByText("Blog")).not.toBeInTheDocument();
+    expect(within(desktopNavigation).queryByText("Regioni")).not.toBeInTheDocument();
+    expect(within(desktopHeader!).queryByText("Italiano")).not.toBeInTheDocument();
+    expect(within(desktopHeader!).queryByText("Impostazioni")).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "Spiagge" })).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "Esplora la costa" })).not.toBeInTheDocument();
   });

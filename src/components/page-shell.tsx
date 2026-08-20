@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, ChevronDown, Globe2, Heart, Map, Settings, UserRound } from "lucide-react";
+import { Compass, Heart, UserRound } from "lucide-react";
 import type { ReactNode } from "react";
 import { BrandMark } from "./brand-mark";
 
@@ -27,54 +27,41 @@ export function PageShell({ children }: { children: ReactNode }) {
 
           <nav
             aria-label="Navigazione desktop"
-            className="hidden min-w-0 items-center gap-1 text-sm font-bold text-[var(--muted)] lg:flex"
+            className="hidden min-w-0 items-center gap-3 text-sm font-bold text-[var(--muted)] lg:flex"
           >
             <Link
-              className="inline-flex min-h-11 items-center rounded-full bg-[var(--ink)] px-4 text-white shadow-[0_8px_20px_rgba(20,44,57,0.12)] transition-[transform,background-color] duration-200 ease-out hover:bg-[var(--sea-deep)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+              className="inline-flex min-h-11 items-center gap-2 border-b-2 border-[var(--sun)] px-2 text-[var(--ink)] transition-[border-color,color] duration-200 ease-out hover:text-[var(--sea-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)]"
               href="/#classifica"
             >
+              <span
+                aria-hidden="true"
+                className="size-2 rounded-full bg-[var(--sun)] shadow-[0_0_0_4px_rgba(242,183,5,0.16)]"
+              />
               Oggi
             </Link>
             <button
               type="button"
               aria-disabled="true"
-              aria-label="Mappa, disponibile prossimamente"
+              aria-label="Esplora, disponibile prossimamente"
               className={unavailableNavigationClass}
             >
-              <Map aria-hidden="true" size={16} />
-              Mappa
-            </button>
-            <button
-              type="button"
-              aria-disabled="true"
-              aria-label="Blog, disponibile prossimamente"
-              className={unavailableNavigationClass}
-            >
-              <BookOpen aria-hidden="true" size={16} />
-              Blog
-            </button>
-            <button
-              type="button"
-              aria-disabled="true"
-              aria-label="Regioni, disponibile prossimamente"
-              className={unavailableNavigationClass}
-            >
-              Regioni
-              <ChevronDown aria-hidden="true" size={15} />
+              <Compass aria-hidden="true" size={16} />
+              Esplora
             </button>
           </nav>
 
           <div className="hidden items-center gap-1 lg:ml-auto lg:flex">
-            <button
-              type="button"
-              aria-disabled="true"
-              aria-label="Lingua: Italiano, disponibile prossimamente"
-              className={unavailableUtilityClass}
+            <span
+              role="status"
+              aria-label="Condizioni meteo live"
+              className="hidden min-h-9 items-center gap-2 rounded-full border border-[rgba(20,44,57,0.1)] px-3 text-[0.68rem] font-extrabold uppercase tracking-[0.12em] text-[var(--muted)] xl:inline-flex"
             >
-              <Globe2 aria-hidden="true" size={16} />
-              Italiano
-              <ChevronDown aria-hidden="true" size={15} />
-            </button>
+              <span
+                aria-hidden="true"
+                className="size-1.5 rounded-full bg-[var(--sea)] shadow-[0_0_0_4px_rgba(20,112,118,0.12)]"
+              />
+              Live
+            </span>
             <button
               type="button"
               aria-disabled="true"
@@ -87,20 +74,11 @@ export function PageShell({ children }: { children: ReactNode }) {
             <button
               type="button"
               aria-disabled="true"
-              aria-label="Impostazioni, disponibile prossimamente"
-              title="Impostazioni"
-              className="inline-flex size-11 cursor-default items-center justify-center rounded-full text-[var(--muted)]"
-            >
-              <Settings aria-hidden="true" size={18} />
-            </button>
-            <button
-              type="button"
-              aria-disabled="true"
               aria-label="Accedi, disponibile prossimamente"
               className={`${unavailableUtilityClass} bg-[var(--surface)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)]`}
             >
               <UserRound aria-hidden="true" size={16} />
-              Accedi
+              <span className="hidden xl:inline">Accedi</span>
             </button>
           </div>
         </div>

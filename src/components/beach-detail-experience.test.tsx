@@ -187,11 +187,13 @@ describe("BeachDetailExperience", () => {
     fireEvent.click(screen.getByRole("button", { name: "Domani" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
       "/spiagge/cala-del-gelsomino?date=2026-08-21&period=all-day",
+      { scroll: false },
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Mattina" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
       "/spiagge/cala-del-gelsomino?date=2026-08-20&period=morning",
+      { scroll: false },
     );
   });
 
@@ -202,11 +204,13 @@ describe("BeachDetailExperience", () => {
     fireEvent.click(screen.getByRole("button", { name: "sab 22" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
       "/spiagge/cala-del-gelsomino?date=2026-08-22&period=morning",
+      { scroll: false },
     );
 
     fireEvent.click(screen.getByRole("button", { name: "dom 23" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
       "/spiagge/cala-del-gelsomino?date=2026-08-23&period=morning",
+      { scroll: false },
     );
   });
 });

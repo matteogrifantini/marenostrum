@@ -1,7 +1,7 @@
 "use client";
 
 import { Search, SlidersHorizontal } from "lucide-react";
-import { startTransition, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { BeachCard } from "./beach-card";
 import { DayPicker } from "./day-picker";
@@ -48,6 +48,7 @@ export function HomeExperience({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
   const [date, setDate] = useState(initialDate);
   const [period, setPeriod] = useState<BeachPeriod>(initialPeriod);
   const [searchQuery, setSearchQuery] = useState("");
@@ -87,7 +88,9 @@ export function HomeExperience({
     const nextParams = new URLSearchParams(searchParams.toString());
     nextParams.set("date", nextDate);
     nextParams.set("period", nextPeriod);
-    router.replace(`${pathname}?${nextParams.toString()}`);
+    startTransition(() => {
+      router.replace(`${pathname}?${nextParams.toString()}`, { scroll: false });
+    });
   };
 
   const handleDateChange = (nextDate: string) => {
@@ -127,7 +130,10 @@ export function HomeExperience({
             </div>
           </section>
 
-          <section className="mt-3 overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,253,248,0.82)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3">
+          <section
+            aria-busy={isPending}
+            className="mt-3 overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,253,248,0.82)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3"
+          >
             <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 
             <div className="mt-3 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">

@@ -1,7 +1,20 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import type { AnchorHTMLAttributes, ReactNode } from "react";
 import type { BeachPeriod } from "../domain/beach";
 import { NextDays, type NextDay } from "./next-days";
+
+vi.mock("next/link", () => ({
+  default: ({
+    children,
+    scroll,
+    ...props
+  }: AnchorHTMLAttributes<HTMLAnchorElement> & { children: ReactNode; scroll?: boolean }) => (
+    <a {...props} data-scroll-preserved={scroll === false ? "true" : "false"}>
+      {children}
+    </a>
+  ),
+}));
 
 const days: NextDay[] = [
   { iso: "2026-08-15", label: "Oggi", score: 92, wind: "7 km/h vento" },
@@ -25,6 +38,9 @@ describe("NextDays", () => {
     expect(screen.getByText("Prossimi giorni")).toBeInTheDocument();
     expect(screen.queryByText("Previsioni")).not.toBeInTheDocument();
     expect(screen.queryByText("Scorri per vedere gli altri giorni")).not.toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Oggi.*9\.2.*7 km\/h vento/ })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Oggi.*9\.2.*7 km\/h vento/ })).toHaveAttribute(
+      "data-scroll-preserved",
+      "true",
+    );
   });
 });

@@ -2,6 +2,7 @@
 
 import { CloudSun, Droplets, Sparkles, Waves, Wind } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { getBeachAiComment } from "../domain/beach-comment";
 import type { BeachDetailContent } from "../data/demo-beach-details";
@@ -109,12 +110,15 @@ export function BeachDetailExperience({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
 
   const replaceSelection = (nextDate: string, nextPeriod: BeachPeriod) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("date", nextDate);
     params.set("period", nextPeriod);
-    router.replace(`${pathname}?${params.toString()}`);
+    startTransition(() => {
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    });
   };
 
   return (
@@ -124,11 +128,13 @@ export function BeachDetailExperience({
           <DetailHero beach={beach} detail={detail} date={date} period={period} />
 
           <div className="relative z-10 mt-3 rounded-t-[1.65rem] bg-[var(--sand)] px-1 pt-3 sm:px-2">
-            <DaySelection
-              date={date}
-              dateOptions={dateOptions}
-              onDateChange={(nextDate) => replaceSelection(nextDate, period)}
-            />
+            <div aria-busy={isPending}>
+              <DaySelection
+                date={date}
+                dateOptions={dateOptions}
+                onDateChange={(nextDate) => replaceSelection(nextDate, period)}
+              />
+            </div>
 
             <AdviceCard recommendation={recommendation} dataUnavailable={dataUnavailable} />
             <PeriodSelection
