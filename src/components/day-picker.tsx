@@ -12,7 +12,7 @@ export function DayPicker({ options, value, onChange }: DayPickerProps) {
   return (
     <div
       aria-label="Scegli il giorno"
-      className="day-picker flex min-w-0 gap-2 overflow-x-auto pb-1"
+      className="day-picker grid min-w-0 grid-cols-4 gap-1 pb-1"
       role="group"
     >
       {options.map((option) => {
@@ -26,7 +26,7 @@ export function DayPicker({ options, value, onChange }: DayPickerProps) {
             aria-pressed={selected}
             onClick={() => onChange(option.iso)}
             className={[
-              "min-h-11 min-w-[5.1rem] shrink-0 rounded-full px-4 py-2 text-left transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
+              "min-h-11 min-w-0 rounded-full px-2 py-2 text-left transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
               selected
                 ? "bg-[var(--ink)] text-white shadow-[0_8px_20px_rgba(20,44,57,0.16)]"
                 : "bg-white/75 text-[var(--ink-soft)] hover:bg-white hover:text-[var(--ink)]",

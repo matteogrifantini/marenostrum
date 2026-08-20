@@ -53,6 +53,30 @@ describe("BeachCard", () => {
     expect(screen.getByText("Noto")).not.toHaveTextContent("km");
   });
 
+  it("uses the same concise aggregate metric text visually and in accessible labels", () => {
+    const recommendation = {
+      ...demoRecommendations[0],
+      conditions: {
+        ...demoRecommendations[0].conditions,
+        windSpeedKmh: 11.981818181818182,
+        waveHeightMeters: 0.29999999999999999,
+      },
+    };
+
+    render(
+      <BeachCard
+        recommendation={recommendation}
+        date="2026-08-15"
+        period="all-day"
+      />,
+    );
+
+    expect(screen.getByLabelText("Vento: NO, 12 km/h")).toHaveTextContent(
+      "NO · 12 km/h",
+    );
+    expect(screen.getByLabelText("Onde: 0.3 m")).toHaveTextContent("0.3 m");
+  });
+
   it.each([
     [95, "excellent"],
     [80, "good"],

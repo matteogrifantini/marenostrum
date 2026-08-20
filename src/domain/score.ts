@@ -5,6 +5,7 @@ import type {
   ScoreConfidence,
   UserIntent,
 } from "./beach";
+import { formatWindWithArticle } from "./wind-grammar";
 
 type ScoreProfile = {
   intent: UserIntent;
@@ -97,8 +98,8 @@ export function scoreBeach(
   const confidence = confidenceFor(hours, conditions.sourceQuality);
   const freshnessReason = hours > 24 ? "Controlla l’ultimo aggiornamento prima di partire." : "";
   const shelterReason = sheltered
-    ? `È riparata dal ${windName}.`
-    : `È esposta al ${windName}.`;
+    ? `È riparata ${formatWindWithArticle(windName, "shelter")}.`
+    : `È esposta ${formatWindWithArticle(windName, "exposure")}.`;
   const reason = [shelterReason, freshnessReason].filter(Boolean).join(" ");
 
   return {

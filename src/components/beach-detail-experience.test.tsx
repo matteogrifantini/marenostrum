@@ -115,6 +115,36 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
   });
 
+  it("derives the conditions title and concise aggregate metrics from the active date", () => {
+    const conditions = {
+      ...selected.conditions,
+      windSpeedKmh: 11.981818181818182,
+      gustSpeedKmh: 29.700000000000003,
+      waveHeightMeters: 0.29999999999999999,
+      waterTemperatureCelsius: 29.700000000000003,
+    };
+
+    renderDetail({
+      date: "2026-08-21",
+      recommendation: { ...selected, conditions },
+      morningRecommendation: {
+        ...morning,
+        conditions: { ...conditions, windSpeedKmh: 13.527272727272731 },
+      },
+      afternoonRecommendation: { ...afternoon, conditions },
+    });
+
+    const conditionsPanel = screen.getByRole("region", { name: "Condizioni meteo" });
+    expect(within(conditionsPanel).getByRole("heading", { name: "Domani al mare" })).toBeInTheDocument();
+    expect(within(conditionsPanel).getByLabelText("Vento: NO · 12 km/h")).toHaveTextContent(
+      "NO · 12 km/h",
+    );
+    expect(within(conditionsPanel).getByLabelText("Onde: 0.3 m")).toHaveTextContent("0.3 m");
+    expect(within(conditionsPanel).getByLabelText("Acqua: 29.7°")).toHaveTextContent("29.7°");
+    expect(within(conditionsPanel).getByText("Vento 13.5 km/h")).toBeInTheDocument();
+    expect(within(conditionsPanel).getByText("Raffiche fino a 29.7 km/h")).toBeInTheDocument();
+  });
+
   it("keeps the beach and community content visible when forecast data is unavailable", () => {
     renderDetail({
       recommendation: undefined,

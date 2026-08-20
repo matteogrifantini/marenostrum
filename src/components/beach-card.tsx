@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Waves, Wind } from "lucide-react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
+import { formatAggregateMetric } from "../lib/forecast-presentation";
 
 type BeachCardProps = {
   recommendation: BeachRecommendation;
@@ -53,6 +54,8 @@ export function BeachCard({
   const displayScore = (Math.max(0, Math.min(100, recommendation.score)) / 10).toFixed(1);
   const tone = scoreTone(recommendation.score);
   const direction = windDirection(conditions.windDirectionDegrees);
+  const windMetric = `${formatAggregateMetric(conditions.windSpeedKmh)} km/h`;
+  const waveMetric = `${formatAggregateMetric(conditions.waveHeightMeters)} m`;
 
   return (
     <article className="home-beach-card h-full min-w-0 overflow-hidden rounded-[1.25rem] bg-[var(--surface)] shadow-[0_10px_32px_rgba(20,44,57,0.09)]">
@@ -97,18 +100,18 @@ export function BeachCard({
 
             <div className="min-w-0 flex-1 space-y-1.5 pb-0.5 text-[0.68rem] font-bold leading-none text-[var(--ink-soft)] sm:text-xs">
               <div
-                aria-label={`Vento: ${direction}, ${conditions.windSpeedKmh} km/h`}
+                aria-label={`Vento: ${direction}, ${windMetric}`}
                 className="flex min-w-0 items-center gap-1.5"
               >
                 <Wind aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={16} strokeWidth={2.2} />
-                <span className="truncate">{direction} · {conditions.windSpeedKmh} km/h</span>
+                <span className="truncate">{direction} · {windMetric}</span>
               </div>
               <div
-                aria-label={`Onde: ${conditions.waveHeightMeters.toFixed(1)} m`}
+                aria-label={`Onde: ${waveMetric}`}
                 className="flex min-w-0 items-center gap-1.5"
               >
                 <Waves aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={16} strokeWidth={2.2} />
-                <span className="truncate">{conditions.waveHeightMeters.toFixed(1)} m</span>
+                <span className="truncate">{waveMetric}</span>
               </div>
             </div>
           </div>

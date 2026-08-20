@@ -51,4 +51,20 @@ describe("scoreBeach", () => {
     expect(result.confidence).toBe("bassa");
     expect(result.reason).toContain("aggiornamento");
   });
+
+  it.each([
+    [180, "all'ostro"],
+    [135, "allo scirocco"],
+    [0, "alla tramontana"],
+  ])("uses the correct exposure article for the %s-degree wind", (windDirectionDegrees, article) => {
+    const result = scoreBeach(shelteredBeach, {
+      ...calmConditions,
+      windDirectionDegrees,
+    }, {
+      intent: "relax",
+      now: new Date("2026-08-14T09:00:00.000Z"),
+    });
+
+    expect(result.reason).toContain(`È esposta ${article}.`);
+  });
 });

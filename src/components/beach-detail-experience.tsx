@@ -12,6 +12,7 @@ import { PageShell } from "./page-shell";
 import { BeachLiveSections } from "./beach-live-sections";
 import { BeachCommunitySections } from "./beach-community-sections";
 import { ForecastAttribution } from "./forecast-attribution";
+import { formatAggregateMetric } from "../lib/forecast-presentation";
 
 type BeachDetailExperienceProps = {
   beach: Beach;
@@ -78,12 +79,12 @@ function periodSummary(recommendation: BeachRecommendation | undefined, period: 
   if (period === "morning") {
     return recommendation.conditions.windSpeedKmh <= 12
       ? "Vento leggero fino alle 12"
-      : `Vento ${recommendation.conditions.windSpeedKmh} km/h`;
+      : `Vento ${formatAggregateMetric(recommendation.conditions.windSpeedKmh)} km/h`;
   }
 
   return recommendation.conditions.gustSpeedKmh >= 25
-    ? `Raffiche fino a ${recommendation.conditions.gustSpeedKmh} km/h`
-    : `Vento ${recommendation.conditions.windSpeedKmh} km/h`;
+    ? `Raffiche fino a ${formatAggregateMetric(recommendation.conditions.gustSpeedKmh)} km/h`
+    : `Vento ${formatAggregateMetric(recommendation.conditions.windSpeedKmh)} km/h`;
 }
 
 export function BeachDetailExperience({
@@ -129,6 +130,8 @@ export function BeachDetailExperience({
               period={period}
               morningRecommendation={morningRecommendation}
               afternoonRecommendation={afternoonRecommendation}
+              date={date}
+              dateOptions={dateOptions}
               dataUnavailable={dataUnavailable}
             />
             <ForecastAttribution />
@@ -233,12 +236,16 @@ function ConditionsCard({
   period,
   morningRecommendation,
   afternoonRecommendation,
+  date,
+  dateOptions,
   dataUnavailable,
 }: {
   recommendation?: BeachRecommendation;
   period: BeachPeriod;
   morningRecommendation?: BeachRecommendation;
   afternoonRecommendation?: BeachRecommendation;
+  date: string;
+  dateOptions: DateOption[];
   dataUnavailable: boolean;
 }) {
   if (!recommendation || dataUnavailable) {
@@ -253,7 +260,13 @@ function ConditionsCard({
   }
 
   const { conditions } = recommendation;
-  const rainChance = conditions.precipitationProbabilityPercent ?? 0;
+  const rainChance = formatAggregateMetric(conditions.precipitationProbabilityPercent ?? 0);
+  const selectedDateLabel = dateOptions.find((option) => option.iso === date)?.label ?? date;
+  const windValue = `${directionName(conditions.windDirectionDegrees)} · ${formatAggregateMetric(conditions.windSpeedKmh)} km/h`;
+  const waveValue = `${formatAggregateMetric(conditions.waveHeightMeters)} m`;
+  const waterValue = conditions.waterTemperatureCelsius == null
+    ? "—"
+    : `${formatAggregateMetric(conditions.waterTemperatureCelsius)}°`;
 
   return (
     <>
@@ -265,7 +278,7 @@ function ConditionsCard({
       <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-4 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-5">
         <div className="flex items-center gap-3">
           <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-lg">🌊</span>
-          <div><h2 className="text-base font-bold tracking-[-0.025em]">Oggi al mare</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Previsioni per la selezione attiva</p></div>
+          <div><h2 className="text-base font-bold tracking-[-0.025em]">{selectedDateLabel} al mare</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Previsioni per la selezione attiva</p></div>
         </div>
 
         {period === "all-day" ? (
@@ -276,9 +289,9 @@ function ConditionsCard({
         ) : null}
 
         <div className="mt-2 grid grid-cols-2">
-          <ConditionItem icon={<Wind size={17} />} label="Vento" value={`${directionName(conditions.windDirectionDegrees)} · ${conditions.windSpeedKmh} km/h`} detail={conditions.gustSpeedKmh >= 25 ? "raffiche sostenute" : "intensità regolare"} border="right-bottom" />
-          <ConditionItem icon={<Waves size={17} />} label="Onde" value={`${conditions.waveHeightMeters.toFixed(1)} m`} detail={conditions.seaState ?? "calmo"} border="bottom" />
-          <ConditionItem icon={<Droplets size={17} />} label="Acqua" value={conditions.waterTemperatureCelsius ? `${conditions.waterTemperatureCelsius}°` : "—"} detail="stima superficiale" border="right" />
+          <ConditionItem icon={<Wind size={17} />} label="Vento" value={windValue} detail={conditions.gustSpeedKmh >= 25 ? "raffiche sostenute" : "intensità regolare"} border="right-bottom" />
+          <ConditionItem icon={<Waves size={17} />} label="Onde" value={waveValue} detail={conditions.seaState ?? "calmo"} border="bottom" />
+          <ConditionItem icon={<Droplets size={17} />} label="Acqua" value={waterValue} detail="stima superficiale" border="right" />
           <ConditionItem icon={<CloudSun size={17} />} label="Meteo" value={conditions.weather} detail={`pioggia ${rainChance}%`} />
         </div>
 
@@ -303,7 +316,7 @@ function DayPart({ label, emoji, recommendation, summary }: { label: string; emo
 function ConditionItem({ icon, label, value, detail, border = "" }: { icon: React.ReactNode; label: string; value: string; detail: string; border?: "right-bottom" | "bottom" | "right" | "" }) {
   const borderClasses = border === "right-bottom" ? "border-b border-r" : border === "bottom" ? "border-b" : border === "right" ? "border-r" : "";
   return (
-    <div className={`grid min-w-0 grid-cols-[1.8rem_1fr] items-center gap-2 border-[var(--line)] px-2 py-4 ${borderClasses}`}>
+    <div aria-label={`${label}: ${value}`} className={`grid min-w-0 grid-cols-[1.8rem_1fr] items-center gap-2 border-[var(--line)] px-2 py-4 ${borderClasses}`}>
       <span aria-hidden="true" className="grid size-7 place-items-center rounded-[0.55rem] bg-[var(--surface-muted)] text-[var(--sea-deep)]">{icon}</span>
       <div className="min-w-0"><span className="block text-[0.62rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]">{label}</span><strong className="mt-1 block truncate text-sm">{value}</strong><span className="mt-0.5 block text-[0.65rem] text-[var(--muted)]">{detail}</span></div>
     </div>

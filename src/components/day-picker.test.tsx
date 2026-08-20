@@ -21,4 +21,21 @@ describe("DayPicker", () => {
 
     expect(onChange).toHaveBeenCalledWith("2026-08-16");
   });
+
+  it("keeps all four day targets in an equal-width 44px grid", () => {
+    const options = getDateOptions(new Date("2026-08-15T10:00:00+02:00"));
+
+    render(<DayPicker options={options} value="2026-08-15" onChange={vi.fn()} />);
+
+    expect(screen.getByRole("group", { name: "Scegli il giorno" })).toHaveClass(
+      "grid",
+      "grid-cols-4",
+    );
+    for (const option of options) {
+      expect(screen.getByRole("button", { name: option.label })).toHaveClass(
+        "min-h-11",
+        "min-w-0",
+      );
+    }
+  });
 });

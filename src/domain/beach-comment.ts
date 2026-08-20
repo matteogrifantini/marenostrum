@@ -1,4 +1,5 @@
 import type { BeachConditions, BeachPeriod, BeachRecommendation } from "./beach";
+import { formatWindWithArticle } from "./wind-grammar";
 
 export type BeachAiComment = {
   context: string;
@@ -90,8 +91,8 @@ export function getBeachAiComment({ beach, conditions, score }: BeachRecommendat
   const sheltered = beach.shelter.includes(windName);
   const opening = `Per questa giornata, ${beach.name} è ${recommendationLabel(score, conditions.weather)}: ${weatherLabel(conditions.weather)}, ${windLabel(conditions.windSpeedKmh)} e ${seaLabel(conditions)}.`;
   const exposure = sheltered
-    ? `È riparata dal ${windName}, quindi le condizioni restano favorevoli per stare al mare.`
-    : `È esposta al ${windName}, quindi il vento si farà sentire durante la giornata.`;
+    ? `È riparata ${formatWindWithArticle(windName, "shelter")}, quindi le condizioni restano favorevoli per stare al mare.`
+    : `È esposta ${formatWindWithArticle(windName, "exposure")}, quindi il vento si farà sentire durante la giornata.`;
   const weatherAdvice =
     conditions.weather === "pioggia"
       ? "Con la pioggia possibile, meglio partire con un piano flessibile."

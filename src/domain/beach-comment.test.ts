@@ -30,4 +30,14 @@ describe("getBeachAiComment", () => {
     expect(result.text).toContain("Possibilità di pioggia");
     expect(result.text).toContain("piano flessibile");
   });
+
+  it("uses the ostro article in the advice shown on the beach detail", () => {
+    const result = getBeachAiComment({
+      ...demoRecommendations[0],
+      beach: { ...demoRecommendations[0].beach, shelter: [] },
+      conditions: { ...demoRecommendations[0].conditions, windDirectionDegrees: 180 },
+    });
+
+    expect(result.text).toContain("È esposta all'ostro");
+  });
 });
