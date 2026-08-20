@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { ForecastAttribution } from "./forecast-attribution";
 
 describe("ForecastAttribution", () => {
-  it("exposes official forecast sources and the exact disclaimer", () => {
+  it("exposes official forecast sources without the verbose disclaimer", () => {
     render(<ForecastAttribution />);
 
     expect(screen.getByRole("link", { name: "Open-Meteo" })).toHaveAttribute(
@@ -14,12 +14,10 @@ describe("ForecastAttribution", () => {
       "href",
       "https://www.dwd.de/",
     );
-    expect(
-      screen.getByText("Previsioni indicative: non usare per la navigazione."),
-    ).toBeInTheDocument();
+    expect(screen.queryByText("Previsioni indicative: non usare per la navigazione.")).not.toBeInTheDocument();
   });
 
-  it("credits the data providers, license, and Mare Nostrum processing", () => {
+  it("credits the data providers and license", () => {
     render(<ForecastAttribution />);
 
     expect(screen.getByRole("link", { name: "Open-Meteo" })).toBeInTheDocument();
@@ -28,9 +26,7 @@ describe("ForecastAttribution", () => {
       "href",
       "https://creativecommons.org/licenses/by/4.0/",
     );
-    expect(
-      screen.getByText("Mare Nostrum aggrega ed elabora i dati."),
-    ).toBeInTheDocument();
+    expect(screen.queryByText("Mare Nostrum aggrega ed elabora i dati.")).not.toBeInTheDocument();
   });
 
   it("is a neutral footer rather than a card", () => {

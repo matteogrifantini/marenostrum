@@ -82,7 +82,7 @@ describe("BeachDetailExperience", () => {
     );
   });
 
-  it("renders attribution after the conditions section", () => {
+  it("renders compact attribution after the conditions section", () => {
     renderDetail();
 
     const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
@@ -93,6 +93,11 @@ describe("BeachDetailExperience", () => {
     expect(
       conditions.compareDocumentPosition(attribution) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
+    expect(attribution).toHaveTextContent("Fonti:");
+    expect(
+      screen.queryByText("Previsioni indicative: non usare per la navigazione."),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText("Mare Nostrum aggrega ed elabora i dati.")).not.toBeInTheDocument();
   });
 
   it("renders the live rain probability and Rome-local observation time", () => {
@@ -105,6 +110,12 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByText("aggiornate 10:45")).toBeInTheDocument();
 
     const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
+    const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
+    const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
+
+    expect(dayControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(advice.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(advice).toHaveAttribute("data-score-tone", "excellent");
     expect(within(advice).getByText("10.0")).toBeInTheDocument();
 
     const conditions = screen.getByRole("region", { name: "Condizioni meteo" });

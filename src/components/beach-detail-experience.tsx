@@ -26,6 +26,8 @@ type BeachDetailExperienceProps = {
   dataUnavailable?: boolean;
 };
 
+type ScoreTone = "excellent" | "good" | "caution" | "poor";
+
 const periods: Array<{ value: BeachPeriod; label: string }> = [
   { value: "all-day", label: "Tutto il giorno" },
   { value: "morning", label: "Mattina" },
@@ -50,6 +52,27 @@ function directionName(degrees: number) {
 function displayScore(score: number) {
   return (Math.max(0, Math.min(100, score)) / 10).toFixed(1);
 }
+
+function scoreTone(score: number): ScoreTone {
+  if (score >= 90) return "excellent";
+  if (score >= 75) return "good";
+  if (score >= 60) return "caution";
+  return "poor";
+}
+
+const scoreSurfaceClasses: Record<ScoreTone, string> = {
+  excellent: "bg-[var(--score-excellent-soft)]",
+  good: "bg-[var(--score-good-soft)]",
+  caution: "bg-[var(--score-caution-soft)]",
+  poor: "bg-[var(--score-poor-soft)]",
+};
+
+const scoreBadgeClasses: Record<ScoreTone, string> = {
+  excellent: "bg-[var(--score-excellent)] text-white",
+  good: "bg-[var(--score-good)] text-white",
+  caution: "bg-[var(--score-caution)] text-[var(--ink)]",
+  poor: "bg-[var(--score-poor)] text-white",
+};
 
 function formatObservedAt(observedAt: string) {
   const date = new Date(observedAt);
@@ -116,15 +139,17 @@ export function BeachDetailExperience({
           <DetailHero beach={beach} detail={detail} date={date} period={period} />
 
           <div className="relative z-10 -mt-3 rounded-t-[1.65rem] bg-[var(--sand)] px-1 pt-3 sm:px-2">
-            <SelectionControls
+            <DaySelection
               date={date}
-              period={period}
               dateOptions={dateOptions}
               onDateChange={(nextDate) => replaceSelection(nextDate, period)}
-              onPeriodChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
             />
 
             <AdviceCard recommendation={recommendation} dataUnavailable={dataUnavailable} />
+            <PeriodSelection
+              period={period}
+              onPeriodChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
+            />
             <ConditionsCard
               recommendation={recommendation}
               period={period}
@@ -144,49 +169,60 @@ export function BeachDetailExperience({
   );
 }
 
-function SelectionControls({
+function DaySelection({
   date,
-  period,
   dateOptions,
   onDateChange,
-  onPeriodChange,
 }: {
   date: string;
-  period: BeachPeriod;
   dateOptions: DateOption[];
   onDateChange: (date: string) => void;
+}) {
+  return (
+    <div
+      role="group"
+      aria-label="Scegli il giorno"
+      className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]"
+    >
+      {dateOptions.map((option) => (
+        <button
+          key={option.iso}
+          type="button"
+          aria-pressed={date === option.iso}
+          onClick={() => onDateChange(option.iso)}
+          className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-[0.68rem] font-extrabold ${date === option.iso ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function PeriodSelection({
+  period,
+  onPeriodChange,
+}: {
+  period: BeachPeriod;
   onPeriodChange: (period: BeachPeriod) => void;
 }) {
-  const dayOptions = dateOptions;
-
   return (
-    <div className="grid grid-cols-1 gap-2 sm:grid-cols-[0.78fr_1.35fr]" aria-label="Data e fascia oraria">
-      <div className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]">
-        {dayOptions.map((option) => (
-          <button
-            key={option.iso}
-            type="button"
-            aria-pressed={date === option.iso}
-            onClick={() => onDateChange(option.iso)}
-            className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-[0.68rem] font-extrabold ${date === option.iso ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
-      <div className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]">
-        {periods.map((option) => (
-          <button
-            key={option.value}
-            type="button"
-            aria-pressed={period === option.value}
-            onClick={() => onPeriodChange(option.value)}
-            className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-[0.6rem] font-extrabold sm:text-xs ${period === option.value ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
+    <div
+      role="group"
+      aria-label="Scegli la fascia oraria"
+      className="mt-2 flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]"
+    >
+      {periods.map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          aria-pressed={period === option.value}
+          onClick={() => onPeriodChange(option.value)}
+          className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-[0.68rem] font-extrabold sm:text-xs ${period === option.value ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
+        >
+          {option.label}
+        </button>
+      ))}
     </div>
   );
 }
@@ -207,12 +243,14 @@ function AdviceCard({
   }
 
   const comment = getBeachAiComment(recommendation);
+  const tone = scoreTone(recommendation.score);
 
   return (
     <article
       role="note"
       aria-labelledby="mare-nostrum-advice-title"
-      className="detail-enter mt-3 rounded-[1.3rem] border border-[rgba(8,47,61,0.065)] bg-[linear-gradient(145deg,#e1dccf,#d9d3c6)] p-4 shadow-[0_9px_24px_rgba(8,47,61,0.075)] sm:p-5"
+      data-score-tone={tone}
+      className={`detail-enter mt-2 rounded-[1.3rem] border border-[rgba(8,47,61,0.065)] p-3 shadow-[0_9px_24px_rgba(8,47,61,0.075)] sm:p-4 ${scoreSurfaceClasses[tone]}`}
     >
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
@@ -222,11 +260,11 @@ function AdviceCard({
           </p>
           <strong className="mt-2 block text-xl tracking-[-0.035em] text-[var(--ink)]">{scoreHeadline(recommendation.score)}</strong>
         </div>
-        <span className="grid size-14 shrink-0 place-items-center rounded-full bg-[var(--sun)] text-xl font-black text-[#5c4009] shadow-[0_7px_16px_rgba(134,92,9,0.15)]">
+        <span className={`grid size-14 shrink-0 place-items-center rounded-full text-xl font-black shadow-[0_7px_16px_rgba(20,44,57,0.14)] ${scoreBadgeClasses[tone]}`}>
           {displayScore(recommendation.score)}
         </span>
       </div>
-      <p className="mt-3 text-sm font-medium leading-6 text-[var(--ink-soft)]">{comment.text}</p>
+      <p className="mt-2 text-sm font-medium leading-6 text-[var(--ink-soft)]">{comment.text}</p>
     </article>
   );
 }
@@ -252,7 +290,7 @@ function ConditionsCard({
     return (
       <>
         <SectionHeading title="Condizioni" meta="" />
-        <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-4 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-5">
+        <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-3 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-4">
           <p className="text-sm font-medium leading-6 text-[var(--ink-soft)]">Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.</p>
         </section>
       </>
@@ -275,14 +313,14 @@ function ConditionsCard({
         meta={formatObservedAt(conditions.observedAt)}
         stale={recommendation.confidence === "bassa"}
       />
-      <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-4 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-5">
+      <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-3 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-4">
         <div className="flex items-center gap-3">
           <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-lg">🌊</span>
           <div><h2 className="text-base font-bold tracking-[-0.025em]">{selectedDateLabel} al mare</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Previsioni per la selezione attiva</p></div>
         </div>
 
         {period === "all-day" ? (
-          <div role="group" aria-label="Confronto mattina e pomeriggio" className="mt-4 grid grid-cols-2 gap-2 border-b border-[var(--line)] pb-4">
+          <div role="group" aria-label="Confronto mattina e pomeriggio" className="mt-3 grid grid-cols-2 gap-2 border-b border-[var(--line)] pb-3">
             <DayPart label="Mattina" emoji="☀️" recommendation={morningRecommendation} summary={periodSummary(morningRecommendation, "morning")} />
             <DayPart label="Pomeriggio" emoji="🌬️" recommendation={afternoonRecommendation} summary={periodSummary(afternoonRecommendation, "afternoon")} />
           </div>
@@ -325,7 +363,7 @@ function ConditionItem({ icon, label, value, detail, border = "" }: { icon: Reac
 
 function SectionHeading({ title, meta, stale = false }: { title: string; meta: string; stale?: boolean }) {
   return (
-    <div className="mx-1 mb-2 mt-5 flex items-center justify-between gap-3">
+    <div className="mx-1 mb-2 mt-4 flex items-center justify-between gap-3">
       <h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2>
       <div className="flex flex-wrap justify-end gap-x-2 gap-y-1 text-right text-xs font-bold text-[var(--sea)]">
         <span>{meta}</span>

@@ -19,6 +19,10 @@
   --score-good: #438963;
   --score-caution: #e2b94c;
   --score-poor: #ce6256;
+  --score-excellent-soft: #e3eee8;
+  --score-good-soft: #e6f1e9;
+  --score-caution-soft: #fbf3d8;
+  --score-poor-soft: #f7e4e1;
   --background: var(--sand);
   --foreground: var(--ink);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
