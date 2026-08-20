@@ -1,0 +1,19 @@
+name: Sync beach forecasts
+
+on:
+  schedule:
+    - cron: "7 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call protected forecast endpoint
+        env:
+          FORECAST_SYNC_URL: ${{ secrets.FORECAST_SYNC_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          curl --fail-with-body --retry 3 \
+            --header "Authorization: Bearer ${CRON_SECRET}" \
+            "${FORECAST_SYNC_URL%/}/api/cron/forecast"
