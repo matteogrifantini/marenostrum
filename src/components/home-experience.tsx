@@ -9,6 +9,7 @@ import { FilterSheet, type BeachFilters } from "./filter-sheet";
 import { MobileNav } from "./mobile-nav";
 import { PageShell } from "./page-shell";
 import { PeriodPicker } from "./period-picker";
+import { ForecastAttribution } from "./forecast-attribution";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
 import type { DateOption } from "../domain/date-selection";
 
@@ -21,6 +22,21 @@ type HomeExperienceProps = {
 };
 
 const DEFAULT_FILTERS: BeachFilters = { access: "all", service: "all" };
+
+function formatObservedAt(observedAt: string) {
+  const date = new Date(observedAt);
+
+  if (Number.isNaN(date.getTime())) return "";
+
+  const time = new Intl.DateTimeFormat("it-IT", {
+    hour: "2-digit",
+    hourCycle: "h23",
+    minute: "2-digit",
+    timeZone: "Europe/Rome",
+  }).format(date);
+
+  return `aggiornate ${time}`;
+}
 
 export function HomeExperience({
   initialDate,
@@ -128,21 +144,24 @@ export function HomeExperience({
 
           <section id="classifica" className="scroll-mt-6 py-5 sm:py-7">
             {filteredRecommendations.length ? (
-              <ul
-                aria-label="Spiagge consigliate"
-                className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5"
-              >
-                {filteredRecommendations.map((recommendation, index) => (
-                  <li key={recommendation.beach.slug} className="min-w-0">
-                    <BeachCard
-                      recommendation={recommendation}
-                      date={date}
-                      period={period}
-                      eager={index < 4}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <>
+                <ul
+                  aria-label="Spiagge consigliate"
+                  className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5"
+                >
+                  {filteredRecommendations.map((recommendation, index) => (
+                    <li key={recommendation.beach.slug} className="min-w-0">
+                      <BeachCard
+                        recommendation={recommendation}
+                        date={date}
+                        period={period}
+                        eager={index < 4}
+                      />
+                    </li>
+                  ))}
+                </ul>
+                <ForecastTimestamp recommendations={filteredRecommendations} />
+              </>
             ) : (
               <div className="rounded-[1.75rem] bg-[var(--surface)] p-8 text-center shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
                 <h3 className="font-serif text-3xl font-semibold tracking-[-0.05em]">
@@ -171,6 +190,8 @@ export function HomeExperience({
             )}
           </section>
 
+          <ForecastAttribution />
+
         </div>
       </main>
 
@@ -182,5 +203,24 @@ export function HomeExperience({
       />
       <MobileNav />
     </PageShell>
+  );
+}
+
+function ForecastTimestamp({ recommendations }: { recommendations: BeachRecommendation[] }) {
+  const staleRecommendation = recommendations.find(
+    (recommendation) => recommendation.confidence === "bassa",
+  );
+  const recommendation = staleRecommendation ?? recommendations[0];
+  const timestamp = formatObservedAt(recommendation.conditions.observedAt);
+
+  if (!timestamp) return null;
+
+  return (
+    <div className="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[0.68rem] leading-5 text-[var(--muted)]">
+      <time dateTime={recommendation.conditions.observedAt}>{timestamp}</time>
+      {staleRecommendation ? (
+        <span>Dati non recenti: verifica le condizioni prima di partire.</span>
+      ) : null}
+    </div>
   );
 }

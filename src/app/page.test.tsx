@@ -119,6 +119,38 @@ function renderHome(
 }
 
 describe("HomeExperience", () => {
+  it("shows stale-data copy beside the forecast timestamp only for low confidence", () => {
+    const staleRecommendation = { ...recommendations[0], confidence: "bassa" as const };
+
+    renderHome({ recommendations: [staleRecommendation, ...recommendations.slice(1)] });
+
+    const timestamp = screen.getByText("aggiornate 08:00");
+    expect(timestamp.parentElement).toHaveTextContent(
+      "Dati non recenti: verifica le condizioni prima di partire.",
+    );
+  });
+
+  it("does not show stale-data copy for high-confidence forecasts", () => {
+    renderHome();
+
+    expect(
+      screen.queryByText("Dati non recenti: verifica le condizioni prima di partire."),
+    ).not.toBeInTheDocument();
+  });
+
+  it("renders attribution after the home ranking", () => {
+    renderHome();
+
+    const ranking = screen.getByRole("list", { name: "Spiagge consigliate" });
+    const attribution = screen.getByRole("contentinfo", {
+      name: "Attribuzione previsioni",
+    });
+
+    expect(
+      ranking.compareDocumentPosition(attribution) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
   it("shows four days and updates the beach links when the day changes", () => {
     renderHome();
 

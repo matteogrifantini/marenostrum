@@ -73,6 +73,28 @@ function renderDetail(
 }
 
 describe("BeachDetailExperience", () => {
+  it("shows stale-data copy beside the timestamp only for low confidence", () => {
+    renderDetail({ recommendation: { ...selected, confidence: "bassa" } });
+
+    const timestamp = screen.getByText("aggiornate 10:45");
+    expect(timestamp.parentElement).toHaveTextContent(
+      "Dati non recenti: verifica le condizioni prima di partire.",
+    );
+  });
+
+  it("renders attribution after the conditions section", () => {
+    renderDetail();
+
+    const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
+    const attribution = screen.getByRole("contentinfo", {
+      name: "Attribuzione previsioni",
+    });
+
+    expect(
+      conditions.compareDocumentPosition(attribution) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
   it("renders the live rain probability and Rome-local observation time", () => {
     renderDetail();
 

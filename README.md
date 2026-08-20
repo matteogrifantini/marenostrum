@@ -31,16 +31,18 @@ npm run lint
 npm run build
 ~~~
 
-## Configurazione Supabase
+## Configurazione runtime
 
-Compilare in .env.local:
+Le variabili runtime sono:
 
-~~~dotenv
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+~~~text
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+SUPABASE_SERVICE_ROLE_KEY
+CRON_SECRET
 ~~~
 
-La chiave publishable/anon è l’unica destinata al browser. Non aggiungere mai service_role, secret key o credenziali private a variabili NEXT_PUBLIC_*.
+Le variabili `SUPABASE_SERVICE_ROLE_KEY` e `CRON_SECRET` restano solo lato server. L’endpoint cron è protetto da `CRON_SECRET`; non inserire valori o segreti nel repository e non usare segreti in variabili `NEXT_PUBLIC_*`.
 
 La prima migrazione è in supabase/migrations/ e contiene:
 
@@ -50,7 +52,9 @@ La prima migrazione è in supabase/migrations/ e contiene:
 - PostGIS per la posizione;
 - grant SELECT e RLS con lettura limitata alle spiagge pubblicate.
 
-Il seed contiene contenuti dimostrativi: non rappresenta ancora dati operativi né fonti definitive.
+Il seed contiene contenuti dimostrativi: non rappresenta ancora dati operativi né fonti definitive. Le sezioni community restano una demo in questa release.
+
+Le previsioni Open-Meteo sono usate per una demo non commerciale. L’automazione locale usa lo scheduler gratuito di GitHub Actions per chiamare periodicamente l’endpoint protetto; URL e segreti restano configurati nelle GitHub Actions secrets.
 
 ## Architettura iniziale
 

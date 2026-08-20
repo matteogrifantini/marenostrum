@@ -11,6 +11,7 @@ import { HourlyForecast } from "./hourly-forecast";
 import { PageShell } from "./page-shell";
 import { BeachLiveSections } from "./beach-live-sections";
 import { BeachCommunitySections } from "./beach-community-sections";
+import { ForecastAttribution } from "./forecast-attribution";
 
 type BeachDetailExperienceProps = {
   beach: Beach;
@@ -130,6 +131,7 @@ export function BeachDetailExperience({
               afternoonRecommendation={afternoonRecommendation}
               dataUnavailable={dataUnavailable}
             />
+            <ForecastAttribution />
             <BeachLiveSections beach={beach} detail={detail} />
             <BeachCommunitySections detail={detail} />
           </div>
@@ -255,7 +257,11 @@ function ConditionsCard({
 
   return (
     <>
-      <SectionHeading title="Condizioni" meta={formatObservedAt(conditions.observedAt)} />
+      <SectionHeading
+        title="Condizioni"
+        meta={formatObservedAt(conditions.observedAt)}
+        stale={recommendation.confidence === "bassa"}
+      />
       <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-4 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-5">
         <div className="flex items-center gap-3">
           <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-lg">🌊</span>
@@ -304,6 +310,14 @@ function ConditionItem({ icon, label, value, detail, border = "" }: { icon: Reac
   );
 }
 
-function SectionHeading({ title, meta }: { title: string; meta: string }) {
-  return <div className="mx-1 mb-2 mt-5 flex items-center justify-between"><h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2><span className="text-xs font-bold text-[var(--sea)]">{meta}</span></div>;
+function SectionHeading({ title, meta, stale = false }: { title: string; meta: string; stale?: boolean }) {
+  return (
+    <div className="mx-1 mb-2 mt-5 flex items-center justify-between gap-3">
+      <h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2>
+      <div className="flex flex-wrap justify-end gap-x-2 gap-y-1 text-right text-xs font-bold text-[var(--sea)]">
+        <span>{meta}</span>
+        {stale ? <span>Dati non recenti: verifica le condizioni prima di partire.</span> : null}
+      </div>
+    </div>
+  );
 }
