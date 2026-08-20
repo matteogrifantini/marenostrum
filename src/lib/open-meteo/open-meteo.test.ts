@@ -168,6 +168,30 @@ describe("fetchOpenMeteoForecasts", () => {
     expect(fetcher).toHaveBeenCalledTimes(2);
   });
 
+  it("normalizes a 360 degree wind direction to the database-compatible zero degree value", async () => {
+    const weather = weatherPayload();
+    weather[0].hourly.wind_direction_10m[0] = 360;
+
+    const points = await fetchOpenMeteoForecasts(beaches, {
+      sourceId: "open-meteo-source",
+      fetcher: createFetcher(weather, marinePayload()),
+    });
+
+    expect(points[0]?.windDirectionDegrees).toBe(0);
+  });
+
+  it("normalizes a 360 degree wave direction to the database-compatible zero degree value", async () => {
+    const marine = marinePayload();
+    marine[0].hourly.wave_direction[1] = 360;
+
+    const points = await fetchOpenMeteoForecasts(beaches, {
+      sourceId: "open-meteo-source",
+      fetcher: createFetcher(weatherPayload(), marine),
+    });
+
+    expect(points[0]?.waveDirectionDegrees).toBe(0);
+  });
+
   it("rejects a response with a different number of locations", async () => {
     await expect(
       fetchOpenMeteoForecasts(beaches, {

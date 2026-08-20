@@ -213,6 +213,10 @@ function toUtcIso(epochSeconds: number, label: string): string {
   }
 }
 
+function normalizeDirectionDegrees(degrees: number): number {
+  return degrees === 360 ? 0 : degrees;
+}
+
 export async function fetchOpenMeteoForecasts(
   beaches: OpenMeteoBeach[],
   options: FetchOpenMeteoOptions,
@@ -273,11 +277,16 @@ export async function fetchOpenMeteoForecasts(
         observedAt,
         forecastAt: toUtcIso(timestamp, `weather location ${locationIndex}.time`),
         sourceQuality: "high",
-        windDirectionDegrees: weatherHourly.windDirectionDegrees[hourIndex],
+        windDirectionDegrees: normalizeDirectionDegrees(
+          weatherHourly.windDirectionDegrees[hourIndex],
+        ),
         windSpeedKmh: weatherHourly.windSpeedKmh[hourIndex],
         gustSpeedKmh: weatherHourly.gustSpeedKmh[hourIndex],
         waveHeightMeters: marineValues.waveHeightMeters,
-        waveDirectionDegrees: marineValues.waveDirectionDegrees,
+        waveDirectionDegrees:
+          marineValues.waveDirectionDegrees === null
+            ? null
+            : normalizeDirectionDegrees(marineValues.waveDirectionDegrees),
         weather: mapWmoWeatherCode(weatherHourly.weatherCode[hourIndex]),
         weatherCode: weatherHourly.weatherCode[hourIndex],
         temperatureCelsius: weatherHourly.temperatureCelsius[hourIndex],
