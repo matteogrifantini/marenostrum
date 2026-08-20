@@ -194,6 +194,10 @@ async function parseResponse(response: Response, provider: "weather" | "marine")
 }
 
 function parseLocations(payload: unknown, provider: "weather" | "marine", count: number): unknown[] {
+  if (count === 1 && typeof payload === "object" && payload !== null && !Array.isArray(payload)) {
+    return [payload];
+  }
+
   if (!Array.isArray(payload) || payload.length !== count) {
     return payloadError(`${provider} response must contain ${count} locations`);
   }

@@ -70,8 +70,8 @@ function response(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status });
 }
 
-function createFetcher(weather: unknown, marine: unknown): typeof fetch {
-  return vi.fn(async (input: RequestInfo | URL) => {
+function createFetcher(weather: unknown, marine: unknown) {
+  return vi.fn(async (input: RequestInfo | URL, _init?: RequestInit) => {
     const url = new URL(
       typeof input === "string" ? input : input instanceof URL ? input.href : input.url,
     );
@@ -137,6 +137,32 @@ describe("fetchOpenMeteoForecasts", () => {
       forecastAt: "2026-08-20T06:00:00.000Z",
       waveHeightMeters: 0.8,
       waterTemperatureCelsius: 24.5,
+    });
+    const urls = buildOpenMeteoUrls(beaches);
+    expect(fetcher.mock.calls[0]?.[0]).toBeInstanceOf(URL);
+    expect((fetcher.mock.calls[0]?.[0] as URL).href).toBe(urls.weather.href);
+    expect(fetcher.mock.calls[0]?.[1]).toEqual({ cache: "no-store" });
+    expect(fetcher.mock.calls[1]?.[0]).toBeInstanceOf(URL);
+    expect((fetcher.mock.calls[1]?.[0] as URL).href).toBe(urls.marine.href);
+    expect(fetcher.mock.calls[1]?.[1]).toEqual({ cache: "no-store" });
+    expect(fetcher).toHaveBeenCalledTimes(2);
+  });
+
+  it("normalizes singleton weather and marine payloads", async () => {
+    const [beach] = beaches;
+    const fetcher = createFetcher(weatherPayload()[0], marinePayload()[0]);
+
+    const points = await fetchOpenMeteoForecasts([beach], {
+      sourceId: "open-meteo-source",
+      fetcher,
+    });
+
+    expect(points).toHaveLength(2);
+    expect(points[0]).toMatchObject({
+      beachId: "b1",
+      forecastAt: "2026-08-20T06:00:00.000Z",
+      waveHeightMeters: 0.3,
+      waterTemperatureCelsius: 25.2,
     });
     expect(fetcher).toHaveBeenCalledTimes(2);
   });
