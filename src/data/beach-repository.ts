@@ -19,8 +19,8 @@ export type BeachRow = {
   description: string;
   orientation_degrees: number | string;
   orientation_label: string | null;
-  shelter: string[] | null;
-  tags: string[] | null;
+  shelter: string[];
+  tags: string[];
   access_level: BeachAccess;
   image_path: string | null;
   image_alt: string | null;
@@ -28,9 +28,9 @@ export type BeachRow = {
   image_license: string | null;
   latitude: number | string;
   longitude: number | string;
-  services: string[] | null;
-  warnings: string[] | null;
-  facts: string[] | null;
+  services: string[];
+  warnings: string[];
+  facts: string[];
 };
 
 export type DataSourceRow = {
@@ -120,10 +120,6 @@ function nullableFiniteNumber(value: number | string | null, field: string) {
   return value === null ? null : finiteNumber(value, field);
 }
 
-function stringList(value: string[] | null) {
-  return value ?? [];
-}
-
 export function mapBeachRow(row: BeachRow): Beach {
   return {
     slug: row.slug,
@@ -133,8 +129,8 @@ export function mapBeachRow(row: BeachRow): Beach {
     description: row.description,
     orientationDegrees: finiteNumber(row.orientation_degrees, "beach orientation"),
     orientationLabel: row.orientation_label ?? undefined,
-    shelter: stringList(row.shelter),
-    tags: stringList(row.tags),
+    shelter: row.shelter,
+    tags: row.tags,
     access: row.access_level,
     image: row.image_path ?? undefined,
     imageAlt: row.image_alt ?? undefined,
@@ -142,9 +138,9 @@ export function mapBeachRow(row: BeachRow): Beach {
     imageLicense: row.image_license ?? undefined,
     latitude: finiteNumber(row.latitude, "beach latitude"),
     longitude: finiteNumber(row.longitude, "beach longitude"),
-    services: stringList(row.services),
-    warnings: stringList(row.warnings),
-    facts: stringList(row.facts),
+    services: row.services,
+    warnings: row.warnings,
+    facts: row.facts,
   };
 }
 
