@@ -127,7 +127,7 @@ export function BeachDetailExperience({
         <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
           <DetailHero beach={beach} detail={detail} date={date} period={period} />
 
-          <div className="relative z-10 mt-3 bg-[var(--sand)] px-1 pt-3 sm:px-2">
+          <div className="relative z-10 mt-3 px-1 pt-3 sm:px-2">
             <div aria-busy={isPending}>
               <DaySelection
                 date={date}
