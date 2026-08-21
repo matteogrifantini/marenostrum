@@ -291,6 +291,7 @@ function ConditionsCard({
   const { conditions } = recommendation;
   const rainChance = formatAggregateMetric(conditions.precipitationProbabilityPercent ?? 0);
   const selectedDateLabel = dateOptions.find((option) => option.iso === date)?.label ?? date;
+  const forecastTitle = `Previsioni ${selectedDateLabel.toLocaleLowerCase("it-IT")}`;
   const windValue = `${directionName(conditions.windDirectionDegrees)} · ${formatAggregateMetric(conditions.windSpeedKmh)} km/h`;
   const waveValue = `${formatAggregateMetric(conditions.waveHeightMeters)} m`;
   const waterValue = conditions.waterTemperatureCelsius == null
@@ -306,7 +307,7 @@ function ConditionsCard({
       <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-3 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-4">
         <div className="flex items-center gap-3">
           <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-lg">🌊</span>
-          <div><h2 className="text-base font-bold tracking-[-0.025em]">{selectedDateLabel} al mare</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Previsioni per la selezione attiva</p></div>
+          <div><h2 className="text-base font-bold tracking-[-0.025em]">{forecastTitle}</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Previsioni per la selezione attiva</p></div>
         </div>
 
         {period === "all-day" ? (

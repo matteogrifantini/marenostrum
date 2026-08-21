@@ -145,7 +145,7 @@ describe("BeachDetailExperience", () => {
     });
 
     const conditionsPanel = screen.getByRole("region", { name: "Condizioni meteo" });
-    expect(within(conditionsPanel).getByRole("heading", { name: "Domani al mare" })).toBeInTheDocument();
+    expect(within(conditionsPanel).getByRole("heading", { name: "Previsioni domani" })).toBeInTheDocument();
     expect(within(conditionsPanel).getByLabelText("Vento: NO · 12 km/h")).toHaveTextContent(
       "NO · 12 km/h",
     );
@@ -153,6 +153,13 @@ describe("BeachDetailExperience", () => {
     expect(within(conditionsPanel).getByLabelText("Acqua: 29.7°")).toHaveTextContent("29.7°");
     expect(within(conditionsPanel).getByText("Vento 13.5 km/h")).toBeInTheDocument();
     expect(within(conditionsPanel).getByText("Raffiche fino a 29.7 km/h")).toBeInTheDocument();
+  });
+
+  it("uses the short calendar label in the forecast title", () => {
+    renderDetail({ date: "2026-08-23" });
+
+    const conditionsPanel = screen.getByRole("region", { name: "Condizioni meteo" });
+    expect(within(conditionsPanel).getByRole("heading", { name: "Previsioni dom 23" })).toBeInTheDocument();
   });
 
   it("keeps the beach and community content visible when forecast data is unavailable", () => {
