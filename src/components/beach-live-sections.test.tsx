@@ -42,7 +42,7 @@ describe("BeachLiveSections", () => {
           id: "community-1",
           emoji: "🌊",
           title: "Acqua",
-          detail: "Acqua limpida vicino alla riva",
+          detail: "Acqua limpida",
           age: "adesso",
         },
       }),
@@ -53,11 +53,20 @@ describe("BeachLiveSections", () => {
     fireEvent.click(screen.getByRole("button", { name: "Aggiungi" }));
 
     const composer = screen.getByRole("form", { name: "Aggiungi una segnalazione" });
+    expect(within(composer).queryByRole("textbox", { name: "Dettaglio (opzionale)" })).not.toBeInTheDocument();
+    expect(within(composer).getByRole("button", { name: "Pubblica" })).toBeDisabled();
     expect(within(composer).getByRole("radio", { name: "Acqua" })).toBeInTheDocument();
     fireEvent.click(within(composer).getByRole("radio", { name: "Acqua" }));
-    fireEvent.change(within(composer).getByRole("textbox", { name: "Dettaglio (opzionale)" }), {
-      target: { value: "Acqua limpida vicino alla riva" },
-    });
+    const detailChoices = within(composer).getByRole("group", { name: "Scegli il dettaglio" });
+    expect(within(detailChoices).getByRole("radio", { name: "Acqua limpida" })).toBeInTheDocument();
+    expect(within(detailChoices).getByRole("radio", { name: "Acqua torbida" })).toBeInTheDocument();
+
+    fireEvent.click(within(composer).getByRole("radio", { name: "Vento" }));
+    expect(within(composer).queryByRole("radio", { name: "Acqua limpida" })).not.toBeInTheDocument();
+    expect(within(composer).getByRole("radio", { name: "Vento forte" })).toBeInTheDocument();
+
+    fireEvent.click(within(composer).getByRole("radio", { name: "Acqua" }));
+    fireEvent.click(within(composer).getByRole("radio", { name: "Acqua limpida" }));
     fireEvent.click(within(composer).getByRole("button", { name: "Pubblica" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledWith(
@@ -67,11 +76,11 @@ describe("BeachLiveSections", () => {
         body: JSON.stringify({
           slug: recommendation.beach.slug,
           category: "water",
-          detail: "Acqua limpida vicino alla riva",
+          detail: "Acqua limpida",
         }),
       }),
     ));
-    await waitFor(() => expect(within(screen.getByRole("list", { name: "Segnalazioni recenti" })).getByText("Acqua limpida vicino alla riva")).toBeInTheDocument());
+    await waitFor(() => expect(within(screen.getByRole("list", { name: "Segnalazioni recenti" })).getByText("Acqua limpida")).toBeInTheDocument());
     expect(screen.queryByRole("form", { name: "Aggiungi una segnalazione" })).not.toBeInTheDocument();
   });
 

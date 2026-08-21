@@ -5,6 +5,7 @@ import { useState, type FormEvent } from "react";
 import type { Beach } from "../domain/beach";
 import {
   communityReportCategories,
+  getCommunityReportDetailOptions,
   type CommunityReportCategory,
 } from "../domain/community-reports";
 import type {
@@ -21,7 +22,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
   const [showAllReports, setShowAllReports] = useState(false);
   const [isComposerOpen, setIsComposerOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<CommunityReportCategory | null>(null);
-  const [draftDetail, setDraftDetail] = useState("");
+  const [selectedDetail, setSelectedDetail] = useState<string | null>(null);
   const [submitState, setSubmitState] = useState<"idle" | "submitting">("idle");
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [localReports, setLocalReports] = useState<BeachDetailReport[]>([]);
@@ -34,13 +35,13 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
   function closeComposer() {
     setIsComposerOpen(false);
     setSelectedCategory(null);
-    setDraftDetail("");
+    setSelectedDetail(null);
     setSubmitError(null);
   }
 
   async function handleReportSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!selectedCategory || submitState === "submitting") return;
+    if (!selectedCategory || !selectedDetail || submitState === "submitting") return;
 
     setSubmitState("submitting");
     setSubmitError(null);
@@ -52,7 +53,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
         body: JSON.stringify({
           slug: beach.slug,
           category: selectedCategory,
-          detail: draftDetail.trim(),
+          detail: selectedDetail,
         }),
       });
       const body = (await response.json().catch(() => null)) as {
@@ -131,7 +132,10 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
                         name={`report-category-${beach.slug}`}
                         value={option.value}
                         checked={isSelected}
-                        onChange={() => setSelectedCategory(option.value)}
+                        onChange={() => {
+                          setSelectedCategory(option.value);
+                          setSelectedDetail(null);
+                        }}
                       />
                       <span aria-hidden="true" className="text-base">{option.emoji}</span>
                       <span>{option.label}</span>
@@ -140,24 +144,39 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
                 })}
               </div>
             </fieldset>
-            <label htmlFor={`report-detail-${beach.slug}`} className="mt-3 block text-xs font-extrabold">
-              Dettaglio (opzionale)
-              <textarea
-                id={`report-detail-${beach.slug}`}
-                aria-label="Dettaglio (opzionale)"
-                value={draftDetail}
-                onChange={(event) => setDraftDetail(event.target.value)}
-                maxLength={280}
-                rows={3}
-                className="mt-1.5 block w-full resize-none rounded-[0.8rem] border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5 text-sm font-normal leading-5 text-[var(--ink)] outline-none transition focus:border-[var(--sea)]"
-              />
-            </label>
+            {selectedCategory ? (
+              <fieldset className="mt-3">
+                <legend className="text-xs font-extrabold">Scegli il dettaglio</legend>
+                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {getCommunityReportDetailOptions(selectedCategory).map((option) => {
+                    const isSelected = selectedDetail === option.label;
+
+                    return (
+                      <label
+                        key={option.value}
+                        className={`flex min-h-11 cursor-pointer items-center rounded-[0.8rem] border px-3 text-xs font-bold transition-colors ${isSelected ? "border-[var(--sea)] bg-[var(--sea-soft)] text-[var(--sea-deep)]" : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink-soft)]"}`}
+                      >
+                        <input
+                          className="sr-only"
+                          type="radio"
+                          name={`report-detail-${beach.slug}`}
+                          value={option.value}
+                          checked={isSelected}
+                          onChange={() => setSelectedDetail(option.label)}
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </fieldset>
+            ) : null}
             {submitError ? <p role="alert" className="mt-2 text-xs font-bold text-[var(--coral)]">{submitError}</p> : null}
             <div className="mt-3 flex justify-end gap-2">
               <button type="button" onClick={closeComposer} className="detail-press min-h-10 rounded-[0.75rem] px-3 text-xs font-extrabold text-[var(--muted)]">
                 Annulla
               </button>
-              <button type="submit" disabled={!selectedCategory || submitState === "submitting"} className="detail-press min-h-10 rounded-[0.75rem] bg-[var(--sea-soft)] px-4 text-xs font-extrabold text-[var(--sea-deep)] disabled:cursor-not-allowed disabled:opacity-50">
+              <button type="submit" disabled={!selectedCategory || !selectedDetail || submitState === "submitting"} className="detail-press min-h-10 rounded-[0.75rem] bg-[var(--sea-soft)] px-4 text-xs font-extrabold text-[var(--sea-deep)] disabled:cursor-not-allowed disabled:opacity-50">
                 {submitState === "submitting" ? "Invio…" : "Pubblica"}
               </button>
             </div>

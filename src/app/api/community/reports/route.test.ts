@@ -46,7 +46,7 @@ describe("handleCommunityReport", () => {
     const payload = {
       slug: "cala-del-gelsomino",
       category: "water",
-      detail: "Acqua limpida vicino alla riva",
+      detail: "Acqua limpida",
     };
 
     const response = await handleCommunityReport(
@@ -62,6 +62,26 @@ describe("handleCommunityReport", () => {
     expect(deps.create).toHaveBeenCalledWith(payload);
   });
 
+  it("rejects details that do not belong to the selected category", async () => {
+    const deps = dependencies();
+
+    const response = await handleCommunityReport(
+      new Request(url, {
+        method: "POST",
+        body: JSON.stringify({
+          slug: "cala-del-gelsomino",
+          category: "water",
+          detail: "Parcheggio pieno",
+        }),
+      }),
+      deps,
+    );
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ ok: false, error: "Dati non validi" });
+    expect(deps.create).not.toHaveBeenCalled();
+  });
+
   it("hides persistence failures from the browser", async () => {
     const deps = dependencies({
       create: vi.fn(async () => {
@@ -72,7 +92,7 @@ describe("handleCommunityReport", () => {
     const response = await handleCommunityReport(
       new Request(url, {
         method: "POST",
-        body: JSON.stringify({ slug: "cala-del-gelsomino", category: "water", detail: "" }),
+        body: JSON.stringify({ slug: "cala-del-gelsomino", category: "water", detail: "Acqua limpida" }),
       }),
       deps,
     );

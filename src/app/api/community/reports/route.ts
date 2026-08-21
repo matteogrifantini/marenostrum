@@ -4,6 +4,7 @@ import {
   type CommunityReportInput,
 } from "../../../../services/community-reports";
 import {
+  isCommunityReportDetail,
   isCommunityReportCategory,
   type CommunityReportCategory,
 } from "../../../../domain/community-reports";
@@ -24,7 +25,7 @@ function parseInput(value: unknown): CommunityReportInput | null {
   const detail = typeof body.detail === "string" ? body.detail.trim() : "";
   const category = body.category as CommunityReportCategory;
 
-  if (!slug || !isCommunityReportCategory(category) || detail.length > 280) {
+  if (!slug || !isCommunityReportCategory(category) || !detail || detail.length > 280 || !isCommunityReportDetail(category, detail)) {
     return null;
   }
 
