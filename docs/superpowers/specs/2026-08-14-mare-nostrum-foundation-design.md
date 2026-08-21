@@ -26,7 +26,7 @@ The data model separates stable beach facts from time-varying conditions and sou
 
 ## Visual direction
 
-Use an original “editorial coastal atlas” direction: warm sand background, deep ink typography, sea-blue and sun-orange status accents, real place-oriented copy, and clear map/list affordances. Avoid reproducing AURA’s logo, layout, copy, visual assets, or proprietary behavior. Avoid Bentu’s identity and screenshots. Use Lucide-style SVG icons rather than emoji, preserve visible focus states, use minimum 44px touch targets, and never encode status with color alone.
+Use an original “editorial coastal atlas” direction: warm sand background, deep ink typography, sea-blue and sun-orange status accents, real place-oriented copy, and clear map/list affordances. Keep the visual language, assets, copy, and behavior original to Mare Nostrum. Use Lucide-style SVG icons rather than emoji, preserve visible focus states, use minimum 44px touch targets, and never encode status with color alone.
 
 ## Constraints
 

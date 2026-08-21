@@ -175,7 +175,7 @@ describe("HomeExperience", () => {
     );
   });
 
-  it("uses a Mare Nostrum desktop navigation instead of an Aura-like link row", () => {
+  it("uses the Mare Nostrum desktop navigation", () => {
     renderHome();
 
     const desktopNavigation = screen.getByRole("navigation", { name: "Navigazione desktop" });

@@ -1,8 +1,8 @@
-# Aura-inspired Mare Nostrum Implementation Plan
+# Mare Nostrum Home Implementation Plan
 
 > For agentic workers: REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox syntax for tracking.
 
-**Goal:** Build a four-day, photo-first Mare Nostrum experience with Aura-inspired ranking, visible weather conditions, Apple-like interaction behavior, and a full beach detail route.
+**Goal:** Build a four-day, photo-first Mare Nostrum experience with a clear ranking, visible weather conditions, Apple-like interaction behavior, and a full beach detail route.
 
 **Architecture:** Keep the existing deterministic scoring domain, add a typed forecast/date layer around it, and render the home and detail route from the same recommendation contract. Use local licensed images in public/images/beaches, URL query parameters for date and period, and fixtures for four days so the UI is testable without remote credentials or live weather calls.
 
@@ -13,7 +13,7 @@
 - Use only free/open-source dependencies and Vercel/Supabase free-tier-compatible services for this increment.
 - Support Node.js 22 or newer for the test toolchain; the local executable is /opt/homebrew/opt/node@22/bin/node.
 - Do not expose SUPABASE_SERVICE_ROLE_KEY or any secret key to client code.
-- Do not copy AURA code, logo, text, image assets, API payloads, or protected brand identity; reproduce only observed product patterns with Mare Nostrum content.
+- Keep all code, logo, text, image assets, API payloads, and brand identity original to Mare Nostrum.
 - The home must expose exactly four selectable days: Oggi, Domani, and the two following calendar days.
 - The period selector must expose exactly Tutto il giorno, Mattina, and Pomeriggio.
 - Do not use relax, famiglie, selvaggia, or acqua calma as the primary navigation taxonomy; factual beach attributes may appear as secondary signals when supported by data.
@@ -297,7 +297,7 @@ Also assert that Tutto il giorno, Mattina, and Pomeriggio are present and that n
 
 Keep the page client-side only where interaction requires it. Render the selected date and period from normalized values, use getDemoRecommendationsFor, and generate stable links for cards. Preserve the existing no-credentials behavior. Do not add a live Supabase query in this task.
 
-- [ ] Step 3: Implement the Aura-inspired home hierarchy.
+- [ ] Step 3: Implement the Mare Nostrum home hierarchy.
 
 Build, in order:
 

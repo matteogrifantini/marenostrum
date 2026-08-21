@@ -1,16 +1,15 @@
-# Mare Nostrum — Aura-inspired home and beach detail
+# Mare Nostrum — home e scheda spiaggia
 
 ## Obiettivo
 
-Rifare la home e la scheda spiaggia di Mare Nostrum seguendo il modello di
-prodotto verificato su AURA Beach Advisor: aiutare a scegliere dove andare al
-mare in base al giorno e alle condizioni, con una classifica immediata e dati
-leggibili. L'implementazione avrà identità, dati e asset propri della Sicilia;
-non copierà codice, marchio o contenuti protetti di AURA.
+Rifare la home e la scheda spiaggia di Mare Nostrum per aiutare a scegliere
+dove andare al mare in base al giorno e alle condizioni, con una classifica
+immediata e dati leggibili. L'implementazione avrà identità, dati e asset
+propri della Sicilia, mantenendo codice, marchio e contenuti originali.
 
-## Evidenze dal reverse engineering
+## Principi di prodotto
 
-La home di AURA usa questa gerarchia:
+La home di Mare Nostrum usa questa gerarchia:
 
 1. Hero fotografica con data e promessa molto chiara.
 2. Selettore dei giorni: oggi, domani e i due giorni successivi.
@@ -154,7 +153,7 @@ di terze parti.
 - autenticazione e profilo;
 - preferiti persistenti;
 - nuovo provider di mappe;
-- scraping di AURA o riuso di codice/contenuti proprietari;
+- scraping di siti terzi o riuso di codice/contenuti proprietari;
 - categorie generiche non supportate dai dati;
 - connessione live al meteo prima che la UI a quattro giorni sia verificata.
 
