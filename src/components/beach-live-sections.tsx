@@ -1,9 +1,16 @@
 "use client";
 
-import { ArrowUpRight, Check, MapPin, Plus } from "lucide-react";
-import { useState } from "react";
+import { ArrowUpRight, MapPin, Plus, X } from "lucide-react";
+import { useState, type FormEvent } from "react";
 import type { Beach } from "../domain/beach";
-import type { BeachDetailContent } from "../data/demo-beach-details";
+import {
+  communityReportCategories,
+  type CommunityReportCategory,
+} from "../domain/community-reports";
+import type {
+  BeachDetailContent,
+  BeachDetailReport,
+} from "../data/demo-beach-details";
 
 type BeachLiveSectionsProps = {
   beach: Beach;
@@ -12,11 +19,60 @@ type BeachLiveSectionsProps = {
 
 export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
   const [showAllReports, setShowAllReports] = useState(false);
-  const [reportReady, setReportReady] = useState(false);
-  const reports = showAllReports ? detail.reports : detail.reports.slice(0, 3);
+  const [isComposerOpen, setIsComposerOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<CommunityReportCategory | null>(null);
+  const [draftDetail, setDraftDetail] = useState("");
+  const [submitState, setSubmitState] = useState<"idle" | "submitting">("idle");
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [localReports, setLocalReports] = useState<BeachDetailReport[]>([]);
+  const allReports = [...localReports, ...detail.reports];
+  const reports = showAllReports ? allReports : allReports.slice(0, 3);
   const mapsQuery = beach.latitude && beach.longitude
     ? `${beach.latitude},${beach.longitude}`
     : beach.name;
+
+  function closeComposer() {
+    setIsComposerOpen(false);
+    setSelectedCategory(null);
+    setDraftDetail("");
+    setSubmitError(null);
+  }
+
+  async function handleReportSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!selectedCategory || submitState === "submitting") return;
+
+    setSubmitState("submitting");
+    setSubmitError(null);
+
+    try {
+      const response = await fetch("/api/community/reports", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          slug: beach.slug,
+          category: selectedCategory,
+          detail: draftDetail.trim(),
+        }),
+      });
+      const body = (await response.json().catch(() => null)) as {
+        report?: BeachDetailReport;
+        error?: string;
+      } | null;
+      const report = body?.report;
+
+      if (!response.ok || !report) {
+        throw new Error(body?.error ?? "Community report submission failed");
+      }
+
+      setLocalReports((current) => [report, ...current]);
+      closeComposer();
+    } catch {
+      setSubmitError("Non siamo riusciti ad aggiungerla. Riprova.");
+    } finally {
+      setSubmitState("idle");
+    }
+  }
 
   return (
     <>
@@ -37,13 +93,76 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
         {reports.length === 0 ? <p className="mt-3 text-sm text-[var(--muted)]">Nessuna segnalazione recente disponibile.</p> : null}
         <div className="mt-3 grid grid-cols-2 gap-2">
           <button type="button" onClick={() => setShowAllReports((current) => !current)} className="detail-press min-h-11 rounded-[0.85rem] bg-[var(--surface-muted)] px-2 text-xs font-extrabold">
-            {showAllReports ? "Mostra meno" : `Mostra tutte · ${detail.reports.length}`}
+            {showAllReports ? "Mostra meno" : `Mostra tutte · ${allReports.length}`}
           </button>
-          <button type="button" aria-pressed={reportReady} onClick={() => setReportReady(true)} className="detail-press inline-flex min-h-11 items-center justify-center gap-1 rounded-[0.85rem] border border-[var(--sea)]/15 bg-[var(--sea-soft)]/65 px-2 text-xs font-extrabold text-[var(--sea-deep)]">
-            {reportReady ? <Check aria-hidden="true" size={15} /> : <Plus aria-hidden="true" size={15} />} Pronta
+          <button
+            type="button"
+            aria-expanded={isComposerOpen}
+            aria-label={isComposerOpen ? "Chiudi" : "Aggiungi"}
+            onClick={() => {
+              if (isComposerOpen) {
+                closeComposer();
+              } else {
+                setSubmitError(null);
+                setIsComposerOpen(true);
+              }
+            }}
+            className="detail-press inline-flex min-h-11 items-center justify-center gap-1 rounded-[0.85rem] border border-[var(--sea)]/15 bg-[var(--sea-soft)]/65 px-2 text-xs font-extrabold text-[var(--sea-deep)]"
+          >
+            {isComposerOpen ? <X aria-hidden="true" size={15} /> : <Plus aria-hidden="true" size={15} />} {isComposerOpen ? "Chiudi" : "Aggiungi"}
           </button>
         </div>
-        {reportReady ? <p aria-live="polite" className="mt-3 text-center text-xs font-semibold text-[var(--sea-deep)]">La segnalazione verrà inviata dalla community area.</p> : null}
+        {isComposerOpen ? (
+          <form aria-label="Aggiungi una segnalazione" onSubmit={handleReportSubmit} className="mt-4 rounded-[1rem] bg-[var(--surface-muted)]/70 p-3">
+            <fieldset>
+              <legend className="text-sm font-extrabold">Cosa vuoi segnalare?</legend>
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                {communityReportCategories.map((option) => {
+                  const isSelected = selectedCategory === option.value;
+
+                  return (
+                    <label
+                      key={option.value}
+                      className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-[0.8rem] border px-3 text-xs font-bold transition-colors ${isSelected ? "border-[var(--sea)] bg-[var(--sea-soft)] text-[var(--sea-deep)]" : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink-soft)]"}`}
+                    >
+                      <input
+                        className="sr-only"
+                        type="radio"
+                        name={`report-category-${beach.slug}`}
+                        value={option.value}
+                        checked={isSelected}
+                        onChange={() => setSelectedCategory(option.value)}
+                      />
+                      <span aria-hidden="true" className="text-base">{option.emoji}</span>
+                      <span>{option.label}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+            <label htmlFor={`report-detail-${beach.slug}`} className="mt-3 block text-xs font-extrabold">
+              Dettaglio (opzionale)
+              <textarea
+                id={`report-detail-${beach.slug}`}
+                aria-label="Dettaglio (opzionale)"
+                value={draftDetail}
+                onChange={(event) => setDraftDetail(event.target.value)}
+                maxLength={280}
+                rows={3}
+                className="mt-1.5 block w-full resize-none rounded-[0.8rem] border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5 text-sm font-normal leading-5 text-[var(--ink)] outline-none transition focus:border-[var(--sea)]"
+              />
+            </label>
+            {submitError ? <p role="alert" className="mt-2 text-xs font-bold text-[var(--coral)]">{submitError}</p> : null}
+            <div className="mt-3 flex justify-end gap-2">
+              <button type="button" onClick={closeComposer} className="detail-press min-h-10 rounded-[0.75rem] px-3 text-xs font-extrabold text-[var(--muted)]">
+                Annulla
+              </button>
+              <button type="submit" disabled={!selectedCategory || submitState === "submitting"} className="detail-press min-h-10 rounded-[0.75rem] bg-[var(--sea-soft)] px-4 text-xs font-extrabold text-[var(--sea-deep)] disabled:cursor-not-allowed disabled:opacity-50">
+                {submitState === "submitting" ? "Invio…" : "Pubblica"}
+              </button>
+            </div>
+          </form>
+        ) : null}
       </section>
 
       <section aria-label="Parcheggi vicini">

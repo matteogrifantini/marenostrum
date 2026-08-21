@@ -10,6 +10,7 @@ import {
 } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
 import { normalizeDetailQuery } from "../../../domain/detail-query";
+import { getCommunityReportsForBeach } from "../../../services/community-reports";
 
 type DetailSearchParams = {
   date?: string | string[];
@@ -60,7 +61,11 @@ export default async function BeachPage({
 
   if (!bundle) notFound();
 
-  const detail = getDemoBeachDetail(slug) ?? emptyBeachDetailContent;
+  const baseDetail = getDemoBeachDetail(slug) ?? emptyBeachDetailContent;
+  const communityReports = await getCommunityReportsForBeach(slug);
+  const detail = communityReports.length > 0
+    ? { ...baseDetail, reports: [...communityReports, ...baseDetail.reports] }
+    : baseDetail;
 
   return (
     <BeachDetailExperience

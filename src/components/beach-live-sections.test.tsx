@@ -1,10 +1,14 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { demoRecommendations } from "../data/demo-beaches";
 import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { BeachLiveSections } from "./beach-live-sections";
 
 describe("BeachLiveSections", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
   it("shows three reports first without redundant live-status copy", () => {
     const recommendation = demoRecommendations[0];
     const detail = getDemoBeachDetail(recommendation.beach.slug)!;
@@ -24,8 +28,51 @@ describe("BeachLiveSections", () => {
     fireEvent.click(screen.getByRole("button", { name: "Mostra meno" }));
     expect(within(reports).getAllByRole("listitem")).toHaveLength(3);
 
-    const reportAction = screen.getByRole("button", { name: "Pronta" });
+    const reportAction = screen.getByRole("button", { name: "Aggiungi" });
     expect(reportAction).toHaveClass("bg-[var(--sea-soft)]/65");
+  });
+
+  it("opens a report composer and publishes a new report", async () => {
+    const recommendation = demoRecommendations[0];
+    const detail = getDemoBeachDetail(recommendation.beach.slug)!;
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        report: {
+          id: "community-1",
+          emoji: "🌊",
+          title: "Acqua",
+          detail: "Acqua limpida vicino alla riva",
+          age: "adesso",
+        },
+      }),
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Aggiungi" }));
+
+    const composer = screen.getByRole("form", { name: "Aggiungi una segnalazione" });
+    expect(within(composer).getByRole("radio", { name: "Acqua" })).toBeInTheDocument();
+    fireEvent.click(within(composer).getByRole("radio", { name: "Acqua" }));
+    fireEvent.change(within(composer).getByRole("textbox", { name: "Dettaglio (opzionale)" }), {
+      target: { value: "Acqua limpida vicino alla riva" },
+    });
+    fireEvent.click(within(composer).getByRole("button", { name: "Pubblica" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledWith(
+      "/api/community/reports",
+      expect.objectContaining({
+        method: "POST",
+        body: JSON.stringify({
+          slug: recommendation.beach.slug,
+          category: "water",
+          detail: "Acqua limpida vicino alla riva",
+        }),
+      }),
+    ));
+    await waitFor(() => expect(within(screen.getByRole("list", { name: "Segnalazioni recenti" })).getByText("Acqua limpida vicino alla riva")).toBeInTheDocument());
+    expect(screen.queryByRole("form", { name: "Aggiungi una segnalazione" })).not.toBeInTheDocument();
   });
 
   it("keeps parking and permanent beach information visible", () => {
