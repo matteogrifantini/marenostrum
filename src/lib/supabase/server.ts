@@ -7,6 +7,14 @@ import {
   type DataSourceRow,
   type ForecastReadStore,
 } from "../../data/beach-repository";
+import type {
+  BeachContentReadStore,
+  BeachSourceRow,
+  MediaItemRow,
+  ParkingFacilityRow,
+  ReviewProfileRow,
+  WebcamRow,
+} from "../../data/beach-content-repository";
 import { getSupabasePublicConfig } from "./config";
 
 export async function createClient() {
@@ -94,6 +102,91 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
 
       if (error) throwReadError("Forecast data is unavailable");
       return (data ?? []) as BeachConditionRow[];
+    },
+  };
+}
+
+export async function createSupabaseBeachContentReadStore(): Promise<BeachContentReadStore> {
+  if (!getSupabasePublicConfig()) {
+    throw new ForecastDataUnavailableError("Supabase public configuration is missing");
+  }
+
+  const client = await createClient();
+
+  if (!client) {
+    throw new ForecastDataUnavailableError("Supabase public configuration is missing");
+  }
+
+  return {
+    async getPublishedBeachBySlug(slug) {
+      const { data, error } = await client
+        .from("beaches")
+        .select("id")
+        .eq("slug", slug)
+        .eq("is_published", true)
+        .maybeSingle();
+
+      if (error) throwReadError("Published beach content is unavailable");
+      return data as { id: string } | null;
+    },
+
+    async getBeachSources(beachId) {
+      const { data, error } = await client
+        .from("beach_sources")
+        .select("id, beach_id, source_name, source_type, source_url, is_primary, source_hash, checked_at, next_check_at, notes")
+        .eq("beach_id", beachId)
+        .order("is_primary", { ascending: false });
+
+      if (error) throwReadError("Beach sources are unavailable");
+      return (data ?? []) as BeachSourceRow[];
+    },
+
+    async getParkingFacilities(beachId) {
+      const { data, error } = await client
+        .from("parking_facilities")
+        .select("id, beach_id, source_id, name, facility_type, latitude, longitude, pricing_note, access_note, official_url, content_status, checked_at, expires_at")
+        .eq("beach_id", beachId)
+        .in("content_status", ["verified", "stale"])
+        .order("checked_at", { ascending: false, nullsFirst: false });
+
+      if (error) throwReadError("Parking content is unavailable");
+      return (data ?? []) as ParkingFacilityRow[];
+    },
+
+    async getMediaItems(beachId) {
+      const { data, error } = await client
+        .from("media_items")
+        .select("id, beach_id, source_id, kind, provider, provider_item_id, source_url, media_url, storage_path, thumbnail_url, credit, license, captured_at, verified_at, expires_at, publication_status")
+        .eq("beach_id", beachId)
+        .in("publication_status", ["verified", "stale"])
+        .order("verified_at", { ascending: false, nullsFirst: false });
+
+      if (error) throwReadError("Beach media is unavailable");
+      return (data ?? []) as MediaItemRow[];
+    },
+
+    async getWebcams(beachId) {
+      const { data, error } = await client
+        .from("webcams")
+        .select("id, beach_id, source_id, name, provider, page_url, snapshot_url, stream_url, latitude, longitude, status, content_status, last_checked_at, next_check_at, notes")
+        .eq("beach_id", beachId)
+        .in("content_status", ["verified", "stale"])
+        .order("last_checked_at", { ascending: false, nullsFirst: false });
+
+      if (error) throwReadError("Webcam content is unavailable");
+      return (data ?? []) as WebcamRow[];
+    },
+
+    async getReviewProfiles(beachId) {
+      const { data, error } = await client
+        .from("review_profiles")
+        .select("id, beach_id, provider, place_id, maps_url, verification_status, checked_at, next_check_at, notes")
+        .eq("beach_id", beachId)
+        .in("verification_status", ["verified", "stale"])
+        .order("checked_at", { ascending: false, nullsFirst: false });
+
+      if (error) throwReadError("Review profile is unavailable");
+      return (data ?? []) as ReviewProfileRow[];
     },
   };
 }
