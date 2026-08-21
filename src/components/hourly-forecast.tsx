@@ -12,7 +12,7 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
     <section aria-label="Previsioni orarie" className="mt-7">
       <div
         aria-label="Previsioni orarie scorrevoli"
-        className="relative overflow-x-auto rounded-[1.25rem] pb-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)]"
+        className="hourly-rail relative overflow-x-auto rounded-[1.25rem] pb-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)]"
         role="region"
         tabIndex={0}
       >
@@ -62,10 +62,6 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
             </div>
           ))}
         </div>
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[var(--surface)] via-[var(--surface)]/80 to-transparent"
-        />
       </div>
     </section>
   );

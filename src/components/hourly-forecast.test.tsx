@@ -27,8 +27,10 @@ describe("HourlyForecast", () => {
     render(<HourlyForecast hourly={hourly} />);
 
     const timeline = screen.getByRole("list", { name: "Previsioni orarie" });
+    const scroller = screen.getByRole("region", { name: "Previsioni orarie scorrevoli" });
 
     expect(timeline).toBeInTheDocument();
+    expect(scroller).toHaveClass("hourly-rail");
     expect(timeline).toHaveClass("gap-3");
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     expect(screen.getByText("08:00")).toBeInTheDocument();

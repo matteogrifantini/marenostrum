@@ -123,7 +123,7 @@ export function BeachDetailExperience({
 
   return (
     <PageShell>
-      <main className="min-h-screen pb-24 lg:pb-8">
+      <main className="detail-page min-h-screen pb-24 lg:pb-8">
         <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
           <DetailHero beach={beach} detail={detail} date={date} period={period} />
 
@@ -173,7 +173,7 @@ function DaySelection({
     <div
       role="group"
       aria-label="Scegli il giorno"
-      className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]"
+      className="flex min-w-0 rounded-[0.9rem] bg-[var(--surface-muted)] p-1"
     >
       {dateOptions.map((option) => (
         <button
@@ -181,7 +181,7 @@ function DaySelection({
           type="button"
           aria-pressed={date === option.iso}
           onClick={() => onDateChange(option.iso)}
-          className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-[0.68rem] font-extrabold ${date === option.iso ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
+          className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-center text-xs font-extrabold ${date === option.iso ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
         >
           {option.label}
         </button>
@@ -209,7 +209,7 @@ function PeriodSelection({
           type="button"
           aria-pressed={period === option.value}
           onClick={() => onPeriodChange(option.value)}
-          className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-[0.68rem] font-extrabold sm:text-xs ${period === option.value ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
+          className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-center text-xs font-extrabold ${period === option.value ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
         >
           {option.label}
         </button>

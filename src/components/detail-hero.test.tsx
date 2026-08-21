@@ -39,4 +39,23 @@ describe("DetailHero", () => {
     fireEvent.click(screen.getByRole("button", { name: "Chiudi video" }));
     expect(screen.queryByRole("dialog", { name: "Video della spiaggia" })).not.toBeInTheDocument();
   });
+
+  it("turns the favorite heart red when the beach is saved", () => {
+    const detail = getDemoBeachDetail(beach.slug)!;
+
+    render(
+      <DetailHero
+        beach={beach}
+        detail={detail}
+        date="2026-08-20"
+        period="all-day"
+      />,
+    );
+
+    const favorite = screen.getByRole("button", { name: `Salva ${beach.name}` });
+    fireEvent.click(favorite);
+
+    expect(favorite).toHaveAttribute("aria-pressed", "true");
+    expect(favorite).toHaveClass("text-[var(--score-poor)]");
+  });
 });

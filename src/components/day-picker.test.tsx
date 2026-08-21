@@ -47,11 +47,16 @@ describe("DayPicker", () => {
     expect(screen.getByRole("group", { name: "Scegli il giorno" })).toHaveClass(
       "lg:flex-1",
       "lg:pb-0",
+      "bg-[var(--surface-muted)]",
+      "p-1",
     );
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveClass(
       "lg:flex",
       "lg:whitespace-nowrap",
+      "text-center",
     );
+    expect(screen.getByRole("button", { name: "Oggi" })).not.toHaveTextContent("sab 15");
+    expect(screen.getByRole("button", { name: "Domani" })).not.toHaveTextContent("dom 16");
     expect(screen.getAllByText("lun 17")).toHaveLength(1);
     expect(screen.getAllByText("mar 18")).toHaveLength(1);
   });

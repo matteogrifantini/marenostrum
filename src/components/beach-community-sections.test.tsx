@@ -28,8 +28,9 @@ describe("BeachCommunitySections", () => {
     expect(within(photos).getAllByRole("img")).toHaveLength(detail.recentPhotos.length);
 
     const webcam = screen.getByRole("region", { name: "Webcam più vicina" });
-    expect(within(webcam).getByText(detail.webcam.name)).toBeInTheDocument();
-    expect(within(webcam).getByText(`${detail.webcam.distanceKm.toFixed(1)} km`)).toBeInTheDocument();
+    const webcamName = within(webcam).getByText(detail.webcam.name);
+    const webcamDistance = within(webcam).getByText(`${detail.webcam.distanceKm.toFixed(1)} km`);
+    expect(webcamDistance.parentElement).toBe(webcamName.parentElement);
     expect(within(webcam).getByText(detail.webcam.updated)).toBeInTheDocument();
   });
 });

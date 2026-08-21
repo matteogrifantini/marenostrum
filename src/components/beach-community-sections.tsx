@@ -54,14 +54,17 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
       </section>
 
       <section aria-label="Webcam più vicina">
-        <SectionHeading title="Webcam più vicina" meta={webcam ? `${webcam.distanceKm.toFixed(1)} km` : ""} />
+        <SectionHeading title="Webcam più vicina" />
         {webcam ? (
           <article className="detail-surface detail-enter relative h-40 overflow-hidden text-white">
             <Image src={webcam.image} alt={webcam.alt} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(5,55,61,0.92)] via-[rgba(5,55,61,0.62)] to-[rgba(5,55,61,0.18)]" />
             <div className="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5">
               <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1.5 text-[0.65rem] font-black backdrop-blur-md"><span aria-hidden="true" className={`size-2 rounded-full ${webcam.live ? "bg-[#ff7466]" : "bg-white/55"}`} /> {webcam.live ? "WEBCAM LIVE" : "WEBCAM"}</span>
-              <strong className="text-xl">{webcam.name}</strong>
+              <div className="flex items-center justify-between gap-3">
+                <strong className="text-xl">{webcam.name}</strong>
+                <span className="shrink-0 text-xs font-bold text-white/80">{webcam.distanceKm.toFixed(1)} km</span>
+              </div>
               <p className="mt-1 text-xs text-white/75">{webcam.updated}</p>
             </div>
           </article>
@@ -71,6 +74,6 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
   );
 }
 
-function SectionHeading({ title, meta }: { title: string; meta: string }) {
+function SectionHeading({ title, meta }: { title: string; meta?: string }) {
   return <div className="mx-1 mb-2 mt-5 flex items-center justify-between"><h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2>{meta ? <span className="text-xs font-bold text-[var(--sea)]">{meta}</span> : null}</div>;
 }

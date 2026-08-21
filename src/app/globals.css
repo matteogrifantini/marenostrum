@@ -105,8 +105,9 @@ a:focus-visible {
   border-radius: 0.65rem;
   background: var(--surface-muted);
   box-shadow: inset 0 0 0 1px rgba(8, 47, 61, 0.04);
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   font-size: 1rem;
-  transform: rotate(-3deg);
+  line-height: 1;
 }
 
 .detail-press {
@@ -141,6 +142,31 @@ a:focus-visible {
 .detail-photo-rail {
   overscroll-behavior-inline: contain;
   scroll-snap-type: x mandatory;
+}
+
+.hourly-rail {
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.hourly-rail::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .detail-page .text-xs {
+    font-size: 0.8125rem;
+    line-height: 1.35rem;
+  }
+
+  .detail-page .text-\[0\.62rem\],
+  .detail-page .text-\[0\.65rem\],
+  .detail-page .text-\[0\.68rem\],
+  .detail-page .text-\[0\.7rem\] {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
 }
 
 @keyframes detail-rise-in {

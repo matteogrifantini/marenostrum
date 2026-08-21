@@ -17,9 +17,15 @@ describe("BeachLiveSections", () => {
 
     const reports = screen.getByRole("list", { name: "Segnalazioni recenti" });
     expect(within(reports).getAllByRole("listitem")).toHaveLength(3);
+    expect(within(reports).getByText("12 min fa")).toHaveClass("text-xs");
 
     fireEvent.click(screen.getByRole("button", { name: `Mostra tutte · ${detail.reports.length}` }));
     expect(within(reports).getAllByRole("listitem")).toHaveLength(detail.reports.length);
+    fireEvent.click(screen.getByRole("button", { name: "Mostra meno" }));
+    expect(within(reports).getAllByRole("listitem")).toHaveLength(3);
+
+    const reportAction = screen.getByRole("button", { name: "Pronta" });
+    expect(reportAction).toHaveClass("bg-[var(--sea-soft)]/65");
   });
 
   it("keeps parking and permanent beach information visible", () => {
@@ -34,6 +40,7 @@ describe("BeachLiveSections", () => {
     }
 
     const general = screen.getByRole("region", { name: "Informazioni generali" });
+    expect(within(general).queryByText("informazioni generali")).not.toBeInTheDocument();
     for (const fact of detail.facts) {
       expect(within(general).getByText(fact.label)).toBeInTheDocument();
       expect(within(general).getByText(fact.value)).toBeInTheDocument();

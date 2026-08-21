@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, MapPin, Plus } from "lucide-react";
+import { ArrowUpRight, Check, MapPin, Plus } from "lucide-react";
 import { useState } from "react";
 import type { Beach } from "../domain/beach";
 import type { BeachDetailContent } from "../data/demo-beach-details";
@@ -30,21 +30,17 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
                 <strong className="block text-sm">{report.title}</strong>
                 <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{report.detail}</p>
               </div>
-              <time className="pt-0.5 text-[0.65rem] font-bold text-[var(--muted)]">{report.age}</time>
+              <time className="pt-0.5 text-xs font-bold text-[var(--muted)]">{report.age}</time>
             </li>
           ))}
         </ul>
         {reports.length === 0 ? <p className="mt-3 text-sm text-[var(--muted)]">Nessuna segnalazione recente disponibile.</p> : null}
         <div className="mt-3 grid grid-cols-2 gap-2">
-          {showAllReports ? (
-            <span className="grid min-h-11 place-items-center rounded-[0.85rem] bg-[var(--surface-muted)] text-xs font-bold text-[var(--muted)]">Tutte visibili</span>
-          ) : (
-            <button type="button" onClick={() => setShowAllReports(true)} className="detail-press min-h-11 rounded-[0.85rem] bg-[var(--surface-muted)] px-2 text-xs font-extrabold">
-              Mostra tutte · {detail.reports.length}
-            </button>
-          )}
-          <button type="button" onClick={() => setReportReady(true)} className="detail-press inline-flex min-h-11 items-center justify-center gap-1 rounded-[0.85rem] bg-[var(--sea)] px-2 text-xs font-extrabold text-white">
-            <Plus aria-hidden="true" size={15} /> {reportReady ? "Pronta" : "Aggiungi"}
+          <button type="button" onClick={() => setShowAllReports((current) => !current)} className="detail-press min-h-11 rounded-[0.85rem] bg-[var(--surface-muted)] px-2 text-xs font-extrabold">
+            {showAllReports ? "Mostra meno" : `Mostra tutte · ${detail.reports.length}`}
+          </button>
+          <button type="button" aria-pressed={reportReady} onClick={() => setReportReady(true)} className="detail-press inline-flex min-h-11 items-center justify-center gap-1 rounded-[0.85rem] border border-[var(--sea)]/15 bg-[var(--sea-soft)]/65 px-2 text-xs font-extrabold text-[var(--sea-deep)]">
+            {reportReady ? <Check aria-hidden="true" size={15} /> : <Plus aria-hidden="true" size={15} />} Pronta
           </button>
         </div>
         {reportReady ? <p aria-live="polite" className="mt-3 text-center text-xs font-semibold text-[var(--sea-deep)]">La segnalazione verrà inviata dalla community area.</p> : null}
@@ -71,7 +67,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
       </section>
 
       <section aria-label="Informazioni generali">
-        <SectionHeading title="La spiaggia" meta="informazioni generali" />
+        <SectionHeading title="La spiaggia" />
         <article className="detail-surface detail-enter p-4 sm:p-5">
           <CardTitle emoji="🏖️" title={beach.name} subtitle="Caratteristiche che non cambiano col meteo" />
           <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--muted)]"><MapPin aria-hidden="true" size={14} /> {beach.municipality} · costa {beach.coast.toLowerCase()}</p>
