@@ -107,7 +107,7 @@ export function HomeExperience({
     <PageShell>
       <main className="min-h-screen pb-24 lg:pb-8">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8">
-          <section className="mt-4 sm:mt-6">
+          <section className="mx-auto mt-4 w-full max-w-4xl sm:mt-6">
             <label htmlFor="beach-search" className="sr-only">
               Cerca una spiaggia
             </label>
@@ -132,7 +132,7 @@ export function HomeExperience({
 
           <section
             aria-busy={isPending}
-            className="mt-3 overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,253,248,0.82)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3"
+            className="mx-auto mt-3 w-full max-w-4xl overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,253,248,0.82)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3"
           >
             <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 

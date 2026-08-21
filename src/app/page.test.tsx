@@ -248,6 +248,16 @@ describe("HomeExperience", () => {
     expect(screen.queryByRole("heading", { name: "Cala del Gelsomino" })).not.toBeInTheDocument();
   });
 
+  it("keeps search and forecast controls centered instead of full-width on desktop", () => {
+    renderHome();
+
+    const search = screen.getByRole("searchbox", { name: "Cerca una spiaggia" });
+    const dayGroup = screen.getByRole("group", { name: "Scegli il giorno" });
+
+    expect(search.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
+    expect(dayGroup.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
+  });
+
   it("uses a compact two-column beach grid without a featured card", () => {
     renderHome();
 
