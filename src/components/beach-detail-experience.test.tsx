@@ -108,9 +108,11 @@ describe("BeachDetailExperience", () => {
     const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
     const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
+    const selectorShell = dayControls.parentElement?.parentElement;
 
     expect(dayControls).toHaveClass("bg-[var(--surface-muted)]", "p-1");
     expect(dayControls).not.toHaveClass("shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]");
+    expect(selectorShell).not.toHaveClass("rounded-t-[1.65rem]");
     expect(screen.queryByText("informazioni generali")).not.toBeInTheDocument();
     expect(dayControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
