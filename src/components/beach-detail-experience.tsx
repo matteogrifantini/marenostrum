@@ -173,7 +173,7 @@ function DaySelection({
     <div
       role="group"
       aria-label="Scegli il giorno"
-      className="flex min-w-0 rounded-[0.9rem] bg-[var(--surface-muted)] p-1"
+      className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1"
     >
       {dateOptions.map((option) => (
         <button

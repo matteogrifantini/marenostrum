@@ -110,7 +110,8 @@ describe("BeachDetailExperience", () => {
     const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
     const selectorShell = dayControls.parentElement?.parentElement;
 
-    expect(dayControls).toHaveClass("bg-[var(--surface-muted)]", "p-1");
+    expect(dayControls).toHaveClass("bg-white/70", "p-1");
+    expect(periodControls).toHaveClass("bg-white/70", "p-1");
     expect(dayControls).not.toHaveClass("shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]");
     expect(selectorShell).not.toHaveClass("rounded-t-[1.65rem]");
     expect(selectorShell).not.toHaveClass("bg-[var(--sand)]");
