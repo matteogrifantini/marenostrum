@@ -10,7 +10,11 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "catalog:validate": "tsx scripts/import-sicily-catalog.ts --dry-run",
-    "catalog:apply": "tsx scripts/import-sicily-catalog.ts --apply"
+    "catalog:apply": "tsx scripts/import-sicily-catalog.ts --apply",
+    "catalog:master:validate": "tsx scripts/import-sicily-master.ts --dry-run",
+    "catalog:master:apply": "tsx scripts/import-sicily-master.ts --apply",
+    "catalog:content:validate": "tsx scripts/import-sicily-content.ts --dry-run",
+    "catalog:content:apply": "tsx scripts/import-sicily-content.ts --apply"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

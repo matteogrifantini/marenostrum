@@ -6,16 +6,16 @@
     "province": "TP",
     "municipality": "San Vito Lo Capo",
     "coast": "Nord-ovest",
-    "latitude": 38.172347,
-    "longitude": 12.734932,
-    "access_level": null,
+    "latitude": 38.178825,
+    "longitude": 12.732927,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sul centro della localita; affinare sul tratto di spiaggia e sull'accesso pubblico."
+    "notes": "Coordinate rappresentative del tratto di spiaggia, confrontate con OpenStreetMap; verificare il singolo accesso pubblico prima della pubblicazione."
   },
   {
     "slug": "baia-santa-margherita-macari",
@@ -24,16 +24,16 @@
     "province": "TP",
     "municipality": "San Vito Lo Capo",
     "coast": "Nord-ovest",
-    "latitude": null,
-    "longitude": null,
-    "access_level": null,
+    "latitude": 38.12585,
+    "longitude": 12.729366,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/itinerario/scopello-san-vito-lo-capo-marsala-dintorni/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate e denominazione dell'accesso da verificare sulla fonte geografica e comunale."
+    "notes": "Coordinate rappresentative della spiaggia confrontate con OpenStreetMap; accessi, parcheggi stagionali e viabilità restano da verificare sul posto."
   },
   {
     "slug": "cala-tonnarella-dell-uzzo",
@@ -42,16 +42,16 @@
     "province": "TP",
     "municipality": "San Vito Lo Capo / Castellammare del Golfo",
     "coast": "Nord-ovest",
-    "latitude": null,
-    "longitude": null,
-    "access_level": null,
+    "latitude": 38.120263,
+    "longitude": 12.787485,
+    "access_level": "moderato",
     "source_url": "https://www.riservazingaro.it/territorio_e_tradizione/",
     "source_name": "Riserva Naturale Orientata dello Zingaro",
     "source_type": "reserve",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Comune, ingresso e coordinate da verificare; accesso soggetto alle condizioni della Riserva."
+    "notes": "Coordinate della caletta confrontate con OpenStreetMap; il punto comunale e l'ingresso nord vanno verificati insieme alle condizioni della Riserva."
   },
   {
     "slug": "cala-marinella-zingaro",
@@ -60,16 +60,16 @@
     "province": "TP",
     "municipality": "Castellammare del Golfo",
     "coast": "Nord-ovest",
-    "latitude": null,
-    "longitude": null,
-    "access_level": null,
+    "latitude": 38.1062,
+    "longitude": 12.79393,
+    "access_level": "moderato",
     "source_url": "https://www.riservazingaro.it/territorio_e_tradizione/",
     "source_name": "Riserva Naturale Orientata dello Zingaro",
     "source_type": "reserve",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate e accesso da verificare sulla mappa ufficiale della Riserva."
+    "notes": "Coordinate della caletta confrontate con OpenStreetMap; accesso tramite sentiero della Riserva da verificare in base all'apertura e alle condizioni."
   },
   {
     "slug": "cala-capreria-zingaro",
@@ -78,16 +78,16 @@
     "province": "TP",
     "municipality": "Castellammare del Golfo",
     "coast": "Nord-ovest",
-    "latitude": null,
-    "longitude": null,
-    "access_level": null,
+    "latitude": 38.087705,
+    "longitude": 12.80531,
+    "access_level": "moderato",
     "source_url": "https://www.riservazingaro.it/territorio_e_tradizione/",
     "source_name": "Riserva Naturale Orientata dello Zingaro",
     "source_type": "reserve",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate e accesso da verificare sulla mappa ufficiale della Riserva."
+    "notes": "Coordinate della caletta confrontate con OpenStreetMap; la distanza dal percorso sud e l'accesso a piedi vanno confermati sul posto."
   },
   {
     "slug": "tonnara-di-scopello",
@@ -98,14 +98,14 @@
     "coast": "Nord-ovest",
     "latitude": 38.071526,
     "longitude": 12.821577,
-    "access_level": null,
+    "access_level": "moderato",
     "source_url": "https://www.visitsicily.info/itinerario/scopello-san-vito-lo-capo-marsala-dintorni/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sull'attrazione; verificare accesso balneare, eventuale ticket e punto spiaggia."
+    "notes": "Coordinate rappresentative dell'attrazione; accesso balneare, eventuale ticket e punto spiaggia restano da verificare prima della pubblicazione."
   },
   {
     "slug": "guidaloca",
@@ -116,14 +116,14 @@
     "coast": "Nord-ovest",
     "latitude": 38.056613,
     "longitude": 12.84009,
-    "access_level": null,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate da affinare sul punto di accesso e sulla porzione di arenile."
+    "notes": "Coordinate confrontate con OpenStreetMap; affinare sul punto di accesso e sulla porzione di arenile pubblico."
   },
   {
     "slug": "cala-rossa-favignana",
@@ -134,14 +134,14 @@
     "coast": "Isole Egadi",
     "latitude": 37.921309,
     "longitude": 12.362173,
-    "access_level": null,
+    "access_level": "difficile",
     "source_url": "https://www.visitsicily.info/itinerario/via-delle-tonnare-di-andata/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sul punto panoramico; verificare il punto di accesso alla caletta."
+    "notes": "Coordinate rappresentative della caletta; l'accesso roccioso e il punto effettivo di balneazione vanno verificati prima della pubblicazione."
   },
   {
     "slug": "cala-azzurra-favignana",
@@ -152,14 +152,14 @@
     "coast": "Isole Egadi",
     "latitude": 37.909029,
     "longitude": 12.361108,
-    "access_level": null,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/itinerario/via-delle-tonnare-di-andata/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali da affinare sul punto di balneazione e sull'accesso pubblico."
+    "notes": "Coordinate rappresentative del punto di balneazione; accesso pubblico e condizioni stagionali restano da verificare."
   },
   {
     "slug": "lido-burrone-favignana",
@@ -170,14 +170,14 @@
     "coast": "Isole Egadi",
     "latitude": 37.918306,
     "longitude": 12.338503,
-    "access_level": null,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sul tratto di spiaggia; verificare servizi e accessi stagionali."
+    "notes": "Coordinate rappresentative del tratto di spiaggia; verificare servizi e accessi stagionali."
   },
   {
     "slug": "mondello",
@@ -188,14 +188,14 @@
     "coast": "Nord",
     "latitude": 38.20153,
     "longitude": 13.327312,
-    "access_level": null,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/localita/palermo/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sulla spiaggia; distinguere arenile pubblico, concessioni e accessi."
+    "notes": "Coordinate confrontate con OpenStreetMap; distinguere arenile pubblico, concessioni e accessi prima della pubblicazione."
   },
   {
     "slug": "barcarello-sferracavallo",
@@ -204,16 +204,16 @@
     "province": "PA",
     "municipality": "Palermo",
     "coast": "Nord",
-    "latitude": null,
-    "longitude": null,
-    "access_level": null,
+    "latitude": 38.2095,
+    "longitude": 13.2823,
+    "access_level": "moderato",
     "source_url": "https://www.visitsicily.info/localita/palermo/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate, accesso e rapporto con la Riserva di Capo Gallo da verificare."
+    "notes": "Coordinate provvisorie del tratto di Barcarello confrontate con la cartografia OpenStreetMap; punto balneabile, accesso e rapporto con Capo Gallo da verificare."
   },
   {
     "slug": "isola-delle-femmine",
@@ -222,16 +222,16 @@
     "province": "PA",
     "municipality": "Isola delle Femmine",
     "coast": "Nord",
-    "latitude": null,
-    "longitude": null,
-    "access_level": null,
+    "latitude": 38.186439,
+    "longitude": 13.238273,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "La localita e l'isola non coincidono con un unico accesso balneare: definire il tratto di spiaggia."
+    "notes": "Coordinate rappresentative del litorale confrontate con OpenStreetMap; la località comprende più accessi e il tratto definitivo va scelto prima della pubblicazione."
   },
   {
     "slug": "capaci",
@@ -242,14 +242,14 @@
     "coast": "Nord",
     "latitude": 38.185656,
     "longitude": 13.237457,
-    "access_level": null,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali su un punto di spiaggia; verificare l'accesso pubblico scelto."
+    "notes": "Coordinate confrontate con OpenStreetMap; verificare l'accesso pubblico e il tratto di arenile scelto."
   },
   {
     "slug": "cala-rossa-terrasini",
@@ -260,14 +260,14 @@
     "coast": "Nord-ovest",
     "latitude": 38.141818,
     "longitude": 13.071091,
-    "access_level": null,
+    "access_level": "moderato",
     "source_url": "https://www.visitsicily.info/terrasini-e-cinisi/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sulla caletta; verificare accesso, esposizione e denominazione locale."
+    "notes": "Coordinate rappresentative della caletta; verificare accesso, esposizione e denominazione locale prima della pubblicazione."
   },
   {
     "slug": "la-praiola-terrasini",
@@ -278,14 +278,14 @@
     "coast": "Nord-ovest",
     "latitude": 38.15467,
     "longitude": 13.08084,
-    "access_level": null,
+    "access_level": "moderato",
     "source_url": "https://www.visitsicily.info/terrasini-e-cinisi/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali da affinare sul sentiero e sul punto di accesso."
+    "notes": "Coordinate rappresentative da affinare sul sentiero e sul punto di accesso pubblico."
   },
   {
     "slug": "magaggiari-cinisi",
@@ -296,14 +296,14 @@
     "coast": "Nord-ovest",
     "latitude": 38.159851,
     "longitude": 13.084616,
-    "access_level": null,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/terrasini-e-cinisi/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sulla spiaggia; verificare stagionalita dei servizi e accessi."
+    "notes": "Coordinate confrontate con OpenStreetMap; verificare stagionalità dei servizi e accessi."
   },
   {
     "slug": "spiaggia-del-lungomare-cefalu",
@@ -314,14 +314,14 @@
     "coast": "Nord",
     "latitude": 38.034209,
     "longitude": 14.012977,
-    "access_level": null,
+    "access_level": "facile",
     "source_url": "https://comune.cefalu.pa.it/documento_pubblico/pudm-piano-di-utilizzo-delle-aree-demaniali-marittime/",
     "source_name": "Comune di Cefalù",
     "source_type": "municipality",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Il Comune distingue piu accessi e tratti del lungomare: definire il punto rappresentativo."
+    "notes": "Coordinate rappresentative del lungomare; il Comune distingue più accessi e tratti, da validare prima della pubblicazione."
   },
   {
     "slug": "caldura-cefalu",
@@ -330,16 +330,16 @@
     "province": "PA",
     "municipality": "Cefalù",
     "coast": "Nord",
-    "latitude": null,
-    "longitude": null,
-    "access_level": null,
+    "latitude": 38.0335,
+    "longitude": 14.039,
+    "access_level": "moderato",
     "source_url": "https://comune.cefalu.pa.it/documento_pubblico/pudm-piano-di-utilizzo-delle-aree-demaniali-marittime/",
     "source_name": "Comune di Cefalù",
     "source_type": "municipality",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Il nome compare anche come Kalura: risolvere alias, coordinate e accesso prima della pubblicazione."
+    "notes": "Coordinate provvisorie nell'area Caldura/Kalura; il nome, il punto esatto e l'accesso con scale vanno risolti prima della pubblicazione."
   },
   {
     "slug": "mazzaforno-cefalu",
@@ -350,14 +350,14 @@
     "coast": "Nord",
     "latitude": 38.030512,
     "longitude": 13.973537,
-    "access_level": null,
+    "access_level": "moderato",
     "source_url": "https://comune.cefalu.pa.it/documento_pubblico/pudm-piano-di-utilizzo-delle-aree-demaniali-marittime/",
     "source_name": "Comune di Cefalù",
     "source_type": "municipality",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sulla contrada; distinguere spiaggia pubblica e tratti in concessione."
+    "notes": "Coordinate rappresentative della contrada; distinguere spiaggia pubblica e tratti in concessione prima della pubblicazione."
   },
   {
     "slug": "balestrate",
@@ -368,13 +368,13 @@
     "coast": "Nord-ovest",
     "latitude": 38.043815,
     "longitude": 12.987613,
-    "access_level": null,
+    "access_level": "facile",
     "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
     "source_name": "Visit Sicily",
     "source_type": "regional-tourism",
     "verified_at": "2026-08-21T00:00:00.000Z",
     "next_review_at": "2026-09-21T00:00:00.000Z",
     "publication_status": "draft",
-    "notes": "Coordinate iniziali sulla spiaggia; verificare punto di accesso e servizi stagionali."
+    "notes": "Coordinate confrontate con OpenStreetMap; verificare punto di accesso e servizi stagionali."
   }
 ]

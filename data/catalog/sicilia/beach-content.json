@@ -1,0 +1,518 @@
+[
+  {
+    "slug": "san-vito-lo-capo",
+    "description": "Litorale ampio e sabbioso di San Vito Lo Capo, con accesso diretto dalla zona urbana.",
+    "orientation_degrees": 330,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
+    "access_level": "facile",
+    "services": ["servizi stagionali"],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Affollamento e servizi possono cambiare con la stagione."],
+    "facts": ["Litorale sabbioso", "Balneazione adatta anche alle famiglie"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/47574518",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "baia-santa-margherita-macari",
+    "description": "Baia panoramica sul tratto di Macari, con arenile alternato a tratti rocciosi e accessi stagionali da verificare.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["panorama", "relax", "sabbia", "ciottoli"],
+    "access_level": "facile",
+    "services": ["parcheggi stagionali"],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "La viabilità e gli accessi possono cambiare nella stagione estiva."],
+    "facts": ["Si trova nel territorio di Macari", "Arenile alternato a tratti rocciosi"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/scopello-san-vito-lo-capo-marsala-dintorni/",
+        "role": "primary"
+      },
+      {
+        "source_name": "Trapani Camper Club",
+        "source_type": "local-guide",
+        "source_url": "https://www.trapanicamperclub.it/wp-content/uploads/2022/09/LE-SPIAGGE-PIU-BELLE-DELLA-PROVINCIA-DI-TRAPANI-3.pdf",
+        "role": "access"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/262426887",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "cala-tonnarella-dell-uzzo",
+    "description": "Caletta della Riserva dello Zingaro, raggiungibile attraverso i percorsi della riserva e con accesso dipendente dalle condizioni del sentiero.",
+    "orientation_degrees": 330,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["riserva", "selvaggia", "ciottoli", "snorkeling", "sentiero"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'accesso richiede un percorso a piedi e può essere limitato dalle condizioni della Riserva."],
+    "facts": ["Si trova nella Riserva dello Zingaro", "Accesso dal versante nord della Riserva"],
+    "sources": [
+      {
+        "source_name": "Riserva Naturale Orientata dello Zingaro",
+        "source_type": "reserve",
+        "source_url": "https://www.riservazingaro.it/territorio_e_tradizione/",
+        "role": "primary"
+      },
+      {
+        "source_name": "Riserva Naturale Orientata dello Zingaro",
+        "source_type": "reserve-access",
+        "source_url": "https://www.riservazingaro.it/come-raggiungerci/",
+        "role": "access"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/95541775",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "cala-marinella-zingaro",
+    "description": "Caletta appartata della Riserva dello Zingaro, da considerare insieme al percorso a piedi necessario per raggiungerla.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["riserva", "selvaggia", "ciottoli", "snorkeling", "sentiero"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Non sono stati associati servizi in loco: verificare sempre le regole e l'apertura della Riserva."],
+    "facts": ["Si trova nella Riserva dello Zingaro", "Accesso tramite sentiero costiero"],
+    "sources": [
+      {
+        "source_name": "Riserva Naturale Orientata dello Zingaro",
+        "source_type": "reserve",
+        "source_url": "https://www.riservazingaro.it/territorio_e_tradizione/",
+        "role": "primary"
+      },
+      {
+        "source_name": "Riserva Naturale Orientata dello Zingaro",
+        "source_type": "reserve-access",
+        "source_url": "https://www.riservazingaro.it/come-raggiungerci/",
+        "role": "access"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/4359155608",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "cala-capreria-zingaro",
+    "description": "Caletta della Riserva dello Zingaro sul versante di Scopello, con un avvicinamento a piedi lungo il sentiero costiero.",
+    "orientation_degrees": 315,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["riserva", "selvaggia", "ciottoli", "snorkeling", "sentiero"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il sentiero e le scale richiedono calzature adatte e possono essere condizionati dal meteo."],
+    "facts": ["Si trova nella Riserva dello Zingaro", "Prima caletta raggiungibile dall'ingresso sud"],
+    "sources": [
+      {
+        "source_name": "Riserva Naturale Orientata dello Zingaro",
+        "source_type": "reserve",
+        "source_url": "https://www.riservazingaro.it/territorio_e_tradizione/",
+        "role": "primary"
+      },
+      {
+        "source_name": "Riserva Naturale Orientata dello Zingaro",
+        "source_type": "reserve-access",
+        "source_url": "https://www.riservazingaro.it/come-raggiungerci/",
+        "role": "access"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/4359155606",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "tonnara-di-scopello",
+    "description": "Luogo costiero storico di Scopello, con specchio d'acqua tra i faraglioni e accesso da verificare in base alle regole della struttura.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["panorama", "snorkeling", "scogli", "storia"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Accesso balneare, disponibilità e modalità di ingresso vanno verificati prima della visita."],
+    "facts": ["Tonnara storica di Scopello", "Specchio d'acqua tra i faraglioni"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/scopello-san-vito-lo-capo-marsala-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "guidaloca",
+    "description": "Spiaggia del litorale di Castellammare del Golfo, inserita tra le località balneari dell'area occidentale siciliana.",
+    "orientation_degrees": 350,
+    "orientation_label": "Nord",
+    "shelter": [],
+    "tags": ["famiglie", "ciottoli", "relax"],
+    "access_level": "facile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e accessi possono cambiare con la stagione."],
+    "facts": ["Si trova nel territorio di Castellammare del Golfo"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/240487517",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "cala-rossa-favignana",
+    "description": "Caletta rocciosa di Favignana, apprezzata per il paesaggio e l'acqua limpida ma con accesso non adatto a tutti.",
+    "orientation_degrees": 315,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["snorkeling", "scogli", "panorama", "selvaggia"],
+    "access_level": "difficile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'accesso è roccioso e può risultare difficile: non è un ingresso in spiaggia tradizionale."],
+    "facts": ["Cala rocciosa", "Accesso indicato come difficile dalla fonte turistica"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/via-delle-tonnare-di-andata/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-azzurra-favignana",
+    "description": "Caletta di Favignana con sabbia fine e acque adatte a una balneazione tranquilla.",
+    "orientation_degrees": 130,
+    "orientation_label": "Sud-est",
+    "shelter": [],
+    "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
+    "access_level": "facile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Affollamento e accessi possono cambiare con la stagione."],
+    "facts": ["Sabbia fine", "Balneazione adatta alle famiglie"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/via-delle-tonnare-di-andata/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "lido-burrone-favignana",
+    "description": "Lido sabbioso di Favignana con ingresso in acqua facile e fondale inizialmente basso.",
+    "orientation_degrees": 110,
+    "orientation_label": "Sud-est",
+    "shelter": [],
+    "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
+    "access_level": "facile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e concessioni possono cambiare con la stagione."],
+    "facts": ["Ingresso in acqua facile", "Fondale inizialmente basso"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "mondello",
+    "description": "Grande spiaggia urbana di Palermo, con sabbia chiara e accesso diretto dal lungomare.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [],
+    "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
+    "access_level": "facile",
+    "services": ["servizi stagionali"],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "In alta stagione il litorale può essere molto frequentato."],
+    "facts": ["Spiaggia urbana di Palermo", "Sabbia chiara e accesso dal lungomare"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/localita/palermo/",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/73432596",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "barcarello-sferracavallo",
+    "description": "Tratto costiero di Barcarello, scelto come punto di riferimento per l'area rocciosa di Sferracavallo.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["scogli", "snorkeling", "panorama"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Coordinate e accesso sono ancora rappresentativi: verificare il punto balneabile prima della pubblicazione."],
+    "facts": ["Area costiera di Sferracavallo"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/localita/palermo/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "isola-delle-femmine",
+    "description": "Litorale balneare dell'area di Isola delle Femmine, con più accessi e tratti da distinguere nella scheda definitiva.",
+    "orientation_degrees": 350,
+    "orientation_label": "Nord",
+    "shelter": [],
+    "tags": ["famiglie", "sabbia", "relax"],
+    "access_level": "facile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "La località comprende più accessi: il punto indicato è rappresentativo e va validato."],
+    "facts": ["Litorale dell'area metropolitana di Palermo"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/262812420",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "capaci",
+    "description": "Litorale sabbioso di Capaci, indicato tra le spiagge accessibili dell'area palermitana.",
+    "orientation_degrees": 350,
+    "orientation_label": "Nord",
+    "shelter": [],
+    "tags": ["famiglie", "sabbia", "relax"],
+    "access_level": "facile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e accessi possono cambiare con la stagione."],
+    "facts": ["Litorale dell'area palermitana", "Spiaggia indicata per la balneazione familiare"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/13063052753",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "cala-rossa-terrasini",
+    "description": "Caletta di Terrasini caratterizzata dalle pareti rossastre e da un fondale adatto all'esplorazione in acqua.",
+    "orientation_degrees": 285,
+    "orientation_label": "Ovest-nord-ovest",
+    "shelter": [],
+    "tags": ["snorkeling", "scogli", "panorama"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Accesso e condizioni degli scogli richiedono prudenza."],
+    "facts": ["Pareti rocciose rossastre", "Punto indicato per lo snorkeling"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/terrasini-e-cinisi/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "la-praiola-terrasini",
+    "description": "Tratto costiero di Terrasini indicato per la balneazione, con accesso da verificare sul percorso locale.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": ["relax", "scogli", "panorama"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto di accesso e la praticabilità possono variare in base alla stagione e al moto ondoso."],
+    "facts": ["Si trova nel territorio di Terrasini", "Località indicata per la balneazione"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/terrasini-e-cinisi/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "magaggiari-cinisi",
+    "description": "Spiaggia sabbiosa di Cinisi, conosciuta anche per le attività legate al mare e agli sport d'acqua.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [],
+    "tags": ["sabbia", "sport-acqua", "relax"],
+    "access_level": "facile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Condizioni del vento e servizi possono cambiare con la stagione."],
+    "facts": ["Spiaggia sabbiosa", "Area indicata anche per sport d'acqua"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/terrasini-e-cinisi/",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/362260797",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-del-lungomare-cefalu",
+    "description": "Litorale urbano di Cefalù lungo il Lungomare Giuseppe Giardina, con più accessi e tratti da verificare singolarmente.",
+    "orientation_degrees": 20,
+    "orientation_label": "Nord-nord-est",
+    "shelter": [],
+    "tags": ["famiglie", "sabbia", "relax", "lungomare"],
+    "access_level": "facile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto è rappresentativo del lungomare: servizi, accessi e concessioni possono differire lungo la spiaggia."],
+    "facts": ["Spiaggia pubblica indicata nel piano comunale", "Litorale urbano di Cefalù"],
+    "sources": [
+      {
+        "source_name": "Comune di Cefalù",
+        "source_type": "municipality",
+        "source_url": "https://comune.cefalu.pa.it/documento_pubblico/pudm-piano-di-utilizzo-delle-aree-demaniali-marittime/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "caldura-cefalu",
+    "description": "Piccola spiaggia di ciottoli e rocce nell'area di Caldura, raggiungibile dalla zona di Via Cavallaro tramite un accesso con scale.",
+    "orientation_degrees": 70,
+    "orientation_label": "Est-nord-est",
+    "shelter": [],
+    "tags": ["ciottoli", "scogli", "snorkeling", "relax"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'acqua diventa rapidamente profonda; l'accesso presenta scale e fondo roccioso."],
+    "facts": ["Spiaggia di ciottoli e rocce", "Accesso dalla zona di Via Cavallaro"],
+    "sources": [
+      {
+        "source_name": "Comune di Cefalù",
+        "source_type": "municipality",
+        "source_url": "https://comune.cefalu.pa.it/documento_pubblico/pudm-piano-di-utilizzo-delle-aree-demaniali-marittime/",
+        "role": "primary"
+      },
+      {
+        "source_name": "Cefalù Sicilia",
+        "source_type": "local-guide",
+        "source_url": "https://www.cefalu.sicilia.it/mare-e-spiagge/spiaggia-di-caldura/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "mazzaforno-cefalu",
+    "description": "Tratto costiero della contrada Mazzaforno, con più calette e accessi da distinguere tra aree pubbliche e concessioni.",
+    "orientation_degrees": 20,
+    "orientation_label": "Nord-nord-est",
+    "shelter": [],
+    "tags": ["sabbia", "ciottoli", "relax", "panorama"],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto è rappresentativo della contrada: accessi e disponibilità dei tratti possono variare."],
+    "facts": ["Area costiera di Cefalù", "Il piano comunale distingue più tratti e accessi"],
+    "sources": [
+      {
+        "source_name": "Comune di Cefalù",
+        "source_type": "municipality",
+        "source_url": "https://comune.cefalu.pa.it/documento_pubblico/pudm-piano-di-utilizzo-delle-aree-demaniali-marittime/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "balestrate",
+    "description": "Litorale sabbioso di Balestrate sul golfo di Castellammare, con accesso semplice dalla zona abitata.",
+    "orientation_degrees": 350,
+    "orientation_label": "Nord",
+    "shelter": [],
+    "tags": ["famiglie", "sabbia", "relax", "acque-basse"],
+    "access_level": "facile",
+    "services": [],
+    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi, concessioni e accessi possono cambiare con la stagione."],
+    "facts": ["Litorale sabbioso", "Si affaccia sul golfo di Castellammare"],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/relation/12272249",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  }
+]
