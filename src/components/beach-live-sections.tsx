@@ -66,8 +66,8 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
 
       setLocalReports((current) => [report, ...current]);
       closeComposer();
-    } catch {
-      setSubmitError("Non siamo riusciti ad aggiungerla. Riprova.");
+    } catch (error) {
+      setSubmitError(error instanceof Error && error.message ? error.message : "Non siamo riusciti ad aggiungerla. Riprova.");
     } finally {
       setSubmitState("idle");
     }

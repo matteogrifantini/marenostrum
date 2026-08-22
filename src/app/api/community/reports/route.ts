@@ -2,6 +2,7 @@ import type { BeachDetailReport } from "../../../../domain/beach-detail-content"
 import {
   createCommunityReport,
   CommunityReportDuplicateError,
+  CommunityReportRateLimitError,
   type CommunityReportInput,
 } from "../../../../services/community-reports";
 import {
@@ -96,9 +97,13 @@ export async function handleCommunityReport(
       reporter.shouldSetCookie,
     );
   } catch (error) {
-    const response = error instanceof CommunityReportDuplicateError
-      ? errorResponse(409, "Hai già inviato questa segnalazione")
-      : errorResponse(503, "Segnalazione non disponibile");
+    const response = error instanceof CommunityReportRateLimitError
+      ? errorResponse(429, "Hai raggiunto il limite giornaliero di segnalazioni")
+      : error instanceof CommunityReportDuplicateError
+        ? errorResponse(409, "Hai già inviato questa segnalazione")
+        : errorResponse(503, "Segnalazione non disponibile");
+
+    if (response.status === 429) response.headers.set("retry-after", "86400");
 
     return withReporterCookie(response, request, reporter.id, reporter.shouldSetCookie);
   }

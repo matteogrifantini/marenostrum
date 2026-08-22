@@ -1,7 +1,25 @@
 import { describe, expect, it } from "vitest";
-import { mapCommunityReportRows } from "./community-reports";
+import {
+  COMMUNITY_REPORT_MAX_PER_REPORTER,
+  COMMUNITY_REPORT_RETENTION_HOURS,
+  communityReportCutoff,
+  isCommunityReportRateLimited,
+  mapCommunityReportRows,
+} from "./community-reports";
 
 const now = new Date("2026-08-22T10:00:00.000Z");
+
+describe("community report freshness and limits", () => {
+  it("keeps only the configured recent-report window available to queries", () => {
+    expect(communityReportCutoff(now)).toBe("2026-08-21T10:00:00.000Z");
+    expect(COMMUNITY_REPORT_RETENTION_HOURS).toBe(24);
+  });
+
+  it("limits an anonymous reporter after the configured daily allowance", () => {
+    expect(isCommunityReportRateLimited(COMMUNITY_REPORT_MAX_PER_REPORTER - 1)).toBe(false);
+    expect(isCommunityReportRateLimited(COMMUNITY_REPORT_MAX_PER_REPORTER)).toBe(true);
+  });
+});
 
 describe("community report aggregation", () => {
   it("groups the same report and counts distinct anonymous reporters", () => {

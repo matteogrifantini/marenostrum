@@ -4,6 +4,7 @@ import {
   handleCommunityReport,
   type CommunityReportDependencies,
 } from "./route";
+import { CommunityReportRateLimitError } from "../../../../services/community-reports";
 
 const url = "http://localhost/api/community/reports";
 
@@ -121,5 +122,29 @@ describe("handleCommunityReport", () => {
     const body = await response.text();
     expect(JSON.parse(body)).toEqual({ ok: false, error: "Segnalazione non disponibile" });
     expect(body).not.toContain("service key leaked");
+  });
+
+  it("returns a retryable response when an anonymous reporter reaches the daily limit", async () => {
+    const deps = dependencies({
+      create: vi.fn(async () => {
+        throw new CommunityReportRateLimitError();
+      }),
+    });
+
+    const response = await handleCommunityReport(
+      new Request(url, {
+        method: "POST",
+        body: JSON.stringify({ slug: "cala-del-gelsomino", category: "water", detail: "Mare mosso" }),
+      }),
+      deps,
+    );
+
+    expect(response.status).toBe(429);
+    expect(response.headers.get("retry-after")).toBe("86400");
+    expect(await response.json()).toEqual({
+      ok: false,
+      error: "Hai raggiunto il limite giornaliero di segnalazioni",
+    });
+    expect(response.headers.get("set-cookie")).toContain("marenostrum_community_reporter_v1=");
   });
 });

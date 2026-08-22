@@ -106,6 +106,26 @@ describe("BeachLiveSections", () => {
     expect(screen.queryByRole("form", { name: "Aggiungi una segnalazione" })).not.toBeInTheDocument();
   });
 
+  it("shows the server rate-limit message when the anonymous daily allowance is exhausted", async () => {
+    const recommendation = demoRecommendations[0];
+    const detail = getDemoBeachDetail(recommendation.beach.slug)!;
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: false,
+      status: 429,
+      json: async () => ({ ok: false, error: "Hai raggiunto il limite giornaliero di segnalazioni" }),
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Aggiungi" }));
+    const composer = screen.getByRole("form", { name: "Aggiungi una segnalazione" });
+    fireEvent.click(within(composer).getByRole("radio", { name: "Acqua" }));
+    fireEvent.click(within(composer).getByRole("radio", { name: "Mare mosso" }));
+    fireEvent.click(within(composer).getByRole("button", { name: "Pubblica" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent("Hai raggiunto il limite giornaliero di segnalazioni");
+  });
+
   it("keeps parking and permanent beach information visible", () => {
     const recommendation = demoRecommendations[0];
     const detail = getDemoBeachDetail(recommendation.beach.slug)!;

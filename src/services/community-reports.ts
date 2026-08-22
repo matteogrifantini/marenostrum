@@ -12,6 +12,9 @@ type CommunityReportRow = {
   reporter_id: string | null;
 };
 
+export const COMMUNITY_REPORT_RETENTION_HOURS = 24;
+export const COMMUNITY_REPORT_MAX_PER_REPORTER = 12;
+
 export type CommunityReportInput = {
   slug: string;
   category: CommunityReportCategory;
@@ -31,6 +34,23 @@ export class CommunityReportDuplicateError extends Error {
     super("This report was already submitted by this reporter");
     this.name = "CommunityReportDuplicateError";
   }
+}
+
+export class CommunityReportRateLimitError extends Error {
+  constructor() {
+    super("Community report rate limit reached");
+    this.name = "CommunityReportRateLimitError";
+  }
+}
+
+export function communityReportCutoff(now = new Date()) {
+  return new Date(
+    now.getTime() - COMMUNITY_REPORT_RETENTION_HOURS * 60 * 60 * 1000,
+  ).toISOString();
+}
+
+export function isCommunityReportRateLimited(recentReportCount: number | null | undefined) {
+  return (recentReportCount ?? 0) >= COMMUNITY_REPORT_MAX_PER_REPORTER;
 }
 
 export function normalizeCommunityReportDetail(detail: string) {
@@ -131,12 +151,25 @@ async function findPublishedBeachId(slug: string) {
 
 export async function createCommunityReport(input: CommunityReportInput) {
   const { client, beachId } = await findPublishedBeachId(input.slug);
+  const detail = normalizeCommunityReportDetail(input.detail);
+
+  if (input.reporterId) {
+    const { count, error } = await client
+      .from("community_reports")
+      .select("id", { count: "exact", head: true })
+      .eq("reporter_id", input.reporterId)
+      .gte("created_at", communityReportCutoff());
+
+    if (error) throw error;
+    if (isCommunityReportRateLimited(count)) throw new CommunityReportRateLimitError();
+  }
+
   const { data, error } = await client
     .from("community_reports")
     .insert({
       beach_id: beachId,
       category: input.category,
-      detail: normalizeCommunityReportDetail(input.detail),
+      detail,
       ...(input.reporterId ? { reporter_id: input.reporterId } : {}),
     })
     .select("id, category, detail, created_at, reporter_id")
@@ -157,6 +190,7 @@ export async function getCommunityReportsForBeach(slug: string) {
       .from("community_reports")
       .select("id, category, detail, created_at, reporter_id")
       .eq("beach_id", beachId)
+      .gte("created_at", communityReportCutoff())
       .order("created_at", { ascending: false })
       .limit(100);
 
