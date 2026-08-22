@@ -20,7 +20,7 @@ export function MobileNav({ active = "oggi" }: MobileNavProps) {
   return (
     <nav
       aria-label="Navigazione mobile"
-      className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-3 rounded-[1.4rem] bg-[rgba(255,253,248,0.92)] p-1.5 shadow-[0_18px_50px_rgba(20,44,57,0.18)] backdrop-blur-xl lg:hidden"
+      className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-3 rounded-[1.4rem] bg-[rgba(255,255,255,0.94)] p-1.5 shadow-[0_18px_50px_rgba(20,44,57,0.18)] backdrop-blur-xl lg:hidden"
     >
       {items.map(({ id, label, icon: Icon, href }) => {
         const isActive = id === active;

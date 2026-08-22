@@ -12,6 +12,7 @@ import type {
   BeachDetailContent,
   BeachDetailReport,
 } from "../domain/beach-detail-content";
+import { buildGoogleMapsSearchUrl } from "../lib/maps-links";
 
 type BeachLiveSectionsProps = {
   beach: Beach;
@@ -28,9 +29,6 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
   const [localReports, setLocalReports] = useState<BeachDetailReport[]>([]);
   const allReports = [...localReports, ...detail.reports];
   const reports = showAllReports ? allReports : allReports.slice(0, 3);
-  const mapsQuery = beach.latitude && beach.longitude
-    ? `${beach.latitude},${beach.longitude}`
-    : beach.name;
 
   function closeComposer() {
     setIsComposerOpen(false);
@@ -81,13 +79,20 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
       <section className="detail-surface detail-enter p-4 sm:p-5" aria-label="Segnalazioni">
         <ul role="list" aria-label="Segnalazioni recenti" className="mt-3">
           {reports.map((report) => (
-            <li key={report.id} className="grid grid-cols-[2.2rem_1fr_auto] items-start gap-3 border-b border-[var(--line)] py-3 last:border-b-0">
-              <span aria-hidden="true" className="detail-emoji">{report.emoji}</span>
+            <li key={report.id} className="grid grid-cols-[2.35rem_1fr_auto] items-start gap-3 border-b border-[var(--line)] py-3 last:border-b-0 sm:grid-cols-[2.2rem_1fr_auto]">
+              <span aria-hidden="true" className="detail-emoji detail-emoji-mobile">{report.emoji}</span>
               <div className="min-w-0">
                 <strong className="block text-sm">{report.title}</strong>
                 <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{report.detail}</p>
               </div>
-              <time className="pt-0.5 text-xs font-bold text-[var(--muted)]">{report.age}</time>
+              <div className="pt-0.5 text-right">
+                {typeof report.confirmations === "number" ? (
+                  <span className="block text-xs font-black text-[var(--sea-deep)]">
+                    {report.confirmations} {report.confirmations === 1 ? "utente" : "utenti"}
+                  </span>
+                ) : null}
+                <time className="block text-xs font-bold text-[var(--muted)]">{report.age}</time>
+              </div>
             </li>
           ))}
         </ul>
@@ -193,10 +198,16 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
                 <h2 className="text-base font-extrabold leading-[1.08] tracking-[-0.025em]">{parking.name}</h2>
                 <span className="shrink-0 rounded-full bg-[var(--sun-soft)] px-2 py-1 text-[0.65rem] font-black text-[var(--sun-dark)]">{parking.price}</span>
               </div>
-              <p className="mt-3 text-xs leading-5 text-[var(--ink-soft)]">🅿️ {parking.type}<br />🚶 {parking.walking}</p>
+              <p className="mt-3 text-xs leading-5 text-[var(--ink-soft)]"><span aria-hidden="true" className="emoji-readable-mobile">🅿️</span> {parking.type}<br /><span aria-hidden="true" className="emoji-readable-mobile">🚶</span> {parking.walking}</p>
               <p className="mt-3 text-[0.62rem] leading-4 text-[var(--muted)]">{parking.updated}</p>
-              <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${parking.name} ${mapsQuery}`)}`} target="_blank" rel="noreferrer" className="mt-auto flex min-h-11 items-center justify-between border-t border-[var(--line)] pt-3 text-xs font-extrabold text-[var(--sea-deep)]">
-                Indicazioni <ArrowUpRight aria-hidden="true" size={15} />
+              <a
+                href={parking.directionsUrl ?? buildGoogleMapsSearchUrl(`${parking.name}, ${beach.name}, ${beach.municipality}`)}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${parking.directionsUrl ? "Apri percorso" : "Cerca"} per ${parking.name} su Google Maps`}
+                className="mt-auto flex min-h-11 items-center justify-between border-t border-[var(--line)] pt-3 text-xs font-extrabold text-[var(--sea-deep)]"
+              >
+                {parking.directionsUrl ? "Apri percorso" : "Cerca su Maps"} <ArrowUpRight aria-hidden="true" size={15} />
               </a>
             </article>
           ))}
@@ -209,16 +220,16 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
         {detail.parkings.length === 0 ? <p className="detail-surface detail-enter p-4 text-sm text-[var(--muted)]">Nessun parcheggio disponibile.</p> : null}
       </section>
 
-      <section aria-label="Informazioni generali">
+      <section aria-label="La spiaggia">
         <SectionHeading title="La spiaggia" />
         <article className="detail-surface detail-enter p-4 sm:p-5">
-          <CardTitle emoji="🏖️" title={beach.name} subtitle="Caratteristiche che non cambiano col meteo" />
+          <CardTitle emoji="🏖️" title={beach.name} />
           <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--muted)]"><MapPin aria-hidden="true" size={14} /> {beach.municipality} · costa {beach.coast.toLowerCase()}</p>
           <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{beach.description}</p>
           <div className="mt-4 grid grid-cols-2 border-t border-[var(--line)]">
             {detail.facts.map((fact, index) => (
-              <div key={`${fact.label}-${index}`} className={`grid grid-cols-[2rem_1fr] gap-2 border-[var(--line)] px-2 py-4 ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b" : ""}`}>
-                <span aria-hidden="true" className="detail-emoji">{fact.emoji}</span>
+              <div key={`${fact.label}-${index}`} className={`grid grid-cols-[2.35rem_1fr] gap-2 border-[var(--line)] px-2 py-4 sm:grid-cols-[2rem_1fr] ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b" : ""}`}>
+                <span aria-hidden="true" className="detail-emoji detail-emoji-mobile">{fact.emoji}</span>
                 <div><strong className="block text-xs">{fact.label}</strong><span className="mt-1 block text-[0.68rem] leading-4 text-[var(--muted)]">{fact.value}</span></div>
               </div>
             ))}
@@ -230,8 +241,8 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
   );
 }
 
-function CardTitle({ emoji, title, subtitle, id }: { emoji: string; title: string; subtitle: string; id?: string }) {
-  return <div className="flex items-center gap-3"><span aria-hidden="true" className="detail-emoji">{emoji}</span><div><h2 id={id} className="text-base font-extrabold tracking-[-0.025em]">{title}</h2><p className="mt-0.5 text-xs text-[var(--muted)]">{subtitle}</p></div></div>;
+function CardTitle({ emoji, title, id }: { emoji: string; title: string; id?: string }) {
+  return <div className="flex items-center gap-3"><span aria-hidden="true" className="detail-emoji detail-emoji-mobile">{emoji}</span><h2 id={id} className="text-base font-extrabold tracking-[-0.025em]">{title}</h2></div>;
 }
 
 function SectionHeading({ title, meta = "" }: { title: string; meta?: string }) {

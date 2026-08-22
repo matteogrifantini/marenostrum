@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Heart, MapPin, Play, Share2 } from "lucide-react";
+import { ArrowLeft, Check, MapPin, Play, Share2 } from "lucide-react";
 import { useState } from "react";
 import type { Beach, BeachPeriod } from "../domain/beach";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
+import { versionedMediaUrl } from "../lib/media-url";
 import { BeachVideoReel } from "./beach-video-reel";
+import { FavoriteToggle } from "./favorite-toggle";
 
 type DetailHeroProps = {
   beach: Beach;
@@ -17,10 +19,10 @@ type DetailHeroProps = {
 };
 
 export function DetailHero({ beach, detail, date, period, distanceKm }: DetailHeroProps) {
-  const [favorite, setFavorite] = useState(false);
   const [shared, setShared] = useState(false);
   const [showReels, setShowReels] = useState(false);
   const image = beach.image;
+  const imageSrc = image ? versionedMediaUrl(image) : undefined;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
   const backHref = `/?date=${encodeURIComponent(date)}&period=${period}#classifica`;
 
@@ -44,8 +46,8 @@ export function DetailHero({ beach, detail, date, period, distanceKm }: DetailHe
   return (
     <>
       <section className="relative min-h-[20rem] overflow-hidden rounded-[1.8rem] bg-[var(--ink)] text-white shadow-[0_20px_60px_rgba(20,44,57,0.16)] sm:min-h-[26rem]">
-        {image ? (
-          <Image src={image} alt={imageAlt} fill loading="eager" sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+        {imageSrc ? (
+          <Image src={imageSrc} alt={imageAlt} fill loading="eager" sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
         ) : (
           <div
             role="img"
@@ -62,9 +64,7 @@ export function DetailHero({ beach, detail, date, period, distanceKm }: DetailHe
             <ArrowLeft aria-hidden="true" size={19} />
           </Link>
           <div className="flex items-center gap-2">
-            <button type="button" aria-label={favorite ? `Rimuovi ${beach.name} dai preferiti` : `Salva ${beach.name}`} aria-pressed={favorite} onClick={() => setFavorite((current) => !current)} className={`detail-press grid size-11 place-items-center rounded-full bg-white/88 shadow-[0_6px_17px_rgba(8,47,61,0.13)] backdrop-blur-md ${favorite ? "text-[var(--score-poor)]" : "text-[var(--ink)]"}`}>
-              <Heart aria-hidden="true" size={19} fill={favorite ? "currentColor" : "none"} />
-            </button>
+            <FavoriteToggle beachSlug={beach.slug} beachName={beach.name} />
             <button type="button" aria-label={shared ? "Link copiato" : "Condividi spiaggia"} onClick={handleShare} className="detail-press grid size-11 place-items-center rounded-full bg-white/88 text-[var(--ink)] shadow-[0_6px_17px_rgba(8,47,61,0.13)] backdrop-blur-md">
               {shared ? <Check aria-hidden="true" size={19} /> : <Share2 aria-hidden="true" size={19} />}
             </button>

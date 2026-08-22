@@ -8,6 +8,8 @@ import type {
 import { formatWindWithArticle } from "./wind-grammar";
 
 type ScoreProfile = {
+  // Kept in the profile for API compatibility; intent and beach metadata do
+  // not contribute to the numeric rating.
   intent: UserIntent;
   now: Date;
 };
@@ -62,17 +64,6 @@ function labelFor(score: number) {
   return "Meglio cercare altrove";
 }
 
-function intentFit(beach: Beach, intent: UserIntent) {
-  const tagMap: Record<UserIntent, string[]> = {
-    relax: ["relax", "tranquilla"],
-    family: ["famiglie", "acque-basse"],
-    explore: ["selvaggia", "panorama"],
-    "water-sport": ["snorkeling", "sport-acqua"],
-  };
-
-  return tagMap[intent].some((tag) => beach.tags.includes(tag)) ? 5 : 0;
-}
-
 export function scoreBeach(
   beach: Beach,
   conditions: BeachConditions,
@@ -86,13 +77,12 @@ export function scoreBeach(
     0,
     35,
   );
-  const windScore = clamp(35 - windPenalty + (sheltered ? 10 : 0), 0, 45);
+  const windScore = clamp(45 - windPenalty, 0, 45);
   const seaScore = clamp(25 - conditions.waveHeightMeters * 16, 0, 25);
   const weatherScore = clamp(20 - WEATHER_PENALTIES[conditions.weather], 0, 20);
-  const accessScore = { facile: 10, moderato: 7, difficile: 4 }[beach.access];
-  const fitScore = intentFit(beach, profile.intent);
+  const conditionsScore = windScore + seaScore + weatherScore;
   const score = Math.round(
-    clamp(windScore + seaScore + weatherScore + accessScore + fitScore, 0, 100),
+    clamp((conditionsScore / 90) * 100, 0, 100),
   );
   const hours = freshnessHours(conditions, profile.now);
   const confidence = confidenceFor(hours, conditions.sourceQuality);
@@ -113,8 +103,6 @@ export function scoreBeach(
       wind: Math.round(windScore),
       sea: Math.round(seaScore),
       weather: Math.round(weatherScore),
-      access: accessScore,
-      fit: fitScore,
     },
   };
 }

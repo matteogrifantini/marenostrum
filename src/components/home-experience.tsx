@@ -5,12 +5,17 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { BeachCard } from "./beach-card";
 import { DayPicker } from "./day-picker";
-import { FilterSheet, type BeachFilters } from "./filter-sheet";
+import { FilterSheet } from "./filter-sheet";
 import { MobileNav } from "./mobile-nav";
 import { PageShell } from "./page-shell";
 import { PeriodPicker } from "./period-picker";
 import { ForecastAttribution } from "./forecast-attribution";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
+import {
+  DEFAULT_BEACH_FILTERS,
+  matchesBeachFilters,
+  type BeachFilters,
+} from "../domain/beach-filters";
 import type { DateOption } from "../domain/date-selection";
 
 type HomeExperienceProps = {
@@ -20,8 +25,6 @@ type HomeExperienceProps = {
   recommendations: BeachRecommendation[];
   dataUnavailable?: boolean;
 };
-
-const DEFAULT_FILTERS: BeachFilters = { access: "all", service: "all" };
 
 function formatObservedAt(observedAt: string) {
   const date = new Date(observedAt);
@@ -52,7 +55,7 @@ export function HomeExperience({
   const [date, setDate] = useState(initialDate);
   const [period, setPeriod] = useState<BeachPeriod>(initialPeriod);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filters, setFilters] = useState<BeachFilters>(DEFAULT_FILTERS);
+  const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
 
   useEffect(() => {
@@ -67,21 +70,18 @@ export function HomeExperience({
       const normalizedSearchQuery = searchQuery.trim().toLowerCase();
 
       return recommendations.filter(({ beach }) => {
-        const accessMatches = filters.access === "all" || beach.access === filters.access;
-        const serviceMatches =
-          filters.service === "all" ||
-          beach.services?.some((service) => service.toLowerCase().includes(filters.service));
         const searchMatches =
           !normalizedSearchQuery ||
           [beach.name, beach.municipality, beach.coast].some((value) =>
             value.toLowerCase().includes(normalizedSearchQuery),
           );
 
-        return accessMatches && serviceMatches && searchMatches;
+        return matchesBeachFilters(beach, filters) && searchMatches;
       });
     },
     [filters, recommendations, searchQuery],
   );
+  const activeFilterCount = filters.access.length + filters.tags.length + filters.services.length;
   const forecastUnavailable = dataUnavailable || recommendations.length === 0;
 
   const updateQuery = (nextDate: string, nextPeriod: BeachPeriod) => {
@@ -125,14 +125,14 @@ export function HomeExperience({
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder="Cerca una spiaggia"
                 aria-label="Cerca una spiaggia"
-                className="min-h-14 w-full rounded-[1.25rem] border border-[var(--line)] bg-[var(--surface)] pl-12 pr-5 text-base font-semibold text-[var(--ink)] shadow-[0_12px_34px_rgba(20,44,57,0.07)] outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-[var(--muted)] focus:border-[var(--sun)] focus:shadow-[0_14px_38px_rgba(20,44,57,0.11)] focus:ring-2 focus:ring-[rgba(242,183,5,0.22)]"
+                className="min-h-14 w-full rounded-[1.25rem] border border-[var(--line)] bg-[var(--surface)] pl-12 pr-5 text-base font-semibold text-[var(--ink)] shadow-[0_12px_34px_rgba(20,44,57,0.07)] outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-[var(--muted)] focus:border-[var(--sun)] focus:shadow-[0_14px_38px_rgba(20,44,57,0.11)] focus:ring-2 focus:ring-[rgba(255,194,71,0.26)]"
               />
             </div>
           </section>
 
           <section
             aria-busy={isPending}
-            className="mx-auto mt-3 w-full max-w-4xl overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,253,248,0.82)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3"
+            className="mx-auto mt-3 w-full max-w-4xl overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3"
           >
             <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 
@@ -144,7 +144,7 @@ export function HomeExperience({
                 className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-[var(--surface)] px-4 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
               >
                 <SlidersHorizontal aria-hidden="true" size={16} />
-                Filtri
+                Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
               </button>
             </div>
           </section>
@@ -186,7 +186,7 @@ export function HomeExperience({
                     type="button"
                     onClick={() => {
                       setSearchQuery("");
-                      setFilters(DEFAULT_FILTERS);
+                      setFilters({ ...DEFAULT_BEACH_FILTERS });
                     }}
                     className="mt-6 min-h-11 rounded-full bg-[var(--ink)] px-5 text-sm font-bold text-white transition-[transform,background-color] duration-200 ease-out hover:bg-[var(--sea-deep)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
                   >

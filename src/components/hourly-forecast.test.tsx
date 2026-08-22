@@ -35,6 +35,9 @@ describe("HourlyForecast", () => {
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     expect(screen.getByText("08:00")).toBeInTheDocument();
     expect(screen.getByText("10:00")).toBeInTheDocument();
+    const dots = timeline.querySelectorAll(".hourly-timeline-dot");
+    expect(dots).toHaveLength(2);
+    dots.forEach((dot) => expect(dot).toHaveClass("bg-[var(--sea)]"));
     expect(screen.queryByText("Andamento")).not.toBeInTheDocument();
     expect(screen.queryByText("Le prossime ore")).not.toBeInTheDocument();
     expect(screen.queryByText("ogni 2 ore")).not.toBeInTheDocument();

@@ -9,7 +9,7 @@ const unavailableUtilityClass =
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-[var(--sand)] text-[var(--ink)]">
-      <header className="border-b border-[var(--line)] bg-[rgba(245,241,233,0.84)] backdrop-blur-xl">
+      <header className="border-b border-[var(--line)] bg-[rgba(255,255,255,0.88)] backdrop-blur-xl">
         <div className="mx-auto flex min-h-[4.5rem] max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-8">
           <Link
             href="/"
@@ -32,7 +32,7 @@ export function PageShell({ children }: { children: ReactNode }) {
             >
               <span
                 aria-hidden="true"
-                className="size-2 rounded-full bg-[var(--sun)] shadow-[0_0_0_4px_rgba(242,183,5,0.16)]"
+                className="size-2 rounded-full bg-[var(--sun)] shadow-[0_0_0_4px_rgba(255,194,71,0.22)]"
               />
               Oggi
             </Link>

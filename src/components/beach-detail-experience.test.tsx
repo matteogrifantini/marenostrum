@@ -44,7 +44,7 @@ const selected: BeachRecommendation = {
   label: "Ottima scelta",
   reason: "Mare calmo.",
   confidence: "alta",
-  factors: { wind: 100, sea: 100, weather: 100, access: 100, fit: 100 },
+  factors: { wind: 100, sea: 100, weather: 100 },
 };
 const morning: BeachRecommendation = { ...selected, score: 83 };
 const afternoon: BeachRecommendation = {
@@ -129,6 +129,17 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
   });
 
+  it.each([
+    ["morning", "8.3"],
+    ["afternoon", "6.2"],
+  ] as const)("shows the %s score instead of the all-day comparison", (period, score) => {
+    renderDetail({ period, recommendation: selected });
+
+    const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
+    expect(within(advice).getByText(score)).toBeInTheDocument();
+    expect(within(advice).queryByText("10.0")).not.toBeInTheDocument();
+  });
+
   it("derives the conditions title and concise aggregate metrics from the active date", () => {
     const conditions = {
       ...selected.conditions,
@@ -154,7 +165,8 @@ describe("BeachDetailExperience", () => {
       "NO · 12 km/h",
     );
     expect(within(conditionsPanel).getByLabelText("Onde: 0.3 m")).toHaveTextContent("0.3 m");
-    expect(within(conditionsPanel).getByLabelText("Acqua: 29.7°")).toHaveTextContent("29.7°");
+    expect(within(conditionsPanel).getByLabelText("Temp. aria: 28°")).toHaveTextContent("28°");
+    expect(within(conditionsPanel).getByText("Cielo · Pioggia")).toBeInTheDocument();
     expect(within(conditionsPanel).getByText("Vento 13.5 km/h")).toBeInTheDocument();
     expect(within(conditionsPanel).getByText("Raffiche fino a 29.7 km/h")).toBeInTheDocument();
   });
@@ -180,7 +192,7 @@ describe("BeachDetailExperience", () => {
       ),
     ).toHaveLength(2);
     expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(2);
-    expect(screen.getByRole("region", { name: "Informazioni generali" })).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "La spiaggia" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
   });
 

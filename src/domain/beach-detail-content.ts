@@ -4,6 +4,7 @@ export type BeachDetailReport = {
   title: string;
   detail: string;
   age: string;
+  confirmations?: number;
 };
 
 export type BeachParking = {
@@ -13,6 +14,9 @@ export type BeachParking = {
   type: string;
   walking: string;
   updated: string;
+  latitude?: number;
+  longitude?: number;
+  directionsUrl?: string;
   sourceUrl?: string;
 };
 

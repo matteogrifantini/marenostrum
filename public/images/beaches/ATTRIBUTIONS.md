@@ -36,7 +36,9 @@ card e schede dettaglio; l’attribuzione resta qui nel repository.
 Le seguenti copie locali sono state scaricate il 2026-08-22 da Wikimedia
 Commons tramite il manifest del catalogo. Sono state ridimensionate a una
 larghezza massima di 1920 px; l’app applica inoltre crop e resize in
-visualizzazione.
+visualizzazione. Macari, Cala Azzurra, Guidaloca, Barcarello, Isola delle Femmine
+e il lungomare di Cefalù sono state selezionate nuovamente dopo una revisione
+visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 
 ### San Vito Lo Capo
 
@@ -47,10 +49,10 @@ visualizzazione.
 
 ### Baia Santa Margherita / Macari
 
-- File: `baia-santa-margherita-macari.jpg` (fonte: `San Vito Lo Capo - Spiaggia di Macari.jpg`)
-- Autore: Leop81
-- Fonte: <https://commons.wikimedia.org/wiki/File:San_Vito_Lo_Capo_-_Spiaggia_di_Macari.jpg>
-- Licenza: Public domain
+- File: `baia-santa-margherita-macari.jpg` (fonte: `Mácari San Vito Lo Capo Sicily.jpg`)
+- Autore: Vater_fotografo
+- Fonte: <https://commons.wikimedia.org/wiki/File:M%C3%A1cari_San_Vito_Lo_Capo_Sicily.jpg>
+- Licenza: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/)
 
 ### Cala Tonnarella dell'Uzzo
 
@@ -82,10 +84,10 @@ visualizzazione.
 
 ### Guidaloca
 
-- File: `guidaloca.jpg` (fonte: `Guidaloca.jpg`)
-- Autore: Leop81
-- Fonte: <https://commons.wikimedia.org/wiki/File:Guidaloca.jpg>
-- Licenza: Public domain
+- File: `guidaloca.jpg` (fonte: `Spiaggia di Guidaloca - panoramio.jpg`)
+- Autore: trolvag
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Guidaloca_-_panoramio.jpg>
+- Licenza: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
 
 ### Cala Rossa, Favignana
 
@@ -96,10 +98,10 @@ visualizzazione.
 
 ### Cala Azzurra, Favignana
 
-- File: `cala-azzurra-favignana.jpg` (fonte: `Favignana cala azzurra.jpg`)
-- Autore: Dedda71
-- Fonte: <https://commons.wikimedia.org/wiki/File:Favignana_cala_azzurra.jpg>
-- Licenza: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+- File: `cala-azzurra-favignana.jpg` (fonte: `Cala Azzurra (9137376232).jpg`)
+- Autore: gianni from Asti, Italy
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cala_Azzurra_(9137376232).jpg>
+- Licenza: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/)
 
 ### Lido Burrone, Favignana
 
@@ -117,17 +119,17 @@ visualizzazione.
 
 ### Barcarello / Sferracavallo
 
-- File: `barcarello-sferracavallo.jpg` (fonte: `Barcarello 2.jpg`)
-- Autore: Emaval61
-- Fonte: <https://commons.wikimedia.org/wiki/File:Barcarello_2.jpg>
+- File: `barcarello-sferracavallo.jpg` (fonte: `Barcarello.jpg`)
+- Autore: AlbertoL6
+- Fonte: <https://commons.wikimedia.org/wiki/File:Barcarello.jpg>
 - Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ### Isola delle Femmine
 
-- File: `isola-delle-femmine.jpg` (fonte: `Isola delle Femmine.jpg`)
-- Autore: Carlo Columba
-- Fonte: <https://commons.wikimedia.org/wiki/File:Isola_delle_Femmine.jpg>
-- Licenza: [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/)
+- File: `isola-delle-femmine.jpg` (fonte: `IsolaDelleFemmine1.jpg`)
+- Autore: MariaCristina2
+- Fonte: <https://commons.wikimedia.org/wiki/File:IsolaDelleFemmine1.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ### Capaci
 
@@ -159,10 +161,10 @@ visualizzazione.
 
 ### Spiaggia del lungomare, Cefalù
 
-- File: `spiaggia-del-lungomare-cefalu.jpg` (fonte: `Cefalu beach.JPG`)
-- Autore: Jeanne boleyn
-- Fonte: <https://commons.wikimedia.org/wiki/File:Cefalu_beach.JPG>
-- Licenza: [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+- File: `spiaggia-del-lungomare-cefalu.jpg` (fonte: `Cefalu beach and sea, Sicily, Italy (9449818487).jpg`)
+- Autore: l0da_ralta
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cefalu_beach_and_sea,_Sicily,_Italy_(9449818487).jpg>
+- Licenza: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
 
 ### Caldura, Cefalù
 

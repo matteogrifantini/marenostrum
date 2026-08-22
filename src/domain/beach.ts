@@ -73,7 +73,5 @@ export type BeachRecommendation = {
     wind: number;
     sea: number;
     weather: number;
-    access: number;
-    fit: number;
   };
 };

@@ -11,9 +11,9 @@
     "slug": "baia-santa-margherita-macari",
     "image_path": "/images/beaches/baia-santa-margherita-macari.jpg",
     "image_alt": "Spiaggia di Macari nella Baia Santa Margherita.",
-    "image_credit": "Leop81",
-    "image_license": "Public domain",
-    "source_url": "https://commons.wikimedia.org/wiki/File:San_Vito_Lo_Capo_-_Spiaggia_di_Macari.jpg"
+    "image_credit": "Vater_fotografo",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:M%C3%A1cari_San_Vito_Lo_Capo_Sicily.jpg"
   },
   {
     "slug": "cala-tonnarella-dell-uzzo",
@@ -51,9 +51,9 @@
     "slug": "guidaloca",
     "image_path": "/images/beaches/guidaloca.jpg",
     "image_alt": "Spiaggia di Guidaloca a Castellammare del Golfo.",
-    "image_credit": "Leop81",
-    "image_license": "Public domain",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Guidaloca.jpg"
+    "image_credit": "trolvag",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Guidaloca_-_panoramio.jpg"
   },
   {
     "slug": "cala-rossa-favignana",
@@ -67,9 +67,9 @@
     "slug": "cala-azzurra-favignana",
     "image_path": "/images/beaches/cala-azzurra-favignana.jpg",
     "image_alt": "Cala Azzurra sull'isola di Favignana.",
-    "image_credit": "Dedda71",
-    "image_license": "CC BY 3.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Favignana_cala_azzurra.jpg"
+    "image_credit": "gianni from Asti, Italy",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cala_Azzurra_(9137376232).jpg"
   },
   {
     "slug": "lido-burrone-favignana",
@@ -91,17 +91,17 @@
     "slug": "barcarello-sferracavallo",
     "image_path": "/images/beaches/barcarello-sferracavallo.jpg",
     "image_alt": "Area costiera di Barcarello presso Capo Gallo.",
-    "image_credit": "Emaval61",
+    "image_credit": "AlbertoL6",
     "image_license": "CC BY-SA 4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Barcarello_2.jpg"
+    "source_url": "https://commons.wikimedia.org/wiki/File:Barcarello.jpg"
   },
   {
     "slug": "isola-delle-femmine",
     "image_path": "/images/beaches/isola-delle-femmine.jpg",
     "image_alt": "Costa di Isola delle Femmine in Sicilia.",
-    "image_credit": "Carlo Columba",
-    "image_license": "CC BY-SA 2.5",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Isola_delle_Femmine.jpg"
+    "image_credit": "MariaCristina2",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:IsolaDelleFemmine1.jpg"
   },
   {
     "slug": "capaci",
@@ -139,9 +139,9 @@
     "slug": "spiaggia-del-lungomare-cefalu",
     "image_path": "/images/beaches/spiaggia-del-lungomare-cefalu.jpg",
     "image_alt": "Spiaggia del lungomare di Cefalù.",
-    "image_credit": "Jeanne boleyn",
-    "image_license": "CC0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Cefalu_beach.JPG"
+    "image_credit": "l0da_ralta",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cefalu_beach_and_sea,_Sicily,_Italy_(9449818487).jpg"
   },
   {
     "slug": "caldura-cefalu",

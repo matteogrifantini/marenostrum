@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
+import { versionedMediaUrl } from "../lib/media-url";
 
 type BeachCommunitySectionsProps = {
   detail: BeachDetailContent;
@@ -24,7 +25,7 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-[var(--surface-muted)] px-3 py-1.5 text-xs font-bold text-[var(--ink-soft)]">👍 {reviews.recommendedPercent}% la consiglia</span>
+                <span className="rounded-full bg-[var(--surface-muted)] px-3 py-1.5 text-xs font-bold text-[var(--ink-soft)]"><span aria-hidden="true" className="emoji-readable-mobile">👍</span> {reviews.recommendedPercent}% la consiglia</span>
                 <span className="rounded-full bg-[var(--surface-muted)] px-3 py-1.5 text-xs font-bold text-[var(--ink-soft)]">{reviews.total} recensioni</span>
               </div>
               {reviews.items.slice(0, 2).map((review) => (
@@ -65,7 +66,7 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
         <div className="detail-photo-rail detail-enter grid auto-cols-[44%] grid-flow-col gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {detail.recentPhotos.map((photo) => (
             <figure key={photo.id} className="relative h-36 snap-start overflow-hidden rounded-[1.1rem] bg-[var(--surface-muted)] shadow-[0_7px_18px_rgba(8,47,61,0.08)]">
-              <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 768px) 44vw, 330px" className="object-cover" />
+              <Image src={versionedMediaUrl(photo.src)} alt={photo.alt} fill sizes="(max-width: 768px) 44vw, 330px" className="object-cover" />
               <figcaption className="absolute bottom-2 left-2 rounded-full bg-[rgba(7,44,53,0.52)] px-2 py-1 text-[0.65rem] font-bold text-white backdrop-blur-md">{photo.age}</figcaption>
             </figure>
           ))}

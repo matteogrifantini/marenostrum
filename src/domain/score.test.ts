@@ -52,6 +52,28 @@ describe("scoreBeach", () => {
     expect(result.reason).toContain("aggiornamento");
   });
 
+  it("uses only the current weather and sea conditions for the rating", () => {
+    const sameWeatherDifferentProfile = scoreBeach(
+      {
+        ...shelteredBeach,
+        access: "difficile",
+        tags: ["snorkeling", "selvaggia"],
+      },
+      calmConditions,
+      {
+        intent: "explore",
+        now: new Date("2026-08-14T09:00:00.000Z"),
+      },
+    );
+    const originalProfile = scoreBeach(shelteredBeach, calmConditions, {
+      intent: "relax",
+      now: new Date("2026-08-14T09:00:00.000Z"),
+    });
+
+    expect(sameWeatherDifferentProfile.score).toBe(originalProfile.score);
+    expect(sameWeatherDifferentProfile.factors).toEqual(originalProfile.factors);
+  });
+
   it.each([
     [180, "all'ostro"],
     [135, "allo scirocco"],

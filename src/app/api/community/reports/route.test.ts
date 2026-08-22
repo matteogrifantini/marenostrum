@@ -16,6 +16,7 @@ function dependencies(
       title: "Acqua",
       detail: input.detail,
       age: "adesso",
+      confirmations: 1,
     } satisfies BeachDetailReport));
 
   return {
@@ -59,7 +60,26 @@ describe("handleCommunityReport", () => {
       ok: true,
       report: expect.objectContaining({ title: "Acqua", detail: payload.detail }),
     });
-    expect(deps.create).toHaveBeenCalledWith(payload);
+    expect(deps.create).toHaveBeenCalledWith(
+      expect.objectContaining({ ...payload, reporterId: expect.stringMatching(/^[0-9a-f-]{36}$/) }),
+    );
+    expect(response.headers.get("set-cookie")).toContain("marenostrum_community_reporter_v1=");
+  });
+
+  it("reuses the anonymous reporter identity from the request cookie", async () => {
+    const deps = dependencies();
+    const reporterId = "11111111-1111-4111-8111-111111111111";
+
+    await handleCommunityReport(
+      new Request(url, {
+        method: "POST",
+        headers: { cookie: `marenostrum_community_reporter_v1=${reporterId}` },
+        body: JSON.stringify({ slug: "cala-del-gelsomino", category: "water", detail: "Mare mosso" }),
+      }),
+      deps,
+    );
+
+    expect(deps.create).toHaveBeenCalledWith(expect.objectContaining({ reporterId }));
   });
 
   it("rejects details that do not belong to the selected category", async () => {

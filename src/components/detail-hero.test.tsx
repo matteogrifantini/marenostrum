@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { DetailHero } from "./detail-hero";
 
@@ -17,6 +17,10 @@ const beach = {
 };
 
 describe("DetailHero", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
   it("shows the municipality without an invented user distance and opens the vertical beach feed", () => {
     const detail = getDemoBeachDetail(beach.slug)!;
 

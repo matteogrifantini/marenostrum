@@ -42,7 +42,7 @@ const recommendations: BeachRecommendation[] = [
     label: "Ottima scelta",
     reason: "Mare calmo.",
     confidence: "alta",
-    factors: { wind: 100, sea: 100, weather: 100, access: 100, fit: 100 },
+    factors: { wind: 100, sea: 100, weather: 100 },
   },
   {
     beach: {
@@ -71,7 +71,7 @@ const recommendations: BeachRecommendation[] = [
     label: "Buona scelta",
     reason: "Condizioni favorevoli.",
     confidence: "alta",
-    factors: { wind: 80, sea: 85, weather: 85, access: 70, fit: 90 },
+    factors: { wind: 80, sea: 85, weather: 85 },
   },
   {
     beach: {
@@ -82,7 +82,7 @@ const recommendations: BeachRecommendation[] = [
       description: "Sabbia e pineta.",
       orientationDegrees: 95,
       shelter: ["ponente"],
-      tags: ["famiglie"],
+      tags: ["famiglie", "sabbia"],
       access: "facile",
       image: "/images/beaches/spiaggia-della-marchesa.jpg",
     },
@@ -100,7 +100,7 @@ const recommendations: BeachRecommendation[] = [
     label: "Buona scelta",
     reason: "Mare piacevole.",
     confidence: "alta",
-    factors: { wind: 78, sea: 80, weather: 82, access: 95, fit: 72 },
+    factors: { wind: 78, sea: 80, weather: 82 },
   },
 ];
 
@@ -246,6 +246,21 @@ describe("HomeExperience", () => {
 
     expect(screen.getByRole("heading", { name: "Tonnara di Vendicari" })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "Cala del Gelsomino" })).not.toBeInTheDocument();
+  });
+
+  it("supports multiple factual filters at the same time", () => {
+    renderHome();
+
+    fireEvent.click(screen.getByRole("button", { name: "Filtri" }));
+    const dialog = screen.getByRole("dialog", { name: "Affina la scelta" });
+
+    fireEvent.click(within(dialog).getByRole("button", { name: "Sabbia" }));
+    fireEvent.click(within(dialog).getByRole("button", { name: "Adatta alle famiglie" }));
+
+    expect(screen.getByRole("heading", { name: "Spiaggia della Marchesa" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Cala del Gelsomino" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Tonnara di Vendicari" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Filtri · 2" })).toBeInTheDocument();
   });
 
   it("keeps search and forecast controls centered instead of full-width on desktop", () => {

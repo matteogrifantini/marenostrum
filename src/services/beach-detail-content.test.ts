@@ -114,13 +114,14 @@ describe("buildBeachDetailContent", () => {
       },
     ]);
     expect(detail.facts).toEqual([
-      { emoji: "•", label: "Dettaglio", value: "Sabbia chiara" },
-      { emoji: "•", label: "Dettaglio", value: "Fondale basso" },
+      { emoji: "🏖️", label: "Fondo", value: "Sabbia chiara" },
+      { emoji: "🌊", label: "Acqua", value: "Fondale basso" },
     ]);
     expect(detail.reviews).toBeNull();
     expect(detail.reviewProfile).toEqual({
       provider: "google",
-      mapsUrl: "https://maps.google.com/?cid=1",
+      mapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia&query_place_id=ChIJexample",
       verificationStatus: "verified",
     });
     expect(detail.webcam).toMatchObject({
@@ -132,6 +133,53 @@ describe("buildBeachDetailContent", () => {
     });
     expect(detail.recentPhotos).toEqual([]);
     expect(detail.reels).toEqual([]);
+  });
+
+  it("turns parking coordinates into a Google Maps driving route", () => {
+    const detail = buildBeachDetailContent(
+      beach,
+      {
+        ...content,
+        parkings: [
+          {
+            ...parking,
+            latitude: "38.177057",
+            longitude: "12.732108",
+          },
+        ],
+      },
+      [],
+    );
+
+    expect(detail.parkings[0]).toMatchObject({
+      latitude: 38.177057,
+      longitude: 12.732108,
+      directionsUrl:
+        "https://www.google.com/maps/dir/?api=1&destination=38.177057%2C12.732108&travelmode=driving",
+    });
+  });
+
+  it("falls back to a Google Maps search when a review place is not verified", () => {
+    const detail = buildBeachDetailContent(
+      beach,
+      {
+        ...content,
+        reviewProfile: {
+          ...content.reviewProfile!,
+          place_id: null,
+          maps_url: "https://maps.google.com/?cid=stale",
+          verification_status: "draft",
+        },
+      },
+      [],
+    );
+
+    expect(detail.reviewProfile).toEqual({
+      provider: "google",
+      mapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia",
+      verificationStatus: "draft",
+    });
   });
 
   it("returns honest empty sections when no public child content exists", () => {
@@ -147,8 +195,8 @@ describe("buildBeachDetailContent", () => {
       reports: [],
       parkings: [],
       facts: [
-        { emoji: "•", label: "Dettaglio", value: "Sabbia chiara" },
-        { emoji: "•", label: "Dettaglio", value: "Fondale basso" },
+        { emoji: "🏖️", label: "Fondo", value: "Sabbia chiara" },
+        { emoji: "🌊", label: "Acqua", value: "Fondale basso" },
       ],
       reviews: null,
       reviewProfile: null,
@@ -156,5 +204,28 @@ describe("buildBeachDetailContent", () => {
       reels: [],
       webcam: null,
     });
+  });
+
+  it("classifies rocky and walking-access facts with specific categories", () => {
+    const detail = buildBeachDetailContent(
+      {
+        ...beach,
+        facts: [
+          "Cala rocciosa",
+          "Accesso indicato come difficile dalla fonte turistica",
+        ],
+      },
+      null,
+      [],
+    );
+
+    expect(detail.facts).toEqual([
+      { emoji: "🪨", label: "Fondo", value: "Cala rocciosa" },
+      {
+        emoji: "🥾",
+        label: "Accesso",
+        value: "Accesso indicato come difficile dalla fonte turistica",
+      },
+    ]);
   });
 });

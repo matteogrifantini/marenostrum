@@ -1,6 +1,6 @@
 "use client";
 
-import { CloudSun, Droplets, Sparkles, Waves, Wind } from "lucide-react";
+import { CloudSun, Gauge, Sparkles, ThermometerSun, Waves, Wind } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
@@ -13,7 +13,7 @@ import { PageShell } from "./page-shell";
 import { BeachLiveSections } from "./beach-live-sections";
 import { BeachCommunitySections } from "./beach-community-sections";
 import { ForecastAttribution } from "./forecast-attribution";
-import { formatAggregateMetric } from "../lib/forecast-presentation";
+import { formatAggregateMetric, formatWeatherLabel } from "../lib/forecast-presentation";
 
 type BeachDetailExperienceProps = {
   beach: Beach;
@@ -96,6 +96,17 @@ function periodSummary(recommendation: BeachRecommendation | undefined, period: 
     : `Vento ${formatAggregateMetric(recommendation.conditions.windSpeedKmh)} km/h`;
 }
 
+function recommendationForPeriod(
+  period: BeachPeriod,
+  allDayRecommendation: BeachRecommendation | undefined,
+  morningRecommendation: BeachRecommendation | undefined,
+  afternoonRecommendation: BeachRecommendation | undefined,
+) {
+  if (period === "morning") return morningRecommendation ?? allDayRecommendation;
+  if (period === "afternoon") return afternoonRecommendation ?? allDayRecommendation;
+  return allDayRecommendation;
+}
+
 export function BeachDetailExperience({
   beach,
   recommendation,
@@ -111,6 +122,12 @@ export function BeachDetailExperience({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
+  const selectedRecommendation = recommendationForPeriod(
+    period,
+    recommendation,
+    morningRecommendation,
+    afternoonRecommendation,
+  );
 
   const replaceSelection = (nextDate: string, nextPeriod: BeachPeriod) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -136,13 +153,13 @@ export function BeachDetailExperience({
               />
             </div>
 
-            <AdviceCard recommendation={recommendation} dataUnavailable={dataUnavailable} />
+            <AdviceCard recommendation={selectedRecommendation} dataUnavailable={dataUnavailable} />
             <PeriodSelection
               period={period}
               onPeriodChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
             />
             <ConditionsCard
-              recommendation={recommendation}
+              recommendation={selectedRecommendation}
               period={period}
               morningRecommendation={morningRecommendation}
               afternoonRecommendation={afternoonRecommendation}
@@ -293,10 +310,13 @@ function ConditionsCard({
   const selectedDateLabel = dateOptions.find((option) => option.iso === date)?.label ?? date;
   const forecastTitle = `Previsioni ${selectedDateLabel.toLocaleLowerCase("it-IT")}`;
   const windValue = `${directionName(conditions.windDirectionDegrees)} · ${formatAggregateMetric(conditions.windSpeedKmh)} km/h`;
+  const gustValue = `${formatAggregateMetric(conditions.gustSpeedKmh)} km/h`;
   const waveValue = `${formatAggregateMetric(conditions.waveHeightMeters)} m`;
+  const airTemperatureValue = `${formatAggregateMetric(conditions.temperatureCelsius)}°`;
   const waterValue = conditions.waterTemperatureCelsius == null
     ? "—"
     : `${formatAggregateMetric(conditions.waterTemperatureCelsius)}°`;
+  const weatherLabel = formatWeatherLabel(conditions.weather);
 
   return (
     <>
@@ -306,8 +326,8 @@ function ConditionsCard({
       />
       <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-3 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-4">
         <div className="flex items-center gap-3">
-          <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-lg">🌊</span>
-          <div><h2 className="text-base font-bold tracking-[-0.025em]">{forecastTitle}</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Previsioni per la selezione attiva</p></div>
+          <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-[var(--sea-deep)]"><CloudSun size={20} /></span>
+          <div><h2 className="text-base font-bold tracking-[-0.025em]">{forecastTitle}</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Cielo · {weatherLabel}</p></div>
         </div>
 
         {period === "all-day" ? (
@@ -319,9 +339,13 @@ function ConditionsCard({
 
         <div className="mt-2 grid grid-cols-2">
           <ConditionItem icon={<Wind size={17} />} label="Vento" value={windValue} detail={conditions.gustSpeedKmh >= 25 ? "raffiche sostenute" : "intensità regolare"} border="right-bottom" />
-          <ConditionItem icon={<Waves size={17} />} label="Onde" value={waveValue} detail={conditions.seaState ?? "calmo"} border="bottom" />
-          <ConditionItem icon={<Droplets size={17} />} label="Acqua" value={waterValue} detail="stima superficiale" border="right" />
-          <ConditionItem icon={<CloudSun size={17} />} label="Meteo" value={conditions.weather} detail={`pioggia ${rainChance}%`} />
+          <ConditionItem icon={<Gauge size={17} />} label="Raffiche" value={gustValue} detail="massime previste" border="bottom" />
+          <ConditionItem icon={<Waves size={17} />} label="Onde" value={waveValue} detail={conditions.seaState ?? "calmo"} border="right" />
+          <ConditionItem icon={<ThermometerSun size={17} />} label="Temp. aria" value={airTemperatureValue} detail={waterValue === "—" ? "acqua non disponibile" : `acqua ${waterValue}`} />
+        </div>
+
+        <div className="mt-2 flex justify-end border-t border-[var(--line)] pt-2 text-[0.68rem] font-bold text-[var(--muted)]">
+          <span>pioggia {rainChance}%</span>
         </div>
 
         <div className="border-t border-[var(--line)] pt-1">
@@ -335,7 +359,7 @@ function ConditionsCard({
 function DayPart({ label, emoji, recommendation, summary }: { label: string; emoji: string; recommendation?: BeachRecommendation; summary: string }) {
   return (
     <div className="rounded-[0.9rem] bg-[var(--surface-muted)]/70 p-3">
-      <div className="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]"><span>{label}</span><span aria-hidden="true">{emoji}</span></div>
+      <div className="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]"><span>{label}</span><span aria-hidden="true" className="emoji-readable-mobile">{emoji}</span></div>
       <strong className="mt-2 block text-3xl leading-none tracking-[-0.05em]">{recommendation ? displayScore(recommendation.score) : "—"}</strong>
       <p className="mt-2 text-[0.68rem] leading-4 text-[var(--muted)]">{summary}</p>
     </div>

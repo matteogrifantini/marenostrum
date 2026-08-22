@@ -32,6 +32,9 @@ export const communityReportCategories = [
     details: [
       { value: "clear", label: "Acqua limpida" },
       { value: "murky", label: "Acqua torbida" },
+      { value: "calm", label: "Mare calmo" },
+      { value: "rough", label: "Mare mosso" },
+      { value: "agitated", label: "Mare agitato" },
       { value: "seaweed", label: "Alghe o posidonia" },
       { value: "jellyfish", label: "Meduse" },
       { value: "litter", label: "Rifiuti in acqua" },

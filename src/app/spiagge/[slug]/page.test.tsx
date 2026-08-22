@@ -82,7 +82,7 @@ const bundle: BeachForecastBundle = {
     label: "Ottima scelta",
     reason: "Mare calmo.",
     confidence: "alta",
-    factors: { wind: 100, sea: 100, weather: 100, access: 100, fit: 100 },
+    factors: { wind: 100, sea: 100, weather: 100 },
   },
   morning: undefined,
   afternoon: undefined,

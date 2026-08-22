@@ -22,15 +22,19 @@ describe("BeachCard", () => {
       expect.stringContaining("cala-del-gelsomino.jpg"),
     );
     expect(screen.getByText("Noto · 18 km")).toBeInTheDocument();
-    expect(screen.getByLabelText("Voto 10.0 su 10, Ottima scelta")).toHaveAttribute(
+    expect(screen.getByLabelText("Voto 9.6 su 10, Ottima scelta")).toHaveAttribute(
       "data-score-tone",
       "excellent",
     );
     expect(screen.getByLabelText("Vento: NO, 7 km/h")).toBeInTheDocument();
     expect(screen.getByLabelText("Onde: 0.2 m")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Salva Cala del Gelsomino" })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    );
     expect(screen.queryByText("Raffiche")).not.toBeInTheDocument();
     expect(screen.queryByText("Aria")).not.toBeInTheDocument();
-    expect(screen.queryByText("Cielo sereno")).not.toBeInTheDocument();
+    expect(screen.getByLabelText("Cielo: Sereno")).toHaveTextContent("Cielo · Sereno");
     expect(screen.queryByText("Mare calmo")).not.toBeInTheDocument();
     expect(screen.queryByText("Parcheggio limitato")).not.toBeInTheDocument();
     expect(

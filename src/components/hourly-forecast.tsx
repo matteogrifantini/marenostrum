@@ -25,7 +25,7 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
             aria-hidden="true"
             className="absolute left-12 right-12 top-1.5 h-px bg-[var(--sea)]/35"
           />
-          {hourly.map((item, index) => (
+          {hourly.map((item) => (
             <div
               key={item.time}
               role="listitem"
@@ -33,10 +33,7 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
             >
               <div
                 aria-hidden="true"
-                className={[
-                  "relative z-10 mx-auto size-3 rounded-full ring-4 ring-[var(--surface)]",
-                  index % 2 === 0 ? "bg-[var(--sea)]" : "bg-[var(--sun)]",
-                ].join(" ")}
+                className="hourly-timeline-dot relative z-10 mx-auto size-3 rounded-full bg-[var(--sea)] ring-4 ring-[var(--surface)]"
               />
               <p className="mt-4 text-xs font-bold text-[var(--ink)]">{item.time}</p>
                 <div className="mt-3 rounded-[1.25rem] border border-[var(--sea)]/15 bg-[var(--sea-soft)]/65 p-3 text-left shadow-[0_6px_18px_rgba(20,88,104,0.06)]">

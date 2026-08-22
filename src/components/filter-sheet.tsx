@@ -2,12 +2,13 @@
 
 import { Check, X } from "lucide-react";
 import { useEffect } from "react";
-import type { BeachAccess } from "../domain/beach";
-
-export type BeachFilters = {
-  access: BeachAccess | "all";
-  service: "all" | "pineta" | "parcheggio" | "snorkeling";
-};
+import {
+  BEACH_ACCESS_FILTER_OPTIONS,
+  BEACH_SERVICE_FILTER_OPTIONS,
+  BEACH_TAG_FILTER_OPTIONS,
+  DEFAULT_BEACH_FILTERS,
+  type BeachFilters,
+} from "../domain/beach-filters";
 
 type FilterSheetProps = {
   open: boolean;
@@ -15,20 +16,6 @@ type FilterSheetProps = {
   onClose: () => void;
   onChange: (filters: BeachFilters) => void;
 };
-
-const accessOptions: Array<{ value: BeachFilters["access"]; label: string }> = [
-  { value: "all", label: "Tutti gli accessi" },
-  { value: "facile", label: "Accesso facile" },
-  { value: "moderato", label: "Accesso moderato" },
-  { value: "difficile", label: "Accesso impegnativo" },
-];
-
-const serviceOptions: Array<{ value: BeachFilters["service"]; label: string }> = [
-  { value: "all", label: "Tutti i servizi" },
-  { value: "pineta", label: "Pineta" },
-  { value: "parcheggio", label: "Parcheggio" },
-  { value: "snorkeling", label: "Snorkeling" },
-];
 
 export function FilterSheet({ open, filters, onClose, onChange }: FilterSheetProps) {
   useEffect(() => {
@@ -44,7 +31,7 @@ export function FilterSheet({ open, filters, onClose, onChange }: FilterSheetPro
 
   if (!open) return null;
 
-  const reset = () => onChange({ access: "all", service: "all" });
+  const reset = () => onChange({ ...DEFAULT_BEACH_FILTERS });
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-[rgba(20,44,57,0.3)] p-3 backdrop-blur-sm sm:items-center">
@@ -58,7 +45,7 @@ export function FilterSheet({ open, filters, onClose, onChange }: FilterSheetPro
         role="dialog"
         aria-modal="true"
         aria-labelledby="filter-sheet-title"
-        className="relative w-full max-w-lg rounded-[1.75rem] bg-[var(--surface)] p-5 shadow-[0_24px_80px_rgba(20,44,57,0.22)] sm:p-7"
+        className="relative max-h-[min(85vh,48rem)] w-full max-w-lg overflow-y-auto rounded-[1.75rem] bg-[var(--surface)] p-5 shadow-[0_24px_80px_rgba(20,44,57,0.22)] sm:p-7"
       >
         <div className="flex items-start justify-between gap-5">
           <div>
@@ -81,15 +68,27 @@ export function FilterSheet({ open, filters, onClose, onChange }: FilterSheetPro
 
         <FilterGroup
           label="Accesso"
-          options={accessOptions}
-          value={filters.access}
-          onSelect={(value) => onChange({ ...filters, access: value })}
+          options={BEACH_ACCESS_FILTER_OPTIONS}
+          selected={filters.access}
+          onToggle={(value) => onChange({ ...filters, access: toggleValue(filters.access, value) })}
         />
         <FilterGroup
-          label="Servizi e ambiente"
-          options={serviceOptions}
-          value={filters.service}
-          onSelect={(value) => onChange({ ...filters, service: value })}
+          label="Tipo di spiaggia"
+          options={BEACH_TAG_FILTER_OPTIONS.slice(0, 6)}
+          selected={filters.tags}
+          onToggle={(value) => onChange({ ...filters, tags: toggleValue(filters.tags, value) })}
+        />
+        <FilterGroup
+          label="Esperienza"
+          options={BEACH_TAG_FILTER_OPTIONS.slice(6)}
+          selected={filters.tags}
+          onToggle={(value) => onChange({ ...filters, tags: toggleValue(filters.tags, value) })}
+        />
+        <FilterGroup
+          label="Servizi"
+          options={BEACH_SERVICE_FILTER_OPTIONS}
+          selected={filters.services}
+          onToggle={(value) => onChange({ ...filters, services: toggleValue(filters.services, value) })}
         />
 
         <div className="mt-7 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-5">
@@ -113,38 +112,42 @@ export function FilterSheet({ open, filters, onClose, onChange }: FilterSheetPro
   );
 }
 
+function toggleValue<T extends string>(values: readonly T[], value: T) {
+  return values.includes(value) ? values.filter((current) => current !== value) : [...values, value];
+}
+
 function FilterGroup<T extends string>({
   label,
   options,
-  value,
-  onSelect,
+  selected,
+  onToggle,
 }: {
   label: string;
-  options: Array<{ value: T; label: string }>;
-  value: T;
-  onSelect: (value: T) => void;
+  options: ReadonlyArray<{ value: T; label: string }>;
+  selected: readonly T[];
+  onToggle: (value: T) => void;
 }) {
   return (
     <fieldset className="mt-6">
       <legend className="text-sm font-bold text-[var(--ink)]">{label}</legend>
       <div className="mt-3 flex flex-wrap gap-2">
         {options.map((option) => {
-          const selected = option.value === value;
+          const isSelected = selected.includes(option.value);
 
           return (
             <button
               key={option.value}
               type="button"
-              aria-pressed={selected}
-              onClick={() => onSelect(option.value)}
+              aria-pressed={isSelected}
+              onClick={() => onToggle(option.value)}
               className={[
                 "inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 text-sm font-semibold transition-[transform,background-color,color] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
-                selected
+                isSelected
                   ? "bg-[var(--ink)] text-white"
                   : "bg-[var(--surface-muted)] text-[var(--ink-soft)] hover:bg-[var(--sand-muted)]",
               ].join(" ")}
             >
-              {selected ? <Check aria-hidden="true" size={15} /> : null}
+              {isSelected ? <Check aria-hidden="true" size={15} /> : null}
               {option.label}
             </button>
           );

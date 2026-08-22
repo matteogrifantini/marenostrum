@@ -23,6 +23,13 @@ describe("BeachLiveSections", () => {
     expect(within(reports).getAllByRole("listitem")).toHaveLength(3);
     expect(within(reports).getByText("12 min fa")).toHaveClass("text-xs");
 
+    fireEvent.click(screen.getByRole("button", { name: "Aggiungi" }));
+    const composer = screen.getByRole("form", { name: "Aggiungi una segnalazione" });
+    fireEvent.click(within(composer).getByRole("radio", { name: "Acqua" }));
+    expect(within(composer).getByRole("radio", { name: "Mare calmo" })).toBeInTheDocument();
+    expect(within(composer).getByRole("radio", { name: "Mare mosso" })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Chiudi" }));
+
     fireEvent.click(screen.getByRole("button", { name: `Mostra tutte · ${detail.reports.length}` }));
     expect(within(reports).getAllByRole("listitem")).toHaveLength(detail.reports.length);
     fireEvent.click(screen.getByRole("button", { name: "Mostra meno" }));
@@ -30,6 +37,21 @@ describe("BeachLiveSections", () => {
 
     const reportAction = screen.getByRole("button", { name: "Aggiungi" });
     expect(reportAction).toHaveClass("bg-[var(--sea-soft)]/65");
+  });
+
+  it("shows how many users reported the same community update", () => {
+    const recommendation = demoRecommendations[0];
+    const baseDetail = getDemoBeachDetail(recommendation.beach.slug)!;
+    const detail = {
+      ...baseDetail,
+      reports: baseDetail.reports.map((report, index) =>
+        index === 0 ? { ...report, confirmations: 3 } : report,
+      ),
+    };
+
+    render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
+
+    expect(screen.getByText("3 utenti")).toBeInTheDocument();
   });
 
   it("opens a report composer and publishes a new report", async () => {
@@ -95,12 +117,42 @@ describe("BeachLiveSections", () => {
       expect(within(parking).getByText(option.price)).toBeInTheDocument();
     }
 
-    const general = screen.getByRole("region", { name: "Informazioni generali" });
-    expect(within(general).queryByText("informazioni generali")).not.toBeInTheDocument();
+    const general = screen.getByRole("region", { name: "La spiaggia" });
+    expect(within(general).queryByText("Caratteristiche che non cambiano col meteo")).not.toBeInTheDocument();
+    expect(general.querySelectorAll(".detail-emoji-mobile")).toHaveLength(detail.facts.length + 1);
     for (const fact of detail.facts) {
       expect(within(general).getByText(fact.label)).toBeInTheDocument();
       expect(within(general).getByText(fact.value)).toBeInTheDocument();
     }
+  });
+
+  it("uses a coordinate-based Google Maps route for each parking facility", () => {
+    const recommendation = demoRecommendations[0];
+    const baseDetail = getDemoBeachDetail(recommendation.beach.slug)!;
+    const firstParking = baseDetail.parkings[0];
+    const detail = {
+      ...baseDetail,
+      parkings: baseDetail.parkings.map((parking, index) =>
+        index === 0
+          ? {
+              ...parking,
+              directionsUrl:
+                "https://www.google.com/maps/dir/?api=1&destination=38.177057%2C12.732108&travelmode=driving",
+            }
+          : parking,
+      ),
+    };
+
+    render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
+
+    expect(
+      screen.getByRole("link", {
+        name: `Apri percorso per ${firstParking.name} su Google Maps`,
+      }),
+    ).toHaveAttribute(
+      "href",
+      "https://www.google.com/maps/dir/?api=1&destination=38.177057%2C12.732108&travelmode=driving",
+    );
   });
 
   it("shows OpenStreetMap attribution for OSM parking data", () => {

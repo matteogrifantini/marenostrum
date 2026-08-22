@@ -9,18 +9,27 @@ type CommunityReportRow = {
   category: CommunityReportCategory;
   detail: string;
   created_at: string;
+  reporter_id: string | null;
 };
 
 export type CommunityReportInput = {
   slug: string;
   category: CommunityReportCategory;
   detail: string;
+  reporterId?: string;
 };
 
 export class CommunityReportNotFoundError extends Error {
   constructor() {
     super("Published beach not found");
     this.name = "CommunityReportNotFoundError";
+  }
+}
+
+export class CommunityReportDuplicateError extends Error {
+  constructor() {
+    super("This report was already submitted by this reporter");
+    this.name = "CommunityReportDuplicateError";
   }
 }
 
@@ -42,9 +51,10 @@ function formatReportAge(createdAt: string, now = new Date()) {
   return "ieri";
 }
 
-export function mapCommunityReportRow(
+function mapCommunityReportRow(
   row: CommunityReportRow,
   now = new Date(),
+  confirmations = 1,
 ): BeachDetailReport {
   const category = getCommunityReportCategory(row.category);
 
@@ -54,7 +64,49 @@ export function mapCommunityReportRow(
     title: category.title,
     detail: row.detail,
     age: formatReportAge(row.created_at, now),
+    confirmations,
   };
+}
+
+export function mapCommunityReportRows(rows: CommunityReportRow[], now = new Date()) {
+  const groups = new Map<
+    string,
+    { latest: CommunityReportRow; reporters: Set<string>; legacyRows: number }
+  >();
+
+  for (const row of rows) {
+    const key = `${row.category}\u0000${row.detail}`;
+    const group = groups.get(key) ?? {
+      latest: row,
+      reporters: new Set<string>(),
+      legacyRows: 0,
+    };
+
+    if (new Date(row.created_at).getTime() > new Date(group.latest.created_at).getTime()) {
+      group.latest = row;
+    }
+
+    if (row.reporter_id) {
+      group.reporters.add(row.reporter_id);
+    } else {
+      group.legacyRows += 1;
+    }
+
+    groups.set(key, group);
+  }
+
+  return [...groups.values()]
+    .sort(
+      (left, right) =>
+        new Date(right.latest.created_at).getTime() - new Date(left.latest.created_at).getTime(),
+    )
+    .map((group) =>
+      mapCommunityReportRow(
+        group.latest,
+        now,
+        group.reporters.size + group.legacyRows,
+      ),
+    );
 }
 
 async function createAdminClient() {
@@ -85,11 +137,15 @@ export async function createCommunityReport(input: CommunityReportInput) {
       beach_id: beachId,
       category: input.category,
       detail: normalizeCommunityReportDetail(input.detail),
+      ...(input.reporterId ? { reporter_id: input.reporterId } : {}),
     })
-    .select("id, category, detail, created_at")
+    .select("id, category, detail, created_at, reporter_id")
     .single();
 
-  if (error) throw error;
+  if (error) {
+    if (error.code === "23505") throw new CommunityReportDuplicateError();
+    throw error;
+  }
 
   return mapCommunityReportRow(data as CommunityReportRow);
 }
@@ -99,14 +155,14 @@ export async function getCommunityReportsForBeach(slug: string) {
     const { client, beachId } = await findPublishedBeachId(slug);
     const { data, error } = await client
       .from("community_reports")
-      .select("id, category, detail, created_at")
+      .select("id, category, detail, created_at, reporter_id")
       .eq("beach_id", beachId)
       .order("created_at", { ascending: false })
-      .limit(20);
+      .limit(100);
 
     if (error) return [];
 
-    return (data as CommunityReportRow[]).map((row) => mapCommunityReportRow(row));
+    return mapCommunityReportRows(data as CommunityReportRow[]);
   } catch {
     return [];
   }

@@ -1,6 +1,7 @@
 import type { BeachDetailReport } from "../../../../domain/beach-detail-content";
 import {
   createCommunityReport,
+  CommunityReportDuplicateError,
   type CommunityReportInput,
 } from "../../../../services/community-reports";
 import {
@@ -13,8 +14,46 @@ export type CommunityReportDependencies = {
   create: (input: CommunityReportInput) => Promise<BeachDetailReport>;
 };
 
+const REPORTER_COOKIE = "marenostrum_community_reporter_v1";
+const REPORTER_ID_PATTERN = /^[0-9a-f-]{36}$/;
+
 function errorResponse(status: number, error: string) {
   return Response.json({ ok: false, error }, { status });
+}
+
+function readCookie(request: Request, name: string) {
+  const cookieHeader = request.headers.get("cookie") ?? "";
+  const cookie = cookieHeader
+    .split(";")
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(`${name}=`));
+
+  return cookie?.slice(name.length + 1) ?? null;
+}
+
+function reporterIdentity(request: Request) {
+  const existing = readCookie(request, REPORTER_COOKIE);
+  if (existing && REPORTER_ID_PATTERN.test(existing)) {
+    return { id: existing, shouldSetCookie: false };
+  }
+
+  return { id: crypto.randomUUID(), shouldSetCookie: true };
+}
+
+function withReporterCookie(
+  response: Response,
+  request: Request,
+  reporterId: string,
+  shouldSetCookie: boolean,
+) {
+  if (!shouldSetCookie) return response;
+
+  const secure = request.url.startsWith("https:") ? "; Secure" : "";
+  response.headers.append(
+    "set-cookie",
+    `${REPORTER_COOKIE}=${reporterId}; Path=/; Max-Age=31536000; HttpOnly; SameSite=Lax${secure}`,
+  );
+  return response;
 }
 
 function parseInput(value: unknown): CommunityReportInput | null {
@@ -46,11 +85,22 @@ export async function handleCommunityReport(
 
   if (!input) return errorResponse(400, "Dati non validi");
 
+  const reporter = reporterIdentity(request);
+
   try {
-    const report = await dependencies.create(input);
-    return Response.json({ ok: true, report }, { status: 201 });
-  } catch {
-    return errorResponse(503, "Segnalazione non disponibile");
+    const report = await dependencies.create({ ...input, reporterId: reporter.id });
+    return withReporterCookie(
+      Response.json({ ok: true, report }, { status: 201 }),
+      request,
+      reporter.id,
+      reporter.shouldSetCookie,
+    );
+  } catch (error) {
+    const response = error instanceof CommunityReportDuplicateError
+      ? errorResponse(409, "Hai già inviato questa segnalazione")
+      : errorResponse(503, "Segnalazione non disponibile");
+
+    return withReporterCookie(response, request, reporter.id, reporter.shouldSetCookie);
   }
 }
 

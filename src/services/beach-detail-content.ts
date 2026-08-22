@@ -11,6 +11,11 @@ import {
   type BeachDetailReport,
   type BeachFact,
 } from "../domain/beach-detail-content";
+import {
+  buildGoogleMapsDirectionsUrl,
+  buildGoogleMapsPlaceUrl,
+  buildGoogleMapsSearchUrl,
+} from "../lib/maps-links";
 
 function nonEmpty(value: string | null | undefined, fallback: string) {
   const normalized = value?.trim();
@@ -40,6 +45,10 @@ function facilityType(value: string) {
 }
 
 function mapParking(parking: ParkingFacilityRow, sourceUrl?: string) {
+  const latitude = numericCoordinate(parking.latitude);
+  const longitude = numericCoordinate(parking.longitude);
+  const directionsUrl = buildGoogleMapsDirectionsUrl(latitude, longitude);
+
   return {
     id: parking.id,
     name: nonEmpty(parking.name, "Parcheggio vicino"),
@@ -51,15 +60,33 @@ function mapParking(parking: ParkingFacilityRow, sourceUrl?: string) {
       "Verificato",
       "Data di verifica non disponibile",
     ),
+    ...(latitude === null ? {} : { latitude }),
+    ...(longitude === null ? {} : { longitude }),
+    ...(directionsUrl ? { directionsUrl } : {}),
     ...(sourceUrl ? { sourceUrl } : {}),
   };
+}
+
+function classifyFact(value: string): Pick<BeachFact, "emoji" | "label"> {
+  const normalized = value.toLocaleLowerCase("it-IT");
+
+  if (/(rocc|scogli)/.test(normalized)) return { emoji: "🪨", label: "Fondo" };
+  if (/(sabbia|arenile|litorale)/.test(normalized)) return { emoji: "🏖️", label: "Fondo" };
+  if (/(fondale|acqua|balneazione)/.test(normalized)) return { emoji: "🌊", label: "Acqua" };
+  if (/(accesso|ingresso|sentiero|percorso|raggiungibile)/.test(normalized)) {
+    return { emoji: "🥾", label: "Accesso" };
+  }
+  if (/(riserva|vegetazione)/.test(normalized)) return { emoji: "🌿", label: "Area" };
+  if (/(famiglie|bambini)/.test(normalized)) return { emoji: "👨‍👩‍👧‍👦", label: "Ideale per" };
+
+  return { emoji: "ℹ️", label: "Info" };
 }
 
 function mapFacts(beach: Beach): BeachFact[] {
   return (beach.facts ?? [])
     .map((fact) => fact.trim())
     .filter(Boolean)
-    .map((value) => ({ emoji: "•", label: "Dettaglio", value }));
+    .map((value) => ({ ...classifyFact(value), value }));
 }
 
 function numericCoordinate(value: number | string | null | undefined) {
@@ -147,6 +174,15 @@ function mapWebcam(beach: Beach, webcam: WebcamRow | undefined) {
   };
 }
 
+function reviewMapsUrl(beach: Beach, provider: string, placeId: string | null, fallbackUrl: string) {
+  if (provider.trim().toLowerCase() !== "google") return fallbackUrl;
+
+  const query = `${beach.name}, ${beach.municipality}, Sicilia`;
+  return placeId?.trim()
+    ? buildGoogleMapsPlaceUrl(query, placeId)
+    : buildGoogleMapsSearchUrl(query);
+}
+
 export function buildBeachDetailContent(
   beach: Beach,
   content: BeachContent | null,
@@ -167,7 +203,12 @@ export function buildBeachDetailContent(
     reviewProfile: content?.reviewProfile
       ? {
           provider: content.reviewProfile.provider,
-          mapsUrl: content.reviewProfile.maps_url,
+          mapsUrl: reviewMapsUrl(
+            beach,
+            content.reviewProfile.provider,
+            content.reviewProfile.place_id,
+            content.reviewProfile.maps_url,
+          ),
           verificationStatus:
             content.reviewProfile.verification_status === "archived"
               ? "draft"
