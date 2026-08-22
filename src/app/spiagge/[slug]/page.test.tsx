@@ -148,6 +148,38 @@ describe("BeachPage", () => {
     });
   });
 
+  it("starts detail content and community reads while the forecast is pending", async () => {
+    let releaseBundle!: (value: BeachForecastBundle) => void;
+    const bundlePromise = new Promise<BeachForecastBundle>((resolve) => {
+      releaseBundle = resolve;
+    });
+    let contentStarted = false;
+    let reportsStarted = false;
+    getBeachForecastBundleBySlugMock.mockReturnValue(bundlePromise);
+    getBeachContentBySlugMock.mockImplementation(async () => {
+      contentStarted = true;
+      return null;
+    });
+    getCommunityReportsForBeachMock.mockImplementation(async () => {
+      reportsStarted = true;
+      return [];
+    });
+
+    const pagePromise = BeachPage({
+      params: Promise.resolve({ slug: beach.slug }),
+      searchParams: Promise.resolve({}),
+    });
+    await Promise.resolve();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(contentStarted).toBe(true);
+    expect(reportsStarted).toBe(true);
+
+    releaseBundle(bundle);
+    await pagePromise;
+  });
+
   it("keeps the homepage date but opens its beach detail on all-day", async () => {
     getBeachForecastBundleBySlugMock.mockResolvedValue(bundle);
 

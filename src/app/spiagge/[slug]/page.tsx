@@ -37,14 +37,26 @@ export default async function BeachPage({
   );
   const origin = parseDetailOrigin(firstParam(query.source));
   const period = origin === "home" ? "all-day" : normalized.period;
-  let bundle;
+  const bundlePromise = getBeachForecastBundleBySlug({
+    slug,
+    date: normalized.date,
+    period,
+  });
+  const beachContentPromise = getBeachContentBySlug(slug).catch((error) => {
+    if (!(error instanceof ForecastDataUnavailableError)) throw error;
+    return null;
+  });
+  const communityReportsPromise = getCommunityReportsForBeach(slug);
+  let bundle!: Awaited<ReturnType<typeof getBeachForecastBundleBySlug>>;
+  let beachContent!: Awaited<ReturnType<typeof getBeachContentBySlug>>;
+  let communityReports!: Awaited<ReturnType<typeof getCommunityReportsForBeach>>;
 
   try {
-    bundle = await getBeachForecastBundleBySlug({
-      slug,
-      date: normalized.date,
-      period,
-    });
+    [bundle, beachContent, communityReports] = await Promise.all([
+      bundlePromise,
+      beachContentPromise,
+      communityReportsPromise,
+    ]);
   } catch (error) {
     if (!(error instanceof ForecastDataUnavailableError)) {
       throw error;
@@ -66,15 +78,6 @@ export default async function BeachPage({
 
   if (!bundle) notFound();
 
-  let beachContent = null;
-
-  try {
-    beachContent = await getBeachContentBySlug(slug);
-  } catch (error) {
-    if (!(error instanceof ForecastDataUnavailableError)) throw error;
-  }
-
-  const communityReports = await getCommunityReportsForBeach(slug);
   const detail = buildBeachDetailContent(bundle.beach, beachContent, communityReports);
 
   return (

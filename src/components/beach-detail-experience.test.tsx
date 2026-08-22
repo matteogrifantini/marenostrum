@@ -128,16 +128,26 @@ describe("BeachDetailExperience", () => {
     expect(screen.queryByText("informazioni generali")).not.toBeInTheDocument();
     expect(dayControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(dayControls.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(periodControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(advice.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice).toHaveAttribute("data-score-tone", "excellent");
     expect(within(advice).getByText("10.0")).toBeInTheDocument();
 
     const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
+    expect(periodControls.compareDocumentPosition(conditions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(within(conditions).getByText("pioggia 72%")).toBeInTheDocument();
     expect(within(conditions).getByRole("group", { name: "Confronto mattina e pomeriggio" })).toBeInTheDocument();
     expect(screen.getByRole("list", { name: "Segnalazioni recenti" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Parcheggi vicini" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
+  });
+
+  it("shows the selected period immediately while the detail route is pending", () => {
+    renderDetail();
+
+    fireEvent.click(screen.getByRole("button", { name: "Mattina" }));
+
+    expect(screen.getByRole("button", { name: "Mattina" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Tutto il giorno" })).toHaveAttribute("aria-pressed", "false");
   });
 
   it("uses the weather emoji for each all-day comparison period", () => {
@@ -247,7 +257,7 @@ describe("BeachDetailExperience", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Mattina" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
-      "/spiagge/cala-del-gelsomino?date=2026-08-20&period=morning&source=detail",
+      "/spiagge/cala-del-gelsomino?date=2026-08-21&period=morning&source=detail",
       { scroll: false },
     );
   });

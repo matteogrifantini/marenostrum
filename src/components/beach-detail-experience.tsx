@@ -131,8 +131,9 @@ export function BeachDetailExperience({
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const [navigationOrigin, setNavigationOrigin] = useState<DetailOrigin>(origin);
+  const [selection, setSelection] = useState<{ date: string; period: BeachPeriod }>({ date, period });
   const selectedRecommendation = recommendationForPeriod(
-    period,
+    selection.period,
     recommendation,
     morningRecommendation,
     afternoonRecommendation,
@@ -148,6 +149,7 @@ export function BeachDetailExperience({
     params.set("period", nextPeriod);
     params.set("source", nextOrigin);
     setNavigationOrigin(nextOrigin);
+    setSelection({ date: nextDate, period: nextPeriod });
     startTransition(() => {
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     });
@@ -167,19 +169,19 @@ export function BeachDetailExperience({
             <div aria-busy={isPending} className="space-y-2">
               <DayPicker
                 options={dateOptions}
-                value={date}
-                onChange={(nextDate) => replaceSelection(nextDate, period, "detail")}
-              />
-              <PeriodSelection
-                value={period}
-                onChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
+                value={selection.date}
+                onChange={(nextDate) => replaceSelection(nextDate, selection.period, "detail")}
               />
             </div>
 
             <AdviceCard recommendation={selectedRecommendation} dataUnavailable={dataUnavailable} />
+            <PeriodSelection
+              value={selection.period}
+              onChange={(nextPeriod) => replaceSelection(selection.date, nextPeriod)}
+            />
             <ConditionsCard
               recommendation={selectedRecommendation}
-              period={period}
+              period={selection.period}
               morningRecommendation={morningRecommendation}
               afternoonRecommendation={afternoonRecommendation}
               date={date}

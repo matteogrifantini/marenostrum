@@ -255,6 +255,73 @@ describe("Supabase forecast repository", () => {
     ).resolves.toBeNull();
   });
 
+  it("does not leak a parallel source failure for an unknown beach slug", async () => {
+    const store: ForecastReadStore = {
+      getPublishedBeaches: async () => [],
+      getSourceBySlug: async () => {
+        throw new ForecastDataUnavailableError("Source unavailable");
+      },
+      getForecastRows: async () => [],
+    };
+
+    await expect(
+      getBeachForecastBundleBySlug(
+        { slug: "sconosciuta", date: "2026-08-20", period: "all-day" },
+        store,
+      ),
+    ).resolves.toBeNull();
+  });
+
+  it("does not leak a parallel source failure when the catalog fails", async () => {
+    const store: ForecastReadStore = {
+      getPublishedBeaches: async () => {
+        throw new ForecastDataUnavailableError("Catalog unavailable");
+      },
+      getSourceBySlug: () =>
+        new Promise((_, reject) => {
+          setTimeout(() => reject(new ForecastDataUnavailableError("Source unavailable")), 10);
+        }),
+      getForecastRows: async () => [],
+    };
+
+    await expect(
+      getBeachForecastBundleBySlug(
+        { slug: beachRow.slug, date: "2026-08-20", period: "all-day" },
+        store,
+      ),
+    ).rejects.toBeInstanceOf(ForecastDataUnavailableError);
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+
+  it("starts the forecast source read while the published beach catalog is pending", async () => {
+    let releaseBeaches!: (rows: BeachRow[]) => void;
+    let sourceReadStarted = false;
+    const beachesPromise = new Promise<BeachRow[]>((resolve) => {
+      releaseBeaches = resolve;
+    });
+    const store: ForecastReadStore = {
+      getPublishedBeaches: () => beachesPromise,
+      getSourceBySlug: async () => {
+        sourceReadStarted = true;
+        return sourceRow;
+      },
+      getForecastRows: async ({ beachId }) => [conditionRow(beachId ?? beachRow.id)],
+    };
+
+    const bundlePromise = getBeachForecastBundleBySlug(
+      { slug: beachRow.slug, date: "2026-08-20", period: "all-day" },
+      store,
+    );
+    await Promise.resolve();
+    await Promise.resolve();
+    const sourceReadStartedBeforeCatalog = sourceReadStarted;
+
+    releaseBeaches([beachRow]);
+    await bundlePromise;
+
+    expect(sourceReadStartedBeforeCatalog).toBe(true);
+  });
+
   it("keeps a known beach distinct from its missing forecast", async () => {
     const store = new FakeForecastReadStore([beachRow], sourceRow, []);
 

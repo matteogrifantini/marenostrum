@@ -212,6 +212,17 @@ async function loadSourceAndRows(
     throw new ForecastDataUnavailableError("Open-Meteo forecast source is unavailable");
   }
 
+  const rows = await loadRowsForSource(store, source, date, beachId);
+
+  return { source, rows };
+}
+
+async function loadRowsForSource(
+  store: ForecastReadStore,
+  source: DataSourceRow,
+  date: string,
+  beachId?: string,
+) {
   const window = forecastWindow(date);
   const rows = await store.getForecastRows({
     sourceId: source.id,
@@ -219,7 +230,7 @@ async function loadSourceAndRows(
     ...(beachId ? { beachId } : {}),
   });
 
-  return { source, rows };
+  return rows;
 }
 
 function recommendationFor(
@@ -275,14 +286,29 @@ export async function getBeachForecastBundleBySlug(
   providedStore?: ForecastReadStore,
 ): Promise<BeachForecastBundle | null> {
   const store = await resolveStore(providedStore);
-  const beachRow = (await store.getPublishedBeaches()).find((row) => row.slug === query.slug);
+  const sourcePromise = store.getSourceBySlug("open-meteo").then(
+    (source) => ({ ok: true as const, source }),
+    (error: unknown) => ({ ok: false as const, error }),
+  );
+  const beachRows = await store.getPublishedBeaches();
+  const beachRow = beachRows.find((row) => row.slug === query.slug);
 
   if (!beachRow) return null;
 
   const beach = mapBeachRow(beachRow);
 
   try {
-    const { source, rows } = await loadSourceAndRows(store, query.date, beachRow.id);
+    const sourceResult = await sourcePromise;
+
+    if (!sourceResult.ok) throw sourceResult.error;
+
+    const source = sourceResult.source;
+
+    if (!source) {
+      throw new ForecastDataUnavailableError("Open-Meteo forecast source is unavailable");
+    }
+
+    const rows = await loadRowsForSource(store, source, query.date, beachRow.id);
     const points = rows.map((row) => mapForecastRow(row, source.quality));
     const now = query.now ?? new Date();
     const selected = recommendationFor(beach, points, query, query.period, now);
