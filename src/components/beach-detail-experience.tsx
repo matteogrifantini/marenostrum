@@ -82,6 +82,28 @@ const scoreBadgeClasses: Record<ScoreTone, string> = {
   poor: "bg-[var(--score-poor)] text-white",
 };
 
+function weatherAccentClasses(weather: BeachRecommendation["conditions"]["weather"] | undefined) {
+  switch (weather) {
+    case "sereno":
+    case "poco nuvoloso":
+      return "bg-[var(--sun-soft)] text-[var(--sun-dark)]";
+    case "pioggia":
+      return "bg-[var(--sea-soft)] text-[var(--sea-deep)]";
+    case "nuvoloso":
+      return "bg-[var(--surface-muted)] text-[var(--ink-soft)]";
+    default:
+      return "bg-[var(--surface-muted)] text-[var(--ink)]";
+  }
+}
+
+type ConditionAccent = "sea" | "sun" | "warm";
+
+const conditionIconClasses: Record<ConditionAccent, string> = {
+  sea: "bg-[var(--sea-soft)] text-[var(--sea-deep)]",
+  sun: "bg-[var(--sun-soft)] text-[var(--sun-dark)]",
+  warm: "bg-[var(--score-poor-soft)] text-[var(--coral)]",
+};
+
 function scoreHeadline(score: number) {
   if (score >= 80) return "Ottima scelta";
   if (score >= 70) return "Condizioni accettabili";
@@ -158,14 +180,14 @@ export function BeachDetailExperience({
   return (
     <PageShell>
       <main className="detail-page min-h-screen pb-24 lg:pb-8">
-        <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
+        <div className="mx-auto max-w-[1440px] px-3 py-3 sm:px-6 sm:py-6">
           <DetailHero
             beach={beach}
             detail={detail}
             homeDate={navigationOrigin === "home" ? date : undefined}
           />
 
-          <div className="relative z-10 mt-3 px-1 pt-3 sm:px-2">
+          <div className="relative z-10 mx-auto mt-3 w-full max-w-[48rem] px-1 pt-3 sm:px-2">
             <div aria-busy={isPending} className="space-y-2">
               <DayPicker
                 options={dateOptions}
@@ -210,7 +232,7 @@ function PeriodSelection({
   return (
     <div
       aria-label="Scegli la fascia oraria"
-      className="period-picker mt-3 grid min-w-0 grid-cols-3 gap-1 rounded-full bg-[var(--surface-muted)] p-1"
+      className="period-picker mt-3 grid min-w-0 grid-cols-3 gap-1 rounded-full bg-[var(--control-surface)] p-1"
       role="group"
     >
       {periods.map((period) => {
@@ -329,8 +351,8 @@ function ConditionsCard({
       />
       <section aria-label="Condizioni meteo" className="detail-enter rounded-[1.3rem] border border-[rgba(8,47,61,0.055)] bg-[var(--surface)] p-3 shadow-[0_8px_24px_rgba(8,47,61,0.072)] sm:p-4">
         <div className="flex items-center gap-3">
-          <span aria-hidden="true" className="grid size-9 place-items-center rounded-[0.7rem] bg-[var(--surface-muted)] text-[var(--sea-deep)]"><CloudSun size={20} /></span>
-          <div><h2 className="text-base font-bold tracking-[-0.025em]">{forecastTitle}</h2><p className="mt-0.5 text-xs text-[var(--muted)]">Cielo · {weatherLabel}</p></div>
+          <span aria-hidden="true" className={`grid size-9 place-items-center rounded-[0.7rem] ${weatherAccentClasses(conditions.weather)}`}><CloudSun size={20} /></span>
+          <div><h2 className="text-base font-bold tracking-[-0.025em]">{forecastTitle}</h2><p className="mt-0.5 text-xs font-medium text-[var(--ink)]">Cielo · {weatherLabel}</p></div>
         </div>
 
         {period === "all-day" ? (
@@ -341,13 +363,13 @@ function ConditionsCard({
         ) : null}
 
         <div className="mt-2 grid grid-cols-2">
-          <ConditionItem icon={<Wind size={17} />} label="Vento" value={windValue} detail={conditions.gustSpeedKmh >= 25 ? "raffiche sostenute" : "intensità regolare"} border="right-bottom" />
-          <ConditionItem icon={<Gauge size={17} />} label="Raffiche" value={gustValue} detail="massime previste" border="bottom" />
-          <ConditionItem icon={<Waves size={17} />} label="Onde" value={waveValue} detail={conditions.seaState ?? "calmo"} border="right" />
-          <ConditionItem icon={<ThermometerSun size={17} />} label="Temp. aria" value={airTemperatureValue} detail={waterValue === "—" ? "acqua non disponibile" : `acqua ${waterValue}`} />
+          <ConditionItem accent="sea" icon={<Wind size={17} />} label="Vento" value={windValue} detail={conditions.gustSpeedKmh >= 25 ? "raffiche sostenute" : "intensità regolare"} border="right-bottom" />
+          <ConditionItem accent="sun" icon={<Gauge size={17} />} label="Raffiche" value={gustValue} detail="massime previste" border="bottom" />
+          <ConditionItem accent="sea" icon={<Waves size={17} />} label="Onde" value={waveValue} detail={conditions.seaState ?? "calmo"} border="right" />
+          <ConditionItem accent="warm" icon={<ThermometerSun size={17} />} label="Temp. aria" value={airTemperatureValue} detail={waterValue === "—" ? "acqua non disponibile" : `acqua ${waterValue}`} />
         </div>
 
-        <div className="mt-2 flex justify-end border-t border-[var(--line)] pt-2 text-[0.68rem] font-bold text-[var(--muted)]">
+        <div className="mt-2 flex justify-end border-t border-[var(--line)] pt-2 text-[0.68rem] font-bold text-[var(--ink)]">
           <span>pioggia {rainChance}%</span>
         </div>
 
@@ -363,22 +385,26 @@ function DayPart({ label, recommendation, summary }: { label: string; recommenda
   const weather = recommendation?.conditions.weather;
   const emoji = getWeatherEmoji(weather);
   const weatherLabel = weather ? formatWeatherLabel(weather) : "Non disponibile";
+  const surfaceClass = recommendation
+    ? scoreSurfaceClasses[scoreTone(recommendation.score)]
+    : "bg-[var(--surface-muted)]/70";
+  const emojiClass = weatherAccentClasses(weather);
 
   return (
-    <div className="rounded-[0.9rem] bg-[var(--surface-muted)]/70 p-3">
-      <div className="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]"><span>{label}</span><span role="img" aria-label={`Meteo ${weatherLabel}`} className="emoji-readable-mobile">{emoji}</span></div>
+    <div className={`rounded-[0.9rem] p-3 ${surfaceClass}`}>
+      <div className="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.08em]"><span className="text-[var(--ink)]">{label}</span><span role="img" aria-label={`Meteo ${weatherLabel}`} className={`grid size-10 place-items-center rounded-[0.75rem] text-2xl leading-none shadow-[0_4px_10px_rgba(20,44,57,0.1)] ${emojiClass}`}>{emoji}</span></div>
       <strong className="mt-2 block text-3xl leading-none tracking-[-0.05em]">{recommendation ? displayScore(recommendation.score) : "—"}</strong>
-      <p className="mt-2 text-[0.68rem] leading-4 text-[var(--muted)]">{summary}</p>
+      <p className="mt-2 text-[0.68rem] leading-4 text-[var(--ink-soft)]">{summary}</p>
     </div>
   );
 }
 
-function ConditionItem({ icon, label, value, detail, border = "" }: { icon: React.ReactNode; label: string; value: string; detail: string; border?: "right-bottom" | "bottom" | "right" | "" }) {
+function ConditionItem({ icon, label, value, detail, accent, border = "" }: { icon: React.ReactNode; label: string; value: string; detail: string; accent: ConditionAccent; border?: "right-bottom" | "bottom" | "right" | "" }) {
   const borderClasses = border === "right-bottom" ? "border-b border-r" : border === "bottom" ? "border-b" : border === "right" ? "border-r" : "";
   return (
     <div aria-label={`${label}: ${value}`} className={`grid min-w-0 grid-cols-[1.8rem_1fr] items-center gap-2 border-[var(--line)] px-2 py-4 ${borderClasses}`}>
-      <span aria-hidden="true" className="grid size-7 place-items-center rounded-[0.55rem] bg-[var(--surface-muted)] text-[var(--sea-deep)]">{icon}</span>
-      <div className="min-w-0"><span className="block text-[0.62rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]">{label}</span><strong className="mt-1 block truncate text-sm">{value}</strong><span className="mt-0.5 block text-[0.65rem] text-[var(--muted)]">{detail}</span></div>
+      <span aria-hidden="true" className={`grid size-7 place-items-center rounded-[0.55rem] ${conditionIconClasses[accent]}`}>{icon}</span>
+      <div className="min-w-0"><span className="block text-[0.62rem] font-extrabold uppercase tracking-[0.08em] text-[var(--ink)]">{label}</span><strong className="mt-1 block truncate text-sm text-[var(--ink)]">{value}</strong><span className="mt-0.5 block text-[0.65rem] text-[var(--ink-soft)]">{detail}</span></div>
     </div>
   );
 }

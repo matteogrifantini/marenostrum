@@ -7,6 +7,7 @@ import { BeachCard } from "./beach-card";
 import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { MobileNav } from "./mobile-nav";
+import { NearbyControl, type NearbySelection } from "./nearby-control";
 import { PageShell } from "./page-shell";
 import { PeriodPicker } from "./period-picker";
 import { ForecastAttribution } from "./forecast-attribution";
@@ -17,6 +18,7 @@ import {
   type BeachFilters,
 } from "../domain/beach-filters";
 import type { DateOption } from "../domain/date-selection";
+import { distanceKm } from "../lib/geo";
 
 type HomeExperienceProps = {
   initialDate: string;
@@ -24,6 +26,11 @@ type HomeExperienceProps = {
   dateOptions: DateOption[];
   recommendations: BeachRecommendation[];
   dataUnavailable?: boolean;
+};
+
+type DisplayRecommendation = {
+  recommendation: BeachRecommendation;
+  distanceKm?: number;
 };
 
 function formatObservedAt(observedAt: string) {
@@ -52,16 +59,19 @@ export function HomeExperience({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
+  const [isNavigating, setIsNavigating] = useState(false);
   const [date, setDate] = useState(initialDate);
   const [period, setPeriod] = useState<BeachPeriod>(initialPeriod);
   const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
+  const [nearbySelection, setNearbySelection] = useState<NearbySelection | null>(null);
 
   useEffect(() => {
     startTransition(() => {
       setDate(initialDate);
       setPeriod(initialPeriod);
+      setIsNavigating(false);
     });
   }, [initialDate, initialPeriod]);
 
@@ -83,11 +93,36 @@ export function HomeExperience({
   );
   const activeFilterCount = filters.access.length + filters.tags.length + filters.services.length;
   const forecastUnavailable = dataUnavailable || recommendations.length === 0;
+  const isUpdatingForecast = isPending || isNavigating;
+  const displayedRecommendations = useMemo<DisplayRecommendation[]>(() => {
+    if (!nearbySelection) {
+      return filteredRecommendations.map((recommendation) => ({ recommendation }));
+    }
+
+    return filteredRecommendations
+      .flatMap((recommendation) => {
+        const { latitude, longitude } = recommendation.beach;
+        if (latitude == null || longitude == null) return [];
+
+        const distance = distanceKm(
+          nearbySelection.coordinates,
+          { latitude, longitude },
+        );
+        if (distance > nearbySelection.radiusKm) return [];
+
+        return [{
+          recommendation,
+          distanceKm: Math.round(distance * 10) / 10,
+        }];
+      })
+      .sort((left, right) => (left.distanceKm ?? Infinity) - (right.distanceKm ?? Infinity));
+  }, [filteredRecommendations, nearbySelection]);
 
   const updateQuery = (nextDate: string, nextPeriod: BeachPeriod) => {
     const nextParams = new URLSearchParams(searchParams.toString());
     nextParams.set("date", nextDate);
     nextParams.set("period", nextPeriod);
+    setIsNavigating(true);
     startTransition(() => {
       router.replace(`${pathname}?${nextParams.toString()}`, { scroll: false });
     });
@@ -131,13 +166,14 @@ export function HomeExperience({
           </section>
 
           <section
-            aria-busy={isPending}
-            className="mx-auto mt-3 w-full max-w-4xl overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3"
+            aria-busy={isUpdatingForecast}
+            className="relative z-20 mx-auto mt-3 w-full max-w-4xl overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3"
           >
             <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 
-            <div className="mt-3 flex items-center justify-between gap-3 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">
+            <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">
               <PeriodPicker value={period} onChange={handlePeriodChange} />
+              <NearbyControl value={nearbySelection} onChange={setNearbySelection} />
               <button
                 type="button"
                 onClick={() => setFilterSheetOpen(true)}
@@ -149,25 +185,34 @@ export function HomeExperience({
             </div>
           </section>
 
-          <section id="classifica" className="scroll-mt-6 py-5 sm:py-7">
-            {filteredRecommendations.length ? (
+          <section
+            id="classifica"
+            aria-busy={isUpdatingForecast}
+            className="scroll-mt-6 py-5 sm:py-7"
+          >
+            {isUpdatingForecast ? (
+              <BeachListLoading />
+            ) : displayedRecommendations.length ? (
               <>
                 <ul
                   aria-label="Spiagge consigliate"
                   className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5"
                 >
-                  {filteredRecommendations.map((recommendation, index) => (
+                  {displayedRecommendations.map(({ recommendation, distanceKm: distance }, index) => (
                     <li key={recommendation.beach.slug} className="min-w-0">
                       <BeachCard
                         recommendation={recommendation}
                         date={date}
                         period={period}
+                        distanceKm={distance}
                         eager={index < 4}
                       />
                     </li>
                   ))}
                 </ul>
-                <ForecastTimestamp recommendations={filteredRecommendations} />
+                <ForecastTimestamp
+                  recommendations={displayedRecommendations.map(({ recommendation }) => recommendation)}
+                />
               </>
             ) : (
               <div className="rounded-[1.75rem] bg-[var(--surface)] p-8 text-center shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
@@ -210,6 +255,37 @@ export function HomeExperience({
       />
       <MobileNav />
     </PageShell>
+  );
+}
+
+function BeachListLoading() {
+  return (
+    <div
+      role="status"
+      aria-label="Aggiornamento spiagge"
+      aria-live="polite"
+      className="rounded-[1.75rem] bg-[rgba(255,255,255,0.72)] p-3 shadow-[0_18px_60px_rgba(20,44,57,0.06)] sm:p-4"
+    >
+      <p className="sr-only">Aggiorno le condizioni delle spiagge…</p>
+      <ul
+        aria-hidden="true"
+        className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5"
+      >
+        {Array.from({ length: 6 }, (_, index) => (
+          <li
+            key={index}
+            className="overflow-hidden rounded-[1.35rem] bg-[var(--surface)] shadow-[0_14px_44px_rgba(20,44,57,0.07)]"
+          >
+            <div className="aspect-[4/3] animate-pulse bg-[var(--surface-muted)]" />
+            <div className="space-y-3 p-3 sm:p-4">
+              <div className="h-5 w-3/4 animate-pulse rounded-full bg-[var(--surface-muted)]" />
+              <div className="h-4 w-1/2 animate-pulse rounded-full bg-[var(--surface-muted)]" />
+              <div className="h-10 w-full animate-pulse rounded-2xl bg-[var(--surface-muted)]" />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

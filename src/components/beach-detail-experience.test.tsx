@@ -74,6 +74,15 @@ function renderDetail(
 }
 
 describe("BeachDetailExperience", () => {
+  it("uses a wide desktop frame for the hero and a readable frame for the details", () => {
+    renderDetail();
+
+    const hero = screen.getAllByRole("heading", { name: beach.name })[0].closest("section");
+    expect(hero).not.toBeNull();
+    expect(hero?.parentElement).toHaveClass("max-w-[1440px]");
+    expect(hero?.parentElement?.children[1]).toHaveClass("max-w-[48rem]");
+  });
+
   it("shows stale-data copy without the routine timestamp", () => {
     renderDetail({ recommendation: { ...selected, confidence: "bassa" } });
 
@@ -122,8 +131,8 @@ describe("BeachDetailExperience", () => {
     const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
 
-    expect(dayControls).toHaveClass("day-picker", "bg-[var(--surface-muted)]", "grid-cols-4");
-    expect(periodControls).toHaveClass("period-picker", "mt-3", "bg-[var(--surface-muted)]", "grid-cols-3");
+    expect(dayControls).toHaveClass("day-picker", "bg-[var(--control-surface)]", "grid-cols-4");
+    expect(periodControls).toHaveClass("period-picker", "mt-3", "bg-[var(--control-surface)]", "grid-cols-3");
     expect(screen.getByRole("button", { name: "Tutto il giorno" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.queryByText("informazioni generali")).not.toBeInTheDocument();
     expect(dayControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -164,8 +173,40 @@ describe("BeachDetailExperience", () => {
 
     const comparison = screen.getByRole("group", { name: "Confronto mattina e pomeriggio" });
 
-    expect(within(comparison).getByRole("img", { name: "Meteo Sereno" })).toHaveTextContent("☀️");
-    expect(within(comparison).getByRole("img", { name: "Meteo Pioggia" })).toHaveTextContent("🌧️");
+    const sunnyEmoji = within(comparison).getByRole("img", { name: "Meteo Sereno" });
+    const rainyEmoji = within(comparison).getByRole("img", { name: "Meteo Pioggia" });
+
+    expect(sunnyEmoji).toHaveTextContent("☀️");
+    expect(sunnyEmoji).toHaveClass("bg-[var(--sun-soft)]", "text-2xl");
+    expect(rainyEmoji).toHaveTextContent("🌧️");
+    expect(rainyEmoji).toHaveClass("bg-[var(--sea-soft)]", "text-2xl");
+  });
+
+  it("uses a darker text hierarchy inside the conditions card", () => {
+    renderDetail({
+      recommendation: {
+        ...selected,
+        conditions: { ...selected.conditions, weather: "poco nuvoloso" },
+      },
+    });
+
+    const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
+
+    expect(within(conditions).getByText("Cielo · Poco nuvoloso")).toHaveClass("text-[var(--ink)]");
+    expect(within(conditions).getByText("Vento")).toHaveClass("text-[var(--ink)]");
+    expect(within(conditions).getByText("intensità regolare")).toHaveClass("text-[var(--ink-soft)]");
+    expect(within(conditions).getByText("pioggia 72%").parentElement).toHaveClass("text-[var(--ink)]");
+  });
+
+  it("uses each period score for its summary card background", () => {
+    renderDetail();
+
+    const comparison = screen.getByRole("group", { name: "Confronto mattina e pomeriggio" });
+    const morningCard = within(comparison).getByText("Mattina").parentElement?.parentElement;
+    const afternoonCard = within(comparison).getByText("Pomeriggio").parentElement?.parentElement;
+
+    expect(morningCard).toHaveClass("bg-[var(--score-good-soft)]");
+    expect(afternoonCard).toHaveClass("bg-[var(--score-caution-soft)]");
   });
 
   it.each([

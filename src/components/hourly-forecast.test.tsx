@@ -35,6 +35,10 @@ describe("HourlyForecast", () => {
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     expect(screen.getByText("08:00")).toBeInTheDocument();
     expect(screen.getByText("10:00")).toBeInTheDocument();
+    const firstHour = screen.getByText("08:00").parentElement;
+    const firstCard = firstHour?.querySelector("div.mt-3");
+    expect(firstCard).toHaveClass("bg-[var(--surface)]");
+    expect(firstCard?.querySelectorAll("p")[1]).toHaveClass("text-[var(--ink)]");
     const dots = timeline.querySelectorAll(".hourly-timeline-dot");
     expect(dots).toHaveLength(2);
     dots.forEach((dot) => expect(dot).toHaveClass("bg-[var(--sea)]"));

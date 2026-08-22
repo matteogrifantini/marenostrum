@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Heart, UserRound } from "lucide-react";
 import type { ReactNode } from "react";
 import { BrandMark } from "./brand-mark";
+import { SiteFooter } from "./site-footer";
 
 const unavailableUtilityClass =
   "inline-flex min-h-11 cursor-default items-center justify-center gap-2 rounded-full px-3 text-sm font-bold text-[var(--muted)]";
@@ -39,17 +40,6 @@ export function PageShell({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="hidden items-center gap-1 lg:ml-auto lg:flex">
-            <span
-              role="status"
-              aria-label="Condizioni meteo aggiornate"
-              title="Condizioni meteo aggiornate"
-              className="hidden size-9 items-center justify-center rounded-full border border-[rgba(20,44,57,0.1)] xl:inline-flex"
-            >
-              <span
-                aria-hidden="true"
-                className="size-1.5 rounded-full bg-[var(--sea)] shadow-[0_0_0_4px_rgba(20,112,118,0.12)]"
-              />
-            </span>
             <button
               type="button"
               aria-disabled="true"
@@ -72,6 +62,7 @@ export function PageShell({ children }: { children: ReactNode }) {
         </div>
       </header>
       {children}
+      <SiteFooter />
     </div>
   );
 }

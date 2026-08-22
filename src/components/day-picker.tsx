@@ -12,7 +12,7 @@ export function DayPicker({ options, value, onChange }: DayPickerProps) {
   return (
     <div
       aria-label="Scegli il giorno"
-      className="day-picker grid min-w-0 grid-cols-4 gap-1 rounded-full bg-[var(--surface-muted)] p-1 lg:flex-1 lg:gap-2 lg:pb-0"
+      className="day-picker grid min-w-0 grid-cols-4 gap-1 rounded-full bg-[var(--control-surface)] p-1 lg:flex-1 lg:gap-2 lg:pb-0"
       role="group"
     >
       {options.map((option, index) => {

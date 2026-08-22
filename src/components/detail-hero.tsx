@@ -49,7 +49,7 @@ export function DetailHero({ beach, detail, homeDate, distanceKm }: DetailHeroPr
     <>
       <section className="relative min-h-[20rem] overflow-hidden rounded-[1.8rem] bg-[var(--ink)] text-white shadow-[0_20px_60px_rgba(20,44,57,0.16)] sm:min-h-[26rem]">
         {imageSrc ? (
-          <Image src={imageSrc} alt={imageAlt} fill loading="eager" sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+          <Image src={imageSrc} alt={imageAlt} fill loading="eager" sizes="(max-width: 639px) 100vw, (max-width: 1440px) calc(100vw - 3rem), 1440px" className="object-cover" />
         ) : (
           <div
             role="img"

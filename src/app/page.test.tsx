@@ -151,8 +151,8 @@ describe("HomeExperience", () => {
     ).toBeTruthy();
   });
 
-  it("shows four days and updates the beach links when the day changes", () => {
-    renderHome();
+  it("shows four days and updates the beach links after the day refreshes", () => {
+    const view = renderHome();
 
     expect(screen.getByRole("button", { name: "Oggi" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Mare Nostrum, home" })).toBeInTheDocument();
@@ -165,14 +165,102 @@ describe("HomeExperience", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Domani" }));
 
-    expect(screen.getAllByRole("link", { name: /apri la scheda/i })[0]).toHaveAttribute(
-      "href",
-      expect.stringContaining("date=2026-08-21&period=all-day&source=home"),
-    );
+    expect(
+      screen.getByRole("status", { name: "Aggiornamento spiagge" }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("list", { name: "Spiagge consigliate" })).not.toBeInTheDocument();
     expect(replace).toHaveBeenCalledWith(
       "/?date=2026-08-21&period=all-day",
       { scroll: false },
     );
+
+    view.rerender(
+      <HomeExperience
+        initialDate="2026-08-21"
+        initialPeriod="all-day"
+        dateOptions={dateOptions}
+        recommendations={recommendations}
+      />,
+    );
+
+    expect(screen.getAllByRole("link", { name: /apri la scheda/i })[0]).toHaveAttribute(
+      "href",
+      expect.stringContaining("date=2026-08-21&period=all-day&source=home"),
+    );
+  });
+
+  it("shows an inline loading state while a day change refreshes the beach list", () => {
+    renderHome();
+
+    fireEvent.click(screen.getByRole("button", { name: "Domani" }));
+
+    expect(
+      screen.getByRole("status", { name: "Aggiornamento spiagge" }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("list", { name: "Spiagge consigliate" })).not.toBeInTheDocument();
+  });
+
+  it("filters and orders beaches by distance after location authorization", () => {
+    const locatedRecommendations = [
+      {
+        ...recommendations[0],
+        beach: { ...recommendations[0].beach, latitude: 36.8, longitude: 15.1 },
+      },
+      {
+        ...recommendations[1],
+        beach: { ...recommendations[1].beach, latitude: 37.2, longitude: 15.1 },
+      },
+      {
+        ...recommendations[2],
+        beach: { ...recommendations[2].beach, latitude: 36.9, longitude: 15.1 },
+      },
+    ];
+    Object.defineProperty(navigator, "geolocation", {
+      configurable: true,
+      value: {
+        getCurrentPosition: (success: PositionCallback) => {
+          success({
+            coords: {
+              latitude: 36.8,
+              longitude: 15.1,
+              accuracy: 10,
+              altitude: null,
+              altitudeAccuracy: null,
+              heading: null,
+              speed: null,
+              toJSON: () => ({}),
+            },
+            timestamp: Date.now(),
+            toJSON: () => ({}),
+          });
+        },
+      },
+    });
+
+    try {
+      renderHome({ recommendations: locatedRecommendations });
+
+      fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
+      expect(screen.getByRole("button", { name: "Autorizza la posizione" })).toBeInTheDocument();
+      expect(screen.queryByRole("combobox", { name: "Distanza da me" })).not.toBeInTheDocument();
+
+      fireEvent.click(screen.getByRole("button", { name: "Autorizza la posizione" }));
+
+      expect(screen.getByRole("heading", { name: "Cala del Gelsomino" })).toBeInTheDocument();
+      expect(screen.getByRole("heading", { name: "Spiaggia della Marchesa" })).toBeInTheDocument();
+      expect(screen.queryByRole("heading", { name: "Tonnara di Vendicari" })).not.toBeInTheDocument();
+
+      fireEvent.change(screen.getByRole("combobox", { name: "Distanza da me" }), {
+        target: { value: "50" },
+      });
+
+      expect(screen.getByRole("heading", { name: "Tonnara di Vendicari" })).toBeInTheDocument();
+    } finally {
+      Object.defineProperty(navigator, "geolocation", {
+        configurable: true,
+        value: undefined,
+      });
+    }
   });
 
   it("uses the Mare Nostrum desktop navigation", () => {
@@ -193,8 +281,8 @@ describe("HomeExperience", () => {
       }),
     ).not.toBeInTheDocument();
     expect(
-      within(desktopHeader!).getByRole("status", { name: "Condizioni meteo aggiornate" }),
-    ).toBeInTheDocument();
+      within(desktopHeader!).queryByRole("status", { name: "Condizioni meteo aggiornate" }),
+    ).not.toBeInTheDocument();
     expect(within(desktopHeader!).queryByText("Live")).not.toBeInTheDocument();
     expect(
       within(desktopHeader!).getByRole("button", {
@@ -224,7 +312,8 @@ describe("HomeExperience", () => {
     expect(screen.queryByRole("button", { name: "Mattina" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Pomeriggio" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Tutta la Sicilia" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Vicino a me" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Vicino a me" })).toBeInTheDocument();
+    expect(screen.queryByRole("combobox", { name: "Distanza da me" })).not.toBeInTheDocument();
     expect(screen.queryByText(/confronta vento, onde, temperatura/i)).not.toBeInTheDocument();
     expect(screen.queryByText("Il metodo")).not.toBeInTheDocument();
     expect(screen.queryByText("Famiglia")).not.toBeInTheDocument();
@@ -271,6 +360,18 @@ describe("HomeExperience", () => {
 
     expect(search.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
     expect(dayGroup.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
+  });
+
+  it("keeps the nearby-location popover above the beach cards", () => {
+    renderHome();
+
+    fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
+
+    const popover = screen.getByRole("dialog", { name: "Filtro vicino a me" });
+    const controlsSection = screen.getByRole("group", { name: "Scegli il giorno" }).closest("section");
+
+    expect(popover).toHaveClass("z-30");
+    expect(controlsSection).toHaveClass("relative", "z-20");
   });
 
   it("uses a compact two-column beach grid without a featured card", () => {

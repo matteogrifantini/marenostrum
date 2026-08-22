@@ -47,7 +47,7 @@ describe("DayPicker", () => {
     expect(screen.getByRole("group", { name: "Scegli il giorno" })).toHaveClass(
       "lg:flex-1",
       "lg:pb-0",
-      "bg-[var(--surface-muted)]",
+      "bg-[var(--control-surface)]",
       "p-1",
     );
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveClass(

@@ -36,23 +36,23 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
                 className="hourly-timeline-dot relative z-10 mx-auto size-3 rounded-full bg-[var(--sea)] ring-4 ring-[var(--surface)]"
               />
               <p className="mt-4 text-xs font-bold text-[var(--ink)]">{item.time}</p>
-                <div className="mt-3 rounded-[1.25rem] border border-[var(--sea)]/15 bg-[var(--sea-soft)]/65 p-3 text-left shadow-[0_6px_18px_rgba(20,88,104,0.06)]">
-                <p className="flex items-center gap-1 text-sm font-bold text-[var(--ink)]">
-                  <ThermometerSun aria-hidden="true" size={14} className="text-[var(--sea-deep)]" />
+                <div className="mt-3 rounded-[1.25rem] border border-[var(--line)] bg-[var(--surface)] p-3 text-left shadow-[0_6px_18px_rgba(20,44,57,0.08)]">
+                  <p className="flex items-center gap-1 text-sm font-bold text-[var(--ink)]">
+                  <ThermometerSun aria-hidden="true" size={14} className="text-[var(--coral)]" />
                   {item.temperatureCelsius}°
                 </p>
-                <p className="mt-2 flex items-center gap-1 text-xs font-semibold text-[var(--ink-soft)]">
-                  <Wind aria-hidden="true" size={13} />
+                <p className="mt-2 flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
+                  <Wind aria-hidden="true" size={13} className="text-[var(--sea-deep)]" />
                   {item.windSpeedKmh} km/h
                 </p>
-                <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[var(--ink-soft)]">
-                  <Waves aria-hidden="true" size={13} />
+                <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
+                  <Waves aria-hidden="true" size={13} className="text-[var(--sea-deep)]" />
                   {item.waveHeightMeters === null
                     ? "—"
                     : `${item.waveHeightMeters.toFixed(1)} m`}
                 </p>
-                <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[var(--ink-soft)]">
-                  <CloudSun aria-hidden="true" size={13} />
+                <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
+                  <CloudSun aria-hidden="true" size={13} className="text-[var(--sun-dark)]" />
                   {item.cloudCoverPercent}% nuvole
                 </p>
               </div>

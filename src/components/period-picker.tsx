@@ -13,7 +13,7 @@ type PeriodPickerProps = {
 
 export function PeriodPicker({ value, onChange }: PeriodPickerProps) {
   return (
-    <label className="relative inline-flex min-h-11 max-w-[12rem] min-w-0 items-center rounded-full bg-[var(--surface-muted)] text-[var(--ink)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.06)]">
+    <label className="relative inline-flex min-h-11 max-w-[12rem] min-w-0 items-center rounded-full bg-[var(--control-surface)] text-[var(--ink)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.06)]">
       <span className="sr-only">Periodo</span>
       <select
         aria-label="Periodo"
