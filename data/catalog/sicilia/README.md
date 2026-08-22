@@ -26,7 +26,8 @@ che il risultato sia l'attività corretta. `npm run catalog:reviews:validate`
 esegue il controllo senza scrivere; `npm run catalog:reviews:apply` salva i
 profili nel progetto Supabase senza pubblicare le spiagge. Un profilo può
 diventare `verified` solo dopo aver confermato manualmente il Place ID e la
-corrispondenza esatta su Google Maps. L'app apre il profilo esterno e non copia
+corrispondenza esatta su Google Maps. Per una spiaggia pubblicata l'app mostra
+il link draft come ricerca Google Maps, marcandolo come da confermare; non copia
 né gestisce recensioni locali.
 
 Se parcheggi o webcam sono già stati verificati, l'importer generale li

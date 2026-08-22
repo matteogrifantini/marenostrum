@@ -121,7 +121,10 @@ scrivere. `npm run catalog:reviews:apply` salva per ciascuna spiaggia un
 profilo Google in stato `draft`, con link di ricerca basato su nome, comune e
 coordinate. Non copia recensioni, non usa API Google e non pubblica le
 spiagge; il passaggio a `verified` richiede la conferma manuale del Place ID e
-della corrispondenza esatta del luogo.
+della corrispondenza esatta del luogo. Per le spiagge già pubblicate il link di
+ricerca draft è visibile come `Cerca su Google Maps`, con dicitura esplicita
+che il profilo è ancora da confermare: non vengono mostrate né copiate
+recensioni finché non esiste un profilo verificato.
 
 Le previsioni sono ottenute da Open-Meteo per uso non commerciale. Lo scheduler gratuito di GitHub Actions chiama periodicamente l’endpoint protetto usando `FORECAST_SYNC_URL` e `CRON_SECRET`, configurati come repository secrets.
 

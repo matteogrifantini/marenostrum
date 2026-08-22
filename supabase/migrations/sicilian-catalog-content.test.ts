@@ -31,7 +31,7 @@ describe("Sicilian catalog content migration contract", () => {
     expect(migration).toMatch(/error_summary text/);
   });
 
-  it("enables RLS, exposes only non-draft content for published beaches, and keeps writes server-side", () => {
+  it("enables RLS, gates published content by status, and keeps writes server-side", () => {
     for (const table of [
       "beach_sources",
       "parking_facilities",
