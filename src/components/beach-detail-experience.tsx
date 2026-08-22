@@ -8,12 +8,18 @@ import { getBeachAiComment } from "../domain/beach-comment";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
 import type { DateOption } from "../domain/date-selection";
 import { DetailHero } from "./detail-hero";
+import { DayPicker } from "./day-picker";
 import { HourlyForecast } from "./hourly-forecast";
 import { PageShell } from "./page-shell";
 import { BeachLiveSections } from "./beach-live-sections";
 import { BeachCommunitySections } from "./beach-community-sections";
+import { PeriodPicker } from "./period-picker";
 import { ForecastAttribution } from "./forecast-attribution";
-import { formatAggregateMetric, formatWeatherLabel } from "../lib/forecast-presentation";
+import {
+  formatAggregateMetric,
+  formatWeatherLabel,
+  getWeatherEmoji,
+} from "../lib/forecast-presentation";
 
 type BeachDetailExperienceProps = {
   beach: Beach;
@@ -28,12 +34,6 @@ type BeachDetailExperienceProps = {
 };
 
 type ScoreTone = "excellent" | "good" | "caution" | "poor";
-
-const periods: Array<{ value: BeachPeriod; label: string }> = [
-  { value: "all-day", label: "Tutto il giorno" },
-  { value: "morning", label: "Mattina" },
-  { value: "afternoon", label: "Pomeriggio" },
-];
 
 const directionNames = [
   "N",
@@ -142,22 +142,24 @@ export function BeachDetailExperience({
     <PageShell>
       <main className="detail-page min-h-screen pb-24 lg:pb-8">
         <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
-          <DetailHero beach={beach} detail={detail} date={date} period={period} />
+          <DetailHero beach={beach} detail={detail} period={period} />
 
           <div className="relative z-10 mt-3 px-1 pt-3 sm:px-2">
             <div aria-busy={isPending}>
-              <DaySelection
-                date={date}
-                dateOptions={dateOptions}
-                onDateChange={(nextDate) => replaceSelection(nextDate, period)}
+              <DayPicker
+                options={dateOptions}
+                value={date}
+                onChange={(nextDate) => replaceSelection(nextDate, period)}
               />
             </div>
 
             <AdviceCard recommendation={selectedRecommendation} dataUnavailable={dataUnavailable} />
-            <PeriodSelection
-              period={period}
-              onPeriodChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
-            />
+            <div className="mt-3 flex justify-end">
+              <PeriodPicker
+                value={period}
+                onChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
+              />
+            </div>
             <ConditionsCard
               recommendation={selectedRecommendation}
               period={period}
@@ -174,64 +176,6 @@ export function BeachDetailExperience({
         </div>
       </main>
     </PageShell>
-  );
-}
-
-function DaySelection({
-  date,
-  dateOptions,
-  onDateChange,
-}: {
-  date: string;
-  dateOptions: DateOption[];
-  onDateChange: (date: string) => void;
-}) {
-  return (
-    <div
-      role="group"
-      aria-label="Scegli il giorno"
-      className="flex min-w-0 rounded-[0.9rem] bg-white/70 p-1"
-    >
-      {dateOptions.map((option) => (
-        <button
-          key={option.iso}
-          type="button"
-          aria-pressed={date === option.iso}
-          onClick={() => onDateChange(option.iso)}
-          className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-center text-xs font-extrabold ${date === option.iso ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
-        >
-          {option.label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function PeriodSelection({
-  period,
-  onPeriodChange,
-}: {
-  period: BeachPeriod;
-  onPeriodChange: (period: BeachPeriod) => void;
-}) {
-  return (
-    <div
-      role="group"
-      aria-label="Scegli la fascia oraria"
-      className="mt-2 flex min-w-0 rounded-[0.9rem] bg-white/70 p-1 shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]"
-    >
-      {periods.map((option) => (
-        <button
-          key={option.value}
-          type="button"
-          aria-pressed={period === option.value}
-          onClick={() => onPeriodChange(option.value)}
-          className={`detail-segment detail-press min-h-11 min-w-0 flex-1 rounded-[0.7rem] px-1 text-center text-xs font-extrabold ${period === option.value ? "bg-[var(--ink)] text-white shadow-[0_5px_12px_rgba(8,47,61,0.16)]" : "text-[var(--muted)]"}`}
-        >
-          {option.label}
-        </button>
-      ))}
-    </div>
   );
 }
 
@@ -332,8 +276,8 @@ function ConditionsCard({
 
         {period === "all-day" ? (
           <div role="group" aria-label="Confronto mattina e pomeriggio" className="mt-3 grid grid-cols-2 gap-2 border-b border-[var(--line)] pb-3">
-            <DayPart label="Mattina" emoji="☀️" recommendation={morningRecommendation} summary={periodSummary(morningRecommendation, "morning")} />
-            <DayPart label="Pomeriggio" emoji="🌬️" recommendation={afternoonRecommendation} summary={periodSummary(afternoonRecommendation, "afternoon")} />
+            <DayPart label="Mattina" recommendation={morningRecommendation} summary={periodSummary(morningRecommendation, "morning")} />
+            <DayPart label="Pomeriggio" recommendation={afternoonRecommendation} summary={periodSummary(afternoonRecommendation, "afternoon")} />
           </div>
         ) : null}
 
@@ -356,10 +300,14 @@ function ConditionsCard({
   );
 }
 
-function DayPart({ label, emoji, recommendation, summary }: { label: string; emoji: string; recommendation?: BeachRecommendation; summary: string }) {
+function DayPart({ label, recommendation, summary }: { label: string; recommendation?: BeachRecommendation; summary: string }) {
+  const weather = recommendation?.conditions.weather;
+  const emoji = getWeatherEmoji(weather);
+  const weatherLabel = weather ? formatWeatherLabel(weather) : "Non disponibile";
+
   return (
     <div className="rounded-[0.9rem] bg-[var(--surface-muted)]/70 p-3">
-      <div className="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]"><span>{label}</span><span aria-hidden="true" className="emoji-readable-mobile">{emoji}</span></div>
+      <div className="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]"><span>{label}</span><span role="img" aria-label={`Meteo ${weatherLabel}`} className="emoji-readable-mobile">{emoji}</span></div>
       <strong className="mt-2 block text-3xl leading-none tracking-[-0.05em]">{recommendation ? displayScore(recommendation.score) : "—"}</strong>
       <p className="mt-2 text-[0.68rem] leading-4 text-[var(--muted)]">{summary}</p>
     </div>

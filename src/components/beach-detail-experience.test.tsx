@@ -104,20 +104,17 @@ describe("BeachDetailExperience", () => {
     expect(screen.queryByRole("tablist", { name: "Dettagli spiaggia" })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute("aria-pressed", "false");
-    expect(screen.getByRole("button", { name: "Tutto il giorno" })).toHaveAttribute("aria-pressed", "true");
+    const periodPicker = screen.getByRole("combobox", { name: "Periodo" });
     const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
-    const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
-    const selectorShell = dayControls.parentElement?.parentElement;
+    const periodShell = periodPicker.parentElement;
 
-    expect(dayControls).toHaveClass("bg-white/70", "p-1");
-    expect(periodControls).toHaveClass("bg-white/70", "p-1");
-    expect(dayControls).not.toHaveClass("shadow-[inset_0_0_0_1px_rgba(8,47,61,0.05)]");
-    expect(selectorShell).not.toHaveClass("rounded-t-[1.65rem]");
-    expect(selectorShell).not.toHaveClass("bg-[var(--sand)]");
+    expect(dayControls).toHaveClass("day-picker", "bg-[var(--surface-muted)]", "grid-cols-4");
+    expect(periodPicker).toHaveValue("all-day");
+    expect(periodShell).toHaveClass("bg-[var(--surface-muted)]", "rounded-full");
     expect(screen.queryByText("informazioni generali")).not.toBeInTheDocument();
     expect(dayControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(advice.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(advice.compareDocumentPosition(periodPicker) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice).toHaveAttribute("data-score-tone", "excellent");
     expect(within(advice).getByText("10.0")).toBeInTheDocument();
 
@@ -127,6 +124,24 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("list", { name: "Segnalazioni recenti" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Parcheggi vicini" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
+  });
+
+  it("uses the weather emoji for each all-day comparison period", () => {
+    renderDetail({
+      morningRecommendation: {
+        ...morning,
+        conditions: { ...morning.conditions, weather: "sereno" },
+      },
+      afternoonRecommendation: {
+        ...afternoon,
+        conditions: { ...afternoon.conditions, weather: "pioggia" },
+      },
+    });
+
+    const comparison = screen.getByRole("group", { name: "Confronto mattina e pomeriggio" });
+
+    expect(within(comparison).getByRole("img", { name: "Meteo Sereno" })).toHaveTextContent("☀️");
+    expect(within(comparison).getByRole("img", { name: "Meteo Pioggia" })).toHaveTextContent("🌧️");
   });
 
   it.each([
@@ -216,7 +231,9 @@ describe("BeachDetailExperience", () => {
       { scroll: false },
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "Mattina" }));
+    fireEvent.change(screen.getByRole("combobox", { name: "Periodo" }), {
+      target: { value: "morning" },
+    });
     expect(replaceMock).toHaveBeenLastCalledWith(
       "/spiagge/cala-del-gelsomino?date=2026-08-20&period=morning",
       { scroll: false },

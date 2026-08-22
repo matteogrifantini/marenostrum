@@ -16,3 +16,18 @@ export function formatWeatherLabel(weather: BeachConditions["weather"]) {
       return "Pioggia";
   }
 }
+
+export function getWeatherEmoji(weather: BeachConditions["weather"] | undefined) {
+  switch (weather) {
+    case "sereno":
+      return "☀️";
+    case "poco nuvoloso":
+      return "🌤️";
+    case "nuvoloso":
+      return "☁️";
+    case "pioggia":
+      return "🌧️";
+    default:
+      return "⛅";
+  }
+}

@@ -28,7 +28,6 @@ describe("DetailHero", () => {
       <DetailHero
         beach={beach}
         detail={detail}
-        date="2026-08-20"
         period="all-day"
       />,
     );
@@ -51,7 +50,6 @@ describe("DetailHero", () => {
       <DetailHero
         beach={beach}
         detail={detail}
-        date="2026-08-20"
         period="all-day"
       />,
     );
@@ -70,12 +68,28 @@ describe("DetailHero", () => {
       <DetailHero
         beach={{ ...beach, image: undefined }}
         detail={{ ...detail, reels: [] }}
-        date="2026-08-20"
         period="all-day"
       />,
     );
 
     expect(screen.getByRole("img", { name: `Foto non disponibile per ${beach.name}` })).toBeInTheDocument();
     expect(screen.queryByRole("img", { name: `Foto di ${beach.name}` })).not.toBeInTheDocument();
+  });
+
+  it("returns to the homepage without carrying a date selected in the detail", () => {
+    const detail = getDemoBeachDetail(beach.slug)!;
+
+    render(
+      <DetailHero
+        beach={beach}
+        detail={detail}
+        period="afternoon"
+      />,
+    );
+
+    expect(screen.getByRole("link", { name: "Torna alle spiagge" })).toHaveAttribute(
+      "href",
+      "/?period=afternoon#classifica",
+    );
   });
 });
