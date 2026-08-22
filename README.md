@@ -39,13 +39,16 @@ Il file `.env.example` contiene solo nomi e un URL pubblico: copialo in
 
 | Variabile | Dove va | Tipo | Nota |
 | --- | --- | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | `.env.local` + Vercel Production | Pubblica | URL Supabase; può essere esposta al browser |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | `.env.local` + Vercel Production | Pubblica | Publishable key Supabase |
+| `NEXT_PUBLIC_SUPABASE_URL` | `.env.local` + Vercel Production + Preview | Pubblica | URL Supabase; può essere esposta al browser |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | `.env.local` + Vercel Production + Preview | Pubblica | Publishable key Supabase |
 | `SUPABASE_SERVICE_ROLE_KEY` | `.env.local` + Vercel Production | **Secret** | Secret key Supabase o legacy `service_role`; server-only |
 | `CRON_SECRET` | `.env.local` + Vercel Production + GitHub Actions Secrets | **Secret** | Lo stesso valore deve essere presente in Vercel e GitHub |
 
-Su Vercel apri il progetto `marenostrum` → Settings → Environment Variables
-e aggiungi le quattro variabili nell’ambiente `Production`. Dopo averle
+Su Vercel apri il progetto `marenostrum` → Settings → Environment Variables.
+Le prime due variabili devono essere presenti sia in `Production` sia in
+`Preview` e devono restare pubbliche/config, non `Sensitive`, perché hanno il
+prefisso `NEXT_PUBLIC_`. Le variabili server-only vanno aggiunte in `Production`
+(e in `Preview` solo se una funzione preview ne ha bisogno). Dopo averle
 modificate serve un nuovo deployment.
 
 Su GitHub apri `matteogrifantini/marenostrum` → Settings → Secrets and
