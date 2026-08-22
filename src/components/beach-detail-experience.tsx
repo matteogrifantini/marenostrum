@@ -210,7 +210,7 @@ function PeriodSelection({
   return (
     <div
       aria-label="Scegli la fascia oraria"
-      className="period-picker grid min-w-0 grid-cols-3 gap-1 rounded-full bg-[var(--surface-muted)] p-1"
+      className="period-picker mt-3 grid min-w-0 grid-cols-3 gap-1 rounded-full bg-[var(--surface-muted)] p-1"
       role="group"
     >
       {periods.map((period) => {

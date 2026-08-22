@@ -123,7 +123,7 @@ describe("BeachDetailExperience", () => {
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
 
     expect(dayControls).toHaveClass("day-picker", "bg-[var(--surface-muted)]", "grid-cols-4");
-    expect(periodControls).toHaveClass("period-picker", "bg-[var(--surface-muted)]", "grid-cols-3");
+    expect(periodControls).toHaveClass("period-picker", "mt-3", "bg-[var(--surface-muted)]", "grid-cols-3");
     expect(screen.getByRole("button", { name: "Tutto il giorno" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.queryByText("informazioni generali")).not.toBeInTheDocument();
     expect(dayControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
