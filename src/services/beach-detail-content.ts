@@ -72,10 +72,11 @@ function classifyFact(value: string): Pick<BeachFact, "emoji" | "label"> {
 
   if (/(rocc|scogli)/.test(normalized)) return { emoji: "🪨", label: "Fondo" };
   if (/(sabbia|arenile|litorale)/.test(normalized)) return { emoji: "🏖️", label: "Fondo" };
-  if (/(fondale|acqua|balneazione)/.test(normalized)) return { emoji: "🌊", label: "Acqua" };
   if (/(accesso|ingresso|sentiero|percorso|raggiungibile)/.test(normalized)) {
     return { emoji: "🥾", label: "Accesso" };
   }
+  if (/fondale/.test(normalized)) return { emoji: "🌊", label: "Fondale" };
+  if (/(acqua|balneazione)/.test(normalized)) return { emoji: "🌊", label: "Acqua" };
   if (/(riserva|vegetazione)/.test(normalized)) return { emoji: "🌿", label: "Area" };
   if (/(famiglie|bambini)/.test(normalized)) return { emoji: "👨‍👩‍👧‍👦", label: "Ideale per" };
 

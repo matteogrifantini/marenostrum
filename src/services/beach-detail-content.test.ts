@@ -115,7 +115,7 @@ describe("buildBeachDetailContent", () => {
     ]);
     expect(detail.facts).toEqual([
       { emoji: "🏖️", label: "Fondo", value: "Sabbia chiara" },
-      { emoji: "🌊", label: "Acqua", value: "Fondale basso" },
+      { emoji: "🌊", label: "Fondale", value: "Fondale basso" },
     ]);
     expect(detail.reviews).toBeNull();
     expect(detail.reviewProfile).toEqual({
@@ -196,7 +196,7 @@ describe("buildBeachDetailContent", () => {
       parkings: [],
       facts: [
         { emoji: "🏖️", label: "Fondo", value: "Sabbia chiara" },
-        { emoji: "🌊", label: "Acqua", value: "Fondale basso" },
+        { emoji: "🌊", label: "Fondale", value: "Fondale basso" },
       ],
       reviews: null,
       reviewProfile: null,
@@ -226,6 +226,23 @@ describe("buildBeachDetailContent", () => {
         label: "Accesso",
         value: "Accesso indicato come difficile dalla fonte turistica",
       },
+    ]);
+  });
+
+  it("keeps water-entry and seabed facts in distinct categories", () => {
+    const detail = buildBeachDetailContent(
+      {
+        ...beach,
+        facts: ["Ingresso in acqua facile", "Fondale inizialmente basso", "Acqua limpida"],
+      },
+      null,
+      [],
+    );
+
+    expect(detail.facts).toEqual([
+      { emoji: "🥾", label: "Accesso", value: "Ingresso in acqua facile" },
+      { emoji: "🌊", label: "Fondale", value: "Fondale inizialmente basso" },
+      { emoji: "🌊", label: "Acqua", value: "Acqua limpida" },
     ]);
   });
 });
