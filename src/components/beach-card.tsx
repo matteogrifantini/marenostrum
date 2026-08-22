@@ -49,7 +49,7 @@ export function BeachCard({
 }: BeachCardProps) {
   const { beach, conditions } = recommendation;
   const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=${period}`;
-  const image = beach.image ?? "/images/beaches/cala-del-gelsomino.jpg";
+  const image = beach.image;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
   const displayScore = (Math.max(0, Math.min(100, recommendation.score)) / 10).toFixed(1);
   const tone = scoreTone(recommendation.score);
@@ -65,15 +65,23 @@ export function BeachCard({
         className="flex h-full min-w-0 flex-col focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[var(--sun)]"
       >
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--surface-muted)]">
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            loading={eager ? "eager" : "lazy"}
-            sizes="(max-width: 639px) 46vw, (max-width: 1023px) 31vw, 28vw"
-            className="object-cover transition-transform duration-500 ease-out"
-            style={{ objectPosition: IMAGE_POSITIONS[beach.slug] ?? "center" }}
-          />
+          {image ? (
+            <Image
+              src={image}
+              alt={imageAlt}
+              fill
+              loading={eager ? "eager" : "lazy"}
+              sizes="(max-width: 639px) 46vw, (max-width: 1023px) 31vw, 28vw"
+              className="object-cover transition-transform duration-500 ease-out"
+              style={{ objectPosition: IMAGE_POSITIONS[beach.slug] ?? "center" }}
+            />
+          ) : (
+            <div
+              role="img"
+              aria-label={`Foto non disponibile per ${beach.name}`}
+              className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.18),transparent_32%),linear-gradient(145deg,var(--sea-deep),var(--ink))]"
+            />
+          )}
           <span className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
 

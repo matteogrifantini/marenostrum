@@ -1,4 +1,4 @@
-import type { BeachDetailReport } from "../data/demo-beach-details";
+import type { BeachDetailReport } from "../domain/beach-detail-content";
 import {
   getCommunityReportCategory,
   type CommunityReportCategory,

@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { getBeachAiComment } from "../domain/beach-comment";
-import type { BeachDetailContent } from "../data/demo-beach-details";
+import type { BeachDetailContent } from "../domain/beach-detail-content";
 import type { DateOption } from "../domain/date-selection";
 import { DetailHero } from "./detail-hero";
 import { HourlyForecast } from "./hourly-forecast";

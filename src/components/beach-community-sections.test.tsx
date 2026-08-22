@@ -29,8 +29,31 @@ describe("BeachCommunitySections", () => {
 
     const webcam = screen.getByRole("region", { name: "Webcam più vicina" });
     const webcamName = within(webcam).getByText(detail.webcam.name);
-    const webcamDistance = within(webcam).getByText(`${detail.webcam.distanceKm.toFixed(1)} km`);
+    const webcamDistance = within(webcam).getByText(`${detail.webcam.distanceKm!.toFixed(1)} km`);
     expect(webcamDistance.parentElement).toBe(webcamName.parentElement);
     expect(within(webcam).getByText(detail.webcam.updated)).toBeInTheDocument();
+  });
+
+  it("links to a verified external review profile without fabricating local reviews", () => {
+    const detail = getDemoBeachDetail("cala-del-gelsomino")!;
+    render(
+      <BeachCommunitySections
+        detail={{
+          ...detail,
+          reviews: null,
+          reviewProfile: {
+            provider: "google",
+            mapsUrl: "https://maps.google.com/?cid=1",
+          },
+        }}
+      />,
+    );
+
+    const reviews = screen.getByRole("region", { name: "Recensioni" });
+    expect(within(reviews).getByText("Nessuna recensione locale disponibile.")).toBeInTheDocument();
+    expect(within(reviews).getByRole("link", { name: "Apri recensioni Google" })).toHaveAttribute(
+      "href",
+      "https://maps.google.com/?cid=1",
+    );
   });
 });

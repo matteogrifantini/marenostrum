@@ -53,6 +53,22 @@ describe("BeachCard", () => {
     expect(screen.getByText("Noto")).not.toHaveTextContent("km");
   });
 
+  it("does not borrow another beach image when this beach has no image", () => {
+    render(
+      <BeachCard
+        recommendation={{
+          ...demoRecommendations[0],
+          beach: { ...demoRecommendations[0].beach, image: undefined },
+        }}
+        date="2026-08-20"
+        period="all-day"
+      />,
+    );
+
+    expect(screen.getByRole("img", { name: "Foto non disponibile per Cala del Gelsomino" })).toBeInTheDocument();
+    expect(screen.queryByRole("img", { name: "Foto di Cala del Gelsomino" })).not.toBeInTheDocument();
+  });
+
   it("uses the same concise aggregate metric text visually and in accessible labels", () => {
     const recommendation = {
       ...demoRecommendations[0],

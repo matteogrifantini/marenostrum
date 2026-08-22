@@ -1,80 +1,21 @@
-export type BeachDetailReport = {
-  id: string;
-  emoji: string;
-  title: string;
-  detail: string;
-  age: string;
-};
+import { emptyBeachDetailContent } from "../domain/beach-detail-content";
+import type {
+  BeachDetailContent,
+  BeachReviews,
+  BeachWebcam,
+} from "../domain/beach-detail-content";
 
-export type BeachParking = {
-  id: string;
-  name: string;
-  price: string;
-  type: string;
-  walking: string;
-  updated: string;
-};
-
-export type BeachFact = {
-  emoji: string;
-  label: "Suolo" | "Fondale" | "Esposizione" | "Servizi";
-  value: string;
-};
-
-export type BeachReview = {
-  id: string;
-  author: string;
-  age: string;
-  text: string;
-};
-
-export type BeachMedia = {
-  id: string;
-  src: string;
-  alt: string;
-  age: string;
-};
-
-export type BeachReel = BeachMedia & {
-  author: string;
-  caption: string;
-};
-
-export type BeachReviews = {
-  rating: number;
-  recommendedPercent: number;
-  total: number;
-  items: BeachReview[];
-};
-
-export type BeachWebcam = {
-  name: string;
-  distanceKm: number;
-  image: string;
-  alt: string;
-  updated: string;
-  live: boolean;
-};
-
-export type BeachDetailContent = {
-  reports: BeachDetailReport[];
-  parkings: BeachParking[];
-  facts: BeachFact[];
-  reviews: BeachReviews | null;
-  recentPhotos: BeachMedia[];
-  reels: BeachReel[];
-  webcam: BeachWebcam | null;
-};
-
-export const emptyBeachDetailContent: BeachDetailContent = {
-  reports: [],
-  parkings: [],
-  facts: [],
-  reviews: null,
-  recentPhotos: [],
-  reels: [],
-  webcam: null,
-};
+export { emptyBeachDetailContent };
+export type {
+  BeachDetailContent,
+  BeachDetailReport,
+  BeachFact,
+  BeachMedia,
+  BeachReel,
+  BeachReview,
+  BeachReviews,
+  BeachWebcam,
+} from "../domain/beach-detail-content";
 
 type BeachDetailFixture = BeachDetailContent & {
   reviews: BeachReviews;

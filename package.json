@@ -13,8 +13,19 @@
     "catalog:apply": "tsx scripts/import-sicily-catalog.ts --apply",
     "catalog:master:validate": "tsx scripts/import-sicily-master.ts --dry-run",
     "catalog:master:apply": "tsx scripts/import-sicily-master.ts --apply",
+    "catalog:readiness": "tsx scripts/check-sicily-publication-readiness.ts",
+    "catalog:forecast:preload": "tsx scripts/preload-sicily-draft-forecasts.ts",
     "catalog:content:validate": "tsx scripts/import-sicily-content.ts --dry-run",
-    "catalog:content:apply": "tsx scripts/import-sicily-content.ts --apply"
+    "catalog:content:apply": "tsx scripts/import-sicily-content.ts --apply",
+    "catalog:content:media:apply": "tsx scripts/import-sicily-content.ts --apply --media-only",
+    "catalog:content:verify": "tsx scripts/verify-sicily-content.ts",
+    "catalog:content:verify:apply": "tsx scripts/verify-sicily-content.ts --apply",
+    "catalog:reviews:validate": "tsx scripts/import-sicily-reviews.ts --dry-run",
+    "catalog:reviews:apply": "tsx scripts/import-sicily-reviews.ts --apply",
+    "catalog:images:validate": "tsx scripts/import-sicily-images.ts --dry-run",
+    "catalog:images:apply": "tsx scripts/import-sicily-images.ts --apply",
+    "catalog:images:media:validate": "tsx scripts/import-sicily-image-media.ts --dry-run",
+    "catalog:images:media:apply": "tsx scripts/import-sicily-image-media.ts --apply"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

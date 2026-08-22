@@ -1,0 +1,149 @@
+[
+  {
+    "slug": "san-vito-lo-capo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia%20%4038.178825%2C12.732927",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "baia-santa-margherita-macari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Baia%20Santa%20Margherita%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia%20%4038.12585%2C12.729366",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-tonnarella-dell-uzzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Tonnarella%20dell'Uzzo%2C%20San%20Vito%20Lo%20Capo%20%2F%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.120263%2C12.787485",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-marinella-zingaro",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Marinella%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.1062%2C12.79393",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-capreria-zingaro",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Capreria%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.087705%2C12.80531",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "tonnara-di-scopello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Tonnara%20di%20Scopello%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.071526%2C12.821577",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "guidaloca",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Guidaloca%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.056613%2C12.84009",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-rossa-favignana",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Rossa%2C%20Favignana%2C%20Sicilia%20%4037.921309%2C12.362173",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-azzurra-favignana",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Azzurra%2C%20Favignana%2C%20Sicilia%20%4037.909029%2C12.361108",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "lido-burrone-favignana",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Lido%20Burrone%2C%20Favignana%2C%20Sicilia%20%4037.918306%2C12.338503",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "mondello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Mondello%2C%20Palermo%2C%20Sicilia%20%4038.20153%2C13.327312",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "barcarello-sferracavallo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Barcarello%2C%20Palermo%2C%20Sicilia%20%4038.2095%2C13.2823",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "isola-delle-femmine",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20delle%20Femmine%2C%20Isola%20delle%20Femmine%2C%20Sicilia%20%4038.186439%2C13.238273",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "capaci",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capaci%2C%20Capaci%2C%20Sicilia%20%4038.185656%2C13.237457",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-rossa-terrasini",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Rossa%2C%20Terrasini%2C%20Sicilia%20%4038.141818%2C13.071091",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "la-praiola-terrasini",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=La%20Praiola%2C%20Terrasini%2C%20Sicilia%20%4038.15467%2C13.08084",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "magaggiari-cinisi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Magaggiari%2C%20Cinisi%2C%20Sicilia%20%4038.159851%2C13.084616",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-del-lungomare-cefalu",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20del%20Lungomare%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.034209%2C14.012977",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "caldura-cefalu",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Caldura%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.0335%2C14.039",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "mazzaforno-cefalu",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Mazzaforno%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.030512%2C13.973537",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "balestrate",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Balestrate%2C%20Balestrate%2C%20Sicilia%20%4038.043815%2C12.987613",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  }
+]

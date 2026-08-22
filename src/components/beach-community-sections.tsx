@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import type { BeachDetailContent } from "../data/demo-beach-details";
+import type { BeachDetailContent } from "../domain/beach-detail-content";
 
 type BeachCommunitySectionsProps = {
   detail: BeachDetailContent;
 };
 
 export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) {
-  const { reviews, webcam } = detail;
+  const { reviews, reviewProfile, webcam } = detail;
 
   return (
     <>
@@ -34,8 +34,20 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
                 </figure>
               ))}
             </>
+          ) : reviewProfile ? (
+            <div>
+              <p className="text-sm leading-6 text-[var(--muted)]">Nessuna recensione locale disponibile.</p>
+              <a
+                href={reviewProfile.mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex min-h-11 items-center rounded-[0.85rem] bg-[var(--sea-soft)] px-3 text-xs font-extrabold text-[var(--sea-deep)]"
+              >
+                {reviewProfile.provider.toLowerCase() === "google" ? "Apri recensioni Google" : "Apri recensioni"}
+              </a>
+            </div>
           ) : (
-            <p className="text-sm leading-6 text-[var(--muted)]">Nessuna recensione disponibile per questa spiaggia.</p>
+            <p className="text-sm leading-6 text-[var(--muted)]">Nessuna recensione locale disponibile.</p>
           )}
         </article>
       </section>
@@ -57,15 +69,20 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
         <SectionHeading title="Webcam più vicina" />
         {webcam ? (
           <article className="detail-surface detail-enter relative h-40 overflow-hidden text-white">
-            <Image src={webcam.image} alt={webcam.alt} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+            {webcam.image ? (
+              <Image src={webcam.image} alt={webcam.alt ?? `Anteprima della webcam di ${webcam.name}`} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+            ) : (
+              <div role="img" aria-label={`Anteprima non disponibile per ${webcam.name}`} className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.16),transparent_25%),linear-gradient(135deg,var(--sea-deep),var(--ink))]" />
+            )}
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(5,55,61,0.92)] via-[rgba(5,55,61,0.62)] to-[rgba(5,55,61,0.18)]" />
             <div className="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5">
               <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1.5 text-[0.65rem] font-black backdrop-blur-md"><span aria-hidden="true" className={`size-2 rounded-full ${webcam.live ? "bg-[#ff7466]" : "bg-white/55"}`} /> {webcam.live ? "WEBCAM LIVE" : "WEBCAM"}</span>
               <div className="flex items-center justify-between gap-3">
                 <strong className="text-xl">{webcam.name}</strong>
-                <span className="shrink-0 text-xs font-bold text-white/80">{webcam.distanceKm.toFixed(1)} km</span>
+                {webcam.distanceKm === undefined ? null : <span className="shrink-0 text-xs font-bold text-white/80">{webcam.distanceKm.toFixed(1)} km</span>}
               </div>
               <p className="mt-1 text-xs text-white/75">{webcam.updated}</p>
+              {webcam.pageUrl ? <a href={webcam.pageUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-10 w-fit items-center rounded-full bg-white/15 px-3 text-xs font-extrabold backdrop-blur-md">Apri webcam</a> : null}
             </div>
           </article>
         ) : <p className="detail-surface detail-enter p-4 text-sm text-[var(--muted)]">Nessuna webcam disponibile.</p>}

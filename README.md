@@ -27,6 +27,7 @@ npm run dev
 npm test
 npm run lint
 npm run build
+npm run catalog:readiness
 ~~~
 
 ## Configurazione runtime
@@ -73,6 +74,54 @@ La prima migrazione è in supabase/migrations/ e contiene:
 - grant SELECT e RLS con lettura limitata alle spiagge pubblicate.
 
 Il seed contiene contenuti dimostrativi: non rappresenta ancora dati operativi né fonti definitive. Le sezioni community restano una demo in questa release.
+
+`npm run catalog:readiness` esegue un controllo **solo lettura** sul progetto
+Supabase configurato: per ogni spiaggia indica i blocchi alla pubblicazione
+(asset hero con credito/licenza e forecast) e le lacune opzionali (parcheggi,
+media, webcam e profilo recensioni). Richiede le variabili server nel terminale
+locale e non ha un'opzione di scrittura.
+
+`npm run catalog:forecast:preload` esegue di default un dry-run e calcola le
+previsioni Open-Meteo soltanto per le spiagge del catalogo ancora in stato
+`draft`. Solo aggiungendo `--apply` scrive gli snapshot in `beach_conditions`;
+non pubblica spiagge, non modifica l’anagrafica e non cancella gli snapshot
+esistenti. Il comando rifiuta qualsiasi riga già pubblicata o non `draft`.
+
+`npm run catalog:images:validate` controlla il manifest delle hero image, la
+presenza dei file locali e le attribuzioni/licenze. Solo
+`npm run catalog:images:apply` aggiorna su Supabase i quattro campi immagine
+(`image_path`, `image_alt`, `image_credit`, `image_license`) delle 21 righe
+`draft`; il comando è idempotente, rifiuta righe pubblicate o con metadati già
+presenti diversi dal manifest e non pubblica né cancella nulla. Per una
+sostituzione intenzionale di asset già presenti ma ancora draft è necessario
+aggiungere esplicitamente `--replace-draft`; anche in quel caso le righe
+pubblicate o non draft vengono rifiutate.
+
+Le fonti e le attribuzioni delle immagini sono nel manifest
+`data/catalog/sicilia/image-assets.json` e in
+`public/images/beaches/ATTRIBUTIONS.md`. I file hero sono asset locali, così la
+pagina non dipende dal caricamento diretto di immagini da siti esterni.
+
+`npm run catalog:images:media:validate` controlla gli stessi asset locali come
+foto catalogo. Solo `npm run catalog:images:media:apply` crea 21 righe
+`media_items` con `kind=photo`, percorso locale, credito e licenza già
+registrati; le promuove a `verified` senza toccare i quattro video esterni
+ancora draft.
+
+`npm run catalog:content:verify` ricontrolla in sola lettura i 19 riferimenti
+OpenStreetMap dei parcheggi e il manifest delle webcam esaminate. Solo
+`npm run catalog:content:verify:apply` promuove a `verified` i parcheggi con
+tag `amenity=parking` ancora associati a righe draft e le webcam con una pagina
+sorgente verificata; protegge righe pubblicate o già in altri stati. I media
+restano draft finché non sono disponibili diritti/URL stabili e un renderer
+dedicato.
+
+`npm run catalog:reviews:validate` controlla i 21 candidati Google Maps senza
+scrivere. `npm run catalog:reviews:apply` salva per ciascuna spiaggia un
+profilo Google in stato `draft`, con link di ricerca basato su nome, comune e
+coordinate. Non copia recensioni, non usa API Google e non pubblica le
+spiagge; il passaggio a `verified` richiede la conferma manuale del Place ID e
+della corrispondenza esatta del luogo.
 
 Le previsioni sono ottenute da Open-Meteo per uso non commerciale. Lo scheduler gratuito di GitHub Actions chiama periodicamente l’endpoint protetto usando `FORECAST_SYNC_URL` e `CRON_SECRET`, configurati come repository secrets.
 

@@ -1,0 +1,29 @@
+{
+  "webcams": [
+    {
+      "source_url": "https://www.sanvitoweb.com/en/webcam-live-spiaggia-sanvitolocapo",
+      "status": "unknown",
+      "verification_note": "La pagina dichiara una webcam live della spiaggia e contiene un iframe del provider webcam; Mare Nostrum mantiene il link alla pagina sorgente e non copia il flusso."
+    },
+    {
+      "source_url": "https://www.skylinewebcams.com/it/webcam/italia/sicilia/palermo/spiaggia-mondello.html",
+      "status": "unknown",
+      "verification_note": "La pagina identifica una live webcam sulla spiaggia di Mondello; Mare Nostrum mantiene il link alla pagina sorgente e non copia il flusso."
+    },
+    {
+      "source_url": "https://mondellomare.com/webcam-sferracavallo/",
+      "status": "online",
+      "verification_note": "La pagina risponde e incorpora una live webcam YouTube intitolata Palermo live webcam - Panoramica Sferracavallo; la visuale è dell'area di Sferracavallo e non garantisce il punto esatto di Barcarello."
+    },
+    {
+      "source_url": "https://omnicamapp.com/it/webcam/22043/",
+      "status": "online",
+      "verification_note": "La pagina identifica la webcam Lido Burrone e mostra un ultimo fotogramma con collegamento al flusso; lo stato online resta soggetto a ricontrollo."
+    },
+    {
+      "source_url": "https://comune.cefalu.pa.it/webcam-piazza-duomo/",
+      "status": "unknown",
+      "verification_note": "La pagina ufficiale del Comune identifica lo streaming della webcam di Piazza Duomo; è una panoramica urbana, non una vista diretta dell'intero litorale."
+    }
+  ]
+}

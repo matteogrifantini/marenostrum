@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Check, Heart, MapPin, Play, Share2 } from "lucide-react";
 import { useState } from "react";
 import type { Beach, BeachPeriod } from "../domain/beach";
-import type { BeachDetailContent } from "../data/demo-beach-details";
+import type { BeachDetailContent } from "../domain/beach-detail-content";
 import { BeachVideoReel } from "./beach-video-reel";
 
 type DetailHeroProps = {
@@ -20,7 +20,7 @@ export function DetailHero({ beach, detail, date, period, distanceKm }: DetailHe
   const [favorite, setFavorite] = useState(false);
   const [shared, setShared] = useState(false);
   const [showReels, setShowReels] = useState(false);
-  const image = beach.image ?? "/images/beaches/cala-del-gelsomino.jpg";
+  const image = beach.image;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
   const backHref = `/?date=${encodeURIComponent(date)}&period=${period}#classifica`;
 
@@ -44,7 +44,17 @@ export function DetailHero({ beach, detail, date, period, distanceKm }: DetailHe
   return (
     <>
       <section className="relative min-h-[20rem] overflow-hidden rounded-[1.8rem] bg-[var(--ink)] text-white shadow-[0_20px_60px_rgba(20,44,57,0.16)] sm:min-h-[26rem]">
-        <Image src={image} alt={imageAlt} fill loading="eager" sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+        {image ? (
+          <Image src={image} alt={imageAlt} fill loading="eager" sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+        ) : (
+          <div
+            role="img"
+            aria-label={`Foto non disponibile per ${beach.name}`}
+            className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.18),transparent_32%),linear-gradient(145deg,var(--sea-deep),var(--ink))]"
+          >
+            <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 opacity-25 [background:linear-gradient(155deg,transparent_48%,rgba(255,255,255,0.24)_49%,transparent_51%)] [background-size:3rem_3rem]" />
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[rgba(6,28,35,0.82)]" />
 
         <div className="absolute inset-x-4 top-4 z-10 flex items-center justify-between gap-3">

@@ -58,4 +58,20 @@ describe("DetailHero", () => {
     expect(favorite).toHaveAttribute("aria-pressed", "true");
     expect(favorite).toHaveClass("text-[var(--score-poor)]");
   });
+
+  it("does not substitute another beach image when the catalog image is missing", () => {
+    const detail = getDemoBeachDetail(beach.slug)!;
+
+    render(
+      <DetailHero
+        beach={{ ...beach, image: undefined }}
+        detail={{ ...detail, reels: [] }}
+        date="2026-08-20"
+        period="all-day"
+      />,
+    );
+
+    expect(screen.getByRole("img", { name: `Foto non disponibile per ${beach.name}` })).toBeInTheDocument();
+    expect(screen.queryByRole("img", { name: `Foto di ${beach.name}` })).not.toBeInTheDocument();
+  });
 });

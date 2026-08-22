@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Heart, Play, Send, X } from "lucide-react";
 import { useEffect } from "react";
-import type { BeachReel } from "../data/demo-beach-details";
+import type { BeachReel } from "../domain/beach-detail-content";
 
 type BeachVideoReelProps = {
   beachName: string;

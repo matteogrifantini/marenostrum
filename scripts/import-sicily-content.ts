@@ -349,6 +349,7 @@ async function main() {
   const nextCheckAt = addDays(checkedAt, CHECK_INTERVAL_DAYS);
   const expiresAt = nextCheckAt;
   const { parking, webcams, media } = validation.catalog;
+  const mediaOnly = process.argv.includes("--media-only");
 
   if (!process.argv.includes("--apply")) {
     console.log(
@@ -359,6 +360,7 @@ async function main() {
           webcams: webcams.length,
           media: media.length,
           review_profiles: 0,
+          media_only: mediaOnly,
           all_draft: true,
           next_check_at: nextCheckAt,
         },
@@ -371,15 +373,21 @@ async function main() {
 
   const client = createSupabaseAdminClient();
   const beachesBySlug = await loadDraftBeaches(client);
-  const sourceRecords = [
-    ...parking,
-    ...webcams,
-    ...media.map((record) => ({
-      ...record,
-      source_name: record.provider,
-      source_type: "media-provider",
-    })),
-  ];
+  const sourceRecords = mediaOnly
+    ? media.map((record) => ({
+        ...record,
+        source_name: record.provider,
+        source_type: "media-provider",
+      }))
+    : [
+        ...parking,
+        ...webcams,
+        ...media.map((record) => ({
+          ...record,
+          source_name: record.provider,
+          source_type: "media-provider",
+        })),
+      ];
   const sourcesByKey = await loadOrCreateSources(
     client,
     beachesBySlug,
@@ -387,21 +395,25 @@ async function main() {
     checkedAt.toISOString(),
     nextCheckAt,
   );
-  const parkingRows = buildParkingRows(
-    parking,
-    beachesBySlug,
-    sourcesByKey,
-    checkedAt.toISOString(),
-    expiresAt,
-  );
+  const parkingRows = mediaOnly
+    ? []
+    : buildParkingRows(
+        parking,
+        beachesBySlug,
+        sourcesByKey,
+        checkedAt.toISOString(),
+        expiresAt,
+      );
   const mediaRows = buildMediaRows(media, beachesBySlug, sourcesByKey, expiresAt);
-  const webcamRows = buildWebcamRows(
-    webcams,
-    beachesBySlug,
-    sourcesByKey,
-    checkedAt.toISOString(),
-    nextCheckAt,
-  );
+  const webcamRows = mediaOnly
+    ? []
+    : buildWebcamRows(
+        webcams,
+        beachesBySlug,
+        sourcesByKey,
+        checkedAt.toISOString(),
+        nextCheckAt,
+      );
 
   await applyRows(client, parkingRows, mediaRows, webcamRows);
   console.log(
@@ -413,6 +425,7 @@ async function main() {
         media: mediaRows.length,
         sources: sourcesByKey.size,
         review_profiles: 0,
+        media_only: mediaOnly,
         all_draft: true,
       },
       null,

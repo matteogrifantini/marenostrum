@@ -4,10 +4,14 @@ import type { BeachForecastBundle } from "../../../data/beach-repository";
 
 const {
   getBeachForecastBundleBySlugMock,
+  getBeachContentBySlugMock,
+  getCommunityReportsForBeachMock,
   notFoundMock,
   renderedDetailProps,
 } = vi.hoisted(() => ({
   getBeachForecastBundleBySlugMock: vi.fn(),
+  getBeachContentBySlugMock: vi.fn(),
+  getCommunityReportsForBeachMock: vi.fn(),
   notFoundMock: vi.fn(() => {
     throw new Error("not found");
   }),
@@ -20,6 +24,12 @@ vi.mock("next/navigation", () => ({ notFound: notFoundMock }));
 vi.mock("../../../data/beach-repository", () => ({
   ForecastDataUnavailableError: class ForecastDataUnavailableError extends Error {},
   getBeachForecastBundleBySlug: getBeachForecastBundleBySlugMock,
+}));
+vi.mock("../../../data/beach-content-repository", () => ({
+  getBeachContentBySlug: getBeachContentBySlugMock,
+}));
+vi.mock("../../../services/community-reports", () => ({
+  getCommunityReportsForBeach: getCommunityReportsForBeachMock,
 }));
 vi.mock("../../../components/beach-detail-experience", () => ({
   BeachDetailExperience: (props: {
@@ -84,6 +94,10 @@ describe("BeachPage", () => {
     vi.setSystemTime(new Date("2026-08-20T08:00:00+02:00"));
     notFoundMock.mockClear();
     renderedDetailProps.current = undefined;
+    getBeachContentBySlugMock.mockReset();
+    getBeachContentBySlugMock.mockResolvedValue(null);
+    getCommunityReportsForBeachMock.mockReset();
+    getCommunityReportsForBeachMock.mockResolvedValue([]);
   });
 
   afterEach(() => vi.useRealTimers());
@@ -103,6 +117,7 @@ describe("BeachPage", () => {
       date: "2026-08-20",
       period: "morning",
     });
+    expect(getBeachContentBySlugMock).toHaveBeenCalledWith(beach.slug);
     expect(screen.getByText(`${beach.name}: condizioni disponibili`)).toBeInTheDocument();
     expect(renderedDetailProps.current).toMatchObject({
       beach,
@@ -125,10 +140,10 @@ describe("BeachPage", () => {
       reports: expect.any(Array),
       parkings: expect.any(Array),
       facts: expect.any(Array),
-      reviews: expect.any(Object),
+      reviews: null,
       recentPhotos: expect.any(Array),
       reels: expect.any(Array),
-      webcam: expect.any(Object),
+      webcam: null,
     });
   });
 

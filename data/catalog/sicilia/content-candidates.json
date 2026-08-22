@@ -297,17 +297,17 @@
     }
   ],
   "media": [
-    {
-      "slug": "san-vito-lo-capo",
-      "kind": "embed",
-      "provider": "LP Tour",
-      "provider_item_id": "spiaggia-accessibile-san-vito-lo-capo",
-      "source_url": "https://www.lptour.it/spiaggia-accessibile-san-vito-lo-capo/",
-      "media_url": null,
-      "credit": "LP Tour",
-      "license": null,
-      "notes": "La pagina include un video incorporato; diritti e URL del video da verificare prima della pubblicazione."
-    },
+  {
+    "slug": "san-vito-lo-capo",
+    "kind": "embed",
+    "provider": "YouTube",
+    "provider_item_id": "UTulWob9lAs",
+    "source_url": "https://www.lptour.it/spiaggia-accessibile-san-vito-lo-capo/",
+    "media_url": "https://www.youtube.com/embed/UTulWob9lAs",
+    "credit": "Project Diver (embed tramite LP Tour)",
+    "license": null,
+    "notes": "La pagina sorgente include questo embed YouTube; diritti di riuso e autorizzazione all'incorporamento restano da verificare prima della pubblicazione."
+  },
     {
       "slug": "mondello",
       "kind": "embed",

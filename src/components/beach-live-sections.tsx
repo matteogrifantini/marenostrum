@@ -11,7 +11,7 @@ import {
 import type {
   BeachDetailContent,
   BeachDetailReport,
-} from "../data/demo-beach-details";
+} from "../domain/beach-detail-content";
 
 type BeachLiveSectionsProps = {
   beach: Beach;
@@ -201,6 +201,11 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
             </article>
           ))}
         </div>
+        {detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org")) ? (
+          <p className="mt-2 text-[0.65rem] text-[var(--muted)]">
+            Dati parcheggi: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" className="font-bold text-[var(--sea-deep)]">© OpenStreetMap contributors</a>
+          </p>
+        ) : null}
         {detail.parkings.length === 0 ? <p className="detail-surface detail-enter p-4 text-sm text-[var(--muted)]">Nessun parcheggio disponibile.</p> : null}
       </section>
 
@@ -212,7 +217,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
           <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{beach.description}</p>
           <div className="mt-4 grid grid-cols-2 border-t border-[var(--line)]">
             {detail.facts.map((fact, index) => (
-              <div key={fact.label} className={`grid grid-cols-[2rem_1fr] gap-2 border-[var(--line)] px-2 py-4 ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b" : ""}`}>
+              <div key={`${fact.label}-${index}`} className={`grid grid-cols-[2rem_1fr] gap-2 border-[var(--line)] px-2 py-4 ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b" : ""}`}>
                 <span aria-hidden="true" className="detail-emoji">{fact.emoji}</span>
                 <div><strong className="block text-xs">{fact.label}</strong><span className="mt-1 block text-[0.68rem] leading-4 text-[var(--muted)]">{fact.value}</span></div>
               </div>

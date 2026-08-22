@@ -102,4 +102,22 @@ describe("BeachLiveSections", () => {
       expect(within(general).getByText(fact.value)).toBeInTheDocument();
     }
   });
+
+  it("shows OpenStreetMap attribution for OSM parking data", () => {
+    const recommendation = demoRecommendations[0];
+    const baseDetail = getDemoBeachDetail(recommendation.beach.slug)!;
+    const detail = {
+      ...baseDetail,
+      parkings: baseDetail.parkings.map((parking) => ({
+        ...parking,
+        sourceUrl: "https://www.openstreetmap.org/way/123",
+      })),
+    };
+    render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
+
+    expect(screen.getByRole("link", { name: "© OpenStreetMap contributors" })).toHaveAttribute(
+      "href",
+      "https://www.openstreetmap.org/copyright",
+    );
+  });
 });

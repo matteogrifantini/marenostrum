@@ -1,15 +1,13 @@
 import { notFound } from "next/navigation";
 import { BeachDetailExperience } from "../../../components/beach-detail-experience";
-import {
-  emptyBeachDetailContent,
-  getDemoBeachDetail,
-} from "../../../data/demo-beach-details";
+import { getBeachContentBySlug } from "../../../data/beach-content-repository";
 import {
   ForecastDataUnavailableError,
   getBeachForecastBundleBySlug,
 } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
 import { normalizeDetailQuery } from "../../../domain/detail-query";
+import { buildBeachDetailContent } from "../../../services/beach-detail-content";
 import { getCommunityReportsForBeach } from "../../../services/community-reports";
 
 type DetailSearchParams = {
@@ -61,11 +59,16 @@ export default async function BeachPage({
 
   if (!bundle) notFound();
 
-  const baseDetail = getDemoBeachDetail(slug) ?? emptyBeachDetailContent;
+  let beachContent = null;
+
+  try {
+    beachContent = await getBeachContentBySlug(slug);
+  } catch (error) {
+    if (!(error instanceof ForecastDataUnavailableError)) throw error;
+  }
+
   const communityReports = await getCommunityReportsForBeach(slug);
-  const detail = communityReports.length > 0
-    ? { ...baseDetail, reports: [...communityReports, ...baseDetail.reports] }
-    : baseDetail;
+  const detail = buildBeachDetailContent(bundle.beach, beachContent, communityReports);
 
   return (
     <BeachDetailExperience

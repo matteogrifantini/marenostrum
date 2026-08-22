@@ -189,7 +189,7 @@ describe("BeachDetailExperience", () => {
 
     expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(2);
     expect(screen.getByText("Nessuna segnalazione recente disponibile.")).toBeInTheDocument();
-    expect(screen.getByText("Nessuna recensione disponibile per questa spiaggia.")).toBeInTheDocument();
+    expect(screen.getByText("Nessuna recensione locale disponibile.")).toBeInTheDocument();
     expect(screen.getByText("Nessuna webcam disponibile.")).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /Guarda i video/ })).not.toBeInTheDocument();
   });
