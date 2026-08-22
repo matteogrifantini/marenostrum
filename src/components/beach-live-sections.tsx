@@ -194,9 +194,8 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
         <div className="grid grid-cols-2 gap-2">
           {detail.parkings.map((parking) => (
             <article key={parking.id} className="detail-surface detail-enter flex min-h-[12rem] min-w-0 flex-col p-3 sm:p-4">
-              <div className="flex flex-col items-start gap-2 sm:flex-row sm:justify-between">
+              <div>
                 <h2 className="text-base font-extrabold leading-[1.08] tracking-[-0.025em]">{parking.name}</h2>
-                <span className="shrink-0 rounded-full bg-[var(--sun-soft)] px-2 py-1 text-[0.65rem] font-black text-[var(--sun-dark)]">{parking.price}</span>
               </div>
               <p className="mt-3 text-xs leading-5 text-[var(--ink-soft)]"><span aria-hidden="true" className="emoji-readable-mobile">🅿️</span> {parking.type}<br /><span aria-hidden="true" className="emoji-readable-mobile">🚶</span> {parking.walking}</p>
               <p className="mt-3 text-[0.62rem] leading-4 text-[var(--muted)]">{parking.updated}</p>
