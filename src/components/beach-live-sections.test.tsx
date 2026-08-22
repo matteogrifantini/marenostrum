@@ -151,6 +151,20 @@ describe("BeachLiveSections", () => {
     }
   });
 
+  it("offers an honest Google Maps search when no parking is verified", () => {
+    const recommendation = demoRecommendations[0];
+    const baseDetail = getDemoBeachDetail(recommendation.beach.slug)!;
+    const detail = { ...baseDetail, parkings: [] };
+    render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
+
+    const parking = screen.getByRole("region", { name: "Parcheggi vicini" });
+    expect(within(parking).getByText("Nessun parcheggio verificato per questa spiaggia.")).toBeInTheDocument();
+    expect(within(parking).getByRole("link", { name: "Cerca parcheggi vicini su Google Maps" })).toHaveAttribute(
+      "href",
+      "https://www.google.com/maps/search/?api=1&query=Parcheggi%20vicino%20a%20Cala%20del%20Gelsomino%2C%20Noto",
+    );
+  });
+
   it("uses a coordinate-based Google Maps route for each parking facility", () => {
     const recommendation = demoRecommendations[0];
     const baseDetail = getDemoBeachDetail(recommendation.beach.slug)!;

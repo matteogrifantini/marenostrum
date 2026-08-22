@@ -191,32 +191,46 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
 
       <section aria-label="Parcheggi vicini">
         <SectionHeading title="Parcheggi vicini" meta="vedi mappa" />
-        <div className="grid grid-cols-2 gap-2">
-          {detail.parkings.map((parking) => (
-            <article key={parking.id} className="detail-surface detail-enter flex min-h-[12rem] min-w-0 flex-col p-3 sm:p-4">
-              <div>
-                <h2 className="text-base font-extrabold leading-[1.08] tracking-[-0.025em]">{parking.name}</h2>
-              </div>
-              <p className="mt-3 text-xs leading-5 text-[var(--ink-soft)]"><span aria-hidden="true" className="emoji-readable-mobile">🅿️</span> {parking.type}<br /><span aria-hidden="true" className="emoji-readable-mobile">🚶</span> {parking.walking}</p>
-              <p className="mt-3 text-[0.62rem] leading-4 text-[var(--muted)]">{parking.updated}</p>
-              <a
-                href={parking.directionsUrl ?? buildGoogleMapsSearchUrl(`${parking.name}, ${beach.name}, ${beach.municipality}`)}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${parking.directionsUrl ? "Apri percorso" : "Cerca"} per ${parking.name} su Google Maps`}
-                className="mt-auto flex min-h-11 items-center justify-between border-t border-[var(--line)] pt-3 text-xs font-extrabold text-[var(--sea-deep)]"
-              >
-                {parking.directionsUrl ? "Apri percorso" : "Cerca su Maps"} <ArrowUpRight aria-hidden="true" size={15} />
-              </a>
-            </article>
-          ))}
-        </div>
+        {detail.parkings.length > 0 ? (
+          <div className="grid grid-cols-2 gap-2">
+            {detail.parkings.map((parking) => (
+              <article key={parking.id} className="detail-surface detail-enter flex min-h-[12rem] min-w-0 flex-col p-3 sm:p-4">
+                <div>
+                  <h2 className="text-base font-extrabold leading-[1.08] tracking-[-0.025em]">{parking.name}</h2>
+                </div>
+                <p className="mt-3 text-xs leading-5 text-[var(--ink-soft)]"><span aria-hidden="true" className="emoji-readable-mobile">🅿️</span> {parking.type}<br /><span aria-hidden="true" className="emoji-readable-mobile">🚶</span> {parking.walking}</p>
+                <p className="mt-3 text-[0.62rem] leading-4 text-[var(--muted)]">{parking.updated}</p>
+                <a
+                  href={parking.directionsUrl ?? buildGoogleMapsSearchUrl(`${parking.name}, ${beach.name}, ${beach.municipality}`)}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${parking.directionsUrl ? "Apri percorso" : "Cerca"} per ${parking.name} su Google Maps`}
+                  className="mt-auto flex min-h-11 items-center justify-between border-t border-[var(--line)] pt-3 text-xs font-extrabold text-[var(--sea-deep)]"
+                >
+                  {parking.directionsUrl ? "Apri percorso" : "Cerca su Maps"} <ArrowUpRight aria-hidden="true" size={15} />
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <article className="detail-surface detail-enter flex min-h-[10rem] flex-col p-4 sm:p-5">
+            <p className="text-sm leading-6 text-[var(--muted)]"><span aria-hidden="true" className="emoji-readable-mobile">🅿️</span> Nessun parcheggio verificato per questa spiaggia.</p>
+            <a
+              href={buildGoogleMapsSearchUrl(`Parcheggi vicino a ${beach.name}, ${beach.municipality}`)}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Cerca parcheggi vicini su Google Maps"
+              className="mt-auto flex min-h-11 items-center justify-between border-t border-[var(--line)] pt-3 text-xs font-extrabold text-[var(--sea-deep)]"
+            >
+              Cerca parcheggi vicini su Google Maps <ArrowUpRight aria-hidden="true" size={15} />
+            </a>
+          </article>
+        )}
         {detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org")) ? (
           <p className="mt-2 text-[0.65rem] text-[var(--muted)]">
             Dati parcheggi: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" className="font-bold text-[var(--sea-deep)]">© OpenStreetMap contributors</a>
           </p>
         ) : null}
-        {detail.parkings.length === 0 ? <p className="detail-surface detail-enter p-4 text-sm text-[var(--muted)]">Nessun parcheggio disponibile.</p> : null}
       </section>
 
       <section aria-label="La spiaggia">
