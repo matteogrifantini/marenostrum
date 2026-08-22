@@ -44,6 +44,7 @@ describe("BeachCommunitySections", () => {
           reviewProfile: {
             provider: "google",
             mapsUrl: "https://maps.google.com/?cid=1",
+            verificationStatus: "verified",
           },
         }}
       />,
@@ -54,6 +55,30 @@ describe("BeachCommunitySections", () => {
     expect(within(reviews).getByRole("link", { name: "Apri recensioni Google" })).toHaveAttribute(
       "href",
       "https://maps.google.com/?cid=1",
+    );
+  });
+
+  it("labels an unverified Google search honestly", () => {
+    const detail = getDemoBeachDetail("cala-del-gelsomino")!;
+    render(
+      <BeachCommunitySections
+        detail={{
+          ...detail,
+          reviews: null,
+          reviewProfile: {
+            provider: "google",
+            mapsUrl: "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino",
+            verificationStatus: "draft",
+          },
+        }}
+      />,
+    );
+
+    const reviews = screen.getByRole("region", { name: "Recensioni" });
+    expect(within(reviews).getByText("Profilo Google da confermare.")).toBeInTheDocument();
+    expect(within(reviews).getByRole("link", { name: "Cerca su Google Maps" })).toHaveAttribute(
+      "href",
+      "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino",
     );
   });
 });

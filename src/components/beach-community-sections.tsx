@@ -36,14 +36,22 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
             </>
           ) : reviewProfile ? (
             <div>
-              <p className="text-sm leading-6 text-[var(--muted)]">Nessuna recensione locale disponibile.</p>
+              <p className="text-sm leading-6 text-[var(--muted)]">
+                {reviewProfile.verificationStatus === "draft"
+                  ? "Profilo Google da confermare."
+                  : "Nessuna recensione locale disponibile."}
+              </p>
               <a
                 href={reviewProfile.mapsUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-3 inline-flex min-h-11 items-center rounded-[0.85rem] bg-[var(--sea-soft)] px-3 text-xs font-extrabold text-[var(--sea-deep)]"
               >
-                {reviewProfile.provider.toLowerCase() === "google" ? "Apri recensioni Google" : "Apri recensioni"}
+                {reviewProfile.verificationStatus === "draft"
+                  ? "Cerca su Google Maps"
+                  : reviewProfile.provider.toLowerCase() === "google"
+                    ? "Apri recensioni Google"
+                    : "Apri recensioni"}
               </a>
             </div>
           ) : (

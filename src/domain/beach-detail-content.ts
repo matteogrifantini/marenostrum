@@ -51,6 +51,7 @@ export type BeachReviews = {
 export type BeachReviewProfile = {
   provider: string;
   mapsUrl: string;
+  verificationStatus: "draft" | "verified" | "stale";
 };
 
 export type BeachWebcam = {

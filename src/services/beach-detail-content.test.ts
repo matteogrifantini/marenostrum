@@ -121,6 +121,7 @@ describe("buildBeachDetailContent", () => {
     expect(detail.reviewProfile).toEqual({
       provider: "google",
       mapsUrl: "https://maps.google.com/?cid=1",
+      verificationStatus: "verified",
     });
     expect(detail.webcam).toMatchObject({
       name: "Webcam del porto",

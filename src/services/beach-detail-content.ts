@@ -168,6 +168,10 @@ export function buildBeachDetailContent(
       ? {
           provider: content.reviewProfile.provider,
           mapsUrl: content.reviewProfile.maps_url,
+          verificationStatus:
+            content.reviewProfile.verification_status === "archived"
+              ? "draft"
+              : content.reviewProfile.verification_status,
         }
       : null,
     recentPhotos: content ? mapPhotos(beach, content.media) : [],
