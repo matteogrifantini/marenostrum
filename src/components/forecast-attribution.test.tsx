@@ -29,6 +29,17 @@ describe("ForecastAttribution", () => {
     expect(screen.queryByText("Mare Nostrum aggrega ed elabora i dati.")).not.toBeInTheDocument();
   });
 
+  it("can place the parking source beside the weather sources", () => {
+    render(<ForecastAttribution includeParkingSource />);
+
+    expect(screen.getByText("Fonti meteo:")).toBeInTheDocument();
+    expect(screen.getByText("Parcheggi:")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "© OpenStreetMap contributors" })).toHaveAttribute(
+      "href",
+      "https://www.openstreetmap.org/copyright",
+    );
+  });
+
   it("is a neutral footer rather than a card", () => {
     render(<ForecastAttribution />);
 

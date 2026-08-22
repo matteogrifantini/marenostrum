@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildNextDayHref, normalizeDetailQuery } from "./detail-query";
+import { buildNextDayHref, normalizeDetailQuery, parseDetailOrigin } from "./detail-query";
 
 describe("normalizeDetailQuery", () => {
   it("resolves a valid detail date and period", () => {
@@ -13,6 +13,14 @@ describe("normalizeDetailQuery", () => {
       date: "2026-08-15",
       period: "all-day",
     });
+  });
+});
+
+describe("parseDetailOrigin", () => {
+  it("keeps a homepage origin only for the explicit homepage marker", () => {
+    expect(parseDetailOrigin("home")).toBe("home");
+    expect(parseDetailOrigin("detail")).toBe("detail");
+    expect(parseDetailOrigin(undefined)).toBe("detail");
   });
 });
 

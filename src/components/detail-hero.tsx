@@ -13,17 +13,20 @@ import { FavoriteToggle } from "./favorite-toggle";
 type DetailHeroProps = {
   beach: Beach;
   detail: BeachDetailContent;
-  period: BeachPeriod;
+  period?: BeachPeriod;
+  homeDate?: string;
   distanceKm?: number;
 };
 
-export function DetailHero({ beach, detail, period, distanceKm }: DetailHeroProps) {
+export function DetailHero({ beach, detail, homeDate, distanceKm }: DetailHeroProps) {
   const [shared, setShared] = useState(false);
   const [showReels, setShowReels] = useState(false);
   const image = beach.image;
   const imageSrc = image ? versionedMediaUrl(image) : undefined;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
-  const backHref = `/?period=${period}#classifica`;
+  const backHref = homeDate
+    ? `/?date=${encodeURIComponent(homeDate)}&period=all-day#classifica`
+    : "/?period=all-day#classifica";
 
   const handleShare = () => {
     void (async () => {

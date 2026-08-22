@@ -3,13 +3,17 @@ const sources = [
   { href: "https://www.dwd.de/", label: "DWD" },
 ];
 
-export function ForecastAttribution() {
+type ForecastAttributionProps = {
+  includeParkingSource?: boolean;
+};
+
+export function ForecastAttribution({ includeParkingSource = false }: ForecastAttributionProps) {
   return (
     <footer
       aria-label="Attribuzione previsioni"
       className="mt-3 flex flex-wrap items-center justify-center gap-x-1.5 border-t border-[var(--line)] px-2 py-2 text-center text-[0.62rem] leading-4 text-[var(--muted)]"
     >
-      <span>Fonti:</span>
+      <span>Fonti meteo:</span>
       {sources.map((source, index) => (
         <span key={source.label} className="inline-flex items-center gap-1.5">
           {index > 0 ? <span aria-hidden="true">·</span> : null}
@@ -32,6 +36,20 @@ export function ForecastAttribution() {
       >
         CC BY 4.0
       </a>
+      {includeParkingSource ? (
+        <>
+          <span aria-hidden="true">·</span>
+          <span>Parcheggi:</span>
+          <a
+            href="https://www.openstreetmap.org/copyright"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold underline decoration-[var(--line)] underline-offset-2 hover:text-[var(--ink)]"
+          >
+            © OpenStreetMap contributors
+          </a>
+        </>
+      ) : null}
     </footer>
   );
 }

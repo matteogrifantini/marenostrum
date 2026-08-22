@@ -126,6 +126,7 @@ describe("BeachPage", () => {
       afternoonRecommendation: bundle.afternoon,
       date: "2026-08-20",
       period: "morning",
+      origin: "detail",
       dataUnavailable: false,
     });
     const props = renderedDetailProps.current as {
@@ -144,6 +145,32 @@ describe("BeachPage", () => {
       recentPhotos: expect.any(Array),
       reels: expect.any(Array),
       webcam: null,
+    });
+  });
+
+  it("keeps the homepage date but opens its beach detail on all-day", async () => {
+    getBeachForecastBundleBySlugMock.mockResolvedValue(bundle);
+
+    render(
+      await BeachPage({
+        params: Promise.resolve({ slug: beach.slug }),
+        searchParams: Promise.resolve({
+          date: "2026-08-21",
+          period: "morning",
+          source: "home",
+        }),
+      }),
+    );
+
+    expect(getBeachForecastBundleBySlugMock).toHaveBeenCalledWith({
+      slug: beach.slug,
+      date: "2026-08-21",
+      period: "all-day",
+    });
+    expect(renderedDetailProps.current).toMatchObject({
+      date: "2026-08-21",
+      period: "all-day",
+      origin: "home",
     });
   });
 

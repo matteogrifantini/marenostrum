@@ -89,7 +89,25 @@ describe("DetailHero", () => {
 
     expect(screen.getByRole("link", { name: "Torna alle spiagge" })).toHaveAttribute(
       "href",
-      "/?period=afternoon#classifica",
+      "/?period=all-day#classifica",
+    );
+  });
+
+  it("returns to the homepage with the date selected there", () => {
+    const detail = getDemoBeachDetail(beach.slug)!;
+
+    render(
+      <DetailHero
+        beach={beach}
+        detail={detail}
+        homeDate="2026-08-23"
+        period="morning"
+      />,
+    );
+
+    expect(screen.getByRole("link", { name: "Torna alle spiagge" })).toHaveAttribute(
+      "href",
+      "/?date=2026-08-23&period=all-day#classifica",
     );
   });
 });

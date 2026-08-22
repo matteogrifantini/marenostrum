@@ -67,6 +67,7 @@ function renderDetail(
       detail={detail}
       date="2026-08-20"
       period="all-day"
+      origin="detail"
       {...props}
     />,
   );
@@ -80,18 +81,31 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByText("Dati non recenti: verifica le condizioni prima di partire.")).toBeInTheDocument();
   });
 
-  it("renders compact attribution after the conditions section", () => {
-    renderDetail();
+  it("renders data sources after the complete beach detail", () => {
+    const detailWithParkingSource = {
+      ...detail,
+      parkings: detail.parkings.map((parking) => ({
+        ...parking,
+        sourceUrl: "https://www.openstreetmap.org/way/123",
+      })),
+    };
+    renderDetail({ detail: detailWithParkingSource });
 
     const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
     const attribution = screen.getByRole("contentinfo", {
       name: "Attribuzione previsioni",
     });
+    const reviews = screen.getByRole("region", { name: "Recensioni" });
 
+    expect(
+      reviews.compareDocumentPosition(attribution) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
     expect(
       conditions.compareDocumentPosition(attribution) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
-    expect(attribution).toHaveTextContent("Fonti:");
+    expect(attribution).toHaveTextContent("Fonti meteo:");
+    expect(attribution).toHaveTextContent("Parcheggi:");
+    expect(screen.getByRole("link", { name: "© OpenStreetMap contributors" })).toBeInTheDocument();
     expect(
       screen.queryByText("Previsioni indicative: non usare per la navigazione."),
     ).not.toBeInTheDocument();
@@ -104,17 +118,17 @@ describe("BeachDetailExperience", () => {
     expect(screen.queryByRole("tablist", { name: "Dettagli spiaggia" })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute("aria-pressed", "false");
-    const periodPicker = screen.getByRole("combobox", { name: "Periodo" });
+    const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
     const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
-    const periodShell = periodPicker.parentElement;
 
     expect(dayControls).toHaveClass("day-picker", "bg-[var(--surface-muted)]", "grid-cols-4");
-    expect(periodPicker).toHaveValue("all-day");
-    expect(periodShell).toHaveClass("bg-[var(--surface-muted)]", "rounded-full");
+    expect(periodControls).toHaveClass("period-picker", "bg-[var(--surface-muted)]", "grid-cols-3");
+    expect(screen.getByRole("button", { name: "Tutto il giorno" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.queryByText("informazioni generali")).not.toBeInTheDocument();
     expect(dayControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(advice.compareDocumentPosition(periodPicker) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(dayControls.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(periodControls.compareDocumentPosition(advice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice).toHaveAttribute("data-score-tone", "excellent");
     expect(within(advice).getByText("10.0")).toBeInTheDocument();
 
@@ -227,15 +241,13 @@ describe("BeachDetailExperience", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Domani" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
-      "/spiagge/cala-del-gelsomino?date=2026-08-21&period=all-day",
+      "/spiagge/cala-del-gelsomino?date=2026-08-21&period=all-day&source=detail",
       { scroll: false },
     );
 
-    fireEvent.change(screen.getByRole("combobox", { name: "Periodo" }), {
-      target: { value: "morning" },
-    });
+    fireEvent.click(screen.getByRole("button", { name: "Mattina" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
-      "/spiagge/cala-del-gelsomino?date=2026-08-20&period=morning",
+      "/spiagge/cala-del-gelsomino?date=2026-08-20&period=morning&source=detail",
       { scroll: false },
     );
   });
@@ -246,14 +258,34 @@ describe("BeachDetailExperience", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "sab 22" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
-      "/spiagge/cala-del-gelsomino?date=2026-08-22&period=morning",
+      "/spiagge/cala-del-gelsomino?date=2026-08-22&period=morning&source=detail",
       { scroll: false },
     );
 
     fireEvent.click(screen.getByRole("button", { name: "dom 23" }));
     expect(replaceMock).toHaveBeenLastCalledWith(
-      "/spiagge/cala-del-gelsomino?date=2026-08-23&period=morning",
+      "/spiagge/cala-del-gelsomino?date=2026-08-23&period=morning&source=detail",
       { scroll: false },
+    );
+  });
+
+  it("preserves a homepage date until the detail date is changed", () => {
+    renderDetail({ date: "2026-08-21", origin: "home" });
+
+    expect(screen.getByRole("link", { name: "Torna alle spiagge" })).toHaveAttribute(
+      "href",
+      "/?date=2026-08-21&period=all-day#classifica",
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "sab 22" }));
+
+    expect(replaceMock).toHaveBeenLastCalledWith(
+      "/spiagge/cala-del-gelsomino?date=2026-08-22&period=all-day&source=detail",
+      { scroll: false },
+    );
+    expect(screen.getByRole("link", { name: "Torna alle spiagge" })).toHaveAttribute(
+      "href",
+      "/?period=all-day#classifica",
     );
   });
 });

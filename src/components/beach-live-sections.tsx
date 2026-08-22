@@ -226,11 +226,6 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
             </a>
           </article>
         )}
-        {detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org")) ? (
-          <p className="mt-2 text-[0.65rem] text-[var(--muted)]">
-            Dati parcheggi: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" className="font-bold text-[var(--sea-deep)]">© OpenStreetMap contributors</a>
-          </p>
-        ) : null}
       </section>
 
       <section aria-label="La spiaggia">

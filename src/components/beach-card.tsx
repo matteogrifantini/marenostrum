@@ -45,12 +45,11 @@ function windDirection(degrees: number) {
 export function BeachCard({
   recommendation,
   date,
-  period,
   distanceKm,
   eager = false,
 }: BeachCardProps) {
   const { beach, conditions } = recommendation;
-  const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=${period}`;
+  const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=all-day&source=home`;
   const image = beach.image;
   const imageSrc = image ? versionedMediaUrl(image) : undefined;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;

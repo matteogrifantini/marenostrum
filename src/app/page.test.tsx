@@ -167,7 +167,7 @@ describe("HomeExperience", () => {
 
     expect(screen.getAllByRole("link", { name: /apri la scheda/i })[0]).toHaveAttribute(
       "href",
-      expect.stringContaining("date=2026-08-21"),
+      expect.stringContaining("date=2026-08-21&period=all-day&source=home"),
     );
     expect(replace).toHaveBeenCalledWith(
       "/?date=2026-08-21&period=all-day",

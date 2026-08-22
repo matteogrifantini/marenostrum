@@ -2,10 +2,11 @@
 
 import { CloudSun, Gauge, Sparkles, ThermometerSun, Waves, Wind } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { getBeachAiComment } from "../domain/beach-comment";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
+import type { DetailOrigin } from "../domain/detail-query";
 import type { DateOption } from "../domain/date-selection";
 import { DetailHero } from "./detail-hero";
 import { DayPicker } from "./day-picker";
@@ -13,7 +14,6 @@ import { HourlyForecast } from "./hourly-forecast";
 import { PageShell } from "./page-shell";
 import { BeachLiveSections } from "./beach-live-sections";
 import { BeachCommunitySections } from "./beach-community-sections";
-import { PeriodPicker } from "./period-picker";
 import { ForecastAttribution } from "./forecast-attribution";
 import {
   formatAggregateMetric,
@@ -30,6 +30,7 @@ type BeachDetailExperienceProps = {
   detail: BeachDetailContent;
   date: string;
   period: BeachPeriod;
+  origin: DetailOrigin;
   dataUnavailable?: boolean;
 };
 
@@ -44,6 +45,12 @@ const directionNames = [
   "SO",
   "O",
   "NO",
+];
+
+const periods: Array<{ value: BeachPeriod; label: string }> = [
+  { value: "all-day", label: "Tutto il giorno" },
+  { value: "morning", label: "Mattina" },
+  { value: "afternoon", label: "Pomeriggio" },
 ];
 
 function directionName(degrees: number) {
@@ -116,12 +123,14 @@ export function BeachDetailExperience({
   detail,
   date,
   period,
+  origin,
   dataUnavailable = false,
 }: BeachDetailExperienceProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
+  const [navigationOrigin, setNavigationOrigin] = useState<DetailOrigin>(origin);
   const selectedRecommendation = recommendationForPeriod(
     period,
     recommendation,
@@ -129,10 +138,16 @@ export function BeachDetailExperience({
     afternoonRecommendation,
   );
 
-  const replaceSelection = (nextDate: string, nextPeriod: BeachPeriod) => {
+  const replaceSelection = (
+    nextDate: string,
+    nextPeriod: BeachPeriod,
+    nextOrigin: DetailOrigin = navigationOrigin,
+  ) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("date", nextDate);
     params.set("period", nextPeriod);
+    params.set("source", nextOrigin);
+    setNavigationOrigin(nextOrigin);
     startTransition(() => {
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     });
@@ -142,24 +157,26 @@ export function BeachDetailExperience({
     <PageShell>
       <main className="detail-page min-h-screen pb-24 lg:pb-8">
         <div className="mx-auto max-w-[48rem] px-3 py-3 sm:px-6 sm:py-6">
-          <DetailHero beach={beach} detail={detail} period={period} />
+          <DetailHero
+            beach={beach}
+            detail={detail}
+            homeDate={navigationOrigin === "home" ? date : undefined}
+          />
 
           <div className="relative z-10 mt-3 px-1 pt-3 sm:px-2">
-            <div aria-busy={isPending}>
+            <div aria-busy={isPending} className="space-y-2">
               <DayPicker
                 options={dateOptions}
                 value={date}
-                onChange={(nextDate) => replaceSelection(nextDate, period)}
+                onChange={(nextDate) => replaceSelection(nextDate, period, "detail")}
               />
-            </div>
-
-            <AdviceCard recommendation={selectedRecommendation} dataUnavailable={dataUnavailable} />
-            <div className="mt-3 flex justify-end">
-              <PeriodPicker
+              <PeriodSelection
                 value={period}
                 onChange={(nextPeriod) => replaceSelection(date, nextPeriod)}
               />
             </div>
+
+            <AdviceCard recommendation={selectedRecommendation} dataUnavailable={dataUnavailable} />
             <ConditionsCard
               recommendation={selectedRecommendation}
               period={period}
@@ -169,13 +186,53 @@ export function BeachDetailExperience({
               dateOptions={dateOptions}
               dataUnavailable={dataUnavailable}
             />
-            <ForecastAttribution />
             <BeachLiveSections beach={beach} detail={detail} />
             <BeachCommunitySections detail={detail} />
+            <ForecastAttribution
+              includeParkingSource={detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org"))}
+            />
           </div>
         </div>
       </main>
     </PageShell>
+  );
+}
+
+function PeriodSelection({
+  value,
+  onChange,
+}: {
+  value: BeachPeriod;
+  onChange: (value: BeachPeriod) => void;
+}) {
+  return (
+    <div
+      aria-label="Scegli la fascia oraria"
+      className="period-picker grid min-w-0 grid-cols-3 gap-1 rounded-full bg-[var(--surface-muted)] p-1"
+      role="group"
+    >
+      {periods.map((period) => {
+        const selected = period.value === value;
+
+        return (
+          <button
+            key={period.value}
+            type="button"
+            aria-label={period.label}
+            aria-pressed={selected}
+            onClick={() => onChange(period.value)}
+            className={[
+              "min-h-11 min-w-0 rounded-full px-2 py-2 text-center text-sm font-bold transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
+              selected
+                ? "bg-[var(--ink)] text-white shadow-[0_8px_20px_rgba(20,44,57,0.16)]"
+                : "bg-transparent text-[var(--ink-soft)] hover:bg-[var(--surface)] hover:text-[var(--ink)]",
+            ].join(" ")}
+          >
+            {period.label}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 

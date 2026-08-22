@@ -194,7 +194,7 @@ describe("BeachLiveSections", () => {
     );
   });
 
-  it("shows OpenStreetMap attribution for OSM parking data", () => {
+  it("keeps parking source attribution out of the parking cards", () => {
     const recommendation = demoRecommendations[0];
     const baseDetail = getDemoBeachDetail(recommendation.beach.slug)!;
     const detail = {
@@ -206,9 +206,6 @@ describe("BeachLiveSections", () => {
     };
     render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
 
-    expect(screen.getByRole("link", { name: "© OpenStreetMap contributors" })).toHaveAttribute(
-      "href",
-      "https://www.openstreetmap.org/copyright",
-    );
+    expect(within(screen.getByRole("region", { name: "Parcheggi vicini" })).queryByRole("link", { name: "© OpenStreetMap contributors" })).not.toBeInTheDocument();
   });
 });

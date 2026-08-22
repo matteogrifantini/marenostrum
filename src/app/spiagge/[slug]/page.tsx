@@ -6,13 +6,14 @@ import {
   getBeachForecastBundleBySlug,
 } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
-import { normalizeDetailQuery } from "../../../domain/detail-query";
+import { normalizeDetailQuery, parseDetailOrigin } from "../../../domain/detail-query";
 import { buildBeachDetailContent } from "../../../services/beach-detail-content";
 import { getCommunityReportsForBeach } from "../../../services/community-reports";
 
 type DetailSearchParams = {
   date?: string | string[];
   period?: string | string[];
+  source?: string | string[];
 };
 
 function firstParam(value: string | string[] | undefined) {
@@ -34,10 +35,16 @@ export default async function BeachPage({
     firstParam(query.period),
     dateOptions[0].iso,
   );
+  const origin = parseDetailOrigin(firstParam(query.source));
+  const period = origin === "home" ? "all-day" : normalized.period;
   let bundle;
 
   try {
-    bundle = await getBeachForecastBundleBySlug({ slug, ...normalized });
+    bundle = await getBeachForecastBundleBySlug({
+      slug,
+      date: normalized.date,
+      period,
+    });
   } catch (error) {
     if (!(error instanceof ForecastDataUnavailableError)) {
       throw error;
@@ -79,7 +86,8 @@ export default async function BeachPage({
       dateOptions={dateOptions}
       detail={detail}
       date={normalized.date}
-      period={normalized.period}
+      period={period}
+      origin={origin}
       dataUnavailable={bundle.dataUnavailable}
     />
   );
