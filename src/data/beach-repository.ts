@@ -331,3 +331,24 @@ export async function getBeachForecastBundleBySlug(
     throw error;
   }
 }
+
+export async function getBeachBySlug(
+  slug: string,
+  providedStore?: ForecastReadStore,
+): Promise<Beach | null> {
+  const store = await resolveStore(providedStore);
+  const beachRows = await store.getPublishedBeaches();
+  const beachRow = beachRows.find((row) => row.slug === slug);
+
+  return beachRow ? mapBeachRow(beachRow) : null;
+}
+
+export async function getAllPublishedBeaches(
+  providedStore?: ForecastReadStore,
+): Promise<Beach[]> {
+  const store = await resolveStore(providedStore);
+  const beachRows = await store.getPublishedBeaches();
+
+  return beachRows.map(mapBeachRow);
+}
+

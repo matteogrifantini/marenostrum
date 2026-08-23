@@ -4,12 +4,14 @@ import type { BeachForecastBundle } from "../../../data/beach-repository";
 
 const {
   getBeachForecastBundleBySlugMock,
+  getBeachBySlugMock,
   getBeachContentBySlugMock,
   getCommunityReportsForBeachMock,
   notFoundMock,
   renderedDetailProps,
 } = vi.hoisted(() => ({
   getBeachForecastBundleBySlugMock: vi.fn(),
+  getBeachBySlugMock: vi.fn(),
   getBeachContentBySlugMock: vi.fn(),
   getCommunityReportsForBeachMock: vi.fn(),
   notFoundMock: vi.fn(() => {
@@ -24,6 +26,7 @@ vi.mock("next/navigation", () => ({ notFound: notFoundMock }));
 vi.mock("../../../data/beach-repository", () => ({
   ForecastDataUnavailableError: class ForecastDataUnavailableError extends Error {},
   getBeachForecastBundleBySlug: getBeachForecastBundleBySlugMock,
+  getBeachBySlug: getBeachBySlugMock,
 }));
 vi.mock("../../../data/beach-content-repository", () => ({
   getBeachContentBySlug: getBeachContentBySlugMock,
@@ -49,7 +52,7 @@ vi.mock("../../../components/beach-detail-experience", () => ({
 }));
 
 import { ForecastDataUnavailableError } from "../../../data/beach-repository";
-import BeachPage from "./page";
+import BeachPage, { generateMetadata } from "./page";
 
 const beach = {
   slug: "cala-del-gelsomino",
@@ -316,4 +319,37 @@ describe("BeachPage", () => {
       },
     });
   });
+
+  it("generates dynamic metadata with search-oriented titles and canonical URL", async () => {
+    getBeachBySlugMock.mockResolvedValue(beach);
+
+    const metadata = await generateMetadata({
+      params: Promise.resolve({ slug: beach.slug }),
+    });
+
+    expect(metadata.title).toBe(
+      "Meteo Mare Cala del Gelsomino (Noto) oggi: vento, onde e condizioni",
+    );
+    expect(metadata.description).toContain("Cala del Gelsomino a Noto (Sud-est)");
+    expect(metadata.alternates).toEqual({
+      canonical: "https://marenostrum.app/spiagge/cala-del-gelsomino",
+    });
+    expect(metadata.openGraph).toMatchObject({
+      title: "Meteo Mare Cala del Gelsomino (Noto)",
+      url: "https://marenostrum.app/spiagge/cala-del-gelsomino",
+      type: "website",
+      siteName: "Mare Nostrum",
+    });
+  });
+
+  it("generates fallback metadata when beach slug is not found", async () => {
+    getBeachBySlugMock.mockResolvedValue(null);
+
+    const metadata = await generateMetadata({
+      params: Promise.resolve({ slug: "non-trovata" }),
+    });
+
+    expect(metadata.title).toBe("Spiaggia non trovata");
+  });
 });
+

@@ -13,12 +13,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mare Nostrum — scegli il mare giusto oggi",
+  metadataBase: new URL("https://marenostrum.app"),
+  title: {
+    default: "Mare Nostrum — scegli il mare giusto oggi",
+    template: "%s | Mare Nostrum",
+  },
   description:
     "Condizioni, vento e accessibilità delle spiagge siciliane in un’unica scelta chiara.",
+  openGraph: {
+    type: "website",
+    locale: "it_IT",
+    url: "https://marenostrum.app",
+    siteName: "Mare Nostrum",
+    title: "Mare Nostrum — scegli il mare giusto oggi",
+    description:
+      "Condizioni, vento e accessibilità delle spiagge siciliane in un’unica scelta chiara.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mare Nostrum — scegli il mare giusto oggi",
+    description:
+      "Condizioni, vento e accessibilità delle spiagge siciliane in un’unica scelta chiara.",
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="it"
@@ -29,3 +48,4 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     </html>
   );
 }
+

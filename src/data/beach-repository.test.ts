@@ -8,6 +8,8 @@ import type {
 } from "./beach-repository";
 import {
   ForecastDataUnavailableError,
+  getAllPublishedBeaches,
+  getBeachBySlug,
   getBeachForecastBundleBySlug,
   getBeachRecommendations,
   mapBeachRow,
@@ -355,4 +357,23 @@ describe("Supabase forecast repository", () => {
       afternoon: undefined,
     });
   });
+
+  it("retrieves a beach by slug directly from published beaches", async () => {
+    const store = new FakeForecastReadStore([beachRow, vendicariRow], sourceRow, []);
+
+    await expect(getBeachBySlug("cala-del-gelsomino", store)).resolves.toEqual(
+      mapBeachRow(beachRow),
+    );
+    await expect(getBeachBySlug("non-esistente", store)).resolves.toBeNull();
+  });
+
+  it("retrieves all published beaches mapped into domain models", async () => {
+    const store = new FakeForecastReadStore([beachRow, vendicariRow], sourceRow, []);
+
+    await expect(getAllPublishedBeaches(store)).resolves.toEqual([
+      mapBeachRow(beachRow),
+      mapBeachRow(vendicariRow),
+    ]);
+  });
 });
+
