@@ -262,5 +262,13 @@
     "image_credit": "SilviaPen",
     "image_license": "CC BY-SA 4.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Costa_di_Sant%27Elia.jpg"
+  },
+  {
+    "slug": "triscina-di-selinunte",
+    "image_path": "/images/beaches/triscina-di-selinunte.jpg",
+    "image_alt": "Litorale di Triscina visto dall'Acropoli di Selinunte, con spiaggia e mare calmo.",
+    "image_credit": "Effems",
+    "image_license": "CC0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Triscina_(Selinunte)_01_09_2024_01.jpg"
   }
 ]

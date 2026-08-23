@@ -296,5 +296,13 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Autore: SilviaPen
 - Fonte: <https://commons.wikimedia.org/wiki/File:Costa_di_Sant%27Elia.jpg>
 - Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+### Triscina di Selinunte
+
+- File: `triscina-di-selinunte.jpg` (fonte: `Triscina (Selinunte) 01 09 2024 01.jpg`)
+- Autore: Effems
+- Fonte: <https://commons.wikimedia.org/wiki/File:Triscina_(Selinunte)_01_09_2024_01.jpg>
+- Licenza: [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+- Nota: vista panoramica del litorale dall’Acropoli di Selinunte, non una foto ravvicinata dell’accesso balneare.
 - Scaricata: 2026-08-24
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
