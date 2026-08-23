@@ -166,5 +166,13 @@
     "image_credit": "Marco Tarantino",
     "image_license": "CC BY-SA 3.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Balestrate,_spiaggia_ovest.JPG"
+  },
+  {
+    "slug": "tonnara-di-vendicari",
+    "image_path": "/images/beaches/tonnara-di-vendicari.jpg",
+    "image_alt": "Spiaggia della Tonnara di Vendicari nella Riserva di Vendicari.",
+    "image_credit": "Daniele Chessari",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Tonnara_di_Vendicari.jpg"
   }
 ]

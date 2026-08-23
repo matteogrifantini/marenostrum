@@ -8,8 +8,8 @@ describe("Sicilian Google review candidates", () => {
     const result = validateSicilianReviewCatalog(candidates, new Set(catalog.map((beach) => beach.slug)));
 
     expect(result.issues).toEqual([]);
-    expect(result.records).toHaveLength(21);
-    expect(new Set(result.records.map((record) => record.slug)).size).toBe(21);
+    expect(result.records).toHaveLength(50);
+    expect(new Set(result.records.map((record) => record.slug)).size).toBe(50);
     expect(result.records.every((record) => record.provider === "google" && record.place_id === null)).toBe(true);
   });
 

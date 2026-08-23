@@ -95,6 +95,13 @@ export type BeachContent = {
   reviewProfile: ReviewProfileRow | null;
 };
 
+const parkingNeedsVerification = /(?:candidat|da\s+(?:verificare|controllare|confermare)|non\s+verificat|provvisor)/i;
+
+export function isPublishableParking(row: ParkingFacilityRow) {
+  const descriptiveText = `${row.name} ${row.access_note ?? ""} ${row.pricing_note ?? ""}`;
+  return row.content_status === "verified" && !parkingNeedsVerification.test(descriptiveText);
+}
+
 async function resolveStore(store: BeachContentReadStore | undefined) {
   if (store) return store;
 
@@ -121,7 +128,7 @@ export async function getBeachContentBySlug(
 
   return {
     sources,
-    parkings,
+    parkings: parkings.filter(isPublishableParking),
     media,
     webcams,
     reviewProfile: reviewProfiles[0] ?? null,

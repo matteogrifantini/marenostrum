@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Heart, UserRound } from "lucide-react";
 import type { ReactNode } from "react";
+import { AccountHeaderLabel } from "./account-header-label";
 import { BrandMark } from "./brand-mark";
 import { SiteFooter } from "./site-footer";
 
@@ -84,7 +85,7 @@ export function PageShell({
               className={`${utilityLinkClass} bg-[var(--surface)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:text-[var(--ink)]`}
             >
               <UserRound aria-hidden="true" size={16} />
-              <span className="hidden xl:inline">Accedi</span>
+              <AccountHeaderLabel />
             </Link>
           </div>
         </div>

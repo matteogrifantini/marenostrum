@@ -93,7 +93,7 @@ esistenti. Il comando rifiuta qualsiasi riga già pubblicata o non `draft`.
 `npm run catalog:images:validate` controlla il manifest delle hero image, la
 presenza dei file locali e le attribuzioni/licenze. Solo
 `npm run catalog:images:apply` aggiorna su Supabase i quattro campi immagine
-(`image_path`, `image_alt`, `image_credit`, `image_license`) delle 21 righe
+(`image_path`, `image_alt`, `image_credit`, `image_license`) delle righe `draft`
 `draft`; il comando è idempotente, rifiuta righe pubblicate o con metadati già
 presenti diversi dal manifest e non pubblica né cancella nulla. Per una
 sostituzione intenzionale di asset già presenti ma ancora draft è necessario
@@ -106,7 +106,7 @@ Le fonti e le attribuzioni delle immagini sono nel manifest
 pagina non dipende dal caricamento diretto di immagini da siti esterni.
 
 `npm run catalog:images:media:validate` controlla gli stessi asset locali come
-foto catalogo. Solo `npm run catalog:images:media:apply` crea 21 righe
+foto catalogo. Solo `npm run catalog:images:media:apply` crea le righe
 `media_items` con `kind=photo`, percorso locale, credito e licenza già
 registrati; le promuove a `verified` senza toccare i quattro video esterni
 ancora draft.
@@ -119,7 +119,7 @@ sorgente verificata; protegge righe pubblicate o già in altri stati. I media
 restano draft finché non sono disponibili diritti/URL stabili e un renderer
 dedicato.
 
-`npm run catalog:reviews:validate` controlla i 21 candidati Google Maps senza
+`npm run catalog:reviews:validate` controlla i 50 candidati Google Maps senza
 scrivere. `npm run catalog:reviews:apply` salva per ciascuna spiaggia un
 profilo Google in stato `draft`, con link di ricerca basato su nome, comune e
 coordinate. Non copia recensioni, non usa API Google e non pubblica le

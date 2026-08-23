@@ -31,9 +31,9 @@ const parking: ParkingFacilityRow = {
   latitude: null,
   longitude: null,
   pricing_note: null,
-  access_note: "Informazioni da verificare",
+  access_note: "650 m dalla spiaggia",
   official_url: source.source_url,
-  content_status: "stale",
+  content_status: "verified",
   checked_at: "2026-08-01T08:00:00.000Z",
   expires_at: "2026-08-31T08:00:00.000Z",
 };
@@ -121,6 +121,30 @@ describe("beach content repository", () => {
     await expect(
       getBeachContentBySlug("unknown", createStore({ getBeachSources })),
     ).resolves.toBeNull();
+  });
+
+  it("returns only parking that is verified and no longer marked as a candidate", async () => {
+    const content = await getBeachContentBySlug(
+      "san-vito-lo-capo",
+      createStore({
+        getParkingFacilities: async () => [
+          parking,
+          {
+            ...parking,
+            id: "parking-stale",
+            content_status: "stale",
+          },
+          {
+            ...parking,
+            id: "parking-candidate",
+            name: "Parcheggio candidato da verificare",
+            content_status: "verified",
+          },
+        ],
+      }),
+    );
+
+    expect(content?.parkings).toEqual([parking]);
   });
 
   it("keeps an unavailable review profile empty instead of inventing local reviews", async () => {

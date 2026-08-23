@@ -145,5 +145,208 @@
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Balestrate%2C%20Balestrate%2C%20Sicilia%20%4038.043815%2C12.987613",
     "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "calamosche",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Calamosche%2C%20Noto%2C%20Sicilia%20%4036.8243291%2C15.1056163",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "san-lorenzo-noto",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Lorenzo%2C%20Noto%2C%20Sicilia%20%4036.7673981%2C15.0959275",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "tonnara-di-vendicari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Tonnara%20di%20Vendicari%2C%20Noto%2C%20Sicilia%20%4036.7916346%2C15.105088",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "fontane-bianche",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Fontane%20Bianche%2C%20Siracusa%2C%20Sicilia%20%4036.9655145%2C15.2127826",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "arenella-siracusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Arenella%2C%20Siracusa%2C%20Sicilia%20%4037.0020639%2C15.2630353",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "isola-delle-correnti",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20delle%20Correnti%2C%20Portopalo%20di%20Capo%20Passero%2C%20Sicilia%20%4036.6454327%2C15.0774995",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "marina-di-ragusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Ragusa%2C%20Ragusa%2C%20Sicilia%20%4036.7839507%2C14.5544944",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "punta-secca",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Punta%20Secca%2C%20Santa%20Croce%20Camerina%2C%20Sicilia%20%4036.7880597%2C14.4943956",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "sampieri",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Sampieri%2C%20Scicli%2C%20Sicilia%20%4036.720397%2C14.7367789",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "donnalucata",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Donnalucata%2C%20Scicli%2C%20Sicilia%20%4036.7627924%2C14.6372223",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "torre-salsa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Torre%20Salsa%2C%20Siculiana%2C%20Sicilia%20%4037.362992%2C13.3254285",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "scala-dei-turchi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Scala%20dei%20Turchi%2C%20Realmonte%2C%20Sicilia%20%4037.2899181%2C13.4726999",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "san-leone",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Leone%2C%20Agrigento%2C%20Sicilia%20%4037.2660916%2C13.5820424",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "porto-palo-menfi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Porto%20Palo%20di%20Menfi%2C%20Menfi%2C%20Sicilia%20%4037.5792295%2C12.91206",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "isola-bella",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20Bella%2C%20Taormina%2C%20Sicilia%20%4037.8502514%2C15.3007161",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "letojanni",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Letojanni%2C%20Letojanni%2C%20Sicilia%20%4037.877455%2C15.303279",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "giardini-naxos",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Giardini%20Naxos%2C%20Giardini%20Naxos%2C%20Sicilia%20%4037.8285554%2C15.2589986",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "laghetti-di-marinello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Laghetti%20di%20Marinello%2C%20Oliveri%2C%20Sicilia%20%4038.129333%2C15.0540812",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "capo-d-orlando",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20d'Orlando%2C%20Capo%20d'Orlando%2C%20Sicilia%20%4038.1656219%2C14.7507997",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "san-saba-messina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Saba%2C%20Messina%2C%20Sicilia%20%4038.2839%2C15.5002324",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "santa-teresa-di-riva",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Santa%20Teresa%20di%20Riva%2C%20Santa%20Teresa%20di%20Riva%2C%20Sicilia%20%4037.946319%2C15.3675556",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "castel-di-tusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Castel%20di%20Tusa%2C%20Tusa%2C%20Sicilia%20%4038.0082522%2C14.2524111",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "aci-trezza",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Aci%20Trezza%2C%20Aci%20Castello%2C%20Sicilia%20%4037.5638474%2C15.1614186",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-della-plaia-catania",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=La%20Plaia%2C%20Catania%2C%20Sicilia%20%4037.447557%2C15.086462",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "marina-di-cottone",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Cottone%2C%20Fiumefreddo%20di%20Sicilia%2C%20Sicilia%20%4037.7781003%2C15.230388",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-san-marco-calatabiano",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20San%20Marco%2C%20Calatabiano%2C%20Sicilia%20%4037.7970001%2C15.2447477",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "isola-dei-conigli",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20dei%20Conigli%2C%20Lampedusa%2C%20Sicilia%20%4035.5101834%2C12.5582687",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-croce-lampedusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Croce%2C%20Lampedusa%2C%20Sicilia%20%4035.5000421%2C12.5928027",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-pulcino-lampedusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Pulcino%2C%20Lampedusa%2C%20Sicilia%20%4035.5149464%2C12.5522406",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il luogo e l’eventuale attività devono essere verificati manualmente prima della pubblicazione."
   }
 ]

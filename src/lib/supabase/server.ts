@@ -146,7 +146,7 @@ export async function createSupabaseBeachContentReadStore(): Promise<BeachConten
         .from("parking_facilities")
         .select("id, beach_id, source_id, name, facility_type, latitude, longitude, pricing_note, access_note, official_url, content_status, checked_at, expires_at")
         .eq("beach_id", beachId)
-        .in("content_status", ["verified", "stale"])
+        .eq("content_status", "verified")
         .order("checked_at", { ascending: false, nullsFirst: false });
 
       if (error) throwReadError("Parking content is unavailable");

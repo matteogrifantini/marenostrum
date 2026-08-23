@@ -4,12 +4,12 @@ import { describe, expect, it } from "vitest";
 import { validateSicilianImageCatalog } from "./catalog-image-contract";
 
 describe("Sicilian image assets", () => {
-  it("contains one source-backed asset for every catalog beach", () => {
+  it("contains source-backed assets for the curated image subset", () => {
     const result = validateSicilianImageCatalog(assets, new Set(catalog.map((beach) => beach.slug)));
 
     expect(result.issues).toEqual([]);
-    expect(result.records).toHaveLength(21);
-    expect(new Set(result.records.map((record) => record.slug)).size).toBe(21);
+    expect(result.records).toHaveLength(22);
+    expect(new Set(result.records.map((record) => record.slug)).size).toBe(22);
   });
 
   it("rejects duplicate paths and incomplete attribution", () => {

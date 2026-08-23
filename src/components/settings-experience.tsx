@@ -5,10 +5,8 @@ import {
   Apple,
   ArrowRight,
   Bell,
-  Camera,
   Check,
   Globe2,
-  Heart,
   Languages,
   LogOut,
   Mail,
@@ -85,15 +83,43 @@ export function SettingsExperience({ initialEmail, authError = false }: Settings
   useEffect(() => {
     if (!initialEmail) return;
 
-    fetch("/api/favorites")
-      .then(async (response) => {
-        if (!response.ok) return null;
-        return (await response.json()) as { favorites?: unknown };
-      })
-      .then((body) => {
-        if (body && Array.isArray(body.favorites)) setFavoriteCount(body.favorites.length);
-      })
-      .catch(() => undefined);
+    let active = true;
+
+    async function synchronizeFavorites() {
+      setSyncState("loading");
+      const localFavorites = readLocalFavorites();
+
+      try {
+        await Promise.all(
+          localFavorites.map((slug) =>
+            fetch("/api/favorites", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({ slug }),
+            }).then((response) => {
+              if (!response.ok && response.status !== 409) throw new Error("sync failed");
+            }),
+          ),
+        );
+
+        const response = await fetch("/api/favorites");
+        if (!response.ok) throw new Error("sync failed");
+        const body = (await response.json()) as { favorites?: unknown };
+
+        if (active) {
+          setFavoriteCount(Array.isArray(body.favorites) ? body.favorites.length : localFavorites.length);
+          setSyncState("done");
+        }
+      } catch {
+        if (active) setSyncState("error");
+      }
+    }
+
+    void synchronizeFavorites();
+
+    return () => {
+      active = false;
+    };
   }, [initialEmail]);
 
   function authRedirectUrl() {
@@ -169,31 +195,6 @@ export function SettingsExperience({ initialEmail, authError = false }: Settings
     setIsSubmitting(false);
   }
 
-  async function syncFavorites() {
-    setSyncState("loading");
-    const localFavorites = readLocalFavorites();
-
-    try {
-      await Promise.all(
-        localFavorites.map((slug) =>
-          fetch("/api/favorites", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({ slug }),
-          }).then((response) => {
-            if (!response.ok && response.status !== 409) throw new Error("sync failed");
-          }),
-        ),
-      );
-      const response = await fetch("/api/favorites");
-      const body = (await response.json()) as { favorites?: unknown };
-      setFavoriteCount(Array.isArray(body.favorites) ? body.favorites.length : localFavorites.length);
-      setSyncState("done");
-    } catch {
-      setSyncState("error");
-    }
-  }
-
   async function signOut() {
     const client = createClient();
     await client?.auth.signOut();
@@ -257,7 +258,7 @@ export function SettingsExperience({ initialEmail, authError = false }: Settings
           <div className="flex items-start gap-3">
             <span className="grid size-10 shrink-0 place-items-center rounded-[0.8rem] bg-[var(--sea-soft)] text-[var(--sea-deep)]"><ShieldCheck aria-hidden="true" size={19} /></span>
             <div>
-              <h2 id="account-title" className="text-lg font-extrabold">Account e sincronizzazione</h2>
+              <h2 id="account-title" className="text-lg font-extrabold">Account e preferiti</h2>
               <p className="mt-1 text-sm leading-6 text-[var(--muted)]">L’accesso serve solo a ritrovare i tuoi preferiti su più dispositivi. Non usiamo queste informazioni per pubblicità o profilazione.</p>
             </div>
           </div>
@@ -268,12 +269,15 @@ export function SettingsExperience({ initialEmail, authError = false }: Settings
                 <div>
                   <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--muted)]">Connesso come</p>
                   <p className="mt-1 text-sm font-bold text-[var(--ink)]">{initialEmail}</p>
-                  <p className="mt-1 text-xs text-[var(--muted)]">{favoriteCount} preferiti sincronizzati</p>
+                  <p className="mt-1 text-xs text-[var(--muted)]">
+                    {syncState === "loading"
+                      ? "Aggiorno automaticamente i preferiti…"
+                      : syncState === "error"
+                        ? "Aggiornamento automatico non riuscito. Riproverò al prossimo accesso."
+                        : `${favoriteCount} ${favoriteCount === 1 ? "preferito salvato" : "preferiti salvati"} sul tuo account`}
+                  </p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <button type="button" onClick={syncFavorites} disabled={syncState === "loading"} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[var(--ink)] px-4 text-xs font-extrabold text-white disabled:opacity-60">
-                    <Heart aria-hidden="true" size={15} /> {syncState === "loading" ? "Sincronizzo…" : "Sincronizza"}
-                  </button>
                   <button type="button" onClick={signOut} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[var(--surface)] px-4 text-xs font-extrabold text-[var(--ink)] shadow-[inset_0_0_0_1px_var(--line)]">
                     <LogOut aria-hidden="true" size={15} /> Esci
                   </button>
@@ -437,7 +441,7 @@ export function SettingsExperience({ initialEmail, authError = false }: Settings
 
           <div className="mt-5 flex items-center gap-2 border-t border-[var(--line)] pt-5" aria-label="Social Mare Nostrum">
             <span className="mr-1 text-xs font-extrabold uppercase tracking-[0.1em] text-[var(--muted)]">Seguici</span>
-            <SocialLink label="Instagram" href={INSTAGRAM_URL}><Camera aria-hidden="true" size={16} /></SocialLink>
+            <SocialLink label="Instagram" href={INSTAGRAM_URL}><InstagramGlyph /></SocialLink>
             <SocialLink label="TikTok" href={TIKTOK_URL}><Music2 aria-hidden="true" size={16} /></SocialLink>
           </div>
         </section>
@@ -488,4 +492,25 @@ function SocialLink({ label, href, children }: { label: string; href: string | n
   }
 
   return <a href={href} target="_blank" rel="noreferrer" aria-label={label} className={className}>{children}</a>;
+}
+
+function InstagramGlyph() {
+  return (
+    <svg
+      aria-hidden="true"
+      data-social-icon="instagram"
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" />
+      <circle cx="12" cy="12" r="4.1" />
+      <circle cx="17.35" cy="6.65" r="0.8" fill="currentColor" stroke="none" />
+    </svg>
+  );
 }
