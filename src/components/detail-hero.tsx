@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, MapPin, Play, Share2 } from "lucide-react";
+import { ArrowLeft, Check, Info, MapPin, Play, Share2 } from "lucide-react";
 import { useState } from "react";
 import type { Beach, BeachPeriod } from "../domain/beach";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
@@ -16,9 +16,11 @@ type DetailHeroProps = {
   period?: BeachPeriod;
   homeDate?: string;
   distanceKm?: number;
+  infoOpen?: boolean;
+  onInfoToggle?: () => void;
 };
 
-export function DetailHero({ beach, detail, homeDate, distanceKm }: DetailHeroProps) {
+export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = false, onInfoToggle }: DetailHeroProps) {
   const [shared, setShared] = useState(false);
   const [showReels, setShowReels] = useState(false);
   const image = beach.image;
@@ -87,6 +89,19 @@ export function DetailHero({ beach, detail, homeDate, distanceKm }: DetailHeroPr
             {distanceKm === undefined ? null : <><span aria-hidden="true">·</span><span>{distanceKm} km da te</span></>}
           </div>
           <h1 className="mt-2 max-w-[32rem] font-serif text-[clamp(2.7rem,11vw,4.8rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{beach.name}</h1>
+          {onInfoToggle ? (
+            <button
+              type="button"
+              aria-label="Scopri la spiaggia"
+              aria-expanded={infoOpen}
+              aria-controls="beach-info-accordion"
+              onClick={onInfoToggle}
+              className="detail-press mt-5 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/35 bg-white/15 px-4 text-sm font-bold text-white shadow-[0_8px_22px_rgba(6,28,35,0.18)] backdrop-blur-md transition-[background-color,border-color,transform] duration-200 ease-out hover:border-white/55 hover:bg-white/25 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <Info aria-hidden="true" size={16} />
+              <span>Scopri la spiaggia</span>
+            </button>
+          ) : null}
         </div>
       </section>
 

@@ -2,13 +2,14 @@
 
 import { CloudSun, Gauge, Sparkles, ThermometerSun, Waves, Wind } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { getBeachAiComment } from "../domain/beach-comment";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
 import type { DetailOrigin } from "../domain/detail-query";
 import type { DateOption } from "../domain/date-selection";
 import { DetailHero } from "./detail-hero";
+import { BeachInfoAccordion } from "./beach-info-accordion";
 import { DayPicker } from "./day-picker";
 import { HourlyForecast } from "./hourly-forecast";
 import { PageShell } from "./page-shell";
@@ -154,6 +155,8 @@ export function BeachDetailExperience({
   const [isPending, startTransition] = useTransition();
   const [navigationOrigin, setNavigationOrigin] = useState<DetailOrigin>(origin);
   const [selection, setSelection] = useState<{ date: string; period: BeachPeriod }>({ date, period });
+  const [beachInfoOpen, setBeachInfoOpen] = useState(false);
+  const beachInfoRef = useRef<HTMLElement | null>(null);
   const selectedRecommendation = recommendationForPeriod(
     selection.period,
     recommendation,
@@ -185,6 +188,8 @@ export function BeachDetailExperience({
             beach={beach}
             detail={detail}
             homeDate={navigationOrigin === "home" ? date : undefined}
+            infoOpen={beachInfoOpen}
+            onInfoToggle={() => setBeachInfoOpen((current) => !current)}
           />
 
           <div className="relative z-10 mx-auto mt-3 w-full max-w-[48rem] px-1 pt-3 sm:px-2">
@@ -209,6 +214,13 @@ export function BeachDetailExperience({
               date={date}
               dateOptions={dateOptions}
               dataUnavailable={dataUnavailable}
+            />
+            <BeachInfoAccordion
+              beach={beach}
+              detail={detail}
+              open={beachInfoOpen}
+              onToggle={() => setBeachInfoOpen((current) => !current)}
+              panelRef={beachInfoRef}
             />
             <BeachLiveSections beach={beach} detail={detail} />
             <BeachCommunitySections detail={detail} />

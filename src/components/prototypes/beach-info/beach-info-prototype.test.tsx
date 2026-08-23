@@ -21,7 +21,7 @@ describe("BeachInfoPrototype", () => {
     expect(screen.getByRole("button", { name: "Scopri la spiaggia" })).toBeInTheDocument();
 
     fireEvent.click(within(picker).getByRole("button", { name: "Foto + info" }));
-    expect(screen.getByRole("button", { name: "Scopri la spiaggia" })).toBeInTheDocument();
+    expect(screen.getAllByRole("button", { name: "Scopri la spiaggia" })).toHaveLength(2);
   });
 
   it("opens and closes the information panel in the panel direction", () => {
@@ -55,17 +55,18 @@ describe("BeachInfoPrototype", () => {
     render(<BeachInfoPrototype initialVariant={3} />);
 
     expect(screen.queryByText("Caratteristiche della spiaggia")).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Apri le informazioni sulla spiaggia" })).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getAllByRole("button", { name: "Scopri la spiaggia" })[1]).toHaveAttribute("aria-expanded", "false");
 
-    fireEvent.click(screen.getByRole("button", { name: "Scopri la spiaggia" }));
+    const triggers = screen.getAllByRole("button", { name: "Scopri la spiaggia" });
+    fireEvent.click(triggers[0]);
 
     expect(screen.getByText("Caratteristiche della spiaggia")).toBeInTheDocument();
     expect(screen.getByText("Sabbia chiara e ciottoli fini")).toBeInTheDocument();
     expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });
 
-    fireEvent.click(screen.getByRole("button", { name: "Nascondi le informazioni" }));
+    fireEvent.click(screen.getAllByRole("button", { name: "Scopri la spiaggia" })[1]);
     expect(screen.queryByText("Caratteristiche della spiaggia")).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Apri le informazioni sulla spiaggia" })).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getAllByRole("button", { name: "Scopri la spiaggia" })[1]).toHaveAttribute("aria-expanded", "false");
 
     if (originalScrollIntoView) {
       Object.defineProperty(HTMLElement.prototype, "scrollIntoView", originalScrollIntoView);

@@ -136,7 +136,7 @@ describe("BeachLiveSections", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("Hai raggiunto il limite giornaliero di segnalazioni");
   });
 
-  it("keeps parking and permanent beach information visible", () => {
+  it("keeps parking information visible", () => {
     const recommendation = demoRecommendations[0];
     const detail = getDemoBeachDetail(recommendation.beach.slug)!;
     render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
@@ -152,13 +152,6 @@ describe("BeachLiveSections", () => {
       ).toBeInTheDocument();
     }
 
-    const general = screen.getByRole("region", { name: "La spiaggia" });
-    expect(within(general).queryByText("Caratteristiche che non cambiano col meteo")).not.toBeInTheDocument();
-    expect(general.querySelectorAll(".detail-emoji-mobile")).toHaveLength(detail.facts.length + 1);
-    for (const fact of detail.facts) {
-      expect(within(general).getByText(fact.label)).toBeInTheDocument();
-      expect(within(general).getByText(fact.value)).toBeInTheDocument();
-    }
   });
 
   it("offers an honest Google Maps search when no parking is verified", () => {

@@ -271,15 +271,49 @@ describe("BeachDetailExperience", () => {
         "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.",
       ),
     ).toHaveLength(2);
-    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(2);
+    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(1);
     expect(screen.getByRole("region", { name: "La spiaggia" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
+  });
+
+  it("keeps beach information closed but visible, then opens and scrolls to it", () => {
+    const originalScrollIntoView = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "scrollIntoView");
+    const scrollIntoView = vi.fn();
+    Object.defineProperty(HTMLElement.prototype, "scrollIntoView", { configurable: true, value: scrollIntoView });
+
+    renderDetail();
+
+    const triggers = screen.getAllByRole("button", { name: "Scopri la spiaggia" });
+    const heroTrigger = triggers[0];
+    const accordionTrigger = triggers[1];
+
+    expect(screen.getByRole("region", { name: "La spiaggia" })).toBeInTheDocument();
+    expect(accordionTrigger).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByText("Sabbia chiara e ciottoli fini")).not.toBeInTheDocument();
+
+    fireEvent.click(heroTrigger);
+
+    expect(heroTrigger).toHaveAttribute("aria-expanded", "true");
+    expect(accordionTrigger).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByText("Sabbia chiara e ciottoli fini")).toBeInTheDocument();
+    expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });
+
+    fireEvent.click(accordionTrigger);
+
+    expect(screen.getAllByRole("button", { name: "Scopri la spiaggia" })[1]).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByText("Sabbia chiara e ciottoli fini")).not.toBeInTheDocument();
+
+    if (originalScrollIntoView) {
+      Object.defineProperty(HTMLElement.prototype, "scrollIntoView", originalScrollIntoView);
+    } else {
+      Object.defineProperty(HTMLElement.prototype, "scrollIntoView", { configurable: true, value: undefined });
+    }
   });
 
   it("renders safe empty states when the beach has no community fixture", () => {
     renderDetail({ detail: emptyBeachDetailContent });
 
-    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(2);
+    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(1);
     expect(screen.getByText("Nessuna segnalazione recente disponibile.")).toBeInTheDocument();
     expect(screen.getByText("Nessuna recensione locale disponibile.")).toBeInTheDocument();
     expect(screen.getByText("Nessuna webcam disponibile.")).toBeInTheDocument();

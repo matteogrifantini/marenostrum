@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, MapPin, Plus, X } from "lucide-react";
+import { ArrowUpRight, Plus, X } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import type { Beach } from "../domain/beach";
 import {
@@ -232,30 +232,8 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
           </article>
         )}
       </section>
-
-      <section aria-label="La spiaggia">
-        <SectionHeading title="La spiaggia" />
-        <article className="detail-surface detail-enter p-4 sm:p-5">
-          <CardTitle emoji="🏖️" title={beach.name} />
-          <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--muted)]"><MapPin aria-hidden="true" size={14} /> {beach.municipality} · costa {beach.coast.toLowerCase()}</p>
-          <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">{beach.description}</p>
-          <div className="mt-4 grid grid-cols-2 border-t border-[var(--line)]">
-            {detail.facts.map((fact, index) => (
-              <div key={`${fact.label}-${index}`} className={`grid grid-cols-[2.35rem_1fr] gap-2 border-[var(--line)] px-2 py-4 sm:grid-cols-[2rem_1fr] ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b" : ""}`}>
-                <span aria-hidden="true" className="detail-emoji detail-emoji-mobile">{fact.emoji}</span>
-                <div><strong className="block text-xs">{fact.label}</strong><span className="mt-1 block text-[0.68rem] leading-4 text-[var(--muted)]">{fact.value}</span></div>
-              </div>
-            ))}
-          </div>
-          {detail.facts.length === 0 ? <p className="mt-4 text-sm text-[var(--muted)]">Nessuna informazione aggiuntiva disponibile.</p> : null}
-        </article>
-      </section>
     </>
   );
-}
-
-function CardTitle({ emoji, title, id }: { emoji: string; title: string; id?: string }) {
-  return <div className="flex items-center gap-3"><span aria-hidden="true" className="detail-emoji detail-emoji-mobile">{emoji}</span><h2 id={id} className="text-base font-extrabold tracking-[-0.025em]">{title}</h2></div>;
 }
 
 function SectionHeading({ title, meta = "" }: { title: string; meta?: string }) {
