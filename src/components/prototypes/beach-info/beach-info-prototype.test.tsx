@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { BeachInfoPrototype } from "./beach-info-prototype";
 
 describe("BeachInfoPrototype", () => {
@@ -48,6 +48,10 @@ describe("BeachInfoPrototype", () => {
   });
 
   it("reveals the information list from the beach hero in the photo direction", () => {
+    const originalScrollIntoView = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "scrollIntoView");
+    const scrollIntoView = vi.fn();
+    Object.defineProperty(HTMLElement.prototype, "scrollIntoView", { configurable: true, value: scrollIntoView });
+
     render(<BeachInfoPrototype initialVariant={3} />);
 
     expect(screen.queryByText("Caratteristiche della spiaggia")).not.toBeInTheDocument();
@@ -56,5 +60,15 @@ describe("BeachInfoPrototype", () => {
 
     expect(screen.getByText("Caratteristiche della spiaggia")).toBeInTheDocument();
     expect(screen.getByText("Sabbia chiara e ciottoli fini")).toBeInTheDocument();
+    expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });
+
+    fireEvent.click(screen.getByRole("button", { name: "Nascondi le informazioni" }));
+    expect(screen.queryByText("Caratteristiche della spiaggia")).not.toBeInTheDocument();
+
+    if (originalScrollIntoView) {
+      Object.defineProperty(HTMLElement.prototype, "scrollIntoView", originalScrollIntoView);
+    } else {
+      Object.defineProperty(HTMLElement.prototype, "scrollIntoView", { configurable: true, value: undefined });
+    }
   });
 });

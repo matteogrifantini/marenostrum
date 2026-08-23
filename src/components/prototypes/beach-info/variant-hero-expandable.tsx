@@ -1,11 +1,18 @@
 "use client";
 
-import { ChevronDown, Info } from "lucide-react";
-import { useState } from "react";
+import { Info } from "lucide-react";
+import { useEffect, useState } from "react";
 import { ForecastControls, ForecastDetails, ForecastSummary, InfoContent, PreviewHero, PrototypeStage } from "./shared";
 
 export function HeroExpandableVariant() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const panel = document.getElementById("hero-expandable-info-panel");
+    panel?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [open]);
 
   return (
     <PrototypeStage>
@@ -21,7 +28,6 @@ export function HeroExpandableVariant() {
           >
             <Info aria-hidden="true" size={16} />
             <span>{open ? "Nascondi informazioni" : "Scopri la spiaggia"}</span>
-            <ChevronDown aria-hidden="true" size={16} className={`transition-transform duration-200 ease-out ${open ? "rotate-180" : ""}`} />
           </button>
         )}
       />
@@ -30,8 +36,17 @@ export function HeroExpandableVariant() {
         <ForecastSummary />
         <ForecastDetails />
         {open ? (
-          <section id="hero-expandable-info-panel" aria-label="Informazioni sulla spiaggia" className="mt-4 rounded-[1.35rem] bg-[var(--surface)] p-4 shadow-[0_12px_34px_rgba(20,44,57,0.08)] sm:p-5">
-            <InfoContent />
+          <section id="hero-expandable-info-panel" aria-labelledby="hero-expandable-info-title" className="mt-4 scroll-mt-6 rounded-[1.35rem] bg-[var(--surface)] p-4 shadow-[0_12px_34px_rgba(20,44,57,0.08)] sm:p-5">
+            <button type="button" aria-label="Nascondi le informazioni" aria-expanded="true" aria-controls="hero-expandable-info-panel-content" onClick={() => setOpen(false)} className="flex min-h-12 w-full items-center justify-between gap-4 text-left">
+              <span>
+                <span className="block text-[0.68rem] font-black uppercase tracking-[0.12em] text-[var(--sea-deep)]">Scopri il posto</span>
+                <span id="hero-expandable-info-title" className="mt-1 block text-lg font-black tracking-[-0.03em]">Nascondi le informazioni</span>
+              </span>
+              <span className="rounded-full border border-[var(--line)] px-3 py-2 text-xs font-black text-[var(--ink-soft)]">Chiudi</span>
+            </button>
+            <div id="hero-expandable-info-panel-content" className="mt-5 border-t border-[var(--line)] pt-5">
+              <InfoContent />
+            </div>
           </section>
         ) : null}
       </div>
