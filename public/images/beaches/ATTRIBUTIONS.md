@@ -329,3 +329,13 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Nota: foto di contesto della costa di Aspra, non una fotografia puntuale dell’accesso di Kafara.
 - Scaricata: 2026-08-24
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Tre Piscine · Cala del Cuore
+
+- File: `tre-piscine-cala-del-cuore.jpg` (fonte: `Cala del Cuore, Cove of the Heart, Land Art in Bagheria.jpg`)
+- Autore: Francesco Scianna
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cala_del_Cuore,_Cove_of_the_Heart,_Land_Art_in_Bagheria.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Nota: fotografia di contesto geolocalizzata nella Cala del Cuore, a circa 170 metri dal punto catalogato di Tre Piscine; non rappresenta un singolo accesso balneare.
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.

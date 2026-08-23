@@ -294,5 +294,13 @@
     "image_credit": "neekoh.fi",
     "image_license": "CC BY 2.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Nice_Day_at_the_Coast.jpg"
+  },
+  {
+    "slug": "tre-piscine-cala-del-cuore",
+    "image_path": "/images/beaches/tre-piscine-cala-del-cuore.jpg",
+    "image_alt": "Cala del Cuore ai piedi di Capo Zafferano, foto di contesto per Tre Piscine.",
+    "image_credit": "Francesco Scianna",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cala_del_Cuore,_Cove_of_the_Heart,_Land_Art_in_Bagheria.jpg"
   }
 ]

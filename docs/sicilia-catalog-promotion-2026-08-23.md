@@ -27,6 +27,7 @@ produzione dopo una verifica live dei requisiti minimi:
 - Campofelice di Roccella (`campofelice-di-roccella`)
 - Sarello, Aspra (`sarello-aspra`)
 - Kafara (`kafara`)
+- Tre Piscine · Cala del Cuore (`tre-piscine-cala-del-cuore`)
 
 Lo stato live è `is_published = true` e `publication_status = verified`. La
 prossima revisione automatica è stata impostata a 30 giorni.
@@ -46,9 +47,14 @@ una caletta rocciosa coerente con la tipologia della spiaggia, ma non viene
 presentata come fotografia puntuale dell’accesso. Sarello usa invece una foto
 geolocalizzata sul punto della scheda.
 
+Per Tre Piscine · Cala del Cuore l’immagine è una foto CC BY-SA geolocalizzata
+nella Cala del Cuore, ai piedi di Capo Zafferano e a circa 170 metri dal punto
+catalogato. È una foto di contesto della costa rocciosa, non di un accesso
+specifico: la scheda mantiene quindi l’avvertenza sull’accesso difficile.
+
 ## Ancora draft
 
-Le altre 13 candidate restano volutamente non visibili perché manca ancora
+Le altre 12 candidate restano volutamente non visibili perché manca ancora
 almeno un’immagine verificata e attribuita. Non viene usata una foto generica
 per coprire il gap. `Spiaggia dei Francesi` richiede inoltre una verifica
 specifica dell’avviso di sicurezza riportato dalla fonte comunale prima di
