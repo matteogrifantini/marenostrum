@@ -304,5 +304,28 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Fonte: <https://commons.wikimedia.org/wiki/File:Triscina_(Selinunte)_01_09_2024_01.jpg>
 - Licenza: [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
 - Nota: vista panoramica del litorale dall’Acropoli di Selinunte, non una foto ravvicinata dell’accesso balneare.
+
+### Campofelice di Roccella
+
+- File: `campofelice-di-roccella.jpg` (fonte: `Campofelice di Roccella - panoramio.jpg`)
+- Autore: Mika Auramo
+- Fonte: <https://commons.wikimedia.org/wiki/File:Campofelice_di_Roccella_-_panoramio.jpg>
+- Licenza: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+
+### Sarello, Aspra
+
+- File: `sarello-aspra.jpg` (fonte: `Boat and The sea.jpg`)
+- Autore: Imprekant
+- Fonte: <https://commons.wikimedia.org/wiki/File:Boat_and_The_sea.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Nota: fotografia geolocalizzata sulla costa di Sarello; l’app applica crop e resize in visualizzazione.
+
+### Kafara
+
+- File: `kafara.jpg` (fonte: `Nice Day at the Coast.jpg`)
+- Autore: neekoh.fi
+- Fonte: <https://commons.wikimedia.org/wiki/File:Nice_Day_at_the_Coast.jpg>
+- Licenza: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+- Nota: foto di contesto della costa di Aspra, non una fotografia puntuale dell’accesso di Kafara.
 - Scaricata: 2026-08-24
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.

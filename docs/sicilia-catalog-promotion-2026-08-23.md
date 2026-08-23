@@ -24,6 +24,9 @@ produzione dopo una verifica live dei requisiti minimi:
 - Tonnarella, Mazara del Vallo (`tonnarella-mazara-del-vallo`)
 - Sant’Elia, Santa Flavia (`sant-elia-santa-flavia`)
 - Triscina di Selinunte (`triscina-di-selinunte`)
+- Campofelice di Roccella (`campofelice-di-roccella`)
+- Sarello, Aspra (`sarello-aspra`)
+- Kafara (`kafara`)
 
 Lo stato live è `is_published = true` e `publication_status = verified`. La
 prossima revisione automatica è stata impostata a 30 giorni.
@@ -38,9 +41,14 @@ Per Triscina la foto è CC0 e mostra il litorale dalla zona archeologica di
 Selinunte; l’alt text chiarisce che si tratta di una vista panoramica del
 litorale, non di un primo piano della battigia.
 
+Per Kafara l’immagine è una foto CC BY di contesto della costa di Aspra: mostra
+una caletta rocciosa coerente con la tipologia della spiaggia, ma non viene
+presentata come fotografia puntuale dell’accesso. Sarello usa invece una foto
+geolocalizzata sul punto della scheda.
+
 ## Ancora draft
 
-Le altre 16 candidate restano volutamente non visibili perché manca ancora
+Le altre 13 candidate restano volutamente non visibili perché manca ancora
 almeno un’immagine verificata e attribuita. Non viene usata una foto generica
 per coprire il gap. `Spiaggia dei Francesi` richiede inoltre una verifica
 specifica dell’avviso di sicurezza riportato dalla fonte comunale prima di

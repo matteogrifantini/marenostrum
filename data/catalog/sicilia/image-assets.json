@@ -270,5 +270,29 @@
     "image_credit": "Effems",
     "image_license": "CC0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Triscina_(Selinunte)_01_09_2024_01.jpg"
+  },
+  {
+    "slug": "campofelice-di-roccella",
+    "image_path": "/images/beaches/campofelice-di-roccella.jpg",
+    "image_alt": "Litorale sabbioso di Campofelice di Roccella con acqua calma e vista sulle Madonie.",
+    "image_credit": "Mika Auramo",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Campofelice_di_Roccella_-_panoramio.jpg"
+  },
+  {
+    "slug": "sarello-aspra",
+    "image_path": "/images/beaches/sarello-aspra.jpg",
+    "image_alt": "Spiaggia e acqua trasparente di Sarello ad Aspra, con una barca in riva.",
+    "image_credit": "Imprekant",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Boat_and_The_sea.jpg"
+  },
+  {
+    "slug": "kafara",
+    "image_path": "/images/beaches/kafara.jpg",
+    "image_alt": "Caletta rocciosa della costa di Aspra, foto di contesto per Kafara.",
+    "image_credit": "neekoh.fi",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Nice_Day_at_the_Coast.jpg"
   }
 ]
