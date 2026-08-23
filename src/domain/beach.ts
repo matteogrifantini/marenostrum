@@ -10,6 +10,7 @@ export type Beach = {
   slug: string;
   name: string;
   municipality: string;
+  provinceCode?: string;
   coast: string;
   description: string;
   orientationDegrees: number;

@@ -4,15 +4,15 @@ import type { ReactNode } from "react";
 import { BrandMark } from "./brand-mark";
 import { SiteFooter } from "./site-footer";
 
-const unavailableUtilityClass =
-  "inline-flex min-h-11 cursor-default items-center justify-center gap-2 rounded-full px-3 text-sm font-bold text-[var(--muted)]";
+const utilityLinkClass =
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-3 text-sm font-bold text-[var(--muted)] transition-colors";
 
 export function PageShell({
   children,
   activeNav = "oggi",
 }: {
   children: ReactNode;
-  activeNav?: "oggi" | "mappa" | "none";
+  activeNav?: "oggi" | "mappa" | "impostazioni" | "none";
 }) {
   return (
     <div className="min-h-screen bg-[var(--sand)] text-[var(--ink)]">
@@ -70,24 +70,22 @@ export function PageShell({
 
 
           <div className="hidden items-center gap-1 lg:ml-auto lg:flex">
-            <button
-              type="button"
-              aria-disabled="true"
-              aria-label="Preferiti, disponibile prossimamente"
+            <Link
+              href="/preferiti"
+              aria-label="Apri preferiti"
               title="Preferiti"
-              className="inline-flex size-11 cursor-default items-center justify-center rounded-full text-[var(--muted)]"
+              className="inline-flex size-11 items-center justify-center rounded-full text-[var(--muted)] transition-colors hover:text-[var(--score-poor)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)]"
             >
               <Heart aria-hidden="true" size={18} />
-            </button>
-            <button
-              type="button"
-              aria-disabled="true"
-              aria-label="Accedi, disponibile prossimamente"
-              className={`${unavailableUtilityClass} bg-[var(--surface)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)]`}
+            </Link>
+            <Link
+              href="/impostazioni"
+              aria-label="Apri impostazioni e accesso"
+              className={`${utilityLinkClass} bg-[var(--surface)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:text-[var(--ink)]`}
             >
               <UserRound aria-hidden="true" size={16} />
               <span className="hidden xl:inline">Accedi</span>
-            </button>
+            </Link>
           </div>
         </div>
       </header>

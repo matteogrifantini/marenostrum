@@ -83,6 +83,26 @@ describe("handleCommunityReport", () => {
     expect(deps.create).toHaveBeenCalledWith(expect.objectContaining({ reporterId }));
   });
 
+  it("uses the authenticated user's id when a session is available", async () => {
+    const deps = dependencies({
+      getAuthenticatedReporterId: vi.fn(async () => "33333333-3333-4333-8333-333333333333"),
+    });
+
+    const response = await handleCommunityReport(
+      new Request(url, {
+        method: "POST",
+        body: JSON.stringify({ slug: "cala-del-gelsomino", category: "water", detail: "Mare calmo" }),
+      }),
+      deps,
+    );
+
+    expect(response.status).toBe(201);
+    expect(deps.create).toHaveBeenCalledWith(expect.objectContaining({
+      reporterId: "33333333-3333-4333-8333-333333333333",
+    }));
+    expect(response.headers.get("set-cookie")).toBeNull();
+  });
+
   it("rejects details that do not belong to the selected category", async () => {
     const deps = dependencies();
 

@@ -52,7 +52,13 @@ export default function PrivacyPage() {
             <strong>Geolocalizzazione (&quot;Vicino a me&quot;)</strong>: Quando attivi la ricerca per prossimità, le coordinate GPS vengono elaborate in tempo reale dal browser per calcolare la distanza chilometrica dalle spiagge. Le tue coordinate non vengono salvate su database né inviate a provider terzi di tracciamento.
           </li>
           <li>
-            <strong>Spiagge Preferite</strong>: Le spiagge salvate tra i preferiti sono memorizzate esclusivamente nello spazio locale del tuo dispositivo (<code>localStorage</code>) e non vengono trasmesse ai nostri server.
+            <strong>Spiagge Preferite</strong>: Senza accesso, le spiagge salvate restano nello spazio locale del dispositivo (<code>localStorage</code>). Se scegli di accedere con il link monouso inviato via email, i soli codici delle spiagge preferite vengono sincronizzati su Supabase e associati al tuo account per ritrovarli su più dispositivi.
+          </li>
+          <li>
+            <strong>Account e sessione</strong>: L&apos;email viene utilizzata esclusivamente per inviare il link di accesso e mantenere la sessione autenticata. Puoi uscire in ogni momento e chiedere la cancellazione dei dati dell&apos;account a <span className="font-bold text-[var(--ink)]">privacy@marenostrum.app</span>.
+          </li>
+          <li>
+            <strong>Avvisi locali</strong>: Se li abiliti, il browser conserva solo una preferenza tecnica e l&apos;autorizzazione alle notifiche sul dispositivo. Mare Nostrum non usa notifiche per profilazione e non riceve la posizione GPS.
           </li>
         </ul>
       </section>
@@ -62,7 +68,7 @@ export default function PrivacyPage() {
           3. Base Giuridica del Trattamento
         </h2>
         <p>
-          Il trattamento dei dati tecnici e degli identificativi anonimi di segnalazione si fonda sul <strong>legittimo interesse</strong> del titolare (Art. 6, par. 1, lett. f del GDPR) a garantire il corretto funzionamento della piattaforma, prevenire abusi e fornire previsioni attendibili agli utenti.
+          Il trattamento dei dati tecnici e degli identificativi anonimi di segnalazione si fonda sul <strong>legittimo interesse</strong> del titolare (Art. 6, par. 1, lett. f del GDPR) a garantire il corretto funzionamento della piattaforma, prevenire abusi e fornire previsioni attendibili agli utenti. La sincronizzazione volontaria dei preferiti e l&apos;invio del link di accesso si fondano sull&apos;esecuzione della richiesta dell&apos;utente.
         </p>
       </section>
 
@@ -80,7 +86,7 @@ export default function PrivacyPage() {
           5. Conservazione dei Dati
         </h2>
         <p>
-          Le segnalazioni della community vengono archiviate per il periodo necessario a calcolare lo storico delle condizioni marine e perdono rilevanza pubblica dopo 24 ore. I log tecnici di sistema vengono conservati per il tempo strettamente necessario all&apos;analisi della sicurezza e alla risoluzione di problemi operativi.
+          Le segnalazioni della community vengono archiviate per il periodo necessario a calcolare lo storico delle condizioni marine e perdono rilevanza pubblica dopo 24 ore. I codici dei preferiti sincronizzati restano associati all&apos;account fino alla loro rimozione o alla richiesta di cancellazione. I log tecnici di sistema vengono conservati per il tempo strettamente necessario all&apos;analisi della sicurezza e alla risoluzione di problemi operativi.
         </p>
       </section>
 

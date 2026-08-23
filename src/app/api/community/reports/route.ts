@@ -1,4 +1,5 @@
 import type { BeachDetailReport } from "../../../../domain/beach-detail-content";
+import { createClient } from "../../../../lib/supabase/server";
 import {
   createCommunityReport,
   CommunityReportDuplicateError,
@@ -13,6 +14,7 @@ import {
 
 export type CommunityReportDependencies = {
   create: (input: CommunityReportInput) => Promise<BeachDetailReport>;
+  getAuthenticatedReporterId?: () => Promise<string | null>;
 };
 
 const REPORTER_COOKIE = "marenostrum_community_reporter_v1";
@@ -32,13 +34,24 @@ function readCookie(request: Request, name: string) {
   return cookie?.slice(name.length + 1) ?? null;
 }
 
-function reporterIdentity(request: Request) {
+function anonymousReporterIdentity(request: Request) {
   const existing = readCookie(request, REPORTER_COOKIE);
   if (existing && REPORTER_ID_PATTERN.test(existing)) {
     return { id: existing, shouldSetCookie: false };
   }
 
   return { id: crypto.randomUUID(), shouldSetCookie: true };
+}
+
+async function authenticatedReporterIdentity() {
+  try {
+    const client = await createClient();
+    if (!client) return null;
+    const { data } = await client.auth.getUser();
+    return data.user?.id && REPORTER_ID_PATTERN.test(data.user.id) ? data.user.id : null;
+  } catch {
+    return null;
+  }
 }
 
 function withReporterCookie(
@@ -86,7 +99,12 @@ export async function handleCommunityReport(
 
   if (!input) return errorResponse(400, "Dati non validi");
 
-  const reporter = reporterIdentity(request);
+  const authenticatedReporterId = dependencies.getAuthenticatedReporterId
+    ? await dependencies.getAuthenticatedReporterId()
+    : await authenticatedReporterIdentity();
+  const reporter = authenticatedReporterId
+    ? { id: authenticatedReporterId, shouldSetCookie: false }
+    : anonymousReporterIdentity(request);
 
   try {
     const report = await dependencies.create({ ...input, reporterId: reporter.id });

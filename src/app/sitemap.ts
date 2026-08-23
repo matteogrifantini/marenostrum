@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPublishedBeaches } from "../data/beach-repository";
+import { TERRITORY_HUBS } from "../domain/territory-hubs";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://marenostrum.app";
@@ -25,6 +26,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 0.9,
     },
+    ...TERRITORY_HUBS.map((hub) => ({
+      url: `${baseUrl}/localita/${hub.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.7,
+    })),
     {
       url: `${baseUrl}/privacy`,
       lastModified: new Date(),

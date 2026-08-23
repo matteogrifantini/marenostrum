@@ -8,6 +8,7 @@ import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { MobileNav } from "./mobile-nav";
 import { NearbyControl, type NearbySelection } from "./nearby-control";
+import { NearbyCompass } from "./nearby-compass";
 import { PageShell } from "./page-shell";
 import { PeriodPicker } from "./period-picker";
 import { ForecastAttribution } from "./forecast-attribution";
@@ -19,6 +20,7 @@ import {
 } from "../domain/beach-filters";
 import type { DateOption } from "../domain/date-selection";
 import { distanceKm } from "../lib/geo";
+import { getNearbyCalmRecommendations } from "../domain/nearby-recommendations";
 
 type HomeExperienceProps = {
   initialDate: string;
@@ -117,6 +119,16 @@ export function HomeExperience({
       })
       .sort((left, right) => (left.distanceKm ?? Infinity) - (right.distanceKm ?? Infinity));
   }, [filteredRecommendations, nearbySelection]);
+  const compassRecommendations = useMemo(
+    () => nearbySelection
+      ? getNearbyCalmRecommendations(
+        filteredRecommendations,
+        nearbySelection.coordinates,
+        nearbySelection.radiusKm,
+      )
+      : [],
+    [filteredRecommendations, nearbySelection],
+  );
 
   const updateQuery = (nextDate: string, nextPeriod: BeachPeriod) => {
     const nextParams = new URLSearchParams(searchParams.toString());
@@ -190,6 +202,14 @@ export function HomeExperience({
             aria-busy={isUpdatingForecast}
             className="scroll-mt-6 py-5 sm:py-7"
           >
+            {nearbySelection && !isUpdatingForecast ? (
+              <NearbyCompass
+                recommendations={compassRecommendations}
+                date={date}
+                period={period}
+                radiusKm={nearbySelection.radiusKm}
+              />
+            ) : null}
             {isUpdatingForecast ? (
               <BeachListLoading />
             ) : displayedRecommendations.length ? (

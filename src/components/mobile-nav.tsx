@@ -13,7 +13,7 @@ const items: Array<{
 }> = [
   { id: "oggi", label: "Oggi", icon: Sun, href: "/#classifica" },
   { id: "mappa", label: "Mappa", icon: Map, href: "/mappa" },
-  { id: "impostazioni", label: "Impostazioni", icon: Settings },
+  { id: "impostazioni", label: "Impostazioni", icon: Settings, href: "/impostazioni" },
 ] as const;
 
 export function MobileNav({ active = "oggi" }: MobileNavProps) {

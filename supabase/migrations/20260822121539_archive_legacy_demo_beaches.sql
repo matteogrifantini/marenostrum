@@ -8,4 +8,4 @@ where is_published = true
     'cala-del-gelsomino',
     'spiaggia-della-marchesa',
     'tonnara-di-vendicari'
-  );
+  );;

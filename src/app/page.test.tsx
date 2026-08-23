@@ -246,6 +246,9 @@ describe("HomeExperience", () => {
 
       fireEvent.click(screen.getByRole("button", { name: "Autorizza la posizione" }));
 
+      expect(screen.getByRole("heading", { name: "Bussola per te" })).toBeInTheDocument();
+      expect(screen.getByText("Mare calmo entro 25 km")).toBeInTheDocument();
+
       expect(screen.getByRole("heading", { name: "Cala del Gelsomino" })).toBeInTheDocument();
       expect(screen.getByRole("heading", { name: "Spiaggia della Marchesa" })).toBeInTheDocument();
       expect(screen.queryByRole("heading", { name: "Tonnara di Vendicari" })).not.toBeInTheDocument();
@@ -285,15 +288,11 @@ describe("HomeExperience", () => {
     ).not.toBeInTheDocument();
     expect(within(desktopHeader!).queryByText("Live")).not.toBeInTheDocument();
     expect(
-      within(desktopHeader!).getByRole("button", {
-        name: "Preferiti, disponibile prossimamente",
-      }),
-    ).toBeInTheDocument();
+      within(desktopHeader!).getByRole("link", { name: "Apri preferiti" }),
+    ).toHaveAttribute("href", "/preferiti");
     expect(
-      within(desktopHeader!).getByRole("button", {
-        name: "Accedi, disponibile prossimamente",
-      }),
-    ).toBeInTheDocument();
+      within(desktopHeader!).getByRole("link", { name: "Apri impostazioni e accesso" }),
+    ).toHaveAttribute("href", "/impostazioni");
     expect(within(desktopNavigation).getByRole("link", { name: "Mappa" })).toHaveAttribute(
       "href",
       "/mappa",

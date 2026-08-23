@@ -18,8 +18,9 @@ describe("community reports migration contract", () => {
     expect(migration).toMatch(/category text not null check \(category in \('parking', 'crowding', 'water', 'wind', 'services'\)\)/);
     expect(migration).toMatch(/detail text not null check \(char_length\(detail\) <= 280\)/);
     expect(migration).toMatch(/alter table public\.community_reports enable row level security/);
-    expect(migration).toMatch(/revoke all on table public\.community_reports from anon, authenticated, service_role/);
-    expect(migration).toMatch(/grant select, insert on table public\.community_reports to anon, authenticated, service_role/);
+    expect(migration).toMatch(/grant select, insert on table public\.community_reports to anon, authenticated/);
+    expect(migration).toMatch(/grant select, insert on table public\.community_reports to service_role/);
+    expect(migration).toMatch(/revoke update, delete on table public\.community_reports from anon, authenticated/);
     expect(migration).toMatch(/for select[\s\S]+using \([\s\S]+is_published = true/);
     expect(migration).toMatch(/for insert[\s\S]+with check \([\s\S]+is_published = true/);
   });

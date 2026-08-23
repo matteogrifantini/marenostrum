@@ -4,7 +4,6 @@ alter table public.beaches
   add column if not exists publication_status text not null default 'draft',
   add column if not exists last_verified_at timestamptz,
   add column if not exists next_review_at timestamptz;
-
 update public.beaches
 set
   region_slug = coalesce(nullif(region_slug, ''), 'sicilia'),
@@ -15,7 +14,6 @@ set
   publication_status = case when is_published then 'verified' else 'draft' end,
   last_verified_at = coalesce(last_verified_at, updated_at),
   next_review_at = coalesce(next_review_at, updated_at + interval '90 days');
-
 alter table public.beaches
   add constraint beaches_region_slug_check
     check (region_slug = 'sicilia'),
@@ -23,10 +21,8 @@ alter table public.beaches
     check (province_code is null or province_code in ('AG', 'CL', 'CT', 'EN', 'ME', 'PA', 'RG', 'SR', 'TP')),
   add constraint beaches_publication_status_check
     check (publication_status in ('draft', 'verified', 'stale', 'archived'));
-
 create index beaches_publication_status_idx
   on public.beaches (publication_status, province_code);
-
 create table public.beach_sources (
   id uuid primary key default gen_random_uuid(),
   beach_id uuid not null references public.beaches(id) on delete cascade,
@@ -42,14 +38,11 @@ create table public.beach_sources (
   updated_at timestamptz not null default now(),
   unique (beach_id, source_url)
 );
-
 create unique index beach_sources_one_primary_idx
   on public.beach_sources (beach_id)
   where is_primary;
-
 create index beach_sources_next_check_idx
   on public.beach_sources (next_check_at);
-
 create table public.parking_facilities (
   id uuid primary key default gen_random_uuid(),
   beach_id uuid not null references public.beaches(id) on delete cascade,
@@ -72,10 +65,8 @@ create table public.parking_facilities (
     or (latitude is not null and longitude is not null)
   )
 );
-
 create index parking_facilities_beach_status_expiry_idx
   on public.parking_facilities (beach_id, content_status, expires_at);
-
 create table public.media_items (
   id uuid primary key default gen_random_uuid(),
   beach_id uuid not null references public.beaches(id) on delete cascade,
@@ -98,14 +89,11 @@ create table public.media_items (
   updated_at timestamptz not null default now(),
   check (media_url is not null or storage_path is not null or kind = 'embed')
 );
-
 create unique index media_items_provider_item_idx
   on public.media_items (provider, provider_item_id)
   where provider_item_id is not null;
-
 create index media_items_beach_status_expiry_idx
   on public.media_items (beach_id, publication_status, expires_at);
-
 create table public.webcams (
   id uuid primary key default gen_random_uuid(),
   beach_id uuid not null references public.beaches(id) on delete cascade,
@@ -130,13 +118,10 @@ create table public.webcams (
     or (latitude is not null and longitude is not null)
   )
 );
-
 create unique index webcams_provider_page_idx
   on public.webcams (beach_id, provider, page_url);
-
 create index webcams_beach_status_check_idx
   on public.webcams (beach_id, content_status, next_check_at);
-
 create table public.review_profiles (
   id uuid primary key default gen_random_uuid(),
   beach_id uuid not null references public.beaches(id) on delete cascade,
@@ -152,14 +137,11 @@ create table public.review_profiles (
   updated_at timestamptz not null default now(),
   check (place_id is not null or maps_url is not null)
 );
-
 create unique index review_profiles_provider_place_idx
   on public.review_profiles (provider, place_id)
   where place_id is not null;
-
 create unique index review_profiles_beach_provider_idx
   on public.review_profiles (beach_id, provider);
-
 create table public.content_refresh_runs (
   id uuid primary key default gen_random_uuid(),
   source_kind text not null check (char_length(trim(source_kind)) > 0),
@@ -175,27 +157,21 @@ create table public.content_refresh_runs (
   error_summary text check (error_summary is null or char_length(error_summary) <= 500),
   created_at timestamptz not null default now()
 );
-
 create index content_refresh_runs_source_started_idx
   on public.content_refresh_runs (source_kind, started_at desc);
-
 alter table public.beach_sources enable row level security;
 alter table public.parking_facilities enable row level security;
 alter table public.media_items enable row level security;
 alter table public.webcams enable row level security;
 alter table public.review_profiles enable row level security;
 alter table public.content_refresh_runs enable row level security;
-
 revoke all on table public.beach_sources, public.parking_facilities, public.media_items,
   public.webcams, public.review_profiles, public.content_refresh_runs
   from anon, authenticated, service_role;
-
 grant select on table public.beach_sources, public.parking_facilities, public.media_items,
   public.webcams, public.review_profiles to anon, authenticated;
-
 grant all on table public.beach_sources, public.parking_facilities, public.media_items,
   public.webcams, public.review_profiles, public.content_refresh_runs to service_role;
-
 create policy "Sources for published beaches are readable"
   on public.beach_sources
   for select
@@ -208,7 +184,6 @@ create policy "Sources for published beaches are readable"
         and beaches.is_published = true
     )
   );
-
 create policy "Verified parking for published beaches is readable"
   on public.parking_facilities
   for select
@@ -222,7 +197,6 @@ create policy "Verified parking for published beaches is readable"
         and beaches.is_published = true
     )
   );
-
 create policy "Published media is readable"
   on public.media_items
   for select
@@ -236,7 +210,6 @@ create policy "Published media is readable"
         and beaches.is_published = true
     )
   );
-
 create policy "Published webcams are readable"
   on public.webcams
   for select
@@ -250,7 +223,6 @@ create policy "Published webcams are readable"
         and beaches.is_published = true
     )
   );
-
 create policy "Published review profiles are readable"
   on public.review_profiles
   for select

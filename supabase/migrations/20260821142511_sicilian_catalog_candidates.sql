@@ -28,11 +28,8 @@ create table public.beach_catalog_candidates (
     or (latitude is not null and longitude is not null and access_level is not null)
   )
 );
-
 create index beach_catalog_candidates_status_idx
   on public.beach_catalog_candidates (publication_status, province);
-
 alter table public.beach_catalog_candidates enable row level security;
-
 revoke all on table public.beach_catalog_candidates from anon, authenticated;
 grant all on table public.beach_catalog_candidates to service_role;

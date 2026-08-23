@@ -7,7 +7,6 @@ alter table public.beaches
   add column if not exists services text[] not null default '{}',
   add column if not exists warnings text[] not null default '{}',
   add column if not exists facts text[] not null default '{}';
-
 alter table public.beach_conditions
   add column if not exists forecast_at timestamptz,
   add column if not exists weather_code integer,
@@ -19,29 +18,22 @@ alter table public.beach_conditions
   add column if not exists water_temperature_celsius numeric(5, 2),
   add column if not exists wave_direction_degrees numeric(5, 2)
     check (wave_direction_degrees >= 0 and wave_direction_degrees < 360);
-
 update public.beach_conditions
 set forecast_at = observed_at
 where forecast_at is null;
-
 alter table public.beach_conditions
   alter column forecast_at set not null,
   alter column wave_height_meters drop not null;
-
 create unique index if not exists beach_conditions_forecast_unique_idx
   on public.beach_conditions (beach_id, source_id, forecast_at);
-
 create index if not exists beach_conditions_forecast_lookup_idx
   on public.beach_conditions (beach_id, forecast_at);
-
 revoke insert, update, delete on table
   public.data_sources, public.beaches, public.beach_conditions
   from anon, authenticated;
-
 grant select on table
   public.data_sources, public.beaches, public.beach_conditions
   to anon, authenticated;
-
 insert into public.data_sources (id, slug, name, url, quality, is_public)
 values (
   '00000000-0000-0000-0000-000000000002',
@@ -57,7 +49,6 @@ set
   url = excluded.url,
   quality = excluded.quality,
   is_public = excluded.is_public;
-
 with canonical_beaches (
   slug,
   name,

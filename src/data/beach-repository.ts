@@ -15,6 +15,7 @@ export type BeachRow = {
   slug: string;
   name: string;
   municipality: string;
+  province_code?: string | null;
   coast: string;
   description: string;
   orientation_degrees: number | string;
@@ -126,6 +127,7 @@ export function mapBeachRow(row: BeachRow): Beach {
     slug: row.slug,
     name: row.name,
     municipality: row.municipality,
+    ...(row.province_code ? { provinceCode: row.province_code } : {}),
     coast: row.coast,
     description: row.description,
     orientationDegrees: finiteNumber(row.orientation_degrees, "beach orientation"),
@@ -351,4 +353,3 @@ export async function getAllPublishedBeaches(
 
   return beachRows.map(mapBeachRow);
 }
-

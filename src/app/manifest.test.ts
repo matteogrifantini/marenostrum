@@ -10,7 +10,7 @@ describe("manifest", () => {
       short_name: "Mare Nostrum",
       start_url: "/",
       display: "standalone",
-      background_color: "#fbfbf8",
+      background_color: "#ffffff",
       theme_color: "#082f3d",
       orientation: "portrait",
     });

@@ -9,4 +9,4 @@ create unique index community_reports_reporter_identity_idx
 revoke insert on table public.community_reports from anon, authenticated;
 
 drop policy if exists "Reports can be added to published beaches"
-  on public.community_reports;
+  on public.community_reports;;

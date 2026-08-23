@@ -1,5 +1,4 @@
 create extension if not exists postgis with schema extensions;
-
 create table public.data_sources (
   id uuid primary key default gen_random_uuid(),
   slug text not null unique,
@@ -10,7 +9,6 @@ create table public.data_sources (
   last_checked_at timestamptz,
   created_at timestamptz not null default now()
 );
-
 create table public.beaches (
   id uuid primary key default gen_random_uuid(),
   slug text not null unique,
@@ -29,7 +27,6 @@ create table public.beaches (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
-
 create table public.beach_conditions (
   id uuid primary key default gen_random_uuid(),
   beach_id uuid not null references public.beaches(id) on delete cascade,
@@ -45,29 +42,23 @@ create table public.beach_conditions (
   score_version text,
   created_at timestamptz not null default now()
 );
-
 create index beaches_location_gix on public.beaches using gist (location);
 create index beach_conditions_lookup_idx on public.beach_conditions (beach_id, observed_at desc);
 create index beach_conditions_source_idx on public.beach_conditions (source_id);
-
 grant select on table public.data_sources, public.beaches, public.beach_conditions to anon, authenticated;
-
 alter table public.data_sources enable row level security;
 alter table public.beaches enable row level security;
 alter table public.beach_conditions enable row level security;
-
 create policy "Public sources are readable"
   on public.data_sources
   for select
   to anon, authenticated
   using (is_public = true);
-
 create policy "Published beaches are readable"
   on public.beaches
   for select
   to anon, authenticated
   using (is_published = true);
-
 create policy "Conditions for published beaches are readable"
   on public.beach_conditions
   for select

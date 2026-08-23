@@ -61,6 +61,7 @@ export function FavoriteToggle({ beachSlug, beachName, className = "" }: Favorit
     const next = [...current].sort();
     writeFavoriteSlugs(next);
     setIsFavorite(next.includes(beachSlug));
+    window.dispatchEvent(new Event("marenostrum:favorites:changed"));
   }
 
   return (

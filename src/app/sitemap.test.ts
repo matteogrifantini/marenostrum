@@ -60,8 +60,9 @@ describe("sitemap", () => {
 
     const result = await sitemap();
 
-    expect(result).toHaveLength(5);
+    expect(result).toHaveLength(11);
     expect(result[0].url).toBe("https://marenostrum.app");
     expect(result[1].url).toBe("https://marenostrum.app/mappa");
+    expect(result[2].url).toBe("https://marenostrum.app/localita/palermo");
   });
 });

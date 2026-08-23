@@ -64,7 +64,7 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
       const { data, error } = await client
         .from("beaches")
         .select(
-          "id, slug, name, municipality, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts",
+          "id, slug, name, municipality, province_code, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts",
         )
         .eq("is_published", true);
 

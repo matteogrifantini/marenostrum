@@ -70,6 +70,26 @@ export default function CookiePage() {
                   Memorizza l&apos;elenco delle spiagge salvate tra i preferiti per renderle accessibili ad ogni visita.
                 </td>
               </tr>
+              <tr>
+                <td className="py-3 pr-4 font-mono font-semibold text-[var(--ink)]">
+                  sb-*-auth-token
+                </td>
+                <td className="py-3 pr-4">Cookie tecnico di sessione</td>
+                <td className="py-3 pr-4">Gestito da Supabase Auth</td>
+                <td className="py-3">
+                  Mantiene l&apos;accesso volontario per sincronizzare i preferiti. Non è usato per pubblicità o profilazione.
+                </td>
+              </tr>
+              <tr>
+                <td className="py-3 pr-4 font-mono font-semibold text-[var(--ink)]">
+                  marenostrum:notifications:v1
+                </td>
+                <td className="py-3 pr-4">LocalStorage (Browser)</td>
+                <td className="py-3 pr-4">Persistente sul dispositivo</td>
+                <td className="py-3">
+                  Ricorda se hai abilitato gli avvisi locali; non contiene dati di navigazione.
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

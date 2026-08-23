@@ -103,6 +103,7 @@ export default function TerminiPage() {
         </ul>
         <p>
           Mare Nostrum si riserva il diritto di rimuovere o filtrare segnalazioni ritenute inattendibili o contrarie alle presenti condizioni.
+          Il numero di conferme visualizzato accanto a una segnalazione indica quante identità tecniche distinte l&apos;hanno inviata nel periodo considerato; non costituisce una certificazione della verità del contenuto e non sostituisce le indicazioni delle autorità.
         </p>
       </section>
 
