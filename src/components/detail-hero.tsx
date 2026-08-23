@@ -36,12 +36,20 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
 
       try {
         if (navigator.share) {
-          await navigator.share({ title: beach.name, text: beach.description, url });
+          await navigator.share({
+            title: `Meteo Mare ${beach.name} (${beach.municipality}) — Mare Nostrum`,
+            text: `Guarda le condizioni del mare e del vento oggi a ${beach.name} (${beach.municipality}) su Mare Nostrum.`,
+            url,
+          });
         } else if (navigator.clipboard) {
           await navigator.clipboard.writeText(url);
         }
         setShared(true);
-      } catch {
+        setTimeout(() => setShared(false), 2500);
+      } catch (error) {
+        if (error instanceof Error && error.name === "AbortError") {
+          return;
+        }
         setShared(false);
       }
     })();

@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it } from "vitest";
+import { act, fireEvent, render, screen } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { DetailHero } from "./detail-hero";
 
@@ -110,4 +110,36 @@ describe("DetailHero", () => {
       "/?date=2026-08-23&period=all-day#classifica",
     );
   });
+
+  it("triggers navigator.share with beach details when clicked", async () => {
+    const detail = getDemoBeachDetail(beach.slug)!;
+    const shareMock = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "share", {
+      value: shareMock,
+      writable: true,
+      configurable: true,
+    });
+
+    render(
+      <DetailHero
+        beach={beach}
+        detail={detail}
+        period="all-day"
+      />,
+    );
+
+    const shareButton = screen.getByRole("button", { name: "Condividi spiaggia" });
+    await act(async () => {
+      fireEvent.click(shareButton);
+    });
+
+    expect(shareMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        title: expect.stringContaining(beach.name),
+        text: expect.stringContaining(beach.name),
+      }),
+    );
+  });
 });
+
+
