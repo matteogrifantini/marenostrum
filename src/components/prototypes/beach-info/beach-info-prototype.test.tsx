@@ -55,6 +55,7 @@ describe("BeachInfoPrototype", () => {
     render(<BeachInfoPrototype initialVariant={3} />);
 
     expect(screen.queryByText("Caratteristiche della spiaggia")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Apri le informazioni sulla spiaggia" })).toHaveAttribute("aria-expanded", "false");
 
     fireEvent.click(screen.getByRole("button", { name: "Scopri la spiaggia" }));
 
@@ -64,6 +65,7 @@ describe("BeachInfoPrototype", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Nascondi le informazioni" }));
     expect(screen.queryByText("Caratteristiche della spiaggia")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Apri le informazioni sulla spiaggia" })).toHaveAttribute("aria-expanded", "false");
 
     if (originalScrollIntoView) {
       Object.defineProperty(HTMLElement.prototype, "scrollIntoView", originalScrollIntoView);
