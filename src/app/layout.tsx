@@ -35,7 +35,13 @@ export const metadata: Metadata = {
     description:
       "Condizioni, vento e accessibilità delle spiagge siciliane in un’unica scelta chiara.",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Mare Nostrum",
+  },
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
