@@ -18,17 +18,24 @@ produzione dopo una verifica live dei requisiti minimi:
 - Torretta Granitola (`torretta-granitola`)
 - Capo Feto (`capo-feto`)
 - Marinella di Selinunte (`marinella-di-selinunte`)
+- San Teodoro, Marsala (`san-teodoro-marsala`)
+- Cornino (`cornino`)
+- Addaura (`addaura`)
 
 Lo stato live è `is_published = true` e `publication_status = verified`. La
 prossima revisione automatica è stata impostata a 30 giorni.
 
 ## Ancora draft
 
-Le altre 22 candidate restano volutamente non visibili perché manca ancora
+Le altre 19 candidate restano volutamente non visibili perché manca ancora
 almeno un’immagine verificata e attribuita. Non viene usata una foto generica
 per coprire il gap. `Spiaggia dei Francesi` richiede inoltre una verifica
 specifica dell’avviso di sicurezza riportato dalla fonte comunale prima di
 qualsiasi pubblicazione.
+
+Nel secondo lotto sono state scartate immagini non coerenti con una scheda
+balneare: una foto notturna di Sant’Elia, una vista di abitazioni per
+Campofelice e una foto con mare mosso per Tre Piscine.
 
 `Cipollazzo` non appartiene a questo batch: il Comune di Menfi la colloca in
 provincia di Agrigento, quindi resta fuori dall’ambito Palermo/Trapani.

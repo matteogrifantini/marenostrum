@@ -13,8 +13,8 @@ describe("Sicilian catalog image media", () => {
       "2027-08-22T00:00:00.000Z",
     );
 
-    expect(rows).toHaveLength(28);
-    expect(new Set(rows.map((row) => row.slug)).size).toBe(28);
+    expect(rows).toHaveLength(31);
+    expect(new Set(rows.map((row) => row.slug)).size).toBe(31);
     expect(rows.every((row) => row.kind === "photo")).toBe(true);
     expect(rows.every((row) => row.publication_status === "verified")).toBe(true);
     expect(rows.every((row) => row.media_url.startsWith("/images/beaches/"))).toBe(true);

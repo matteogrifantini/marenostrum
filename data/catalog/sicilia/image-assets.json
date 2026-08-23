@@ -222,5 +222,29 @@
     "image_credit": "Björn S.",
     "image_license": "CC BY-SA 3.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:91022_Marinella_di_Selinunte,_Province_of_Trapani,_Italy_-_panoramio.jpg"
+  },
+  {
+    "slug": "san-teodoro-marsala",
+    "image_path": "/images/beaches/san-teodoro-marsala.jpg",
+    "image_alt": "Acqua bassa e trasparente della costa di San Teodoro allo Stagnone.",
+    "image_credit": "Peppino091163",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Stagnone_di_Marsala_-_San_Teodoro.jpg"
+  },
+  {
+    "slug": "cornino",
+    "image_path": "/images/beaches/cornino.jpg",
+    "image_alt": "Costa di Cornino ai piedi del Monte Cofano.",
+    "image_credit": "Michiel1972",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cornino_(Custonaci).jpg"
+  },
+  {
+    "slug": "addaura",
+    "image_path": "/images/beaches/addaura.jpg",
+    "image_alt": "Costa dell'Addaura ai piedi del Monte Pellegrino.",
+    "image_credit": "Giuseppe Tucci",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Addaura.JPG"
   }
 ]

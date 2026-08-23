@@ -251,3 +251,32 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Licenza: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
 - Scaricata: 2026-08-23
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Secondo lotto verificato del 23 agosto 2026
+
+### San Teodoro, Marsala
+
+- File: `san-teodoro-marsala.jpg` (fonte: `Stagnone di Marsala - San Teodoro.jpg`)
+- Autore: Peppino091163
+- Fonte: <https://commons.wikimedia.org/wiki/File:Stagnone_di_Marsala_-_San_Teodoro.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cornino
+
+- File: `cornino.jpg` (fonte: `Cornino (Custonaci).jpg`)
+- Autore: Michiel1972
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cornino_(Custonaci).jpg>
+- Licenza: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Addaura
+
+- File: `addaura.jpg` (fonte: `Addaura.JPG`)
+- Autore: Giuseppe Tucci
+- Fonte: <https://commons.wikimedia.org/wiki/File:Addaura.JPG>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
