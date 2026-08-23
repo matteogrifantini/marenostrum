@@ -28,6 +28,7 @@ produzione dopo una verifica live dei requisiti minimi:
 - Sarello, Aspra (`sarello-aspra`)
 - Kafara (`kafara`)
 - Tre Piscine · Cala del Cuore (`tre-piscine-cala-del-cuore`)
+- Vergine Maria, Palermo (`vergine-maria-palermo`)
 
 Lo stato live è `is_published = true` e `publication_status = verified`. La
 prossima revisione automatica è stata impostata a 30 giorni.
@@ -52,9 +53,13 @@ nella Cala del Cuore, ai piedi di Capo Zafferano e a circa 170 metri dal punto
 catalogato. È una foto di contesto della costa rocciosa, non di un accesso
 specifico: la scheda mantiene quindi l’avvertenza sull’accesso difficile.
 
+Per Vergine Maria l’immagine è una foto CC BY-SA della Tonnara Bordonaro nella
+località, con il tratto di mare visibile. È una foto di contesto e non viene
+presentata come fotografia ravvicinata dell’intero arenile.
+
 ## Ancora draft
 
-Le altre 12 candidate restano volutamente non visibili perché manca ancora
+Le altre 11 candidate restano volutamente non visibili perché manca ancora
 almeno un’immagine verificata e attribuita. Non viene usata una foto generica
 per coprire il gap. `Spiaggia dei Francesi` richiede inoltre una verifica
 specifica dell’avviso di sicurezza riportato dalla fonte comunale prima di

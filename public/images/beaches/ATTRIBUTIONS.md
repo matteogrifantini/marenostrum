@@ -339,3 +339,13 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Nota: fotografia di contesto geolocalizzata nella Cala del Cuore, a circa 170 metri dal punto catalogato di Tre Piscine; non rappresenta un singolo accesso balneare.
 - Scaricata: 2026-08-24
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Vergine Maria, Palermo
+
+- File: `vergine-maria-palermo.jpg` (fonte: `Tonnara Bordonaro Vergine Maria.jpg`)
+- Autore: Stendhal55
+- Fonte: <https://commons.wikimedia.org/wiki/File:Tonnara_Bordonaro_Vergine_Maria.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Nota: foto di contesto della Tonnara Bordonaro nella località di Vergine Maria, con il tratto di mare visibile; non è una fotografia ravvicinata dell’intero arenile.
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
