@@ -294,7 +294,10 @@ describe("HomeExperience", () => {
         name: "Accedi, disponibile prossimamente",
       }),
     ).toBeInTheDocument();
-    expect(within(desktopNavigation).queryByText("Mappa")).not.toBeInTheDocument();
+    expect(within(desktopNavigation).getByRole("link", { name: "Mappa" })).toHaveAttribute(
+      "href",
+      "/mappa",
+    );
     expect(within(desktopNavigation).queryByText("Blog")).not.toBeInTheDocument();
     expect(within(desktopNavigation).queryByText("Regioni")).not.toBeInTheDocument();
     expect(within(desktopHeader!).queryByText("Italiano")).not.toBeInTheDocument();

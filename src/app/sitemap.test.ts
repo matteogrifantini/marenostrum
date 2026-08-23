@@ -60,7 +60,8 @@ describe("sitemap", () => {
 
     const result = await sitemap();
 
-    expect(result).toHaveLength(4);
+    expect(result).toHaveLength(5);
     expect(result[0].url).toBe("https://marenostrum.app");
+    expect(result[1].url).toBe("https://marenostrum.app/mappa");
   });
 });

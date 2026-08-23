@@ -7,7 +7,13 @@ import { SiteFooter } from "./site-footer";
 const unavailableUtilityClass =
   "inline-flex min-h-11 cursor-default items-center justify-center gap-2 rounded-full px-3 text-sm font-bold text-[var(--muted)]";
 
-export function PageShell({ children }: { children: ReactNode }) {
+export function PageShell({
+  children,
+  activeNav = "oggi",
+}: {
+  children: ReactNode;
+  activeNav?: "oggi" | "mappa" | "none";
+}) {
   return (
     <div className="min-h-screen bg-[var(--sand)] text-[var(--ink)]">
       <header className="border-b border-[var(--line)] bg-[rgba(255,255,255,0.88)] backdrop-blur-xl">
@@ -25,19 +31,43 @@ export function PageShell({ children }: { children: ReactNode }) {
 
           <nav
             aria-label="Navigazione desktop"
-            className="hidden min-w-0 items-center gap-3 text-sm font-bold text-[var(--muted)] lg:flex"
+            className="hidden min-w-0 items-center gap-4 text-sm font-bold text-[var(--muted)] lg:flex"
           >
             <Link
-              className="inline-flex min-h-11 items-center gap-2 border-b-2 border-[var(--sun)] px-2 text-[var(--ink)] transition-[border-color,color] duration-200 ease-out hover:text-[var(--sea-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)]"
+              className={`inline-flex min-h-11 items-center gap-2 border-b-2 px-2 transition-[border-color,color] duration-200 ease-out hover:text-[var(--sea-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)] ${
+                activeNav === "oggi"
+                  ? "border-[var(--sun)] text-[var(--ink)]"
+                  : "border-transparent text-[var(--muted)]"
+              }`}
               href="/#classifica"
             >
-              <span
-                aria-hidden="true"
-                className="size-2 rounded-full bg-[var(--sun)] shadow-[0_0_0_4px_rgba(255,194,71,0.22)]"
-              />
+              {activeNav === "oggi" && (
+                <span
+                  aria-hidden="true"
+                  className="size-2 rounded-full bg-[var(--sun)] shadow-[0_0_0_4px_rgba(255,194,71,0.22)]"
+                />
+              )}
               Oggi
             </Link>
+
+            <Link
+              className={`inline-flex min-h-11 items-center gap-2 border-b-2 px-2 transition-[border-color,color] duration-200 ease-out hover:text-[var(--sea-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)] ${
+                activeNav === "mappa"
+                  ? "border-[var(--sun)] text-[var(--ink)]"
+                  : "border-transparent text-[var(--muted)]"
+              }`}
+              href="/mappa"
+            >
+              {activeNav === "mappa" && (
+                <span
+                  aria-hidden="true"
+                  className="size-2 rounded-full bg-[var(--sun)] shadow-[0_0_0_4px_rgba(255,194,71,0.22)]"
+                />
+              )}
+              Mappa
+            </Link>
           </nav>
+
 
           <div className="hidden items-center gap-1 lg:ml-auto lg:flex">
             <button

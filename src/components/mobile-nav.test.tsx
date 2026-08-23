@@ -7,7 +7,10 @@ describe("MobileNav", () => {
     render(<MobileNav />);
 
     expect(screen.getByRole("link", { name: "Oggi" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Mappa/ })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Mappa" })).toHaveAttribute(
+      "href",
+      "/mappa",
+    );
     expect(screen.getByRole("button", { name: /Impostazioni/ })).toBeInTheDocument();
     expect(screen.queryByText("Zone")).not.toBeInTheDocument();
     expect(screen.getByRole("navigation", { name: "Navigazione mobile" })).toHaveClass("lg:hidden");
