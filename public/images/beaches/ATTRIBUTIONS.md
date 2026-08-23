@@ -280,3 +280,12 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 - Scaricata: 2026-08-23
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Tonnarella, Mazara del Vallo
+
+- File: `tonnarella-mazara-del-vallo.jpg` (fonte: `Capo Feto (Mazara del Vallo) 1.jpg`)
+- Autore: Mαρκος
+- Fonte: <https://commons.wikimedia.org/wiki/File:Capo_Feto_(Mazara_del_Vallo)_1.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-24
+- Nota: foto di contesto del litorale sabbioso di Mazara del Vallo, non una fotografia puntuale dell’accesso di Tonnarella; l’app applica crop e resize in visualizzazione.

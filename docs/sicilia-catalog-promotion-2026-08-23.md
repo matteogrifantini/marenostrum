@@ -21,13 +21,20 @@ produzione dopo una verifica live dei requisiti minimi:
 - San Teodoro, Marsala (`san-teodoro-marsala`)
 - Cornino (`cornino`)
 - Addaura (`addaura`)
+- Tonnarella, Mazara del Vallo (`tonnarella-mazara-del-vallo`)
 
 Lo stato live è `is_published = true` e `publication_status = verified`. La
 prossima revisione automatica è stata impostata a 30 giorni.
 
+Per Tonnarella l’immagine è una foto CC BY-SA di contesto del litorale di
+Mazara/Capo Feto, perché la foto Commons con il nome “Tonnarella” documenta una
+laguna e non la spiaggia. La scheda lo dichiara nell’alt text e nelle
+attribuzioni; va sostituita con una foto puntuale appena disponibile con
+licenza riutilizzabile.
+
 ## Ancora draft
 
-Le altre 19 candidate restano volutamente non visibili perché manca ancora
+Le altre 18 candidate restano volutamente non visibili perché manca ancora
 almeno un’immagine verificata e attribuita. Non viene usata una foto generica
 per coprire il gap. `Spiaggia dei Francesi` richiede inoltre una verifica
 specifica dell’avviso di sicurezza riportato dalla fonte comunale prima di
