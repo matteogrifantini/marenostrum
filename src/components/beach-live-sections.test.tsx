@@ -36,7 +36,17 @@ describe("BeachLiveSections", () => {
     expect(within(reports).getAllByRole("listitem")).toHaveLength(3);
 
     const reportAction = screen.getByRole("button", { name: "Aggiungi" });
-    expect(reportAction).toHaveClass("bg-[var(--sea-soft)]/65");
+    expect(reportAction).toHaveClass("bg-[var(--sun-soft)]", "text-[var(--ink)]");
+  });
+
+  it("hides the show-all action when there are only three reports", () => {
+    const recommendation = demoRecommendations[0];
+    const baseDetail = getDemoBeachDetail(recommendation.beach.slug)!;
+    const detail = { ...baseDetail, reports: baseDetail.reports.slice(0, 3) };
+    render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
+
+    expect(screen.queryByRole("button", { name: /Mostra tutte/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Aggiungi" })).toHaveClass("bg-[var(--sun-soft)]", "text-[var(--ink)]");
   });
 
   it("shows how many users reported the same community update", () => {

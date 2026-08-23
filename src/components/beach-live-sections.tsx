@@ -19,6 +19,8 @@ type BeachLiveSectionsProps = {
   detail: BeachDetailContent;
 };
 
+const REPORT_PREVIEW_LIMIT = 3;
+
 export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
   const [showAllReports, setShowAllReports] = useState(false);
   const [isComposerOpen, setIsComposerOpen] = useState(false);
@@ -28,7 +30,8 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [localReports, setLocalReports] = useState<BeachDetailReport[]>([]);
   const allReports = [...localReports, ...detail.reports];
-  const reports = showAllReports ? allReports : allReports.slice(0, 3);
+  const canShowAllReports = allReports.length > REPORT_PREVIEW_LIMIT;
+  const reports = showAllReports && canShowAllReports ? allReports : allReports.slice(0, REPORT_PREVIEW_LIMIT);
 
   function closeComposer() {
     setIsComposerOpen(false);
@@ -97,10 +100,12 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
           ))}
         </ul>
         {reports.length === 0 ? <p className="mt-3 text-sm text-[var(--muted)]">Nessuna segnalazione recente disponibile.</p> : null}
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          <button type="button" onClick={() => setShowAllReports((current) => !current)} className="detail-press min-h-11 rounded-[0.85rem] bg-[var(--surface-muted)] px-2 text-xs font-extrabold">
-            {showAllReports ? "Mostra meno" : `Mostra tutte · ${allReports.length}`}
-          </button>
+        <div className={`mt-3 ${canShowAllReports ? "grid grid-cols-2 gap-2" : "flex justify-end"}`}>
+          {canShowAllReports ? (
+            <button type="button" onClick={() => setShowAllReports((current) => !current)} className="detail-press inline-flex min-h-11 items-center justify-center rounded-[0.85rem] border border-[var(--line)] bg-[var(--surface)] px-2 text-xs font-extrabold text-[var(--ink)] transition-[background-color,border-color,transform] duration-200 ease-out hover:border-[var(--sun)] hover:bg-[var(--sun-soft)] active:scale-[0.98]">
+              {showAllReports ? "Mostra meno" : `Mostra tutte · ${allReports.length}`}
+            </button>
+          ) : null}
           <button
             type="button"
             aria-expanded={isComposerOpen}
@@ -113,7 +118,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
                 setIsComposerOpen(true);
               }
             }}
-            className="detail-press inline-flex min-h-11 items-center justify-center gap-1 rounded-[0.85rem] border border-[var(--sea)]/15 bg-[var(--sea-soft)]/65 px-2 text-xs font-extrabold text-[var(--sea-deep)]"
+            className={`detail-press inline-flex min-h-11 items-center justify-center gap-1 rounded-[0.85rem] border border-[var(--sun)]/45 bg-[var(--sun-soft)] px-2 text-xs font-extrabold text-[var(--ink)] transition-[background-color,border-color,transform] duration-200 ease-out hover:border-[var(--sun)] hover:bg-[var(--sun)] active:scale-[0.98] ${canShowAllReports ? "" : "w-full sm:w-auto"}`}
           >
             {isComposerOpen ? <X aria-hidden="true" size={15} /> : <Plus aria-hidden="true" size={15} />} {isComposerOpen ? "Chiudi" : "Aggiungi"}
           </button>
@@ -129,7 +134,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
                   return (
                     <label
                       key={option.value}
-                      className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-[0.8rem] border px-3 text-xs font-bold transition-colors ${isSelected ? "border-[var(--sea)] bg-[var(--sea-soft)] text-[var(--sea-deep)]" : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink-soft)]"}`}
+                      className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-[0.8rem] border px-3 text-xs font-bold transition-colors ${isSelected ? "border-[var(--sun)] bg-[var(--sun-soft)] text-[var(--ink)]" : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink-soft)]"}`}
                     >
                       <input
                         className="sr-only"
@@ -159,7 +164,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
                     return (
                       <label
                         key={option.value}
-                        className={`flex min-h-11 cursor-pointer items-center rounded-[0.8rem] border px-3 text-xs font-bold transition-colors ${isSelected ? "border-[var(--sea)] bg-[var(--sea-soft)] text-[var(--sea-deep)]" : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink-soft)]"}`}
+                        className={`flex min-h-11 cursor-pointer items-center rounded-[0.8rem] border px-3 text-xs font-bold transition-colors ${isSelected ? "border-[var(--sun)] bg-[var(--sun-soft)] text-[var(--ink)]" : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink-soft)]"}`}
                       >
                         <input
                           className="sr-only"
@@ -181,7 +186,7 @@ export function BeachLiveSections({ beach, detail }: BeachLiveSectionsProps) {
               <button type="button" onClick={closeComposer} className="detail-press min-h-10 rounded-[0.75rem] px-3 text-xs font-extrabold text-[var(--muted)]">
                 Annulla
               </button>
-              <button type="submit" disabled={!selectedCategory || !selectedDetail || submitState === "submitting"} className="detail-press min-h-10 rounded-[0.75rem] bg-[var(--sea-soft)] px-4 text-xs font-extrabold text-[var(--sea-deep)] disabled:cursor-not-allowed disabled:opacity-50">
+              <button type="submit" disabled={!selectedCategory || !selectedDetail || submitState === "submitting"} className="detail-press min-h-10 rounded-[0.75rem] bg-[var(--sun)] px-4 text-xs font-extrabold text-[var(--ink)] transition-[background-color,transform] duration-200 ease-out hover:bg-[var(--sun-dark)] hover:text-white active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50">
                 {submitState === "submitting" ? "Invio…" : "Pubblica"}
               </button>
             </div>
