@@ -15,6 +15,16 @@ export type FavoritesApiDependencies = {
 const FAVORITES_ERROR = "Accedi per sincronizzare i preferiti";
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+export function isMissingAuthSessionError(error: unknown) {
+  if (!error || typeof error !== "object") return false;
+
+  const candidate = error as { name?: unknown; message?: unknown };
+  return candidate.name === "AuthSessionMissingError" || (
+    typeof candidate.message === "string" &&
+    candidate.message.toLowerCase().includes("auth session missing")
+  );
+}
+
 function errorResponse(status: number, error: string) {
   return Response.json({ ok: false, error }, { status });
 }
@@ -45,7 +55,10 @@ async function createDefaultDependencies(): Promise<FavoritesApiDependencies> {
   return {
     async getUser() {
       const { data, error } = await client.auth.getUser();
-      if (error) throw error;
+      if (error) {
+        if (isMissingAuthSessionError(error)) return null;
+        throw error;
+      }
       return data.user
         ? { id: data.user.id, email: data.user.email ?? undefined }
         : null;

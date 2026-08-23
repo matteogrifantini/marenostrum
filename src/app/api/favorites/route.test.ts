@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   handleFavorites,
+  isMissingAuthSessionError,
   type FavoritesApiDependencies,
 } from "./route";
 
@@ -19,6 +20,11 @@ function dependencies(
 }
 
 describe("/api/favorites", () => {
+  it("recognizes a missing Auth session as an anonymous request", () => {
+    expect(isMissingAuthSessionError({ name: "AuthSessionMissingError" })).toBe(true);
+    expect(isMissingAuthSessionError(new Error("database unavailable"))).toBe(false);
+  });
+
   it("requires an authenticated user", async () => {
     const deps = dependencies({ getUser: vi.fn(async () => null) });
 
