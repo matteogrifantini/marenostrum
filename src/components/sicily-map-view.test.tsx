@@ -75,7 +75,7 @@ describe("SicilyMapView", () => {
     expect(onPeriodChange).toHaveBeenCalledWith("afternoon");
   });
 
-  it("keeps rating and sea-place layers focused on the map", () => {
+  it("keeps rating and sea-place layers focused on the map without POI filters", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
@@ -88,13 +88,12 @@ describe("SicilyMapView", () => {
     );
 
     expect(screen.getByRole("region", { name: "Mappa delle spiagge" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Parcheggi/ })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("button", { name: /Lidi/ })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("button", { name: /Servizi mare/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.queryByRole("group", { name: "Layer punti utili" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Parcheggi/ })).not.toBeInTheDocument();
     expect(screen.queryByText("Vedi scheda completa")).not.toBeInTheDocument();
   });
 
-  it("lets people hide one useful-place layer without affecting ratings", () => {
+  it("shows numeric ratings without the explanatory score legend", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
@@ -106,13 +105,35 @@ describe("SicilyMapView", () => {
       />,
     );
 
-    fireEvent.click(screen.getByRole("button", { name: /Parcheggi/ }));
-
-    expect(screen.getByRole("button", { name: /Parcheggi/ })).toHaveAttribute(
-      "aria-pressed",
-      "false",
-    );
-    expect(screen.getByRole("button", { name: /Lidi/ })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("button", { name: /Spiaggia Cala del Gelsomino, voto/ })).toBeInTheDocument();
+    expect(screen.queryByText("8+ ottimo")).not.toBeInTheDocument();
+    expect(screen.queryByText("6–8 buono")).not.toBeInTheDocument();
+    expect(screen.queryByText("<6 difficile")).not.toBeInTheDocument();
   });
+
+  it("lets people choose a beach and open the nearby and factual filters", () => {
+    render(
+      <SicilyMapView
+        recommendations={demoRecommendations}
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+      />,
+    );
+
+    const beachSearch = screen.getByRole("combobox", {
+      name: "Cerca una spiaggia sulla mappa",
+    });
+    expect(beachSearch).toHaveValue("");
+    fireEvent.change(beachSearch, { target: { value: demoRecommendations[1].beach.slug } });
+    expect(beachSearch).toHaveValue(demoRecommendations[1].beach.slug);
+
+    fireEvent.click(screen.getByRole("button", { name: /Vicino a me/ }));
+    expect(screen.getByRole("dialog", { name: "Filtro vicino a me" })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: /^Filtri/ }));
+    expect(screen.getByRole("dialog", { name: "Affina la scelta" })).toBeInTheDocument();
+  });
+
 });

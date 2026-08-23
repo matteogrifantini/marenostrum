@@ -6,7 +6,7 @@ import { createClient } from "../../lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Impostazioni e preferiti",
-  description: "Gestisci accesso, preferiti sincronizzati e avvisi locali di Mare Nostrum.",
+  description: "Gestisci accesso, preferenze, preferiti sincronizzati e supporto di Mare Nostrum.",
   alternates: { canonical: "https://marenostrum.app/impostazioni" },
 };
 

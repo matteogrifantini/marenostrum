@@ -59,7 +59,7 @@ describe("map POI contract", () => {
     expect(places).toHaveLength(3);
   });
 
-  it("accepts only a valid, focused map viewport and selected categories", () => {
+  it("accepts only a valid, focused map viewport and always returns every POI layer", () => {
     const request = parseMapPlacesRequest(
       new Request(
         "https://marenostrum.app/api/map/places?bbox=37.8,13.1,38.3,13.8&zoom=10&categories=parking,lido",
@@ -69,7 +69,7 @@ describe("map POI contract", () => {
     expect(request).toEqual({
       bbox: { south: 37.8, west: 13.1, north: 38.3, east: 13.8 },
       zoom: 10,
-      categories: ["parking", "lido"],
+      categories: ["parking", "lido", "sea-service"],
     });
   });
 

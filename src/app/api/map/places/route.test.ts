@@ -31,7 +31,7 @@ describe("GET /api/map/places", () => {
     expect(response.status).toBe(400);
   });
 
-  it("queries Overpass and returns only the selected category layers", async () => {
+  it("queries Overpass and returns every useful-place layer automatically", async () => {
     const fetcher = vi.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -50,6 +50,13 @@ describe("GET /api/map/places", () => {
               lon: 13.5,
               tags: { leisure: "beach_resort", name: "Lido Marina" },
             },
+            {
+              type: "node",
+              id: 789,
+              lat: 38.3,
+              lon: 13.6,
+              tags: { amenity: "shower", name: "Docce Cala" },
+            },
           ],
         }),
         { status: 200, headers: { "content-type": "application/json" } },
@@ -67,6 +74,8 @@ describe("GET /api/map/places", () => {
     expect(await response.json()).toMatchObject({
       places: [
         expect.objectContaining({ id: "node/123", category: "parking" }),
+        expect.objectContaining({ id: "node/456", category: "lido" }),
+        expect.objectContaining({ id: "node/789", category: "sea-service" }),
       ],
       degraded: false,
       reason: null,
@@ -74,7 +83,8 @@ describe("GET /api/map/places", () => {
     const [requestUrl, init] = fetcher.mock.calls[0];
     expect(requestUrl).toContain("?data=");
     expect(decodeURIComponent(requestUrl)).toContain('nwr["amenity"="parking"]');
-    expect(decodeURIComponent(requestUrl)).not.toContain("beach_resort");
+    expect(decodeURIComponent(requestUrl)).toContain("beach_resort");
+    expect(decodeURIComponent(requestUrl)).toContain("shower");
     expect(init.method).toBe("GET");
   });
 

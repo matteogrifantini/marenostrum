@@ -1,11 +1,20 @@
+"use client";
+
 import { CloudSun, ThermometerSun, Waves, Wind } from "lucide-react";
 import type { BeachConditions } from "../domain/beach";
+import {
+  formatTemperatureCelsius,
+  formatWaveHeightMeters,
+  formatWindSpeedKmh,
+  useUserPreferences,
+} from "../lib/user-preferences";
 
 type HourlyForecastProps = {
   hourly?: NonNullable<BeachConditions["hourly"]>;
 };
 
 export function HourlyForecast({ hourly }: HourlyForecastProps) {
+  const preferences = useUserPreferences();
   if (!hourly?.length) return null;
 
   return (
@@ -39,17 +48,17 @@ export function HourlyForecast({ hourly }: HourlyForecastProps) {
                 <div className="mt-3 rounded-[1.25rem] border border-[var(--line)] bg-[var(--surface)] p-3 text-left shadow-[0_6px_18px_rgba(20,44,57,0.08)]">
                   <p className="flex items-center gap-1 text-sm font-bold text-[var(--ink)]">
                   <ThermometerSun aria-hidden="true" size={14} className="text-[var(--coral)]" />
-                  {item.temperatureCelsius}°
+                  {formatTemperatureCelsius(item.temperatureCelsius, preferences.temperatureUnit)}
                 </p>
                 <p className="mt-2 flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
                   <Wind aria-hidden="true" size={13} className="text-[var(--sea-deep)]" />
-                  {item.windSpeedKmh} km/h
+                  {formatWindSpeedKmh(item.windSpeedKmh, preferences.distanceUnit)}
                 </p>
                 <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
                   <Waves aria-hidden="true" size={13} className="text-[var(--sea-deep)]" />
                   {item.waveHeightMeters === null
                     ? "—"
-                    : `${item.waveHeightMeters.toFixed(1)} m`}
+                    : formatWaveHeightMeters(item.waveHeightMeters, preferences.waveHeightUnit)}
                 </p>
                 <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[var(--ink)]">
                   <CloudSun aria-hidden="true" size={13} className="text-[var(--sun-dark)]" />

@@ -90,12 +90,22 @@ export default function CookiePage() {
                   Ricorda se hai abilitato gli avvisi locali; non contiene dati di navigazione.
                 </td>
               </tr>
+              <tr>
+                <td className="py-3 pr-4 font-mono font-semibold text-[var(--ink)]">
+                  marenostrum:preferences:v1
+                </td>
+                <td className="py-3 pr-4">LocalStorage (Browser)</td>
+                <td className="py-3 pr-4">Persistente sul dispositivo</td>
+                <td className="py-3">
+                  Ricorda lingua e unità di misura scelte nelle impostazioni; non viene inviata ai server.
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section id="preferenze" className="space-y-3">
         <h2 className="font-serif text-xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-2xl">
           4. Come Gestire o Disabilitare i Cookie
         </h2>

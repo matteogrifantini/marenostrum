@@ -21,6 +21,15 @@ import {
   formatWeatherLabel,
   getWeatherEmoji,
 } from "../lib/forecast-presentation";
+import {
+  formatTemperatureCelsius,
+  formatWaveHeightMeters,
+  formatWindSpeedKmh,
+  type DistanceUnit,
+  type TemperatureUnit,
+  type WaveHeightUnit,
+  useUserPreferences,
+} from "../lib/user-preferences";
 
 type BeachDetailExperienceProps = {
   beach: Beach;
@@ -112,18 +121,22 @@ function scoreHeadline(score: number) {
   return "Meglio scegliere un’altra spiaggia";
 }
 
-function periodSummary(recommendation: BeachRecommendation | undefined, period: "morning" | "afternoon") {
+function periodSummary(
+  recommendation: BeachRecommendation | undefined,
+  period: "morning" | "afternoon",
+  distanceUnit: DistanceUnit,
+) {
   if (!recommendation) return "Dati non disponibili";
 
   if (period === "morning") {
     return recommendation.conditions.windSpeedKmh <= 12
       ? "Vento leggero fino alle 12"
-      : `Vento ${formatAggregateMetric(recommendation.conditions.windSpeedKmh)} km/h`;
+      : `Vento ${formatWindSpeedKmh(recommendation.conditions.windSpeedKmh, distanceUnit)}`;
   }
 
   return recommendation.conditions.gustSpeedKmh >= 25
-    ? `Raffiche fino a ${formatAggregateMetric(recommendation.conditions.gustSpeedKmh)} km/h`
-    : `Vento ${formatAggregateMetric(recommendation.conditions.windSpeedKmh)} km/h`;
+    ? `Raffiche fino a ${formatWindSpeedKmh(recommendation.conditions.gustSpeedKmh, distanceUnit)}`
+    : `Vento ${formatWindSpeedKmh(recommendation.conditions.windSpeedKmh, distanceUnit)}`;
 }
 
 function recommendationForPeriod(
@@ -149,6 +162,7 @@ export function BeachDetailExperience({
   origin,
   dataUnavailable = false,
 }: BeachDetailExperienceProps) {
+  const preferences = useUserPreferences();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -211,6 +225,9 @@ export function BeachDetailExperience({
               period={selection.period}
               morningRecommendation={morningRecommendation}
               afternoonRecommendation={afternoonRecommendation}
+              distanceUnit={preferences.distanceUnit}
+              temperatureUnit={preferences.temperatureUnit}
+              waveHeightUnit={preferences.waveHeightUnit}
               date={date}
               dateOptions={dateOptions}
               dataUnavailable={dataUnavailable}
@@ -319,6 +336,9 @@ function ConditionsCard({
   period,
   morningRecommendation,
   afternoonRecommendation,
+  distanceUnit,
+  temperatureUnit,
+  waveHeightUnit,
   date,
   dateOptions,
   dataUnavailable,
@@ -327,6 +347,9 @@ function ConditionsCard({
   period: BeachPeriod;
   morningRecommendation?: BeachRecommendation;
   afternoonRecommendation?: BeachRecommendation;
+  distanceUnit: DistanceUnit;
+  temperatureUnit: TemperatureUnit;
+  waveHeightUnit: WaveHeightUnit;
   date: string;
   dateOptions: DateOption[];
   dataUnavailable: boolean;
@@ -346,13 +369,13 @@ function ConditionsCard({
   const rainChance = formatAggregateMetric(conditions.precipitationProbabilityPercent ?? 0);
   const selectedDateLabel = dateOptions.find((option) => option.iso === date)?.label ?? date;
   const forecastTitle = `Previsioni ${selectedDateLabel.toLocaleLowerCase("it-IT")}`;
-  const windValue = `${directionName(conditions.windDirectionDegrees)} · ${formatAggregateMetric(conditions.windSpeedKmh)} km/h`;
-  const gustValue = `${formatAggregateMetric(conditions.gustSpeedKmh)} km/h`;
-  const waveValue = `${formatAggregateMetric(conditions.waveHeightMeters)} m`;
-  const airTemperatureValue = `${formatAggregateMetric(conditions.temperatureCelsius)}°`;
+  const windValue = `${directionName(conditions.windDirectionDegrees)} · ${formatWindSpeedKmh(conditions.windSpeedKmh, distanceUnit)}`;
+  const gustValue = formatWindSpeedKmh(conditions.gustSpeedKmh, distanceUnit);
+  const waveValue = formatWaveHeightMeters(conditions.waveHeightMeters, waveHeightUnit);
+  const airTemperatureValue = formatTemperatureCelsius(conditions.temperatureCelsius, temperatureUnit);
   const waterValue = conditions.waterTemperatureCelsius == null
     ? "—"
-    : `${formatAggregateMetric(conditions.waterTemperatureCelsius)}°`;
+    : formatTemperatureCelsius(conditions.waterTemperatureCelsius, temperatureUnit);
   const weatherLabel = formatWeatherLabel(conditions.weather);
 
   return (
@@ -369,8 +392,8 @@ function ConditionsCard({
 
         {period === "all-day" ? (
           <div role="group" aria-label="Confronto mattina e pomeriggio" className="mt-3 grid grid-cols-2 gap-2 border-b border-[var(--line)] pb-3">
-            <DayPart label="Mattina" recommendation={morningRecommendation} summary={periodSummary(morningRecommendation, "morning")} />
-            <DayPart label="Pomeriggio" recommendation={afternoonRecommendation} summary={periodSummary(afternoonRecommendation, "afternoon")} />
+            <DayPart label="Mattina" recommendation={morningRecommendation} summary={periodSummary(morningRecommendation, "morning", distanceUnit)} />
+            <DayPart label="Pomeriggio" recommendation={afternoonRecommendation} summary={periodSummary(afternoonRecommendation, "afternoon", distanceUnit)} />
           </div>
         ) : null}
 

@@ -3,6 +3,7 @@
 import { ChevronDown, LocateFixed } from "lucide-react";
 import { useState } from "react";
 import type { Coordinates } from "../lib/geo";
+import { formatDistanceKm, useUserPreferences } from "../lib/user-preferences";
 
 const DISTANCE_OPTIONS = [5, 10, 25, 50, 100] as const;
 const DEFAULT_RADIUS_KM = 25;
@@ -20,6 +21,7 @@ type NearbyControlProps = {
 };
 
 export function NearbyControl({ value, onChange }: NearbyControlProps) {
+  const preferences = useUserPreferences();
   const [open, setOpen] = useState(false);
   const [locationState, setLocationState] = useState<LocationState>(value ? "granted" : "idle");
   const [lastCoordinates, setLastCoordinates] = useState<Coordinates | null>(null);
@@ -101,7 +103,7 @@ export function NearbyControl({ value, onChange }: NearbyControlProps) {
                 >
                   {DISTANCE_OPTIONS.map((option) => (
                     <option key={option} value={option}>
-                      Entro {option} km
+                      Entro {formatDistanceKm(option, preferences.distanceUnit)}
                     </option>
                   ))}
                 </select>

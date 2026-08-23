@@ -112,6 +112,30 @@ describe("BeachCard", () => {
     expect(screen.getByLabelText("Onde: 0.3 m")).toHaveTextContent("0.3 m");
   });
 
+  it("keeps a narrow mobile card from clipping the location and wind metric", () => {
+    const recommendation = {
+      ...demoRecommendations[0],
+      beach: { ...demoRecommendations[0].beach, municipality: "Palermo" },
+      conditions: {
+        ...demoRecommendations[0].conditions,
+        windDirectionDegrees: 90,
+        windSpeedKmh: 8.1,
+      },
+    };
+
+    render(
+      <BeachCard
+        recommendation={recommendation}
+        date="2026-08-15"
+        period="all-day"
+        distanceKm={8.1}
+      />,
+    );
+
+    expect(screen.getByText("Palermo · 8.1 km")).not.toHaveClass("truncate");
+    expect(screen.getByText("E · 8.1 km/h")).not.toHaveClass("truncate");
+  });
+
   it.each([
     [95, "excellent"],
     [80, "good"],

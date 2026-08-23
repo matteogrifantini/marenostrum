@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { BeachPeriod } from "../domain/beach";
 import type { NearbyCalmRecommendation } from "../domain/nearby-recommendations";
+import { formatDistanceKm, useUserPreferences } from "../lib/user-preferences";
 
 type NearbyCompassProps = {
   recommendations: NearbyCalmRecommendation[];
@@ -15,6 +16,8 @@ export function NearbyCompass({
   period,
   radiusKm,
 }: NearbyCompassProps) {
+  const preferences = useUserPreferences();
+
   return (
     <section
       aria-labelledby="nearby-compass-heading"
@@ -29,7 +32,7 @@ export function NearbyCompass({
             Bussola per te
           </h2>
           <p className="mt-1 text-sm font-semibold text-[var(--ink-soft)]">
-            Mare calmo entro {radiusKm} km
+            Mare calmo entro {formatDistanceKm(radiusKm, preferences.distanceUnit)}
           </p>
         </div>
         <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full bg-[var(--sun)] text-xl shadow-[0_8px_18px_rgba(255,194,71,0.28)]">
@@ -61,7 +64,7 @@ export function NearbyCompass({
                     <strong className="block truncate text-sm font-extrabold text-[var(--ink)]">{beach.name}</strong>
                     <span className="mt-0.5 block truncate text-xs font-semibold text-[var(--muted)]">{beach.municipality}</span>
                   </span>
-                  <span className="shrink-0 text-right text-xs font-black text-[var(--sea-deep)]">{displayScore} · {distanceKm.toFixed(1)} km</span>
+                  <span className="shrink-0 text-right text-xs font-black text-[var(--sea-deep)]">{displayScore} · {formatDistanceKm(distanceKm, preferences.distanceUnit)}</span>
                 </Link>
               </li>
             );

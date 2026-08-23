@@ -245,7 +245,7 @@ describe("BeachDetailExperience", () => {
       "NO · 12 km/h",
     );
     expect(within(conditionsPanel).getByLabelText("Onde: 0.3 m")).toHaveTextContent("0.3 m");
-    expect(within(conditionsPanel).getByLabelText("Temp. aria: 28°")).toHaveTextContent("28°");
+    expect(within(conditionsPanel).getByLabelText("Temp. aria: 28°C")).toHaveTextContent("28°C");
     expect(within(conditionsPanel).getByText("Cielo · Pioggia")).toBeInTheDocument();
     expect(within(conditionsPanel).getByText("Vento 13.5 km/h")).toBeInTheDocument();
     expect(within(conditionsPanel).getByText("Raffiche fino a 29.7 km/h")).toBeInTheDocument();

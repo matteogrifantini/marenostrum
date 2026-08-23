@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import type * as Leaflet from "leaflet";
 import type { BeachRecommendation } from "../domain/beach";
 import {
+  MAP_POI_CATEGORIES,
   type MapPoi,
   type MapPoiCategory,
 } from "../domain/map-poi";
+import type { MapNearbySelection } from "../domain/map-filtering";
 import {
   hasMapCoordinates,
   type MappableRecommendation,
@@ -16,7 +18,7 @@ type LeafletBeachMapProps = {
   recommendations: BeachRecommendation[];
   selectedSlug: string | null;
   onSelectBeach: (slug: string) => void;
-  activePoiCategories: MapPoiCategory[];
+  nearbySelection: MapNearbySelection | null;
 };
 
 type PoiState =
@@ -96,13 +98,15 @@ export function LeafletBeachMap({
   recommendations,
   selectedSlug,
   onSelectBeach,
-  activePoiCategories,
+  nearbySelection,
 }: LeafletBeachMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Leaflet.Map | null>(null);
   const leafletRef = useRef<typeof import("leaflet") | null>(null);
   const ratingLayerRef = useRef<Leaflet.LayerGroup | null>(null);
   const poiLayerRef = useRef<Leaflet.LayerGroup | null>(null);
+  const userLayerRef = useRef<Leaflet.LayerGroup | null>(null);
+  const ratingMarkersRef = useRef(new Map<string, Leaflet.Marker>());
   const requestPlacesRef = useRef<((map: Leaflet.Map) => void) | null>(null);
   const requestControllerRef = useRef<AbortController | null>(null);
   const [mapReady, setMapReady] = useState(false);
@@ -114,13 +118,6 @@ export function LeafletBeachMap({
       const poiLayer = poiLayerRef.current;
       if (!leaflet || !poiLayer) return;
 
-      if (activePoiCategories.length === 0) {
-        requestControllerRef.current?.abort();
-        poiLayer.clearLayers();
-        setPoiState("idle");
-        return;
-      }
-
       const bounds = map.getBounds();
       const bbox = [
         bounds.getSouth(),
@@ -130,14 +127,13 @@ export function LeafletBeachMap({
       ]
         .map((coordinate) => coordinate.toFixed(5))
         .join(",");
-      const categories = activePoiCategories.join(",");
       const controller = new AbortController();
       requestControllerRef.current?.abort();
       requestControllerRef.current = controller;
       setPoiState("loading");
 
       void fetch(
-        `/api/map/places?bbox=${bbox}&zoom=${map.getZoom().toFixed(1)}&categories=${categories}`,
+        `/api/map/places?bbox=${bbox}&zoom=${map.getZoom().toFixed(1)}`,
         { signal: controller.signal },
       )
         .then(async (response) => {
@@ -159,7 +155,7 @@ export function LeafletBeachMap({
           }
 
           for (const place of Array.isArray(payload.places) ? payload.places : []) {
-            if (!activePoiCategories.includes(place.category)) continue;
+            if (!MAP_POI_CATEGORIES.includes(place.category)) continue;
 
             const marker = leaflet.marker([place.latitude, place.longitude], {
               icon: leaflet.divIcon({
@@ -185,11 +181,12 @@ export function LeafletBeachMap({
     };
 
     if (mapRef.current) requestPlacesRef.current(mapRef.current);
-  }, [activePoiCategories]);
+  }, []);
 
   useEffect(() => {
     let disposed = false;
     let map: Leaflet.Map | null = null;
+    const ratingMarkers = ratingMarkersRef.current;
 
     void import("leaflet").then((leaflet) => {
       if (disposed || !containerRef.current) return;
@@ -224,6 +221,7 @@ export function LeafletBeachMap({
 
       ratingLayerRef.current = leaflet.layerGroup().addTo(map);
       poiLayerRef.current = leaflet.layerGroup().addTo(map);
+      userLayerRef.current = leaflet.layerGroup().addTo(map);
       map.fitBounds(SICILY_BOUNDS, { padding: [16, 16], maxZoom: 8.5 });
 
       const handleViewportChange = () => requestPlacesRef.current?.(map as Leaflet.Map);
@@ -241,6 +239,8 @@ export function LeafletBeachMap({
       leafletRef.current = null;
       ratingLayerRef.current = null;
       poiLayerRef.current = null;
+      userLayerRef.current = null;
+      ratingMarkers.clear();
       setMapReady(false);
     };
   }, []);
@@ -251,6 +251,7 @@ export function LeafletBeachMap({
     if (!mapReady || !leaflet || !ratingLayer) return;
 
     ratingLayer.clearLayers();
+    ratingMarkersRef.current.clear();
     for (const recommendation of recommendations) {
       if (!hasMapCoordinates(recommendation)) continue;
       const { beach, score } = recommendation;
@@ -276,8 +277,57 @@ export function LeafletBeachMap({
       });
       marker.bindPopup(createBeachPopup(recommendation), { className: "map-popup-wrapper" });
       marker.addTo(ratingLayer);
+      ratingMarkersRef.current.set(beach.slug, marker);
     }
   }, [mapReady, onSelectBeach, recommendations, selectedSlug]);
+
+  useEffect(() => {
+    if (!mapReady || !mapRef.current || !selectedSlug) return;
+
+    const marker = ratingMarkersRef.current.get(selectedSlug);
+    if (!marker) return;
+
+    const map = mapRef.current;
+    map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 12), { duration: 0.45 });
+    marker.openPopup();
+  }, [mapReady, selectedSlug]);
+
+  useEffect(() => {
+    const leaflet = leafletRef.current;
+    const map = mapRef.current;
+    const userLayer = userLayerRef.current;
+    if (!mapReady || !leaflet || !map || !userLayer) return;
+
+    userLayer.clearLayers();
+    if (!nearbySelection) return;
+
+    const { latitude, longitude } = nearbySelection.coordinates;
+    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return;
+
+    const radius = Math.max(0.5, nearbySelection.radiusKm) * 1000;
+    const circle = leaflet.circle([latitude, longitude], {
+      radius,
+      color: "#0f7890",
+      weight: 2,
+      opacity: 0.85,
+      fillColor: "#52bfd0",
+      fillOpacity: 0.14,
+      interactive: false,
+    }).addTo(userLayer);
+    leaflet
+      .circleMarker([latitude, longitude], {
+        radius: 8,
+        color: "#ffffff",
+        weight: 3,
+        fillColor: "#0f7890",
+        fillOpacity: 1,
+        bubblingMouseEvents: false,
+      })
+      .bindTooltip("La tua posizione", { direction: "top", offset: [0, -8] })
+      .addTo(userLayer);
+
+    map.fitBounds(circle.getBounds(), { padding: [44, 44], maxZoom: 14 });
+  }, [mapReady, nearbySelection]);
 
   return (
     <div className="relative h-[clamp(31rem,68vh,47rem)] min-h-[31rem] w-full">
@@ -298,6 +348,11 @@ export function LeafletBeachMap({
             : poiState === "zoom-in" || poiState === "viewport-too-large"
               ? "Ingrandisci la mappa per vedere parcheggi, lidi e servizi"
               : "Punti utili temporaneamente non disponibili"}
+        </div>
+      ) : null}
+      {nearbySelection ? (
+        <div className="sr-only" role="status" aria-live="polite">
+          La tua posizione è visibile sulla mappa. Mostro le spiagge entro {nearbySelection.radiusKm} km.
         </div>
       ) : null}
     </div>

@@ -11,7 +11,7 @@ const items: Array<{
   icon: LucideIcon;
   href?: string;
 }> = [
-  { id: "oggi", label: "Oggi", icon: Sun, href: "/#classifica" },
+  { id: "oggi", label: "Spiagge", icon: Sun, href: "/#classifica" },
   { id: "mappa", label: "Mappa", icon: Map, href: "/mappa" },
   { id: "impostazioni", label: "Impostazioni", icon: Settings, href: "/impostazioni" },
 ] as const;

@@ -274,7 +274,7 @@ describe("HomeExperience", () => {
 
     expect(desktopNavigation).toBeInTheDocument();
     expect(desktopHeader).not.toBeNull();
-    expect(within(desktopNavigation).getByRole("link", { name: "Oggi" })).toHaveAttribute(
+    expect(within(desktopNavigation).getByRole("link", { name: "Spiagge" })).toHaveAttribute(
       "href",
       "/#classifica",
     );
@@ -301,7 +301,6 @@ describe("HomeExperience", () => {
     expect(within(desktopNavigation).queryByText("Regioni")).not.toBeInTheDocument();
     expect(within(desktopHeader!).queryByText("Italiano")).not.toBeInTheDocument();
     expect(within(desktopHeader!).queryByText("Impostazioni")).not.toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: "Spiagge" })).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "Esplora la costa" })).not.toBeInTheDocument();
   });
 

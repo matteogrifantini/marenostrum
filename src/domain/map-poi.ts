@@ -43,7 +43,7 @@ const SICILY_BOUNDS = {
   east: 16.5,
 };
 
-export const MIN_POI_ZOOM = 8;
+export const MIN_POI_ZOOM = 10;
 export const MAX_POI_BBOX_AREA = 4.5;
 
 const CATEGORY_LABELS: Record<MapPoiCategory, string> = {
@@ -101,16 +101,6 @@ function parseBbox(value: string | null): MapBounds {
   return { south, west, north, east };
 }
 
-function parseCategories(value: string | null): MapPoiCategory[] {
-  const categories = (value?.split(",") ?? MAP_POI_CATEGORIES)
-    .map((category) => category.trim())
-    .filter((category): category is MapPoiCategory =>
-      MAP_POI_CATEGORIES.includes(category as MapPoiCategory),
-    );
-
-  return [...new Set(categories)];
-}
-
 export function parseMapPlacesRequest(request: Request): MapPlacesQuery {
   const params = new URL(request.url).searchParams;
   const bbox = parseBbox(params.get("bbox"));
@@ -120,12 +110,9 @@ export function parseMapPlacesRequest(request: Request): MapPlacesQuery {
     throw new Error("zoom non valido");
   }
 
-  const categories = parseCategories(params.get("categories"));
-  if (categories.length === 0) {
-    throw new Error("nessuna categoria valida");
-  }
-
-  return { bbox, zoom, categories };
+  // I punti utili non sono un filtro utente: quando la mappa è abbastanza
+  // vicina, il layer mostra sempre tutte le categorie disponibili.
+  return { bbox, zoom, categories: [...MAP_POI_CATEGORIES] };
 }
 
 export function getMapPlacesRequestIssue(query: MapPlacesQuery) {

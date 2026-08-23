@@ -47,7 +47,7 @@ export function PageShell({
                   className="size-2 rounded-full bg-[var(--sun)] shadow-[0_0_0_4px_rgba(255,194,71,0.22)]"
                 />
               )}
-              Oggi
+              Spiagge
             </Link>
 
             <Link

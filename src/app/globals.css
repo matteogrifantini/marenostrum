@@ -331,25 +331,6 @@ a:focus-visible {
   line-height: 1;
 }
 
-.map-legend-score {
-  display: inline-block;
-  width: 0.62rem;
-  height: 0.62rem;
-  border-radius: 999px;
-}
-
-.map-legend-score--good {
-  background: var(--score-good);
-}
-
-.map-legend-score--fair {
-  background: var(--score-caution);
-}
-
-.map-legend-score--poor {
-  background: var(--score-poor);
-}
-
 @media (max-width: 639px) {
   body {
     font-size: 1.0625rem;

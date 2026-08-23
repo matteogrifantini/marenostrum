@@ -10,6 +10,23 @@ export const metadata: Metadata = {
   },
 };
 
+const PRIVACY_EMAIL = process.env.NEXT_PUBLIC_PRIVACY_EMAIL?.trim() || null;
+
+function PrivacyContact() {
+  if (!PRIVACY_EMAIL) {
+    return <span className="font-bold text-[var(--ink)]">contatto privacy prossimamente</span>;
+  }
+
+  return (
+    <a
+      href={`mailto:${PRIVACY_EMAIL}`}
+      className="font-bold text-[var(--ink)] underline decoration-[var(--line)] underline-offset-4"
+    >
+      {PRIVACY_EMAIL}
+    </a>
+  );
+}
+
 export default function PrivacyPage() {
   return (
     <LegalPageLayout
@@ -29,8 +46,7 @@ export default function PrivacyPage() {
           >
             marenostrum.app
           </a>
-          ). Per qualsiasi richiesta in materia di privacy, è possibile scrivere a{" "}
-          <span className="font-bold text-[var(--ink)]">privacy@marenostrum.app</span>.
+          ). Per qualsiasi richiesta in materia di privacy, è possibile usare la funzione di cancellazione nelle Impostazioni o contattare <PrivacyContact />.
         </p>
       </section>
 
@@ -52,10 +68,10 @@ export default function PrivacyPage() {
             <strong>Geolocalizzazione (&quot;Vicino a me&quot;)</strong>: Quando attivi la ricerca per prossimità, le coordinate GPS vengono elaborate in tempo reale dal browser per calcolare la distanza chilometrica dalle spiagge. Le tue coordinate non vengono salvate su database né inviate a provider terzi di tracciamento.
           </li>
           <li>
-            <strong>Spiagge Preferite</strong>: Senza accesso, le spiagge salvate restano nello spazio locale del dispositivo (<code>localStorage</code>). Se scegli di accedere con il link monouso inviato via email, i soli codici delle spiagge preferite vengono sincronizzati su Supabase e associati al tuo account per ritrovarli su più dispositivi.
+            <strong>Spiagge Preferite</strong>: Senza accesso, le spiagge salvate restano nello spazio locale del dispositivo (<code>localStorage</code>). Se scegli di accedere o registrarti con Google, Apple oppure email e password, i soli codici delle spiagge preferite vengono sincronizzati su Supabase e associati al tuo account per ritrovarli su più dispositivi.
           </li>
           <li>
-            <strong>Account e sessione</strong>: L&apos;email viene utilizzata esclusivamente per inviare il link di accesso e mantenere la sessione autenticata. Puoi uscire in ogni momento e chiedere la cancellazione dei dati dell&apos;account a <span className="font-bold text-[var(--ink)]">privacy@marenostrum.app</span>.
+            <strong>Account e sessione</strong>: L&apos;indirizzo email e l&apos;identità del provider scelto vengono utilizzati esclusivamente per creare o mantenere la sessione autenticata. Puoi uscire in ogni momento o eliminare l&apos;account direttamente dalle Impostazioni.
           </li>
           <li>
             <strong>Avvisi locali</strong>: Se li abiliti, il browser conserva solo una preferenza tecnica e l&apos;autorizzazione alle notifiche sul dispositivo. Mare Nostrum non usa notifiche per profilazione e non riceve la posizione GPS.
@@ -96,7 +112,7 @@ export default function PrivacyPage() {
         </h2>
         <p>
           In conformità agli articoli 15-22 del GDPR, hai il diritto di richiedere l&apos;accesso ai tuoi dati, la rettifica, la cancellazione o la limitazione del trattamento, nonché di opporti al trattamento dei tuoi dati personali scrivendo a{" "}
-          <span className="font-bold text-[var(--ink)]">privacy@marenostrum.app</span>.
+          <PrivacyContact />.
         </p>
       </section>
     </LegalPageLayout>

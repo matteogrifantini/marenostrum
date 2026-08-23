@@ -7,12 +7,15 @@ vi.mock("next/navigation", () => ({
 }));
 
 describe("SettingsExperience", () => {
-  it("explains local favorites and offers passwordless access", () => {
+  it("explains local favorites and offers quick account access", () => {
     render(<SettingsExperience initialEmail={null} />);
 
     expect(screen.getByRole("heading", { name: "Impostazioni" })).toBeInTheDocument();
-    expect(screen.getByLabelText("La tua email")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Ricevi il link/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Continua con Google" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Continua con Apple" })).toBeInTheDocument();
+    expect(screen.getByLabelText("Email")).toBeInTheDocument();
+    expect(screen.getByLabelText("Password")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Accedi" })).toBeInTheDocument();
     expect(screen.getByText(/ritrovare i tuoi preferiti su più dispositivi/)).toBeInTheDocument();
   });
 

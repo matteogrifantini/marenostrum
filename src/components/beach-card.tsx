@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { CloudSun, Waves, Wind } from "lucide-react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
-import { formatAggregateMetric, formatWeatherLabel } from "../lib/forecast-presentation";
+import { formatWeatherLabel } from "../lib/forecast-presentation";
 import { versionedMediaUrl } from "../lib/media-url";
+import { formatDistanceKm, formatWaveHeightMeters, formatWindSpeedKmh, useUserPreferences } from "../lib/user-preferences";
 import { FavoriteToggle } from "./favorite-toggle";
 
 type BeachCardProps = {
@@ -48,6 +51,7 @@ export function BeachCard({
   distanceKm,
   eager = false,
 }: BeachCardProps) {
+  const preferences = useUserPreferences();
   const { beach, conditions } = recommendation;
   const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=all-day&source=home`;
   const image = beach.image;
@@ -56,8 +60,8 @@ export function BeachCard({
   const displayScore = (Math.max(0, Math.min(100, recommendation.score)) / 10).toFixed(1);
   const tone = scoreTone(recommendation.score);
   const direction = windDirection(conditions.windDirectionDegrees);
-  const windMetric = `${formatAggregateMetric(conditions.windSpeedKmh)} km/h`;
-  const waveMetric = `${formatAggregateMetric(conditions.waveHeightMeters)} m`;
+  const windMetric = formatWindSpeedKmh(conditions.windSpeedKmh, preferences.distanceUnit);
+  const waveMetric = formatWaveHeightMeters(conditions.waveHeightMeters, preferences.waveHeightUnit);
   const weatherLabel = formatWeatherLabel(conditions.weather);
 
   return (
@@ -92,10 +96,10 @@ export function BeachCard({
           <h3 className="line-clamp-2 min-h-[2.35rem] font-serif text-[1.03rem] font-semibold leading-[1.15] tracking-[-0.035em] text-[var(--ink)] sm:text-lg">
             {beach.name}
           </h3>
-          <p className="mt-1 truncate text-[0.7rem] font-semibold text-[var(--muted)] sm:text-xs">
+          <p className="mt-1 break-words text-[0.7rem] font-semibold leading-tight text-[var(--muted)] sm:text-xs">
             {distanceKm == null
               ? beach.municipality
-              : `${beach.municipality} · ${distanceKm} km`}
+              : `${beach.municipality} · ${formatDistanceKm(distanceKm, preferences.distanceUnit)}`}
           </p>
 
           <div className="mt-auto flex min-w-0 items-end gap-1.5 pt-3 sm:gap-3">
@@ -115,14 +119,14 @@ export function BeachCard({
                 className="flex min-w-0 items-center gap-1.5"
               >
                 <Wind aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={16} strokeWidth={2.2} />
-                <span className="truncate">{direction} · {windMetric}</span>
+                <span className="min-w-0 break-words whitespace-normal">{direction} · {windMetric}</span>
               </div>
               <div
                 aria-label={`Onde: ${waveMetric}`}
                 className="flex min-w-0 items-center gap-1.5"
               >
                 <Waves aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={16} strokeWidth={2.2} />
-                <span className="truncate">{waveMetric}</span>
+                <span className="min-w-0 break-words whitespace-normal">{waveMetric}</span>
               </div>
               <div
                 aria-label={`Cielo: ${weatherLabel}`}

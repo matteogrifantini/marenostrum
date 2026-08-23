@@ -18,7 +18,7 @@ describe("Legal Pages", () => {
       expect(
         screen.getByRole("heading", { level: 2, name: /Dati Trattati e Finalità/ }),
       ).toBeInTheDocument();
-      expect(screen.getAllByText(/privacy@marenostrum.app/).length).toBeGreaterThanOrEqual(2);
+      expect(screen.getAllByText(/contatto privacy prossimamente/).length).toBeGreaterThanOrEqual(2);
       expect(screen.getByText(/Torna alle spiagge/)).toBeInTheDocument();
     });
 
@@ -45,6 +45,9 @@ describe("Legal Pages", () => {
       ).toBeInTheDocument();
       expect(
         screen.getByText("marenostrum:favorites:v1"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText("marenostrum:preferences:v1"),
       ).toBeInTheDocument();
     });
 
