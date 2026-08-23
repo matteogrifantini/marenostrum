@@ -61,7 +61,7 @@ export function BeachInfoAccordion({ beach, detail, open, onToggle, panelRef }: 
             {detail.facts.map((fact, index) => (
               <div
                 key={`${fact.label}-${index}`}
-                className={`grid grid-cols-[2.35rem_1fr] gap-2 border-[var(--line)] px-2 py-4 sm:grid-cols-[2rem_1fr] ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b" : ""}`}
+                className={`grid grid-cols-[2.35rem_1fr] gap-2 border-[var(--line)] px-2 py-4 sm:grid-cols-[2rem_1fr] ${index % 2 === 0 ? "border-r" : ""} ${index < detail.facts.length - 2 ? "border-b" : ""}`}
               >
                 <span aria-hidden="true" className="detail-emoji detail-emoji-mobile">{fact.emoji}</span>
                 <div>

@@ -21,6 +21,18 @@ describe("Sicilian master content", () => {
     );
   });
 
+  it("provides all six structured information categories for every beach", () => {
+    const requiredLabels = ["Suolo", "Fondale", "Esposizione", "Servizi", "Accesso", "Ambiente"];
+    const contentResult = validateSicilianMasterCatalog(content);
+
+    for (const record of contentResult.records) {
+      const labels = record.facts.map((fact) => fact.split(" — ", 1)[0]);
+
+      expect(labels, record.slug).toEqual(requiredLabels);
+      expect(record.facts.every((fact) => fact.includes(" — "))).toBe(true);
+    }
+  });
+
   it("does not make draft candidates eligible for publication", () => {
     const result = evaluateSicilianMasterCatalog(candidates, content);
 

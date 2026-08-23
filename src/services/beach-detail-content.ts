@@ -83,11 +83,43 @@ function classifyFact(value: string): Pick<BeachFact, "emoji" | "label"> {
   return { emoji: "ℹ️", label: "Info" };
 }
 
+function parseStructuredFact(value: string): BeachFact | null {
+  const match = value.match(/^(Suolo|Fondale|Esposizione|Servizi|Accesso|Ambiente)\s+—\s+(.+)$/i);
+  if (!match) return null;
+
+  const label = match[1].toLocaleLowerCase("it-IT");
+  const labelByKey: Record<string, BeachFact["label"]> = {
+    suolo: "Suolo",
+    fondale: "Fondale",
+    esposizione: "Esposizione",
+    servizi: "Servizi",
+    accesso: "Accesso",
+    ambiente: "Ambiente",
+  };
+  const canonicalLabel = labelByKey[label];
+  if (!canonicalLabel) return null;
+
+  const emojiByLabel: Record<BeachFact["label"], BeachFact["emoji"]> = {
+    Suolo: /sabbia|arenile|litorale/i.test(match[2]) ? "🏖️" : "🪨",
+    Fondale: "🌊",
+    Esposizione: "🧭",
+    Servizi: "🧺",
+    Accesso: "🥾",
+    Ambiente: "🌿",
+  };
+
+  return {
+    emoji: emojiByLabel[canonicalLabel],
+    label: canonicalLabel,
+    value: match[2].trim(),
+  };
+}
+
 function mapFacts(beach: Beach): BeachFact[] {
   return (beach.facts ?? [])
     .map((fact) => fact.trim())
     .filter(Boolean)
-    .map((value) => ({ ...classifyFact(value), value }));
+    .map((value) => parseStructuredFact(value) ?? { ...classifyFact(value), value });
 }
 
 function numericCoordinate(value: number | string | null | undefined) {

@@ -245,4 +245,31 @@ describe("buildBeachDetailContent", () => {
       { emoji: "🌊", label: "Acqua", value: "Acqua limpida" },
     ]);
   });
+
+  it("renders explicit beach-information categories without repeating the prefix", () => {
+    const detail = buildBeachDetailContent(
+      {
+        ...beach,
+        facts: [
+          "Suolo — ciottoli chiari e roccia",
+          "Fondale — profondo vicino alla riva",
+          "Esposizione — Nord-ovest",
+          "Servizi — Nessun servizio stabile verificato",
+          "Accesso — Sentiero e discesa rocciosa",
+          "Ambiente — Macchia mediterranea e costa selvaggia",
+        ],
+      },
+      null,
+      [],
+    );
+
+    expect(detail.facts).toEqual([
+      { emoji: "🪨", label: "Suolo", value: "ciottoli chiari e roccia" },
+      { emoji: "🌊", label: "Fondale", value: "profondo vicino alla riva" },
+      { emoji: "🧭", label: "Esposizione", value: "Nord-ovest" },
+      { emoji: "🧺", label: "Servizi", value: "Nessun servizio stabile verificato" },
+      { emoji: "🥾", label: "Accesso", value: "Sentiero e discesa rocciosa" },
+      { emoji: "🌿", label: "Ambiente", value: "Macchia mediterranea e costa selvaggia" },
+    ]);
+  });
 });

@@ -40,7 +40,8 @@ describe("buildSicilianMasterDraftImport", () => {
         longitude: 12.987613,
       }),
     ]);
-    expect(result.sources).toEqual([
+    expect(result.sources).toHaveLength(3);
+    expect(result.sources).toEqual(expect.arrayContaining([
       expect.objectContaining({
         beach_slug: "balestrate",
         source_url: "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
@@ -51,7 +52,12 @@ describe("buildSicilianMasterDraftImport", () => {
         source_url: "https://www.openstreetmap.org/relation/12272249",
         is_primary: false,
       }),
-    ]);
+      expect.objectContaining({
+        beach_slug: "balestrate",
+        source_url: "https://turismo.cittametropolitana.pa.it/i-comuni-della-provincia/balestrate/",
+        is_primary: false,
+      }),
+    ]));
   });
 
   it("blocks a candidate without coordinates instead of creating a partial row", () => {

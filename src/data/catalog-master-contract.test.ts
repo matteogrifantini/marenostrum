@@ -15,7 +15,14 @@ const validContent: SicilianBeachMasterRecord = {
   access_level: "facile",
   services: [],
   warnings: ["Servizi e concessioni possono cambiare con la stagione."] ,
-  facts: ["Spiaggia sabbiosa"],
+  facts: [
+    "Suolo — sabbia chiara",
+    "Fondale — basso vicino alla riva",
+    "Esposizione — Nord",
+    "Servizi — Da verificare",
+    "Accesso — Facile",
+    "Ambiente — Litorale aperto",
+  ],
   sources: [
     {
       source_name: "Visit Sicily",
@@ -67,6 +74,17 @@ describe("validateSicilianMasterCatalog", () => {
       "orientation_invalid",
       "source_required",
     ]);
+  });
+
+  it("rejects content without the six beach-information categories", () => {
+    const result = validateSicilianMasterCatalog([
+      {
+        ...validContent,
+        facts: ["Suolo — sabbia chiara"],
+      },
+    ]);
+
+    expect(result.issues.map((issue) => issue.code)).toContain("facts_incomplete");
   });
 });
 

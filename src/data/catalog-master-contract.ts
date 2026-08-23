@@ -33,6 +33,7 @@ export type SicilianMasterCatalogValidationIssue = {
     | "orientation_label_required"
     | "access_invalid"
     | "array_invalid"
+    | "facts_incomplete"
     | "source_required"
     | "source_invalid";
   message: string;
@@ -49,6 +50,7 @@ const sourceRoles = new Set<SicilianBeachMasterSource["role"]>([
   "coordinate-cross-check",
   "access",
 ]);
+const requiredFactLabels = ["Suolo", "Fondale", "Esposizione", "Servizi", "Accesso", "Ambiente"] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -60,6 +62,14 @@ function isNonEmptyString(value: unknown): value is string {
 
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === "string");
+}
+
+function hasCompleteFacts(facts: string[]) {
+  const labels = facts.map((fact) => fact.split(" — ", 1)[0]);
+  return (
+    labels.length === requiredFactLabels.length &&
+    labels.every((label, index) => label === requiredFactLabels[index])
+  );
 }
 
 function isHttpUrl(value: unknown): value is string {
@@ -137,6 +147,15 @@ function validateMasterRecord(
     if (!isStringArray(value[field])) {
       addIssue(issues, index, "array_invalid", `${field} must be an array of strings`);
     }
+  }
+
+  if (isStringArray(value.facts) && !hasCompleteFacts(value.facts)) {
+    addIssue(
+      issues,
+      index,
+      "facts_incomplete",
+      "facts must contain Suolo, Fondale, Esposizione, Servizi, Accesso and Ambiente in that order",
+    );
   }
 
   if (!Array.isArray(value.sources) || value.sources.length === 0) {

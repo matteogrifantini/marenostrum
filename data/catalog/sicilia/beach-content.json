@@ -1,7 +1,7 @@
 [
   {
     "slug": "san-vito-lo-capo",
-    "description": "Litorale ampio e sabbioso di San Vito Lo Capo, con accesso diretto dalla zona urbana.",
+    "description": "Una grande spiaggia di sabbia chiara nel golfo di San Vito Lo Capo, ai piedi di Monte Monaco. L'arenile urbano unisce acqua bassa, accessi comodi e servizi stagionali.",
     "orientation_degrees": 330,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -9,7 +9,14 @@
     "access_level": "facile",
     "services": ["servizi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Affollamento e servizi possono cambiare con la stagione."],
-    "facts": ["Litorale sabbioso", "Balneazione adatta anche alle famiglie"],
+    "facts": [
+      "Suolo — Sabbia chiara e fine lungo l'arenile urbano",
+      "Fondale — Basso e digradante vicino alla riva",
+      "Esposizione — Nord-ovest, nella baia tra Monte Monaco e Punta del Solanto",
+      "Servizi — Tratti attrezzati stagionali, stabilimenti e servizi sul lungomare",
+      "Accesso — Facile, ingresso dalla zona urbana e dal lungomare",
+      "Ambiente — Grande baia urbana ai piedi di Monte Monaco e del borgo marinaro"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
@@ -27,7 +34,7 @@
   },
   {
     "slug": "baia-santa-margherita-macari",
-    "description": "Baia panoramica sul tratto di Macari, con arenile alternato a tratti rocciosi e accessi stagionali da verificare.",
+    "description": "Una baia panoramica tra Castelluzzo e Macari, con sabbia e tratti ghiaiosi affacciati sul golfo. È un punto tranquillo per mare e passeggiate, ma servizi e accessi possono variare in stagione.",
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -35,13 +42,26 @@
     "access_level": "facile",
     "services": ["parcheggi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "La viabilità e gli accessi possono cambiare nella stagione estiva."],
-    "facts": ["Si trova nel territorio di Macari", "Arenile alternato a tratti rocciosi"],
+    "facts": [
+      "Suolo — Sabbia e tratti ghiaiosi lungo la baia",
+      "Fondale — Digrada verso il largo; profondità da verificare nel tratto scelto",
+      "Esposizione — Nord-ovest, affaccio aperto sul golfo",
+      "Servizi — Nessun servizio stabile verificato; disponibilità stagionale da controllare",
+      "Accesso — Facile dalla viabilità locale; parcheggi e accessi possono variare",
+      "Ambiente — Baia panoramica tra Castelluzzo e Macari, con costa naturale"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/itinerario/scopello-san-vito-lo-capo-marsala-dintorni/",
         "role": "primary"
+      },
+      {
+        "source_name": "Comune di San Vito Lo Capo",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.sanvitolocapo.tp.it/index.php/it/eventi/bagli-olio-e-mare",
+        "role": "access"
       },
       {
         "source_name": "Trapani Camper Club",
@@ -59,7 +79,7 @@
   },
   {
     "slug": "cala-tonnarella-dell-uzzo",
-    "description": "Caletta della Riserva dello Zingaro, raggiungibile attraverso i percorsi della riserva e con accesso dipendente dalle condizioni del sentiero.",
+    "description": "Una caletta della Riserva dello Zingaro incastonata tra ciottoli chiari, roccia e acqua trasparente. Si raggiunge a piedi lungo i sentieri della Riserva, senza servizi di spiaggia.",
     "orientation_degrees": 330,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -67,7 +87,14 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'accesso richiede un percorso a piedi e può essere limitato dalle condizioni della Riserva."],
-    "facts": ["Si trova nella Riserva dello Zingaro", "Accesso dal versante nord della Riserva"],
+    "facts": [
+      "Suolo — Ciottoli bianchi levigati e roccia calcarea",
+      "Fondale — Fondo roccioso e ciottoloso, con acqua molto trasparente",
+      "Esposizione — Nord-ovest, versante nord della Riserva",
+      "Servizi — Nessun servizio di spiaggia stabile; verificare regole e punti acqua della Riserva",
+      "Accesso — Sentiero della Riserva, dal versante nord e solo a piedi",
+      "Ambiente — Riserva dello Zingaro, macchia mediterranea e calette selvagge"
+    ],
     "sources": [
       {
         "source_name": "Riserva Naturale Orientata dello Zingaro",
@@ -91,7 +118,7 @@
   },
   {
     "slug": "cala-marinella-zingaro",
-    "description": "Caletta appartata della Riserva dello Zingaro, da considerare insieme al percorso a piedi necessario per raggiungerla.",
+    "description": "Una piccola caletta selvaggia della Riserva dello Zingaro, tra ciottoli, pareti rocciose e macchia mediterranea. La visita richiede un percorso a piedi e una preparazione autonoma.",
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -99,7 +126,14 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Non sono stati associati servizi in loco: verificare sempre le regole e l'apertura della Riserva."],
-    "facts": ["Si trova nella Riserva dello Zingaro", "Accesso tramite sentiero costiero"],
+    "facts": [
+      "Suolo — Ciottoli chiari e roccia lungo la caletta",
+      "Fondale — Fondo roccioso e ciottoloso, da esplorare con cautela",
+      "Esposizione — Nord-ovest, lungo il sentiero costiero",
+      "Servizi — Nessun servizio stabile verificato; portare acqua e necessario",
+      "Accesso — Sentiero costiero della Riserva, raggiungibile a piedi",
+      "Ambiente — Costa selvaggia della Riserva e macchia mediterranea"
+    ],
     "sources": [
       {
         "source_name": "Riserva Naturale Orientata dello Zingaro",
@@ -123,7 +157,7 @@
   },
   {
     "slug": "cala-capreria-zingaro",
-    "description": "Caletta della Riserva dello Zingaro sul versante di Scopello, con un avvicinamento a piedi lungo il sentiero costiero.",
+    "description": "La prima caletta del versante di Scopello nella Riserva dello Zingaro, con ciottoli chiari, scogli e mare limpido. L'accesso è legato al sentiero costiero e richiede calzature adatte.",
     "orientation_degrees": 315,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -131,7 +165,14 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il sentiero e le scale richiedono calzature adatte e possono essere condizionati dal meteo."],
-    "facts": ["Si trova nella Riserva dello Zingaro", "Prima caletta raggiungibile dall'ingresso sud"],
+    "facts": [
+      "Suolo — Ciottoli bianchi levigati e rocce affioranti",
+      "Fondale — Roccioso e ciottoloso, adatto alla maschera con mare calmo",
+      "Esposizione — Nord-ovest, versante di Scopello",
+      "Servizi — Nessun servizio stabile verificato nella caletta",
+      "Accesso — Sentiero dall'ingresso sud della Riserva; calzature adatte",
+      "Ambiente — Pareti rocciose, macchia mediterranea e costa protetta"
+    ],
     "sources": [
       {
         "source_name": "Riserva Naturale Orientata dello Zingaro",
@@ -155,7 +196,7 @@
   },
   {
     "slug": "tonnara-di-scopello",
-    "description": "Luogo costiero storico di Scopello, con specchio d'acqua tra i faraglioni e accesso da verificare in base alle regole della struttura.",
+    "description": "Uno specchio d'acqua tra i faraglioni e l'antica tonnara di Scopello, più luogo costiero che spiaggia tradizionale. L'ingresso balneare e i servizi dipendono dalle regole della struttura.",
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -163,7 +204,14 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Accesso balneare, disponibilità e modalità di ingresso vanno verificati prima della visita."],
-    "facts": ["Tonnara storica di Scopello", "Specchio d'acqua tra i faraglioni"],
+    "facts": [
+      "Suolo — Roccia e piattaforme naturali tra i faraglioni",
+      "Fondale — Acqua limpida e fondo roccioso, profondo in alcuni punti",
+      "Esposizione — Nord-ovest, costa di Scopello",
+      "Servizi — Modalità di ingresso e servizi dipendono dalla struttura; verificare prima",
+      "Accesso — Accesso regolamentato e non tradizionale; verificare disponibilità",
+      "Ambiente — Tonnara storica, faraglioni e paesaggio costiero di Scopello"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
@@ -175,21 +223,34 @@
   },
   {
     "slug": "guidaloca",
-    "description": "Spiaggia del litorale di Castellammare del Golfo, inserita tra le località balneari dell'area occidentale siciliana.",
+    "description": "Una baia ampia di ghiaia bianca e ciottoli, con acqua cristallina e una parte rocciosa ideale per esplorare con la maschera. È riparata e offre anche lido e servizi stagionali.",
     "orientation_degrees": 350,
     "orientation_label": "Nord",
     "shelter": [],
     "tags": ["famiglie", "ciottoli", "relax"],
     "access_level": "facile",
-    "services": [],
+    "services": ["lido", "servizi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e accessi possono cambiare con la stagione."],
-    "facts": ["Si trova nel territorio di Castellammare del Golfo"],
+    "facts": [
+      "Suolo — Ghiaia bianca e ciottoli; tratti rocciosi a levante",
+      "Fondale — Basso e digradante in una baia riparata",
+      "Esposizione — Nord, con conca riparata dai venti",
+      "Servizi — Lido, lettini, ombrelloni e snack stagionali",
+      "Accesso — Facile, dalla strada per Scopello",
+      "Ambiente — Baia ampia tra Punta Gran Marinaro e Puntazza"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
         "role": "primary"
+      },
+      {
+        "source_name": "Castellammare del Golfo Turismo",
+        "source_type": "local-tourism",
+        "source_url": "https://www.castellammaredelgolfo.sicilia.it/mare-e-spiagge/baia-di-guidaloca/",
+        "role": "access"
       },
       {
         "source_name": "OpenStreetMap",
@@ -201,7 +262,7 @@
   },
   {
     "slug": "cala-rossa-favignana",
-    "description": "Caletta rocciosa di Favignana, apprezzata per il paesaggio e l'acqua limpida ma con accesso non adatto a tutti.",
+    "description": "Una baia spettacolare di Favignana tra scogli piatti, calcarenite e acqua trasparente. La discesa è impegnativa e l'area non offre la comodità di un lido tradizionale.",
     "orientation_degrees": 315,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -209,73 +270,125 @@
     "access_level": "difficile",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'accesso è roccioso e può risultare difficile: non è un ingresso in spiaggia tradizionale."],
-    "facts": ["Cala rocciosa", "Accesso indicato come difficile dalla fonte turistica"],
+    "facts": [
+      "Suolo — Scogli piatti di calcarenite e tratti di sabbia chiara",
+      "Fondale — Roccioso, con accessi e profondità variabili",
+      "Esposizione — Nord-est, sulla costa nord-orientale di Favignana",
+      "Servizi — Nessun servizio stabile direttamente sulla cala",
+      "Accesso — Discesa lunga e rocciosa; scarpe adatte consigliate",
+      "Ambiente — Baia di calcarenite e cave di tufo, senza lido attrezzato"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/itinerario/via-delle-tonnare-di-andata/",
         "role": "primary"
+      },
+      {
+        "source_name": "Favignana.com",
+        "source_type": "local-tourism",
+        "source_url": "https://www.favignana.com/spiagge/",
+        "role": "access"
       }
     ]
   },
   {
     "slug": "cala-azzurra-favignana",
-    "description": "Caletta di Favignana con sabbia fine e acque adatte a una balneazione tranquilla.",
+    "description": "Una baia del versante sud-est di Favignana con sabbia chiara, riflessi rosati e acqua azzurra. Il fondale basso e la protezione dai venti la rendono una delle cale più semplici per un bagno tranquillo.",
     "orientation_degrees": 130,
     "orientation_label": "Sud-est",
     "shelter": [],
     "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
     "access_level": "facile",
-    "services": [],
+    "services": ["bar"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Affollamento e accessi possono cambiare con la stagione."],
-    "facts": ["Sabbia fine", "Balneazione adatta alle famiglie"],
+    "facts": [
+      "Suolo — Sabbia bianca con riflessi rosati",
+      "Fondale — Basso e sabbioso, con acqua generalmente calma e limpida",
+      "Esposizione — Sud-est, sul versante meridionale di Favignana",
+      "Servizi — Bar vicino alla discesa; eventuali aree attrezzate da verificare",
+      "Accesso — Facile, sentiero dalla strada e secondo accesso laterale",
+      "Ambiente — Baia riparata da venti e correnti, con panorama verso Marsala"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/itinerario/via-delle-tonnare-di-andata/",
         "role": "primary"
+      },
+      {
+        "source_name": "Visit Favignana",
+        "source_type": "local-tourism",
+        "source_url": "https://www.visitfavignana.net/mare-e-spiagge/cala-azzurra/",
+        "role": "access"
       }
     ]
   },
   {
     "slug": "lido-burrone-favignana",
-    "description": "Lido sabbioso di Favignana con ingresso in acqua facile e fondale inizialmente basso.",
+    "description": "La grande spiaggia sabbiosa di Favignana, con ingresso dolce e acqua bassa. È la scelta più comoda dell'isola per famiglie e servizi: stabilimento, lettini, bar e ristorante.",
     "orientation_degrees": 110,
     "orientation_label": "Sud-est",
     "shelter": [],
     "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
     "access_level": "facile",
-    "services": [],
+    "services": ["lido", "bar", "ristorante", "servizi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e concessioni possono cambiare con la stagione."],
-    "facts": ["Ingresso in acqua facile", "Fondale inizialmente basso"],
+    "facts": [
+      "Suolo — Sabbia fine e chiara",
+      "Fondale — Basso e sicuro, con ingresso dolce in acqua",
+      "Esposizione — Sud-ovest, sul versante meridionale di Favignana",
+      "Servizi — Stabilimento, lettini, ombrelloni, bar e ristorante",
+      "Accesso — Facile, strada asfaltata dalla zona abitata",
+      "Ambiente — Ampia baia sabbiosa, comoda per famiglie e nuoto tranquillo"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
         "role": "primary"
+      },
+      {
+        "source_name": "Lido Punta Burrone",
+        "source_type": "beach-facility",
+        "source_url": "https://www.lidopuntaburrone.it/contatti",
+        "role": "access"
       }
     ]
   },
   {
     "slug": "mondello",
-    "description": "Grande spiaggia urbana di Palermo, con sabbia chiara e accesso diretto dal lungomare.",
+    "description": "La grande spiaggia di Palermo tra Monte Pellegrino e Monte Gallo, con sabbia chiara e fondale che degrada lentamente. È urbana e molto servita, con lido, spiaggia libera e collegamenti dal centro.",
     "orientation_degrees": 0,
     "orientation_label": "Nord",
     "shelter": [],
     "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
     "access_level": "facile",
-    "services": ["servizi stagionali"],
+    "services": ["lidi", "servizi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "In alta stagione il litorale può essere molto frequentato."],
-    "facts": ["Spiaggia urbana di Palermo", "Sabbia chiara e accesso dal lungomare"],
+    "facts": [
+      "Suolo — Sabbia chiara e fine",
+      "Fondale — Basso e digradante verso il largo",
+      "Esposizione — Nord, nel golfo tra Monte Pellegrino e Monte Gallo",
+      "Servizi — Spiaggia libera, lidi e servizi accessibili stagionali",
+      "Accesso — Facile, dal lungomare urbano e con collegamenti da Palermo",
+      "Ambiente — Borgo marinaro, Parco della Favorita e ville Liberty"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/localita/palermo/",
         "role": "primary"
+      },
+      {
+        "source_name": "Comune di Palermo Turismo",
+        "source_type": "municipality",
+        "source_url": "https://turismo.comune.palermo.it/palermo-welcome-mare-dettaglio.php?det=26&id=373&tp=158",
+        "role": "access"
       },
       {
         "source_name": "OpenStreetMap",
@@ -287,7 +400,7 @@
   },
   {
     "slug": "barcarello-sferracavallo",
-    "description": "Tratto costiero di Barcarello, scelto come punto di riferimento per l'area rocciosa di Sferracavallo.",
+    "description": "Un tratto roccioso di Sferracavallo tra Capo Gallo e Isola delle Femmine, scelto per acqua limpida, snorkeling e tramonti. Non è una spiaggia sabbiosa e l'accesso va valutato sul posto.",
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -295,7 +408,14 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Coordinate e accesso sono ancora rappresentativi: verificare il punto balneabile prima della pubblicazione."],
-    "facts": ["Area costiera di Sferracavallo"],
+    "facts": [
+      "Suolo — Scogli e piattaforme rocciose",
+      "Fondale — Roccioso, da esplorare con cautela",
+      "Esposizione — Nord-ovest, sulla costa di Sferracavallo",
+      "Servizi — Nessun servizio di spiaggia verificato; servizi di borgata da controllare",
+      "Accesso — Dal lungomare, con tratti rocciosi e percorso da verificare",
+      "Ambiente — Costa tra Capo Gallo e Isola delle Femmine, aperta ai tramonti"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
@@ -307,7 +427,7 @@
   },
   {
     "slug": "isola-delle-femmine",
-    "description": "Litorale balneare dell'area di Isola delle Femmine, con più accessi e tratti da distinguere nella scheda definitiva.",
+    "description": "Un litorale urbano affacciato sull'Area Marina Protetta Capo Gallo–Isola delle Femmine, con più accessi e tratti diversi. La composizione del fondo e i servizi cambiano lungo la costa.",
     "orientation_degrees": 350,
     "orientation_label": "Nord",
     "shelter": [],
@@ -315,13 +435,26 @@
     "access_level": "facile",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "La località comprende più accessi: il punto indicato è rappresentativo e va validato."],
-    "facts": ["Litorale dell'area metropolitana di Palermo"],
+    "facts": [
+      "Suolo — Sabbia e tratti misti lungo il litorale",
+      "Fondale — Digrada in alcuni tratti; profondità variabile tra gli accessi",
+      "Esposizione — Nord, con l'isolotto davanti alla costa",
+      "Servizi — Spiaggia libera e servizi stagionali da verificare",
+      "Accesso — Facile, con più accessi dal litorale urbano",
+      "Ambiente — Area marina protetta Capo Gallo–Isola delle Femmine"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
         "role": "primary"
+      },
+      {
+        "source_name": "Comune di Isola delle Femmine",
+        "source_type": "municipality",
+        "source_url": "https://lnx.comune.isoladellefemmine.pa.it/index.php?Itemid=211&catid=13%3Aarea-turistica&id=10%3Aarea-marina&option=com_content&view=article",
+        "role": "access"
       },
       {
         "source_name": "OpenStreetMap",
@@ -333,15 +466,22 @@
   },
   {
     "slug": "capaci",
-    "description": "Litorale sabbioso di Capaci, indicato tra le spiagge accessibili dell'area palermitana.",
+    "description": "Un lungo litorale sabbioso vicino Palermo, con acqua bassa e accessi adatti a una giornata semplice. In stagione si alternano spiaggia libera, stabilimenti e servizi da verificare.",
     "orientation_degrees": 350,
     "orientation_label": "Nord",
     "shelter": [],
     "tags": ["famiglie", "sabbia", "relax"],
     "access_level": "facile",
-    "services": [],
+    "services": ["lidi", "servizi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e accessi possono cambiare con la stagione."],
-    "facts": ["Litorale dell'area palermitana", "Spiaggia indicata per la balneazione familiare"],
+    "facts": [
+      "Suolo — Sabbia fine e chiara",
+      "Fondale — Basso e digradante, adatto alla balneazione familiare",
+      "Esposizione — Nord, sul litorale aperto di Capaci",
+      "Servizi — Stabilimenti e servizi stagionali; disponibilità da verificare",
+      "Accesso — Facile, con accessi dalla zona urbana",
+      "Ambiente — Ampio litorale sabbioso tra Palermo e il golfo di Carini"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
@@ -359,7 +499,7 @@
   },
   {
     "slug": "cala-rossa-terrasini",
-    "description": "Caletta di Terrasini caratterizzata dalle pareti rossastre e da un fondale adatto all'esplorazione in acqua.",
+    "description": "Una cala di Terrasini dominata da scogliere rossastre e acqua limpida, ideale per tuffi e snorkeling. Non è una spiaggia di sabbia: servono prudenza, scarpe da scoglio e autonomia.",
     "orientation_degrees": 285,
     "orientation_label": "Ovest-nord-ovest",
     "shelter": [],
@@ -367,7 +507,14 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Accesso e condizioni degli scogli richiedono prudenza."],
-    "facts": ["Pareti rocciose rossastre", "Punto indicato per lo snorkeling"],
+    "facts": [
+      "Suolo — Scogliera rossastra e piattaforme rocciose",
+      "Fondale — Limpido e roccioso, interessante per lo snorkeling",
+      "Esposizione — Ovest-nord-ovest, sulla costa di Terrasini",
+      "Servizi — Nessun servizio di spiaggia stabile verificato; portare acqua",
+      "Accesso — Moderato, con ultimi tratti a piedi e movimento sugli scogli",
+      "Ambiente — Costa di Terrasini tra Cala Rossa e Capo Rama"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
@@ -379,7 +526,7 @@
   },
   {
     "slug": "la-praiola-terrasini",
-    "description": "Tratto costiero di Terrasini indicato per la balneazione, con accesso da verificare sul percorso locale.",
+    "description": "Una piccola cala urbana di Terrasini con battigia di pietre vulcaniche scure e atmosfera tranquilla. L'accesso è solo da scale, senza rampa, e i servizi di spiaggia non sono verificati.",
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
@@ -387,33 +534,59 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto di accesso e la praticabilità possono variare in base alla stagione e al moto ondoso."],
-    "facts": ["Si trova nel territorio di Terrasini", "Località indicata per la balneazione"],
+    "facts": [
+      "Suolo — Pietre vulcaniche scure e tratti rocciosi",
+      "Fondale — Roccioso; ingresso in acqua da valutare sul posto",
+      "Esposizione — Nord-ovest, sul lungomare di Terrasini",
+      "Servizi — Nessun servizio stabile verificato nella caletta",
+      "Accesso — Ingresso solo da scale; nessuna rampa disponibile",
+      "Ambiente — Piccola cala urbana dall'atmosfera tranquilla"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/terrasini-e-cinisi/",
         "role": "primary"
+      },
+      {
+        "source_name": "Comune di Terrasini",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.terrasini.pa.it/vivere-il-comune/luoghi/la-praiola/",
+        "role": "access"
       }
     ]
   },
   {
     "slug": "magaggiari-cinisi",
-    "description": "Spiaggia sabbiosa di Cinisi, conosciuta anche per le attività legate al mare e agli sport d'acqua.",
+    "description": "Un ampio litorale sabbioso di Cinisi, con acqua dai toni turchesi e un affaccio aperto verso il tramonto. È vicino all'abitato, mentre servizi e attività possono cambiare con la stagione.",
     "orientation_degrees": 0,
     "orientation_label": "Nord",
     "shelter": [],
     "tags": ["sabbia", "sport-acqua", "relax"],
     "access_level": "facile",
-    "services": [],
+    "services": ["servizi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Condizioni del vento e servizi possono cambiare con la stagione."],
-    "facts": ["Spiaggia sabbiosa", "Area indicata anche per sport d'acqua"],
+    "facts": [
+      "Suolo — Sabbia fine e chiara",
+      "Fondale — Digrada verso il largo; condizioni variabili con il vento",
+      "Esposizione — Nord, nella baia di Cinisi",
+      "Servizi — Servizi stagionali e attività sportive da verificare",
+      "Accesso — Facile, litorale vicino all'abitato",
+      "Ambiente — Baia aperta con tramonti verso il golfo di Castellammare"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/terrasini-e-cinisi/",
         "role": "primary"
+      },
+      {
+        "source_name": "Comune di Cinisi",
+        "source_type": "municipality",
+        "source_url": "https://cinisi.comune.digital/visit-cinisi/i/81059283/spiaggia-di-magaggiari",
+        "role": "access"
       },
       {
         "source_name": "OpenStreetMap",
@@ -425,27 +598,40 @@
   },
   {
     "slug": "spiaggia-del-lungomare-cefalu",
-    "description": "Litorale urbano di Cefalù lungo il Lungomare Giuseppe Giardina, con più accessi e tratti da verificare singolarmente.",
+    "description": "La spiaggia urbana di Cefalù, un lungo arenile di sabbia dorata ai piedi della Rocca e del centro storico. Il fondale digrada dolcemente e il lungomare concentra accessi, lidi e servizi stagionali.",
     "orientation_degrees": 20,
     "orientation_label": "Nord-nord-est",
     "shelter": [],
     "tags": ["famiglie", "sabbia", "relax", "lungomare"],
     "access_level": "facile",
-    "services": [],
+    "services": ["lidi", "servizi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto è rappresentativo del lungomare: servizi, accessi e concessioni possono differire lungo la spiaggia."],
-    "facts": ["Spiaggia pubblica indicata nel piano comunale", "Litorale urbano di Cefalù"],
+    "facts": [
+      "Suolo — Sabbia dorata e fine",
+      "Fondale — Digrada dolcemente verso il largo",
+      "Esposizione — Nord-nord-est, davanti al centro storico",
+      "Servizi — Stabilimenti e attrezzature stagionali lungo il litorale",
+      "Accesso — Facile, con accessi urbani dal Lungomare Giardina",
+      "Ambiente — Lungomare ai piedi della Rocca, con vista su porto e Duomo"
+    ],
     "sources": [
       {
         "source_name": "Comune di Cefalù",
         "source_type": "municipality",
         "source_url": "https://comune.cefalu.pa.it/documento_pubblico/pudm-piano-di-utilizzo-delle-aree-demaniali-marittime/",
         "role": "primary"
+      },
+      {
+        "source_name": "Cefalù.it",
+        "source_type": "local-tourism",
+        "source_url": "https://cefalu.it/travel/cefalu/incantevole-bellezza-delle-spiagge-di-cefalu/",
+        "role": "access"
       }
     ]
   },
   {
     "slug": "caldura-cefalu",
-    "description": "Piccola spiaggia di ciottoli e rocce nell'area di Caldura, raggiungibile dalla zona di Via Cavallaro tramite un accesso con scale.",
+    "description": "Una piccola cala di Cefalù tra ghiaia, ciottoli e scogli, più appartata rispetto al lido del centro. L'accesso con scale e il fondale profondo vicino alla riva la rendono più adatta a chi cerca un ambiente roccioso.",
     "orientation_degrees": 70,
     "orientation_label": "Est-nord-est",
     "shelter": [],
@@ -453,7 +639,14 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'acqua diventa rapidamente profonda; l'accesso presenta scale e fondo roccioso."],
-    "facts": ["Spiaggia di ciottoli e rocce", "Accesso dalla zona di Via Cavallaro"],
+    "facts": [
+      "Suolo — Ghiaia, ciottoli e scogli affioranti",
+      "Fondale — Profondo vicino alla riva, con fondo roccioso",
+      "Esposizione — Est-nord-est, nell'area di Caldura",
+      "Servizi — Nessun lido stabile verificato; portare acqua e attrezzatura",
+      "Accesso — Moderato, discesa e scale dalla zona di Via Cavallaro",
+      "Ambiente — Piccola cala riservata tra verde, rocce e mare aperto"
+    ],
     "sources": [
       {
         "source_name": "Comune di Cefalù",
@@ -471,7 +664,7 @@
   },
   {
     "slug": "mazzaforno-cefalu",
-    "description": "Tratto costiero della contrada Mazzaforno, con più calette e accessi da distinguere tra aree pubbliche e concessioni.",
+    "description": "Una contrada costiera con più calette di Cefalù, dove sabbia, sassolini, ciottoli e rocce si alternano tra gli accessi. Non è un unico arenile: servizi, concessioni e difficoltà cambiano da un tratto all'altro.",
     "orientation_degrees": 20,
     "orientation_label": "Nord-nord-est",
     "shelter": [],
@@ -479,33 +672,59 @@
     "access_level": "moderato",
     "services": [],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto è rappresentativo della contrada: accessi e disponibilità dei tratti possono variare."],
-    "facts": ["Area costiera di Cefalù", "Il piano comunale distingue più tratti e accessi"],
+    "facts": [
+      "Suolo — Tratti di sabbia, sassolini, ciottoli e rocce frastagliate",
+      "Fondale — Variabile tra le baie; verificare il singolo accesso",
+      "Esposizione — Nord-nord-est, sulla contrada Mazzaforno",
+      "Servizi — Servizi e concessioni da verificare nei singoli accessi",
+      "Accesso — Moderato, con più scale e sentieri verso le calette",
+      "Ambiente — Contrada costiera a circa 3 km da Cefalù, con baie multiple"
+    ],
     "sources": [
       {
         "source_name": "Comune di Cefalù",
         "source_type": "municipality",
         "source_url": "https://comune.cefalu.pa.it/documento_pubblico/pudm-piano-di-utilizzo-delle-aree-demaniali-marittime/",
         "role": "primary"
+      },
+      {
+        "source_name": "Cefalù.it",
+        "source_type": "local-tourism",
+        "source_url": "https://cefalu.it/travel/cefalu/incantevole-bellezza-delle-spiagge-di-cefalu/",
+        "role": "access"
       }
     ]
   },
   {
     "slug": "balestrate",
-    "description": "Litorale sabbioso di Balestrate sul golfo di Castellammare, con accesso semplice dalla zona abitata.",
+    "description": "Un lungo litorale di sabbia fine sul golfo di Castellammare, con fondale basso e accessi semplici dalla zona abitata. Alle spalle del litorale restano aree verdi e boschive; servizi e concessioni sono stagionali.",
     "orientation_degrees": 350,
     "orientation_label": "Nord",
     "shelter": [],
     "tags": ["famiglie", "sabbia", "relax", "acque-basse"],
     "access_level": "facile",
-    "services": [],
+    "services": ["servizi stagionali"],
     "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi, concessioni e accessi possono cambiare con la stagione."],
-    "facts": ["Litorale sabbioso", "Si affaccia sul golfo di Castellammare"],
+    "facts": [
+      "Suolo — Sabbia fine e chiara",
+      "Fondale — Basso e digradante, adatto alle famiglie",
+      "Esposizione — Nord, affacciata sul golfo di Castellammare",
+      "Servizi — Spiaggia libera e stabilimenti stagionali",
+      "Accesso — Facile, dalla zona abitata e dalla viabilità locale",
+      "Ambiente — Litorale ampio con bosco e vegetazione nella fascia retrostante"
+    ],
     "sources": [
       {
         "source_name": "Visit Sicily",
         "source_type": "regional-tourism",
         "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
         "role": "primary"
+      },
+      {
+        "source_name": "Città metropolitana di Palermo Turismo",
+        "source_type": "metropolitan-tourism",
+        "source_url": "https://turismo.cittametropolitana.pa.it/i-comuni-della-provincia/balestrate/",
+        "role": "access"
       },
       {
         "source_name": "OpenStreetMap",
