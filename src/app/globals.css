@@ -1,3 +1,4 @@
+@import "leaflet/dist/leaflet.css";
 @import "tailwindcss";
 
 :root {
@@ -159,6 +160,194 @@ a:focus-visible {
 
 .hourly-rail::-webkit-scrollbar {
   display: none;
+}
+
+.leaflet-map {
+  z-index: 0;
+  background: #b8d9dd;
+  font-family: inherit;
+}
+
+.leaflet-map .leaflet-control-zoom,
+.leaflet-map .leaflet-control-attribution {
+  border: 0;
+  border-radius: 0.8rem;
+  box-shadow: 0 6px 18px rgba(20, 44, 57, 0.16);
+  overflow: hidden;
+}
+
+.leaflet-map .leaflet-control-zoom a {
+  border: 0;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.94);
+  font-weight: 800;
+}
+
+.leaflet-map .leaflet-control-zoom a:hover,
+.leaflet-map .leaflet-control-zoom a:focus {
+  color: var(--sea-deep);
+  background: var(--surface);
+}
+
+.leaflet-map .leaflet-control-attribution {
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 0.22rem 0.45rem;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.58rem;
+  line-height: 1.2;
+}
+
+.leaflet-map .leaflet-control-attribution a {
+  color: var(--sea-deep);
+  font-weight: 700;
+}
+
+.map-rating-marker,
+.map-poi-marker {
+  border: 0;
+  background: transparent;
+}
+
+.map-rating-marker span {
+  display: grid;
+  width: 3.05rem;
+  height: 2.15rem;
+  place-items: center;
+  border: 3px solid rgba(255, 255, 255, 0.94);
+  border-radius: 999px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  box-shadow: 0 5px 15px rgba(8, 47, 61, 0.3), 0 0 0 2px rgba(8, 47, 61, 0.13);
+  transition: transform 150ms var(--ease-out), box-shadow 150ms var(--ease-out);
+}
+
+.map-rating-marker--good span {
+  background: var(--score-good);
+}
+
+.map-rating-marker--fair span {
+  color: var(--ink);
+  background: var(--score-caution);
+}
+
+.map-rating-marker--poor span {
+  background: var(--score-poor);
+}
+
+.map-rating-marker--selected span {
+  transform: scale(1.15);
+  box-shadow: 0 6px 19px rgba(8, 47, 61, 0.34), 0 0 0 4px rgba(255, 194, 71, 0.9);
+}
+
+.map-poi-marker span {
+  display: grid;
+  width: 1.85rem;
+  height: 1.85rem;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.96);
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.96);
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(8, 47, 61, 0.23);
+}
+
+.map-poi-marker--parking span {
+  background: #e6f1ff;
+}
+
+.map-poi-marker--lido span {
+  background: #fff0c7;
+}
+
+.map-poi-marker--sea-service span {
+  background: #d8f5f3;
+}
+
+.map-tooltip {
+  border: 0;
+  border-radius: 0.65rem;
+  color: white;
+  background: rgba(18, 55, 68, 0.94);
+  box-shadow: 0 5px 15px rgba(8, 47, 61, 0.2);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.map-tooltip::before {
+  border-top-color: rgba(18, 55, 68, 0.94);
+}
+
+.map-popup-wrapper .leaflet-popup-content-wrapper,
+.map-popup-wrapper .leaflet-popup-tip {
+  border: 0;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 28px rgba(20, 44, 57, 0.18);
+}
+
+.map-popup-wrapper .leaflet-popup-content {
+  margin: 0.85rem 1rem;
+  min-width: 9.5rem;
+}
+
+.map-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  color: var(--ink);
+  font-size: 0.76rem;
+}
+
+.map-popup__eyebrow {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.map-popup strong {
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.map-popup a {
+  margin-top: 0.24rem;
+  color: var(--sea-deep);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.map-popup__score {
+  color: var(--sea-deep);
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.map-legend-score {
+  display: inline-block;
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 999px;
+}
+
+.map-legend-score--good {
+  background: var(--score-good);
+}
+
+.map-legend-score--fair {
+  background: var(--score-caution);
+}
+
+.map-legend-score--poor {
+  background: var(--score-poor);
 }
 
 @media (max-width: 639px) {

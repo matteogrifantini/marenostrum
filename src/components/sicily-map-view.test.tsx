@@ -26,7 +26,7 @@ describe("SicilyMapView", () => {
     expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("morning");
   });
 
-  it("does not render a map pin for a recommendation without coordinates", () => {
+  it("exposes only geolocated recommendations as accessible rating markers", () => {
     const recommendationWithoutCoordinates = {
       ...demoRecommendations[0],
       beach: {
@@ -47,12 +47,8 @@ describe("SicilyMapView", () => {
       />,
     );
 
-    expect(
-      screen.queryByRole("button", {
-        name: /Spiaggia Cala del Gelsomino, voto/,
-      }),
-    ).not.toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Cala del Gelsomino" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Spiaggia Cala del Gelsomino, voto/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "Mappa delle spiagge" })).toBeInTheDocument();
   });
 
   it("emits control changes without requiring a full page reload", () => {
@@ -79,7 +75,7 @@ describe("SicilyMapView", () => {
     expect(onPeriodChange).toHaveBeenCalledWith("afternoon");
   });
 
-  it("shows the first beach from the active search in the detail panel", () => {
+  it("keeps rating and sea-place layers focused on the map", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
@@ -91,11 +87,32 @@ describe("SicilyMapView", () => {
       />,
     );
 
-    fireEvent.change(screen.getByRole("searchbox", { name: "Cerca spiaggia sulla mappa" }), {
-      target: { value: "Vendicari" },
-    });
+    expect(screen.getByRole("region", { name: "Mappa delle spiagge" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Parcheggi/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: /Lidi/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: /Servizi mare/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.queryByText("Vedi scheda completa")).not.toBeInTheDocument();
+  });
 
-    expect(screen.getByRole("heading", { name: "Tonnara di Vendicari" })).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Cala del Gelsomino" })).not.toBeInTheDocument();
+  it("lets people hide one useful-place layer without affecting ratings", () => {
+    render(
+      <SicilyMapView
+        recommendations={demoRecommendations}
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /Parcheggi/ }));
+
+    expect(screen.getByRole("button", { name: /Parcheggi/ })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    );
+    expect(screen.getByRole("button", { name: /Lidi/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: /Spiaggia Cala del Gelsomino, voto/ })).toBeInTheDocument();
   });
 });

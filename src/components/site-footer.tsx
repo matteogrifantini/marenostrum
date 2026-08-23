@@ -49,7 +49,7 @@ export function SiteFooter() {
             >
               Open-Meteo
             </a>{" "}
-            e DWD; mappe e parcheggi da OpenStreetMap.
+            e DWD; cartografia Esri con dati OpenStreetMap, parcheggi e punti utili da OpenStreetMap.
           </p>
           <p className="mt-2">
             Le informazioni sono orientative: verifica sempre condizioni reali, divieti e indicazioni delle autorità.

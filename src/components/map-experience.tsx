@@ -65,7 +65,7 @@ export function MapExperience({
               Mappa del Mare in Sicilia
             </h1>
             <p className="mt-1 text-xs font-semibold text-[var(--muted)] sm:text-sm">
-              Esplora la costa siciliana: tocca un pin per scoprire onde, vento e previsioni in tempo reale.
+              Rating delle condizioni e punti utili per il mare, direttamente sulla cartografia della Sicilia.
             </p>
           </header>
 

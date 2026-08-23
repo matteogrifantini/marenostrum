@@ -15,14 +15,14 @@ import type { BeachRecommendation } from "../../domain/beach";
 export const metadata: Metadata = {
   title: "Mappa del Mare e del Vento in Sicilia",
   description:
-    "Mappa interattiva della costa siciliana: visualizza stato del mare, onde, direzione e velocità del vento in tempo reale per trovare la spiaggia ideale.",
+    "Mappa interattiva della Sicilia con rating delle condizioni, parcheggi, lidi e servizi utili per il mare.",
   alternates: {
     canonical: "https://marenostrum.app/mappa",
   },
   openGraph: {
     title: "Mappa del Mare e del Vento in Sicilia — Mare Nostrum",
     description:
-      "Mappa interattiva con condizioni del mare, altezza onde e vento in tempo reale per le spiagge della Sicilia.",
+      "Rating delle spiagge e punti utili per il mare su una vera cartografia della Sicilia.",
     url: "https://marenostrum.app/mappa",
     type: "website",
     siteName: "Mare Nostrum",
