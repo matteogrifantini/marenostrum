@@ -289,3 +289,12 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 - Scaricata: 2026-08-24
 - Nota: foto di contesto del litorale sabbioso di Mazara del Vallo, non una fotografia puntuale dell’accesso di Tonnarella; l’app applica crop e resize in visualizzazione.
+
+### Sant’Elia, Santa Flavia
+
+- File: `sant-elia-santa-flavia.jpg` (fonte: `Costa di Sant'Elia.jpg`)
+- Autore: SilviaPen
+- Fonte: <https://commons.wikimedia.org/wiki/File:Costa_di_Sant%27Elia.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.

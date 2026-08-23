@@ -254,5 +254,13 @@
     "image_credit": "Mαρκος",
     "image_license": "CC BY-SA 4.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Capo_Feto_(Mazara_del_Vallo)_1.jpg"
+  },
+  {
+    "slug": "sant-elia-santa-flavia",
+    "image_path": "/images/beaches/sant-elia-santa-flavia.jpg",
+    "image_alt": "Costa di Sant'Elia a Santa Flavia con il mare e Monte Catalfano.",
+    "image_credit": "SilviaPen",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_di_Sant%27Elia.jpg"
   }
 ]

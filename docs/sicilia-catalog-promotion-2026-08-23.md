@@ -22,6 +22,7 @@ produzione dopo una verifica live dei requisiti minimi:
 - Cornino (`cornino`)
 - Addaura (`addaura`)
 - Tonnarella, Mazara del Vallo (`tonnarella-mazara-del-vallo`)
+- Sant’Elia, Santa Flavia (`sant-elia-santa-flavia`)
 
 Lo stato live è `is_published = true` e `publication_status = verified`. La
 prossima revisione automatica è stata impostata a 30 giorni.
@@ -34,7 +35,7 @@ licenza riutilizzabile.
 
 ## Ancora draft
 
-Le altre 18 candidate restano volutamente non visibili perché manca ancora
+Le altre 17 candidate restano volutamente non visibili perché manca ancora
 almeno un’immagine verificata e attribuita. Non viene usata una foto generica
 per coprire il gap. `Spiaggia dei Francesi` richiede inoltre una verifica
 specifica dell’avviso di sicurezza riportato dalla fonte comunale prima di
