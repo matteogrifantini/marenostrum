@@ -95,11 +95,11 @@ export function SicilyMapView({
 
   const selectedBeach = useMemo(() => {
     return (
-      recommendations.find((r) => r.beach.slug === selectedSlug) ??
+      filteredRecommendations.find((r) => r.beach.slug === selectedSlug) ??
       filteredRecommendations[0] ??
       null
     );
-  }, [recommendations, selectedSlug, filteredRecommendations]);
+  }, [filteredRecommendations, selectedSlug]);
 
   return (
     <div className="flex flex-col gap-4">

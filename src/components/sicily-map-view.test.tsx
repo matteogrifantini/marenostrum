@@ -78,4 +78,24 @@ describe("SicilyMapView", () => {
     expect(onDateChange).toHaveBeenCalledWith("2026-08-21");
     expect(onPeriodChange).toHaveBeenCalledWith("afternoon");
   });
+
+  it("shows the first beach from the active search in the detail panel", () => {
+    render(
+      <SicilyMapView
+        recommendations={demoRecommendations}
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+      />,
+    );
+
+    fireEvent.change(screen.getByRole("searchbox", { name: "Cerca spiaggia sulla mappa" }), {
+      target: { value: "Vendicari" },
+    });
+
+    expect(screen.getByRole("heading", { name: "Tonnara di Vendicari" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Cala del Gelsomino" })).not.toBeInTheDocument();
+  });
 });
