@@ -27,7 +27,7 @@ export function PrototypeStage({ children }: { children: ReactNode }) {
   );
 }
 
-export function PreviewHero({ action }: { action?: ReactNode }) {
+export function PreviewHero({ action, titleAction }: { action?: ReactNode; titleAction?: ReactNode }) {
   return (
     <section className="relative min-h-[23rem] overflow-hidden rounded-[1.8rem] bg-[var(--ink)] text-white shadow-[0_20px_60px_rgba(20,44,57,0.16)] sm:min-h-[30rem]">
       <Image
@@ -61,6 +61,7 @@ export function PreviewHero({ action }: { action?: ReactNode }) {
         <h2 className="mt-2 max-w-[38rem] font-serif text-[clamp(2.7rem,10vw,5.2rem)] font-semibold leading-[0.86] tracking-[-0.07em]">
           {prototypeBeach.name}
         </h2>
+        {titleAction ? <div className="mt-5">{titleAction}</div> : null}
       </div>
     </section>
   );

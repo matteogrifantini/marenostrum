@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { BeachInfoPrototype } from "./beach-info-prototype";
 
 describe("BeachInfoPrototype", () => {
-  it("offers three genuinely different beach-information directions", () => {
+  it("offers four genuinely different beach-information directions", () => {
     render(<BeachInfoPrototype initialVariant={0} />);
 
     const picker = screen.getByRole("navigation", { name: "Prototype variants" });
@@ -18,6 +18,9 @@ describe("BeachInfoPrototype", () => {
     expect(screen.queryByRole("tablist", { name: "Vista spiaggia" })).not.toBeInTheDocument();
 
     fireEvent.click(within(picker).getByRole("button", { name: "Espandi" }));
+    expect(screen.getByRole("button", { name: "Scopri la spiaggia" })).toBeInTheDocument();
+
+    fireEvent.click(within(picker).getByRole("button", { name: "Foto + info" }));
     expect(screen.getByRole("button", { name: "Scopri la spiaggia" })).toBeInTheDocument();
   });
 
@@ -35,6 +38,17 @@ describe("BeachInfoPrototype", () => {
 
   it("reveals the information list inline in the expandable direction", () => {
     render(<BeachInfoPrototype initialVariant={2} />);
+
+    expect(screen.queryByText("Caratteristiche della spiaggia")).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Scopri la spiaggia" }));
+
+    expect(screen.getByText("Caratteristiche della spiaggia")).toBeInTheDocument();
+    expect(screen.getByText("Sabbia chiara e ciottoli fini")).toBeInTheDocument();
+  });
+
+  it("reveals the information list from the beach hero in the photo direction", () => {
+    render(<BeachInfoPrototype initialVariant={3} />);
 
     expect(screen.queryByText("Caratteristiche della spiaggia")).not.toBeInTheDocument();
 

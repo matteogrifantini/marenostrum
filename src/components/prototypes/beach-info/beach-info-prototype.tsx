@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { PrototypePicker } from "./prototype-picker";
 import { ExpandableVariant } from "./variant-expandable";
+import { HeroExpandableVariant } from "./variant-hero-expandable";
 import { PanelVariant } from "./variant-panel";
 import { SliderVariant } from "./variant-slider";
 
@@ -10,6 +11,7 @@ const variants = [
   { name: "Slider", Component: SliderVariant },
   { name: "Pannello", Component: PanelVariant },
   { name: "Espandi", Component: ExpandableVariant },
+  { name: "Foto + info", Component: HeroExpandableVariant },
 ] as const;
 
 type BeachInfoPrototypeProps = {
