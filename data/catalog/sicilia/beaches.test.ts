@@ -3,18 +3,14 @@ import { describe, expect, it } from "vitest";
 import { validateSicilianCatalog } from "../../../src/data/catalog-contract";
 
 describe("Sicilian candidate catalog", () => {
-  it("contains 50 draft candidates across Sicily", () => {
+  it("contains 50 draft candidates in Trapani and Palermo", () => {
     const result = validateSicilianCatalog(catalog);
 
     expect(result.issues).toEqual([]);
     expect(result.records).toHaveLength(50);
-    expect(result.records.filter((record) => record.province === "TP")).toHaveLength(10);
-    expect(result.records.filter((record) => record.province === "PA")).toHaveLength(11);
-    expect(result.records.filter((record) => record.province === "SR")).toHaveLength(6);
-    expect(result.records.filter((record) => record.province === "RG")).toHaveLength(4);
-    expect(result.records.filter((record) => record.province === "AG")).toHaveLength(7);
-    expect(result.records.filter((record) => record.province === "ME")).toHaveLength(8);
-    expect(result.records.filter((record) => record.province === "CT")).toHaveLength(4);
+    expect(result.records.filter((record) => record.province === "TP")).toHaveLength(24);
+    expect(result.records.filter((record) => record.province === "PA")).toHaveLength(26);
+    expect(result.records.every((record) => ["PA", "TP"].includes(record.province))).toBe(true);
     expect(result.records.every((record) => record.publication_status === "draft")).toBe(true);
   });
 

@@ -10,7 +10,13 @@ This directory contains versioned, source-backed candidate records for the Mare 
 - Do not add passwords, API keys, personal data, copied reviews, or unlicensed media.
 - Keep the exact source URL and the date checked for every candidate.
 
-The catalog now contains 50 candidates: the original 21-beach pilot plus 29 additional source-backed records across Syracuse, Ragusa, Agrigento, Messina and Catania. All 50 remain `draft` until the publication gates (forecast, hero image, access and content checks) are complete. The importer is additive and idempotent; it does not delete existing catalog records.
+The active catalog contains 50 draft candidates: 24 in Trapani and 26 in Palermo. This is the original 21-beach pilot plus 29 newly added named beaches and coves from the two target provinces. The importer is additive and idempotent; it does not delete existing catalog records.
+
+The historical verification pass for that removed 29-record expansion is documented in
+[`docs/sicilia-catalog-verification-2026-08-23.md`](../../../docs/sicilia-catalog-verification-2026-08-23.md).
+
+The current Palermo/Trapani expansion is documented in
+[`docs/sicilia-catalog-expansion-2026-08-23.md`](../../../docs/sicilia-catalog-expansion-2026-08-23.md).
 
 Run `npm run catalog:content:validate` for a no-write check. The `:apply` command requires the Supabase URL and service-role key in the local environment and refuses to overwrite published beaches or previously verified content.
 
@@ -20,7 +26,7 @@ Only the `:verify:apply` command updates draft content statuses; unresolved
 webcams and all media remain draft.
 
 `review-candidates.json` contiene un collegamento di ricerca Google Maps per
-ciascuna delle 50 spiagge. Sono profili `draft` con `place_id` nullo: il link
+ciascuna delle 50 spiagge attive. Sono profili `draft` con `place_id` nullo: il link
 usa nome, comune e coordinate per facilitare la verifica manuale, ma non prova
 che il risultato sia l'attività corretta. `npm run catalog:reviews:validate`
 esegue il controllo senza scrivere; `npm run catalog:reviews:apply` salva i

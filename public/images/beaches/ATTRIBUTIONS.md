@@ -186,3 +186,68 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Autore: Marco Tarantino
 - Fonte: <https://commons.wikimedia.org/wiki/File:Balestrate,_spiaggia_ovest.JPG>
 - Licenza: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+
+### Nuove candidate pubblicate nel batch del 23 agosto 2026
+
+### Alcamo Marina
+
+- File: `alcamo-marina.jpg` (fonte: `Spiaggia di Alcamo Marina 01.jpg`)
+- Autore: Daniele Pugliesi
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Alcamo_Marina_01.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Playa, Castellammare del Golfo
+
+- File: `spiaggia-playa-castellammare.jpg` (fonte: `Spiaggia di Castellammare del Golfo 04.jpg`)
+- Autore: Daniele Pugliesi
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Castellammare_del_Golfo_04.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Mazzo di Sciacca
+
+- File: `cala-mazzo-di-sciacca.jpg` (fonte: `Cala Mazzo di Sciacca 03.jpg`)
+- Autore: Daniele Pugliesi
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cala_Mazzo_di_Sciacca_03.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Tre Fontane
+
+- File: `tre-fontane.jpg` (fonte: `Tre Fontane (Campobello di Mazara) - Torre saracena.jpg`)
+- Autore: HaguardDuNord
+- Fonte: <https://commons.wikimedia.org/wiki/File:Tre_Fontane_(Campobello_di_Mazara)_-_Torre_saracena.jpg>
+- Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione. Foto di contesto con torre saracena, arenile e mare.
+
+### Torretta Granitola
+
+- File: `torretta-granitola.jpg` (fonte: `Torretta Granitola.jpg`)
+- Autore: FedeDeCaro
+- Fonte: <https://commons.wikimedia.org/wiki/File:Torretta_Granitola.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Capo Feto
+
+- File: `capo-feto.jpg` (fonte: `Capo Feto (4).jpg`)
+- Autore: sicilian_dunes
+- Fonte: <https://commons.wikimedia.org/wiki/File:Capo_Feto_(4).jpg>
+- Licenza: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Marinella di Selinunte
+
+- File: `marinella-di-selinunte.jpg` (fonte: `91022 Marinella di Selinunte, Province of Trapani, Italy - panoramio.jpg`)
+- Autore: Björn S.
+- Fonte: <https://commons.wikimedia.org/wiki/File:91022_Marinella_di_Selinunte,_Province_of_Trapani,_Italy_-_panoramio.jpg>
+- Licenza: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+- Scaricata: 2026-08-23
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.

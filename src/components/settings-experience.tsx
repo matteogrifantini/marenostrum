@@ -309,7 +309,7 @@ export function SettingsExperience({ initialEmail, authError = false }: Settings
             </>
           ) : (
             <div className="mt-5">
-              <div className="grid gap-2 sm:grid-cols-2">
+              <div className="grid gap-2">
                 <button
                   type="button"
                   onClick={() => continueWithProvider("google")}
@@ -320,9 +320,8 @@ export function SettingsExperience({ initialEmail, authError = false }: Settings
                 </button>
                 <button
                   type="button"
-                  onClick={() => continueWithProvider("apple")}
-                  disabled={isSubmitting}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-4 text-sm font-extrabold text-[var(--ink)] shadow-[inset_0_0_0_1px_var(--line)] transition-[transform,background-color] duration-200 ease-out hover:bg-[var(--surface-muted)] active:scale-[0.98] disabled:cursor-wait disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+                  disabled
+                  className="inline-flex min-h-12 cursor-not-allowed items-center justify-center gap-2 rounded-full bg-[var(--disabled-surface)] px-4 text-sm font-extrabold text-[var(--disabled-ink)] shadow-[inset_0_0_0_1px_var(--disabled-line)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
                 >
                   <Apple aria-hidden="true" size={17} /> Continua con Apple
                 </button>

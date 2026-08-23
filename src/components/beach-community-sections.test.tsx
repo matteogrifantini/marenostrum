@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { BeachCommunitySections } from "./beach-community-sections";
@@ -32,6 +32,20 @@ describe("BeachCommunitySections", () => {
     const webcamDistance = within(webcam).getByText(`${detail.webcam.distanceKm!.toFixed(1)} km`);
     expect(webcamDistance.parentElement).toBe(webcamName.parentElement);
     expect(within(webcam).getByText(detail.webcam.updated)).toBeInTheDocument();
+  });
+
+  it("opens a recent beach photo in the viewer", () => {
+    const detail = getDemoBeachDetail("cala-del-gelsomino")!;
+    render(<BeachCommunitySections beachName="Cala del Gelsomino" detail={detail} />);
+
+    const photos = screen.getByRole("region", { name: "Foto aggiunte di recente" });
+    fireEvent.click(within(photos).getByRole("button", { name: `Apri foto di ${detail.recentPhotos[0].alt}` }));
+
+    const dialog = screen.getByRole("dialog", { name: "Foto di Cala del Gelsomino" });
+    expect(within(dialog).getByRole("img", { name: detail.recentPhotos[0].alt })).toBeInTheDocument();
+
+    fireEvent.click(within(dialog).getByRole("button", { name: "Chiudi foto" }));
+    expect(screen.queryByRole("dialog", { name: "Foto di Cala del Gelsomino" })).not.toBeInTheDocument();
   });
 
   it("links to a verified external review profile without fabricating local reviews", () => {

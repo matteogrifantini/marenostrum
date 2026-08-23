@@ -1,0 +1,38 @@
+# Promozione catalogo Sicilia — 23 agosto 2026
+
+Il primo batch delle nuove spiagge di Palermo e Trapani è stato promosso in
+produzione dopo una verifica live dei requisiti minimi:
+
+- descrizione e coordinate presenti;
+- fonte primaria presente;
+- 96 righe di previsione reale Open-Meteo per spiaggia;
+- immagine locale con alt text, autore e licenza;
+- media Wikimedia Commons verificato e attribuito.
+
+## Pubblicate
+
+- Alcamo Marina (`alcamo-marina`)
+- Spiaggia Playa, Castellammare del Golfo (`spiaggia-playa-castellammare`)
+- Cala Mazzo di Sciacca (`cala-mazzo-di-sciacca`)
+- Tre Fontane (`tre-fontane`)
+- Torretta Granitola (`torretta-granitola`)
+- Capo Feto (`capo-feto`)
+- Marinella di Selinunte (`marinella-di-selinunte`)
+
+Lo stato live è `is_published = true` e `publication_status = verified`. La
+prossima revisione automatica è stata impostata a 30 giorni.
+
+## Ancora draft
+
+Le altre 22 candidate restano volutamente non visibili perché manca ancora
+almeno un’immagine verificata e attribuita. Non viene usata una foto generica
+per coprire il gap. `Spiaggia dei Francesi` richiede inoltre una verifica
+specifica dell’avviso di sicurezza riportato dalla fonte comunale prima di
+qualsiasi pubblicazione.
+
+`Cipollazzo` non appartiene a questo batch: il Comune di Menfi la colloca in
+provincia di Agrigento, quindi resta fuori dall’ambito Palermo/Trapani.
+
+I record in `beach_catalog_candidates` restano `draft` come stato della coda di
+verifica; la promozione del master live segue lo stesso modello già usato per
+le spiagge pubblicate esistenti.

@@ -168,11 +168,59 @@
     "source_url": "https://commons.wikimedia.org/wiki/File:Balestrate,_spiaggia_ovest.JPG"
   },
   {
-    "slug": "tonnara-di-vendicari",
-    "image_path": "/images/beaches/tonnara-di-vendicari.jpg",
-    "image_alt": "Spiaggia della Tonnara di Vendicari nella Riserva di Vendicari.",
-    "image_credit": "Daniele Chessari",
+    "slug": "alcamo-marina",
+    "image_path": "/images/beaches/alcamo-marina.jpg",
+    "image_alt": "Spiaggia sabbiosa di Alcamo Marina con mare calmo.",
+    "image_credit": "Daniele Pugliesi",
     "image_license": "CC BY-SA 4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Tonnara_di_Vendicari.jpg"
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Alcamo_Marina_01.jpg"
+  },
+  {
+    "slug": "spiaggia-playa-castellammare",
+    "image_path": "/images/beaches/spiaggia-playa-castellammare.jpg",
+    "image_alt": "Spiaggia Playa di Castellammare del Golfo con mare calmo.",
+    "image_credit": "Daniele Pugliesi",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Castellammare_del_Golfo_04.jpg"
+  },
+  {
+    "slug": "cala-mazzo-di-sciacca",
+    "image_path": "/images/beaches/cala-mazzo-di-sciacca.jpg",
+    "image_alt": "Cala Mazzo di Sciacca con acqua trasparente e scogli.",
+    "image_credit": "Daniele Pugliesi",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cala_Mazzo_di_Sciacca_03.jpg"
+  },
+  {
+    "slug": "tre-fontane",
+    "image_path": "/images/beaches/tre-fontane.jpg",
+    "image_alt": "Torre saracena e mare sulla costa di Tre Fontane.",
+    "image_credit": "HaguardDuNord",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Tre_Fontane_(Campobello_di_Mazara)_-_Torre_saracena.jpg"
+  },
+  {
+    "slug": "torretta-granitola",
+    "image_path": "/images/beaches/torretta-granitola.jpg",
+    "image_alt": "Costa di Torretta Granitola e mare aperto.",
+    "image_credit": "FedeDeCaro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Torretta_Granitola.jpg"
+  },
+  {
+    "slug": "capo-feto",
+    "image_path": "/images/beaches/capo-feto.jpg",
+    "image_alt": "Dune e mare della costa di Capo Feto.",
+    "image_credit": "sicilian_dunes",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Capo_Feto_(4).jpg"
+  },
+  {
+    "slug": "marinella-di-selinunte",
+    "image_path": "/images/beaches/marinella-di-selinunte.jpg",
+    "image_alt": "Costa e spiaggia di Marinella di Selinunte.",
+    "image_credit": "Björn S.",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:91022_Marinella_di_Selinunte,_Province_of_Trapani,_Italy_-_panoramio.jpg"
   }
 ]

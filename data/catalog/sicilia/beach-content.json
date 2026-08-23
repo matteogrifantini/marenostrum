@@ -5,10 +5,20 @@
     "orientation_degrees": 330,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "acque-basse",
+      "relax"
+    ],
     "access_level": "facile",
-    "services": ["servizi stagionali"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Affollamento e servizi possono cambiare con la stagione."],
+    "services": [
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Affollamento e servizi possono cambiare con la stagione."
+    ],
     "facts": [
       "Suolo — Sabbia chiara e fine lungo l'arenile urbano",
       "Fondale — Basso e digradante vicino alla riva",
@@ -38,10 +48,20 @@
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["panorama", "relax", "sabbia", "ciottoli"],
+    "tags": [
+      "panorama",
+      "relax",
+      "sabbia",
+      "ciottoli"
+    ],
     "access_level": "facile",
-    "services": ["parcheggi stagionali"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "La viabilità e gli accessi possono cambiare nella stagione estiva."],
+    "services": [
+      "parcheggi stagionali"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "La viabilità e gli accessi possono cambiare nella stagione estiva."
+    ],
     "facts": [
       "Suolo — Sabbia e tratti ghiaiosi lungo la baia",
       "Fondale — Digrada verso il largo; profondità da verificare nel tratto scelto",
@@ -83,10 +103,19 @@
     "orientation_degrees": 330,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["riserva", "selvaggia", "ciottoli", "snorkeling", "sentiero"],
+    "tags": [
+      "riserva",
+      "selvaggia",
+      "ciottoli",
+      "snorkeling",
+      "sentiero"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'accesso richiede un percorso a piedi e può essere limitato dalle condizioni della Riserva."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "L'accesso richiede un percorso a piedi e può essere limitato dalle condizioni della Riserva."
+    ],
     "facts": [
       "Suolo — Ciottoli bianchi levigati e roccia calcarea",
       "Fondale — Fondo roccioso e ciottoloso, con acqua molto trasparente",
@@ -122,10 +151,19 @@
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["riserva", "selvaggia", "ciottoli", "snorkeling", "sentiero"],
+    "tags": [
+      "riserva",
+      "selvaggia",
+      "ciottoli",
+      "snorkeling",
+      "sentiero"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Non sono stati associati servizi in loco: verificare sempre le regole e l'apertura della Riserva."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Non sono stati associati servizi in loco: verificare sempre le regole e l'apertura della Riserva."
+    ],
     "facts": [
       "Suolo — Ciottoli chiari e roccia lungo la caletta",
       "Fondale — Fondo roccioso e ciottoloso, da esplorare con cautela",
@@ -161,10 +199,19 @@
     "orientation_degrees": 315,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["riserva", "selvaggia", "ciottoli", "snorkeling", "sentiero"],
+    "tags": [
+      "riserva",
+      "selvaggia",
+      "ciottoli",
+      "snorkeling",
+      "sentiero"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il sentiero e le scale richiedono calzature adatte e possono essere condizionati dal meteo."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Il sentiero e le scale richiedono calzature adatte e possono essere condizionati dal meteo."
+    ],
     "facts": [
       "Suolo — Ciottoli bianchi levigati e rocce affioranti",
       "Fondale — Roccioso e ciottoloso, adatto alla maschera con mare calmo",
@@ -200,10 +247,18 @@
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["panorama", "snorkeling", "scogli", "storia"],
+    "tags": [
+      "panorama",
+      "snorkeling",
+      "scogli",
+      "storia"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Accesso balneare, disponibilità e modalità di ingresso vanno verificati prima della visita."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Accesso balneare, disponibilità e modalità di ingresso vanno verificati prima della visita."
+    ],
     "facts": [
       "Suolo — Roccia e piattaforme naturali tra i faraglioni",
       "Fondale — Acqua limpida e fondo roccioso, profondo in alcuni punti",
@@ -227,10 +282,20 @@
     "orientation_degrees": 350,
     "orientation_label": "Nord",
     "shelter": [],
-    "tags": ["famiglie", "ciottoli", "relax"],
+    "tags": [
+      "famiglie",
+      "ciottoli",
+      "relax"
+    ],
     "access_level": "facile",
-    "services": ["lido", "servizi stagionali"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e accessi possono cambiare con la stagione."],
+    "services": [
+      "lido",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Servizi e accessi possono cambiare con la stagione."
+    ],
     "facts": [
       "Suolo — Ghiaia bianca e ciottoli; tratti rocciosi a levante",
       "Fondale — Basso e digradante in una baia riparata",
@@ -266,10 +331,18 @@
     "orientation_degrees": 315,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["snorkeling", "scogli", "panorama", "selvaggia"],
+    "tags": [
+      "snorkeling",
+      "scogli",
+      "panorama",
+      "selvaggia"
+    ],
     "access_level": "difficile",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'accesso è roccioso e può risultare difficile: non è un ingresso in spiaggia tradizionale."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "L'accesso è roccioso e può risultare difficile: non è un ingresso in spiaggia tradizionale."
+    ],
     "facts": [
       "Suolo — Scogli piatti di calcarenite e tratti di sabbia chiara",
       "Fondale — Roccioso, con accessi e profondità variabili",
@@ -299,10 +372,20 @@
     "orientation_degrees": 130,
     "orientation_label": "Sud-est",
     "shelter": [],
-    "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "acque-basse",
+      "relax"
+    ],
     "access_level": "facile",
-    "services": ["bar"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Affollamento e accessi possono cambiare con la stagione."],
+    "services": [
+      "bar"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Affollamento e accessi possono cambiare con la stagione."
+    ],
     "facts": [
       "Suolo — Sabbia bianca con riflessi rosati",
       "Fondale — Basso e sabbioso, con acqua generalmente calma e limpida",
@@ -332,10 +415,23 @@
     "orientation_degrees": 110,
     "orientation_label": "Sud-est",
     "shelter": [],
-    "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "acque-basse",
+      "relax"
+    ],
     "access_level": "facile",
-    "services": ["lido", "bar", "ristorante", "servizi stagionali"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e concessioni possono cambiare con la stagione."],
+    "services": [
+      "lido",
+      "bar",
+      "ristorante",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Servizi e concessioni possono cambiare con la stagione."
+    ],
     "facts": [
       "Suolo — Sabbia fine e chiara",
       "Fondale — Basso e sicuro, con ingresso dolce in acqua",
@@ -365,10 +461,21 @@
     "orientation_degrees": 0,
     "orientation_label": "Nord",
     "shelter": [],
-    "tags": ["famiglie", "sabbia", "acque-basse", "relax"],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "acque-basse",
+      "relax"
+    ],
     "access_level": "facile",
-    "services": ["lidi", "servizi stagionali"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "In alta stagione il litorale può essere molto frequentato."],
+    "services": [
+      "lidi",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "In alta stagione il litorale può essere molto frequentato."
+    ],
     "facts": [
       "Suolo — Sabbia chiara e fine",
       "Fondale — Basso e digradante verso il largo",
@@ -404,10 +511,17 @@
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["scogli", "snorkeling", "panorama"],
+    "tags": [
+      "scogli",
+      "snorkeling",
+      "panorama"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Coordinate e accesso sono ancora rappresentativi: verificare il punto balneabile prima della pubblicazione."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Coordinate e accesso sono ancora rappresentativi: verificare il punto balneabile prima della pubblicazione."
+    ],
     "facts": [
       "Suolo — Scogli e piattaforme rocciose",
       "Fondale — Roccioso, da esplorare con cautela",
@@ -431,10 +545,17 @@
     "orientation_degrees": 350,
     "orientation_label": "Nord",
     "shelter": [],
-    "tags": ["famiglie", "sabbia", "relax"],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "relax"
+    ],
     "access_level": "facile",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "La località comprende più accessi: il punto indicato è rappresentativo e va validato."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "La località comprende più accessi: il punto indicato è rappresentativo e va validato."
+    ],
     "facts": [
       "Suolo — Sabbia e tratti misti lungo il litorale",
       "Fondale — Digrada in alcuni tratti; profondità variabile tra gli accessi",
@@ -470,10 +591,20 @@
     "orientation_degrees": 350,
     "orientation_label": "Nord",
     "shelter": [],
-    "tags": ["famiglie", "sabbia", "relax"],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "relax"
+    ],
     "access_level": "facile",
-    "services": ["lidi", "servizi stagionali"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Servizi e accessi possono cambiare con la stagione."],
+    "services": [
+      "lidi",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Servizi e accessi possono cambiare con la stagione."
+    ],
     "facts": [
       "Suolo — Sabbia fine e chiara",
       "Fondale — Basso e digradante, adatto alla balneazione familiare",
@@ -503,10 +634,17 @@
     "orientation_degrees": 285,
     "orientation_label": "Ovest-nord-ovest",
     "shelter": [],
-    "tags": ["snorkeling", "scogli", "panorama"],
+    "tags": [
+      "snorkeling",
+      "scogli",
+      "panorama"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Accesso e condizioni degli scogli richiedono prudenza."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Accesso e condizioni degli scogli richiedono prudenza."
+    ],
     "facts": [
       "Suolo — Scogliera rossastra e piattaforme rocciose",
       "Fondale — Limpido e roccioso, interessante per lo snorkeling",
@@ -530,10 +668,17 @@
     "orientation_degrees": 300,
     "orientation_label": "Nord-ovest",
     "shelter": [],
-    "tags": ["relax", "scogli", "panorama"],
+    "tags": [
+      "relax",
+      "scogli",
+      "panorama"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto di accesso e la praticabilità possono variare in base alla stagione e al moto ondoso."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Il punto di accesso e la praticabilità possono variare in base alla stagione e al moto ondoso."
+    ],
     "facts": [
       "Suolo — Pietre vulcaniche scure e tratti rocciosi",
       "Fondale — Roccioso; ingresso in acqua da valutare sul posto",
@@ -563,10 +708,19 @@
     "orientation_degrees": 0,
     "orientation_label": "Nord",
     "shelter": [],
-    "tags": ["sabbia", "sport-acqua", "relax"],
+    "tags": [
+      "sabbia",
+      "sport-acqua",
+      "relax"
+    ],
     "access_level": "facile",
-    "services": ["servizi stagionali"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Condizioni del vento e servizi possono cambiare con la stagione."],
+    "services": [
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Condizioni del vento e servizi possono cambiare con la stagione."
+    ],
     "facts": [
       "Suolo — Sabbia fine e chiara",
       "Fondale — Digrada verso il largo; condizioni variabili con il vento",
@@ -602,10 +756,21 @@
     "orientation_degrees": 20,
     "orientation_label": "Nord-nord-est",
     "shelter": [],
-    "tags": ["famiglie", "sabbia", "relax", "lungomare"],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "relax",
+      "lungomare"
+    ],
     "access_level": "facile",
-    "services": ["lidi", "servizi stagionali"],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto è rappresentativo del lungomare: servizi, accessi e concessioni possono differire lungo la spiaggia."],
+    "services": [
+      "lidi",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Il punto è rappresentativo del lungomare: servizi, accessi e concessioni possono differire lungo la spiaggia."
+    ],
     "facts": [
       "Suolo — Sabbia dorata e fine",
       "Fondale — Digrada dolcemente verso il largo",
@@ -635,10 +800,18 @@
     "orientation_degrees": 70,
     "orientation_label": "Est-nord-est",
     "shelter": [],
-    "tags": ["ciottoli", "scogli", "snorkeling", "relax"],
+    "tags": [
+      "ciottoli",
+      "scogli",
+      "snorkeling",
+      "relax"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "L'acqua diventa rapidamente profonda; l'accesso presenta scale e fondo roccioso."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "L'acqua diventa rapidamente profonda; l'accesso presenta scale e fondo roccioso."
+    ],
     "facts": [
       "Suolo — Ghiaia, ciottoli e scogli affioranti",
       "Fondale — Profondo vicino alla riva, con fondo roccioso",
@@ -668,10 +841,18 @@
     "orientation_degrees": 20,
     "orientation_label": "Nord-nord-est",
     "shelter": [],
-    "tags": ["sabbia", "ciottoli", "relax", "panorama"],
+    "tags": [
+      "sabbia",
+      "ciottoli",
+      "relax",
+      "panorama"
+    ],
     "access_level": "moderato",
     "services": [],
-    "warnings": ["Orientamento indicativo del tratto rappresentato.", "Il punto è rappresentativo della contrada: accessi e disponibilità dei tratti possono variare."],
+    "warnings": [
+      "Orientamento indicativo del tratto rappresentato.",
+      "Il punto è rappresentativo della contrada: accessi e disponibilità dei tratti possono variare."
+    ],
     "facts": [
       "Suolo — Tratti di sabbia, sassolini, ciottoli e rocce frastagliate",
       "Fondale — Variabile tra le baie; verificare il singolo accesso",
@@ -745,1283 +926,977 @@
     ]
   },
   {
-    "slug": "calamosche",
-    "description": "Una caletta di sabbia chiara tra due promontori della Riserva di Vendicari, con macchia mediterranea e acqua limpida. L’accesso richiede un tratto a piedi.",
-    "orientation_degrees": 140,
-    "orientation_label": "Sud-est",
-    "shelter": [
-      "macchia mediterranea"
-    ],
+    "slug": "alcamo-marina",
+    "description": "Un lungo arenile sabbioso nel golfo di Castellammare, con dune, accessi dalla litoranea e tratti attrezzati durante la stagione.",
+    "orientation_degrees": 330,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
     "tags": [
-      "riserva",
+      "famiglie",
       "sabbia",
-      "snorkeling",
-      "sentiero",
-      "selvaggia"
+      "acque-basse",
+      "lidi"
     ],
-    "access_level": "moderato",
+    "access_level": "facile",
     "services": [
-      "Nessun servizio di spiaggia stabile verificato"
+      "lidi",
+      "servizi stagionali"
     ],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Alcuni tratti presso corsi d’acqua possono essere soggetti a limitazioni temporanee."
     ],
     "facts": [
-      "Suolo — Sabbia chiara e ciottoli fini tra i promontori rocciosi",
-      "Fondale — Sabbioso e roccioso, con acqua trasparente nei tratti riparati",
-      "Esposizione — Sud-est, con orientamento indicativo del tratto",
-      "Servizi — Nessun servizio di spiaggia stabile verificato",
-      "Accesso — Sentiero a piedi nell’area di Vendicari; calzature e acqua da portare",
-      "Ambiente — Costa della Riserva di Vendicari con macchia mediterranea e anfratti"
+      "Suolo — Sabbia fine e dorata",
+      "Fondale — Basso nei tratti balneari",
+      "Esposizione — Nord-ovest",
+      "Servizi — Lidi, servizi stagionali e attività sul lungomare",
+      "Accesso — Facile, con numerosi accessi dalla litoranea",
+      "Ambiente — Dune costiere e litorale del golfo di Castellammare"
     ],
     "sources": [
       {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
+        "source_name": "Comune di Alcamo",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.alcamo.tp.it/it/vivere/746164",
         "role": "primary"
       },
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/116375783",
+        "source_url": "https://www.openstreetmap.org/node/3975148706",
         "role": "coordinate-cross-check"
       }
     ]
   },
   {
-    "slug": "san-lorenzo-noto",
-    "description": "Un litorale ampio vicino a Vendicari, con sabbia chiara, fondale che degrada dolcemente e mare spesso trasparente nelle giornate riparate.",
-    "orientation_degrees": 145,
-    "orientation_label": "Sud-est",
-    "shelter": [
-      "macchia mediterranea"
-    ],
+    "slug": "spiaggia-playa-castellammare",
+    "description": "L’ampio arenile sabbioso alla foce del golfo di Castellammare, vicino al centro e ai servizi della città.",
+    "orientation_degrees": 330,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
     "tags": [
-      "sabbia",
       "famiglie",
-      "relax",
-      "snorkeling"
+      "sabbia",
+      "acque-basse",
+      "lidi"
     ],
     "access_level": "facile",
     "services": [
-      "Servizi e stabilimenti presenti solo in alcuni tratti e stagioni"
+      "lidi",
+      "bar e servizi stagionali"
     ],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
     ],
     "facts": [
-      "Suolo — Sabbia chiara con piccoli tratti di ciottoli",
+      "Suolo — Sabbia chiara",
       "Fondale — Basso e digradante vicino alla riva",
-      "Esposizione — Sud-est, con orientamento indicativo del tratto",
-      "Servizi — Servizi e stabilimenti presenti solo in alcuni tratti e stagioni",
-      "Accesso — Accessi dalla viabilità locale; il punto preciso va verificato",
-      "Ambiente — Litorale aperto tra campagna, macchia e Riserva di Vendicari"
+      "Esposizione — Nord-ovest",
+      "Servizi — Lidi e servizi stagionali nelle vicinanze",
+      "Accesso — Facile, dalla strada litoranea e dagli accessi urbani",
+      "Ambiente — Grande spiaggia aperta sul golfo di Castellammare"
     ],
     "sources": [
       {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
+        "source_name": "Comune di Castellammare del Golfo",
+        "source_type": "municipality",
+        "source_url": "https://lnx.comune.castellammare.tp.it/portale/wp-content/uploads/2023/11/OR357A1.pdf",
         "role": "primary"
       },
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/891627041",
+        "source_url": "https://www.openstreetmap.org/way/76675780",
         "role": "coordinate-cross-check"
       }
     ]
   },
   {
-    "slug": "tonnara-di-vendicari",
-    "description": "La spiaggia accanto alla tonnara storica di Vendicari unisce sabbia, acque basse e un paesaggio protetto di grande valore naturalistico.",
-    "orientation_degrees": 150,
-    "orientation_label": "Sud-est",
-    "shelter": [
-      "macchia mediterranea"
-    ],
+    "slug": "cala-mazzo-di-sciacca",
+    "description": "Una piccola cala della costa di Scopello, raccolta tra promontori e fondale adatto a chi cerca acqua e snorkeling.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
     "tags": [
-      "riserva",
-      "sabbia",
+      "caletta",
+      "scogliera",
       "snorkeling",
-      "storia",
-      "sentiero"
+      "natura"
     ],
     "access_level": "moderato",
-    "services": [
-      "Nessun servizio stabile verificato dentro la Riserva"
-    ],
+    "services": [],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "L’accesso puntuale e la balneazione vanno verificati con le ordinanze locali."
     ],
     "facts": [
-      "Suolo — Sabbia chiara e ciottoli vicino alla battigia",
-      "Fondale — Basso e sabbioso nei pressi della riva",
-      "Esposizione — Sud-est, con orientamento indicativo del tratto",
-      "Servizi — Nessun servizio stabile verificato dentro la Riserva",
-      "Accesso — Accesso a piedi dai percorsi della Riserva; regole e apertura da controllare",
-      "Ambiente — Pantani, tonnara storica e macchia mediterranea della Riserva"
+      "Suolo — Ciottoli e scogli",
+      "Fondale — Irregolare, con accessi rocciosi",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi e parcheggio non da considerare garantiti presso la cala",
+      "Accesso — Moderato, con ultimo tratto da verificare a piedi",
+      "Ambiente — Cala raccolta nella costa di Scopello"
     ],
     "sources": [
       {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
+        "source_name": "Comune di Castellammare del Golfo",
+        "source_type": "municipality",
+        "source_url": "https://lnx.comune.castellammare.tp.it/portale/wp-content/uploads/2023/11/OR357A1.pdf",
         "role": "primary"
       },
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/51755165",
+        "source_url": "https://www.openstreetmap.org/node/3982946892",
         "role": "coordinate-cross-check"
       }
     ]
   },
   {
-    "slug": "fontane-bianche",
-    "description": "Una baia balneare molto conosciuta a sud di Siracusa, con sabbia chiara, acqua bassa e servizi stagionali lungo il litorale.",
-    "orientation_degrees": 135,
-    "orientation_label": "Sud-est",
-    "shelter": [
-      "ville e vegetazione costiera"
-    ],
-    "tags": [
-      "sabbia",
-      "famiglie",
-      "lidi",
-      "snorkeling",
-      "in-città"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Lidi, bar e servizi stagionali da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia chiara e fine",
-      "Fondale — Basso e sabbioso vicino alla riva",
-      "Esposizione — Sud-est, con orientamento indicativo del tratto",
-      "Servizi — Lidi, bar e servizi stagionali da verificare",
-      "Accesso — Facile dalla zona abitata e dalla viabilità locale",
-      "Ambiente — Baia urbanizzata con vegetazione e case vacanza alle spalle"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/2922609951",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "arenella-siracusa",
-    "description": "Una spiaggia sabbiosa della costa siracusana, adatta a una giornata semplice al mare grazie alla riva bassa e agli accessi dalla zona residenziale.",
-    "orientation_degrees": 135,
-    "orientation_label": "Sud-est",
-    "shelter": [
-      "vegetazione costiera"
-    ],
-    "tags": [
-      "sabbia",
-      "famiglie",
-      "lidi",
-      "relax"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Stabilimenti e servizi stagionali da confermare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia chiara e tratti di ghiaia",
-      "Fondale — Prevalentemente basso e sabbioso",
-      "Esposizione — Sud-est, con orientamento indicativo del tratto",
-      "Servizi — Stabilimenti e servizi stagionali da confermare",
-      "Accesso — Facile, con accessi dalla viabilità dell’Arenella",
-      "Ambiente — Litorale residenziale con vegetazione mediterranea"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/2934802292",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "isola-delle-correnti",
-    "description": "Il punto più meridionale della Sicilia offre una spiaggia aperta, sabbia chiara e l’incontro simbolico tra Ionio e Mediterraneo.",
+    "slug": "tre-fontane",
+    "description": "Un lungo litorale sabbioso della costa di Campobello di Mazara, con fondale dolcemente degradante e accessi dalla frazione balneare.",
     "orientation_degrees": 180,
     "orientation_label": "Sud",
     "shelter": [],
     "tags": [
-      "sabbia",
-      "panorama",
-      "snorkeling",
-      "selvaggia"
-    ],
-    "access_level": "moderato",
-    "services": [
-      "Servizi stagionali e punti ristoro da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia chiara con scogli affioranti",
-      "Fondale — Misto sabbia e roccia; condizioni variabili con il vento",
-      "Esposizione — Sud, con orientamento indicativo del tratto",
-      "Servizi — Servizi stagionali e punti ristoro da verificare",
-      "Accesso — Accesso dalla viabilità costiera; esposizione e vento possono rendere il bagno impegnativo",
-      "Ambiente — Isolotto, dune basse e costa meridionale aperta"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/229048999",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "marina-di-ragusa",
-    "description": "Un lungo litorale sabbioso con passeggiata, acqua bassa e numerosi servizi stagionali nel borgo marinaro di Marina di Ragusa.",
-    "orientation_degrees": 200,
-    "orientation_label": "Sud",
-    "shelter": [],
-    "tags": [
-      "sabbia",
       "famiglie",
-      "lidi",
-      "in-città",
-      "tramonto"
+      "sabbia",
+      "acque-basse",
+      "lidi"
     ],
     "access_level": "facile",
     "services": [
-      "Lidi, bar, passeggiata e servizi stagionali da confermare"
+      "lidi",
+      "servizi stagionali"
     ],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
     ],
     "facts": [
-      "Suolo — Sabbia dorata e fine",
-      "Fondale — Basso e digradante lungo la spiaggia",
-      "Esposizione — Sud, con orientamento indicativo del tratto",
-      "Servizi — Lidi, bar, passeggiata e servizi stagionali da confermare",
-      "Accesso — Facile dalla zona urbana e dal lungomare",
-      "Ambiente — Borgo marinaro con passeggiata, porto e servizi"
+      "Suolo — Sabbia fine e dorata",
+      "Fondale — Basso e dolcemente degradante",
+      "Esposizione — Sud",
+      "Servizi — Lidi, locali e servizi stagionali nella frazione",
+      "Accesso — Facile, dalla frazione e dal lungomare",
+      "Ambiente — Litorale di oltre sei chilometri tra Tre Fontane e le frazioni vicine"
     ],
     "sources": [
       {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
+        "source_name": "Comune di Campobello di Mazara",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.campobellodimazara.tp.it/wp-content/uploads/2024/05/A_Integrato-Ultimo-monumenti-Campobello_compressed.pdf",
         "role": "primary"
       },
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/1799284199",
+        "source_url": "https://www.openstreetmap.org/node/11292968273",
         "role": "coordinate-cross-check"
       }
     ]
   },
   {
-    "slug": "punta-secca",
-    "description": "Una spiaggia dorata raccolta intorno al piccolo borgo di Punta Secca, con fondale generalmente basso e atmosfera da villaggio marinaro.",
+    "slug": "torretta-granitola",
+    "description": "La costa rocciosa e frastagliata attorno a Capo Granitola alterna piccole spiagge, scogliere e punti panoramici sul mare aperto.",
     "orientation_degrees": 190,
     "orientation_label": "Sud",
-    "shelter": [],
-    "tags": [
-      "sabbia",
-      "famiglie",
-      "in-città",
-      "tramonto",
-      "relax"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Servizi e stabilimenti stagionali nel borgo da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia dorata e ciottoli fini",
-      "Fondale — Basso vicino alla riva; verificare il tratto scelto",
-      "Esposizione — Sud, con orientamento indicativo del tratto",
-      "Servizi — Servizi e stabilimenti stagionali nel borgo da verificare",
-      "Accesso — Facile dagli accessi urbani e dal lungomare",
-      "Ambiente — Borgo marinaro, case basse e costa aperta"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/368067183",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "sampieri",
-    "description": "Una lunga spiaggia vicino a Scicli, fiancheggiata da pineta e dune, con la Fornace Penna come elemento distintivo del paesaggio.",
-    "orientation_degrees": 190,
-    "orientation_label": "Sud",
-    "shelter": [
-      "pineta"
-    ],
-    "tags": [
-      "sabbia",
-      "famiglie",
-      "pineta",
-      "lidi",
-      "tramonto"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Lidi, bar e servizi stagionali da confermare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia dorata con dune e tratti più compatti",
-      "Fondale — Basso nei primi metri, da verificare con il moto ondoso",
-      "Esposizione — Sud, con orientamento indicativo del tratto",
-      "Servizi — Lidi, bar e servizi stagionali da confermare",
-      "Accesso — Facile dalla viabilità del borgo e dal lungomare",
-      "Ambiente — Pineta, dune e archeologia industriale della Fornace Penna"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/355548852",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "donnalucata",
-    "description": "Il litorale di Donnalucata alterna spiaggia sabbiosa, borgo e piccoli tratti di costa più raccolti, con accessi comodi dalla zona abitata.",
-    "orientation_degrees": 185,
-    "orientation_label": "Sud",
-    "shelter": [],
-    "tags": [
-      "sabbia",
-      "famiglie",
-      "lidi",
-      "in-città",
-      "relax"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Bar, lidi e servizi stagionali da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia dorata e piccoli ciottoli",
-      "Fondale — Generalmente basso vicino alla riva",
-      "Esposizione — Sud, con orientamento indicativo del tratto",
-      "Servizi — Bar, lidi e servizi stagionali da verificare",
-      "Accesso — Facile dalla viabilità del borgo e dal lungomare",
-      "Ambiente — Borgo marinaro, costa bassa e campagna iblea"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/352943317",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "torre-salsa",
-    "description": "Una lunga spiaggia naturale tra dune, falesie e macchia mediterranea nella Riserva di Torre Salsa, lontana dai servizi del litorale urbano.",
-    "orientation_degrees": 240,
-    "orientation_label": "Sud-ovest",
-    "shelter": [
-      "macchia mediterranea"
-    ],
-    "tags": [
-      "riserva",
-      "sabbia",
-      "selvaggia",
-      "sentiero",
-      "trekking"
-    ],
-    "access_level": "moderato",
-    "services": [
-      "Nessun servizio stabile verificato nella riserva"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia dorata e tratti di ciottoli",
-      "Fondale — Sabbioso e aperto; condizioni da leggere con il vento",
-      "Esposizione — Sud-ovest, con orientamento indicativo del tratto",
-      "Servizi — Nessun servizio stabile verificato nella riserva",
-      "Accesso — Accessi a piedi da sentieri e strade locali; verificare regole e percorribilità",
-      "Ambiente — Riserva naturale, dune e falesie bianche"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/relation/18492782",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "scala-dei-turchi",
-    "description": "La celebre falesia bianca di marna domina un tratto di costa scenografico tra Realmonte e Porto Empedocle; l’accesso alla scogliera è regolato.",
-    "orientation_degrees": 205,
-    "orientation_label": "Sud-ovest",
-    "shelter": [],
-    "tags": [
-      "panorama",
-      "trekking",
-      "sabbia",
-      "tramonto"
-    ],
-    "access_level": "moderato",
-    "services": [
-      "Servizi e punti di accesso esterni alla falesia da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Marna bianca e tratti sabbiosi alla base",
-      "Fondale — Misto sabbia e roccia; non uniforme lungo la costa",
-      "Esposizione — Sud-ovest, con orientamento indicativo del tratto",
-      "Servizi — Servizi e punti di accesso esterni alla falesia da verificare",
-      "Accesso — Percorsi e accessi regolati; non trattare la falesia come una spiaggia libera",
-      "Ambiente — Falesia di marna bianca, calette e panorama aperto"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/scala-dei-turchi/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/305914400",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "san-leone",
-    "description": "Il litorale balneare di Agrigento è un arenile ampio e attrezzato, con passeggiata, locali e tratti adatti a una giornata al mare.",
-    "orientation_degrees": 180,
-    "orientation_label": "Sud",
-    "shelter": [],
-    "tags": [
-      "sabbia",
-      "lidi",
-      "in-città",
-      "famiglie",
-      "surf"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Lidi, bar e locali sul lungomare da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia dorata e fine",
-      "Fondale — Basso nei tratti sabbiosi vicino alla riva",
-      "Esposizione — Sud, con orientamento indicativo del tratto",
-      "Servizi — Lidi, bar e locali sul lungomare da verificare",
-      "Accesso — Facile dalla zona urbana e dal lungomare",
-      "Ambiente — Litorale urbano con servizi e vista sulla costa agrigentina"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/919100752",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "porto-palo-menfi",
-    "description": "Una spiaggia ampia e sabbiosa sulla costa di Menfi, con atmosfera marinara, acqua bassa in diversi tratti e tramonti aperti verso il mare.",
-    "orientation_degrees": 240,
-    "orientation_label": "Sud-ovest",
-    "shelter": [],
-    "tags": [
-      "sabbia",
-      "famiglie",
-      "lidi",
-      "relax",
-      "tramonto"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Lidi, ristorazione e servizi stagionali da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia dorata e fine",
-      "Fondale — Basso e sabbioso nei pressi della riva",
-      "Esposizione — Sud-ovest, con orientamento indicativo del tratto",
-      "Servizi — Lidi, ristorazione e servizi stagionali da verificare",
-      "Accesso — Facile dalla strada costiera e dal borgo di Porto Palo",
-      "Ambiente — Dune basse, vigneti e piccolo porto peschereccio"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/190841190",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "isola-bella",
-    "description": "La baia ai piedi di Taormina è stretta tra costa, isolotto e vegetazione mediterranea, con acqua trasparente e fondale prevalentemente roccioso.",
-    "orientation_degrees": 100,
-    "orientation_label": "Est",
-    "shelter": [
-      "vegetazione mediterranea"
-    ],
-    "tags": [
-      "riserva",
-      "ciottoli",
-      "snorkeling",
-      "panorama",
-      "trekking"
-    ],
-    "access_level": "moderato",
-    "services": [
-      "Servizi stagionali e accessi turistici da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Ciottoli e rocce vulcaniche",
-      "Fondale — Roccioso e misto, ideale da esplorare con mare calmo",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Servizi stagionali e accessi turistici da verificare",
-      "Accesso — Raggiungibile con scale e percorsi dalla strada; affollamento variabile",
-      "Ambiente — Riserva naturale, isolotto e costa scenografica di Taormina"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/411488475",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "letojanni",
-    "description": "Una lunga spiaggia di ciottoli e sabbia sotto Taormina, con lungomare, stabilimenti e accessi comodi dal centro di Letojanni.",
-    "orientation_degrees": 100,
-    "orientation_label": "Est",
-    "shelter": [],
-    "tags": [
-      "ciottoli",
-      "famiglie",
-      "lidi",
-      "in-città",
-      "relax"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Lidi, bar e servizi sul lungomare da confermare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Ciottoli levigati e sabbia nei tratti attrezzati",
-      "Fondale — Digrada abbastanza rapidamente rispetto alle spiagge sabbiose",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Lidi, bar e servizi sul lungomare da confermare",
-      "Accesso — Facile dalla zona urbana e dal lungomare",
-      "Ambiente — Borgo marinaro con vista sulla costa ionica"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/7039277004",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "giardini-naxos",
-    "description": "Il litorale di Giardini Naxos alterna sabbia, ghiaia e tratti attrezzati, con servizi urbani e vista sull’Etna e sulla baia.",
-    "orientation_degrees": 105,
-    "orientation_label": "Est",
-    "shelter": [],
-    "tags": [
-      "sabbia",
-      "ciottoli",
-      "famiglie",
-      "lidi",
-      "in-città"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Lidi, ristoranti e servizi urbani da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia, ghiaia e ciottoli a seconda del tratto",
-      "Fondale — Misto e variabile; verificare la porzione di spiaggia",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Lidi, ristoranti e servizi urbani da verificare",
-      "Accesso — Facile dal centro e dal lungomare",
-      "Ambiente — Baia urbana, porto e paesaggio ionico ai piedi dell’Etna"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/276296477",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "laghetti-di-marinello",
-    "description": "Una lingua di sabbia e laghetti salmastri ai piedi del promontorio di Tindari, con paesaggio protetto e accesso legato alle condizioni del mare.",
-    "orientation_degrees": 80,
-    "orientation_label": "Est",
-    "shelter": [
-      "macchia mediterranea"
-    ],
-    "tags": [
-      "riserva",
-      "sabbia",
-      "sentiero",
-      "trekking",
-      "snorkeling"
-    ],
-    "access_level": "moderato",
-    "services": [
-      "Servizi e collegamenti in barca da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia e ghiaia modellate dalle correnti",
-      "Fondale — Basso nelle lingue di sabbia, variabile nei canali",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Servizi e collegamenti in barca da verificare",
-      "Accesso — Raggiungibile a piedi o con collegamenti stagionali; verificare condizioni e regole",
-      "Ambiente — Riserva naturale, laguna e promontorio di Tindari"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/en/itinerario/tindari-district-of-patti/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/524187213",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "capo-d-orlando",
-    "description": "Un lungo litorale davanti alle Eolie, con tratti sabbiosi e ciottolosi, passeggiata e servizi distribuiti lungo il borgo marinaro.",
-    "orientation_degrees": 290,
-    "orientation_label": "Nord-ovest",
-    "shelter": [],
-    "tags": [
-      "sabbia",
-      "famiglie",
-      "lidi",
-      "in-città",
-      "tramonto"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Lidi, bar e servizi del lungomare da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia e ciottoli levigati",
-      "Fondale — Generalmente basso vicino alla riva, variabile per tratto",
-      "Esposizione — Nord-ovest, con orientamento indicativo del tratto",
-      "Servizi — Lidi, bar e servizi del lungomare da verificare",
-      "Accesso — Facile dagli accessi urbani e dal lungomare",
-      "Ambiente — Costa lunga con borgo, porto e vista sulle Eolie"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/681265928",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "san-saba-messina",
-    "description": "Un tratto di costa a nord di Messina con calette e ciottoli, acqua limpida nelle giornate calme e un panorama aperto sul Tirreno.",
-    "orientation_degrees": 70,
-    "orientation_label": "Est",
-    "shelter": [],
-    "tags": [
-      "ciottoli",
-      "relax",
-      "tramonto",
-      "snorkeling"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Servizi di spiaggia non verificati"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Ciottoli e rocce affioranti",
-      "Fondale — Roccioso e misto, da affrontare con cautela",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Servizi di spiaggia non verificati",
-      "Accesso — Accessi dalla strada costiera; il punto balneabile preciso va confermato",
-      "Ambiente — Costa tirrenica tra colline, case sparse e mare aperto"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/1634162820",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "santa-teresa-di-riva",
-    "description": "Una spiaggia lunga e accessibile sulla costa ionica, con ciottoli levigati, lungomare e servizi distribuiti nel centro abitato.",
-    "orientation_degrees": 105,
-    "orientation_label": "Est",
-    "shelter": [],
-    "tags": [
-      "ciottoli",
-      "famiglie",
-      "lidi",
-      "in-città",
-      "relax"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Lidi, bar e servizi stagionali da confermare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Ciottoli e sabbia nei tratti più riparati",
-      "Fondale — Digrada rapidamente in alcuni tratti; verificare l’accesso in acqua",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Lidi, bar e servizi stagionali da confermare",
-      "Accesso — Facile dalla strada e dal lungomare",
-      "Ambiente — Litorale urbano con vista sui Peloritani"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/7526450843",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "castel-di-tusa",
-    "description": "Il tratto marino di Castel di Tusa alterna ciottoli, acqua limpida e un borgo raccolto affacciato sulla costa tirrenica.",
-    "orientation_degrees": 285,
-    "orientation_label": "Nord-ovest",
-    "shelter": [],
-    "tags": [
-      "ciottoli",
-      "famiglie",
-      "lidi",
-      "panorama",
-      "relax"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Servizi stagionali e lidi da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Ciottoli levigati e sabbia scura in alcuni tratti",
-      "Fondale — Misto e generalmente profondo vicino alla riva",
-      "Esposizione — Nord-ovest, con orientamento indicativo del tratto",
-      "Servizi — Servizi stagionali e lidi da verificare",
-      "Accesso — Facile dagli accessi del borgo e dalla strada costiera",
-      "Ambiente — Borgo sul mare, scogli e paesaggio dei Nebrodi"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/5119695881",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "aci-trezza",
-    "description": "La costa lavica di Aci Trezza è dominata dai faraglioni dei Ciclopi, con piattaforme rocciose e acqua interessante per snorkeling e nuoto.",
-    "orientation_degrees": 105,
-    "orientation_label": "Est",
     "shelter": [],
     "tags": [
       "scogliera",
       "snorkeling",
-      "in-città",
-      "panorama",
-      "lidi"
+      "natura",
+      "tramonto"
     ],
     "access_level": "moderato",
     "services": [
-      "Solarium, lidi e servizi del borgo da verificare"
+      "servizi stagionali"
     ],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "La posizione rappresenta la frazione balneare; scegliere il singolo accesso prima della pubblicazione."
     ],
     "facts": [
-      "Suolo — Roccia lavica e piattaforme di pietra",
-      "Fondale — Roccioso e profondo in prossimità della costa",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Solarium, lidi e servizi del borgo da verificare",
-      "Accesso — Accesso urbano; servono calzature adatte sulle rocce",
-      "Ambiente — Faraglioni dei Ciclopi, borgo marinaro e Riserva marina"
+      "Suolo — Sabbia e scogli affioranti",
+      "Fondale — Irregolare e roccioso in più tratti",
+      "Esposizione — Sud",
+      "Servizi — Servizi presenti solo in alcuni punti della frazione",
+      "Accesso — Moderato, con accessi puntuali da verificare",
+      "Ambiente — Faro, promontori e costa frastagliata di Capo Granitola"
     ],
     "sources": [
       {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
+        "source_name": "Comune di Campobello di Mazara",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.campobellodimazara.tp.it/portale-delle-acque/",
         "role": "primary"
       },
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/275933667",
+        "source_url": "https://www.openstreetmap.org/node/559955378",
         "role": "coordinate-cross-check"
       }
     ]
   },
   {
-    "slug": "spiaggia-della-plaia-catania",
-    "description": "Il grande litorale sabbioso a sud di Catania offre stabilimenti, spiaggia libera e servizi vicini alla città, con vista sull’Etna.",
-    "orientation_degrees": 105,
-    "orientation_label": "Est",
+    "slug": "puzziteddu",
+    "description": "Un tratto sabbioso tra Tre Fontane e Capo Granitola, conosciuto per il vento e per gli sport nautici, con scogli affioranti ai lati.",
+    "orientation_degrees": 190,
+    "orientation_label": "Sud",
     "shelter": [],
     "tags": [
       "sabbia",
+      "surf",
+      "kitesurf",
+      "scogliera"
+    ],
+    "access_level": "facile",
+    "services": [
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Vento, onde e sport nautici possono rendere il tratto inadatto ai bagnanti meno esperti."
+    ],
+    "facts": [
+      "Suolo — Sabbia con tratti rocciosi laterali",
+      "Fondale — Sabbioso al centro, più roccioso ai margini",
+      "Esposizione — Sud",
+      "Servizi — Servizi stagionali e attività legate agli sport del vento",
+      "Accesso — Facile, dalla strada costiera; accesso all’acqua da valutare con il moto ondoso",
+      "Ambiente — Golfo aperto tra Tre Fontane e Capo Granitola"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Campobello di Mazara",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.campobellodimazara.tp.it/wp-content/uploads/2024/05/A_Integrato-Ultimo-monumenti-Campobello_compressed.pdf",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/619388665",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "tonnarella-mazara-del-vallo",
+    "description": "Il litorale sabbioso di Mazara del Vallo affacciato sul Mediterraneo, con accessi urbani, stabilimenti e tratti di spiaggia libera.",
+    "orientation_degrees": 190,
+    "orientation_label": "Sud",
+    "shelter": [],
+    "tags": [
       "famiglie",
+      "sabbia",
       "lidi",
-      "in-città",
+      "acque-basse"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "bar e servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine",
+      "Fondale — Basso nei tratti più riparati",
+      "Esposizione — Sud",
+      "Servizi — Lidi, servizi e attività sul lungomare",
+      "Accesso — Facile, dalla litoranea urbana",
+      "Ambiente — Litorale urbano di Mazara del Vallo verso Capo Feto"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Mazara del Vallo",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.mazaradelvallo.tp.it/it/eventi/653057",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/33999155",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "capo-feto",
+    "description": "Un tratto costiero naturale vicino all’oasi di Capo Feto, tra sabbia, dune e ambienti umidi di interesse naturalistico.",
+    "orientation_degrees": 190,
+    "orientation_label": "Sud",
+    "shelter": [],
+    "tags": [
+      "riserva",
+      "sabbia",
+      "trekking",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Rispettare i vincoli ambientali e verificare accessi, divieti e condizioni della strada sterrata."
+    ],
+    "facts": [
+      "Suolo — Sabbia e dune",
+      "Fondale — Sabbioso e poco profondo in alcuni tratti",
+      "Esposizione — Sud",
+      "Servizi — Servizi non garantiti nell’area naturale",
+      "Accesso — Moderato, con ultimi tratti sterrati e da percorrere a piedi",
+      "Ambiente — Oasi costiera e sito naturalistico di Capo Feto"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Mazara del Vallo",
+        "source_type": "municipality",
+        "source_url": "https://comune.mazaradelvallo.tp.it/it/news/1981515",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/154960274",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "marinella-di-selinunte",
+    "description": "La costa balneare ai piedi del parco archeologico di Selinunte alterna spiagge sabbiose, porto antico e panorami sul Mediterraneo.",
+    "orientation_degrees": 170,
+    "orientation_label": "Sud",
+    "shelter": [],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "storia",
       "tramonto"
     ],
     "access_level": "facile",
     "services": [
-      "Lidi, bar e servizi stagionali da verificare"
+      "lidi",
+      "ristorazione stagionale"
     ],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
     ],
     "facts": [
-      "Suolo — Sabbia scura e dorata, variabile per tratto",
-      "Fondale — Basso e sabbioso vicino alla riva",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Lidi, bar e servizi stagionali da verificare",
-      "Accesso — Facile dalla città e dalla viabilità costiera",
-      "Ambiente — Litorale urbano con pinete, stabilimenti e vista sull’Etna"
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e generalmente digradante",
+      "Esposizione — Sud",
+      "Servizi — Lidi, ristorazione e servizi nella frazione",
+      "Accesso — Facile, con accessi dalla frazione balneare",
+      "Ambiente — Frazione balneare accanto al parco archeologico di Selinunte"
     ],
     "sources": [
       {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
+        "source_name": "Comune di Castelvetrano",
+        "source_type": "municipality",
+        "source_url": "https://comune.castelvetrano.tp.it/it/vivere/triscina-di-selinunte",
         "role": "primary"
       },
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/35745308",
+        "source_url": "https://www.openstreetmap.org/way/606843136",
         "role": "coordinate-cross-check"
       }
     ]
   },
   {
-    "slug": "marina-di-cottone",
-    "description": "Una spiaggia di ciottoli e sabbia ai piedi dell’Etna, con acqua limpida nelle giornate calme e un contesto più naturale rispetto ai centri vicini.",
-    "orientation_degrees": 100,
-    "orientation_label": "Est",
-    "shelter": [
-      "vegetazione ripariale"
-    ],
-    "tags": [
-      "ciottoli",
-      "famiglie",
-      "relax",
-      "panorama",
-      "snorkeling"
-    ],
-    "access_level": "facile",
-    "services": [
-      "Servizi stagionali da verificare"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Ciottoli chiari e sabbia mista",
-      "Fondale — Misto e in pendenza verso il largo",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Servizi stagionali da verificare",
-      "Accesso — Accessi dalla viabilità locale; calzature da scoglio consigliate",
-      "Ambiente — Costa ionica con vegetazione e panorama sull’Etna"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/148451345",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "spiaggia-di-san-marco-calatabiano",
-    "description": "Un tratto di costa aperta tra Fiumefreddo e Giardini Naxos, con ciottoli, sabbia e accessi dalla strada costiera.",
-    "orientation_degrees": 100,
-    "orientation_label": "Est",
+    "slug": "triscina-di-selinunte",
+    "description": "Un lungo litorale di sabbia fine e dune, con numerosi accessi dalla frazione e fondali adatti a una giornata rilassata al mare.",
+    "orientation_degrees": 170,
+    "orientation_label": "Sud",
     "shelter": [],
     "tags": [
-      "ciottoli",
-      "sabbia",
       "famiglie",
-      "lidi",
+      "sabbia",
+      "acque-basse",
       "relax"
     ],
     "access_level": "facile",
     "services": [
-      "Lidi e servizi stagionali da verificare"
+      "lidi",
+      "servizi stagionali"
     ],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
     ],
     "facts": [
-      "Suolo — Ciottoli e sabbia mista",
-      "Fondale — Misto, con fondale che diventa profondo rapidamente in alcuni punti",
-      "Esposizione — Est, con orientamento indicativo del tratto",
-      "Servizi — Lidi e servizi stagionali da verificare",
-      "Accesso — Facile dalla viabilità costiera, con accessi da individuare",
-      "Ambiente — Costa ionica aperta tra agrumeti e pendici dell’Etna"
+      "Suolo — Sabbia fine e dorata",
+      "Fondale — Basso e digradante",
+      "Esposizione — Sud",
+      "Servizi — Lidi, locali e servizi stagionali",
+      "Accesso — Facile, dalla frazione e dalle strade parallele alla costa",
+      "Ambiente — Dune costiere e frazione balneare di circa cinque chilometri"
     ],
     "sources": [
       {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/category/categorie/mare-in-sicilia/",
+        "source_name": "Comune di Castelvetrano",
+        "source_type": "municipality",
+        "source_url": "https://comune.castelvetrano.tp.it/it/vivere/triscina-di-selinunte",
         "role": "primary"
       },
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/491426677",
+        "source_url": "https://www.openstreetmap.org/way/1280222188",
         "role": "coordinate-cross-check"
       }
     ]
   },
   {
-    "slug": "isola-dei-conigli",
-    "description": "Una baia di sabbia chiarissima davanti all’isolotto dei Conigli, in un’area protetta dove accessi e tutela ambientale sono prioritari.",
-    "orientation_degrees": 190,
-    "orientation_label": "Sud",
-    "shelter": [
-      "macchia mediterranea"
-    ],
-    "tags": [
-      "riserva",
-      "sabbia",
-      "snorkeling",
-      "sentiero",
-      "famiglie"
-    ],
-    "access_level": "moderato",
-    "services": [
-      "Nessun servizio stabile verificato nella caletta"
-    ],
-    "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
-    ],
-    "facts": [
-      "Suolo — Sabbia bianca e fine",
-      "Fondale — Basso e sabbioso nei pressi della riva",
-      "Esposizione — Sud, con orientamento indicativo del tratto",
-      "Servizi — Nessun servizio stabile verificato nella caletta",
-      "Accesso — Percorso a piedi con accessi regolati; verificare le modalità della Riserva",
-      "Ambiente — Area protetta, isolotto e habitat della tartaruga marina"
-    ],
-    "sources": [
-      {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
-        "role": "primary"
-      },
-      {
-        "source_name": "OpenStreetMap",
-        "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/24259464",
-        "role": "coordinate-cross-check"
-      }
-    ]
-  },
-  {
-    "slug": "cala-croce-lampedusa",
-    "description": "Una cala raccolta della costa sud di Lampedusa, con acqua trasparente, sabbia chiara e scogli bassi che proteggono il tratto balneabile.",
-    "orientation_degrees": 210,
-    "orientation_label": "Sud-ovest",
+    "slug": "san-teodoro-marsala",
+    "description": "Una spiaggia bassa e aperta nella zona nord di Marsala, vicino alla laguna dello Stagnone e alle rotte del vento.",
+    "orientation_degrees": 270,
+    "orientation_label": "Ovest",
     "shelter": [],
     "tags": [
       "sabbia",
+      "kitesurf",
+      "tramonto",
+      "natura"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio comunale",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia chiara",
+      "Fondale — Basso e sabbioso",
+      "Esposizione — Ovest",
+      "Servizi — Parcheggio comunale e servizi stagionali",
+      "Accesso — Facile, con parcheggio e accessi dalla strada costiera",
+      "Ambiente — Costa marsalese vicino alla laguna dello Stagnone"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Marsala",
+        "source_type": "municipality",
+        "source_url": "https://comune.marsala.tp.it/it/page/servizio-comunale-di-trasporto-pubblico-locale-orario-invernale-valido-dal-17-11-2025",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/257746993",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "lido-signorino",
+    "description": "Una località balneare del litorale sud di Marsala, con sabbia, lidi stagionali e accessi comodi dalla strada costiera.",
+    "orientation_degrees": 240,
+    "orientation_label": "Sud-ovest",
+    "shelter": [],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "lidi",
+      "tramonto"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud-ovest",
+      "Servizi — Lidi, ristorazione e servizi stagionali",
+      "Accesso — Facile, dalla strada e dal parcheggio della località",
+      "Ambiente — Litorale sud di Marsala tra lidi e campagne costiere"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Marsala",
+        "source_type": "municipality",
+        "source_url": "https://comune.marsala.tp.it/it/news/ferragosto-2026-divieto-di-fuochi-e-campeggio",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/11655576568",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-della-segheria-pizzolungo",
+    "description": "Una piccola spiaggia di Pizzolungo tra costa rocciosa e tratti di sabbia e ghiaia, con panorama aperto verso il golfo di Bonagia.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "ciottoli",
+      "scogliera",
       "snorkeling",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Verificare sicurezza del costone, accesso e ordinanze prima di raggiungerla."
+    ],
+    "facts": [
+      "Suolo — Sabbia, ghiaia e scogli",
+      "Fondale — Irregolare e misto",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi non garantiti sul tratto di spiaggia",
+      "Accesso — Moderato, con accesso locale e ultimo tratto da controllare",
+      "Ambiente — Costa di Pizzolungo ai piedi del monte Erice"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Erice",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.erice.tp.it/s3/2649/allegati/all-1-1-relazione-tecnica.pdf",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/11792837923",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "cornino",
+    "description": "Una baia balneare ai piedi del Monte Cofano, con arenile e servizi nella località di Cornino e panorama sulla costa occidentale.",
+    "orientation_degrees": 270,
+    "orientation_label": "Ovest",
+    "shelter": [],
+    "tags": [
+      "famiglie",
+      "ciottoli",
+      "natura",
+      "tramonto"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Il punto rappresenta l’area balneare presso il lido; selezionare l’accesso preciso prima della pubblicazione."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ciottoli",
+      "Fondale — Misto e generalmente accessibile",
+      "Esposizione — Ovest",
+      "Servizi — Lidi, bar e servizi stagionali nella località",
+      "Accesso — Facile, dalla località e dal lungomare",
+      "Ambiente — Baia di Cornino ai piedi della Riserva di Monte Cofano"
+    ],
+    "sources": [
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/5232842587",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "addaura",
+    "description": "Un tratto di costa palermitano fatto di calette, scogli e piccoli accessi al mare tra Mondello e il Monte Pellegrino.",
+    "orientation_degrees": 290,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "caletta",
+      "scogliera",
+      "snorkeling",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "lidi",
+      "ristorazione"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Addaura comprende più calette: la scheda usa un punto rappresentativo e non un unico accesso."
+    ],
+    "facts": [
+      "Suolo — Scogli e piccole lingue di ghiaia",
+      "Fondale — Roccioso e adatto allo snorkeling",
+      "Esposizione — Nord-ovest",
+      "Servizi — Lidi, ristorazione e servizi distribuiti lungo il litorale",
+      "Accesso — Moderato, variabile in base alla caletta e al percorso",
+      "Ambiente — Costa ai piedi del Monte Pellegrino e delle grotte dell’Addaura"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Palermo Turismo",
+        "source_type": "municipality",
+        "source_url": "https://turismo.comune.palermo.it/palermo-welcome-mare-dettaglio.php?det=26&id=375&tp=158",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/836222616",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "arenella-palermo",
+    "description": "La borgata marinara dell’Arenella raccoglie piccoli tratti di spiaggia e scogliera intorno alla storica Tonnara Florio.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "caletta",
+      "scogliera",
       "relax",
       "tramonto"
     ],
     "access_level": "facile",
     "services": [
-      "Servizi e lidi stagionali da verificare"
+      "lidi",
+      "bar e ristorazione"
     ],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
     ],
     "facts": [
-      "Suolo — Sabbia chiara e rocce basse",
-      "Fondale — Sabbioso e roccioso, da esplorare con mare calmo",
-      "Esposizione — Sud-ovest, con orientamento indicativo del tratto",
-      "Servizi — Servizi e lidi stagionali da verificare",
-      "Accesso — Accesso dalla viabilità dell’isola; il punto esatto di ingresso va confermato",
-      "Ambiente — Cala riparata con macchia bassa e costa calcarea"
+      "Suolo — Ghiaia, sabbia e scogli",
+      "Fondale — Misto e roccioso in più punti",
+      "Esposizione — Nord-ovest",
+      "Servizi — Lidi, bar e ristorazione nella borgata",
+      "Accesso — Facile nei tratti urbani, variabile sulle calette",
+      "Ambiente — Borgata marinara ai piedi del Monte Pellegrino"
     ],
     "sources": [
       {
-        "source_name": "Visit Sicily",
-        "source_type": "regional-tourism",
-        "source_url": "https://www.visitsicily.info/spiagge-piu-belle-in-sicilia/",
+        "source_name": "Comune di Palermo Turismo",
+        "source_type": "municipality",
+        "source_url": "https://turismo.comune.palermo.it/palermo-welcome-costa.php?det=27&tp=158",
         "role": "primary"
       },
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/node/4736460422",
+        "source_url": "https://www.openstreetmap.org/way/1286655467",
         "role": "coordinate-cross-check"
       }
     ]
   },
   {
-    "slug": "cala-pulcino-lampedusa",
-    "description": "Una cala selvaggia raggiungibile attraverso un sentiero nella parte meridionale di Lampedusa, con acqua limpida e fondale misto.",
-    "orientation_degrees": 195,
-    "orientation_label": "Sud",
-    "shelter": [
-      "macchia mediterranea"
-    ],
+    "slug": "vergine-maria-palermo",
+    "description": "Una spiaggia urbana di sabbia dorata ai piedi del Monte Pellegrino, accanto alla borgata e alla Tonnara Bordonaro.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
     "tags": [
-      "selvaggia",
-      "ciottoli",
-      "snorkeling",
-      "sentiero",
-      "trekking"
+      "sabbia",
+      "relax",
+      "tramonto",
+      "in-città"
     ],
-    "access_level": "difficile",
+    "access_level": "facile",
     "services": [
-      "Nessun servizio stabile verificato"
+      "spiaggia libera",
+      "servizi urbani"
     ],
     "warnings": [
-      "Scheda candidata: accessi e servizi vanno ricontrollati prima della pubblicazione.",
-      "Il punto rappresentato è indicativo; meteo, mare e regole dell’area possono cambiare."
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
     ],
     "facts": [
-      "Suolo — Ciottoli chiari e sabbia nei tratti riparati",
-      "Fondale — Misto roccia e sabbia, adatto allo snorkeling con mare calmo",
-      "Esposizione — Sud, con orientamento indicativo del tratto",
-      "Servizi — Nessun servizio stabile verificato",
-      "Accesso — Sentiero a piedi impegnativo; portare acqua e verificare le condizioni",
-      "Ambiente — Costa selvaggia con macchia bassa e alte pareti calcaree"
+      "Suolo — Sabbia dorata",
+      "Fondale — Basso nei tratti sabbiosi",
+      "Esposizione — Nord-ovest",
+      "Servizi — Spiaggia libera e servizi urbani nelle vicinanze",
+      "Accesso — Facile, dalla strada urbana e dalla borgata",
+      "Ambiente — Borgata di pescatori tra mare e Monte Pellegrino"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Palermo Turismo",
+        "source_type": "municipality",
+        "source_url": "https://turismo.comune.palermo.it/palermo-welcome-mare-dettaglio.php?det=26&id=372&tp=158",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/82616086",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "kafara",
+    "description": "Una caletta tra Sant’Elia e Capo Zafferano, con scogli, piccole zone di battigia e acqua adatta a nuoto e snorkeling nelle giornate calme.",
+    "orientation_degrees": 310,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "caletta",
+      "scogliera",
+      "snorkeling",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "lido stagionale"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogli",
+      "Fondale — Roccioso e irregolare",
+      "Esposizione — Nord-ovest",
+      "Servizi — Lido e servizi stagionali in prossimità",
+      "Accesso — Moderato, con percorso e accesso puntuale da verificare",
+      "Ambiente — Costa frastagliata di Capo Zafferano"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Santa Flavia",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.santaflavia.pa.it/wp-content/uploads/2025/04/MappaTuristica144dpi75.pdf",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/719319467",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "sant-elia-santa-flavia",
+    "description": "Una piccola insenatura accanto al borgo marinaro di Sant’Elia, circondata da case colorate e da una costa rocciosa.",
+    "orientation_degrees": 310,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "caletta",
+      "scogliera",
+      "snorkeling",
+      "relax"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "bar e servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogli",
+      "Fondale — Roccioso e trasparente nelle giornate calme",
+      "Esposizione — Nord-ovest",
+      "Servizi — Bar e servizi stagionali nel borgo",
+      "Accesso — Moderato, con accessi urbani e scalinate",
+      "Ambiente — Borgo marinaro e costa di Capo Zafferano"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Santa Flavia",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.santaflavia.pa.it/wp-content/uploads/2025/04/MappaTuristica144dpi75.pdf",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/relation/19581221",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-aciddara",
+    "description": "Un tratto costiero raccolto della fascia di Santa Flavia, tra scogli affioranti e piccole zone di battigia.",
+    "orientation_degrees": 310,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "scogliera",
+      "snorkeling",
+      "caletta",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogli",
+      "Fondale — Roccioso e irregolare",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi non garantiti sul punto di costa",
+      "Accesso — Moderato, con accesso da verificare sul tratto costiero",
+      "Ambiente — Costa frastagliata tra Sant’Elia e Capo Zafferano"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Santa Flavia",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.santaflavia.pa.it/wp-content/uploads/2025/04/MappaTuristica144dpi75.pdf",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/106087123",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-olivella-santa-flavia",
+    "description": "Una piccola spiaggia della costa di Santa Flavia, inserita tra rocce basse e acque adatte a esplorare il fondale.",
+    "orientation_degrees": 310,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "caletta",
+      "scogliera",
+      "snorkeling",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogli",
+      "Fondale — Roccioso e misto",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi non garantiti direttamente sulla spiaggia",
+      "Accesso — Moderato, con accesso locale da verificare",
+      "Ambiente — Tratto naturale della costa di Santa Flavia"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Santa Flavia",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.santaflavia.pa.it/wp-content/uploads/2025/04/MappaTuristica144dpi75.pdf",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/719330136",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-casteldaccia",
+    "description": "Un tratto di litorale tra Casteldaccia e Santa Flavia, con accessi dalla costa e alternanza di sabbia, ciottoli e scogli.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "sabbia",
+      "ciottoli",
+      "relax",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia, ciottoli e scogli",
+      "Fondale — Misto e generalmente basso vicino alla riva",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi stagionali variabili lungo la costa",
+      "Accesso — Facile nei punti urbani, accesso da verificare per il tratto preciso",
+      "Ambiente — Litorale tra Casteldaccia e la costa di Santa Flavia"
+    ],
+    "sources": [
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/220263982",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "campofelice-di-roccella",
+    "description": "Un lungo arenile sabbioso della costa tirrenica, con vista sul golfo e servizi stagionali nei tratti più frequentati.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "lidi",
+      "tramonto"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia fine",
+      "Fondale — Basso e digradante in più tratti",
+      "Esposizione — Nord-ovest",
+      "Servizi — Lidi, bar e servizi stagionali",
+      "Accesso — Facile, con più accessi dalla litoranea",
+      "Ambiente — Litorale aperto tra Campofelice e il promontorio di Roccella"
     ],
     "sources": [
       {
@@ -2033,7 +1908,256 @@
       {
         "source_name": "OpenStreetMap",
         "source_type": "osm",
-        "source_url": "https://www.openstreetmap.org/way/992673987",
+        "source_url": "https://www.openstreetmap.org/way/47575713",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "settefrati-cefalu",
+    "description": "Un ampio tratto di spiaggia pubblica tra Capo Plaia e Mazzaforno, con calette rocciose e macchia mediterranea alle spalle.",
+    "orientation_degrees": 310,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "sabbia",
+      "natura",
+      "snorkeling",
+      "trekking"
+    ],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ciottoli",
+      "Fondale — Misto, con tratti bassi e calette rocciose",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi limitati e variabili lungo il tratto pubblico",
+      "Accesso — Moderato, con accessi distribuiti e alcuni tratti da raggiungere a piedi",
+      "Ambiente — Baia Settefrati e costa naturale a ovest di Cefalù"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Cefalù",
+        "source_type": "municipality",
+        "source_url": "https://comune.cefalu.pa.it/wp-content/uploads/simple-file-list/Tav_1_Relazione.pdf",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/1241719487",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "salinelle-lascari",
+    "description": "Il litorale pubblico di Salinelle prosegue la fascia sabbiosa tra Cefalù e Lascari, con ampi spazi e accessi dalla strada costiera.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "relax",
+      "tramonto"
+    ],
+    "access_level": "facile",
+    "services": [
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Il punto è rappresentativo del litorale: verificare l’accesso esatto e non confonderlo con Settefrati."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia fine",
+      "Fondale — Basso e digradante in più settori",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi stagionali solo in alcuni settori",
+      "Accesso — Facile nei punti serviti, ma il singolo ingresso è da precisare",
+      "Ambiente — Litorale aperto della baia tra Capo Plaia e Salinelle"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Cefalù",
+        "source_type": "municipal-plan",
+        "source_url": "https://comune.cefalu.pa.it/wp-content/uploads/simple-file-list/Tav_1_Relazione.pdf",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "sarello-aspra",
+    "description": "Un tratto del litorale di Aspra tornato fruibile dopo i controlli di balneabilità, con accesso dalla borgata e panorama sul golfo.",
+    "orientation_degrees": 310,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "in-città",
+      "ciottoli",
+      "relax",
+      "snorkeling"
+    ],
+    "access_level": "facile",
+    "services": [
+      "servizi urbani"
+    ],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "La balneabilità è soggetta ai controlli e ai decreti stagionali: verificare lo stato aggiornato."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogli bassi",
+      "Fondale — Misto e irregolare",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi urbani e ristorazione nella borgata",
+      "Accesso — Facile, dalla borgata di Aspra",
+      "Ambiente — Litorale urbano di Aspra e costa di Bagheria"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Bagheria",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.bagheria.pa.it/index.php/it/news/notizie-positive-per-i-cittadini-ed-i-turisti-che-frequentano-il-litorale-di-aspra-balneabili-il-sarello-le-spiagge-della-plaia-la-zona-di-cala-dell-osta-e-le-acque-di-mongerbino-nei-pressi-dell-arco-azzurro",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/12182120341",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "ippocampo-aspra",
+    "description": "Una piccola discesa al mare della costa di Mongerbino, tra Capo Zafferano e Aspra, con acqua e fondale da esplorare nelle giornate calme.",
+    "orientation_degrees": 315,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "caletta",
+      "scogliera",
+      "snorkeling",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Il Comune indica una discesa pubblica: verificare segnaletica, sicurezza e stato della balneazione."
+    ],
+    "facts": [
+      "Suolo — Scogli e ciottoli",
+      "Fondale — Roccioso e irregolare",
+      "Esposizione — Nord-ovest",
+      "Servizi — Servizi non garantiti sul punto di accesso",
+      "Accesso — Moderato, con accesso locale e percorso da verificare",
+      "Ambiente — Costa di Mongerbino nei pressi di Capo Zafferano"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Bagheria",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.bagheria.pa.it/index.php/it/news/balneabilita-2026-buone-notizie-per-la-costa-di-aspra-confermati-i-tratti-balneabili-e-i-punti-di-studio",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/2157629668",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "tre-piscine-cala-del-cuore",
+    "description": "Una sequenza di piccole piscine naturali e calette della costa di Capo Zafferano, raggiungibili solo da accessi puntuali o dal mare.",
+    "orientation_degrees": 315,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "caletta",
+      "scogliera",
+      "snorkeling",
+      "trekking"
+    ],
+    "access_level": "difficile",
+    "services": [],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Non confondere il nome con un lido attrezzato: accesso, sicurezza e balneazione richiedono verifica locale."
+    ],
+    "facts": [
+      "Suolo — Scogli e piccole piattaforme rocciose",
+      "Fondale — Roccioso e profondo in alcuni punti",
+      "Esposizione — Nord-ovest",
+      "Servizi — Nessun servizio garantito sul punto naturale",
+      "Accesso — Difficile, con accesso da verificare e tratti rocciosi",
+      "Ambiente — Costa frastagliata di Capo Zafferano"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Bagheria",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.bagheria.pa.it/index.php/it/news/le-grotte-a-mare-sole-mare-e-natura",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/node/2157637008",
+        "role": "coordinate-cross-check"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-dei-francesi-mongerbino",
+    "description": "Una piccola cala di Mongerbino incastonata sotto il costone roccioso, nota per il paesaggio ma con accesso e balneazione da trattare con cautela.",
+    "orientation_degrees": 315,
+    "orientation_label": "Nord-ovest",
+    "shelter": [],
+    "tags": [
+      "caletta",
+      "scogliera",
+      "snorkeling",
+      "natura"
+    ],
+    "access_level": "difficile",
+    "services": [],
+    "warnings": [
+      "Coordinate rappresentative del tratto censito; verificare il singolo accesso prima della pubblicazione.",
+      "Servizi, affollamento e condizioni di balneazione possono cambiare con la stagione.",
+      "Il Comune segnala un divieto di balneazione e criticità di accesso legate alla sicurezza: non pubblicare come balneabile finché non revocato."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogli",
+      "Fondale — Roccioso e irregolare",
+      "Esposizione — Nord-ovest",
+      "Servizi — Nessun servizio garantito",
+      "Accesso — Difficile e attualmente da verificare per motivi di sicurezza",
+      "Ambiente — Costa di Mongerbino sotto il costone di Capo Zafferano"
+    ],
+    "sources": [
+      {
+        "source_name": "Comune di Bagheria",
+        "source_type": "municipality",
+        "source_url": "https://www.comune.bagheria.pa.it/index.php/it/news/accesso-al-mare-a-mongerbino-e-spiaggia-dei-francesi-l-amministrazione-comunale-fa-chiarezza-sulla-situazione-legale-e-di-sicurezza",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/way/850410273",
         "role": "coordinate-cross-check"
       }
     ]

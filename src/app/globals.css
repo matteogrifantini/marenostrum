@@ -7,6 +7,9 @@
   --surface: #ffffff;
   --surface-muted: #edf9f8;
   --control-surface: #fafafa;
+  --disabled-surface: #eceff0;
+  --disabled-ink: #889398;
+  --disabled-line: #d8dfe1;
   --ink: #123744;
   --ink-soft: #385c66;
   --muted: #5b747b;

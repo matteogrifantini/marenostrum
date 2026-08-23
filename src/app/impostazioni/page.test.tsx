@@ -22,7 +22,7 @@ describe("SettingsExperience", () => {
 
     expect(screen.getByRole("heading", { name: "Impostazioni" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Continua con Google" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Continua con Apple" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Continua con Apple" })).toBeDisabled();
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
     expect(screen.getByLabelText("Password")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Accedi" })).toBeInTheDocument();

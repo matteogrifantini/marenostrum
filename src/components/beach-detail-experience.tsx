@@ -240,7 +240,7 @@ export function BeachDetailExperience({
               panelRef={beachInfoRef}
             />
             <BeachLiveSections beach={beach} detail={detail} />
-            <BeachCommunitySections detail={detail} />
+            <BeachCommunitySections beachName={beach.name} detail={detail} />
             <ForecastAttribution
               includeParkingSource={detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org"))}
             />

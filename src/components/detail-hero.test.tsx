@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { DetailHero } from "./detail-hero";
@@ -41,6 +41,27 @@ describe("DetailHero", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Chiudi video" }));
     expect(screen.queryByRole("dialog", { name: "Video della spiaggia" })).not.toBeInTheDocument();
+  });
+
+  it("opens the beach photo in an accessible viewer", () => {
+    const detail = getDemoBeachDetail(beach.slug)!;
+
+    render(
+      <DetailHero
+        beach={beach}
+        detail={detail}
+        period="all-day"
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: `Apri foto di ${beach.name}` }));
+
+    const photoViewer = screen.getByRole("dialog", { name: `Foto di ${beach.name}` });
+    expect(photoViewer).toBeInTheDocument();
+    expect(within(photoViewer).getByRole("img", { name: `Foto di ${beach.name}` })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Chiudi foto" }));
+    expect(screen.queryByRole("dialog", { name: `Foto di ${beach.name}` })).not.toBeInTheDocument();
   });
 
   it("turns the favorite heart red when the beach is saved", () => {
@@ -141,5 +162,3 @@ describe("DetailHero", () => {
     );
   });
 });
-
-

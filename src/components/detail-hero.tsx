@@ -7,6 +7,7 @@ import { useState } from "react";
 import type { Beach, BeachPeriod } from "../domain/beach";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
 import { versionedMediaUrl } from "../lib/media-url";
+import { BeachPhotoViewer } from "./beach-photo-viewer";
 import { BeachVideoReel } from "./beach-video-reel";
 import { FavoriteToggle } from "./favorite-toggle";
 
@@ -22,6 +23,7 @@ type DetailHeroProps = {
 
 export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = false, onInfoToggle }: DetailHeroProps) {
   const [shared, setShared] = useState(false);
+  const [showPhoto, setShowPhoto] = useState(false);
   const [showReels, setShowReels] = useState(false);
   const image = beach.image;
   const imageSrc = image ? versionedMediaUrl(image) : undefined;
@@ -59,7 +61,14 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
     <>
       <section className="relative min-h-[20rem] overflow-hidden rounded-[1.8rem] bg-[var(--ink)] text-white shadow-[0_20px_60px_rgba(20,44,57,0.16)] sm:min-h-[26rem]">
         {imageSrc ? (
-          <Image src={imageSrc} alt={imageAlt} fill loading="eager" sizes="(max-width: 639px) 100vw, (max-width: 1440px) calc(100vw - 3rem), 1440px" className="object-cover" />
+          <button
+            type="button"
+            aria-label={`Apri foto di ${beach.name}`}
+            onClick={() => setShowPhoto(true)}
+            className="absolute inset-0 z-0 h-full w-full cursor-zoom-in border-0 bg-transparent p-0 text-left"
+          >
+            <Image src={imageSrc} alt={imageAlt} fill loading="eager" sizes="(max-width: 639px) 100vw, (max-width: 1440px) calc(100vw - 3rem), 1440px" className="object-cover" />
+          </button>
         ) : (
           <div
             role="img"
@@ -69,7 +78,7 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
             <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 opacity-25 [background:linear-gradient(155deg,transparent_48%,rgba(255,255,255,0.24)_49%,transparent_51%)] [background-size:3rem_3rem]" />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[rgba(6,28,35,0.82)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[rgba(6,28,35,0.82)]" />
 
         <div className="absolute inset-x-4 top-4 z-10 flex items-center justify-between gap-3">
           <Link href={backHref} aria-label="Torna alle spiagge" className="detail-press grid size-11 place-items-center rounded-full bg-white/88 text-[var(--ink)] shadow-[0_6px_17px_rgba(8,47,61,0.13)] backdrop-blur-md">
@@ -113,6 +122,7 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
         </div>
       </section>
 
+      {showPhoto && imageSrc ? <BeachPhotoViewer beachName={beach.name} imageSrc={imageSrc} imageAlt={imageAlt} onClose={() => setShowPhoto(false)} /> : null}
       {showReels && detail.reels.length > 0 ? <BeachVideoReel beachName={beach.name} reels={detail.reels} onClose={() => setShowReels(false)} /> : null}
     </>
   );

@@ -1,15 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
 import { versionedMediaUrl } from "../lib/media-url";
+import { BeachPhotoViewer } from "./beach-photo-viewer";
 
 type BeachCommunitySectionsProps = {
   detail: BeachDetailContent;
+  beachName?: string;
 };
 
-export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) {
+export function BeachCommunitySections({ detail, beachName = "questa spiaggia" }: BeachCommunitySectionsProps) {
   const { reviews, reviewProfile, webcam } = detail;
+  const [selectedPhoto, setSelectedPhoto] = useState<BeachDetailContent["recentPhotos"][number] | null>(null);
 
   return (
     <>
@@ -66,8 +70,17 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
         <div className="detail-photo-rail detail-enter grid auto-cols-[44%] grid-flow-col gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {detail.recentPhotos.map((photo) => (
             <figure key={photo.id} className="relative h-36 snap-start overflow-hidden rounded-[1.1rem] bg-[var(--surface-muted)] shadow-[0_7px_18px_rgba(8,47,61,0.08)]">
-              <Image src={versionedMediaUrl(photo.src)} alt={photo.alt} fill sizes="(max-width: 768px) 44vw, 330px" className="object-cover" />
-              <figcaption className="absolute bottom-2 left-2 rounded-full bg-[rgba(7,44,53,0.52)] px-2 py-1 text-[0.65rem] font-bold text-white backdrop-blur-md">{photo.age}</figcaption>
+              <button
+                type="button"
+                aria-label={`Apri foto di ${photo.alt}`}
+                onClick={() => setSelectedPhoto(photo)}
+                className="detail-press absolute inset-0 z-0 h-full w-full cursor-zoom-in border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-white"
+              >
+                <span className="absolute inset-0">
+                  <Image src={versionedMediaUrl(photo.src)} alt={photo.alt} fill sizes="(max-width: 768px) 44vw, 330px" className="object-cover" />
+                </span>
+              </button>
+              <figcaption className="pointer-events-none absolute bottom-2 left-2 z-10 rounded-full bg-[rgba(7,44,53,0.52)] px-2 py-1 text-[0.65rem] font-bold text-white backdrop-blur-md">{photo.age}</figcaption>
             </figure>
           ))}
           {detail.recentPhotos.length === 0 ? <p className="text-sm text-[var(--muted)]">Nessuna foto recente disponibile.</p> : null}
@@ -96,6 +109,15 @@ export function BeachCommunitySections({ detail }: BeachCommunitySectionsProps) 
           </article>
         ) : <p className="detail-surface detail-enter p-4 text-sm text-[var(--muted)]">Nessuna webcam disponibile.</p>}
       </section>
+
+      {selectedPhoto ? (
+        <BeachPhotoViewer
+          beachName={beachName}
+          imageSrc={versionedMediaUrl(selectedPhoto.src)}
+          imageAlt={selectedPhoto.alt}
+          onClose={() => setSelectedPhoto(null)}
+        />
+      ) : null}
     </>
   );
 }

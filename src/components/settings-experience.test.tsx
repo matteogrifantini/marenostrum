@@ -35,14 +35,30 @@ describe("SettingsExperience auth", () => {
     vi.unstubAllGlobals();
   });
 
-  it("offers compact Google, Apple and email/password access", () => {
+  it("offers Google, a disabled Apple option and email/password access", () => {
     render(<SettingsExperience initialEmail={null} />);
 
     expect(screen.getByRole("button", { name: "Continua con Google" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Continua con Apple" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Continua con Apple" })).toBeDisabled();
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
     expect(screen.getByLabelText("Password")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Accedi" })).toBeInTheDocument();
+  });
+
+  it("stacks the provider buttons vertically", () => {
+    render(<SettingsExperience initialEmail={null} />);
+
+    const googleButton = screen.getByRole("button", { name: "Continua con Google" });
+    expect(googleButton.parentElement).toHaveClass("grid", "gap-2");
+    expect(googleButton.parentElement).not.toHaveClass("sm:grid-cols-2");
+  });
+
+  it("does not start Apple OAuth while the provider is disabled", () => {
+    render(<SettingsExperience initialEmail={null} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Continua con Apple" }));
+
+    expect(authMocks.signInWithOAuth).not.toHaveBeenCalled();
   });
 
   it("starts Google OAuth with the internal callback URL", async () => {
