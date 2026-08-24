@@ -10,7 +10,7 @@ describe("demo beach detail fixtures", () => {
       expect(detail, beach.slug).toBeDefined();
       expect(detail?.reports.length).toBeGreaterThanOrEqual(3);
       expect(detail?.parkings).toHaveLength(2);
-      expect(detail?.parkings.every((parking) => parking.price.length > 0)).toBe(true);
+      expect(detail?.parkings.every((parking) => parking.name.length > 0)).toBe(true);
       expect(detail?.facts.map((fact) => fact.label)).toEqual([
         "Suolo",
         "Fondale",

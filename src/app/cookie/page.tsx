@@ -77,7 +77,7 @@ export default function CookiePage() {
                 <td className="py-3 pr-4">Cookie tecnico di sessione</td>
                 <td className="py-3 pr-4">Gestito da Supabase Auth</td>
                 <td className="py-3">
-                  Mantiene l&apos;accesso volontario per sincronizzare i preferiti. Non è usato per pubblicità o profilazione.
+                  Mantiene l&apos;accesso volontario per sincronizzare i preferiti e pubblicare o aggiornare recensioni della Community. Non è usato per pubblicità o profilazione.
                 </td>
               </tr>
               <tr>

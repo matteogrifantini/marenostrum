@@ -78,6 +78,17 @@ export type ReviewProfileRow = {
   notes: string | null;
 };
 
+export type InternalReviewRow = {
+  id: string;
+  beach_id: string;
+  user_id: string;
+  author_name: string;
+  rating: number;
+  body: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type BeachContentReadStore = {
   getPublishedBeachBySlug(slug: string): Promise<{ id: string } | null>;
   getBeachSources(beachId: string): Promise<BeachSourceRow[]>;
@@ -85,6 +96,7 @@ export type BeachContentReadStore = {
   getMediaItems(beachId: string): Promise<MediaItemRow[]>;
   getWebcams(beachId: string): Promise<WebcamRow[]>;
   getReviewProfiles(beachId: string): Promise<ReviewProfileRow[]>;
+  getInternalReviews?(beachId: string): Promise<InternalReviewRow[]>;
 };
 
 export type BeachContent = {
@@ -93,6 +105,7 @@ export type BeachContent = {
   media: MediaItemRow[];
   webcams: WebcamRow[];
   reviewProfile: ReviewProfileRow | null;
+  reviews?: InternalReviewRow[];
 };
 
 const parkingNeedsVerification = /(?:candidat|da\s+(?:verificare|controllare|confermare)|non\s+verificat|provvisor)/i;
@@ -118,12 +131,13 @@ export async function getBeachContentBySlug(
 
   if (!beach) return null;
 
-  const [sources, parkings, media, webcams, reviewProfiles] = await Promise.all([
+  const [sources, parkings, media, webcams, reviewProfiles, reviews] = await Promise.all([
     store.getBeachSources(beach.id),
     store.getParkingFacilities(beach.id),
     store.getMediaItems(beach.id),
     store.getWebcams(beach.id),
     store.getReviewProfiles(beach.id),
+    store.getInternalReviews ? store.getInternalReviews(beach.id) : Promise.resolve([]),
   ]);
 
   return {
@@ -132,5 +146,6 @@ export async function getBeachContentBySlug(
     media,
     webcams,
     reviewProfile: reviewProfiles[0] ?? null,
+    reviews,
   };
 }

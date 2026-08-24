@@ -95,4 +95,41 @@ describe("BeachCommunitySections", () => {
       "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino",
     );
   });
+
+  it("shows the authenticated community review entry point separately from Google Maps", async () => {
+    const detail = getDemoBeachDetail("cala-del-gelsomino")!;
+    render(
+      <BeachCommunitySections
+        beachSlug="cala-del-gelsomino"
+        detail={{
+          ...detail,
+          reviews: {
+            rating: 4.5,
+            recommendedPercent: 100,
+            total: 2,
+            items: [
+              { id: "review-1", author: "Matteo", age: "adesso", text: "Acqua limpida.", rating: 5 },
+              { id: "review-2", author: "Sara", age: "ieri", text: "Molto piacevole.", rating: 4 },
+            ],
+          },
+          reviewProfile: {
+            provider: "google",
+            mapsUrl: "https://maps.google.com/?cid=1",
+            verificationStatus: "verified",
+          },
+        }}
+      />,
+    );
+
+    const reviews = screen.getByRole("region", { name: "Recensioni" });
+    expect(within(reviews).getByText("Recensioni della community")).toBeInTheDocument();
+    expect(within(reviews).getByRole("link", { name: "Apri recensioni Google" })).toHaveAttribute(
+      "href",
+      "https://maps.google.com/?cid=1",
+    );
+    expect(await within(reviews).findByRole("link", { name: "Accedi per recensire" })).toHaveAttribute(
+      "href",
+      "/impostazioni",
+    );
+  });
 });

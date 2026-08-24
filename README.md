@@ -129,6 +129,22 @@ ricerca draft è visibile come `Cerca su Google Maps`, con dicitura esplicita
 che il profilo è ancora da confermare: non vengono mostrate né copiate
 recensioni finché non esiste un profilo verificato.
 
+### Recensioni, punteggio e provincia
+
+Il punteggio Mare Nostrum è meteorologico e viene mostrato su base 100. Non
+include tag statici, accesso, recensioni o rating Google. La provincia si
+seleziona direttamente dalla barra principale e viene salvata nell’URL insieme
+alla data e al periodo.
+
+Per restare nel perimetro gratuito l’app non esegue scraping di Google e non
+richiede una chiave Places API: il collegamento a Google Maps resta la fonte
+esterna ufficiale. Le valutazioni pubblicabili nell’app sono invece recensioni
+della community, associate a un account autenticato Supabase e separate dal
+punteggio meteo. La migrazione locale
+`supabase/migrations/20260824180217_internal_beach_reviews.sql` deve essere
+applicata al progetto Supabase prima di abilitare la scrittura in produzione;
+non viene applicata automaticamente dal build o dal deploy.
+
 Le previsioni sono ottenute da Open-Meteo per uso non commerciale. Lo scheduler gratuito di GitHub Actions chiama periodicamente l’endpoint protetto usando `FORECAST_SYNC_URL` e `CRON_SECRET`, configurati come repository secrets.
 
 ## Architettura iniziale

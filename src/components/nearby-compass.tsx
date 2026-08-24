@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { BeachPeriod } from "../domain/beach";
 import type { NearbyCalmRecommendation } from "../domain/nearby-recommendations";
+import { formatScoreOutOf100 } from "../domain/score";
 import { formatDistanceKm, useUserPreferences } from "../lib/user-preferences";
 
 type NearbyCompassProps = {
@@ -48,7 +49,7 @@ export function NearbyCompass({
         <ol className="mt-4 grid gap-2 sm:grid-cols-3">
           {recommendations.map(({ recommendation, distanceKm }, index) => {
             const { beach } = recommendation;
-            const displayScore = (Math.max(0, Math.min(100, recommendation.score)) / 10).toFixed(1);
+            const displayScore = formatScoreOutOf100(recommendation.score);
 
             return (
               <li key={beach.slug}>

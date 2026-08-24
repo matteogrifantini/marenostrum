@@ -27,6 +27,7 @@ const recommendations: BeachRecommendation[] = [
       tags: ["relax"],
       access: "facile",
       image: "/images/beaches/cala-del-gelsomino.jpg",
+      provinceCode: "SR",
     },
     conditions: {
       observedAt: "2026-08-20T08:00:00+02:00",
@@ -56,6 +57,7 @@ const recommendations: BeachRecommendation[] = [
       tags: ["esplora"],
       access: "moderato",
       image: "/images/beaches/tonnara-di-vendicari.jpg",
+      provinceCode: "SR",
     },
     conditions: {
       observedAt: "2026-08-20T08:00:00+02:00",
@@ -85,6 +87,7 @@ const recommendations: BeachRecommendation[] = [
       tags: ["famiglie", "sabbia"],
       access: "facile",
       image: "/images/beaches/spiaggia-della-marchesa.jpg",
+      provinceCode: "SR",
     },
     conditions: {
       observedAt: "2026-08-20T08:00:00+02:00",
@@ -361,6 +364,21 @@ describe("HomeExperience", () => {
 
     expect(search.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
     expect(dayGroup.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
+  });
+
+  it("filters by province from the main bar and persists the selection in the URL", () => {
+    renderHome();
+
+    const province = screen.getByRole("combobox", { name: "Provincia" });
+    expect(province).toHaveValue("all");
+
+    fireEvent.change(province, { target: { value: "TP" } });
+
+    expect(screen.getByRole("status", { name: "Aggiornamento spiagge" })).toBeInTheDocument();
+    expect(replace).toHaveBeenLastCalledWith(
+      "/?date=2026-08-20&period=all-day&province=TP",
+      { scroll: false },
+    );
   });
 
   it("keeps the nearby-location popover above the beach cards", () => {

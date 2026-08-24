@@ -74,6 +74,9 @@ export default function PrivacyPage() {
             <strong>Account e sessione</strong>: L&apos;indirizzo email e l&apos;identità del provider scelto vengono utilizzati esclusivamente per creare o mantenere la sessione autenticata. Puoi uscire in ogni momento o eliminare l&apos;account direttamente dalle Impostazioni.
           </li>
           <li>
+            <strong>Recensioni della Community</strong>: Se accedi, puoi lasciare una valutazione da 1 a 5 stelle e un commento facoltativo. Conserviamo l&apos;identificativo dell&apos;account, il nome visualizzato, la valutazione e il testo per mostrare una recensione per spiaggia agli altri utenti. Non accettiamo recensioni anonime e non usiamo questi dati per pubblicità o profilazione.
+          </li>
+          <li>
             <strong>Avvisi locali</strong>: Se li abiliti, il browser conserva solo una preferenza tecnica e l&apos;autorizzazione alle notifiche sul dispositivo. Mare Nostrum non usa notifiche per profilazione e non riceve la posizione GPS.
           </li>
         </ul>
@@ -84,7 +87,7 @@ export default function PrivacyPage() {
           3. Base Giuridica del Trattamento
         </h2>
         <p>
-          Il trattamento dei dati tecnici e degli identificativi anonimi di segnalazione si fonda sul <strong>legittimo interesse</strong> del titolare (Art. 6, par. 1, lett. f del GDPR) a garantire il corretto funzionamento della piattaforma, prevenire abusi e fornire previsioni attendibili agli utenti. La sincronizzazione volontaria dei preferiti e l&apos;invio del link di accesso si fondano sull&apos;esecuzione della richiesta dell&apos;utente.
+          Il trattamento dei dati tecnici e degli identificativi anonimi di segnalazione si fonda sul <strong>legittimo interesse</strong> del titolare (Art. 6, par. 1, lett. f del GDPR) a garantire il corretto funzionamento della piattaforma, prevenire abusi e fornire previsioni attendibili agli utenti. La sincronizzazione volontaria dei preferiti, l&apos;invio del link di accesso e la pubblicazione volontaria di una recensione della Community si fondano sull&apos;esecuzione della richiesta dell&apos;utente.
         </p>
       </section>
 
@@ -102,7 +105,7 @@ export default function PrivacyPage() {
           5. Conservazione dei Dati
         </h2>
         <p>
-          Le segnalazioni della community vengono archiviate per il periodo necessario a calcolare lo storico delle condizioni marine e perdono rilevanza pubblica dopo 24 ore. I codici dei preferiti sincronizzati restano associati all&apos;account fino alla loro rimozione o alla richiesta di cancellazione. I log tecnici di sistema vengono conservati per il tempo strettamente necessario all&apos;analisi della sicurezza e alla risoluzione di problemi operativi.
+          Le segnalazioni della community vengono archiviate per il periodo necessario a calcolare lo storico delle condizioni marine e perdono rilevanza pubblica dopo 24 ore. Le recensioni restano pubblicate finché l&apos;utente non le aggiorna o cancella, oppure fino alla cancellazione dell&apos;account; ogni account può mantenere una recensione per spiaggia. I codici dei preferiti sincronizzati restano associati all&apos;account fino alla loro rimozione o alla richiesta di cancellazione. I log tecnici di sistema vengono conservati per il tempo strettamente necessario all&apos;analisi della sicurezza e alla risoluzione di problemi operativi.
         </p>
       </section>
 

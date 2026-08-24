@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { BeachPeriod } from "../domain/beach";
 import { buildNextDayHref } from "../domain/detail-query";
+import { formatScoreOutOf100 } from "../domain/score";
 
 export type NextDay = {
   iso: string;
@@ -43,7 +44,7 @@ export function NextDays({ slug, days, selectedDate, period }: NextDaysProps) {
                 aria-hidden="true"
                 className={[
                   "absolute left-3 top-0 z-10 size-3 rounded-full ring-4 ring-[var(--sand)]",
-                  selected ? "bg-[var(--sun)]" : "bg-[var(--sea)]",
+                  "bg-[var(--sea)]",
                 ].join(" ")}
               />
               <Link
@@ -59,7 +60,7 @@ export function NextDays({ slug, days, selectedDate, period }: NextDaysProps) {
               >
                 <span className={selected ? "text-white/70" : "text-[var(--muted)]"}>{day.label}</span>
                 <strong className="mt-3 block font-serif text-3xl leading-none tracking-[-0.06em]">
-                  {(day.score / 10).toFixed(1)}
+                  {formatScoreOutOf100(day.score)}
                 </strong>
                 <span className={selected ? "mt-1 block text-xs font-semibold text-white/70" : "mt-1 block text-xs font-semibold text-[var(--muted)]"}>
                   {day.wind}

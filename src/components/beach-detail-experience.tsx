@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState, useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { getBeachAiComment } from "../domain/beach-comment";
+import { formatScoreOutOf100 } from "../domain/score";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
 import type { DetailOrigin } from "../domain/detail-query";
 import type { DateOption } from "../domain/date-selection";
@@ -68,7 +69,7 @@ function directionName(degrees: number) {
 }
 
 function displayScore(score: number) {
-  return (Math.max(0, Math.min(100, score)) / 10).toFixed(1);
+  return formatScoreOutOf100(score);
 }
 
 function scoreTone(score: number): ScoreTone {
@@ -240,7 +241,7 @@ export function BeachDetailExperience({
               panelRef={beachInfoRef}
             />
             <BeachLiveSections beach={beach} detail={detail} />
-            <BeachCommunitySections beachName={beach.name} detail={detail} />
+            <BeachCommunitySections beachSlug={beach.slug} beachName={beach.name} detail={detail} />
             <ForecastAttribution
               includeParkingSource={detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org"))}
             />

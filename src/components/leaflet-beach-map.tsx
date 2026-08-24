@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type * as Leaflet from "leaflet";
 import type { BeachRecommendation } from "../domain/beach";
+import { formatScoreOutOf100 } from "../domain/score";
 import {
   MAP_POI_CATEGORIES,
   type MapPoi,
@@ -86,7 +87,7 @@ function createPoiPopup(place: MapPoi) {
 
 function createBeachPopup(recommendation: MappableRecommendation) {
   const { beach, score } = recommendation;
-  const scoreValue = (score / 10).toFixed(1);
+  const scoreValue = formatScoreOutOf100(score);
   return `<div class="map-popup map-popup--beach"><div class="map-popup__eyebrow">Rating Mare Nostrum</div><strong>${escapeHtml(beach.name)}</strong><span class="map-popup__score">${scoreValue}</span><a href="/spiagge/${encodeURIComponent(beach.slug)}?date=${encodeURIComponent(recommendation.conditions.date ?? "")}&period=${encodeURIComponent(recommendation.conditions.period ?? "all-day")}&source=map">Apri la spiaggia</a></div>`;
 }
 
@@ -255,7 +256,7 @@ export function LeafletBeachMap({
     for (const recommendation of recommendations) {
       if (!hasMapCoordinates(recommendation)) continue;
       const { beach, score } = recommendation;
-      const scoreValue = (score / 10).toFixed(1);
+      const scoreValue = formatScoreOutOf100(score);
       const selected = beach.slug === selectedSlug;
       const marker = leaflet.marker([beach.latitude, beach.longitude], {
         icon: leaflet.divIcon({

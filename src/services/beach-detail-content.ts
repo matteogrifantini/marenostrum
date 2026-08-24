@@ -1,6 +1,7 @@
 import type { Beach } from "../domain/beach";
 import type {
   BeachContent,
+  InternalReviewRow,
   MediaItemRow,
   ParkingFacilityRow,
   WebcamRow,
@@ -10,6 +11,7 @@ import {
   type BeachDetailContent,
   type BeachDetailReport,
   type BeachFact,
+  type BeachReviews,
 } from "../domain/beach-detail-content";
 import {
   buildGoogleMapsDirectionsUrl,
@@ -25,6 +27,52 @@ function nonEmpty(value: string | null | undefined, fallback: string) {
 function isoDate(value: string | null | undefined) {
   const match = value?.match(/^\d{4}-\d{2}-\d{2}/);
   return match?.[0] ?? null;
+}
+
+function relativeAge(value: string, now: Date) {
+  const timestamp = Date.parse(value);
+  if (!Number.isFinite(timestamp)) return "data non disponibile";
+
+  const minutes = Math.max(0, Math.floor((now.getTime() - timestamp) / 60_000));
+  if (minutes < 1) return "adesso";
+  if (minutes < 60) return `${minutes} min fa`;
+
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours} ${hours === 1 ? "ora" : "ore"} fa`;
+
+  const days = Math.floor(hours / 24);
+  return `${days} ${days === 1 ? "giorno" : "giorni"} fa`;
+}
+
+export function mapInternalReviews(
+  rows: InternalReviewRow[],
+  now = new Date(),
+): BeachReviews | null {
+  const validRows = rows.filter(
+    (row) => Number.isFinite(row.rating) && row.rating >= 1 && row.rating <= 5,
+  );
+
+  if (validRows.length === 0) return null;
+
+  const rating = Math.round(
+    (validRows.reduce((sum, row) => sum + row.rating, 0) / validRows.length) * 10,
+  ) / 10;
+  const recommendedPercent = Math.round(
+    (validRows.filter((row) => row.rating >= 4).length / validRows.length) * 100,
+  );
+
+  return {
+    rating,
+    recommendedPercent,
+    total: validRows.length,
+    items: validRows.map((row) => ({
+      id: row.id,
+      author: nonEmpty(row.author_name, "Utente Mare Nostrum"),
+      age: relativeAge(row.created_at, now),
+      text: nonEmpty(row.body, "Ha lasciato una valutazione."),
+      rating: row.rating,
+    })),
+  };
 }
 
 function verificationLabel(value: string | null | undefined, prefix: string, fallback: string) {
@@ -52,7 +100,6 @@ function mapParking(parking: ParkingFacilityRow, sourceUrl?: string) {
   return {
     id: parking.id,
     name: nonEmpty(parking.name, "Parcheggio vicino"),
-    price: nonEmpty(parking.pricing_note, "Prezzo non disponibile"),
     type: facilityType(parking.facility_type),
     walking: nonEmpty(parking.access_note, "Distanza a piedi non disponibile"),
     updated: verificationLabel(
@@ -224,6 +271,25 @@ export function buildBeachDetailContent(
   const sourceUrlById = new Map(
     (content?.sources ?? []).map((source) => [source.id, source.source_url]),
   );
+  const reviewProfile = content?.reviewProfile
+    ? {
+        provider: content.reviewProfile.provider,
+        mapsUrl: reviewMapsUrl(
+          beach,
+          content.reviewProfile.provider,
+          content.reviewProfile.place_id,
+          content.reviewProfile.maps_url,
+        ),
+        verificationStatus:
+          content.reviewProfile.verification_status === "archived"
+            ? "draft" as const
+            : content.reviewProfile.verification_status,
+      }
+    : {
+        provider: "google",
+        mapsUrl: buildGoogleMapsSearchUrl(`${beach.name}, ${beach.municipality}, Sicilia`),
+        verificationStatus: "draft" as const,
+      };
 
   return {
     ...emptyBeachDetailContent,
@@ -233,21 +299,8 @@ export function buildBeachDetailContent(
       content?.parkings.map((parking) =>
         mapParking(parking, parking.source_id ? sourceUrlById.get(parking.source_id) : undefined),
       ) ?? [],
-    reviewProfile: content?.reviewProfile
-      ? {
-          provider: content.reviewProfile.provider,
-          mapsUrl: reviewMapsUrl(
-            beach,
-            content.reviewProfile.provider,
-            content.reviewProfile.place_id,
-            content.reviewProfile.maps_url,
-          ),
-          verificationStatus:
-            content.reviewProfile.verification_status === "archived"
-              ? "draft"
-              : content.reviewProfile.verification_status,
-        }
-      : null,
+    reviewProfile,
+    reviews: mapInternalReviews(content?.reviews ?? []),
     recentPhotos: content ? mapPhotos(beach, content.media) : [],
     // Video providers are not rendered as images: keep them hidden until a
     // dedicated licensed video renderer is connected.

@@ -38,7 +38,7 @@ describe("NextDays", () => {
     expect(screen.getByText("Prossimi giorni")).toBeInTheDocument();
     expect(screen.queryByText("Previsioni")).not.toBeInTheDocument();
     expect(screen.queryByText("Scorri per vedere gli altri giorni")).not.toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Oggi.*9\.2.*7 km\/h vento/ })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /Oggi.*92.*7 km\/h vento/ })).toHaveAttribute(
       "data-scroll-preserved",
       "true",
     );

@@ -124,6 +124,26 @@ class FakeForecastReadStore implements ForecastReadStore {
   }
 }
 
+it("uses a direct published beach lookup when the forecast store provides one", async () => {
+  let listCalls = 0;
+  const store: ForecastReadStore = {
+    getPublishedBeaches: async () => {
+      listCalls += 1;
+      return [];
+    },
+    getPublishedBeachBySlug: async () => beachRow,
+    getSourceBySlug: async () => sourceRow,
+    getForecastRows: async () => [conditionRow(beachRow.id)],
+  };
+
+  await expect(getBeachForecastBundleBySlug({
+    slug: beachRow.slug,
+    date: "2026-08-20",
+    period: "all-day",
+  }, store)).resolves.toMatchObject({ beach: { slug: beachRow.slug } });
+  expect(listCalls).toBe(0);
+});
+
 describe("Supabase forecast repository", () => {
   it("maps snake_case beach metadata and numeric strings into a Beach", () => {
     expect(mapBeachRow(beachRow)).toMatchObject({
@@ -376,4 +396,3 @@ describe("Supabase forecast repository", () => {
     ]);
   });
 });
-

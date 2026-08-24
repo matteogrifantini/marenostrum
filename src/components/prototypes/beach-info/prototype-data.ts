@@ -32,7 +32,7 @@ export const prototypeFacts: BeachInfoItem[] = [
 ];
 
 export const prototypeForecast = {
-  score: "9.2",
+  score: "92",
   headline: "Ottima scelta",
   description: "Mare calmo e vento leggero: una giornata molto favorevole per fermarsi qui.",
   weather: "Poco nuvoloso",

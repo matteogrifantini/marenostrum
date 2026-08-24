@@ -3,6 +3,7 @@ import {
   getBeachContentBySlug,
   type BeachContentReadStore,
   type BeachSourceRow,
+  type InternalReviewRow,
   type MediaItemRow,
   type ParkingFacilityRow,
   type ReviewProfileRow,
@@ -87,6 +88,17 @@ const reviewProfile: ReviewProfileRow = {
   notes: null,
 };
 
+const internalReview: InternalReviewRow = {
+  id: "internal-review-1",
+  beach_id: "beach-1",
+  user_id: "user-1",
+  author_name: "Matteo",
+  rating: 5,
+  body: "Acqua trasparente e giornata piacevole.",
+  created_at: "2026-08-21T08:00:00.000Z",
+  updated_at: "2026-08-21T08:00:00.000Z",
+};
+
 function createStore(overrides: Partial<BeachContentReadStore> = {}): BeachContentReadStore {
   return {
     getPublishedBeachBySlug: async (slug) =>
@@ -96,6 +108,7 @@ function createStore(overrides: Partial<BeachContentReadStore> = {}): BeachConte
     getMediaItems: async () => [media],
     getWebcams: async () => [webcam],
     getReviewProfiles: async () => [reviewProfile],
+    getInternalReviews: async () => [],
     ...overrides,
   };
 }
@@ -110,6 +123,7 @@ describe("beach content repository", () => {
       media: [media],
       webcams: [webcam],
       reviewProfile,
+      reviews: [],
     });
   });
 
@@ -154,5 +168,14 @@ describe("beach content repository", () => {
     );
 
     expect(content?.reviewProfile).toBeNull();
+  });
+
+  it("loads published internal reviews alongside external profile metadata", async () => {
+    const content = await getBeachContentBySlug(
+      "san-vito-lo-capo",
+      createStore({ getInternalReviews: async () => [internalReview] }),
+    );
+
+    expect(content?.reviews).toEqual([internalReview]);
   });
 });

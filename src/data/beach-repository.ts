@@ -61,6 +61,7 @@ export type BeachConditionRow = {
 
 export type ForecastReadStore = {
   getPublishedBeaches(): Promise<BeachRow[]>;
+  getPublishedBeachBySlug?(slug: string): Promise<BeachRow | null>;
   getSourceBySlug(slug: string): Promise<DataSourceRow | null>;
   getForecastRows(input: {
     sourceId: string;
@@ -292,8 +293,9 @@ export async function getBeachForecastBundleBySlug(
     (source) => ({ ok: true as const, source }),
     (error: unknown) => ({ ok: false as const, error }),
   );
-  const beachRows = await store.getPublishedBeaches();
-  const beachRow = beachRows.find((row) => row.slug === query.slug);
+  const beachRow = store.getPublishedBeachBySlug
+    ? await store.getPublishedBeachBySlug(query.slug)
+    : (await store.getPublishedBeaches()).find((row) => row.slug === query.slug) ?? null;
 
   if (!beachRow) return null;
 
@@ -339,8 +341,9 @@ export async function getBeachBySlug(
   providedStore?: ForecastReadStore,
 ): Promise<Beach | null> {
   const store = await resolveStore(providedStore);
-  const beachRows = await store.getPublishedBeaches();
-  const beachRow = beachRows.find((row) => row.slug === slug);
+  const beachRow = store.getPublishedBeachBySlug
+    ? await store.getPublishedBeachBySlug(slug)
+    : (await store.getPublishedBeaches()).find((row) => row.slug === slug) ?? null;
 
   return beachRow ? mapBeachRow(beachRow) : null;
 }

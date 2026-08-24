@@ -19,6 +19,8 @@ describe("Legal Pages", () => {
         screen.getByRole("heading", { level: 2, name: /Dati Trattati e Finalità/ }),
       ).toBeInTheDocument();
       expect(screen.getAllByText(/contatto privacy prossimamente/).length).toBeGreaterThanOrEqual(2);
+      expect(screen.getByText(/Recensioni della Community/)).toBeInTheDocument();
+      expect(screen.getAllByText(/una recensione per spiaggia/).length).toBeGreaterThanOrEqual(2);
       expect(screen.getByText(/Torna alle spiagge/)).toBeInTheDocument();
     });
 

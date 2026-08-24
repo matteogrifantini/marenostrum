@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getBeachForecastBundleBySlug } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
+import { formatScoreOutOf100 } from "../../../domain/score";
 
 export const runtime = "nodejs";
 export const alt = "Mare Nostrum — Previsioni Meteomarine";
@@ -21,7 +22,7 @@ export default async function Image({
 
   let beachName = "Spiaggia della Sicilia";
   let municipality = "Sicilia";
-  let score = "8.5";
+  let score = "85";
   let label = "Ottima scelta";
   let wind = "10 km/h";
   let wave = "0.4 m";
@@ -39,7 +40,7 @@ export default async function Image({
       municipality = bundle.beach.municipality;
     }
     if (bundle?.selected) {
-      score = (bundle.selected.score / 10).toFixed(1);
+      score = formatScoreOutOf100(bundle.selected.score);
       label = bundle.selected.label;
       wind = `${bundle.selected.conditions.windSpeedKmh} km/h`;
       wave = `${bundle.selected.conditions.waveHeightMeters ?? "0.3"} m`;

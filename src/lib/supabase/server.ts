@@ -12,6 +12,7 @@ import type {
   BeachSourceRow,
   MediaItemRow,
   ParkingFacilityRow,
+  InternalReviewRow,
   ReviewProfileRow,
   WebcamRow,
 } from "../../data/beach-content-repository";
@@ -70,6 +71,20 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
 
       if (error) throwReadError("Published beaches are unavailable");
       return (data ?? []) as BeachRow[];
+    },
+
+    async getPublishedBeachBySlug(slug) {
+      const { data, error } = await client
+        .from("beaches")
+        .select(
+          "id, slug, name, municipality, province_code, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts",
+        )
+        .eq("slug", slug)
+        .eq("is_published", true)
+        .maybeSingle();
+
+      if (error) throwReadError("Published beach is unavailable");
+      return data as BeachRow | null;
     },
 
     async getSourceBySlug(slug) {
@@ -187,6 +202,17 @@ export async function createSupabaseBeachContentReadStore(): Promise<BeachConten
 
       if (error) throwReadError("Review profile is unavailable");
       return (data ?? []) as ReviewProfileRow[];
+    },
+
+    async getInternalReviews(beachId) {
+      const { data, error } = await client
+        .from("beach_reviews")
+        .select("id, beach_id, user_id, author_name, rating, body, created_at, updated_at")
+        .eq("beach_id", beachId)
+        .order("created_at", { ascending: false });
+
+      if (error) throwReadError("Beach reviews are unavailable");
+      return (data ?? []) as InternalReviewRow[];
     },
   };
 }

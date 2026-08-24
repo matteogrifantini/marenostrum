@@ -109,7 +109,16 @@ export default function TerminiPage() {
 
       <section className="space-y-3">
         <h2 className="font-serif text-xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-2xl">
-          4. Limitazione di Responsabilità
+          4. Recensioni della Community
+        </h2>
+        <p>
+          Le recensioni interne richiedono un account autenticato. Ogni account può mantenere una recensione per spiaggia, aggiornarla o cancellarla. Il testo deve riferirsi all&apos;esperienza reale e non può contenere contenuti offensivi, pubblicitari, falsi o dati personali di altre persone. Le recensioni Google vengono consultate sul sito esterno di Google Maps tramite un collegamento: Mare Nostrum non le copia né le modifica.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="font-serif text-xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-2xl">
+          5. Limitazione di Responsabilità
         </h2>
         <p>
           Nei limiti massimi consentiti dalla legge applicabile, Mare Nostrum non potrà essere ritenuta responsabile per eventuali danni diretti, indiretti o incidentali derivanti dall&apos;affidamento riposto nelle previsioni, dall&apos;accesso alle spiagge o dall&apos;impossibilità di utilizzare il servizio.
@@ -118,7 +127,7 @@ export default function TerminiPage() {
 
       <section className="space-y-3">
         <h2 className="font-serif text-xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-2xl">
-          5. Legge Applicabile
+          6. Legge Applicabile
         </h2>
         <p>
           I presenti termini sono regolati dalla legge italiana. Per qualsiasi controversia relativa all&apos;interpretazione o esecuzione delle presenti condizioni sarà competente il Foro competente secondo la normativa applicabile.

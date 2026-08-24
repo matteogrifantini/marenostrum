@@ -3,6 +3,7 @@
 import { SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
+import { formatScoreOutOf100 } from "../domain/score";
 import {
   DEFAULT_BEACH_FILTERS,
   type BeachFilters,
@@ -108,11 +109,11 @@ export function SicilyMapView({
             <button
               key={beach.slug}
               type="button"
-              aria-label={`Spiaggia ${beach.name}, voto ${(score / 10).toFixed(1)}`}
+              aria-label={`Spiaggia ${beach.name}, voto ${formatScoreOutOf100(score)} su 100`}
               aria-pressed={selectedVisibleSlug === beach.slug}
               onClick={() => setSelectedSlug(beach.slug)}
             >
-              {beach.name}: {(score / 10).toFixed(1)}
+              {beach.name}: {formatScoreOutOf100(score)}
             </button>
           ))}
         </div>

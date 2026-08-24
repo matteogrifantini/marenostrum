@@ -1,7 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { demoRecommendations } from "../data/demo-beaches";
 import { BeachCard } from "./beach-card";
+
+const linkStatus = vi.hoisted(() => ({ pending: false }));
+
+vi.mock("next/link", () => ({
+  default: ({ children, ...props }: React.ComponentProps<"a">) => <a {...props}>{children}</a>,
+  useLinkStatus: () => ({ pending: linkStatus.pending }),
+}));
 
 describe("BeachCard", () => {
   it("shows only the compact decision data and dated detail link", () => {
@@ -22,7 +29,7 @@ describe("BeachCard", () => {
       expect.stringContaining("cala-del-gelsomino.jpg"),
     );
     expect(screen.getByText("Noto · 18 km")).toBeInTheDocument();
-    expect(screen.getByLabelText("Voto 9.6 su 10, Ottima scelta")).toHaveAttribute(
+    expect(screen.getByLabelText("Voto 96 su 100, Ottima scelta")).toHaveAttribute(
       "data-score-tone",
       "excellent",
     );
@@ -136,6 +143,24 @@ describe("BeachCard", () => {
     expect(screen.getByText("E · 8.1 km/h")).not.toHaveClass("truncate");
   });
 
+  it("shows immediate feedback while the beach detail link is pending", () => {
+    linkStatus.pending = true;
+
+    try {
+      render(
+        <BeachCard
+          recommendation={demoRecommendations[0]}
+          date="2026-08-15"
+          period="all-day"
+        />,
+      );
+
+      expect(screen.getByRole("status", { name: "Apertura scheda spiaggia" })).toBeInTheDocument();
+    } finally {
+      linkStatus.pending = false;
+    }
+  });
+
   it.each([
     [95, "excellent"],
     [80, "good"],
@@ -151,7 +176,7 @@ describe("BeachCard", () => {
       />,
     );
 
-    expect(screen.getByLabelText(new RegExp(`Voto ${(score / 10).toFixed(1)}`))).toHaveAttribute(
+    expect(screen.getByLabelText(new RegExp(`Voto ${score} su 100`))).toHaveAttribute(
       "data-score-tone",
       tone,
     );

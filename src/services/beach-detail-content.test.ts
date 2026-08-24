@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 import type { Beach } from "../domain/beach";
 import type {
+  InternalReviewRow,
   BeachContent,
   ParkingFacilityRow,
   WebcamRow,
 } from "../data/beach-content-repository";
 import { buildBeachDetailContent } from "./beach-detail-content";
+import { mapInternalReviews } from "./beach-detail-content";
 
 const beach: Beach = {
   slug: "san-vito-lo-capo",
@@ -106,7 +108,6 @@ describe("buildBeachDetailContent", () => {
       {
         id: "parking-1",
         name: "Area comunale",
-        price: "€5 al giorno",
         type: "Parcheggio pubblico",
         walking: "650 m · 8 min a piedi",
         updated: "Verificato 2026-08-21",
@@ -199,11 +200,54 @@ describe("buildBeachDetailContent", () => {
         { emoji: "🌊", label: "Fondale", value: "Fondale basso" },
       ],
       reviews: null,
-      reviewProfile: null,
+      reviewProfile: {
+        provider: "google",
+        mapsUrl:
+          "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia",
+        verificationStatus: "draft",
+      },
       recentPhotos: [],
       reels: [],
       webcam: null,
     });
+  });
+
+  it("aggregates authenticated community reviews without exposing user ids", () => {
+    const rows: InternalReviewRow[] = [
+      {
+        id: "review-1",
+        beach_id: "beach-1",
+        user_id: "user-1",
+        author_name: "Matteo",
+        rating: 5,
+        body: "Acqua trasparente.",
+        created_at: "2026-08-24T08:00:00.000Z",
+        updated_at: "2026-08-24T08:00:00.000Z",
+      },
+      {
+        id: "review-2",
+        beach_id: "beach-1",
+        user_id: "user-2",
+        author_name: "Sara",
+        rating: 4,
+        body: "Molto piacevole.",
+        created_at: "2026-08-20T08:00:00.000Z",
+        updated_at: "2026-08-20T08:00:00.000Z",
+      },
+    ];
+
+    const reviews = mapInternalReviews(rows, new Date("2026-08-24T12:00:00.000Z"));
+
+    expect(reviews).toMatchObject({
+      rating: 4.5,
+      recommendedPercent: 100,
+      total: 2,
+      items: [
+        { id: "review-1", author: "Matteo", text: "Acqua trasparente.", rating: 5, age: "4 ore fa" },
+        { id: "review-2", author: "Sara", text: "Molto piacevole.", rating: 4, age: "4 giorni fa" },
+      ],
+    });
+    expect(JSON.stringify(reviews)).not.toContain("user-1");
   });
 
   it("classifies rocky and walking-access facts with specific categories", () => {

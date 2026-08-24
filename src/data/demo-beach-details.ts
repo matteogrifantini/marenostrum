@@ -38,8 +38,8 @@ const details: Record<string, BeachDetailFixture> = {
       { id: "cg-5", emoji: "🚿", title: "Doccia non disponibile", detail: "Servizio stagionale ancora chiuso", age: "1 ora fa" },
     ],
     parkings: [
-      { id: "cg-p1", name: "Parcheggio Pineta", price: "€6/giorno", type: "Sterrato e ombreggiato", walking: "480 m · 6 min a piedi", updated: "Prezzo aggiornato dagli utenti ieri" },
-      { id: "cg-p2", name: "Ingresso nord", price: "Gratis", type: "Posti limitati", walking: "1,2 km · 15 min a piedi", updated: "Prezzo confermato 3 giorni fa" },
+      { id: "cg-p1", name: "Parcheggio Pineta", type: "Sterrato e ombreggiato", walking: "480 m · 6 min a piedi", updated: "Verificato ieri" },
+      { id: "cg-p2", name: "Ingresso nord", type: "Posti limitati", walking: "1,2 km · 15 min a piedi", updated: "Verificato 3 giorni fa" },
     ],
     facts: [
       { emoji: "🏝️", label: "Suolo", value: "Sabbia chiara e ciottoli fini" },
@@ -76,8 +76,8 @@ const details: Record<string, BeachDetailFixture> = {
       { id: "tv-4", emoji: "🌊", title: "Mare pulito", detail: "Acqua trasparente sul lato nord", age: "49 min fa" },
     ],
     parkings: [
-      { id: "tv-p1", name: "Ingresso Vendicari", price: "€5/giorno", type: "Sterrato non custodito", walking: "850 m · 11 min a piedi", updated: "Prezzo confermato oggi" },
-      { id: "tv-p2", name: "Area Calamosche", price: "€5/giorno", type: "Posti stagionali", walking: "2,4 km · 31 min a piedi", updated: "Prezzo aggiornato 2 giorni fa" },
+      { id: "tv-p1", name: "Ingresso Vendicari", type: "Sterrato non custodito", walking: "850 m · 11 min a piedi", updated: "Verificato oggi" },
+      { id: "tv-p2", name: "Area Calamosche", type: "Posti stagionali", walking: "2,4 km · 31 min a piedi", updated: "Verificato 2 giorni fa" },
     ],
     facts: [
       { emoji: "🏝️", label: "Suolo", value: "Sabbia dorata e roccia" },
@@ -114,8 +114,8 @@ const details: Record<string, BeachDetailFixture> = {
       { id: "sm-4", emoji: "🌊", title: "Acqua limpida", detail: "Buona visibilità vicino agli scogli", age: "43 min fa" },
     ],
     parkings: [
-      { id: "sm-p1", name: "Parcheggio Marchesa", price: "€5/giorno", type: "Sterrato e custodito", walking: "620 m · 8 min a piedi", updated: "Prezzo aggiornato dagli utenti ieri" },
-      { id: "sm-p2", name: "Ingresso nord", price: "Gratis", type: "Posti limitati", walking: "1,1 km · 14 min a piedi", updated: "Prezzo confermato 3 giorni fa" },
+      { id: "sm-p1", name: "Parcheggio Marchesa", type: "Sterrato e custodito", walking: "620 m · 8 min a piedi", updated: "Verificato ieri" },
+      { id: "sm-p2", name: "Ingresso nord", type: "Posti limitati", walking: "1,1 km · 14 min a piedi", updated: "Verificato 3 giorni fa" },
     ],
     facts: [
       { emoji: "🏝️", label: "Suolo", value: "Sabbia chiara e fine" },

@@ -1,7 +1,7 @@
 "use client";
 
 import { Search, SlidersHorizontal } from "lucide-react";
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { BeachCard } from "./beach-card";
 import { DayPicker } from "./day-picker";
@@ -21,10 +21,17 @@ import {
 import type { DateOption } from "../domain/date-selection";
 import { distanceKm } from "../lib/geo";
 import { getNearbyCalmRecommendations } from "../domain/nearby-recommendations";
+import {
+  filterRecommendationsByProvince,
+  normalizeProvinceCode,
+  SICILIAN_PROVINCES,
+  type ProvinceSelection,
+} from "../domain/province-filter";
 
 type HomeExperienceProps = {
   initialDate: string;
   initialPeriod: BeachPeriod;
+  initialProvince?: ProvinceSelection;
   dateOptions: DateOption[];
   recommendations: BeachRecommendation[];
   dataUnavailable?: boolean;
@@ -53,6 +60,7 @@ function formatObservedAt(observedAt: string) {
 export function HomeExperience({
   initialDate,
   initialPeriod,
+  initialProvince = "all",
   dateOptions,
   recommendations,
   dataUnavailable = false,
@@ -64,24 +72,33 @@ export function HomeExperience({
   const [isNavigating, setIsNavigating] = useState(false);
   const [date, setDate] = useState(initialDate);
   const [period, setPeriod] = useState<BeachPeriod>(initialPeriod);
+  const [province, setProvince] = useState<ProvinceSelection>(initialProvince);
   const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
   const [nearbySelection, setNearbySelection] = useState<NearbySelection | null>(null);
+  const localInteractionRef = useRef(false);
 
   useEffect(() => {
     startTransition(() => {
+      if (localInteractionRef.current) {
+        localInteractionRef.current = false;
+        setIsNavigating(false);
+        return;
+      }
+
       setDate(initialDate);
       setPeriod(initialPeriod);
+      setProvince(initialProvince);
       setIsNavigating(false);
     });
-  }, [initialDate, initialPeriod]);
+  }, [initialDate, initialPeriod, initialProvince]);
 
   const filteredRecommendations = useMemo(
     () => {
       const normalizedSearchQuery = searchQuery.trim().toLowerCase();
 
-      return recommendations.filter(({ beach }) => {
+      return filterRecommendationsByProvince(recommendations, province).filter(({ beach }) => {
         const searchMatches =
           !normalizedSearchQuery ||
           [beach.name, beach.municipality, beach.coast].some((value) =>
@@ -91,7 +108,7 @@ export function HomeExperience({
         return matchesBeachFilters(beach, filters) && searchMatches;
       });
     },
-    [filters, recommendations, searchQuery],
+    [filters, province, recommendations, searchQuery],
   );
   const activeFilterCount = filters.access.length + filters.tags.length + filters.services.length;
   const forecastUnavailable = dataUnavailable || recommendations.length === 0;
@@ -130,10 +147,16 @@ export function HomeExperience({
     [filteredRecommendations, nearbySelection],
   );
 
-  const updateQuery = (nextDate: string, nextPeriod: BeachPeriod) => {
+  const updateQuery = (
+    nextDate: string,
+    nextPeriod: BeachPeriod,
+    nextProvince: ProvinceSelection = province,
+  ) => {
     const nextParams = new URLSearchParams(searchParams.toString());
     nextParams.set("date", nextDate);
     nextParams.set("period", nextPeriod);
+    if (nextProvince === "all") nextParams.delete("province");
+    else nextParams.set("province", nextProvince);
     setIsNavigating(true);
     startTransition(() => {
       router.replace(`${pathname}?${nextParams.toString()}`, { scroll: false });
@@ -141,13 +164,22 @@ export function HomeExperience({
   };
 
   const handleDateChange = (nextDate: string) => {
+    localInteractionRef.current = true;
     setDate(nextDate);
     updateQuery(nextDate, period);
   };
 
   const handlePeriodChange = (nextPeriod: BeachPeriod) => {
+    localInteractionRef.current = true;
     setPeriod(nextPeriod);
     updateQuery(date, nextPeriod);
+  };
+
+  const handleProvinceChange = (value: string) => {
+    const nextProvince = normalizeProvinceCode(value);
+    localInteractionRef.current = true;
+    setProvince(nextProvince);
+    updateQuery(date, period, nextProvince);
   };
 
   return (
@@ -185,6 +217,20 @@ export function HomeExperience({
 
             <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">
               <PeriodPicker value={period} onChange={handlePeriodChange} />
+              <label className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
+                <span className="sr-only">Provincia</span>
+                <select
+                  aria-label="Provincia"
+                  value={province}
+                  onChange={(event) => handleProvinceChange(event.target.value)}
+                  className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
+                >
+                  <option value="all">Tutta la Sicilia</option>
+                  {SICILIAN_PROVINCES.map(({ code, label }) => (
+                    <option key={code} value={code}>{label}</option>
+                  ))}
+                </select>
+              </label>
               <NearbyControl value={nearbySelection} onChange={setNearbySelection} />
               <button
                 type="button"

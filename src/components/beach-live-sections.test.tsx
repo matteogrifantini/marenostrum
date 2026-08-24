@@ -144,13 +144,13 @@ describe("BeachLiveSections", () => {
     const parking = screen.getByRole("region", { name: "Parcheggi vicini" });
     for (const option of detail.parkings) {
       expect(within(parking).getByText(option.name)).toBeInTheDocument();
-      expect(within(parking).queryByText(option.price)).not.toBeInTheDocument();
       expect(
         within(parking).getByRole("link", {
           name: `Cerca per ${option.name} su Google Maps`,
         }),
       ).toBeInTheDocument();
     }
+    expect(within(parking).queryByText(/€\d|Gratis/)).not.toBeInTheDocument();
 
   });
 

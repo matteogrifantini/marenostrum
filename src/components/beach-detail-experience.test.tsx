@@ -139,7 +139,7 @@ describe("BeachDetailExperience", () => {
     expect(dayControls.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice).toHaveAttribute("data-score-tone", "excellent");
-    expect(within(advice).getByText("10.0")).toBeInTheDocument();
+    expect(within(advice).getByText("100")).toBeInTheDocument();
 
     const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
     expect(periodControls.compareDocumentPosition(conditions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -210,14 +210,14 @@ describe("BeachDetailExperience", () => {
   });
 
   it.each([
-    ["morning", "8.3"],
-    ["afternoon", "6.2"],
+    ["morning", "83"],
+    ["afternoon", "62"],
   ] as const)("shows the %s score instead of the all-day comparison", (period, score) => {
     renderDetail({ period, recommendation: selected });
 
     const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
     expect(within(advice).getByText(score)).toBeInTheDocument();
-    expect(within(advice).queryByText("10.0")).not.toBeInTheDocument();
+    expect(within(advice).queryByText("100")).not.toBeInTheDocument();
   });
 
   it("derives the conditions title and concise aggregate metrics from the active date", () => {

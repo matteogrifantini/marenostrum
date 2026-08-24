@@ -36,6 +36,10 @@ function clamp(value: number, minimum: number, maximum: number) {
   return Math.min(maximum, Math.max(minimum, value));
 }
 
+export function formatScoreOutOf100(score: number) {
+  return Math.round(clamp(score, 0, 100)).toString();
+}
+
 function windNameFromDegrees(degrees: number) {
   const index = Math.round((degrees % 360) / 45) % WIND_NAMES.length;
   return WIND_NAMES[index];

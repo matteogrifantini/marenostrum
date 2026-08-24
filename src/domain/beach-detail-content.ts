@@ -10,7 +10,6 @@ export type BeachDetailReport = {
 export type BeachParking = {
   id: string;
   name: string;
-  price: string;
   type: string;
   walking: string;
   updated: string;
@@ -31,6 +30,7 @@ export type BeachReview = {
   author: string;
   age: string;
   text: string;
+  rating?: number;
 };
 
 export type BeachMedia = {

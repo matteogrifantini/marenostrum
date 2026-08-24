@@ -85,7 +85,7 @@ export function ForecastSummary() {
           <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-[var(--ink-soft)]">Il consiglio di Mare Nostrum</p>
           <h3 className="mt-2 text-xl font-black tracking-[-0.04em]">{prototypeForecast.headline}</h3>
         </div>
-        <span className="grid size-14 shrink-0 place-items-center rounded-full bg-[var(--score-excellent)] text-xl font-black text-white shadow-[0_8px_18px_rgba(20,44,57,0.14)]">{prototypeForecast.score}</span>
+        <span className="grid size-14 shrink-0 place-items-center rounded-full bg-[var(--score-excellent)] text-xl font-black text-white shadow-[0_8px_18px_rgba(20,44,57,0.14)]">{prototypeForecast.score}<small className="ml-0.5 text-[0.55em] font-bold opacity-80">/100</small></span>
       </div>
       <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--ink-soft)]">{prototypeForecast.description}</p>
     </article>

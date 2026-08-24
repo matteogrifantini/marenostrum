@@ -10,10 +10,12 @@ import {
   parsePeriodParam,
 } from "../domain/date-selection";
 import type { BeachRecommendation } from "../domain/beach";
+import { normalizeProvinceCode, type ProvinceSelection } from "../domain/province-filter";
 
 type HomeSearchParams = {
   date?: string | string[];
   period?: string | string[];
+  province?: string | string[];
 };
 
 function firstParam(value: string | string[] | undefined) {
@@ -29,6 +31,7 @@ export default async function HomePage({
   const dateOptions = getDateOptions(new Date());
   const initialDate = parseDateParam(firstParam(query.date) ?? null, dateOptions[0].iso);
   const initialPeriod = parsePeriodParam(firstParam(query.period) ?? null);
+  const initialProvince: ProvinceSelection = normalizeProvinceCode(firstParam(query.province));
   let recommendations: BeachRecommendation[];
   let dataUnavailable = false;
 
@@ -57,6 +60,7 @@ export default async function HomePage({
       <HomeExperience
         initialDate={initialDate}
         initialPeriod={initialPeriod}
+        initialProvince={initialProvince}
         dateOptions={dateOptions}
         recommendations={recommendations}
         dataUnavailable={dataUnavailable}

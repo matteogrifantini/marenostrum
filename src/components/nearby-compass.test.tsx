@@ -50,7 +50,7 @@ describe("NearbyCompass", () => {
       "href",
       "/spiagge/cala-del-gelsomino?date=2026-08-23&period=all-day&source=nearby",
     );
-    expect(screen.getByText("9.2 · 4.2 km")).toBeInTheDocument();
+    expect(screen.getByText("92 · 4.2 km")).toBeInTheDocument();
   });
 
   it("explains when no calm beach is inside the selected radius", () => {
