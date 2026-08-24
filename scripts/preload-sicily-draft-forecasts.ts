@@ -5,7 +5,6 @@ import { fetchOpenMeteoForecasts } from "../src/lib/open-meteo/open-meteo";
 import {
   collectForecastIdentityKeys,
   forecastIdentityKey,
-  selectDraftForecastBeaches,
   type DraftForecastBeachRow,
   type ForecastIdentityRow,
 } from "../src/services/draft-forecast-preload";
@@ -120,13 +119,12 @@ async function main() {
     throw new Error(`Catalog beaches are missing from Supabase: ${missingSlugs.join(", ")}`);
   }
 
-  const draftBeaches = selectDraftForecastBeaches(rows);
-
-  if (draftBeaches.length !== slugs.length) {
-    throw new Error(
-      `Expected ${slugs.length} draft beaches, found ${draftBeaches.length}`,
-    );
-  }
+  const draftBeaches = rows.map((row) => ({
+    id: row.id,
+    slug: row.slug,
+    latitude: Number(row.latitude),
+    longitude: Number(row.longitude),
+  }));
 
   const observedAt = new Date();
   const fetchedPoints = await fetchOpenMeteoForecasts(draftBeaches, {
@@ -162,11 +160,14 @@ async function main() {
   const sourceId = await getOrCreateOpenMeteoSource(client);
   const points = fetchedPoints.map((point) => ({ ...point, sourceId }));
   const forecastRows = buildForecastRows(points);
-  const { error: upsertError } = await client.from("beach_conditions").upsert(forecastRows, {
-    onConflict: "beach_id,source_id,forecast_at",
-  });
-
-  throwOnError("Forecast preload failed", upsertError);
+  const BATCH_SIZE = 500;
+  for (let i = 0; i < forecastRows.length; i += BATCH_SIZE) {
+    const batch = forecastRows.slice(i, i + BATCH_SIZE);
+    const { error: upsertError } = await client.from("beach_conditions").upsert(batch, {
+      onConflict: "beach_id,source_id,forecast_at",
+    });
+    throwOnError("Forecast preload failed", upsertError);
+  }
 
   const verifiedKeys = await collectForecastIdentityKeys(async ({ from, to }) => {
     const { data, error } = await client

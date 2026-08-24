@@ -398,5 +398,245 @@
     "image_credit": "Gilberto Gaudio",
     "image_license": "CC BY 2.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Raisi-Capo_Gallo_coast.jpg"
+  },
+  {
+    "slug": "cala-rotonda-favignana",
+    "image_path": "/images/beaches/cala-rotonda-favignana.jpg",
+    "image_alt": "Baia di Cala Rotonda a Favignana con acque turchesi e scogliera.",
+    "image_credit": "boboviel",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Isole_egadi_sicily_boboviel_favignana_marettimo_levanzo_(3).jpg"
+  },
+  {
+    "slug": "bue-marino-favignana",
+    "image_path": "/images/beaches/bue-marino-favignana.jpg",
+    "image_alt": "Cava del Bue Marino a Favignana con gradoni di tufo e mare blu cobalto.",
+    "image_credit": "Effems",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cava_del_Bue_Marino.jpg"
+  },
+  {
+    "slug": "scalo-cavallo-favignana",
+    "image_path": "/images/beaches/scalo-cavallo-favignana.jpg",
+    "image_alt": "Cave e scogliere di Scalo Cavallo a Favignana su mare cristallino.",
+    "image_credit": "Mαρκος",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cave_di_Scalo_Cavallo_(Favignana)_06.jpg"
+  },
+  {
+    "slug": "cala-fredda-levanzo",
+    "image_path": "/images/beaches/cala-fredda-levanzo.jpg",
+    "image_alt": "Costa e caletta di Levanzo con mare limpido e barche.",
+    "image_credit": "Pitichinaccio",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Levanzo2.jpg"
+  },
+  {
+    "slug": "cala-minnola-levanzo",
+    "image_path": "/images/beaches/cala-minnola-levanzo.jpg",
+    "image_alt": "Costa rocciosa e mare limpido di Levanzo.",
+    "image_credit": "Norbert Nagel",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Levanzo_Italy_02.jpg"
+  },
+  {
+    "slug": "cala-dogana-levanzo",
+    "image_path": "/images/beaches/cala-dogana-levanzo.jpg",
+    "image_alt": "Porticciolo e spiaggia di Cala Dogana a Levanzo con mare trasparente.",
+    "image_credit": "Anto918",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Levanzo_Tp.JPG"
+  },
+  {
+    "slug": "cala-bue-marino-macari",
+    "image_path": "/images/beaches/cala-bue-marino-macari.jpg",
+    "image_alt": "Riva e costa del golfo di Macari con vista su Monte Cofano.",
+    "image_credit": "Filippo Piazza",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Golfo_di_Macari_-_panoramio.jpg"
+  },
+  {
+    "slug": "cala-berretta-zingaro",
+    "image_path": "/images/beaches/cala-berretta-zingaro.jpg",
+    "image_alt": "Cala Berretta nella Riserva dello Zingaro con ciottoli bianchi e mare turchese.",
+    "image_credit": "Civa61",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cala_Berretta1.jpg"
+  },
+  {
+    "slug": "cala-della-disa-zingaro",
+    "image_path": "/images/beaches/cala-della-disa-zingaro.jpg",
+    "image_alt": "Cala della Disa nella Riserva dello Zingaro con falesia e acque smeraldo.",
+    "image_credit": "Giuseppe Famiani",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cala_della_Disa-Zingaro.jpg"
+  },
+  {
+    "slug": "cala-petrolo-castellammare",
+    "image_path": "/images/beaches/cala-petrolo-castellammare.jpg",
+    "image_alt": "Castellammare del Golfo e caletta cittadina ai piedi del castello.",
+    "image_credit": "Gigi agostino",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Castellammare_del_golfo_dal_mare.jpg"
+  },
+  {
+    "slug": "cala-bianca-castellammare",
+    "image_path": "/images/beaches/cala-bianca-castellammare.jpg",
+    "image_alt": "Scogliera bianca e mare limpido della costa di Castellammare del Golfo.",
+    "image_credit": "Jos Dielis",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cliff_at_Castellammare_del_Golfo_in_Sicily_in_Italy.jpg"
+  },
+  {
+    "slug": "spiaggia-delle-mura-di-tramontana-trapani",
+    "image_path": "/images/beaches/spiaggia-delle-mura-di-tramontana-trapani.jpg",
+    "image_alt": "Spiaggia e Mura di Tramontana a Trapani con mare calmo.",
+    "image_credit": "TrapaneseEricino",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Trapani_Mura_di_Tramontana.jpg"
+  },
+  {
+    "slug": "spiaggia-di-san-giuliano-erice",
+    "image_path": "/images/beaches/spiaggia-di-san-giuliano-erice.jpg",
+    "image_alt": "Spiaggia sabbiosa di San Giuliano a Trapani ed Erice.",
+    "image_credit": "Civa61",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_San_Giuliano_Trapani.jpg"
+  },
+  {
+    "slug": "spiaggia-di-marausa-lido",
+    "image_path": "/images/beaches/spiaggia-di-marausa-lido.jpg",
+    "image_alt": "Torre e litorale di Marausa con mare aperto e calmo.",
+    "image_credit": "FedeDeCaro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Torre_di_Marausa.jpg"
+  },
+  {
+    "slug": "riserva-foce-del-belice",
+    "image_path": "/images/beaches/riserva-foce-del-belice.jpg",
+    "image_alt": "Dune sabbiose e mare incontaminato della Riserva Foce del Belice a Castelvetrano.",
+    "image_credit": "Carlo Columba",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Riserva_naturale_Foce_del_Fiume_Belice_e_dune_Limitrofe_(26018873053).jpg"
+  },
+  {
+    "slug": "spiaggia-di-ciamarita-trappeto",
+    "image_path": "/images/beaches/spiaggia-di-ciamarita-trappeto.jpg",
+    "image_alt": "Litorale sabbioso della Spiaggia Ciammarita a Trappeto con mare calmo.",
+    "image_credit": "Fabio Ingrosso",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Trappeto-spiaggia.jpg"
+  },
+  {
+    "slug": "spiaggia-del-casello-trappeto",
+    "image_path": "/images/beaches/spiaggia-del-casello-trappeto.jpg",
+    "image_alt": "Mare limpido e costa di Trappeto presso la spiaggia del Casello.",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Mare_della_Ciammarita.JPG"
+  },
+  {
+    "slug": "spiaggia-di-torre-pozzillo-cinisi",
+    "image_path": "/images/beaches/spiaggia-di-torre-pozzillo-cinisi.jpg",
+    "image_alt": "Torre Pozzillo a Cinisi con caletta rocciosa e mare limpido.",
+    "image_credit": "Effems",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:TORRE_POZZILLO_-_CINISI.jpg"
+  },
+  {
+    "slug": "spiaggia-di-carini-torre-ciachea",
+    "image_path": "/images/beaches/spiaggia-di-carini-torre-ciachea.jpg",
+    "image_alt": "Golfo e spiaggia di Carini con vista sul mare aperto.",
+    "image_credit": "Rino Porrovecchio",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Il_golfo_di_Carini_-_Flickr_-_Rino_Porrovecchio.jpg"
+  },
+  {
+    "slug": "spiaggia-della-torre-normanna-altavilla",
+    "image_path": "/images/beaches/spiaggia-della-torre-normanna-altavilla.jpg",
+    "image_alt": "Torre Normanna ad Altavilla Milicia affacciata sulla scogliera e sul mare.",
+    "image_credit": "Gigi agostino",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Torre_Normanna,_Altavilla_Milicia,_Sicilia.jpg"
+  },
+  {
+    "slug": "cala-sciabica-altavilla",
+    "image_path": "/images/beaches/cala-sciabica-altavilla.jpg",
+    "image_alt": "Litorale e caletta di Altavilla Milicia con mare limpido.",
+    "image_credit": "Chiosa",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Litorale_AltavillaM.jpg"
+  },
+  {
+    "slug": "spiaggia-di-san-nicola-l-arena-trabia",
+    "image_path": "/images/beaches/spiaggia-di-san-nicola-l-arena-trabia.jpg",
+    "image_alt": "Costa di Trabia e San Nicola l'Arena con castello e mare limpido.",
+    "image_credit": "Berthold Werner",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Altavilla_Milicia_BW_2012-10-09_08-10-16.JPG"
+  },
+  {
+    "slug": "spiaggia-di-pietra-piatta-trabia",
+    "image_path": "/images/beaches/spiaggia-di-pietra-piatta-trabia.jpg",
+    "image_alt": "Scogliera e mare limpido della costa di Trabia.",
+    "image_credit": "Bultro",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Coste_della_Sicilia_01.JPG"
+  },
+  {
+    "slug": "spiaggia-di-gorgo-lungo-lascari",
+    "image_path": "/images/beaches/spiaggia-di-gorgo-lungo-lascari.jpg",
+    "image_alt": "Panorama costiero di Lascari e Gorgo Lungo sul mar Tirreno.",
+    "image_credit": "Tscbal",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lascari_Panorama.jpg"
+  },
+  {
+    "slug": "spiaggia-di-piana-grande-lascari",
+    "image_path": "/images/beaches/spiaggia-di-piana-grande-lascari.jpg",
+    "image_alt": "Litorale sabbioso delle Madonie tra Lascari e Campofelice con mare aperto.",
+    "image_credit": "Martin Teetz",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cefalu_spiaggia.jpg"
+  },
+  {
+    "slug": "spiaggia-di-santa-lucia-cefalu",
+    "image_path": "/images/beaches/spiaggia-di-santa-lucia-cefalu.jpg",
+    "image_alt": "Costa e baia di Cefalù con mare calmo e vista panoramica.",
+    "image_credit": "Jerzy Strzelecki",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cefalu01(js).jpg"
+  },
+  {
+    "slug": "spiaggia-di-torre-conca-pollina",
+    "image_path": "/images/beaches/spiaggia-di-torre-conca-pollina.jpg",
+    "image_alt": "Spiaggia di Torre Conca a Pollina con falesia e mare cristallino.",
+    "image_credit": "Giamtesta",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Finale_Pollina_sea.jpg"
+  },
+  {
+    "slug": "spiaggia-di-costa-turchina-pollina",
+    "image_path": "/images/beaches/spiaggia-di-costa-turchina-pollina.jpg",
+    "image_alt": "Costa Turchina a Finale di Pollina con sfumature turchesi del mare.",
+    "image_credit": "Umberto21.6",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Finale_di_Pollina_(PA).jpg"
+  },
+  {
+    "slug": "spiaggia-di-santa-maria-pollina",
+    "image_path": "/images/beaches/spiaggia-di-santa-maria-pollina.jpg",
+    "image_alt": "Caletta e costa rocciosa di Pollina e Finale con mare pulito.",
+    "image_credit": "Carlo Columba",
+    "image_license": "CC BY-SA 2.5 it",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Pollina_dal_basso.jpg"
+  },
+  {
+    "slug": "spiaggia-del-corsaro-palermo",
+    "image_path": "/images/beaches/spiaggia-del-corsaro-palermo.jpg",
+    "image_alt": "Golfo di Palermo visto dal mare presso il litorale sud.",
+    "image_credit": "Salvo Di Fazio",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Palermo,_visto_dal_golfo,_22_aprile_2012.jpg"
   }
 ]

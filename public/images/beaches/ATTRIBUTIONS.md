@@ -449,3 +449,273 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Scaricata: 2026-08-24
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
 
+
+### Cala Rotonda Favignana
+
+- File: `cala-rotonda-favignana.jpg`
+- Autore: boboviel
+- Fonte: <https://commons.wikimedia.org/wiki/File:Isole_egadi_sicily_boboviel_favignana_marettimo_levanzo_(3).jpg>
+- Licenza: [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Isole_egadi_sicily_boboviel_favignana_marettimo_levanzo_(3).jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Bue Marino Favignana
+
+- File: `bue-marino-favignana.jpg`
+- Autore: Effems
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cava_del_Bue_Marino.jpg>
+- Licenza: [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Cava_del_Bue_Marino.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Scalo Cavallo Favignana
+
+- File: `scalo-cavallo-favignana.jpg`
+- Autore: Mαρκος
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cave_di_Scalo_Cavallo_(Favignana)_06.jpg>
+- Licenza: [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Cave_di_Scalo_Cavallo_(Favignana)_06.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Fredda Levanzo
+
+- File: `cala-fredda-levanzo.jpg`
+- Autore: Pitichinaccio
+- Fonte: <https://commons.wikimedia.org/wiki/File:Levanzo2.jpg>
+- Licenza: [Public domain](https://commons.wikimedia.org/wiki/File:Levanzo2.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Minnola Levanzo
+
+- File: `cala-minnola-levanzo.jpg`
+- Autore: Norbert Nagel
+- Fonte: <https://commons.wikimedia.org/wiki/File:Levanzo_Italy_02.jpg>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Levanzo_Italy_02.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Dogana Levanzo
+
+- File: `cala-dogana-levanzo.jpg`
+- Autore: Anto918
+- Fonte: <https://commons.wikimedia.org/wiki/File:Levanzo_Tp.JPG>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Levanzo_Tp.JPG)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Bue Marino Macari
+
+- File: `cala-bue-marino-macari.jpg`
+- Autore: Filippo Piazza
+- Fonte: <https://commons.wikimedia.org/wiki/File:Golfo_di_Macari_-_panoramio.jpg>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Golfo_di_Macari_-_panoramio.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Berretta Zingaro
+
+- File: `cala-berretta-zingaro.jpg`
+- Autore: Civa61
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cala_Berretta1.jpg>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Cala_Berretta1.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Della Disa Zingaro
+
+- File: `cala-della-disa-zingaro.jpg`
+- Autore: Giuseppe Famiani
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cala_della_Disa-Zingaro.jpg>
+- Licenza: [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Cala_della_Disa-Zingaro.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Petrolo Castellammare
+
+- File: `cala-petrolo-castellammare.jpg`
+- Autore: Gigi agostino
+- Fonte: <https://commons.wikimedia.org/wiki/File:Castellammare_del_golfo_dal_mare.jpg>
+- Licenza: [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Castellammare_del_golfo_dal_mare.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Bianca Castellammare
+
+- File: `cala-bianca-castellammare.jpg`
+- Autore: Jos Dielis
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cliff_at_Castellammare_del_Golfo_in_Sicily_in_Italy.jpg>
+- Licenza: [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Cliff_at_Castellammare_del_Golfo_in_Sicily_in_Italy.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Delle Mura Di Tramontana Trapani
+
+- File: `spiaggia-delle-mura-di-tramontana-trapani.jpg`
+- Autore: TrapaneseEricino
+- Fonte: <https://commons.wikimedia.org/wiki/File:Trapani_Mura_di_Tramontana.jpg>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Trapani_Mura_di_Tramontana.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di San Giuliano Erice
+
+- File: `spiaggia-di-san-giuliano-erice.jpg`
+- Autore: Civa61
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_San_Giuliano_Trapani.jpg>
+- Licenza: [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Spiaggia_San_Giuliano_Trapani.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Marausa Lido
+
+- File: `spiaggia-di-marausa-lido.jpg`
+- Autore: Michiel1972
+- Fonte: <https://commons.wikimedia.org/wiki/File:Tritoni_and_Lido_Marausa_near_Birgi.jpg>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Tritoni_and_Lido_Marausa_near_Birgi.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Riserva Foce Del Belice
+
+- File: `riserva-foce-del-belice.jpg`
+- Autore: Carlo Columba
+- Fonte: <https://commons.wikimedia.org/wiki/File:Riserva_naturale_Foce_del_Fiume_Belice_e_dune_Limitrofe_(26018873053).jpg>
+- Licenza: [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Riserva_naturale_Foce_del_Fiume_Belice_e_dune_Limitrofe_(26018873053).jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Ciamarita Trappeto
+
+- File: `spiaggia-di-ciamarita-trappeto.jpg`
+- Autore: Fabio Ingrosso
+- Fonte: <https://commons.wikimedia.org/wiki/File:Trappeto-spiaggia.jpg>
+- Licenza: [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Trappeto-spiaggia.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Del Casello Trappeto
+
+- File: `spiaggia-del-casello-trappeto.jpg`
+- Autore: Davide Mauro
+- Fonte: <https://commons.wikimedia.org/wiki/File:Mare_della_Ciammarita.JPG>
+- Licenza: [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Mare_della_Ciammarita.JPG)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Torre Pozzillo Cinisi
+
+- File: `spiaggia-di-torre-pozzillo-cinisi.jpg`
+- Autore: Effems
+- Fonte: <https://commons.wikimedia.org/wiki/File:TORRE_POZZILLO_-_CINISI.jpg>
+- Licenza: [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:TORRE_POZZILLO_-_CINISI.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Carini Torre Ciachea
+
+- File: `spiaggia-di-carini-torre-ciachea.jpg`
+- Autore: Rino Porrovecchio
+- Fonte: <https://commons.wikimedia.org/wiki/File:Il_golfo_di_Carini_-_Flickr_-_Rino_Porrovecchio.jpg>
+- Licenza: [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Il_golfo_di_Carini_-_Flickr_-_Rino_Porrovecchio.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Della Torre Normanna Altavilla
+
+- File: `spiaggia-della-torre-normanna-altavilla.jpg`
+- Autore: Gigi agostino
+- Fonte: <https://commons.wikimedia.org/wiki/File:Torre_Normanna,_Altavilla_Milicia,_Sicilia.jpg>
+- Licenza: [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Torre_Normanna,_Altavilla_Milicia,_Sicilia.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Cala Sciabica Altavilla
+
+- File: `cala-sciabica-altavilla.jpg`
+- Autore: Chiosa
+- Fonte: <https://commons.wikimedia.org/wiki/File:Litorale_AltavillaM.jpg>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Litorale_AltavillaM.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di San Nicola L Arena Trabia
+
+- File: `spiaggia-di-san-nicola-l-arena-trabia.jpg`
+- Autore: Berthold Werner
+- Fonte: <https://commons.wikimedia.org/wiki/File:Altavilla_Milicia_BW_2012-10-09_08-10-16.JPG>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Altavilla_Milicia_BW_2012-10-09_08-10-16.JPG)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Pietra Piatta Trabia
+
+- File: `spiaggia-di-pietra-piatta-trabia.jpg`
+- Autore: Gogo ferrari
+- Fonte: <https://commons.wikimedia.org/wiki/File:Arenella_rocks.jpg>
+- Licenza: [Public domain](https://commons.wikimedia.org/wiki/File:Arenella_rocks.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Gorgo Lungo Lascari
+
+- File: `spiaggia-di-gorgo-lungo-lascari.jpg`
+- Autore: Mika Auramo
+- Fonte: <https://commons.wikimedia.org/wiki/File:Campofelice_di_Roccella_-_panoramio.jpg>
+- Licenza: [CC BY 3.0](https://commons.wikimedia.org/wiki/File:Campofelice_di_Roccella_-_panoramio.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Piana Grande Lascari
+
+- File: `spiaggia-di-piana-grande-lascari.jpg`
+- Autore: Martin Teetz
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cefalu_spiaggia.jpg>
+- Licenza: [Public domain](https://commons.wikimedia.org/wiki/File:Cefalu_spiaggia.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Santa Lucia Cefalu
+
+- File: `spiaggia-di-santa-lucia-cefalu.jpg`
+- Autore: G.dallorto
+- Fonte: <https://commons.wikimedia.org/wiki/File:%F0%9F%87%AE%F0%9F%87%B9_%F0%9F%87%AA%F0%9F%87%BA_Playa_(Cefal%C3%BA,_Sicilia,_Italia,_19-4-2025)_(54536888986).jpg>
+- Licenza: [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:%F0%9F%87%AE%F0%9F%87%B9_%F0%9F%87%AA%F0%9F%87%BA_Playa_(Cefal%C3%BA,_Sicilia,_Italia,_19-4-2025)_(54536888986).jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Torre Conca Pollina
+
+- File: `spiaggia-di-torre-conca-pollina.jpg`
+- Autore: Giamtesta
+- Fonte: <https://commons.wikimedia.org/wiki/File:Finale_Pollina_sea.jpg>
+- Licenza: [Public domain](https://commons.wikimedia.org/wiki/File:Finale_Pollina_sea.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Costa Turchina Pollina
+
+- File: `spiaggia-di-costa-turchina-pollina.jpg`
+- Autore: Umberto21.6
+- Fonte: <https://commons.wikimedia.org/wiki/File:Finale_di_Pollina_(PA).jpg>
+- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Finale_di_Pollina_(PA).jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Di Santa Maria Pollina
+
+- File: `spiaggia-di-santa-maria-pollina.jpg`
+- Autore: Carlo Columba
+- Fonte: <https://commons.wikimedia.org/wiki/File:Pollina_dal_basso.jpg>
+- Licenza: [CC BY-SA 2.5 it](https://commons.wikimedia.org/wiki/File:Pollina_dal_basso.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia Del Corsaro Palermo
+
+- File: `spiaggia-del-corsaro-palermo.jpg`
+- Autore: Salvo Di Fazio
+- Fonte: <https://commons.wikimedia.org/wiki/File:Palermo,_visto_dal_golfo,_22_aprile_2012.jpg>
+- Licenza: [Public domain](https://commons.wikimedia.org/wiki/File:Palermo,_visto_dal_golfo,_22_aprile_2012.jpg)
+- Scaricata: 2026-08-25
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.

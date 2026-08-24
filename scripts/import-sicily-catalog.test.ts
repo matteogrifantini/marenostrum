@@ -3,12 +3,12 @@ import { describe, expect, it } from "vitest";
 import { buildCatalogReport } from "./catalog-validation";
 
 describe("Sicilian catalog import report", () => {
-  it("reports the 50-record catalog as valid new draft candidates", () => {
+  it("reports the 80-record catalog as valid new draft candidates", () => {
     const report = buildCatalogReport(catalog);
 
     expect(report.issues).toEqual([]);
     expect(report.summary).toEqual({
-      new: 50,
+      new: 80,
       changed: 0,
       unchanged: 0,
       duplicate: 0,
@@ -25,6 +25,6 @@ describe("Sicilian catalog import report", () => {
 
     expect(report.summary.duplicate).toBe(1);
     expect(report.summary.invalid).toBe(1);
-    expect(report.summary.new).toBe(50);
+    expect(report.summary.new).toBe(80);
   });
 });

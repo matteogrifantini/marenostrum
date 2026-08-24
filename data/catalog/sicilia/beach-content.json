@@ -2161,5 +2161,1227 @@
         "role": "coordinate-cross-check"
       }
     ]
+  },
+  {
+    "slug": "cala-rotonda-favignana",
+    "description": "Una splendida baia naturale a ferro di cavallo sul versante occidentale di Favignana, caratterizzata dal celebre Arco di Ulisse e da acque calme e trasparenti ideali per nuoto e snorkeling.",
+    "orientation_degrees": 270,
+    "orientation_label": "Ovest",
+    "shelter": [
+      "scirocco",
+      "levante",
+      "grecale"
+    ],
+    "tags": [
+      "snorkeling",
+      "scogliera",
+      "panorama",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio libero"
+    ],
+    "warnings": [
+      "Presenza di scogli e ciottoli all'ingresso in acqua; consigliate scarpette da scoglio."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogliere basse di tufo",
+      "Fondale — Misto sabbia e rocce con posidonia e pesci",
+      "Esposizione — Ovest, ben riparata dai venti da est e scirocco",
+      "Servizi — Spiaggia libera, punto ristoro stagionale nelle vicinanze",
+      "Accesso — Facile, breve sentiero pianeggiante dalla strada asfaltata",
+      "Ambiente — Insenatura naturale circolare con arco di roccia suggestivo"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/isole-egadi-favignana-levanzo-marettimo/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "bue-marino-favignana",
+    "description": "Famosa ex cava di estrazione del tufo a gradoni scolpiti sul mare blu cobalto. Un luogo iconico per tuffi e sole, spettacolare quando soffia lo scirocco.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "scogliera",
+      "tuffi",
+      "snorkeling",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio"
+    ],
+    "warnings": [
+      "Accesso al mare tramite gradoni di roccia e tuffi; fondale subito profondo."
+    ],
+    "facts": [
+      "Suolo — Terrazze e gradoni scolpiti nel tufo",
+      "Fondale — Roccioso e subito profondo, mare blu intenso",
+      "Esposizione — Est, riparata dai venti occidentali e maestrale",
+      "Servizi — Area naturale libera, furgoncino bar stagionale",
+      "Accesso — Moderato, discesa a piedi su gradoni di pietra",
+      "Ambiente — Antica cava di tufo monumentale a picco sulle acque delle Egadi"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/isole-egadi-favignana-levanzo-marettimo/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "scalo-cavallo-favignana",
+    "name": "Scalo Cavallo",
+    "description": "Suggestiva terrazza di tufo sul versante nord-orientale dell'isola con una cava a cielo aperto e una piccola grotta che si apre su acque trasparenti.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "mezzogiorno",
+      "libeccio",
+      "scirocco"
+    ],
+    "tags": [
+      "scogliera",
+      "snorkeling",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio"
+    ],
+    "warnings": [
+      "Tratto roccioso; consigliate calzature adatte."
+    ],
+    "facts": [
+      "Suolo — Terrazze piatte di tufo e scogli",
+      "Fondale — Roccioso con acque limpide e ricche di vita marina",
+      "Esposizione — Nord-est, ideale con venti dai quadranti meridionali",
+      "Servizi — Tratto libero naturale",
+      "Accesso — Facile, comoda discesa pedonale",
+      "Ambiente — Scogliera panoramica con antiche cavità di tufo"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/isole-egadi-favignana-levanzo-marettimo/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-fredda-levanzo",
+    "description": "Una graziosa insenatura di ghiaia e ciottoli chiari a pochi minuti dal paesino di Levanzo, con mare piatto e trasparente e fondale turchese.",
+    "orientation_degrees": 135,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "tramontana"
+    ],
+    "tags": [
+      "ciottoli",
+      "acque-calme",
+      "snorkeling",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "vicinanza al borgo"
+    ],
+    "warnings": [
+      "Caletta di ciottoli non attrezzata; portare acqua e ombrellone."
+    ],
+    "facts": [
+      "Suolo — Ghiaia fine e ciottoli bianchi",
+      "Fondale — Trasparente con lingua di sabbia e scogli",
+      "Esposizione — Sud-est, ben protetta dai venti di ponente e maestrale",
+      "Servizi — Nessuno sulla cala, servizi a 10 minuti nel borgo",
+      "Accesso — Facile, passeggiata panoramica lungo la costa",
+      "Ambiente — Caletta intima e silenziosa con vista su Favignana"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/isole-egadi-favignana-levanzo-marettimo/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-minnola-levanzo",
+    "description": "Caletta incontaminata sulla costa orientale di Levanzo, circondata da una fresca pineta attrezzata e celebre per il suo sito archeologico subacqueo.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "maestrale",
+      "ponente",
+      "libeccio"
+    ],
+    "tags": [
+      "pineta",
+      "snorkeling",
+      "natura",
+      "ombra"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "area pic-nic con panche"
+    ],
+    "warnings": [
+      "Accesso in mare da scogli e ciottoli."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogliera piatta ombreggiata da pini",
+      "Fondale — Roccioso e cristallino, ricco di reperti sommersi",
+      "Esposizione — Est, riparata dai venti da ovest",
+      "Servizi — Tavoli da pic-nic all'ombra dei pini",
+      "Accesso — Moderato, 20 minuti a piedi lungo il sentiero costiero",
+      "Ambiente — Connubio unico tra pineta mediterranea e mare incontaminato"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/isole-egadi-favignana-levanzo-marettimo/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-dogana-levanzo",
+    "description": "La suggestiva spiaggetta del porticciolo di Levanzo, dove le barche ormeggiate galleggiano in un'acqua talmente trasparente da sembrare sospese in aria.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "maestrale"
+    ],
+    "tags": [
+      "borgo",
+      "ciottoli",
+      "pittoresco",
+      "acque-calme"
+    ],
+    "access_level": "facile",
+    "services": [
+      "bar",
+      "ristoranti",
+      "noleggio barche"
+    ],
+    "warnings": [
+      "Presenza di ormeggi barche nelle vicinanze."
+    ],
+    "facts": [
+      "Suolo — Ghiaia e ciottoli bagnati da acque limpidissime",
+      "Fondale — Basso e trasparente",
+      "Esposizione — Sud, riparata dai venti settentrionali",
+      "Servizi — Tutti i servizi del borgo di Levanzo sul posto",
+      "Accesso — Facile, direttamente dal molo del paese",
+      "Ambiente — Scenario da cartolina con le casette bianche e blu dell'isola"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/isole-egadi-favignana-levanzo-marettimo/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-bue-marino-macari",
+    "description": "Incantevole caletta di ciottoli incastonata nel Golfo di Macari, celebre per le sue acque cristalline e per i tramonti spettacolari sul Monte Cofano.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [
+      "scirocco",
+      "levante",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "ciottoli",
+      "tramonto",
+      "panorama",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio con navetta stagionale"
+    ],
+    "warnings": [
+      "Fondale con ciottoli levigati, consigliate scarpette."
+    ],
+    "facts": [
+      "Suolo — Ciottoli bianchi e ghiaia",
+      "Fondale — Ciottoli e sabbia, trasparente e digradante",
+      "Esposizione — Nord-ovest, perfetta al tramonto e con venti da sud",
+      "Servizi — Trenino/navetta estivo dai parcheggi di Macari",
+      "Accesso — Facile, breve sentiero sterrato",
+      "Ambiente — Vista panoramica mozzafiato sulla falesia di Monte Cofano"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/scopello-san-vito-lo-capo-marsala-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-berretta-zingaro",
+    "description": "Una delle calette più intime e selvagge della Riserva dello Zingaro, con ciottoli candidi e mare dalle mille sfumature di verde smeraldo e azzurro.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "maestrale",
+      "ponente",
+      "libeccio"
+    ],
+    "tags": [
+      "riserva",
+      "ciottoli",
+      "trekking",
+      "natura"
+    ],
+    "access_level": "difficile",
+    "services": [
+      "nessuno"
+    ],
+    "warnings": [
+      "Raggiungibile solo con trekking nella riserva; portare acqua abbondante."
+    ],
+    "facts": [
+      "Suolo — Ciottoli calcarei bianchi",
+      "Fondale — Roccioso e smeraldo ad alta visibilità",
+      "Esposizione — Nord-est, riparata dai venti occidentali",
+      "Servizi — Natura protetta, nessun servizio presente",
+      "Accesso — Difficile, circa 1 ora e mezza di cammino dai varchi dello Zingaro",
+      "Ambiente — Insenatura incontaminata incorniciata da palme nane e macchia mediterranea"
+    ],
+    "sources": [
+      {
+        "source_name": "Riserva Naturale Orientata dello Zingaro",
+        "source_type": "reserve",
+        "source_url": "https://www.riservazingaro.it/territorio_e_tradizione/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-della-disa-zingaro",
+    "description": "Spettacolare cala della Riserva dello Zingaro divisa in due da un maestoso costone di roccia, con ciottoli levigati e fondale marino ricchissimo di pesci.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "maestrale",
+      "ponente",
+      "libeccio"
+    ],
+    "tags": [
+      "riserva",
+      "ciottoli",
+      "snorkeling",
+      "trekking"
+    ],
+    "access_level": "difficile",
+    "services": [
+      "nessuno"
+    ],
+    "warnings": [
+      "Percorso trekking impegnativo; scarpe da trekking raccomandate."
+    ],
+    "facts": [
+      "Suolo — Ciottoli bianchi e pareti calcaree",
+      "Fondale — Ciottoli e rocce con mare turchese trasparente",
+      "Esposizione — Nord-est, ottima con ponente e libeccio",
+      "Servizi — Oasi naturale protetta",
+      "Accesso — Difficile, circa 1 ora di trekking dal varco sud di Scopello",
+      "Ambiente — Una delle baie più scenografiche dell'intera costa tirrenica siciliana"
+    ],
+    "sources": [
+      {
+        "source_name": "Riserva Naturale Orientata dello Zingaro",
+        "source_type": "reserve",
+        "source_url": "https://www.riservazingaro.it/territorio_e_tradizione/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-petrolo-castellammare",
+    "description": "Incantevole spiaggetta urbana situata proprio sotto il centro storico e le mura di Castellammare del Golfo, con vista sul golfo e mare calmo.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno",
+      "libeccio"
+    ],
+    "tags": [
+      "cittadina",
+      "sabbia",
+      "ciottoli",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "bar",
+      "ristoranti",
+      "stabilimenti stagionali"
+    ],
+    "warnings": [
+      "Spazio limitato nei weekend estivi di alta stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia mista a ghiaia e ciottoli",
+      "Fondale — Basso e sabbioso all'inizio, poi ciottoli",
+      "Esposizione — Nord, riparata dalle scogliere e dalla costa alta a sud",
+      "Servizi — Servizi del centro abitato e noleggio ombrelloni",
+      "Accesso — Facile, scalinata dal belvedere o dalla marina",
+      "Ambiente — Caletta cittadina caratteristica sotto la rocca del borgo"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/scopello-san-vito-lo-capo-marsala-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-bianca-castellammare",
+    "description": "Insenatura incontaminata e selvaggia racchiusa tra falesie bianche di calcare prima di Guidaloca. Un paradiso per gli amanti dello snorkeling e della natura.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno",
+      "ponente"
+    ],
+    "tags": [
+      "scogliera",
+      "snorkeling",
+      "selvaggia",
+      "natura"
+    ],
+    "access_level": "difficile",
+    "services": [
+      "nessuno"
+    ],
+    "warnings": [
+      "Discesa ripida su sentiero sterrato; consigliate scarpe chiuse."
+    ],
+    "facts": [
+      "Suolo — Scogliera e ciottoli bianchi",
+      "Fondale — Roccioso e cristallino con mare smeraldo",
+      "Esposizione — Nord, ben riparata dai venti meridionali",
+      "Servizi — Tratto selvaggio privo di servizi",
+      "Accesso — Difficile, sentiero pedonale ripido dalla strada litoranea",
+      "Ambiente — Falesia calcarea candida e fondale incontaminato"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/scopello-san-vito-lo-capo-marsala-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-delle-mura-di-tramontana-trapani",
+    "description": "Suggestiva spiaggia cittadina ai piedi delle storiche fortificazioni spagnole di Trapani. Acqua calma e trasparente con vista frontale sulle Isole Egadi.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno",
+      "libeccio"
+    ],
+    "tags": [
+      "storia",
+      "sabbia",
+      "cittadina",
+      "panorama"
+    ],
+    "access_level": "facile",
+    "services": [
+      "servizi urbani",
+      "bar",
+      "docce"
+    ],
+    "warnings": [
+      "Tratto urbano, frequentato soprattutto da residenti e turisti del centro."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine e tratti di ciottoli",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Nord, riparata dai venti del sud e dallo scirocco",
+      "Servizi — Servizi e locali del centro storico di Trapani a pochi metri",
+      "Accesso — Facile, scale storiche lungo le Mura di Tramontana",
+      "Ambiente — Fascino unico tra l'architettura barocca delle mura e il mare aperto"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/trapani-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-san-giuliano-erice",
+    "description": "Grande litorale sabbioso dorato che unisce Trapani ed Erice Mare. Ampio arenile attrezzato e libero, ideale per famiglie, sport e lunghe passeggiate.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "servizi",
+      "sport"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "parcheggio",
+      "bar",
+      "sport acquatici"
+    ],
+    "warnings": [
+      "Esposta al maestrale e alla tramontana in caso di venti da nord."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine",
+      "Fondale — Sabbioso e dolcemente digradante",
+      "Esposizione — Nord, riparata dallo scirocco con mare piatto",
+      "Servizi — Lidi, ristoranti, noleggio sup, docce e parcheggi sul lungomare",
+      "Accesso — Facile, accessi diretti dal lungomare Dante Alighieri",
+      "Ambiente — Vista maestosa sul borgo medievale di Erice arroccato sul monte"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/trapani-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-marausa-lido",
+    "description": "Ampia spiaggia sabbiosa affacciata sulle isole Egadi tra Trapani e Marsala. Fondale molto basso e acque tiepide e calme, ideale per bambini.",
+    "orientation_degrees": 270,
+    "orientation_label": "Ovest",
+    "shelter": [
+      "levante",
+      "scirocco",
+      "grecale"
+    ],
+    "tags": [
+      "famiglie",
+      "acque-basse",
+      "sabbia",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi stagionali",
+      "parcheggio",
+      "chioschi"
+    ],
+    "warnings": [
+      "Fondale poco profondo per diverse decine di metri."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata e fine",
+      "Fondale — Sabbioso, bassissimo e molto sicuro",
+      "Esposizione — Ovest, protetta dai venti orientali",
+      "Servizi — Stabilimenti balneari, bar e parcheggio vicino alla riva",
+      "Accesso — Facile, accesso a raso dalla strada costiera",
+      "Ambiente — Litorale tranquillo e aperto con panorama diretto su Favignana"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/trapani-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "riserva-foce-del-belice",
+    "description": "Una magnifica oasi naturalistica protetta con dune di sabbia dorata, passerelle in legno e pineta costiera, dove il fiume Belice incontra il mare.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "natura",
+      "dune",
+      "sabbia",
+      "relax",
+      "selvaggia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "passerelle in legno",
+      "parcheggio all'ingresso"
+    ],
+    "warnings": [
+      "Area protetta; vietato calpestare le dune e lasciare rifiuti."
+    ],
+    "facts": [
+      "Suolo — Sabbia finissima dorata e dune naturali",
+      "Fondale — Sabbioso e degradante con mare pulito",
+      "Esposizione — Sud, ottima con venti dai quadranti settentrionali",
+      "Servizi — Passerelle pedonali ecologiche, nessun lido rumoroso",
+      "Accesso — Moderato, piacevole camminata di 10-15 minuti attraverso la riserva",
+      "Ambiente — Paesaggio dunale intatto con flora rara e pini marittimi"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/migliori-spiagge-per-bambini-in-sicilia/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-ciamarita-trappeto",
+    "description": "Lunga e spaziosa spiaggia di sabbia dorata nel golfo di Castellammare, ideale per chi cerca tranquillità, mare pulito e spazio anche in piena estate.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "sabbia",
+      "spazio",
+      "famiglie",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio",
+      "lidi stagionali"
+    ],
+    "warnings": [
+      "Esposta ai venti di tramontana e maestrale."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine e soffice",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Nord, ideale e calmissima con venti di scirocco",
+      "Servizi — Stabilimenti e lunghi tratti di spiaggia libera",
+      "Accesso — Facile, accessi diretti dalla litoranea",
+      "Ambiente — Ampio golfo panoramico con vista fino a Capo San Vito"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-del-casello-trappeto",
+    "description": "Caletta sabbiosa adiacente al paese di Trappeto, protetta da scogliere e scogli bassi, con fondale limpido e atmosfera raccolta.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno",
+      "libeccio"
+    ],
+    "tags": [
+      "cittadina",
+      "sabbia",
+      "acque-calme",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio",
+      "bar vicini"
+    ],
+    "warnings": [
+      "Presenza di scogli ai lati della caletta."
+    ],
+    "facts": [
+      "Suolo — Sabbia e piccoli ciottoli",
+      "Fondale — Misto sabbia e rocce con acqua trasparente",
+      "Esposizione — Nord, riparata alle spalle dal promontorio del paese",
+      "Servizi — Negozi e bar a pochi minuti a piedi",
+      "Accesso — Facile, accesso pedonale dal lungomare",
+      "Ambiente — Piccola baia cittadina tranquilla e caratteristica"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-torre-pozzillo-cinisi",
+    "description": "Tratto costiero con caletta riparata dominata da un'antica torre cinquecentesca di guardia. Mare limpido con bellissimi fondali per nuotatori e snorkeling.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "storia",
+      "scogliera",
+      "snorkeling",
+      "panorama"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio libero"
+    ],
+    "warnings": [
+      "Tratto misto scoglio e sabbia; consigliate calzature da mare."
+    ],
+    "facts": [
+      "Suolo — Scogliere basse, ciottoli e piccole insenature sabbiose",
+      "Fondale — Roccioso e trasparente con posidonia",
+      "Esposizione — Nord, riparata dai venti da sud",
+      "Servizi — Tratto libero naturale",
+      "Accesso — Facile, strada asfaltata fino alla torre",
+      "Ambiente — Paesaggio costiero dominato dalla torre d'avvistamento storica"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-carini-torre-ciachea",
+    "description": "Arenile sabbioso aperto sul golfo di Carini con vista sull'isolotto di Isola delle Femmine, ideale per passeggiate in riva al mare e relax pomeridiano.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "sabbia",
+      "panorama",
+      "relax",
+      "spazio"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio sul lungomare"
+    ],
+    "warnings": [
+      "Esposizione ai venti di tramontana."
+    ],
+    "facts": [
+      "Suolo — Sabbia mista a ghiaia",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Nord, protetta dai venti meridionali",
+      "Servizi — Spiaggia libera con parcheggi lungo la costa",
+      "Accesso — Facile, accessi dal lungomare Cristoforo Colombo",
+      "Ambiente — Ampio arco costiero con vista sulle montagne e sulle isole"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-della-torre-normanna-altavilla",
+    "description": "Incantevole baia dominata dalla possente Torre Normanna di Altavilla Milicia. Ciottoli levigati, scogliere a picco e mare turchese cristallino.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "ciottoli",
+      "panorama",
+      "storia",
+      "snorkeling"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio",
+      "stabilimento stagionale"
+    ],
+    "warnings": [
+      "Discesa tramite scalinata; consigliate scarpette per i ciottoli."
+    ],
+    "facts": [
+      "Suolo — Ciottoli levigati e ghiaia",
+      "Fondale — Ghiaioso e subito profondo con acqua limpidissima",
+      "Esposizione — Nord-est, riparata dai venti occidentali",
+      "Servizi — Tratti liberi e stabilimento balneare con bar",
+      "Accesso — Moderato, scalinata pedonale panoramica",
+      "Ambiente — Falesia costiera sormontata dalla storica torre di avvistamento"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "cala-sciabica-altavilla",
+    "description": "Piccola e suggestiva insenatura conosciuta anche come Spiaggia della Chiesetta, racchiusa tra scogli e vegetazione mediterranea con mare calmo e limpido.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "caletta",
+      "ciottoli",
+      "acque-calme",
+      "snorkeling"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio lungo la strada"
+    ],
+    "warnings": [
+      "Spazio limitato, accesso tramite sentiero a gradini."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e sabbia grossolana",
+      "Fondale — Misto sabbia e rocce con ottima visibilità",
+      "Esposizione — Nord-est, ben riparata dai venti di ponente",
+      "Servizi — Spiaggia libera incontaminata",
+      "Accesso — Moderato, gradinata dalla strada litoranea",
+      "Ambiente — Caletta intima e riservata lontana dai grandi affollamenti"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-san-nicola-l-arena-trabia",
+    "description": "Spiaggia adiacente all'antico castello medievale sul mare e al porticciolo di San Nicola. Unisce fascino storico, acque calme e servizi a portata di mano.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "castello",
+      "famiglie",
+      "ghiaia",
+      "storia"
+    ],
+    "access_level": "facile",
+    "services": [
+      "bar",
+      "ristoranti",
+      "stabilimenti",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Presenza di ciottoli sulla battigia."
+    ],
+    "facts": [
+      "Suolo — Ghiaia fine e sabbia scura",
+      "Fondale — Graduale con ciottoli e sabbia",
+      "Esposizione — Nord-est, protetta dai venti da ovest e sud-ovest",
+      "Servizi — Ristoranti sul mare, noleggio barche e lidi attrezzati",
+      "Accesso — Facile, accesso pedonale dal borgo marinaro",
+      "Ambiente — Vista unica sulle torri del castello affacciato direttamente sull'acqua"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-pietra-piatta-trabia",
+    "description": "Tratto di litorale caratterizzato da grandi lastroni rocciosi piatti e scogliere basse, perfetto per prendere il sole e fare snorkeling in acque trasparenti.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "ponente",
+      "libeccio",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "scogliera",
+      "snorkeling",
+      "relax",
+      "tuffi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio"
+    ],
+    "warnings": [
+      "Accesso in acqua da scogli piatti; utili scarpette da scoglio."
+    ],
+    "facts": [
+      "Suolo — Scogliere piatte e ciottoli",
+      "Fondale — Roccioso e ricco di anfratti e vita sottomarina",
+      "Esposizione — Nord-est, riparata dai venti meridionali e da ponente",
+      "Servizi — Tratto libero naturale",
+      "Accesso — Facile, discesa diretta dalla strada costiera",
+      "Ambiente — Piattaforme rocciose naturali sul mare aperto"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-gorgo-lungo-lascari",
+    "description": "Ampio arenile di sabbia dorata fine continuo con la spiaggia delle Salinelle. Spazi immensi, mare limpido e atmosfera rilassata per tutte le età.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "sabbia",
+      "spazio",
+      "famiglie",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "stabilimenti balneari",
+      "parcheggio",
+      "chioschi"
+    ],
+    "warnings": [
+      "Mare con onde in presenza di venti da nord."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine",
+      "Fondale — Sabbioso e dolcemente digradante",
+      "Esposizione — Nord, mare calmissimo e piatto con venti di scirocco",
+      "Servizi — Stabilimenti estivi, docce, noleggio lettini e ampi spazi liberi",
+      "Accesso — Facile, comodi passaggi pedonali dai parcheggi",
+      "Ambiente — Litorale lungo chilometri con le montagne delle Madonie alle spalle"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/cefalu-e-madonie/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-piana-grande-lascari",
+    "description": "Litorale tranquillo e spazioso di sabbia e ciottolini tra Campofelice e Lascari, ideale per chi desidera fuggire dal caos e godersi il mare in serenità.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "relax",
+      "sabbia",
+      "tranquillità",
+      "spazio"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio libero"
+    ],
+    "warnings": [
+      "Pochi servizi in loco; portare il necessario."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata mista a piccoli ciottoli",
+      "Fondale — Sabbia e ghiaia, pulito e trasparente",
+      "Esposizione — Nord, ottima con venti meridionali",
+      "Servizi — Prevalentemente spiaggia libera",
+      "Accesso — Facile, stradine di accesso con parcheggio",
+      "Ambiente — Tratto costiero ampio e non urbanizzato"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/cefalu-e-madonie/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-santa-lucia-cefalu",
+    "description": "Insenatura riparata situata sul lato occidentale del promontorio di Cefalù, con scogliere e vista privilegiata sul profilo maestoso della Rocca.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno",
+      "ponente"
+    ],
+    "tags": [
+      "panorama",
+      "scogliera",
+      "ciottoli",
+      "rocca"
+    ],
+    "access_level": "facile",
+    "services": [
+      "bar",
+      "ristoranti",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Fondale roccioso in alcuni tratti; attenzione per i più piccoli."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e scogli bassi",
+      "Fondale — Roccioso e limpido con pesci e fondali suggestivi",
+      "Esposizione — Nord, riparata dai venti da ovest e sud",
+      "Servizi — Strutture ricettive e ristoranti nelle vicinanze",
+      "Accesso — Facile, discesa diretta dalla strada",
+      "Ambiente — Vista iconica sulla baia di Cefalù e sulla rupe monumentale"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/cefalu-e-madonie/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-torre-conca-pollina",
+    "description": "La spiaggia più celebre di Pollina, incorniciata da spettacolari falesie rocciose a picco su un mare blu zaffiro con sabbia scura e ciottoli.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno",
+      "libeccio"
+    ],
+    "tags": [
+      "falesia",
+      "ciottoli",
+      "panorama",
+      "iconica"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "lido stagionale",
+      "parcheggio sulla statale",
+      "bar"
+    ],
+    "warnings": [
+      "Discesa tramite gradinata e sentiero panoramico."
+    ],
+    "facts": [
+      "Suolo — Sabbia scura e ciottoli levigati",
+      "Fondale — Ciottoli e mare profondo con acqua trasparentissima",
+      "Esposizione — Nord, riparata dalla falesia dai venti meridionali",
+      "Servizi — Chiosco bar e stabilimento balneare in estate",
+      "Accesso — Moderato, sentiero con gradoni dalla SS113",
+      "Ambiente — Scenario naturale selvaggio con imponenti scogliere a picco"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/cefalu-e-madonie/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-costa-turchina-pollina",
+    "description": "Splendido litorale di ciottoli e sabbia a Finale di Pollina, rinomato per le incredibili tonalità turchesi dell'acqua e per la vista sulle Isole Eolie.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "acque-turchesi",
+      "ciottoli",
+      "panorama",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio",
+      "lidi",
+      "bar"
+    ],
+    "warnings": [
+      "Fondale con ciottoli levigati."
+    ],
+    "facts": [
+      "Suolo — Ciottoli chiari e ghiaia",
+      "Fondale — Ciottoli e mare turchese limpido",
+      "Esposizione — Nord, calmo con venti da sud e scirocco",
+      "Servizi — Stabilimenti e spiaggia libera",
+      "Accesso — Facile, accesso dal lungomare di Finale",
+      "Ambiente — Vista panoramica aperta sul mare e nelle giornate limpide sulle Eolie"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/cefalu-e-madonie/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-di-santa-maria-pollina",
+    "description": "Intima insenatura di ciottoli al confine tra le province di Palermo e Messina, bagnata da acque limpidissime e circondata da scogliere rocciose.",
+    "orientation_degrees": 0,
+    "orientation_label": "Nord",
+    "shelter": [
+      "scirocco",
+      "mezzogiorno",
+      "libeccio"
+    ],
+    "tags": [
+      "caletta",
+      "ciottoli",
+      "tranquillità",
+      "snorkeling"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio libero"
+    ],
+    "warnings": [
+      "Caletta naturale non attrezzata."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e rocce",
+      "Fondale — Roccioso e limpido, ideale per nuotare",
+      "Esposizione — Nord, protetta alle spalle dai rilievi montuosi",
+      "Servizi — Tratto libero",
+      "Accesso — Facile, breve stradella dalla litoranea",
+      "Ambiente — Caletta appartata circondata da natura e scogli"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/cefalu-e-madonie/",
+        "role": "primary"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-del-corsaro-palermo",
+    "description": "Litorale sabbioso della costa sud-est di Palermo, affacciato sull'intero arco del Golfo di Palermo con vista maestosa su Monte Pellegrino e Capo Zafferano.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "ponente",
+      "libeccio",
+      "mezzogiorno"
+    ],
+    "tags": [
+      "panorama",
+      "sabbia",
+      "cittadina",
+      "passeggiata"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio sul lungomare",
+      "pista ciclabile",
+      "docce"
+    ],
+    "warnings": [
+      "Litorale costiero del golfo di Palermo."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Nord-est, riparata dai venti occidentali",
+      "Servizi — Parcheggi, pista ciclabile e passeggiata costiera",
+      "Accesso — Facile, accessi diretti dal lungomare dei Mille",
+      "Ambiente — Vista panoramica completa sull'intero golfo di Palermo e Monte Pellegrino"
+    ],
+    "sources": [
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/palermo-e-dintorni/",
+        "role": "primary"
+      }
+    ]
   }
 ]

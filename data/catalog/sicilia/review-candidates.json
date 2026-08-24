@@ -348,5 +348,215 @@
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20dei%20Francesi%2C%20Bagheria%2C%20Sicilia%20%4038.1162909%2C13.5075318",
     "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-rotonda-favignana",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Rotonda%2C%20Favignana%2C%20Sicilia%20%4037.9254%2C12.2857",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "bue-marino-favignana",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Bue%20Marino%2C%20Favignana%2C%20Sicilia%20%4037.9308%2C12.3551",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "scalo-cavallo-favignana",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Scalo%20Cavallo%2C%20Favignana%2C%20Sicilia%20%4037.9352%2C12.3486",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-fredda-levanzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Fredda%2C%20Favignana%2C%20Sicilia%20%4037.9892%2C12.3435",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-minnola-levanzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Minnola%2C%20Favignana%2C%20Sicilia%20%4037.9946%2C12.3518",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-dogana-levanzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Dogana%2C%20Favignana%2C%20Sicilia%20%4037.9881%2C12.3411",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-bue-marino-macari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Bue%20Marino%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia%20%4038.1402%2C12.7279",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-berretta-zingaro",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Berretta%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.1065%2C12.7938",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-della-disa-zingaro",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20della%20Disa%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.1012%2C12.7979",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-petrolo-castellammare",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Petrolo%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.0289%2C12.8821",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-bianca-castellammare",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Bianca%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.0493%2C12.8465",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-delle-mura-di-tramontana-trapani",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20delle%20Mura%20di%20Tramontana%2C%20Trapani%2C%20Sicilia%20%4038.0201%2C12.5082",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-san-giuliano-erice",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20San%20Giuliano%2C%20Erice%2C%20Sicilia%20%4038.0354%2C12.5298",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-marausa-lido",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marausa%20Lido%2C%20Misiliscemi%2C%20Sicilia%20%4037.9152%2C12.5186",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "riserva-foce-del-belice",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20della%20Foce%20del%20Belice%2C%20Castelvetrano%2C%20Sicilia%20%4037.5815%2C12.8687",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-ciamarita-trappeto",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20Ciammarita%2C%20Trappeto%2C%20Sicilia%20%4038.0706%2C13.0285",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-del-casello-trappeto",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20del%20Casello%2C%20Trappeto%2C%20Sicilia%20%4038.0678%2C13.0371",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-torre-pozzillo-cinisi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Torre%20Pozzillo%2C%20Cinisi%2C%20Sicilia%20%4038.1882%2C13.1256",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-carini-torre-ciachea",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Carini%2C%20Carini%2C%20Sicilia%20%4038.1963%2C13.1974",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-della-torre-normanna-altavilla",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Torre%20Normanna%2C%20Altavilla%20Milicia%2C%20Sicilia%20%4038.0514%2C13.5682",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-sciabica-altavilla",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Sciabica%2C%20Altavilla%20Milicia%2C%20Sicilia%20%4038.0465%2C13.5789",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-san-nicola-l-arena-trabia",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20San%20Nicola%20l'Arena%2C%20Trabia%2C%20Sicilia%20%4038.0162%2C13.6154",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-pietra-piatta-trabia",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Pietra%20Piatta%2C%20Trabia%2C%20Sicilia%20%4038.0078%2C13.6391",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-gorgo-lungo-lascari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Gorgo%20Lungo%2C%20Lascari%2C%20Sicilia%20%4038.0089%2C13.9165",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-piana-grande-lascari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Piana%20Grande%2C%20Lascari%2C%20Sicilia%20%4038.0062%2C13.8994",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-santa-lucia-cefalu",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Baia%20di%20Santa%20Lucia%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.0345%2C14.0042",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-torre-conca-pollina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Torre%20Conca%2C%20Pollina%2C%20Sicilia%20%4038.0267%2C14.1528",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-costa-turchina-pollina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Costa%20Turchina%2C%20Pollina%2C%20Sicilia%20%4038.0289%2C14.1685",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-di-santa-maria-pollina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20Santa%20Maria%2C%20Pollina%2C%20Sicilia%20%4038.0315%2C14.1824",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spiaggia-del-corsaro-palermo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20del%20Corsaro%2C%20Palermo%2C%20Sicilia%20%4038.1062%2C13.3985",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
   }
 ]
