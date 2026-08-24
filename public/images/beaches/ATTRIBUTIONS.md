@@ -349,3 +349,103 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Nota: foto di contesto della Tonnara Bordonaro nella località di Vergine Maria, con il tratto di mare visibile; non è una fotografia ravvicinata dell’intero arenile.
 - Scaricata: 2026-08-24
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Puzziteddu
+
+- File: `puzziteddu.jpg` (fonte: `Campobello di Mazara122.jpg`)
+- Autore: Matthias Süßen
+- Fonte: <https://commons.wikimedia.org/wiki/File:Campobello_di_Mazara122.jpg>
+- Licenza: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Lido Signorino
+
+- File: `lido-signorino.jpg` (fonte: `Tritoni and Lido Marausa near Birgi.jpg`)
+- Autore: Michiel1972
+- Fonte: <https://commons.wikimedia.org/wiki/File:Tritoni_and_Lido_Marausa_near_Birgi.jpg>
+- Licenza: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia della Segheria
+
+- File: `spiaggia-della-segheria-pizzolungo.jpg` (fonte: `Tronco sulla riva di Pizzolungo.jpg`)
+- Autore: Giovanni-Bianco
+- Fonte: <https://commons.wikimedia.org/wiki/File:Tronco_sulla_riva_di_Pizzolungo.jpg>
+- Licenza: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Arenella, Palermo
+
+- File: `arenella-palermo.jpg` (fonte: `Arenella rocks.jpg`)
+- Autore: Gogo ferrari
+- Fonte: <https://commons.wikimedia.org/wiki/File:Arenella_rocks.jpg>
+- Licenza: [Public domain](https://creativecommons.org/publicdomain/mark/1.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia dell'Aciddara
+
+- File: `spiaggia-aciddara.jpg` (fonte: `Capo Zafferano.jpg`)
+- Autore: Francesco
+- Fonte: <https://commons.wikimedia.org/wiki/File:Capo_Zafferano.jpg>
+- Licenza: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia dell'Olivella
+
+- File: `spiaggia-olivella-santa-flavia.jpg` (fonte: `Solanto, Palermo 03.jpg`)
+- Autore: Manuelarosi
+- Fonte: <https://commons.wikimedia.org/wiki/File:Solanto,_Palermo_03.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia di Casteldaccia
+
+- File: `spiaggia-di-casteldaccia.jpg` (fonte: `Coast of Palermo 3956.jpg`)
+- Autore: Salvo Di Fazio
+- Fonte: <https://commons.wikimedia.org/wiki/File:Coast_of_Palermo_3956.jpg>
+- Licenza: [Public domain](https://creativecommons.org/publicdomain/mark/1.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Settefrati, Cefalù
+
+- File: `settefrati-cefalu.jpg` (fonte: `Cefalù scogli.JPG`)
+- Autore: Pava
+- Fonte: <https://commons.wikimedia.org/wiki/File:Cefal%C3%B9_scogli.JPG>
+- Licenza: [Public domain](https://creativecommons.org/publicdomain/mark/1.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Salinelle, Lascari
+
+- File: `salinelle-lascari.jpg` (fonte: `Spiaggia Trapani SanGiuliano.jpg`)
+- Autore: Civa61
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_Trapani_SanGiuliano.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Ippocampo, Aspra
+
+- File: `ippocampo-aspra.jpg` (fonte: `Barche ad Aspra 01.jpg`)
+- Autore: Davide Mauro
+- Fonte: <https://commons.wikimedia.org/wiki/File:Barche_ad_Aspra_01.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+### Spiaggia dei Francesi, Mongerbino
+
+- File: `spiaggia-dei-francesi-mongerbino.jpg` (fonte: `Raisi-Capo Gallo coast.jpg`)
+- Autore: Gilberto Gaudio
+- Fonte: <https://commons.wikimedia.org/wiki/File:Raisi-Capo_Gallo_coast.jpg>
+- Licenza: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+- Scaricata: 2026-08-24
+- Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+

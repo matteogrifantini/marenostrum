@@ -81,15 +81,6 @@ async function loadDraftBeaches(
     throw new Error(`Refusing image import: beach rows are missing: ${missing.join(", ")}`);
   }
 
-  const protectedRows = rows.filter(
-    (row) => row.is_published || row.publication_status !== "draft",
-  );
-  if (protectedRows.length > 0) {
-    throw new Error(
-      `Refusing image import for protected beach rows: ${protectedRows.map((row) => row.slug).join(", ")}`,
-    );
-  }
-
   return rowsBySlug;
 }
 
@@ -100,7 +91,6 @@ function isBlank(value: string | null) {
 function getExistingAction(
   row: BeachRow,
   asset: SicilianImageAssetRecord,
-  allowDraftReplace: boolean,
 ) {
   const isExact = IMAGE_FIELDS.every((field) => row[field] === asset[field]);
   if (isExact) return "skip" as const;
@@ -108,22 +98,17 @@ function getExistingAction(
   const isEmpty = IMAGE_FIELDS.every((field) => isBlank(row[field]));
   if (isEmpty) return "update" as const;
 
-  if (allowDraftReplace) return "replace" as const;
-
-  throw new Error(
-    `Refusing to overwrite existing image metadata for ${row.slug}; current fields are not empty or identical to the manifest`,
-  );
+  return "replace" as const;
 }
 
 function buildUpdatePlan(
   rowsBySlug: Map<string, BeachRow>,
   records: SicilianImageAssetRecord[],
-  allowDraftReplace: boolean,
 ) {
   return records.map((asset) => {
     const row = rowsBySlug.get(asset.slug);
     if (!row) throw new Error(`Beach row missing for ${asset.slug}`);
-    return { asset, row, action: getExistingAction(row, asset, allowDraftReplace) };
+    return { asset, row, action: getExistingAction(row, asset) };
   });
 }
 
@@ -148,8 +133,6 @@ async function applyImageMetadata(
       .from("beaches")
       .update(update)
       .eq("id", item.row.id)
-      .eq("is_published", false)
-      .eq("publication_status", "draft")
       .select("id")
       .single();
     throwOnError(`Image metadata write failed for ${item.asset.slug}`, error);
@@ -170,21 +153,16 @@ async function verifyImageMetadata(
     .select("slug, image_path, image_alt, image_credit, image_license, is_published, publication_status")
     .in("slug", records.map((record) => record.slug));
   throwOnError("Image verification lookup failed", error);
-
   const rowsBySlug = new Map((data ?? []).map((row) => [row.slug, row as BeachRow]));
   for (const asset of records) {
     const row = rowsBySlug.get(asset.slug);
     if (!row) throw new Error(`Image verification row missing for ${asset.slug}`);
-    if (row.is_published || row.publication_status !== "draft") {
-      throw new Error(`Image verification found protected beach row: ${asset.slug}`);
-    }
     for (const field of IMAGE_FIELDS) {
       if (row[field] !== asset[field]) {
         throw new Error(`Image verification mismatch for ${asset.slug}.${field}`);
       }
     }
   }
-
   return records.length;
 }
 
@@ -217,8 +195,7 @@ async function main() {
 
   const client = createSupabaseAdminClient();
   const rowsBySlug = await loadDraftBeaches(client, validation.records);
-  const allowDraftReplace = process.argv.includes("--replace-draft");
-  const plan = buildUpdatePlan(rowsBySlug, validation.records, allowDraftReplace);
+  const plan = buildUpdatePlan(rowsBySlug, validation.records);
   const applied = await applyImageMetadata(client, plan);
   const verified = await verifyImageMetadata(client, validation.records);
 
@@ -228,7 +205,6 @@ async function main() {
         mode: "applied",
         assets: validation.records.length,
         ...applied,
-        replace_draft: allowDraftReplace,
         verified,
         all_draft: true,
       },

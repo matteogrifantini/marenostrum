@@ -63,7 +63,7 @@ function weatherLabel(weather: BeachConditions["weather"]) {
 
 function windLabel(speedKmh: number) {
   if (speedKmh <= 8) return "vento leggero";
-  if (speedKmh <= 14) return "vento moderato";
+  if (speedKmh <= 15) return "vento moderato";
   return "vento sostenuto";
 }
 
@@ -78,28 +78,47 @@ function seaLabel(conditions: BeachConditions) {
   return `mare ${seaStateFor(conditions)}`;
 }
 
-function recommendationLabel(score: number, weather: BeachConditions["weather"]) {
-  if (weather === "pioggia") return "una giornata da valutare";
-  if (score >= 80) return "una scelta molto solida";
+function recommendationVerdict(score: number, weather: BeachConditions["weather"]) {
+  if (weather === "pioggia") return "una giornata sconsigliata per la balneazione";
+  if (weather === "nuvoloso") return score >= 60 ? "una scelta discreta ma con cielo coperto" : "una giornata poco favorevole";
+  if (score >= 80) return "una scelta eccellente";
   if (score >= 65) return "una buona scelta";
-  if (score >= 45) return "una spiaggia da valutare";
+  if (score >= 45) return "una spiaggia da valutare con cautela";
   return "una giornata poco favorevole";
+}
+
+function buildAdviceSummary(score: number, conditions: BeachConditions, sheltered: boolean) {
+  if (conditions.weather === "pioggia") {
+    return "Con pioggia prevista, la balneazione è sconsigliata: meglio organizzare un piano alternativo.";
+  }
+  if (conditions.weather === "nuvoloso") {
+    return "Il cielo coperto limita il soleggiamento, ma le acque possono essere piacevoli per una passeggiata o una sosta breve.";
+  }
+  if (score >= 80) {
+    return "Condizioni ideali: cielo limpido, mare calmo e clima perfetto per trascorrere la giornata in riva al mare.";
+  }
+  if (score >= 65) {
+    return "Le condizioni sono complessivamente favorevoli per godersi la spiaggia.";
+  }
+  if (score >= 45) {
+    return sheltered
+      ? "Il vento è presente ma la conformazione della cala offre riparo; valuta le condizioni all'arrivo."
+      : "L'esposizione al vento o il mare mosso consigliano cautela se cerchi acque tranquille per il bagno.";
+  }
+  return "Il moto ondoso o il vento contrario rendono la spiaggia poco adatta al relax; consigliabile optare per un versante più riparato.";
 }
 
 export function getBeachAiComment({ beach, conditions, score }: BeachRecommendation): BeachAiComment {
   const windName = directionName(conditions.windDirectionDegrees);
   const sheltered = beach.shelter.includes(windName);
-  const opening = `Per questa giornata, ${beach.name} è ${recommendationLabel(score, conditions.weather)}: ${weatherLabel(conditions.weather)}, ${windLabel(conditions.windSpeedKmh)} e ${seaLabel(conditions)}.`;
+  const opening = `Per questa giornata, ${beach.name} è ${recommendationVerdict(score, conditions.weather)}: ${weatherLabel(conditions.weather)}, ${windLabel(conditions.windSpeedKmh)} e ${seaLabel(conditions)}.`;
   const exposure = sheltered
-    ? `È riparata ${formatWindWithArticle(windName, "shelter")}, quindi le condizioni restano favorevoli per stare al mare.`
+    ? `È riparata ${formatWindWithArticle(windName, "shelter")}, riducendo l'impatto delle raffiche.`
     : `È esposta ${formatWindWithArticle(windName, "exposure")}, quindi il vento si farà sentire durante la giornata.`;
-  const weatherAdvice =
-    conditions.weather === "pioggia"
-      ? "Con la pioggia possibile, meglio partire con un piano flessibile."
-      : "Nel complesso, il meteo sostiene la giornata al mare.";
+  const advice = buildAdviceSummary(score, conditions, sheltered);
 
   return {
     context: `${dateLabel(conditions.date)} · ${periodLabel(conditions.period)}`,
-    text: `${opening} ${exposure} ${weatherAdvice}`,
+    text: `${opening} ${exposure} ${advice}`,
   };
 }

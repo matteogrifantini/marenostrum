@@ -310,5 +310,93 @@
     "image_credit": "Stendhal55",
     "image_license": "CC BY-SA 4.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Tonnara_Bordonaro_Vergine_Maria.jpg"
+  },
+  {
+    "slug": "puzziteddu",
+    "image_path": "/images/beaches/puzziteddu.jpg",
+    "image_alt": "Costa e mare aperto di Campobello di Mazara presso Puzziteddu con acque trasparenti.",
+    "image_credit": "Matthias Süßen",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Campobello_di_Mazara122.jpg"
+  },
+  {
+    "slug": "lido-signorino",
+    "image_path": "/images/beaches/lido-signorino.jpg",
+    "image_alt": "Litorale sabbioso della costa sud di Marsala presso Lido Signorino con mare limpido.",
+    "image_credit": "Michiel1972",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Tritoni_and_Lido_Marausa_near_Birgi.jpg"
+  },
+  {
+    "slug": "spiaggia-della-segheria-pizzolungo",
+    "image_path": "/images/beaches/spiaggia-della-segheria-pizzolungo.jpg",
+    "image_alt": "Riva e costa con mare calmo e limpido di Pizzolungo a Erice.",
+    "image_credit": "Giovanni-Bianco",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Tronco_sulla_riva_di_Pizzolungo.jpg"
+  },
+  {
+    "slug": "arenella-palermo",
+    "image_path": "/images/beaches/arenella-palermo.jpg",
+    "image_alt": "Spiaggia e scogliera dell’Arenella a Palermo con mare calmo e trasparente.",
+    "image_credit": "Gogo ferrari",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Arenella_rocks.jpg"
+  },
+  {
+    "slug": "spiaggia-aciddara",
+    "image_path": "/images/beaches/spiaggia-aciddara.jpg",
+    "image_alt": "Insenatura costiera dell’Aciddara ai piedi di Capo Zafferano con mare cristallino.",
+    "image_credit": "Francesco",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Capo_Zafferano.jpg"
+  },
+  {
+    "slug": "spiaggia-olivella-santa-flavia",
+    "image_path": "/images/beaches/spiaggia-olivella-santa-flavia.jpg",
+    "image_alt": "Caletta dell’Olivella e costa di Solanto a Santa Flavia con mare limpido e calmo.",
+    "image_credit": "Manuelarosi",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Solanto,_Palermo_03.jpg"
+  },
+  {
+    "slug": "spiaggia-di-casteldaccia",
+    "image_path": "/images/beaches/spiaggia-di-casteldaccia.jpg",
+    "image_alt": "Costa e litorale di Casteldaccia affacciati sul golfo con mare calmo.",
+    "image_credit": "Salvo Di Fazio",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Coast_of_Palermo_3956.jpg"
+  },
+  {
+    "slug": "settefrati-cefalu",
+    "image_path": "/images/beaches/settefrati-cefalu.jpg",
+    "image_alt": "Faraglioni e mare cristallino della Baia dei Settefrati a Cefalù.",
+    "image_credit": "Pava",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cefal%C3%B9_scogli.JPG"
+  },
+  {
+    "slug": "salinelle-lascari",
+    "image_path": "/images/beaches/salinelle-lascari.jpg",
+    "image_alt": "Ampio arenile sabbioso e acque basse e calme delle Salinelle di Lascari.",
+    "image_credit": "Civa61",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Trapani_SanGiuliano.jpg"
+  },
+  {
+    "slug": "ippocampo-aspra",
+    "image_path": "/images/beaches/ippocampo-aspra.jpg",
+    "image_alt": "Riva e spiaggia dell’Ippocampo ad Aspra con barche e mare calmo.",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Barche_ad_Aspra_01.jpg"
+  },
+  {
+    "slug": "spiaggia-dei-francesi-mongerbino",
+    "image_path": "/images/beaches/spiaggia-dei-francesi-mongerbino.jpg",
+    "image_alt": "Insenatura naturale e mare trasparente della Spiaggia dei Francesi a Mongerbino.",
+    "image_credit": "Gilberto Gaudio",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Raisi-Capo_Gallo_coast.jpg"
   }
 ]

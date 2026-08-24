@@ -17,6 +17,7 @@ describe("getBeachAiComment", () => {
   it("turns uncertain weather into a practical recommendation", () => {
     const rainyRecommendation = {
       ...demoRecommendations[0],
+      score: 30,
       conditions: {
         ...demoRecommendations[0].conditions,
         weather: "pioggia" as const,
@@ -28,7 +29,25 @@ describe("getBeachAiComment", () => {
 
     expect(result.context).toBe("Sabato 15 agosto · Pomeriggio");
     expect(result.text).toContain("Possibilità di pioggia");
-    expect(result.text).toContain("piano flessibile");
+    expect(result.text).toContain("piano alternativo");
+    expect(result.text).not.toContain("il meteo sostiene la giornata");
+  });
+
+  it("produces coherent cloudy advice without promising perfect sunny weather", () => {
+    const cloudyRecommendation = {
+      ...demoRecommendations[0],
+      score: 65,
+      conditions: {
+        ...demoRecommendations[0].conditions,
+        weather: "nuvoloso" as const,
+      },
+    };
+
+    const result = getBeachAiComment(cloudyRecommendation);
+
+    expect(result.text).toContain("Cielo nuvoloso");
+    expect(result.text).toContain("cielo coperto");
+    expect(result.text).not.toContain("il meteo sostiene la giornata");
   });
 
   it("uses the ostro article in the advice shown on the beach detail", () => {

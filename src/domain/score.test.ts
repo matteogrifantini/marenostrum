@@ -89,4 +89,26 @@ describe("scoreBeach", () => {
 
     expect(result.reason).toContain(`È esposta ${article}.`);
   });
+
+  it("caps score for cloudy skies so it never receives a misleading excellent rating", () => {
+    const cloudyResult = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, weather: "nuvoloso" },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    expect(cloudyResult.score).toBeLessThan(70);
+    expect(cloudyResult.label).not.toBe("Ottima scelta");
+  });
+
+  it("heavily penalizes rainy weather", () => {
+    const rainyResult = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, weather: "pioggia" },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    expect(rainyResult.score).toBeLessThanOrEqual(35);
+    expect(rainyResult.label).toBe("Meglio cercare altrove");
+  });
 });

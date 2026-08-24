@@ -28,8 +28,8 @@ const WIND_NAMES = [
 const WEATHER_PENALTIES: Record<BeachConditions["weather"], number> = {
   sereno: 0,
   "poco nuvoloso": 3,
-  nuvoloso: 10,
-  pioggia: 22,
+  nuvoloso: 14,
+  pioggia: 25,
 };
 
 function clamp(value: number, minimum: number, maximum: number) {
@@ -85,9 +85,26 @@ export function scoreBeach(
   const seaScore = clamp(25 - conditions.waveHeightMeters * 16, 0, 25);
   const weatherScore = clamp(20 - WEATHER_PENALTIES[conditions.weather], 0, 20);
   const conditionsScore = windScore + seaScore + weatherScore;
-  const score = Math.round(
+  
+  let rawScore = Math.round(
     clamp((conditionsScore / 90) * 100, 0, 100),
   );
+
+  // Ceilings to ensure weather & sea conditions are strictly coherent with score:
+  // A high score (>= 80) requires clear/sunny skies and calm sea.
+  if (conditions.weather === "pioggia") {
+    rawScore = Math.min(rawScore, 35);
+  } else if (conditions.weather === "nuvoloso") {
+    rawScore = Math.min(rawScore, 68);
+  }
+
+  if (conditions.waveHeightMeters >= 0.8) {
+    rawScore = Math.min(rawScore, 45);
+  } else if (conditions.waveHeightMeters >= 0.5) {
+    rawScore = Math.min(rawScore, 65);
+  }
+
+  const score = rawScore;
   const hours = freshnessHours(conditions, profile.now);
   const confidence = confidenceFor(hours, conditions.sourceQuality);
   const freshnessReason = hours > 24 ? "Controlla l’ultimo aggiornamento prima di partire." : "";
