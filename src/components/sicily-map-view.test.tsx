@@ -75,7 +75,7 @@ describe("SicilyMapView", () => {
     expect(onPeriodChange).toHaveBeenCalledWith("afternoon");
   });
 
-  it("keeps rating and sea-place layers focused on the map without POI filters", () => {
+  it("keeps POI layers disabled by default and exposes toggle to activate them", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
@@ -88,9 +88,15 @@ describe("SicilyMapView", () => {
     );
 
     expect(screen.getByRole("region", { name: "Mappa delle spiagge" })).toBeInTheDocument();
-    expect(screen.queryByRole("group", { name: "Layer punti utili" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /Parcheggi/ })).not.toBeInTheDocument();
-    expect(screen.queryByText("Vedi scheda completa")).not.toBeInTheDocument();
+    const toggleButton = screen.getByRole("button", { name: /Mostra punti utili/ });
+    expect(toggleButton).toHaveAttribute("aria-pressed", "false");
+    expect(screen.queryByRole("button", { name: "🅿️ Parcheggi" })).not.toBeInTheDocument();
+
+    fireEvent.click(toggleButton);
+    expect(screen.getByRole("button", { name: /Punti utili attivi/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "🅿️ Parcheggi" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "🏖️ Lidi" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "🚿 Servizi mare" })).toBeInTheDocument();
   });
 
   it("shows numeric ratings without the explanatory score legend", () => {

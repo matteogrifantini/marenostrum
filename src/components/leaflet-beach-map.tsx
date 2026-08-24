@@ -20,6 +20,8 @@ type LeafletBeachMapProps = {
   selectedSlug: string | null;
   onSelectBeach: (slug: string) => void;
   nearbySelection: MapNearbySelection | null;
+  poiEnabled?: boolean;
+  activePoiCategories?: MapPoiCategory[];
 };
 
 type PoiState =
@@ -100,6 +102,8 @@ export function LeafletBeachMap({
   selectedSlug,
   onSelectBeach,
   nearbySelection,
+  poiEnabled = false,
+  activePoiCategories = [...MAP_POI_CATEGORIES],
 }: LeafletBeachMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Leaflet.Map | null>(null);
@@ -119,6 +123,20 @@ export function LeafletBeachMap({
       const poiLayer = poiLayerRef.current;
       if (!leaflet || !poiLayer) return;
 
+      if (!poiEnabled || activePoiCategories.length === 0) {
+        requestControllerRef.current?.abort();
+        poiLayer.clearLayers();
+        setPoiState("idle");
+        return;
+      }
+
+      if (map.getZoom() < 12.5) {
+        requestControllerRef.current?.abort();
+        poiLayer.clearLayers();
+        setPoiState("zoom-in");
+        return;
+      }
+
       const bounds = map.getBounds();
       const bbox = [
         bounds.getSouth(),
@@ -133,8 +151,10 @@ export function LeafletBeachMap({
       requestControllerRef.current = controller;
       setPoiState("loading");
 
+      const categoriesParam = encodeURIComponent(activePoiCategories.join(","));
+
       void fetch(
-        `/api/map/places?bbox=${bbox}&zoom=${map.getZoom().toFixed(1)}`,
+        `/api/map/places?bbox=${bbox}&zoom=${map.getZoom().toFixed(1)}&categories=${categoriesParam}`,
         { signal: controller.signal },
       )
         .then(async (response) => {
@@ -182,7 +202,7 @@ export function LeafletBeachMap({
     };
 
     if (mapRef.current) requestPlacesRef.current(mapRef.current);
-  }, []);
+  }, [poiEnabled, activePoiCategories]);
 
   useEffect(() => {
     let disposed = false;

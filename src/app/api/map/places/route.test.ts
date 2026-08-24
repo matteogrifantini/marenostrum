@@ -65,7 +65,7 @@ describe("GET /api/map/places", () => {
 
     const response = await handleMapPlaces(
       new Request(
-        "https://marenostrum.app/api/map/places?bbox=38,13,38.4,13.8&zoom=10&categories=parking",
+        "https://marenostrum.app/api/map/places?bbox=38.1,13.3,38.2,13.4&zoom=13&categories=parking,lido,sea-service",
       ),
       fetcher,
     );
@@ -91,7 +91,7 @@ describe("GET /api/map/places", () => {
   it("returns an honest degraded response when the POI provider fails", async () => {
     const response = await handleMapPlaces(
       new Request(
-        "https://marenostrum.app/api/map/places?bbox=38,13,38.4,13.8&zoom=10&categories=lido",
+        "https://marenostrum.app/api/map/places?bbox=38.1,13.3,38.2,13.4&zoom=13&categories=lido",
       ),
       vi.fn().mockRejectedValue(new Error("Overpass offline")),
     );

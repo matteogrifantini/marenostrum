@@ -3,6 +3,8 @@ import {
   type ForecastSyncResult,
 } from "../../../../services/forecast-sync";
 
+export const maxDuration = 60;
+
 export type ForecastCronDependencies = {
   cronSecret: string | undefined;
   synchronize: () => Promise<ForecastSyncResult>;

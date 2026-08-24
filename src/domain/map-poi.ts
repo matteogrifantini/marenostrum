@@ -43,8 +43,9 @@ const SICILY_BOUNDS = {
   east: 16.5,
 };
 
-export const MIN_POI_ZOOM = 10;
-export const MAX_POI_BBOX_AREA = 4.5;
+export const MIN_POI_ZOOM = 12.5;
+export const MAX_POI_BBOX_AREA = 1.2;
+export const MAX_POI_LIMIT = 10;
 
 const CATEGORY_LABELS: Record<MapPoiCategory, string> = {
   parking: "Parcheggio",
@@ -110,9 +111,65 @@ export function parseMapPlacesRequest(request: Request): MapPlacesQuery {
     throw new Error("zoom non valido");
   }
 
-  // I punti utili non sono un filtro utente: quando la mappa è abbastanza
-  // vicina, il layer mostra sempre tutte le categorie disponibili.
-  return { bbox, zoom, categories: [...MAP_POI_CATEGORIES] };
+  const rawCategories = params.get("categories")?.split(",").map((c) => c.trim()) ?? [];
+  const validCategories = rawCategories.filter((c): c is MapPoiCategory =>
+    MAP_POI_CATEGORIES.includes(c as MapPoiCategory),
+  );
+
+  const categories = validCategories.length > 0 ? validCategories : [...MAP_POI_CATEGORIES];
+
+  return { bbox, zoom, categories };
+}
+
+export function calculateDistanceKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+export function curateMapPlaces(
+  places: MapPoi[],
+  options?: {
+    center?: { latitude: number; longitude: number };
+    limit?: number;
+  },
+): MapPoi[] {
+  const limit = options?.limit ?? MAX_POI_LIMIT;
+  if (places.length === 0) return [];
+
+  const center = options?.center ?? {
+    latitude: places.reduce((sum, p) => sum + p.latitude, 0) / places.length,
+    longitude: places.reduce((sum, p) => sum + p.longitude, 0) / places.length,
+  };
+
+  const sorted = [...places].sort((a, b) => {
+    const distA = calculateDistanceKm(center.latitude, center.longitude, a.latitude, a.longitude);
+    const distB = calculateDistanceKm(center.latitude, center.longitude, b.latitude, b.longitude);
+    return distA - distB;
+  });
+
+  const curated: MapPoi[] = [];
+  for (const place of sorted) {
+    const isDuplicate = curated.some(
+      (existing) =>
+        existing.category === place.category &&
+        calculateDistanceKm(existing.latitude, existing.longitude, place.latitude, place.longitude) < 0.08,
+    );
+    if (!isDuplicate) {
+      curated.push(place);
+    }
+    if (curated.length >= limit) break;
+  }
+
+  return curated;
 }
 
 export function getMapPlacesRequestIssue(query: MapPlacesQuery) {

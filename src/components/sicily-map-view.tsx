@@ -8,6 +8,7 @@ import {
   DEFAULT_BEACH_FILTERS,
   type BeachFilters,
 } from "../domain/beach-filters";
+import { MAP_POI_CATEGORIES, type MapPoiCategory } from "../domain/map-poi";
 import { filterMapRecommendations, type MapNearbySelection } from "../domain/map-filtering";
 import { hasMapCoordinates } from "../domain/map-markers";
 import type { DateOption } from "../domain/date-selection";
@@ -38,6 +39,16 @@ export function SicilyMapView({
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
   const [nearbySelection, setNearbySelection] = useState<MapNearbySelection | null>(null);
+  const [poiEnabled, setPoiEnabled] = useState(false);
+  const [activePoiCategories, setActivePoiCategories] = useState<MapPoiCategory[]>([...MAP_POI_CATEGORIES]);
+
+  const togglePoiCategory = (category: MapPoiCategory) => {
+    setActivePoiCategories((current) =>
+      current.includes(category)
+        ? current.filter((c) => c !== category)
+        : [...current, category],
+    );
+  };
 
   const visibleRecommendations = useMemo(
     () => filterMapRecommendations(recommendations, filters, nearbySelection),
@@ -91,6 +102,63 @@ export function SicilyMapView({
           </button>
         </div>
 
+        <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3">
+          <button
+            type="button"
+            aria-pressed={poiEnabled}
+            onClick={() => setPoiEnabled(!poiEnabled)}
+            className={`inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full px-3.5 text-xs font-bold transition-colors ${
+              poiEnabled
+                ? "bg-[var(--ink)] text-white shadow-sm"
+                : "bg-[var(--control-surface)] text-[var(--ink-soft)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]"
+            }`}
+          >
+            <span>🅿️🏖️</span>
+            <span>{poiEnabled ? "Punti utili attivi" : "Mostra punti utili (Parcheggi, Lidi, Servizi)"}</span>
+          </button>
+
+          {poiEnabled ? (
+            <div className="flex flex-wrap items-center gap-1.5 text-xs">
+              <button
+                type="button"
+                aria-pressed={activePoiCategories.includes("parking")}
+                onClick={() => togglePoiCategory("parking")}
+                className={`inline-flex min-h-8 items-center gap-1 rounded-full px-2.5 font-bold transition-colors ${
+                  activePoiCategories.includes("parking")
+                    ? "bg-[var(--sun)] text-[var(--ink)]"
+                    : "bg-[var(--surface-muted)] text-[var(--ink-soft)] opacity-60"
+                }`}
+              >
+                <span>🅿️ Parcheggi</span>
+              </button>
+              <button
+                type="button"
+                aria-pressed={activePoiCategories.includes("lido")}
+                onClick={() => togglePoiCategory("lido")}
+                className={`inline-flex min-h-8 items-center gap-1 rounded-full px-2.5 font-bold transition-colors ${
+                  activePoiCategories.includes("lido")
+                    ? "bg-[var(--sun)] text-[var(--ink)]"
+                    : "bg-[var(--surface-muted)] text-[var(--ink-soft)] opacity-60"
+                }`}
+              >
+                <span>🏖️ Lidi</span>
+              </button>
+              <button
+                type="button"
+                aria-pressed={activePoiCategories.includes("sea-service")}
+                onClick={() => togglePoiCategory("sea-service")}
+                className={`inline-flex min-h-8 items-center gap-1 rounded-full px-2.5 font-bold transition-colors ${
+                  activePoiCategories.includes("sea-service")
+                    ? "bg-[var(--sun)] text-[var(--ink)]"
+                    : "bg-[var(--surface-muted)] text-[var(--ink-soft)] opacity-60"
+                }`}
+              >
+                <span>🚿 Servizi mare</span>
+              </button>
+            </div>
+          ) : null}
+        </div>
+
       </section>
 
       <section
@@ -102,6 +170,8 @@ export function SicilyMapView({
           selectedSlug={selectedVisibleSlug}
           onSelectBeach={setSelectedSlug}
           nearbySelection={nearbySelection}
+          poiEnabled={poiEnabled}
+          activePoiCategories={activePoiCategories}
         />
 
         <div className="sr-only" aria-label="Rating delle spiagge sulla mappa">

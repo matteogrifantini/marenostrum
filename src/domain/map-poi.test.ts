@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   buildOverpassQuery,
+  curateMapPlaces,
   parseMapPlacesRequest,
   parseOverpassPlaces,
 } from "./map-poi";
@@ -59,17 +60,17 @@ describe("map POI contract", () => {
     expect(places).toHaveLength(3);
   });
 
-  it("accepts only a valid, focused map viewport and always returns every POI layer", () => {
+  it("accepts only a valid, focused map viewport and parses requested categories", () => {
     const request = parseMapPlacesRequest(
       new Request(
-        "https://marenostrum.app/api/map/places?bbox=37.8,13.1,38.3,13.8&zoom=10&categories=parking,lido",
+        "https://marenostrum.app/api/map/places?bbox=37.8,13.1,38.3,13.8&zoom=13&categories=parking,lido",
       ),
     );
 
     expect(request).toEqual({
       bbox: { south: 37.8, west: 13.1, north: 38.3, east: 13.8 },
-      zoom: 10,
-      categories: ["parking", "lido", "sea-service"],
+      zoom: 13,
+      categories: ["parking", "lido"],
     });
   });
 
@@ -93,5 +94,25 @@ describe("map POI contract", () => {
     expect(query).toContain('nwr["amenity"~"boat_rental|toilets|shower|drinking_water"]');
     expect(query).not.toContain('nwr["amenity"~="');
     expect(query).not.toContain('nwr["sport"');
+  });
+
+  it("curates POIs to a maximum limit and sorts by proximity to center", () => {
+    const places = Array.from({ length: 25 }, (_, i) => ({
+      id: `node/${i}`,
+      category: "parking" as const,
+      name: `Parcheggio ${i}`,
+      latitude: 38.1 + i * 0.005,
+      longitude: 13.3 + i * 0.005,
+      sourceUrl: `https://www.openstreetmap.org/node/${i}`,
+    }));
+
+    const curated = curateMapPlaces(places, {
+      center: { latitude: 38.1, longitude: 13.3 },
+      limit: 10,
+    });
+
+    expect(curated).toHaveLength(10);
+    expect(curated[0].name).toBe("Parcheggio 0");
+    expect(curated[9].name).toBe("Parcheggio 9");
   });
 });

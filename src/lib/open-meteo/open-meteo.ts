@@ -224,14 +224,12 @@ function normalizeDirectionDegrees(degrees: number): number {
   return degrees === 360 ? 0 : degrees;
 }
 
-export async function fetchOpenMeteoForecasts(
+export const MAX_OPEN_METEO_BATCH_SIZE = 25;
+
+async function fetchOpenMeteoBatch(
   beaches: OpenMeteoBeach[],
   options: FetchOpenMeteoOptions,
 ): Promise<ForecastPoint[]> {
-  if (beaches.length === 0) {
-    return payloadError("at least one beach is required");
-  }
-
   const { weather, marine } = buildOpenMeteoUrls(beaches);
   const fetcher = options.fetcher ?? fetch;
   const [weatherResponse, marineResponse] = await Promise.all([
@@ -304,4 +302,28 @@ export async function fetchOpenMeteoForecasts(
       };
     });
   });
+}
+
+export async function fetchOpenMeteoForecasts(
+  beaches: OpenMeteoBeach[],
+  options: FetchOpenMeteoOptions,
+): Promise<ForecastPoint[]> {
+  if (beaches.length === 0) {
+    return payloadError("at least one beach is required");
+  }
+
+  if (beaches.length <= MAX_OPEN_METEO_BATCH_SIZE) {
+    return fetchOpenMeteoBatch(beaches, options);
+  }
+
+  const chunks: OpenMeteoBeach[][] = [];
+  for (let i = 0; i < beaches.length; i += MAX_OPEN_METEO_BATCH_SIZE) {
+    chunks.push(beaches.slice(i, i + MAX_OPEN_METEO_BATCH_SIZE));
+  }
+
+  const chunkResults = await Promise.all(
+    chunks.map((chunk) => fetchOpenMeteoBatch(chunk, options)),
+  );
+
+  return chunkResults.flat();
 }

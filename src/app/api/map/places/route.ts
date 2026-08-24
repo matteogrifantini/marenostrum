@@ -1,5 +1,6 @@
 import {
   buildOverpassQuery,
+  curateMapPlaces,
   getMapPlacesRequestIssue,
   parseMapPlacesRequest,
   parseOverpassPlaces,
@@ -35,6 +36,11 @@ export async function handleMapPlaces(
     return json({ places: [], reason: issue, degraded: false });
   }
 
+  const center = {
+    latitude: (query.bbox.south + query.bbox.north) / 2,
+    longitude: (query.bbox.west + query.bbox.east) / 2,
+  };
+
   for (const endpoint of OVERPASS_ENDPOINTS) {
     try {
       const overpassQuery = buildOverpassQuery(query.bbox, query.categories);
@@ -47,7 +53,7 @@ export async function handleMapPlaces(
             "user-agent": "MareNostrum/1.0 (https://marenostrum.app)",
           },
           cache: "no-store",
-          signal: AbortSignal.timeout(12000),
+          signal: AbortSignal.timeout(6000),
         },
       );
 
@@ -59,8 +65,11 @@ export async function handleMapPlaces(
           ? (payload as { elements?: unknown }).elements
           : [];
 
+      const rawPlaces = parseOverpassPlaces(elements, query.categories);
+      const places = curateMapPlaces(rawPlaces, { center, limit: 10 });
+
       return json({
-        places: parseOverpassPlaces(elements, query.categories),
+        places,
         reason: null,
         degraded: false,
       });

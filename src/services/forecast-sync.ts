@@ -133,11 +133,16 @@ export async function createSupabaseForecastWriteStore(
         computed_score: null,
         score_version: "real-1.0",
       }));
-      const { error } = await client.from("beach_conditions").upsert(rows, {
-        onConflict: "beach_id,source_id,forecast_at",
-      });
 
-      if (error) throwWriteError("Forecast write is unavailable");
+      const BATCH_SIZE = 500;
+      for (let i = 0; i < rows.length; i += BATCH_SIZE) {
+        const batch = rows.slice(i, i + BATCH_SIZE);
+        const { error } = await client.from("beach_conditions").upsert(batch, {
+          onConflict: "beach_id,source_id,forecast_at",
+        });
+
+        if (error) throwWriteError("Forecast write is unavailable");
+      }
     },
 
     async markSourceChecked(sourceId, checkedAt) {
