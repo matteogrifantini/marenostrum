@@ -1,21 +1,16 @@
-name: Sync beach forecasts
+name: Forecast Sync
 
 on:
   schedule:
-    - cron: "7 */6 * * *"
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
-permissions: {}
-
 jobs:
-  sync:
+  sync-forecasts:
     runs-on: ubuntu-latest
     steps:
-      - name: Call protected forecast endpoint
-        env:
-          FORECAST_SYNC_URL: ${{ secrets.FORECAST_SYNC_URL }}
-          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+      - name: Trigger Forecast Sync Endpoint
         run: |
-          curl --fail-with-body --retry 3 --connect-timeout 10 --max-time 60 \
-            --header "Authorization: Bearer ${CRON_SECRET}" \
-            "${FORECAST_SYNC_URL%/}/api/cron/forecast"
+          curl -f -X GET "https://marenostrum.app/api/cron/forecast" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json"
