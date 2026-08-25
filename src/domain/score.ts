@@ -76,91 +76,28 @@ export function scoreBeach(
   const windName = windNameFromDegrees(conditions.windDirectionDegrees);
   const shelteredFromWindName = beach.shelter.includes(windName);
 
-  // 1. VENTO & RIPARO (Max 35 punti)
-  // Calcolo dell'angolo di incidenza del vento rispetto all'orientamento verso il mare della spiaggia:
-  // - > 110°: vento da terra (off-shore), spiana il mare e l'effetto a riva è protetto dalla costa/falesia
-  // - < 50°: vento dal mare (on-shore), increspa l'acqua e crea risacca
+  // 1. VENTO & ESPOSIZIONE (Max 45 punti base)
   const orientation = beach.orientationDegrees ?? 0;
   const windAngleDiff = angularDifference(conditions.windDirectionDegrees, orientation);
   const isOffshoreWind = windAngleDiff > 110;
   const isOnshoreWind = windAngleDiff < 50;
 
-  // Moltiplicatore di esposizione al vento:
-  // Se la spiaggia è esplicitamente riparata dal vento o il vento è off-shore, l'impatto a riva è ridotto.
   let windImpactMultiplier = 1.0;
   if (shelteredFromWindName && isOffshoreWind) {
-    windImpactMultiplier = 0.45;
+    windImpactMultiplier = 0.38;
   } else if (shelteredFromWindName || isOffshoreWind) {
-    windImpactMultiplier = 0.60;
+    windImpactMultiplier = 0.55;
   } else if (isOnshoreWind) {
-    windImpactMultiplier = 1.20;
+    windImpactMultiplier = 1.25;
   }
 
   const baseWindPenalty =
-    Math.max(0, conditions.windSpeedKmh - 10) * 1.35 +
-    Math.max(0, conditions.gustSpeedKmh - 18) * 0.45;
-  const effectiveWindPenalty = clamp(baseWindPenalty * windImpactMultiplier, 0, 35);
-  const windScore = clamp(35 - effectiveWindPenalty, 0, 35);
+    Math.max(0, conditions.windSpeedKmh - 10) * 1.5 +
+    Math.max(0, conditions.gustSpeedKmh - 18) * 0.5;
+  const effectiveWindPenalty = clamp(baseWindPenalty * windImpactMultiplier, 0, 45);
+  const windScore = clamp(45 - effectiveWindPenalty, 0, 45);
 
-  // 2. MOTO ONDOSO & STATO DEL MARE (Max 30 punti)
-  // Se la direzione d'onda è disponibile ed è off-shore (dietro la costa), l'altezza a riva è smorzata
-  let effectiveWaveHeight = conditions.waveHeightMeters;
-  if (conditions.waveDirectionDegrees !== undefined) {
-    const waveAngleDiff = angularDifference(conditions.waveDirectionDegrees, orientation);
-    if (waveAngleDiff > 110) {
-      effectiveWaveHeight *= 0.65;
-    }
-  } else if (shelteredFromWindName || isOffshoreWind) {
-    effectiveWaveHeight *= 0.80;
-  }
-
-  let seaScore: number;
-  if (effectiveWaveHeight <= 0.20) {
-    seaScore = 30;
-  } else if (effectiveWaveHeight <= 0.40) {
-    seaScore = 30 - ((effectiveWaveHeight - 0.20) / 0.20) * 4;
-  } else if (effectiveWaveHeight <= 0.65) {
-    seaScore = 26 - ((effectiveWaveHeight - 0.40) / 0.25) * 11;
-  } else if (effectiveWaveHeight <= 0.95) {
-    seaScore = 15 - ((effectiveWaveHeight - 0.65) / 0.30) * 10;
-  } else {
-    seaScore = clamp(5 - (effectiveWaveHeight - 0.95) * 8, 0, 5);
-  }
-
-  // 3. METEO, SOLEGGIAMENTO & RISCHIO PIOGGIA (Max 20 punti)
-  let weatherBase: number;
-  switch (conditions.weather) {
-    case "sereno":
-      weatherBase = 20;
-      break;
-    case "poco nuvoloso":
-      weatherBase = 17;
-      break;
-    case "nuvoloso":
-      weatherBase = 10;
-      break;
-    case "pioggia":
-      weatherBase = 2;
-      break;
-  }
-
-  // Modulazione fine tramite cloudCover e precipitationProbability se presenti
-  if (conditions.cloudCoverPercent !== undefined) {
-    if (conditions.weather === "sereno" && conditions.cloudCoverPercent > 20) {
-      weatherBase -= clamp((conditions.cloudCoverPercent - 20) * 0.05, 0, 3);
-    } else if (conditions.weather === "nuvoloso" && conditions.cloudCoverPercent < 60) {
-      weatherBase += clamp((60 - conditions.cloudCoverPercent) * 0.08, 0, 4);
-    }
-  }
-
-  if (conditions.precipitationProbabilityPercent !== undefined && conditions.precipitationProbabilityPercent > 25) {
-    const rainRiskPenalty = clamp((conditions.precipitationProbabilityPercent - 25) * 0.20, 0, 12);
-    weatherBase -= rainRiskPenalty;
-  }
-  const weatherScore = clamp(weatherBase, 0, 20);
-
-  // 4. COMFORT TERMICO & TEMPERATURA DELL'ACQUA (Max 15 punti)
-  // Comfort aria (10 pt max): ideale tra 24°C e 32°C
+  // 2. COMFORT TERMICO & ACQUA (Max 15 punti base)
   const temp = conditions.feelsLikeCelsius ?? conditions.temperatureCelsius;
   let airComfort: number;
   if (temp >= 24 && temp <= 32) {
@@ -168,10 +105,9 @@ export function scoreBeach(
   } else if (temp > 32) {
     airComfort = clamp(10 - (temp - 32) * 0.7, 5, 10);
   } else {
-    airComfort = clamp(10 - (24 - temp) * 0.9, 1, 10);
+    airComfort = clamp(10 - (24 - temp) * 0.85, 1, 10);
   }
 
-  // Comfort acqua (5 pt max): ideale >= 23°C
   let waterComfort = 5;
   if (conditions.waterTemperatureCelsius !== undefined) {
     if (conditions.waterTemperatureCelsius >= 23) {
@@ -186,30 +122,60 @@ export function scoreBeach(
   }
   const thermalScore = clamp(airComfort + waterComfort, 0, 15);
 
-  // SOMMA PONDERATA (Max 100 pt)
-  let rawScore = Math.round(windScore + seaScore + weatherScore + thermalScore);
+  // Condizioni a terra (vento + comfort termico + 40 quota mare = 100 pt max)
+  const landConditionsBase = windScore + thermalScore + 40;
 
-  // CEILING DI COERENZA E SICUREZZA
-  // Pioggia o probabilità di pioggia elevata:
-  if (conditions.weather === "pioggia" || (conditions.precipitationProbabilityPercent ?? 0) >= 70) {
-    rawScore = Math.min(rawScore, 35);
-  } else if (conditions.weather === "nuvoloso" || (conditions.cloudCoverPercent ?? 0) >= 85) {
-    rawScore = Math.min(rawScore, 68);
+  // 3. MOTO ONDOSO & STATO DEL MARE (Fattore continuo da 0.20 a 1.0)
+  let effectiveWaveHeight = conditions.waveHeightMeters;
+  if (conditions.waveDirectionDegrees !== undefined) {
+    const waveAngleDiff = angularDifference(conditions.waveDirectionDegrees, orientation);
+    if (waveAngleDiff > 110) {
+      effectiveWaveHeight *= 0.65;
+    }
+  } else if (shelteredFromWindName || isOffshoreWind) {
+    effectiveWaveHeight *= 0.78;
   }
 
-  // Mare mosso o agitato:
-  if (conditions.waveHeightMeters >= 0.85 || conditions.seaState === "agitato") {
-    rawScore = Math.min(rawScore, 45);
-  } else if (conditions.waveHeightMeters >= 0.55 && !shelteredFromWindName && !isOffshoreWind) {
-    rawScore = Math.min(rawScore, 65);
+  let seaFactor: number;
+  if (effectiveWaveHeight <= 0.22) {
+    seaFactor = 1.0;
+  } else if (effectiveWaveHeight <= 0.45) {
+    seaFactor = 1.0 - ((effectiveWaveHeight - 0.22) / 0.23) * 0.15; // 0.85 - 1.0
+  } else if (effectiveWaveHeight <= 0.75) {
+    seaFactor = 0.85 - ((effectiveWaveHeight - 0.45) / 0.30) * 0.38; // 0.47 - 0.85
+  } else if (effectiveWaveHeight <= 1.10) {
+    seaFactor = 0.47 - ((effectiveWaveHeight - 0.75) / 0.35) * 0.27; // 0.20 - 0.47
+  } else {
+    seaFactor = clamp(0.20 - (effectiveWaveHeight - 1.10) * 0.15, 0.08, 0.20);
   }
 
-  // Vento sostenuto su spiaggia esposta:
-  if (conditions.windSpeedKmh >= 32 && !shelteredFromWindName && !isOffshoreWind) {
-    rawScore = Math.min(rawScore, 55);
+  if (conditions.seaState === "agitato") {
+    seaFactor = Math.min(seaFactor, 0.35);
   }
 
-  const score = clamp(rawScore, 0, 100);
+  // 4. METEO & NUVOLOSITÀ (Fattore continuo da 0.30 a 1.0)
+  const cloud = conditions.cloudCoverPercent ?? (conditions.weather === "nuvoloso" ? 80 : conditions.weather === "poco nuvoloso" ? 35 : 5);
+  let weatherFactor: number;
+  if (conditions.weather === "pioggia") {
+    weatherFactor = 0.32;
+  } else if (conditions.weather === "nuvoloso" || cloud >= 65) {
+    weatherFactor = clamp(0.72 - ((cloud - 65) / 35) * 0.16, 0.52, 0.72);
+  } else if (conditions.weather === "poco nuvoloso" || cloud >= 25) {
+    weatherFactor = clamp(0.95 - ((cloud - 25) / 40) * 0.10, 0.85, 0.95);
+  } else {
+    weatherFactor = clamp(1.0 - (cloud / 25) * 0.03, 0.97, 1.0);
+  }
+
+  // Penalità fluida progressiva per probabilità di pioggia
+  let rainFactor = 1.0;
+  if (conditions.precipitationProbabilityPercent !== undefined && conditions.precipitationProbabilityPercent > 10) {
+    const rainRatio = clamp(conditions.precipitationProbabilityPercent / 100, 0, 1);
+    rainFactor = clamp(1.0 - Math.pow(rainRatio, 0.95) * 0.88, 0.12, 1.0);
+  }
+
+  // 5. CALCOLO FINALE DELLO SCORE CONTINUO
+  const rawScore = landConditionsBase * seaFactor * weatherFactor * rainFactor;
+  const score = Math.round(clamp(rawScore, 0, 100));
   const hours = freshnessHours(conditions, profile.now);
   const confidence = confidenceFor(hours, conditions.sourceQuality);
   const freshnessReason = hours > 24 ? "Controlla l’ultimo aggiornamento prima di partire." : "";
@@ -226,9 +192,9 @@ export function scoreBeach(
     reason,
     confidence,
     factors: {
-      wind: Math.round(windScore),
-      sea: Math.round(seaScore),
-      weather: Math.round(weatherScore),
+      wind: Math.round((windScore / 40) * 100),
+      sea: Math.round(seaFactor * 100),
+      weather: Math.round(weatherFactor * rainFactor * 100),
     },
   };
 }
