@@ -101,14 +101,73 @@ describe("scoreBeach", () => {
     expect(cloudyResult.label).not.toBe("Ottima scelta");
   });
 
-  it("heavily penalizes rainy weather", () => {
-    const rainyResult = scoreBeach(
+  it("rewards off-shore winds compared to on-shore winds at the same wind speed", () => {
+    // shelteredBeach is oriented at 120° (South-East)
+    // Wind from 300° (North-West) is off-shore (blows from land to sea, angle difference 180°)
+    // Wind from 120° (South-East) is on-shore (blows directly from sea to beach, angle difference 0°)
+    const offshoreResult = scoreBeach(
       shelteredBeach,
-      { ...calmConditions, weather: "pioggia" },
+      { ...calmConditions, windSpeedKmh: 24, gustSpeedKmh: 30, windDirectionDegrees: 300 },
       { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
     );
 
-    expect(rainyResult.score).toBeLessThanOrEqual(35);
-    expect(rainyResult.label).toBe("Meglio cercare altrove");
+    const onshoreResult = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, windSpeedKmh: 24, gustSpeedKmh: 30, windDirectionDegrees: 120 },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    expect(offshoreResult.score).toBeGreaterThan(onshoreResult.score);
+  });
+
+  it("penalizes high waves and rough sea appropriately", () => {
+    const calmSea = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, waveHeightMeters: 0.15 },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    const roughSea = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, waveHeightMeters: 1.1 },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    expect(calmSea.score).toBeGreaterThanOrEqual(85);
+    expect(roughSea.score).toBeLessThanOrEqual(45);
+    expect(roughSea.label).toMatch(/Da valutare|Meglio cercare altrove/);
+  });
+
+  it("incorporates rain probability and cloud cover gradients", () => {
+    const clearSky = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, cloudCoverPercent: 5, precipitationProbabilityPercent: 0 },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    const highRainRisk = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, precipitationProbabilityPercent: 75 },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    expect(clearSky.score).toBeGreaterThanOrEqual(85);
+    expect(highRainRisk.score).toBeLessThanOrEqual(35);
+  });
+
+  it("penalizes uncomfortably cold air and water temperatures", () => {
+    const warmDay = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, temperatureCelsius: 28, waterTemperatureCelsius: 24 },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    const coldDay = scoreBeach(
+      shelteredBeach,
+      { ...calmConditions, temperatureCelsius: 16, waterTemperatureCelsius: 16 },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    expect(warmDay.score).toBeGreaterThan(coldDay.score);
   });
 });

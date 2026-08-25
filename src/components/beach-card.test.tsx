@@ -29,7 +29,7 @@ describe("BeachCard", () => {
       expect.stringContaining("cala-del-gelsomino.jpg"),
     );
     expect(screen.getByText("Noto · 18 km")).toBeInTheDocument();
-    expect(screen.getByLabelText("Voto 96 su 100, Ottima scelta")).toHaveAttribute(
+    expect(screen.getByLabelText(`Voto ${demoRecommendations[0].score} su 100, Ottima scelta`)).toHaveAttribute(
       "data-score-tone",
       "excellent",
     );
