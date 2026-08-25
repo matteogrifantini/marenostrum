@@ -2,12 +2,6 @@ import type { BeachConditions, BeachPeriod, SourceQuality } from "./beach";
 import type { ForecastPoint } from "./forecast";
 
 const TIME_ZONE = "Europe/Rome";
-const WEATHER_SEVERITY: Record<BeachConditions["weather"], number> = {
-  sereno: 0,
-  "poco nuvoloso": 1,
-  nuvoloso: 2,
-  pioggia: 3,
-};
 const SOURCE_QUALITY_SEVERITY: Record<SourceQuality, number> = {
   high: 0,
   medium: 1,
@@ -68,10 +62,41 @@ function max(values: number[]) {
   return Math.max(...values);
 }
 
-function mostSevereWeather(points: ForecastPoint[]): BeachConditions["weather"] {
-  return points.reduce((severe, point) =>
-    WEATHER_SEVERITY[point.weather] > WEATHER_SEVERITY[severe] ? point.weather : severe,
-  points[0].weather);
+function aggregateWeather(points: ForecastPoint[]): BeachConditions["weather"] {
+  // If there is rain or high rain risk, keep pioggia for safety
+  const rainPoints = points.filter(
+    (point) => point.weather === "pioggia" || (point.precipitationProbabilityPercent ?? 0) >= 60,
+  );
+  if (rainPoints.length > 0) {
+    return "pioggia";
+  }
+
+  // Use mean cloud cover to determine realistic sky condition
+  const cloudValues = points
+    .map((p) => p.cloudCoverPercent)
+    .filter((v): v is number => v !== null && Number.isFinite(v));
+
+  if (cloudValues.length > 0) {
+    const avgCloud = mean(cloudValues);
+    if (avgCloud < 25) return "sereno";
+    if (avgCloud < 65) return "poco nuvoloso";
+    return "nuvoloso";
+  }
+
+  // Fallback to most frequent weather if cloud cover is absent
+  const counts = new Map<BeachConditions["weather"], number>();
+  for (const point of points) {
+    counts.set(point.weather, (counts.get(point.weather) || 0) + 1);
+  }
+  let bestWeather: BeachConditions["weather"] = points[0].weather;
+  let maxCount = 0;
+  for (const [w, count] of counts.entries()) {
+    if (count > maxCount) {
+      maxCount = count;
+      bestWeather = w;
+    }
+  }
+  return bestWeather;
 }
 
 function worstSourceQuality(points: ForecastPoint[]): SourceQuality {
@@ -163,7 +188,7 @@ export function aggregateForecast(
     windSpeedKmh: mean(selectedPoints.map((point) => point.windSpeedKmh)),
     gustSpeedKmh: max(selectedPoints.map((point) => point.gustSpeedKmh)),
     waveHeightMeters,
-    weather: mostSevereWeather(selectedPoints),
+    weather: aggregateWeather(selectedPoints),
     temperatureCelsius: mean(selectedPoints.map((point) => point.temperatureCelsius)),
     date: options.date,
     period: options.period,

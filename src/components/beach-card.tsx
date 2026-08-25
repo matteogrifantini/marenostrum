@@ -131,11 +131,11 @@ export function BeachCard({
                   <span className="min-w-0 break-words whitespace-normal">{waveMetric}</span>
                 </div>
                 <div
-                  aria-label={`Cielo: ${weatherLabel}`}
-                  className="hidden min-w-0 items-center gap-1.5 lg:flex"
+                  aria-label={`Meteo: ${weatherLabel}, ${Math.round(conditions.temperatureCelsius)}°C`}
+                  className="flex min-w-0 items-center gap-1.5"
                 >
                   <CloudSun aria-hidden="true" className="shrink-0 text-[var(--sun-dark)]" size={16} strokeWidth={2.2} />
-                  <span className="truncate">Cielo · {weatherLabel}</span>
+                  <span className="min-w-0 break-words whitespace-normal">{weatherLabel} · {Math.round(conditions.temperatureCelsius)}°C</span>
                 </div>
               </div>
             </div>

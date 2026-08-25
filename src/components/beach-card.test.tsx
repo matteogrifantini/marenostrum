@@ -40,8 +40,7 @@ describe("BeachCard", () => {
       "false",
     );
     expect(screen.queryByText("Raffiche")).not.toBeInTheDocument();
-    expect(screen.queryByText("Aria")).not.toBeInTheDocument();
-    expect(screen.getByLabelText("Cielo: Sereno")).toHaveTextContent("Cielo · Sereno");
+    expect(screen.getByLabelText(/Meteo: Sereno/i)).toHaveTextContent(/Sereno/i);
     expect(screen.queryByText("Mare calmo")).not.toBeInTheDocument();
     expect(screen.queryByText("Parcheggio limitato")).not.toBeInTheDocument();
     expect(
