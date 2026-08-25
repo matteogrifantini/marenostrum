@@ -100,23 +100,35 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
     },
 
     async getForecastRows(input) {
-      let query = client
-        .from("beach_conditions")
-        .select(
-          "beach_id, source_id, observed_at, forecast_at, wind_direction_degrees, wind_speed_kmh, gust_speed_kmh, wave_height_meters, wave_direction_degrees, weather, weather_code, temperature_celsius, apparent_temperature_celsius, water_temperature_celsius, cloud_cover_percent, precipitation_probability_percent",
-        )
-        .eq("source_id", input.sourceId)
-        .gte("forecast_at", input.from)
-        .lt("forecast_at", input.to);
+      const PAGE_SIZE = 1000;
+      const allRows: BeachConditionRow[] = [];
 
-      if (input.beachId) {
-        query = query.eq("beach_id", input.beachId);
+      for (let from = 0; ; from += PAGE_SIZE) {
+        let query = client
+          .from("beach_conditions")
+          .select(
+            "beach_id, source_id, observed_at, forecast_at, wind_direction_degrees, wind_speed_kmh, gust_speed_kmh, wave_height_meters, wave_direction_degrees, weather, weather_code, temperature_celsius, apparent_temperature_celsius, water_temperature_celsius, cloud_cover_percent, precipitation_probability_percent",
+          )
+          .eq("source_id", input.sourceId)
+          .gte("forecast_at", input.from)
+          .lt("forecast_at", input.to)
+          .range(from, from + PAGE_SIZE - 1);
+
+        if (input.beachId) {
+          query = query.eq("beach_id", input.beachId);
+        }
+
+        const { data, error } = await query;
+
+        if (error) throwReadError("Forecast data is unavailable");
+
+        const rows = (data ?? []) as BeachConditionRow[];
+        allRows.push(...rows);
+
+        if (rows.length < PAGE_SIZE) break;
       }
 
-      const { data, error } = await query;
-
-      if (error) throwReadError("Forecast data is unavailable");
-      return (data ?? []) as BeachConditionRow[];
+      return allRows;
     },
   };
 }

@@ -29,14 +29,14 @@ test.describe("Home Page & Core Interactions", () => {
 
   test("allows toggling beach favorites with localStorage persistence", async ({ page }) => {
     await page.goto("/");
+    await page.waitForLoadState("networkidle");
     
     // Find favorite buttons
     const favoriteBtn = page.locator("button[aria-label*='preferiti' i], button[aria-label*='Salva' i]").first();
-    if (await favoriteBtn.isVisible()) {
-      await favoriteBtn.click();
-      // Favorite count or aria-pressed should update
-      await expect(favoriteBtn).toHaveAttribute("aria-pressed", "true");
-    }
+    await expect(favoriteBtn).toBeVisible();
+    await favoriteBtn.click();
+    // Favorite count or aria-pressed should update
+    await expect(favoriteBtn).toHaveAttribute("aria-pressed", "true");
   });
 
   test("allows opening filter sheet and selecting province filter", async ({ page }) => {
