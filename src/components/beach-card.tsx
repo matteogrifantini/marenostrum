@@ -164,12 +164,12 @@ export function BeachCard({
             <span className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
 
-          <div className="flex min-h-[11rem] flex-1 flex-col p-3 sm:p-4">
+          <div className="flex flex-1 flex-col justify-between p-2.5 sm:p-4">
             <div className="min-w-0">
-              <h3 className="line-clamp-2 min-h-[2.35rem] font-serif text-[1.03rem] font-semibold leading-[1.15] tracking-[-0.035em] text-[var(--ink)] sm:text-lg">
+              <h3 className="line-clamp-1 font-serif text-[0.95rem] font-semibold leading-tight tracking-[-0.03em] text-[var(--ink)] sm:line-clamp-2 sm:min-h-[2.35rem] sm:text-lg">
                 {beach.name}
               </h3>
-              <p className="mt-0.5 break-words text-[0.7rem] font-semibold leading-tight text-[var(--muted)] sm:text-xs">
+              <p className="mt-0.5 break-words text-[0.68rem] font-semibold leading-tight text-[var(--muted)] sm:text-xs">
                 {distanceKm == null
                   ? beach.municipality
                   : `${beach.municipality} · ${formatDistanceKm(distanceKm, preferences.distanceUnit)}`}
@@ -177,11 +177,11 @@ export function BeachCard({
 
               {/* Feature Chips */}
               {featureChips.length > 0 && (
-                <div className="mt-2 flex flex-wrap items-center gap-1">
+                <div className="mt-1 flex flex-wrap items-center gap-1 sm:mt-2">
                   {featureChips.map((chip) => (
                     <span
                       key={chip.label}
-                      className="inline-flex items-center gap-1 rounded-md bg-[var(--surface-muted)] px-1.5 py-0.5 text-[0.62rem] font-medium text-[var(--ink-soft)] sm:text-[0.66rem]"
+                      className="inline-flex items-center gap-0.5 rounded bg-[var(--surface-muted)] px-1.5 py-0.5 text-[0.58rem] font-medium text-[var(--ink-soft)] sm:text-[0.66rem]"
                     >
                       <span aria-hidden="true">{chip.icon}</span>
                       <span>{chip.label}</span>
@@ -191,49 +191,43 @@ export function BeachCard({
               )}
             </div>
 
-            <div className="mt-auto flex min-w-0 items-end gap-1.5 pt-3 sm:gap-3">
+            <div className="mt-2 flex min-w-0 items-center gap-2 pt-1 sm:mt-auto sm:gap-3 sm:pt-3">
               <div
                 aria-label={`Voto ${displayScore} su 100, ${recommendation.label}`}
                 data-score-tone={tone}
-                className={`grid size-[2.65rem] shrink-0 place-items-center rounded-full shadow-[0_5px_14px_rgba(20,44,57,0.14)] sm:size-14 ${SCORE_TONE_CLASSES[tone]}`}
+                className={`grid size-9 shrink-0 place-items-center rounded-full shadow-[0_4px_12px_rgba(20,44,57,0.12)] sm:size-12 ${SCORE_TONE_CLASSES[tone]}`}
               >
-                <strong className="font-serif text-base font-semibold leading-none tracking-[-0.055em] sm:text-xl">
+                <strong className="font-serif text-sm font-semibold leading-none tracking-[-0.04em] sm:text-lg">
                   {displayScore}
                 </strong>
               </div>
 
-              <div className="min-w-0 flex-1 space-y-1 pb-0.5 text-[0.68rem] font-bold leading-none text-[var(--ink-soft)] sm:text-xs">
+              <div className="min-w-0 flex-1 space-y-0.5 pb-0.5 text-[0.63rem] font-bold leading-tight text-[var(--ink-soft)] sm:space-y-1 sm:text-xs">
                 <div
                   aria-label={`Vento: ${direction}, ${windMetric}`}
-                  className="flex min-w-0 items-center gap-1.5"
+                  className="flex min-w-0 items-center gap-1 sm:gap-1.5"
                 >
-                  <Wind aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={15} strokeWidth={2.2} />
+                  <Wind aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={13} strokeWidth={2.2} />
                   <span className="min-w-0 break-words whitespace-normal">
                     {direction} · {windMetric}
-                    {conditions.gustSpeedKmh > 18 && (
-                      <span className="text-[0.6rem] font-normal text-[var(--muted)] sm:text-[0.65rem]"> (raf. {Math.round(conditions.gustSpeedKmh)})</span>
-                    )}
                   </span>
                 </div>
                 <div
                   aria-label={`Onde: ${waveMetric}`}
-                  className="flex min-w-0 items-center gap-1.5"
+                  className="flex min-w-0 items-center gap-1 sm:gap-1.5"
                 >
-                  <Waves aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={15} strokeWidth={2.2} />
+                  <Waves aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={13} strokeWidth={2.2} />
                   <span className="min-w-0 break-words whitespace-normal">
                     {waveMetric} · {seaStateLabel}
                   </span>
                 </div>
                 <div
                   aria-label={`Meteo: ${weatherLabel}, ${Math.round(conditions.temperatureCelsius)}°C`}
-                  className="flex min-w-0 items-center gap-1.5"
+                  className="flex min-w-0 items-center gap-1 sm:gap-1.5"
                 >
-                  <CloudSun aria-hidden="true" className="shrink-0 text-[var(--sun-dark)]" size={15} strokeWidth={2.2} />
+                  <CloudSun aria-hidden="true" className="shrink-0 text-[var(--sun-dark)]" size={13} strokeWidth={2.2} />
                   <span className="min-w-0 break-words whitespace-normal">
                     {weatherLabel} · {Math.round(conditions.temperatureCelsius)}°C
-                    {conditions.waterTemperatureCelsius && (
-                      <span className="text-[0.6rem] font-normal text-[var(--sea-deep)] sm:text-[0.65rem]"> · Acqua {Math.round(conditions.waterTemperatureCelsius)}°</span>
-                    )}
                   </span>
                 </div>
               </div>

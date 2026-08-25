@@ -43,6 +43,7 @@ test.describe("Interactive Map & POI Curation", () => {
 
   test("allows selecting a beach from dropdown and flying to it", async ({ page }) => {
     await page.goto("/mappa");
+    await page.waitForLoadState("networkidle");
 
     const searchSelect = page.getByRole("combobox", { name: /Cerca una spiaggia/i });
     await expect(searchSelect).toBeVisible();
