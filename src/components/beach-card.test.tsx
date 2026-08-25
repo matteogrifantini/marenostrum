@@ -180,4 +180,17 @@ describe("BeachCard", () => {
       tone,
     );
   });
+
+  it("renders orientation badges and feature tags for rich decision support", () => {
+    render(
+      <BeachCard
+        recommendation={demoRecommendations[0]}
+        date="2026-08-15"
+        period="all-day"
+      />,
+    );
+
+    expect(screen.getByText("Sud-est")).toBeInTheDocument();
+    expect(screen.getByText("Acque basse")).toBeInTheDocument();
+  });
 });

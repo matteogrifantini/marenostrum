@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link, { useLinkStatus } from "next/link";
 import { CloudSun, Waves, Wind } from "lucide-react";
-import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
+import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { formatScoreOutOf100 } from "../domain/score";
 import { formatWeatherLabel } from "../lib/forecast-presentation";
 import { versionedMediaUrl } from "../lib/media-url";
@@ -46,6 +46,54 @@ function windDirection(degrees: number) {
   return directions[Math.round(normalized / 45) % directions.length];
 }
 
+const WIND_NAMES_ITALIAN: Record<string, string> = {
+  N: "tramontana",
+  NE: "grecale",
+  E: "levante",
+  SE: "scirocco",
+  S: "ostro",
+  SO: "libeccio",
+  O: "ponente",
+  NO: "maestrale",
+};
+
+function getBeachFeatureChips(beach: Beach) {
+  const chips: Array<{ label: string; icon: string }> = [];
+
+  // 1. Tipo di litorale (Sabbia, Ciottoli, Scogli)
+  if (beach.tags.some((t) => t.includes("sabbia"))) {
+    chips.push({ label: "Sabbia", icon: "🏖️" });
+  } else if (beach.tags.includes("ciottoli")) {
+    chips.push({ label: "Ciottoli", icon: "🪨" });
+  } else if (beach.tags.includes("scogli") || beach.tags.includes("scogliera")) {
+    chips.push({ label: "Scogli", icon: "🧗" });
+  }
+
+  // 2. Esperienza / Target (Acque basse, Famiglie, Snorkeling, Tramonto)
+  if (beach.tags.includes("acque-basse")) {
+    chips.push({ label: "Acque basse", icon: "🐚" });
+  } else if (beach.tags.includes("famiglie")) {
+    chips.push({ label: "Famiglie", icon: "👨‍👩‍👧" });
+  } else if (beach.tags.includes("snorkeling")) {
+    chips.push({ label: "Snorkeling", icon: "🤿" });
+  } else if (beach.tags.includes("tramonto") || beach.tags.includes("panoramica")) {
+    chips.push({ label: "Tramonto", icon: "🌅" });
+  }
+
+  // 3. Servizi / Parcheggio
+  if (beach.warnings?.some((w) => w.includes("parcheggio-limitato"))) {
+    chips.push({ label: "Park limitato", icon: "🅿️" });
+  } else if (beach.services?.some((s) => s.includes("parcheggio"))) {
+    chips.push({ label: "Parcheggio", icon: "🅿️" });
+  } else if (beach.services?.some((s) => s.includes("lidi") || s.includes("bar"))) {
+    chips.push({ label: "Lidi e bar", icon: "🍹" });
+  } else if (beach.tags.includes("selvaggia") || beach.tags.includes("natura")) {
+    chips.push({ label: "Libera", icon: "🌿" });
+  }
+
+  return chips.slice(0, 3);
+}
+
 export function BeachCard({
   recommendation,
   date,
@@ -64,6 +112,13 @@ export function BeachCard({
   const windMetric = formatWindSpeedKmh(conditions.windSpeedKmh, preferences.distanceUnit);
   const waveMetric = formatWaveHeightMeters(conditions.waveHeightMeters, preferences.waveHeightUnit);
   const weatherLabel = formatWeatherLabel(conditions.weather);
+  const featureChips = getBeachFeatureChips(beach);
+
+  const windName = WIND_NAMES_ITALIAN[direction] ?? "";
+  const isSheltered = beach.shelter?.includes(windName);
+  const seaStateLabel = conditions.seaState
+    ? conditions.seaState.charAt(0).toUpperCase() + conditions.seaState.slice(1)
+    : "Calmo";
 
   return (
     <article className="home-beach-card relative h-full min-w-0 overflow-hidden rounded-[1.25rem] bg-[var(--surface)] shadow-[0_10px_32px_rgba(20,44,57,0.09)]">
@@ -91,18 +146,50 @@ export function BeachCard({
                 className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.18),transparent_32%),linear-gradient(145deg,var(--sea-deep),var(--ink))]"
               />
             )}
+
+            {/* Aura-style top orientation / shelter badge */}
+            <div className="absolute left-2.5 top-2.5 z-10 flex flex-wrap items-center gap-1.5 sm:left-3 sm:top-3">
+              {beach.orientationLabel && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2 py-0.5 text-[0.62rem] font-semibold text-white/95 backdrop-blur-md shadow-sm sm:text-[0.68rem]">
+                  {beach.orientationLabel}
+                </span>
+              )}
+              {isSheltered && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-950/70 px-2 py-0.5 text-[0.62rem] font-bold text-emerald-300 backdrop-blur-md shadow-sm sm:text-[0.68rem]">
+                  🛡️ Riparata
+                </span>
+              )}
+            </div>
+
             <span className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
 
-          <div className="flex min-h-[9.5rem] flex-1 flex-col p-3 sm:p-4">
-            <h3 className="line-clamp-2 min-h-[2.35rem] font-serif text-[1.03rem] font-semibold leading-[1.15] tracking-[-0.035em] text-[var(--ink)] sm:text-lg">
-              {beach.name}
-            </h3>
-            <p className="mt-1 break-words text-[0.7rem] font-semibold leading-tight text-[var(--muted)] sm:text-xs">
-              {distanceKm == null
-                ? beach.municipality
-                : `${beach.municipality} · ${formatDistanceKm(distanceKm, preferences.distanceUnit)}`}
-            </p>
+          <div className="flex min-h-[11rem] flex-1 flex-col p-3 sm:p-4">
+            <div className="min-w-0">
+              <h3 className="line-clamp-2 min-h-[2.35rem] font-serif text-[1.03rem] font-semibold leading-[1.15] tracking-[-0.035em] text-[var(--ink)] sm:text-lg">
+                {beach.name}
+              </h3>
+              <p className="mt-0.5 break-words text-[0.7rem] font-semibold leading-tight text-[var(--muted)] sm:text-xs">
+                {distanceKm == null
+                  ? beach.municipality
+                  : `${beach.municipality} · ${formatDistanceKm(distanceKm, preferences.distanceUnit)}`}
+              </p>
+
+              {/* Feature Chips */}
+              {featureChips.length > 0 && (
+                <div className="mt-2 flex flex-wrap items-center gap-1">
+                  {featureChips.map((chip) => (
+                    <span
+                      key={chip.label}
+                      className="inline-flex items-center gap-1 rounded-md bg-[var(--surface-muted)] px-1.5 py-0.5 text-[0.62rem] font-medium text-[var(--ink-soft)] sm:text-[0.66rem]"
+                    >
+                      <span aria-hidden="true">{chip.icon}</span>
+                      <span>{chip.label}</span>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <div className="mt-auto flex min-w-0 items-end gap-1.5 pt-3 sm:gap-3">
               <div
@@ -115,27 +202,39 @@ export function BeachCard({
                 </strong>
               </div>
 
-              <div className="min-w-0 flex-1 space-y-1.5 pb-0.5 text-[0.68rem] font-bold leading-none text-[var(--ink-soft)] sm:text-xs">
+              <div className="min-w-0 flex-1 space-y-1 pb-0.5 text-[0.68rem] font-bold leading-none text-[var(--ink-soft)] sm:text-xs">
                 <div
                   aria-label={`Vento: ${direction}, ${windMetric}`}
                   className="flex min-w-0 items-center gap-1.5"
                 >
-                  <Wind aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={16} strokeWidth={2.2} />
-                  <span className="min-w-0 break-words whitespace-normal">{direction} · {windMetric}</span>
+                  <Wind aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={15} strokeWidth={2.2} />
+                  <span className="min-w-0 break-words whitespace-normal">
+                    {direction} · {windMetric}
+                    {conditions.gustSpeedKmh > 18 && (
+                      <span className="text-[0.6rem] font-normal text-[var(--muted)] sm:text-[0.65rem]"> (raf. {Math.round(conditions.gustSpeedKmh)})</span>
+                    )}
+                  </span>
                 </div>
                 <div
                   aria-label={`Onde: ${waveMetric}`}
                   className="flex min-w-0 items-center gap-1.5"
                 >
-                  <Waves aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={16} strokeWidth={2.2} />
-                  <span className="min-w-0 break-words whitespace-normal">{waveMetric}</span>
+                  <Waves aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={15} strokeWidth={2.2} />
+                  <span className="min-w-0 break-words whitespace-normal">
+                    {waveMetric} · {seaStateLabel}
+                  </span>
                 </div>
                 <div
                   aria-label={`Meteo: ${weatherLabel}, ${Math.round(conditions.temperatureCelsius)}°C`}
                   className="flex min-w-0 items-center gap-1.5"
                 >
-                  <CloudSun aria-hidden="true" className="shrink-0 text-[var(--sun-dark)]" size={16} strokeWidth={2.2} />
-                  <span className="min-w-0 break-words whitespace-normal">{weatherLabel} · {Math.round(conditions.temperatureCelsius)}°C</span>
+                  <CloudSun aria-hidden="true" className="shrink-0 text-[var(--sun-dark)]" size={15} strokeWidth={2.2} />
+                  <span className="min-w-0 break-words whitespace-normal">
+                    {weatherLabel} · {Math.round(conditions.temperatureCelsius)}°C
+                    {conditions.waterTemperatureCelsius && (
+                      <span className="text-[0.6rem] font-normal text-[var(--sea-deep)] sm:text-[0.65rem]"> · Acqua {Math.round(conditions.waterTemperatureCelsius)}°</span>
+                    )}
+                  </span>
                 </div>
               </div>
             </div>
