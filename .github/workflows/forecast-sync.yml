@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Trigger Forecast Sync Endpoint
         run: |
-          curl -f -X GET "https://marenostrum.app/api/cron/forecast" \
+          curl --fail --show-error --retry 5 --retry-delay 10 --retry-all-errors \
+            -X GET "https://marenostrum.app/api/cron/forecast" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             -H "Content-Type: application/json"
