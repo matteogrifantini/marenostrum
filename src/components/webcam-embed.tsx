@@ -30,21 +30,9 @@ export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
             Webcam in diretta · {webcam.title || beachName}
           </h2>
         </div>
-
-        {webcam.liveUrl && (
-          <a
-            href={webcam.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-xs font-bold text-[var(--sea-deep)] underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--ink)]"
-          >
-            <span>Apri sorgente</span>
-            <ExternalLink size={13} aria-hidden="true" />
-          </a>
-        )}
       </div>
 
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-inner">
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-slate-950 shadow-inner">
         {!hasError ? (
           <iframe
             src={webcam.embedUrl}
@@ -59,28 +47,31 @@ export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
           <div className="grid h-full place-items-center p-6 text-center text-white">
             <div className="space-y-2">
               <Tv aria-hidden="true" size={32} className="mx-auto text-white/50" />
-              <p className="text-sm font-semibold">Streaming video momentaneamente non disponibile nel player.</p>
-              {webcam.liveUrl && (
-                <a
-                  href={webcam.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-4 py-2 text-xs font-bold text-white backdrop-blur-md hover:bg-white/30"
-                >
-                  <span>Guarda la webcam direttamente</span>
-                  <ExternalLink size={13} aria-hidden="true" />
-                </a>
-              )}
+              <p className="text-sm font-semibold">Streaming video live disponibile sul canale ufficiale.</p>
             </div>
           </div>
         )}
       </div>
 
-      {webcam.provider && (
-        <p className="mt-2 text-right text-[0.65rem] font-medium text-[var(--muted)]">
-          Streaming fornito da {webcam.provider}
-        </p>
-      )}
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[var(--surface-muted)] p-3">
+        <div className="min-w-0">
+          <p className="text-xs font-bold text-[var(--ink)]">{webcam.title || beachName}</p>
+          <p className="text-[0.68rem] text-[var(--muted)]">
+            Streaming in tempo reale {webcam.provider ? `· ${webcam.provider}` : ""}
+          </p>
+        </div>
+        {webcam.liveUrl && (
+          <a
+            href={webcam.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="detail-press inline-flex min-h-10 items-center gap-1.5 rounded-full bg-[var(--ink)] px-4 text-xs font-extrabold text-white shadow-sm transition-transform hover:bg-[var(--sea-deep)] active:scale-95"
+          >
+            <span>Apri diretta live</span>
+            <ExternalLink size={14} aria-hidden="true" />
+          </a>
+        )}
+      </div>
     </section>
   );
 }

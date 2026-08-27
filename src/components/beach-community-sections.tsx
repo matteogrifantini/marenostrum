@@ -101,9 +101,9 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
         </div>
       </section>
 
-      <section aria-label="Webcam più vicina">
-        <SectionHeading title="Webcam più vicina" />
-        {webcam ? (
+      {webcam ? (
+        <section aria-label="Webcam più vicina">
+          <SectionHeading title="Webcam più vicina" />
           <article className="detail-surface detail-enter relative h-40 overflow-hidden text-white">
             {webcam.image ? (
               <Image src={webcam.image} alt={webcam.alt ?? `Anteprima della webcam di ${webcam.name}`} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
@@ -121,8 +121,8 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
               {webcam.pageUrl ? <a href={webcam.pageUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-10 w-fit items-center rounded-full bg-white/15 px-3 text-xs font-extrabold backdrop-blur-md">Apri webcam</a> : null}
             </div>
           </article>
-        ) : <p className="detail-surface detail-enter p-4 text-sm text-[var(--muted)]">Nessuna webcam disponibile.</p>}
-      </section>
+        </section>
+      ) : null}
 
       {selectedPhoto ? (
         <BeachPhotoViewer
