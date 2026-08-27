@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, SlidersHorizontal } from "lucide-react";
+import { LocateFixed, Search, SlidersHorizontal } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { BeachCard } from "./beach-card";
@@ -13,7 +13,6 @@ import {
   setStoredNearbySelection,
   type NearbySelection,
 } from "./nearby-control";
-import { NearbyCompass } from "./nearby-compass";
 import { PageShell } from "./page-shell";
 import { PeriodPicker } from "./period-picker";
 import { ForecastAttribution } from "./forecast-attribution";
@@ -25,7 +24,6 @@ import {
 } from "../domain/beach-filters";
 import type { DateOption } from "../domain/date-selection";
 import { distanceKm } from "../lib/geo";
-import { getNearbyCalmRecommendations } from "../domain/nearby-recommendations";
 import {
   filterRecommendationsByProvince,
   normalizeProvinceCode,
@@ -170,16 +168,6 @@ export function HomeExperience({
       })
       .sort((left, right) => (left.distanceKm ?? Infinity) - (right.distanceKm ?? Infinity));
   }, [filteredRecommendations, nearbySelection]);
-  const compassRecommendations = useMemo(
-    () => nearbySelection
-      ? getNearbyCalmRecommendations(
-        filteredRecommendations,
-        nearbySelection.coordinates,
-        nearbySelection.radiusKm,
-      )
-      : [],
-    [filteredRecommendations, nearbySelection],
-  );
 
   const updateQuery = (
     nextDate: string,
@@ -278,7 +266,7 @@ export function HomeExperience({
               </div>
             </div>
 
-            {/* Quick Filters */}
+            {/* Quick Filters & Inline Nearby Radius */}
             <div className="mt-2.5 flex flex-wrap items-center gap-1.5 border-t border-[var(--line)]/60 pt-2.5">
               <button
                 type="button"
@@ -307,6 +295,41 @@ export function HomeExperience({
                 <span>📹</span>
                 <span>Con Webcam Live</span>
               </button>
+
+              {nearbySelection ? (
+                <div className="flex flex-wrap items-center gap-1.5 sm:ml-auto">
+                  <span className="flex items-center gap-1 text-xs font-bold text-[var(--ink)]">
+                    <LocateFixed size={13} className="text-blue-500" aria-hidden="true" />
+                    <span>Distanza:</span>
+                  </span>
+                  {[15, 25, 50, 100].map((radius) => {
+                    const isSelected = nearbySelection.radiusKm === radius;
+                    return (
+                      <button
+                        key={radius}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() => handleNearbyChange({ ...nearbySelection, radiusKm: radius })}
+                        className={`inline-flex min-h-8 items-center rounded-full px-2.5 text-xs font-bold transition-[transform,background-color,color] duration-150 active:scale-95 ${
+                          isSelected
+                            ? "bg-[var(--ink)] text-white shadow-sm"
+                            : "bg-[var(--surface)] text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]"
+                        }`}
+                      >
+                        {radius} km
+                      </button>
+                    );
+                  })}
+                  <button
+                    type="button"
+                    onClick={() => handleNearbyChange(null)}
+                    className="inline-flex min-h-8 items-center rounded-full px-2 text-xs font-bold text-[var(--muted)] hover:text-red-600 active:scale-95"
+                    title="Disattiva posizione"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ) : null}
             </div>
           </section>
 
@@ -315,14 +338,6 @@ export function HomeExperience({
             aria-busy={isUpdatingForecast}
             className="scroll-mt-6 py-5 sm:py-7"
           >
-            {nearbySelection && !isUpdatingForecast ? (
-              <NearbyCompass
-                recommendations={compassRecommendations}
-                date={date}
-                period={period}
-                radiusKm={nearbySelection.radiusKm}
-              />
-            ) : null}
             {isUpdatingForecast ? (
               <BeachListLoading />
             ) : displayedRecommendations.length ? (

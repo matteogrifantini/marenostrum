@@ -9,50 +9,73 @@ describe("NearbyControl", () => {
     vi.restoreAllMocks();
   });
 
-  it("asks for location before showing distance choices", () => {
-    render(<NearbyControl value={null} onChange={vi.fn()} />);
-
-    fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
-
-    expect(screen.getByRole("button", { name: "Autorizza la posizione" })).toBeInTheDocument();
-    expect(screen.queryByRole("combobox", { name: "Distanza da me" })).not.toBeInTheDocument();
-  });
-
-  it("shows distance choices only after location authorization", () => {
+  it("requests browser geolocation immediately upon clicking 'Vicino a me'", () => {
     const onChange = vi.fn<(selection: NearbySelection | null) => void>();
+    const getCurrentPosition = vi.fn((success: PositionCallback) => {
+      success({
+        coords: {
+          latitude: userLocation.latitude,
+          longitude: userLocation.longitude,
+          accuracy: 10,
+          altitude: null,
+          altitudeAccuracy: null,
+          heading: null,
+          speed: null,
+          toJSON: () => ({}),
+        },
+        timestamp: Date.now(),
+        toJSON: () => ({}),
+      });
+    });
+
     Object.defineProperty(navigator, "geolocation", {
       configurable: true,
-      value: {
-        getCurrentPosition: vi.fn((success: PositionCallback) => {
-          success({
-            coords: {
-              latitude: userLocation.latitude,
-              longitude: userLocation.longitude,
-              accuracy: 10,
-              altitude: null,
-              altitudeAccuracy: null,
-              heading: null,
-              speed: null,
-              toJSON: () => ({}),
-            },
-            timestamp: Date.now(),
-            toJSON: () => ({}),
-          });
-        }),
-      },
+      value: { getCurrentPosition },
+    });
+
+    render(<NearbyControl value={null} onChange={onChange} />);
+
+    // Single click triggers location immediately
+    fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
+
+    expect(getCurrentPosition).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith({ coordinates: userLocation, radiusKm: 25 });
+  });
+
+  it("toggles off when clicked while already active", () => {
+    const onChange = vi.fn<(selection: NearbySelection | null) => void>();
+    render(
+      <NearbyControl
+        value={{ coordinates: userLocation, radiusKm: 25 }}
+        onChange={onChange}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
+    expect(onChange).toHaveBeenCalledWith(null);
+  });
+
+  it("displays alert if location permission is denied by user", () => {
+    const onChange = vi.fn<(selection: NearbySelection | null) => void>();
+    const getCurrentPosition = vi.fn((_success: PositionCallback, error?: PositionErrorCallback) => {
+      error?.({
+        code: 1,
+        message: "User denied Geolocation",
+        PERMISSION_DENIED: 1,
+        POSITION_UNAVAILABLE: 2,
+        TIMEOUT: 3,
+      } as GeolocationPositionError);
+    });
+
+    Object.defineProperty(navigator, "geolocation", {
+      configurable: true,
+      value: { getCurrentPosition },
     });
 
     render(<NearbyControl value={null} onChange={onChange} />);
     fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
-    fireEvent.click(screen.getByRole("button", { name: "Autorizza la posizione" }));
 
-    expect(screen.getByRole("combobox", { name: "Distanza da me" })).toBeInTheDocument();
-    expect(screen.getByRole("option", { name: "Entro 25 km" })).toBeInTheDocument();
-
-    fireEvent.change(screen.getByRole("combobox", { name: "Distanza da me" }), {
-      target: { value: "50" },
-    });
-
-    expect(onChange).toHaveBeenLastCalledWith({ coordinates: userLocation, radiusKm: 50 });
+    expect(screen.getByRole("alert")).toHaveTextContent("Posizione negata nel browser");
+    expect(onChange).not.toHaveBeenCalled();
   });
 });

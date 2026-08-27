@@ -135,8 +135,7 @@ describe("SicilyMapView", () => {
     fireEvent.change(beachSearch, { target: { value: demoRecommendations[1].beach.slug } });
     expect(beachSearch).toHaveValue(demoRecommendations[1].beach.slug);
 
-    fireEvent.click(screen.getByRole("button", { name: /Vicino a me/ }));
-    expect(screen.getByRole("dialog", { name: "Filtro vicino a me" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Vicino a me/ })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /^Filtri/ }));
     expect(screen.getByRole("dialog", { name: "Affina la scelta" })).toBeInTheDocument();

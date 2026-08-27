@@ -249,22 +249,19 @@ describe("HomeExperience", () => {
     try {
       renderHome({ recommendations: locatedRecommendations });
 
+      // Single click on "Vicino a me" immediately activates location
       fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
-      expect(screen.getByRole("button", { name: "Autorizza la posizione" })).toBeInTheDocument();
-      expect(screen.queryByRole("combobox", { name: "Distanza da me" })).not.toBeInTheDocument();
 
-      fireEvent.click(screen.getByRole("button", { name: "Autorizza la posizione" }));
-
-      expect(screen.getByRole("heading", { name: "Bussola per te" })).toBeInTheDocument();
-      expect(screen.getByText("Mare calmo entro 25 km")).toBeInTheDocument();
+      // Inline radius chips appear immediately
+      expect(screen.getByRole("button", { name: "25 km" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "50 km" })).toBeInTheDocument();
 
       expect(screen.getByRole("heading", { name: "Cala del Gelsomino" })).toBeInTheDocument();
       expect(screen.getByRole("heading", { name: "Spiaggia della Marchesa" })).toBeInTheDocument();
       expect(screen.queryByRole("heading", { name: "Tonnara di Vendicari" })).not.toBeInTheDocument();
 
-      fireEvent.change(screen.getByRole("combobox", { name: "Distanza da me" }), {
-        target: { value: "50" },
-      });
+      // Click 50 km chip directly
+      fireEvent.click(screen.getByRole("button", { name: "50 km" }));
 
       expect(screen.getByRole("heading", { name: "Tonnara di Vendicari" })).toBeInTheDocument();
     } finally {
@@ -387,16 +384,44 @@ describe("HomeExperience", () => {
     );
   });
 
-  it("keeps the nearby-location popover above the beach cards", () => {
-    renderHome();
+  it("activates single-click geolocation and renders radius chips", () => {
+    Object.defineProperty(navigator, "geolocation", {
+      configurable: true,
+      value: {
+        getCurrentPosition: (success: PositionCallback) => {
+          success({
+            coords: {
+              latitude: 36.8,
+              longitude: 15.1,
+              accuracy: 10,
+              altitude: null,
+              altitudeAccuracy: null,
+              heading: null,
+              speed: null,
+              toJSON: () => ({}),
+            },
+            timestamp: Date.now(),
+            toJSON: () => ({}),
+          });
+        },
+      },
+    });
 
-    fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
+    try {
+      renderHome();
 
-    const popover = screen.getByRole("dialog", { name: "Filtro vicino a me" });
-    const controlsSection = screen.getByRole("group", { name: "Scegli il giorno" }).closest("section");
+      fireEvent.click(screen.getByRole("button", { name: "Vicino a me" }));
 
-    expect(popover).toHaveClass("z-30");
-    expect(controlsSection).toHaveClass("relative", "z-20");
+      expect(screen.getByRole("button", { name: "15 km" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "25 km" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "50 km" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "100 km" })).toBeInTheDocument();
+    } finally {
+      Object.defineProperty(navigator, "geolocation", {
+        configurable: true,
+        value: undefined,
+      });
+    }
   });
 
   it("uses a compact two-column beach grid without a featured card", () => {
