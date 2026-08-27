@@ -157,6 +157,38 @@ export function SicilyMapView({
               </button>
             </div>
           ) : null}
+
+          {nearbySelection ? (
+            <div className="flex flex-wrap items-center gap-1.5 text-xs sm:ml-auto">
+              <span className="font-bold text-[var(--ink)]">Distanza:</span>
+              {[15, 25, 50, 100].map((radius) => {
+                const isSelected = nearbySelection.radiusKm === radius;
+                return (
+                  <button
+                    key={radius}
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() => setNearbySelection({ ...nearbySelection, radiusKm: radius })}
+                    className={`inline-flex min-h-8 items-center rounded-full px-2.5 font-bold transition-colors ${
+                      isSelected
+                        ? "bg-[var(--ink)] text-white shadow-sm"
+                        : "bg-[var(--surface-muted)] text-[var(--ink-soft)] hover:bg-[var(--surface)] hover:text-[var(--ink)]"
+                    }`}
+                  >
+                    {radius} km
+                  </button>
+                );
+              })}
+              <button
+                type="button"
+                onClick={() => setNearbySelection(null)}
+                className="inline-flex min-h-8 items-center rounded-full px-2 font-bold text-[var(--muted)] hover:text-red-600 active:scale-95"
+                title="Disattiva filtro vicino a me"
+              >
+                ✕
+              </button>
+            </div>
+          ) : null}
         </div>
 
       </section>

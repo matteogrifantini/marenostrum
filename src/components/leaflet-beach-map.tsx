@@ -88,9 +88,31 @@ function createPoiPopup(place: MapPoi) {
 }
 
 function createBeachPopup(recommendation: MappableRecommendation) {
-  const { beach, score } = recommendation;
+  const { beach, score, conditions } = recommendation;
   const scoreValue = formatScoreOutOf100(score);
-  return `<div class="map-popup map-popup--beach"><div class="map-popup__eyebrow">Rating Mare Nostrum</div><strong>${escapeHtml(beach.name)}</strong><span class="map-popup__score">${scoreValue}</span><a href="/spiagge/${encodeURIComponent(beach.slug)}?date=${encodeURIComponent(recommendation.conditions.date ?? "")}&period=${encodeURIComponent(recommendation.conditions.period ?? "all-day")}&source=map">Apri la spiaggia</a></div>`;
+  const location = `${beach.municipality}${beach.provinceCode ? ` (${beach.provinceCode})` : ""}`;
+  const webcamBadge = beach.webcam
+    ? '<span style="background:#dc2626;color:white;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:800;margin-left:4px;">🔴 LIVE</span>'
+    : "";
+  const dateParam = encodeURIComponent(conditions.date ?? "");
+  const periodParam = encodeURIComponent(conditions.period ?? "all-day");
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${beach.latitude},${beach.longitude}`;
+
+  return `<div class="map-popup map-popup--beach" style="min-width:200px;">
+    <div class="map-popup__eyebrow" style="display:flex;align-items:center;justify-content:space-between;gap:4px;font-size:11px;color:#64748b;">
+      <span>${escapeHtml(location)}</span>
+      ${webcamBadge}
+    </div>
+    <strong style="font-size:15px;display:block;margin:3px 0 6px;color:#0f172a;">${escapeHtml(beach.name)}</strong>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <span class="map-popup__score" style="font-weight:800;font-size:17px;color:#082f3d;">${scoreValue}/100</span>
+      <span style="font-size:11px;font-weight:600;color:#475569;text-transform:capitalize;">${escapeHtml(conditions.weather || "")}</span>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:6px;">
+      <a href="/spiagge/${encodeURIComponent(beach.slug)}?date=${dateParam}&period=${periodParam}&source=map" style="flex:1;text-align:center;background:#082f3d;color:white;padding:7px 10px;border-radius:10px;font-weight:700;font-size:12px;text-decoration:none;display:inline-block;">Vedi spiaggia</a>
+      <a href="${directionsUrl}" target="_blank" rel="noopener noreferrer" style="background:#f1f5f9;color:#082f3d;padding:7px 10px;border-radius:10px;font-weight:700;font-size:12px;text-decoration:none;display:inline-flex;align-items:center;" title="Indicazioni stradali Google Maps">🗺️</a>
+    </div>
+  </div>`;
 }
 
 function isPoiResponse(value: unknown): value is PoiResponse {

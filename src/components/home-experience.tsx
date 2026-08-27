@@ -1,6 +1,6 @@
 "use client";
 
-import { LocateFixed, Search, SlidersHorizontal } from "lucide-react";
+import { LocateFixed, Search, SlidersHorizontal, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { BeachCard } from "./beach-card";
@@ -123,9 +123,16 @@ export function HomeExperience({
         const { beach, conditions } = rec;
         const searchMatches =
           !normalizedSearchQuery ||
-          [beach.name, beach.municipality, beach.coast].some((value) =>
-            value.toLowerCase().includes(normalizedSearchQuery),
-          );
+          [
+            beach.name,
+            beach.municipality,
+            beach.coast,
+            beach.provinceCode ?? "",
+            beach.description ?? "",
+            ...(beach.tags ?? []),
+            ...(beach.shelter ?? []),
+            ...(beach.services ?? []),
+          ].some((value) => value.toLowerCase().includes(normalizedSearchQuery));
 
         const shelterMatches = !onlySheltered || (() => {
           const directions = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"];
@@ -226,8 +233,18 @@ export function HomeExperience({
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder="Cerca una spiaggia"
                 aria-label="Cerca una spiaggia"
-                className="min-h-14 w-full rounded-[1.25rem] border border-[var(--line)] bg-[var(--surface)] pl-12 pr-5 text-base font-semibold text-[var(--ink)] shadow-[0_12px_34px_rgba(20,44,57,0.07)] outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-[var(--muted)] focus:border-[var(--sun)] focus:shadow-[0_14px_38px_rgba(20,44,57,0.11)] focus:ring-2 focus:ring-[rgba(255,194,71,0.26)]"
+                className="min-h-14 w-full rounded-[1.25rem] border border-[var(--line)] bg-[var(--surface)] pl-12 pr-12 text-base font-semibold text-[var(--ink)] shadow-[0_12px_34px_rgba(20,44,57,0.07)] outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-[var(--muted)] focus:border-[var(--sun)] focus:shadow-[0_14px_38px_rgba(20,44,57,0.11)] focus:ring-2 focus:ring-[rgba(255,194,71,0.26)]"
               />
+              {searchQuery ? (
+                <button
+                  type="button"
+                  aria-label="Cancella ricerca"
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3.5 top-1/2 grid size-7 -translate-y-1/2 place-items-center rounded-full bg-[var(--surface-muted)] text-[var(--muted)] hover:bg-[var(--line)] hover:text-[var(--ink)] active:scale-90"
+                >
+                  <X size={15} />
+                </button>
+              ) : null}
             </div>
           </section>
 
