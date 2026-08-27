@@ -123,7 +123,7 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
           </button>
         ) : null}
 
-        <div className="absolute inset-x-5 bottom-5 z-10">
+        <div className="pointer-events-none absolute inset-x-5 bottom-5 z-10">
           <div className="inline-flex flex-wrap items-center gap-1.5 rounded-full bg-black/45 px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-white/95 backdrop-blur-md shadow-sm">
             <MapPin aria-hidden="true" size={14} className="text-[var(--sun)]" />
             <span>{beach.municipality}</span>
@@ -138,7 +138,7 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
               aria-expanded={infoOpen}
               aria-controls="beach-info-accordion"
               onClick={onInfoToggle}
-              className="detail-press mt-5 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/35 bg-white/15 px-4 text-sm font-bold text-white shadow-[0_8px_22px_rgba(6,28,35,0.18)] backdrop-blur-md transition-[background-color,border-color,transform] duration-200 ease-out hover:border-white/55 hover:bg-white/25 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="detail-press pointer-events-auto mt-5 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/35 bg-white/15 px-4 text-sm font-bold text-white shadow-[0_8px_22px_rgba(6,28,35,0.18)] backdrop-blur-md transition-[background-color,border-color,transform] duration-200 ease-out hover:border-white/55 hover:bg-white/25 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <Info aria-hidden="true" size={16} />
               <span>Scopri la spiaggia</span>

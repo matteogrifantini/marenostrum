@@ -58,4 +58,33 @@ test.describe("Home Page & Core Interactions", () => {
       await expect(dialog).not.toBeVisible();
     }
   });
+
+  test("renders direct Google Maps navigation button on beach cards", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+
+    const mapsBtn = page.locator("a[title*='Google Maps'], a[aria-label*='Google Maps']").first();
+    await expect(mapsBtn).toBeVisible();
+    const href = await mapsBtn.getAttribute("href");
+    expect(href).toContain("google.com/maps/dir");
+    expect(href).toContain("destination=");
+  });
+
+  test("allows filtering by quick filters (Riparate dal vento & Webcam Live)", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+
+    // Click "Con Webcam Live"
+    const webcamFilter = page.getByRole("button", { name: /Con Webcam Live/i });
+    await expect(webcamFilter).toBeVisible();
+    await webcamFilter.click();
+    await expect(webcamFilter).toHaveAttribute("aria-pressed", "true");
+
+    // At least one beach with LIVE tag or webcam should be listed (e.g. Mondello)
+    await expect(page.getByText(/Mondello|Cefalù|San Vito/i).first()).toBeVisible();
+
+    // Toggle off
+    await webcamFilter.click();
+    await expect(webcamFilter).toHaveAttribute("aria-pressed", "false");
+  });
 });
