@@ -101,29 +101,6 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
         </div>
       </section>
 
-      {webcam ? (
-        <section aria-label="Webcam più vicina">
-          <SectionHeading title="Webcam più vicina" />
-          <article className="detail-surface detail-enter relative h-40 overflow-hidden text-white">
-            {webcam.image ? (
-              <Image src={webcam.image} alt={webcam.alt ?? `Anteprima della webcam di ${webcam.name}`} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
-            ) : (
-              <div role="img" aria-label={`Anteprima non disponibile per ${webcam.name}`} className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.16),transparent_25%),linear-gradient(135deg,var(--sea-deep),var(--ink))]" />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-r from-[rgba(5,55,61,0.92)] via-[rgba(5,55,61,0.62)] to-[rgba(5,55,61,0.18)]" />
-            <div className="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5">
-              <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1.5 text-[0.65rem] font-black backdrop-blur-md"><span aria-hidden="true" className={`size-2 rounded-full ${webcam.live ? "bg-[#ff7466]" : "bg-white/55"}`} /> {webcam.live ? "WEBCAM LIVE" : "WEBCAM"}</span>
-              <div className="flex items-center justify-between gap-3">
-                <strong className="text-xl">{webcam.name}</strong>
-                {webcam.distanceKm === undefined ? null : <span className="shrink-0 text-xs font-bold text-white/80">{webcam.distanceKm.toFixed(1)} km</span>}
-              </div>
-              <p className="mt-1 text-xs text-white/75">{webcam.updated}</p>
-              {webcam.pageUrl ? <a href={webcam.pageUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-10 w-fit items-center rounded-full bg-white/15 px-3 text-xs font-extrabold backdrop-blur-md">Apri webcam</a> : null}
-            </div>
-          </article>
-        </section>
-      ) : null}
-
       {selectedPhoto ? (
         <BeachPhotoViewer
           beachName={beachName}

@@ -8,9 +8,10 @@ export const BEACH_WEBCAMS: Record<string, BeachWebcam> = {
   // Spiaggia di Mondello (Palermo)
   "mondello": {
     title: "Spiaggia e Golfo di Mondello",
-    embedUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/palermo/mondello.html",
-    liveUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/palermo/mondello.html",
-    provider: "SkylineWebcams / Mondello Italo Belga",
+    embedUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/palermo/spiaggia-mondello.html",
+    liveUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/palermo/spiaggia-mondello.html",
+    posterUrl: "https://cdn.skylinewebcams.com/_571.webp",
+    provider: "SkylineWebcams / Albaria Mondello",
   },
 
   // Spiaggia del Lungomare di Cefalù (Palermo)
@@ -18,6 +19,7 @@ export const BEACH_WEBCAMS: Record<string, BeachWebcam> = {
     title: "Lungomare e Spiaggia di Cefalù",
     embedUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/palermo/cefalu.html",
     liveUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/palermo/cefalu.html",
+    posterUrl: "https://cdn.skylinewebcams.com/_275.webp",
     provider: "SkylineWebcams / Comune di Cefalù",
   },
 
@@ -26,6 +28,7 @@ export const BEACH_WEBCAMS: Record<string, BeachWebcam> = {
     title: "Spiaggia e Baia di San Vito Lo Capo",
     embedUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/trapani/san-vito-lo-capo.html",
     liveUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/trapani/san-vito-lo-capo.html",
+    posterUrl: "https://cdn.skylinewebcams.com/_175.webp",
     provider: "SkylineWebcams / Pro Loco San Vito",
   },
 
@@ -34,6 +37,7 @@ export const BEACH_WEBCAMS: Record<string, BeachWebcam> = {
     title: "Spiaggia Plaja di Castellammare del Golfo",
     embedUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/trapani/castellammare-del-golfo.html",
     liveUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/trapani/castellammare-del-golfo.html",
+    posterUrl: "https://cdn.skylinewebcams.com/_1449.webp",
     provider: "SkylineWebcams",
   },
 
@@ -42,14 +46,16 @@ export const BEACH_WEBCAMS: Record<string, BeachWebcam> = {
     title: "Golfo e Cala Petrolo (Castellammare)",
     embedUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/trapani/castellammare-del-golfo.html",
     liveUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/trapani/castellammare-del-golfo.html",
+    posterUrl: "https://cdn.skylinewebcams.com/_1449.webp",
     provider: "SkylineWebcams",
   },
 
   // Favignana (Egadi / Trapani)
   "cala-rossa-favignana": {
-    title: "Favignana e Costa",
+    title: "Favignana e Baia",
     embedUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/trapani/favignana.html",
     liveUrl: "https://www.skylinewebcams.com/it/webcam/italia/sicilia/trapani/favignana.html",
+    posterUrl: "https://cdn.skylinewebcams.com/_1255.webp",
     provider: "SkylineWebcams",
   },
 };

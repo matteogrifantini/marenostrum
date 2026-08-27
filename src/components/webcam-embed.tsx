@@ -1,7 +1,6 @@
 "use client";
 
-import { ExternalLink, Tv } from "lucide-react";
-import { useState } from "react";
+import { ExternalLink, Play } from "lucide-react";
 import type { BeachWebcam } from "../domain/beach";
 
 type WebcamEmbedProps = {
@@ -10,8 +9,6 @@ type WebcamEmbedProps = {
 };
 
 export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
-  const [hasError, setHasError] = useState(false);
-
   return (
     <section
       aria-labelledby="webcam-heading"
@@ -32,25 +29,36 @@ export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
         </div>
       </div>
 
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-slate-950 shadow-inner">
-        {!hasError ? (
-          <iframe
-            src={webcam.embedUrl}
-            title={`Webcam in diretta da ${beachName}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            onError={() => setHasError(true)}
-            className="h-full w-full border-0"
-            loading="lazy"
+      <div className="group relative aspect-video w-full overflow-hidden rounded-xl bg-slate-950 shadow-inner">
+        {webcam.posterUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={webcam.posterUrl}
+            alt={`Anteprima webcam in diretta per ${webcam.title || beachName}`}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="grid h-full place-items-center p-6 text-center text-white">
-            <div className="space-y-2">
-              <Tv aria-hidden="true" size={32} className="mx-auto text-white/50" />
-              <p className="text-sm font-semibold">Streaming video live disponibile sul canale ufficiale.</p>
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-cyan-950" />
         )}
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/30" />
+
+        {/* Center Live Play Overlay */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center text-white">
+          {webcam.liveUrl && (
+            <a
+              href={webcam.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="detail-press flex items-center gap-3 rounded-full border border-white/40 bg-black/50 px-5 py-3 text-sm font-bold text-white shadow-[0_8px_24px_rgba(0,0,0,0.4)] backdrop-blur-md transition-[background-color,transform] duration-200 hover:bg-black/70 hover:scale-105 active:scale-95"
+            >
+              <span className="grid size-9 place-items-center rounded-full bg-red-600 text-white shadow-sm">
+                <Play aria-hidden="true" size={16} fill="currentColor" className="ml-0.5" />
+              </span>
+              <span>Guarda lo streaming in diretta</span>
+            </a>
+          )}
+        </div>
       </div>
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[var(--surface-muted)] p-3">

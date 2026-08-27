@@ -11,6 +11,7 @@ export type BeachWebcam = {
   embedUrl: string;
   liveUrl?: string;
   provider?: string;
+  posterUrl?: string;
 };
 
 export type Beach = {

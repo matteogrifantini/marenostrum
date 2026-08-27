@@ -20,18 +20,12 @@ describe("BeachCommunitySections", () => {
     expect(within(reviews).queryByRole("button", { name: "Non mi piace" })).not.toBeInTheDocument();
   });
 
-  it("keeps recent photos separate from the nearest webcam", () => {
+  it("renders recent photos from community members", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(<BeachCommunitySections detail={detail} />);
 
     const photos = screen.getByRole("region", { name: "Foto aggiunte di recente" });
     expect(within(photos).getAllByRole("img")).toHaveLength(detail.recentPhotos.length);
-
-    const webcam = screen.getByRole("region", { name: "Webcam più vicina" });
-    const webcamName = within(webcam).getByText(detail.webcam.name);
-    const webcamDistance = within(webcam).getByText(`${detail.webcam.distanceKm!.toFixed(1)} km`);
-    expect(webcamDistance.parentElement).toBe(webcamName.parentElement);
-    expect(within(webcam).getByText(detail.webcam.updated)).toBeInTheDocument();
   });
 
   it("opens a recent beach photo in the viewer", () => {
