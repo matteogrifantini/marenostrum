@@ -1,6 +1,7 @@
 "use client";
 
 import { Heart } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { BeachCard } from "./beach-card";
@@ -73,6 +74,14 @@ export function FavoritesExperience({
           <div className="mx-auto mt-8 max-w-3xl rounded-[1.5rem] bg-[var(--surface)] p-8 text-center shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
             <h2 className="font-serif text-2xl font-semibold">Ancora nessun preferito</h2>
             <p className="mt-2 text-sm leading-6 text-[var(--muted)]">Tocca il cuore su una card o in una scheda spiaggia per ritrovarla qui.</p>
+            <div className="mt-5">
+              <Link
+                href="/#classifica"
+                className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--ink)] px-5 text-sm font-bold text-white shadow-md transition-[transform,background-color] active:scale-95 hover:bg-[var(--sea-deep)]"
+              >
+                Esplora le spiagge della Sicilia
+              </Link>
+            </div>
           </div>
         )}
       </div>

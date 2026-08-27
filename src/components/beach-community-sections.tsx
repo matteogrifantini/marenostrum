@@ -16,8 +16,31 @@ type BeachCommunitySectionsProps = {
 
 export function BeachCommunitySections({ detail, beachSlug, beachName = "questa spiaggia" }: BeachCommunitySectionsProps) {
   const { reviewProfile, webcam } = detail;
-  const [reviews, setReviews] = useState(detail.reviews);
   const [selectedPhoto, setSelectedPhoto] = useState<BeachDetailContent["recentPhotos"][number] | null>(null);
+
+  const openPhoto = (photo: BeachDetailContent["recentPhotos"][number]) => {
+    setSelectedPhoto(photo);
+    if (typeof window !== "undefined") {
+      window.history.pushState({ modal: "community-photo" }, "", window.location.href);
+    }
+  };
+
+  const closePhoto = (fromHistory = false) => {
+    setSelectedPhoto(null);
+    if (!fromHistory && typeof window !== "undefined" && window.history.state?.modal === "community-photo") {
+      window.history.back();
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      if (selectedPhoto) {
+        setSelectedPhoto(null);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [selectedPhoto]);
 
   const handleReviewSaved = (review: SavedReview) => {
     setReviews((current) => mergeSavedReview(current, review));
@@ -87,7 +110,7 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
               <button
                 type="button"
                 aria-label={`Apri foto di ${photo.alt}`}
-                onClick={() => setSelectedPhoto(photo)}
+                onClick={() => openPhoto(photo)}
                 className="detail-press absolute inset-0 z-0 h-full w-full cursor-zoom-in border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-white"
               >
                 <span className="absolute inset-0">
@@ -106,7 +129,7 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
           beachName={beachName}
           imageSrc={versionedMediaUrl(selectedPhoto.src)}
           imageAlt={selectedPhoto.alt}
-          onClose={() => setSelectedPhoto(null)}
+          onClose={() => closePhoto()}
         />
       ) : null}
     </>
