@@ -16,6 +16,7 @@ import { HourlyForecast } from "./hourly-forecast";
 import { PageShell } from "./page-shell";
 import { BeachLiveSections } from "./beach-live-sections";
 import { BeachCommunitySections } from "./beach-community-sections";
+import { WebcamEmbed } from "./webcam-embed";
 import { ForecastAttribution } from "./forecast-attribution";
 import {
   formatAggregateMetric,
@@ -240,6 +241,11 @@ export function BeachDetailExperience({
               onToggle={() => setBeachInfoOpen((current) => !current)}
               panelRef={beachInfoRef}
             />
+            {beach.webcam && (
+              <div className="mt-4">
+                <WebcamEmbed webcam={beach.webcam} beachName={beach.name} />
+              </div>
+            )}
             <BeachLiveSections beach={beach} detail={detail} />
             <BeachCommunitySections beachSlug={beach.slug} beachName={beach.name} detail={detail} />
             <ForecastAttribution

@@ -9,6 +9,7 @@ import type {
 import type { ForecastPoint } from "../domain/forecast";
 import { aggregateForecast } from "../domain/forecast-aggregation";
 import { scoreBeach } from "../domain/score";
+import { BEACH_WEBCAMS } from "./beach-webcams";
 
 export type BeachRow = {
   id: string;
@@ -145,6 +146,7 @@ export function mapBeachRow(row: BeachRow): Beach {
     services: row.services,
     warnings: row.warnings,
     facts: row.facts,
+    webcam: BEACH_WEBCAMS[row.slug],
   };
 }
 

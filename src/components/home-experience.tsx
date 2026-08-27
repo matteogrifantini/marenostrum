@@ -7,7 +7,12 @@ import { BeachCard } from "./beach-card";
 import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { MobileNav } from "./mobile-nav";
-import { NearbyControl, type NearbySelection } from "./nearby-control";
+import {
+  NearbyControl,
+  getStoredNearbySelection,
+  setStoredNearbySelection,
+  type NearbySelection,
+} from "./nearby-control";
 import { NearbyCompass } from "./nearby-compass";
 import { PageShell } from "./page-shell";
 import { PeriodPicker } from "./period-picker";
@@ -57,6 +62,17 @@ function formatObservedAt(observedAt: string) {
   return `aggiornate ${time}`;
 }
 
+const WIND_MAP: Record<string, string> = {
+  N: "tramontana",
+  NE: "grecale",
+  E: "levante",
+  SE: "scirocco",
+  S: "ostro",
+  SO: "libeccio",
+  O: "ponente",
+  NO: "maestrale",
+};
+
 export function HomeExperience({
   initialDate,
   initialPeriod,
@@ -74,10 +90,17 @@ export function HomeExperience({
   const [period, setPeriod] = useState<BeachPeriod>(initialPeriod);
   const [province, setProvince] = useState<ProvinceSelection>(initialProvince);
   const [searchQuery, setSearchQuery] = useState("");
+  const [onlySheltered, setOnlySheltered] = useState(false);
+  const [onlyWebcam, setOnlyWebcam] = useState(false);
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
-  const [nearbySelection, setNearbySelection] = useState<NearbySelection | null>(null);
+  const [nearbySelection, setNearbySelection] = useState<NearbySelection | null>(() => getStoredNearbySelection());
   const localInteractionRef = useRef(false);
+
+  const handleNearbyChange = (next: NearbySelection | null) => {
+    setNearbySelection(next);
+    setStoredNearbySelection(next);
+  };
 
   useEffect(() => {
     startTransition(() => {
@@ -98,17 +121,28 @@ export function HomeExperience({
     () => {
       const normalizedSearchQuery = searchQuery.trim().toLowerCase();
 
-      return filterRecommendationsByProvince(recommendations, province).filter(({ beach }) => {
+      return filterRecommendationsByProvince(recommendations, province).filter((rec) => {
+        const { beach, conditions } = rec;
         const searchMatches =
           !normalizedSearchQuery ||
           [beach.name, beach.municipality, beach.coast].some((value) =>
             value.toLowerCase().includes(normalizedSearchQuery),
           );
 
-        return matchesBeachFilters(beach, filters) && searchMatches;
+        const shelterMatches = !onlySheltered || (() => {
+          const directions = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"];
+          const normalized = ((conditions.windDirectionDegrees % 360) + 360) % 360;
+          const direction = directions[Math.round(normalized / 45) % directions.length];
+          const currentWindName = WIND_MAP[direction] ?? "";
+          return Boolean(beach.shelter && beach.shelter.includes(currentWindName));
+        })();
+
+        const webcamMatches = !onlyWebcam || Boolean(beach.webcam);
+
+        return matchesBeachFilters(beach, filters) && searchMatches && shelterMatches && webcamMatches;
       });
     },
-    [filters, province, recommendations, searchQuery],
+    [filters, onlySheltered, onlyWebcam, province, recommendations, searchQuery],
   );
   const activeFilterCount = filters.access.length + filters.tags.length + filters.services.length;
   const forecastUnavailable = dataUnavailable || recommendations.length === 0;
@@ -211,34 +245,67 @@ export function HomeExperience({
 
           <section
             aria-busy={isUpdatingForecast}
-            className="relative z-20 mx-auto mt-3 w-full max-w-4xl overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:flex lg:items-center lg:gap-3 lg:p-3"
+            className="relative z-20 mx-auto mt-3 w-full max-w-4xl overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4"
           >
-            <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
+            <div className="lg:flex lg:items-center lg:gap-3">
+              <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 
-            <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">
-              <PeriodPicker value={period} onChange={handlePeriodChange} />
-              <label className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
-                <span className="sr-only">Provincia</span>
-                <select
-                  aria-label="Provincia"
-                  value={province}
-                  onChange={(event) => handleProvinceChange(event.target.value)}
-                  className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
+              <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">
+                <PeriodPicker value={period} onChange={handlePeriodChange} />
+                <label className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
+                  <span className="sr-only">Provincia</span>
+                  <select
+                    aria-label="Provincia"
+                    value={province}
+                    onChange={(event) => handleProvinceChange(event.target.value)}
+                    className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
+                  >
+                    <option value="all">Tutta la Sicilia</option>
+                    {SICILIAN_PROVINCES.map(({ code, label }) => (
+                      <option key={code} value={code}>{label}</option>
+                    ))}
+                  </select>
+                </label>
+                <NearbyControl value={nearbySelection} onChange={handleNearbyChange} />
+                <button
+                  type="button"
+                  onClick={() => setFilterSheetOpen(true)}
+                  className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-[var(--surface)] px-4 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
                 >
-                  <option value="all">Tutta la Sicilia</option>
-                  {SICILIAN_PROVINCES.map(({ code, label }) => (
-                    <option key={code} value={code}>{label}</option>
-                  ))}
-                </select>
-              </label>
-              <NearbyControl value={nearbySelection} onChange={setNearbySelection} />
+                  <SlidersHorizontal aria-hidden="true" size={16} />
+                  Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Filters */}
+            <div className="mt-2.5 flex flex-wrap items-center gap-1.5 border-t border-[var(--line)]/60 pt-2.5">
               <button
                 type="button"
-                onClick={() => setFilterSheetOpen(true)}
-                className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-[var(--surface)] px-4 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+                aria-pressed={onlySheltered}
+                onClick={() => setOnlySheltered((prev) => !prev)}
+                className={`inline-flex min-h-8 items-center gap-1 rounded-full px-3 text-xs font-bold transition-[transform,background-color,color] duration-150 active:scale-95 ${
+                  onlySheltered
+                    ? "bg-emerald-700 text-white shadow-sm"
+                    : "bg-[var(--surface)] text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]"
+                }`}
               >
-                <SlidersHorizontal aria-hidden="true" size={16} />
-                Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
+                <span>🛡️</span>
+                <span>Riparate oggi dal vento</span>
+              </button>
+
+              <button
+                type="button"
+                aria-pressed={onlyWebcam}
+                onClick={() => setOnlyWebcam((prev) => !prev)}
+                className={`inline-flex min-h-8 items-center gap-1 rounded-full px-3 text-xs font-bold transition-[transform,background-color,color] duration-150 active:scale-95 ${
+                  onlyWebcam
+                    ? "bg-red-600 text-white shadow-sm"
+                    : "bg-[var(--surface)] text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]"
+                }`}
+              >
+                <span>📹</span>
+                <span>Con Webcam Live</span>
               </button>
             </div>
           </section>

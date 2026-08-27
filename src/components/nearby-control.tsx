@@ -7,6 +7,44 @@ import { formatDistanceKm, useUserPreferences } from "../lib/user-preferences";
 
 const DISTANCE_OPTIONS = [5, 10, 25, 50, 100] as const;
 const DEFAULT_RADIUS_KM = 25;
+const NEARBY_STORAGE_KEY = "marenostrum:nearby:v1";
+
+export function getStoredNearbySelection(): NearbySelection | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = sessionStorage.getItem(NEARBY_STORAGE_KEY) || localStorage.getItem(NEARBY_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (
+      parsed &&
+      typeof parsed.radiusKm === "number" &&
+      parsed.coordinates &&
+      typeof parsed.coordinates.latitude === "number" &&
+      typeof parsed.coordinates.longitude === "number"
+    ) {
+      return parsed;
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+export function setStoredNearbySelection(selection: NearbySelection | null) {
+  if (typeof window === "undefined") return;
+  try {
+    if (selection) {
+      const serialized = JSON.stringify(selection);
+      sessionStorage.setItem(NEARBY_STORAGE_KEY, serialized);
+      localStorage.setItem(NEARBY_STORAGE_KEY, serialized);
+    } else {
+      sessionStorage.removeItem(NEARBY_STORAGE_KEY);
+      localStorage.removeItem(NEARBY_STORAGE_KEY);
+    }
+  } catch {
+    // ignore
+  }
+}
 
 type LocationState = "idle" | "requesting" | "granted" | "denied" | "unsupported";
 

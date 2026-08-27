@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link, { useLinkStatus } from "next/link";
-import { CloudSun, Waves, Wind } from "lucide-react";
+import { CloudSun, Navigation, Waves, Wind } from "lucide-react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { formatScoreOutOf100 } from "../domain/score";
 import { formatWeatherLabel } from "../lib/forecast-presentation";
@@ -120,6 +120,11 @@ export function BeachCard({
     ? conditions.seaState.charAt(0).toUpperCase() + conditions.seaState.slice(1)
     : "Calmo";
 
+  const googleMapsUrl =
+    beach.latitude != null && beach.longitude != null
+      ? `https://www.google.com/maps/dir/?api=1&destination=${beach.latitude},${beach.longitude}`
+      : undefined;
+
   return (
     <article className="home-beach-card relative h-full min-w-0 overflow-hidden rounded-[1.25rem] bg-[var(--surface)] shadow-[0_10px_32px_rgba(20,44,57,0.09)]">
       <Link
@@ -169,15 +174,22 @@ export function BeachCard({
               <h3 className="line-clamp-1 font-serif text-[0.95rem] font-semibold leading-tight tracking-[-0.03em] text-[var(--ink)] sm:line-clamp-2 sm:min-h-[2.35rem] sm:text-lg">
                 {beach.name}
               </h3>
-              <p className="mt-0.5 break-words text-[0.68rem] font-semibold leading-tight text-[var(--muted)] sm:text-xs">
-                {distanceKm == null
+              <div className="mt-0.5 flex flex-wrap items-center gap-1 break-words text-[0.68rem] font-bold leading-tight text-[var(--muted)] sm:text-xs">
+                <span>{distanceKm == null
                   ? beach.municipality
-                  : `${beach.municipality} · ${formatDistanceKm(distanceKm, preferences.distanceUnit)}`}
-              </p>
+                  : `${beach.municipality} · ${formatDistanceKm(distanceKm, preferences.distanceUnit)}`}</span>
+                {beach.coast && <span className="text-[var(--muted)]/80">({beach.coast})</span>}
+              </div>
 
               {/* Feature Chips */}
-              {featureChips.length > 0 && (
+              {(featureChips.length > 0 || beach.webcam) && (
                 <div className="mt-1 flex flex-wrap items-center gap-1 sm:mt-2">
+                  {beach.webcam && (
+                    <span className="inline-flex items-center gap-1 rounded bg-red-600 px-1.5 py-0.5 text-[0.55rem] font-black uppercase text-white shadow-xs">
+                      <span className="size-1.5 animate-pulse rounded-full bg-white" />
+                      LIVE
+                    </span>
+                  )}
                   {featureChips.map((chip) => (
                     <span
                       key={chip.label}
@@ -236,11 +248,26 @@ export function BeachCard({
           <BeachCardLinkStatus />
         </BeachCardLinkContent>
       </Link>
-      <FavoriteToggle
-        beachSlug={beach.slug}
-        beachName={beach.name}
-        className="absolute right-3 top-3 z-10 sm:right-4 sm:top-4"
-      />
+
+      <div className="absolute right-2.5 top-2.5 z-10 flex items-center gap-1.5 sm:right-3 sm:top-3">
+        {googleMapsUrl && (
+          <a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(event) => event.stopPropagation()}
+            aria-label={`Apri indicazioni Google Maps per ${beach.name}`}
+            title="Apri in Google Maps"
+            className="detail-press grid size-9 place-items-center rounded-full bg-white/88 text-[var(--ink)] shadow-[0_4px_14px_rgba(8,47,61,0.14)] backdrop-blur-md transition-transform duration-200 hover:scale-105 active:scale-95"
+          >
+            <Navigation aria-hidden="true" size={15} className="text-blue-600" />
+          </a>
+        )}
+        <FavoriteToggle
+          beachSlug={beach.slug}
+          beachName={beach.name}
+        />
+      </div>
     </article>
   );
 }

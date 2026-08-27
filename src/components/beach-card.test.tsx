@@ -192,5 +192,11 @@ describe("BeachCard", () => {
 
     expect(screen.getByText("Sud-est")).toBeInTheDocument();
     expect(screen.getByText("Acque basse")).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /apri indicazioni google maps per cala del gelsomino/i }),
+    ).toHaveAttribute(
+      "href",
+      expect.stringContaining("google.com/maps/dir"),
+    );
   });
 });

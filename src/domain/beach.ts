@@ -6,6 +6,13 @@ export type UserIntent = "relax" | "family" | "explore" | "water-sport";
 
 export type SourceQuality = "high" | "medium" | "low";
 
+export type BeachWebcam = {
+  title: string;
+  embedUrl: string;
+  liveUrl?: string;
+  provider?: string;
+};
+
 export type Beach = {
   slug: string;
   name: string;
@@ -27,6 +34,7 @@ export type Beach = {
   services?: string[];
   warnings?: string[];
   facts?: string[];
+  webcam?: BeachWebcam;
 };
 
 export type BeachConditions = {

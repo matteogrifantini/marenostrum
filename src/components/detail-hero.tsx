@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Check, Info, MapPin, Play, Share2 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Beach, BeachPeriod } from "../domain/beach";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
 import { versionedMediaUrl } from "../lib/media-url";
@@ -31,6 +31,30 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
   const backHref = homeDate
     ? `/?date=${encodeURIComponent(homeDate)}&period=all-day#classifica`
     : "/?period=all-day#classifica";
+
+  const openPhoto = () => {
+    setShowPhoto(true);
+    if (typeof window !== "undefined") {
+      window.history.pushState({ modal: "photo" }, "", window.location.href);
+    }
+  };
+
+  const closePhoto = (fromHistory = false) => {
+    setShowPhoto(false);
+    if (!fromHistory && typeof window !== "undefined" && window.history.state?.modal === "photo") {
+      window.history.back();
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      if (showPhoto) {
+        setShowPhoto(false);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [showPhoto]);
 
   const handleShare = () => {
     void (async () => {
@@ -64,7 +88,7 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
           <button
             type="button"
             aria-label={`Apri foto di ${beach.name}`}
-            onClick={() => setShowPhoto(true)}
+            onClick={openPhoto}
             className="absolute inset-0 z-0 h-full w-full cursor-zoom-in border-0 bg-transparent p-0 text-left"
           >
             <Image src={imageSrc} alt={imageAlt} fill loading="eager" sizes="(max-width: 639px) 100vw, (max-width: 1440px) calc(100vw - 3rem), 1440px" className="object-cover" />
@@ -100,12 +124,13 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
         ) : null}
 
         <div className="absolute inset-x-5 bottom-5 z-10">
-          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.1em] text-white/78">
-            <MapPin aria-hidden="true" size={14} />
+          <div className="inline-flex flex-wrap items-center gap-1.5 rounded-full bg-black/45 px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-white/95 backdrop-blur-md shadow-sm">
+            <MapPin aria-hidden="true" size={14} className="text-[var(--sun)]" />
             <span>{beach.municipality}</span>
-            {distanceKm === undefined ? null : <><span aria-hidden="true">·</span><span>{distanceKm} km da te</span></>}
+            {beach.coast && <><span aria-hidden="true" className="text-white/40">·</span><span className="text-white/80">{beach.coast}</span></>}
+            {distanceKm === undefined ? null : <><span aria-hidden="true" className="text-white/40">·</span><span className="text-[var(--sun)]">{distanceKm} km da te</span></>}
           </div>
-          <h1 className="mt-2 max-w-[32rem] font-serif text-[clamp(2.7rem,11vw,4.8rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{beach.name}</h1>
+          <h1 className="mt-2.5 max-w-[32rem] font-serif text-[clamp(2.7rem,11vw,4.8rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{beach.name}</h1>
           {onInfoToggle ? (
             <button
               type="button"
@@ -122,7 +147,7 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
         </div>
       </section>
 
-      {showPhoto && imageSrc ? <BeachPhotoViewer beachName={beach.name} imageSrc={imageSrc} imageAlt={imageAlt} onClose={() => setShowPhoto(false)} /> : null}
+      {showPhoto && imageSrc ? <BeachPhotoViewer beachName={beach.name} imageSrc={imageSrc} imageAlt={imageAlt} onClose={() => closePhoto()} /> : null}
       {showReels && detail.reels.length > 0 ? <BeachVideoReel beachName={beach.name} reels={detail.reels} onClose={() => setShowReels(false)} /> : null}
     </>
   );

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { HomeExperience } from "../components/home-experience";
 import type { BeachRecommendation } from "../domain/beach";
 import { getDateOptions } from "../domain/date-selection";
@@ -122,6 +122,12 @@ function renderHome(
 }
 
 describe("HomeExperience", () => {
+  beforeEach(() => {
+    localStorage.clear();
+    sessionStorage.clear();
+    replace.mockReset();
+  });
+
   it("shows stale-data copy beside the forecast timestamp only for low confidence", () => {
     const staleRecommendation = { ...recommendations[0], confidence: "bassa" as const };
 
