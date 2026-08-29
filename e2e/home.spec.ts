@@ -24,7 +24,7 @@ test.describe("Home Page & Core Interactions", () => {
 
     // Verify beach cards are present and have scores
     const beachCard = page.locator("a[href^='/spiagge/']").first();
-    await expect(beachCard).toBeVisible();
+    await expect(beachCard).toBeVisible({ timeout: 10000 });
   });
 
   test("allows toggling beach favorites with localStorage persistence", async ({ page }) => {

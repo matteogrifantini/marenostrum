@@ -410,18 +410,18 @@
   {
     "slug": "bue-marino-favignana",
     "image_path": "/images/beaches/bue-marino-favignana.jpg",
-    "image_alt": "Cava del Bue Marino a Favignana con gradoni di tufo e mare blu cobalto.",
-    "image_credit": "Effems",
-    "image_license": "CC BY-SA 4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Cava_del_Bue_Marino.jpg"
+    "image_alt": "Scogliera e mare turchese di Cala Bue Marino a Favignana.",
+    "image_credit": "boboviel",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Isole_egadi_sicily_boboviel_favignana_marettimo_levanzo_(55).jpg"
   },
   {
     "slug": "scalo-cavallo-favignana",
     "image_path": "/images/beaches/scalo-cavallo-favignana.jpg",
-    "image_alt": "Cave e scogliere di Scalo Cavallo a Favignana su mare cristallino.",
-    "image_credit": "Mαρκος",
+    "image_alt": "Mare limpido e costa di Scalo Cavallo a Favignana.",
+    "image_credit": "Cristina Morettini 95",
     "image_license": "CC BY-SA 4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Cave_di_Scalo_Cavallo_(Favignana)_06.jpg"
+    "source_url": "https://commons.wikimedia.org/wiki/File:Favignana_mare_2.jpg"
   },
   {
     "slug": "cala-fredda-levanzo",
@@ -450,10 +450,10 @@
   {
     "slug": "cala-bue-marino-macari",
     "image_path": "/images/beaches/cala-bue-marino-macari.jpg",
-    "image_alt": "Riva e costa del golfo di Macari con vista su Monte Cofano.",
-    "image_credit": "Filippo Piazza",
-    "image_license": "CC BY-SA 3.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Golfo_di_Macari_-_panoramio.jpg"
+    "image_alt": "Baia e acque cristalline di Cala Bue Marino nel golfo di Macari.",
+    "image_credit": "Enzo Rippa",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Golfo_di_Macari.jpg"
   },
   {
     "slug": "cala-berretta-zingaro",

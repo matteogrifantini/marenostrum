@@ -462,19 +462,19 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 ### Bue Marino Favignana
 
 - File: `bue-marino-favignana.jpg`
-- Autore: Effems
-- Fonte: <https://commons.wikimedia.org/wiki/File:Cava_del_Bue_Marino.jpg>
-- Licenza: [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Cava_del_Bue_Marino.jpg)
-- Scaricata: 2026-08-25
+- Autore: boboviel (Roberto)
+- Fonte: <https://commons.wikimedia.org/wiki/File:Isole_egadi_sicily_boboviel_favignana_marettimo_levanzo_(55).jpg>
+- Licenza: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+- Scaricata: 2026-08-30
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
 
 ### Scalo Cavallo Favignana
 
 - File: `scalo-cavallo-favignana.jpg`
-- Autore: Mαρκος
-- Fonte: <https://commons.wikimedia.org/wiki/File:Cave_di_Scalo_Cavallo_(Favignana)_06.jpg>
-- Licenza: [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Cave_di_Scalo_Cavallo_(Favignana)_06.jpg)
-- Scaricata: 2026-08-25
+- Autore: Cristina Morettini 95
+- Fonte: <https://commons.wikimedia.org/wiki/File:Favignana_mare_2.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-30
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
 
 ### Cala Fredda Levanzo
@@ -507,10 +507,10 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 ### Cala Bue Marino Macari
 
 - File: `cala-bue-marino-macari.jpg`
-- Autore: Filippo Piazza
-- Fonte: <https://commons.wikimedia.org/wiki/File:Golfo_di_Macari_-_panoramio.jpg>
-- Licenza: [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Golfo_di_Macari_-_panoramio.jpg)
-- Scaricata: 2026-08-25
+- Autore: Enzo Rippa
+- Fonte: <https://commons.wikimedia.org/wiki/File:Golfo_di_Macari.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Scaricata: 2026-08-30
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
 
 ### Cala Berretta Zingaro
