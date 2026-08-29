@@ -93,6 +93,8 @@ export function HomeExperience({
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
   const [nearbySelection, setNearbySelection] = useState<NearbySelection | null>(() => getStoredNearbySelection());
+  const [visibleCount, setVisibleCount] = useState(12);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const localInteractionRef = useRef(false);
 
   const handleNearbyChange = (next: NearbySelection | null) => {
@@ -175,6 +177,36 @@ export function HomeExperience({
       })
       .sort((left, right) => (left.distanceKm ?? Infinity) - (right.distanceKm ?? Infinity));
   }, [filteredRecommendations, nearbySelection]);
+
+  const filterKey = `${province}-${searchQuery}-${onlySheltered}-${onlyWebcam}-${date}-${period}-${nearbySelection?.radiusKm ?? "none"}-${JSON.stringify(filters)}`;
+  const [prevFilterKey, setPrevFilterKey] = useState(filterKey);
+  if (filterKey !== prevFilterKey) {
+    setPrevFilterKey(filterKey);
+    setVisibleCount(12);
+  }
+
+  // Progressive infinite scrolling
+  useEffect(() => {
+    const target = loadMoreRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry?.isIntersecting) {
+          setVisibleCount((prev) => Math.min(prev + 12, displayedRecommendations.length));
+        }
+      },
+      { rootMargin: "300px" }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [displayedRecommendations.length]);
+
+  const visibleRecommendations = useMemo(() => {
+    return displayedRecommendations.slice(0, visibleCount);
+  }, [displayedRecommendations, visibleCount]);
 
   const updateQuery = (
     nextDate: string,
@@ -363,7 +395,7 @@ export function HomeExperience({
                   aria-label="Spiagge consigliate"
                   className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5"
                 >
-                  {displayedRecommendations.map(({ recommendation, distanceKm: distance }, index) => (
+                  {visibleRecommendations.map(({ recommendation, distanceKm: distance }, index) => (
                     <li key={recommendation.beach.slug} className="min-w-0">
                       <BeachCard
                         recommendation={recommendation}
@@ -375,6 +407,21 @@ export function HomeExperience({
                     </li>
                   ))}
                 </ul>
+
+                {/* Progressive infinite scroll trigger & Load more fallback */}
+                {visibleCount < displayedRecommendations.length && (
+                  <div className="mt-8 flex flex-col items-center justify-center gap-3">
+                    <div ref={loadMoreRef} className="h-6 w-full" aria-hidden="true" />
+                    <button
+                      type="button"
+                      onClick={() => setVisibleCount((prev) => Math.min(prev + 12, displayedRecommendations.length))}
+                      className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--surface)] px-6 py-2.5 text-xs font-bold text-[var(--ink)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.08),0_4px_14px_rgba(20,44,57,0.05)] transition-[transform,background-color] hover:bg-[var(--surface-muted)] active:scale-95"
+                    >
+                      Mostra altre spiagge ({visibleRecommendations.length} di {displayedRecommendations.length})
+                    </button>
+                  </div>
+                )}
+
                 <ForecastTimestamp
                   recommendations={displayedRecommendations.map(({ recommendation }) => recommendation)}
                 />
