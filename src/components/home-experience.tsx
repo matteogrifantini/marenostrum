@@ -236,11 +236,20 @@ export function HomeExperience({
     updateQuery(date, nextPeriod);
   };
 
-  const handleProvinceChange = (value: string) => {
-    const nextProvince = normalizeProvinceCode(value);
-    localInteractionRef.current = true;
+  const handleProvinceChange = (nextProvince: ProvinceSelection) => {
     setProvince(nextProvince);
     updateQuery(date, period, nextProvince);
+  };
+
+  const handleResetAll = () => {
+    setSearchQuery("");
+    setOnlySheltered(false);
+    setOnlyWebcam(false);
+    setFilters({ ...DEFAULT_BEACH_FILTERS });
+    handleNearbyChange(null);
+    if (province !== "all") {
+      handleProvinceChange("all");
+    }
   };
 
   return (
@@ -441,10 +450,7 @@ export function HomeExperience({
                 {!forecastUnavailable && (
                   <button
                     type="button"
-                    onClick={() => {
-                      setSearchQuery("");
-                      setFilters({ ...DEFAULT_BEACH_FILTERS });
-                    }}
+                    onClick={handleResetAll}
                     className="mt-6 min-h-11 rounded-full bg-[var(--ink)] px-5 text-sm font-bold text-white transition-[transform,background-color] duration-200 ease-out hover:bg-[var(--sea-deep)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
                   >
                     Azzera ricerca e filtri

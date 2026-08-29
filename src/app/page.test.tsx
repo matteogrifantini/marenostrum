@@ -478,4 +478,21 @@ describe("HomeExperience", () => {
     ).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Azzera ricerca e filtri" })).not.toBeInTheDocument();
   });
+
+  it("resets search, filters, nearby location and quick filters on clicking Azzera ricerca e filtri", () => {
+    renderHome();
+
+    // Type a query that yields no matches
+    const searchInput = screen.getByRole("searchbox", { name: "Cerca una spiaggia" });
+    fireEvent.change(searchInput, { target: { value: "xyznonexistentbeach" } });
+
+    expect(screen.getByRole("heading", { name: "Nessuna spiaggia corrisponde" })).toBeInTheDocument();
+    const resetButton = screen.getByRole("button", { name: "Azzera ricerca e filtri" });
+    expect(resetButton).toBeInTheDocument();
+
+    fireEvent.click(resetButton);
+
+    expect(searchInput).toHaveValue("");
+    expect(screen.getAllByRole("listitem")).toHaveLength(3);
+  });
 });
