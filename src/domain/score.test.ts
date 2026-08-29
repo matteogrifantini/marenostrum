@@ -170,4 +170,54 @@ describe("scoreBeach", () => {
 
     expect(warmDay.score).toBeGreaterThan(coldDay.score);
   });
+
+  it("severely penalizes compound adverse conditions (rough sea + cloudy sky)", () => {
+    const roughAndCloudy = scoreBeach(
+      shelteredBeach,
+      {
+        ...calmConditions,
+        waveHeightMeters: 0.65,
+        seaState: "mosso",
+        weather: "nuvoloso",
+        cloudCoverPercent: 85,
+      },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    expect(roughAndCloudy.score).toBeLessThanOrEqual(48);
+    expect(roughAndCloudy.label).toMatch(/Da valutare|Meglio cercare altrove/);
+    expect(roughAndCloudy.label).not.toBe("Ottima scelta");
+    expect(roughAndCloudy.label).not.toBe("Buona scelta");
+  });
+
+  it("ensures rough sea alone never exceeds 64 and cloudy sky alone never exceeds 68", () => {
+    const roughSeaOnly = scoreBeach(
+      shelteredBeach,
+      {
+        ...calmConditions,
+        waveHeightMeters: 0.55,
+        seaState: "mosso",
+        weather: "sereno",
+      },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    const cloudyOnly = scoreBeach(
+      shelteredBeach,
+      {
+        ...calmConditions,
+        waveHeightMeters: 0.15,
+        seaState: "calmo",
+        weather: "nuvoloso",
+        cloudCoverPercent: 80,
+      },
+      { intent: "relax", now: new Date("2026-08-14T09:00:00.000Z") },
+    );
+
+    expect(roughSeaOnly.score).toBeLessThanOrEqual(64);
+    expect(roughSeaOnly.label).not.toBe("Ottima scelta");
+
+    expect(cloudyOnly.score).toBeLessThanOrEqual(68);
+    expect(cloudyOnly.label).not.toBe("Ottima scelta");
+  });
 });
