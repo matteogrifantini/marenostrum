@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Map, Settings, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -25,18 +26,24 @@ export function MobileNav({ active = "oggi" }: MobileNavProps) {
       {items.map(({ id, label, icon: Icon, href }) => {
         const isActive = id === active;
         const className = [
-          "flex min-h-12 flex-col items-center justify-center gap-1 rounded-[1rem] px-2 text-[0.65rem] font-bold transition-[transform,background-color,color] duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
+          "flex min-h-12 flex-col items-center justify-center gap-1 rounded-[1rem] px-2 text-[0.65rem] font-bold transition-[transform,background-color,color] duration-150 ease-out active:scale-[0.94] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
           isActive
-            ? "bg-[var(--ink)] text-white"
+            ? "bg-[var(--ink)] text-white shadow-sm"
             : "text-[var(--muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]",
         ].join(" ");
 
         if (href) {
           return (
-            <a key={id} href={href} aria-current={isActive ? "page" : undefined} className={className}>
+            <Link
+              key={id}
+              href={href}
+              prefetch={true}
+              aria-current={isActive ? "page" : undefined}
+              className={className}
+            >
               <Icon aria-hidden="true" size={17} />
               {label}
-            </a>
+            </Link>
           );
         }
 

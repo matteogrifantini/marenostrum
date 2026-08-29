@@ -41,6 +41,7 @@ export function PageShell({
                   : "border-transparent text-[var(--muted)]"
               }`}
               href="/#classifica"
+              prefetch={true}
             >
               {activeNav === "oggi" && (
                 <span
@@ -58,6 +59,7 @@ export function PageShell({
                   : "border-transparent text-[var(--muted)]"
               }`}
               href="/mappa"
+              prefetch={true}
             >
               {activeNav === "mappa" && (
                 <span
@@ -73,6 +75,7 @@ export function PageShell({
           <div className="hidden items-center gap-1 lg:ml-auto lg:flex">
             <Link
               href="/preferiti"
+              prefetch={true}
               aria-label="Apri preferiti"
               title="Preferiti"
               className="inline-flex size-11 items-center justify-center rounded-full text-[var(--muted)] transition-colors hover:text-[var(--score-poor)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sun)]"
@@ -81,6 +84,7 @@ export function PageShell({
             </Link>
             <Link
               href="/impostazioni"
+              prefetch={true}
               aria-label="Apri impostazioni e accesso"
               className={`${utilityLinkClass} bg-[var(--surface)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:text-[var(--ink)]`}
             >
