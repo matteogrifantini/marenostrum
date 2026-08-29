@@ -15,7 +15,8 @@ type BeachCommunitySectionsProps = {
 };
 
 export function BeachCommunitySections({ detail, beachSlug, beachName = "questa spiaggia" }: BeachCommunitySectionsProps) {
-  const { reviewProfile, webcam } = detail;
+  const { reviewProfile } = detail;
+  const [reviews, setReviews] = useState(detail.reviews);
   const [selectedPhoto, setSelectedPhoto] = useState<BeachDetailContent["recentPhotos"][number] | null>(null);
 
   const openPhoto = (photo: BeachDetailContent["recentPhotos"][number]) => {
