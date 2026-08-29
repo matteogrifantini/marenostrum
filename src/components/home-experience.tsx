@@ -385,6 +385,7 @@ export function HomeExperience({
                       <BeachCard
                         recommendation={recommendation}
                         date={date}
+                        period={period}
                         distanceKm={distanceKm}
                         eager={index < 4}
                       />
