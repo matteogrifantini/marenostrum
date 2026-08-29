@@ -70,21 +70,24 @@ test.describe("Home Page & Core Interactions", () => {
     expect(href).toContain("destination=");
   });
 
-  test("allows filtering by quick filters (Riparate dal vento & Webcam Live)", async ({ page }) => {
+  test("allows filtering by sheltered and webcam live in filter sheet", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    // Click "Con Webcam Live"
+    // Open filter sheet
+    const filterBtn = page.getByRole("button", { name: /Filtri/i });
+    await filterBtn.click();
+
+    // Click "Con Webcam Live" inside sheet
     const webcamFilter = page.getByRole("button", { name: /Con Webcam Live/i });
     await expect(webcamFilter).toBeVisible();
     await webcamFilter.click();
     await expect(webcamFilter).toHaveAttribute("aria-pressed", "true");
 
+    // Close filter sheet
+    await page.getByRole("button", { name: "Mostra risultati" }).click();
+
     // At least one beach with LIVE tag or webcam should be listed (e.g. Mondello)
     await expect(page.getByText(/Mondello|Cefalù|San Vito/i).first()).toBeVisible();
-
-    // Toggle off
-    await webcamFilter.click();
-    await expect(webcamFilter).toHaveAttribute("aria-pressed", "false");
   });
 });

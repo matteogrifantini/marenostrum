@@ -15,9 +15,22 @@ type FilterSheetProps = {
   filters: BeachFilters;
   onClose: () => void;
   onChange: (filters: BeachFilters) => void;
+  onlySheltered?: boolean;
+  onToggleSheltered?: () => void;
+  onlyWebcam?: boolean;
+  onToggleWebcam?: () => void;
 };
 
-export function FilterSheet({ open, filters, onClose, onChange }: FilterSheetProps) {
+export function FilterSheet({
+  open,
+  filters,
+  onClose,
+  onChange,
+  onlySheltered = false,
+  onToggleSheltered,
+  onlyWebcam = false,
+  onToggleWebcam,
+}: FilterSheetProps) {
   useEffect(() => {
     if (!open) return;
 
@@ -31,7 +44,11 @@ export function FilterSheet({ open, filters, onClose, onChange }: FilterSheetPro
 
   if (!open) return null;
 
-  const reset = () => onChange({ ...DEFAULT_BEACH_FILTERS });
+  const reset = () => {
+    onChange({ ...DEFAULT_BEACH_FILTERS });
+    if (onlySheltered && onToggleSheltered) onToggleSheltered();
+    if (onlyWebcam && onToggleWebcam) onToggleWebcam();
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-[rgba(20,44,57,0.3)] p-3 backdrop-blur-sm sm:items-center">
@@ -65,6 +82,46 @@ export function FilterSheet({ open, filters, onClose, onChange }: FilterSheetPro
             <X aria-hidden="true" size={18} />
           </button>
         </div>
+
+        {(onToggleSheltered || onToggleWebcam) && (
+          <fieldset className="mt-6">
+            <legend className="text-sm font-bold text-[var(--ink)]">Condizioni & Live</legend>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {onToggleSheltered && (
+                <button
+                  type="button"
+                  aria-pressed={onlySheltered}
+                  onClick={onToggleSheltered}
+                  className={[
+                    "inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 text-sm font-semibold transition-[transform,background-color,color] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
+                    onlySheltered
+                      ? "bg-emerald-700 text-white"
+                      : "bg-[var(--surface-muted)] text-[var(--ink-soft)] hover:bg-[var(--sand-muted)]",
+                  ].join(" ")}
+                >
+                  {onlySheltered ? <Check aria-hidden="true" size={15} /> : <span>🛡️</span>}
+                  Riparate oggi dal vento
+                </button>
+              )}
+              {onToggleWebcam && (
+                <button
+                  type="button"
+                  aria-pressed={onlyWebcam}
+                  onClick={onToggleWebcam}
+                  className={[
+                    "inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 text-sm font-semibold transition-[transform,background-color,color] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
+                    onlyWebcam
+                      ? "bg-red-600 text-white"
+                      : "bg-[var(--surface-muted)] text-[var(--ink-soft)] hover:bg-[var(--sand-muted)]",
+                  ].join(" ")}
+                >
+                  {onlyWebcam ? <Check aria-hidden="true" size={15} /> : <span>📹</span>}
+                  Con Webcam Live
+                </button>
+              )}
+            </div>
+          </fieldset>
+        )}
 
         <FilterGroup
           label="Accesso"

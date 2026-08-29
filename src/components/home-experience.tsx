@@ -151,7 +151,12 @@ export function HomeExperience({
     },
     [filters, onlySheltered, onlyWebcam, province, recommendations, searchQuery],
   );
-  const activeFilterCount = filters.access.length + filters.tags.length + filters.services.length;
+  const activeFilterCount =
+    filters.access.length +
+    filters.tags.length +
+    filters.services.length +
+    (onlySheltered ? 1 : 0) +
+    (onlyWebcam ? 1 : 0);
   const forecastUnavailable = dataUnavailable || recommendations.length === 0;
   const isUpdatingForecast = isPending || isNavigating;
   const displayedRecommendations = useMemo<DisplayRecommendation[]>(() => {
@@ -188,7 +193,7 @@ export function HomeExperience({
   // Progressive infinite scrolling
   useEffect(() => {
     const target = loadMoreRef.current;
-    if (!target) return;
+    if (!target || typeof IntersectionObserver === "undefined") return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -197,7 +202,7 @@ export function HomeExperience({
           setVisibleCount((prev) => Math.min(prev + 12, displayedRecommendations.length));
         }
       },
-      { rootMargin: "300px" }
+      { rootMargin: "300px" },
     );
 
     observer.observe(target);
@@ -324,72 +329,41 @@ export function HomeExperience({
                 </button>
               </div>
             </div>
-
-            {/* Quick Filters & Inline Nearby Radius */}
-            <div className="mt-2.5 flex flex-wrap items-center gap-1.5 border-t border-[var(--line)]/60 pt-2.5">
-              <button
-                type="button"
-                aria-pressed={onlySheltered}
-                onClick={() => setOnlySheltered((prev) => !prev)}
-                className={`inline-flex min-h-8 items-center gap-1 rounded-full px-3 text-xs font-bold transition-[transform,background-color,color] duration-150 active:scale-95 ${
-                  onlySheltered
-                    ? "bg-emerald-700 text-white shadow-sm"
-                    : "bg-[var(--surface)] text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]"
-                }`}
-              >
-                <span>🛡️</span>
-                <span>Riparate oggi dal vento</span>
-              </button>
-
-              <button
-                type="button"
-                aria-pressed={onlyWebcam}
-                onClick={() => setOnlyWebcam((prev) => !prev)}
-                className={`inline-flex min-h-8 items-center gap-1 rounded-full px-3 text-xs font-bold transition-[transform,background-color,color] duration-150 active:scale-95 ${
-                  onlyWebcam
-                    ? "bg-red-600 text-white shadow-sm"
-                    : "bg-[var(--surface)] text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]"
-                }`}
-              >
-                <span>📹</span>
-                <span>Con Webcam Live</span>
-              </button>
-
-              {nearbySelection ? (
-                <div className="flex flex-wrap items-center gap-1.5 sm:ml-auto">
-                  <span className="flex items-center gap-1 text-xs font-bold text-[var(--ink)]">
-                    <LocateFixed size={13} className="text-blue-500" aria-hidden="true" />
-                    <span>Distanza:</span>
-                  </span>
-                  {[15, 25, 50, 100].map((radius) => {
-                    const isSelected = nearbySelection.radiusKm === radius;
-                    return (
-                      <button
-                        key={radius}
-                        type="button"
-                        aria-pressed={isSelected}
-                        onClick={() => handleNearbyChange({ ...nearbySelection, radiusKm: radius })}
-                        className={`inline-flex min-h-8 items-center rounded-full px-2.5 text-xs font-bold transition-[transform,background-color,color] duration-150 active:scale-95 ${
-                          isSelected
-                            ? "bg-[var(--ink)] text-white shadow-sm"
-                            : "bg-[var(--surface)] text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]"
-                        }`}
-                      >
-                        {radius} km
-                      </button>
-                    );
-                  })}
-                  <button
-                    type="button"
-                    onClick={() => handleNearbyChange(null)}
-                    className="inline-flex min-h-8 items-center rounded-full px-2 text-xs font-bold text-[var(--muted)] hover:text-red-600 active:scale-95"
-                    title="Disattiva posizione"
-                  >
-                    ✕
-                  </button>
-                </div>
-              ) : null}
-            </div>
+            {/* Inline Nearby Radius (Visible only when position is active) */}
+            {nearbySelection && (
+              <div className="mt-2.5 flex flex-wrap items-center gap-1.5 border-t border-[var(--line)]/60 pt-2.5">
+                <span className="flex items-center gap-1 text-xs font-bold text-[var(--ink)]">
+                  <LocateFixed size={13} className="text-blue-500" aria-hidden="true" />
+                  <span>Distanza:</span>
+                </span>
+                {[15, 25, 50, 100].map((radius) => {
+                  const isSelected = nearbySelection.radiusKm === radius;
+                  return (
+                    <button
+                      key={radius}
+                      type="button"
+                      aria-pressed={isSelected}
+                      onClick={() => handleNearbyChange({ ...nearbySelection, radiusKm: radius })}
+                      className={`inline-flex min-h-8 items-center rounded-full px-2.5 text-xs font-bold transition-[transform,background-color,color] duration-150 active:scale-95 ${
+                        isSelected
+                          ? "bg-[var(--ink)] text-white shadow-sm"
+                          : "bg-[var(--surface)] text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]"
+                      }`}
+                    >
+                      {radius} km
+                    </button>
+                  );
+                })}
+                <button
+                  type="button"
+                  onClick={() => handleNearbyChange(null)}
+                  className="inline-flex min-h-8 items-center rounded-full px-2 text-xs font-bold text-[var(--muted)] hover:text-red-600 active:scale-95"
+                  title="Disattiva posizione"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
           </section>
 
           <section
@@ -399,29 +373,31 @@ export function HomeExperience({
           >
             {isUpdatingForecast ? (
               <BeachListLoading />
-            ) : displayedRecommendations.length ? (
+            ) : displayedRecommendations.length > 0 ? (
               <>
                 <ul
                   aria-label="Spiagge consigliate"
+                  data-testid="beach-ranking-grid"
                   className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5"
                 >
-                  {visibleRecommendations.map(({ recommendation, distanceKm: distance }, index) => (
+                  {visibleRecommendations.map(({ recommendation, distanceKm }, index) => (
                     <li key={recommendation.beach.slug} className="min-w-0">
                       <BeachCard
                         recommendation={recommendation}
                         date={date}
-                        period={period}
-                        distanceKm={distance}
+                        distanceKm={distanceKm}
                         eager={index < 4}
                       />
                     </li>
                   ))}
                 </ul>
 
-                {/* Progressive infinite scroll trigger & Load more fallback */}
-                {visibleCount < displayedRecommendations.length && (
-                  <div className="mt-8 flex flex-col items-center justify-center gap-3">
-                    <div ref={loadMoreRef} className="h-6 w-full" aria-hidden="true" />
+                {/* Infinite Scroll Sentinel */}
+                <div ref={loadMoreRef} className="h-1 w-full" aria-hidden="true" />
+
+                {/* Manual Load More fallback if more items are available */}
+                {visibleRecommendations.length < displayedRecommendations.length && (
+                  <div className="mt-8 flex justify-center">
                     <button
                       type="button"
                       onClick={() => setVisibleCount((prev) => Math.min(prev + 12, displayedRecommendations.length))}
@@ -471,6 +447,10 @@ export function HomeExperience({
         filters={filters}
         onClose={() => setFilterSheetOpen(false)}
         onChange={setFilters}
+        onlySheltered={onlySheltered}
+        onToggleSheltered={() => setOnlySheltered((prev) => !prev)}
+        onlyWebcam={onlyWebcam}
+        onToggleWebcam={() => setOnlyWebcam((prev) => !prev)}
       />
       <MobileNav />
     </PageShell>

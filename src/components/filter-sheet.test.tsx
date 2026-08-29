@@ -32,4 +32,36 @@ describe("FilterSheet", () => {
       tags: ["sabbia", "snorkeling"],
     });
   });
+
+  it("renders and triggers sheltered and webcam filters when provided", () => {
+    const onToggleSheltered = vi.fn();
+    const onToggleWebcam = vi.fn();
+    const onChange = vi.fn();
+    const onClose = vi.fn();
+
+    render(
+      <FilterSheet
+        open
+        filters={DEFAULT_BEACH_FILTERS}
+        onChange={onChange}
+        onClose={onClose}
+        onlySheltered={false}
+        onToggleSheltered={onToggleSheltered}
+        onlyWebcam={false}
+        onToggleWebcam={onToggleWebcam}
+      />,
+    );
+
+    const shelteredBtn = screen.getByRole("button", { name: /Riparate oggi dal vento/i });
+    const webcamBtn = screen.getByRole("button", { name: /Con Webcam Live/i });
+
+    expect(shelteredBtn).toBeInTheDocument();
+    expect(webcamBtn).toBeInTheDocument();
+
+    fireEvent.click(shelteredBtn);
+    expect(onToggleSheltered).toHaveBeenCalledOnce();
+
+    fireEvent.click(webcamBtn);
+    expect(onToggleWebcam).toHaveBeenCalledOnce();
+  });
 });
