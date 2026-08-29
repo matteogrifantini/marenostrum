@@ -236,7 +236,8 @@ export function HomeExperience({
     updateQuery(date, nextPeriod);
   };
 
-  const handleProvinceChange = (nextProvince: ProvinceSelection) => {
+  const handleProvinceChange = (value: string) => {
+    const nextProvince = normalizeProvinceCode(value);
     setProvince(nextProvince);
     updateQuery(date, period, nextProvince);
   };
