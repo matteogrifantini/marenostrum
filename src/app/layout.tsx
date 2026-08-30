@@ -76,6 +76,9 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Mare Nostrum",
   },
+  verification: {
+    google: "google8695ec30da15de9c",
+  },
   category: "travel",
 };
 
