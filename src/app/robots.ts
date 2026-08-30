@@ -8,5 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ["/api/"],
     },
     sitemap: "https://marenostrum.app/sitemap.xml",
+    host: "https://marenostrum.app",
   };
 }

@@ -12,6 +12,7 @@ describe("robots", () => {
         disallow: ["/api/"],
       },
       sitemap: "https://marenostrum.app/sitemap.xml",
+      host: "https://marenostrum.app",
     });
   });
 });

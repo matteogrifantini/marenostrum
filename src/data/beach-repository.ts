@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import type {
   Beach,
   BeachAccess,
@@ -252,14 +253,15 @@ function recommendationFor(
     : undefined;
 }
 
-export async function getBeachRecommendations(
-  query: RecommendationQuery,
-  providedStore?: ForecastReadStore,
+async function fetchRecommendationsInternal(
+  date: string,
+  period: BeachPeriod,
+  intent: UserIntent = "relax",
 ) {
-  const store = await resolveStore(providedStore);
+  const store = await resolveStore(undefined);
   const [beachRows, sourceAndRows] = await Promise.all([
     store.getPublishedBeaches(),
-    loadSourceAndRows(store, query.date),
+    loadSourceAndRows(store, date),
   ]);
   const beaches = beachRows.map(mapBeachRow);
   const pointsByBeachId = new Map<string, ForecastPoint[]>();
@@ -270,15 +272,15 @@ export async function getBeachRecommendations(
     pointsByBeachId.set(row.beach_id, points);
   });
 
-  const now = query.now ?? new Date();
+  const now = new Date();
 
   return beachRows
     .map((row, index) =>
       recommendationFor(
         beaches[index],
         pointsByBeachId.get(row.id) ?? [],
-        query,
-        query.period,
+        { date, period, intent },
+        period,
         now,
       ),
     )
@@ -286,18 +288,64 @@ export async function getBeachRecommendations(
     .sort((left, right) => right.score - left.score);
 }
 
-export async function getBeachForecastBundleBySlug(
-  query: RecommendationBySlugQuery,
+const getCachedRecommendations = unstable_cache(
+  fetchRecommendationsInternal,
+  ["beach-recommendations-cache-v1"],
+  { revalidate: 300, tags: ["beach-forecast", "beach-catalog"] },
+);
+
+export async function getBeachRecommendations(
+  query: RecommendationQuery,
   providedStore?: ForecastReadStore,
-): Promise<BeachForecastBundle | null> {
-  const store = await resolveStore(providedStore);
+) {
+  if (providedStore || query.now) {
+    const store = await resolveStore(providedStore);
+    const [beachRows, sourceAndRows] = await Promise.all([
+      store.getPublishedBeaches(),
+      loadSourceAndRows(store, query.date),
+    ]);
+    const beaches = beachRows.map(mapBeachRow);
+    const pointsByBeachId = new Map<string, ForecastPoint[]>();
+
+    sourceAndRows.rows.forEach((row) => {
+      const points = pointsByBeachId.get(row.beach_id) ?? [];
+      points.push(mapForecastRow(row, sourceAndRows.source.quality));
+      pointsByBeachId.set(row.beach_id, points);
+    });
+
+    const now = query.now ?? new Date();
+
+    return beachRows
+      .map((row, index) =>
+        recommendationFor(
+          beaches[index],
+          pointsByBeachId.get(row.id) ?? [],
+          query,
+          query.period,
+          now,
+        ),
+      )
+      .filter((recommendation): recommendation is BeachRecommendation => recommendation !== undefined)
+      .sort((left, right) => right.score - left.score);
+  }
+
+  return getCachedRecommendations(query.date, query.period, query.intent ?? "relax");
+}
+
+async function fetchBeachForecastBundleInternal(
+  slug: string,
+  date: string,
+  period: BeachPeriod,
+  intent: UserIntent = "relax",
+) {
+  const store = await resolveStore(undefined);
   const sourcePromise = store.getSourceBySlug("open-meteo").then(
     (source) => ({ ok: true as const, source }),
     (error: unknown) => ({ ok: false as const, error }),
   );
   const beachRow = store.getPublishedBeachBySlug
-    ? await store.getPublishedBeachBySlug(query.slug)
-    : (await store.getPublishedBeaches()).find((row) => row.slug === query.slug) ?? null;
+    ? await store.getPublishedBeachBySlug(slug)
+    : (await store.getPublishedBeaches()).find((row) => row.slug === slug) ?? null;
 
   if (!beachRow) return null;
 
@@ -314,10 +362,11 @@ export async function getBeachForecastBundleBySlug(
       throw new ForecastDataUnavailableError("Open-Meteo forecast source is unavailable");
     }
 
-    const rows = await loadRowsForSource(store, source, query.date, beachRow.id);
+    const rows = await loadRowsForSource(store, source, date, beachRow.id);
     const points = rows.map((row) => mapForecastRow(row, source.quality));
-    const now = query.now ?? new Date();
-    const selected = recommendationFor(beach, points, query, query.period, now);
+    const now = new Date();
+    const query = { slug, date, period, intent };
+    const selected = recommendationFor(beach, points, query, period, now);
 
     return {
       beach,
@@ -338,6 +387,68 @@ export async function getBeachForecastBundleBySlug(
   }
 }
 
+const getCachedBeachForecastBundle = unstable_cache(
+  fetchBeachForecastBundleInternal,
+  ["beach-forecast-bundle-cache-v1"],
+  { revalidate: 300, tags: ["beach-forecast", "beach-catalog"] },
+);
+
+export async function getBeachForecastBundleBySlug(
+  query: RecommendationBySlugQuery,
+  providedStore?: ForecastReadStore,
+): Promise<BeachForecastBundle | null> {
+  if (providedStore || query.now) {
+    const store = await resolveStore(providedStore);
+    const sourcePromise = store.getSourceBySlug("open-meteo").then(
+      (source) => ({ ok: true as const, source }),
+      (error: unknown) => ({ ok: false as const, error }),
+    );
+    const beachRow = store.getPublishedBeachBySlug
+      ? await store.getPublishedBeachBySlug(query.slug)
+      : (await store.getPublishedBeaches()).find((row) => row.slug === query.slug) ?? null;
+
+    if (!beachRow) return null;
+
+    const beach = mapBeachRow(beachRow);
+
+    try {
+      const sourceResult = await sourcePromise;
+
+      if (!sourceResult.ok) throw sourceResult.error;
+
+      const source = sourceResult.source;
+
+      if (!source) {
+        throw new ForecastDataUnavailableError("Open-Meteo forecast source is unavailable");
+      }
+
+      const rows = await loadRowsForSource(store, source, query.date, beachRow.id);
+      const points = rows.map((row) => mapForecastRow(row, source.quality));
+      const now = query.now ?? new Date();
+      const selected = recommendationFor(beach, points, query, query.period, now);
+
+      return {
+        beach,
+        dataUnavailable: !selected,
+        selected,
+        morning: recommendationFor(beach, points, query, "morning", now),
+        afternoon: recommendationFor(beach, points, query, "afternoon", now),
+      };
+    } catch (error) {
+      if (error instanceof ForecastDataUnavailableError) {
+        return {
+          beach,
+          dataUnavailable: true,
+        };
+      }
+
+      throw error;
+    }
+  }
+
+  return getCachedBeachForecastBundle(query.slug, query.date, query.period, query.intent ?? "relax");
+}
+
 export async function getBeachBySlug(
   slug: string,
   providedStore?: ForecastReadStore,
@@ -350,11 +461,26 @@ export async function getBeachBySlug(
   return beachRow ? mapBeachRow(beachRow) : null;
 }
 
+async function fetchAllPublishedBeachesInternal() {
+  const store = await resolveStore(undefined);
+  const beachRows = await store.getPublishedBeaches();
+  return beachRows.map(mapBeachRow);
+}
+
+const getCachedAllPublishedBeaches = unstable_cache(
+  fetchAllPublishedBeachesInternal,
+  ["all-published-beaches-cache-v1"],
+  { revalidate: 3600, tags: ["beach-catalog"] },
+);
+
 export async function getAllPublishedBeaches(
   providedStore?: ForecastReadStore,
 ): Promise<Beach[]> {
-  const store = await resolveStore(providedStore);
-  const beachRows = await store.getPublishedBeaches();
+  if (providedStore) {
+    const store = await resolveStore(providedStore);
+    const beachRows = await store.getPublishedBeaches();
+    return beachRows.map(mapBeachRow);
+  }
 
-  return beachRows.map(mapBeachRow);
+  return getCachedAllPublishedBeaches();
 }

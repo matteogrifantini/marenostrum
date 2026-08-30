@@ -12,7 +12,7 @@ import { getDateOptions } from "../../../domain/date-selection";
 import { filterRecommendationsForHub, getTerritoryHub, TERRITORY_HUBS } from "../../../domain/territory-hubs";
 import type { BeachRecommendation } from "../../../domain/beach";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export function generateStaticParams() {
   return TERRITORY_HUBS.map((hub) => ({ slug: hub.slug }));

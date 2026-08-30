@@ -4,6 +4,7 @@ import { BeachDetailExperience } from "../../../components/beach-detail-experien
 import { getBeachContentBySlug } from "../../../data/beach-content-repository";
 import {
   ForecastDataUnavailableError,
+  getAllPublishedBeaches,
   getBeachBySlug,
   getBeachForecastBundleBySlug,
 } from "../../../data/beach-repository";
@@ -11,6 +12,17 @@ import { getDateOptions } from "../../../domain/date-selection";
 import { normalizeDetailQuery, parseDetailOrigin } from "../../../domain/detail-query";
 import { buildBeachDetailContent } from "../../../services/beach-detail-content";
 import { getCommunityReportsForBeach } from "../../../services/community-reports";
+
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  try {
+    const beaches = await getAllPublishedBeaches();
+    return beaches.map((b) => ({ slug: b.slug }));
+  } catch {
+    return [];
+  }
+}
 
 type DetailSearchParams = {
   date?: string | string[];

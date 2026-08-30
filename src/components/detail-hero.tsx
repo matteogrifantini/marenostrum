@@ -91,7 +91,16 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
             onClick={openPhoto}
             className="absolute inset-0 z-0 h-full w-full cursor-zoom-in border-0 bg-transparent p-0 text-left"
           >
-            <Image src={imageSrc} alt={imageAlt} fill loading="eager" sizes="(max-width: 639px) 100vw, (max-width: 1440px) calc(100vw - 3rem), 1440px" className="object-cover" />
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              priority
+              fetchPriority="high"
+              loading="eager"
+              sizes="(max-width: 639px) 100vw, (max-width: 1440px) calc(100vw - 3rem), 1440px"
+              className="object-cover"
+            />
           </button>
         ) : (
           <div

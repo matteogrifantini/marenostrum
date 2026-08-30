@@ -139,6 +139,8 @@ export function BeachCard({
                 src={imageSrc}
                 alt={imageAlt}
                 fill
+                priority={eager}
+                fetchPriority={eager ? "high" : "auto"}
                 loading={eager ? "eager" : "lazy"}
                 sizes="(max-width: 639px) 46vw, (max-width: 1023px) 31vw, 28vw"
                 className="object-cover transition-transform duration-500 ease-out"

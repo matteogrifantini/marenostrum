@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import {
   ForecastDataUnavailableError,
@@ -17,6 +18,18 @@ import type {
   WebcamRow,
 } from "../../data/beach-content-repository";
 import { getSupabasePublicConfig } from "./config";
+
+export function createPublicClient() {
+  const config = getSupabasePublicConfig();
+  if (!config) return null;
+
+  return createSupabaseClient(config.url, config.key, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+  });
+}
 
 export async function createClient() {
   const config = getSupabasePublicConfig();
@@ -50,11 +63,7 @@ function throwReadError(message: string): never {
 }
 
 export async function createSupabaseForecastReadStore(): Promise<ForecastReadStore> {
-  if (!getSupabasePublicConfig()) {
-    throw new ForecastDataUnavailableError("Supabase public configuration is missing");
-  }
-
-  const client = await createClient();
+  const client = createPublicClient();
 
   if (!client) {
     throw new ForecastDataUnavailableError("Supabase public configuration is missing");
@@ -134,11 +143,7 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
 }
 
 export async function createSupabaseBeachContentReadStore(): Promise<BeachContentReadStore> {
-  if (!getSupabasePublicConfig()) {
-    throw new ForecastDataUnavailableError("Supabase public configuration is missing");
-  }
-
-  const client = await createClient();
+  const client = createPublicClient();
 
   if (!client) {
     throw new ForecastDataUnavailableError("Supabase public configuration is missing");

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://marenostrum.app/preferiti" },
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function FavoritesPage() {
   const dateOptions = getDateOptions(new Date());
