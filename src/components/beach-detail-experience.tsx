@@ -1,6 +1,6 @@
 "use client";
 
-import { CloudSun, Gauge, Sparkles, ThermometerSun, Waves, Wind } from "lucide-react";
+import { CloudSun, Compass, Gauge, ThermometerSun, Waves, Wind } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState, useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
@@ -324,8 +324,8 @@ function AdviceCard({
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
           <p id="mare-nostrum-advice-title" className="flex items-center gap-2 text-[0.68rem] font-extrabold uppercase tracking-[0.1em] text-[var(--muted)]">
-            <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-[0.65rem] bg-white/45 text-base shadow-[inset_0_0_0_1px_rgba(8,47,61,0.04)]"><Sparkles size={16} /></span>
-            Il consiglio di Mare Nostrum
+            <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-[0.65rem] bg-white/45 text-base shadow-[inset_0_0_0_1px_rgba(8,47,61,0.04)]"><Compass size={16} className="text-[var(--sea)]" /></span>
+            Condizioni e balneabilità
           </p>
           <strong className="mt-2 block text-xl tracking-[-0.035em] text-[var(--ink)]">{scoreHeadline(recommendation.score)}</strong>
         </div>

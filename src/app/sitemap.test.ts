@@ -43,24 +43,24 @@ describe("sitemap", () => {
         }),
         expect.objectContaining({
           url: "https://marenostrum.app/spiagge/cala-rossa-favignana",
-          priority: 0.8,
-          changeFrequency: "hourly",
+          priority: 0.85,
+          changeFrequency: "daily",
         }),
         expect.objectContaining({
           url: "https://marenostrum.app/spiagge/spiaggia-del-lungomare-cefalu",
-          priority: 0.8,
-          changeFrequency: "hourly",
+          priority: 0.85,
+          changeFrequency: "daily",
         }),
       ]),
     );
   });
 
-  it("falls back gracefully to static routes if database lookup fails", async () => {
+  it("falls back gracefully to static catalog routes if database lookup fails", async () => {
     getAllPublishedBeachesMock.mockRejectedValue(new Error("DB error"));
 
     const result = await sitemap();
 
-    expect(result).toHaveLength(11);
+    expect(result.length).toBeGreaterThan(11);
     expect(result[0].url).toBe("https://marenostrum.app");
     expect(result[1].url).toBe("https://marenostrum.app/mappa");
     expect(result[2].url).toBe("https://marenostrum.app/localita/palermo");

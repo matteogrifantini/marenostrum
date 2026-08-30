@@ -92,29 +92,29 @@ function buildAdviceSummary(score: number, conditions: BeachConditions, sheltere
     return "Con pioggia prevista, la balneazione è sconsigliata: meglio organizzare un piano alternativo.";
   }
   if (conditions.weather === "nuvoloso") {
-    return "Il cielo coperto limita il soleggiamento, ma le acque possono essere piacevoli per una passeggiata o una sosta breve.";
+    return "Cielo coperto: temperatura piacevole, ma cielo coperto con minore soleggiamento sul litorale.";
   }
   if (score >= 80) {
-    return "Condizioni ideali: cielo limpido, mare calmo e clima perfetto per trascorrere la giornata in riva al mare.";
+    return "Condizioni ottimali: mare limpido e calmo, ideale per nuotare e sostare in spiaggia.";
   }
   if (score >= 65) {
-    return "Le condizioni sono complessivamente favorevoli per godersi la spiaggia.";
+    return "Buona balneabilità: condizioni favorevoli per godersi la spiaggia.";
   }
   if (score >= 45) {
     return sheltered
-      ? "Il vento è presente ma la conformazione della cala offre riparo; valuta le condizioni all'arrivo."
-      : "L'esposizione al vento o il mare mosso consigliano cautela se cerchi acque tranquille per il bagno.";
+      ? "Vento presente ma baia protetta: balneabile valutando le condizioni all'arrivo."
+      : "Mare mosso o vento teso: prestare attenzione se cerchi acque calme per il bagno.";
   }
-  return "Il moto ondoso o il vento contrario rendono la spiaggia poco adatta al relax; consigliabile optare per un versante più riparato.";
+  return "Mare agitato o vento contrario: balneazione sconsigliata, preferibile spostarsi su un versante riparato.";
 }
 
 export function getBeachAiComment({ beach, conditions, score }: BeachRecommendation): BeachAiComment {
   const windName = directionName(conditions.windDirectionDegrees);
   const sheltered = beach.shelter.includes(windName);
-  const opening = `Per questa giornata, ${beach.name} è ${recommendationVerdict(score, conditions.weather)}: ${weatherLabel(conditions.weather)}, ${windLabel(conditions.windSpeedKmh)} e ${seaLabel(conditions)}.`;
+  const opening = `${beach.name}: ${weatherLabel(conditions.weather)}, ${windLabel(conditions.windSpeedKmh)} e ${seaLabel(conditions)}.`;
   const exposure = sheltered
-    ? `È riparata ${formatWindWithArticle(windName, "shelter")}, riducendo l'impatto delle raffiche.`
-    : `È esposta ${formatWindWithArticle(windName, "exposure")}, quindi il vento si farà sentire durante la giornata.`;
+    ? `È riparata ${formatWindWithArticle(windName, "shelter")}, riducendo l'impatto del vento.`
+    : `È esposta ${formatWindWithArticle(windName, "exposure")}, con vento diretto sulla riva.`;
   const advice = buildAdviceSummary(score, conditions, sheltered);
 
   return {

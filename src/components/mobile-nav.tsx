@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Map, Settings, Sun } from "lucide-react";
+import { Compass, Map, Settings } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type MobileNavProps = {
@@ -12,7 +12,7 @@ const items: Array<{
   icon: LucideIcon;
   href?: string;
 }> = [
-  { id: "oggi", label: "Spiagge", icon: Sun, href: "/#classifica" },
+  { id: "oggi", label: "Spiagge", icon: Compass, href: "/#classifica" },
   { id: "mappa", label: "Mappa", icon: Map, href: "/mappa" },
   { id: "impostazioni", label: "Impostazioni", icon: Settings, href: "/impostazioni" },
 ] as const;

@@ -128,7 +128,7 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute("aria-pressed", "false");
     const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
-    const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
+    const advice = screen.getByRole("note", { name: "Condizioni e balneabilità" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
 
     expect(dayControls).toHaveClass("day-picker", "bg-[var(--control-surface)]", "grid-cols-4");
@@ -215,7 +215,7 @@ describe("BeachDetailExperience", () => {
   ] as const)("shows the %s score instead of the all-day comparison", (period, score) => {
     renderDetail({ period, recommendation: selected });
 
-    const advice = screen.getByRole("note", { name: "Il consiglio di Mare Nostrum" });
+    const advice = screen.getByRole("note", { name: "Condizioni e balneabilità" });
     expect(within(advice).getByText(score)).toBeInTheDocument();
     expect(within(advice).queryByText("100")).not.toBeInTheDocument();
   });
