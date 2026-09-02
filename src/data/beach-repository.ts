@@ -9,6 +9,7 @@ import type {
 } from "../domain/beach";
 import type { ForecastPoint } from "../domain/forecast";
 import { aggregateForecast } from "../domain/forecast-aggregation";
+import type { PublicationStatus } from "../domain/publication-status";
 import { scoreBeach } from "../domain/score";
 import { BEACH_WEBCAMS } from "./beach-webcams";
 
@@ -34,6 +35,7 @@ export type BeachRow = {
   services: string[];
   warnings: string[];
   facts: string[];
+  publication_status?: PublicationStatus | null;
 };
 
 export type DataSourceRow = {
