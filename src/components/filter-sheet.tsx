@@ -116,7 +116,7 @@ export function FilterSheet({
                   ].join(" ")}
                 >
                   {onlyWebcam ? <Check aria-hidden="true" size={15} /> : <span>📹</span>}
-                  Con Webcam Live
+                  Con webcam
                 </button>
               )}
             </div>

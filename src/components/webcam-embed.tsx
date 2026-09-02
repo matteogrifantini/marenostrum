@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ExternalLink, Play } from "lucide-react";
 import type { BeachWebcam } from "../domain/beach";
 
@@ -9,6 +10,12 @@ type WebcamEmbedProps = {
 };
 
 export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
+  const [posterFailed, setPosterFailed] = useState(false);
+
+  useEffect(() => {
+    setPosterFailed(false);
+  }, [webcam.posterUrl]);
+
   return (
     <section
       aria-labelledby="webcam-heading"
@@ -16,10 +23,12 @@ export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
     >
       <div className="flex flex-wrap items-center justify-between gap-2 pb-3.5">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-red-600 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-wider text-white shadow-sm">
-            <span className="size-2 animate-ping rounded-full bg-white" />
-            LIVE
-          </span>
+          {webcam.verifiedLive === true ? (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-red-600 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-wider text-white shadow-sm">
+              <span className="size-2 animate-ping rounded-full bg-white" />
+              LIVE
+            </span>
+          ) : null}
           <h2
             id="webcam-heading"
             className="font-serif text-base font-bold tracking-[-0.02em] text-[var(--ink)] sm:text-lg"
@@ -30,15 +39,18 @@ export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
       </div>
 
       <div className="group relative aspect-video w-full overflow-hidden rounded-xl bg-slate-950 shadow-inner">
-        {webcam.posterUrl ? (
+        {webcam.posterUrl && !posterFailed ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={webcam.posterUrl}
             alt={`Anteprima webcam in diretta per ${webcam.title || beachName}`}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            onError={() => setPosterFailed(true)}
           />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-cyan-950" />
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-cyan-950 p-4 text-center text-sm font-semibold text-white/88">
+            Anteprima non disponibile
+          </div>
         )}
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/30" />
@@ -75,7 +87,7 @@ export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
             rel="noopener noreferrer"
             className="detail-press inline-flex min-h-10 items-center gap-1.5 rounded-full bg-[var(--ink)] px-4 text-xs font-extrabold text-white shadow-sm transition-transform hover:bg-[var(--sea-deep)] active:scale-95"
           >
-            <span>Apri diretta live</span>
+            <span>Apri la pagina della webcam</span>
             <ExternalLink size={14} aria-hidden="true" />
           </a>
         )}

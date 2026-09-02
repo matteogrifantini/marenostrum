@@ -97,12 +97,13 @@ function getBeachFeatureChips(beach: Beach) {
 export function BeachCard({
   recommendation,
   date,
+  period,
   distanceKm,
   eager = false,
 }: BeachCardProps) {
   const preferences = useUserPreferences();
   const { beach, conditions } = recommendation;
-  const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=all-day&source=home`;
+  const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=${encodeURIComponent(period)}&source=home`;
   const image = beach.image;
   const imageSrc = image ? versionedMediaUrl(image) : undefined;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
@@ -187,9 +188,8 @@ export function BeachCard({
               {(featureChips.length > 0 || beach.webcam) && (
                 <div className="mt-1 flex flex-wrap items-center gap-1 sm:mt-2">
                   {beach.webcam && (
-                    <span className="inline-flex items-center gap-1 rounded bg-red-600 px-1.5 py-0.5 text-[0.55rem] font-black uppercase text-white shadow-xs">
-                      <span className="size-1.5 animate-pulse rounded-full bg-white" />
-                      LIVE
+                    <span className="inline-flex items-center rounded bg-[var(--surface-muted)] px-1.5 py-0.5 text-[0.55rem] font-black uppercase text-[var(--ink-soft)] shadow-xs">
+                      WEBCAM
                     </span>
                   )}
                   {featureChips.map((chip) => (

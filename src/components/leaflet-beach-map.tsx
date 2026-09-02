@@ -93,7 +93,7 @@ function createBeachPopup(recommendation: MappableRecommendation) {
   const scoreValue = formatScoreOutOf100(score);
   const location = `${beach.municipality}${beach.provinceCode ? ` (${beach.provinceCode})` : ""}`;
   const webcamBadge = beach.webcam
-    ? '<span style="background:#dc2626;color:white;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:800;margin-left:4px;">🔴 LIVE</span>'
+    ? '<span style="background:#e2e8f0;color:#0f172a;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:800;margin-left:4px;">Webcam</span>'
     : "";
   const dateParam = encodeURIComponent(conditions.date ?? "");
   const periodParam = encodeURIComponent(conditions.period ?? "all-day");

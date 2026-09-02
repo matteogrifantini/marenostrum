@@ -51,7 +51,7 @@ describe("BeachCard", () => {
     );
   });
 
-  it("opens a homepage-selected beach on all-day while preserving its date origin", () => {
+  it("preserves the homepage-selected period while preserving its date origin", () => {
     render(
       <BeachCard
         recommendation={demoRecommendations[0]}
@@ -62,7 +62,7 @@ describe("BeachCard", () => {
 
     expect(screen.getByRole("link", { name: /apri la scheda di cala del gelsomino/i })).toHaveAttribute(
       "href",
-      "/spiagge/cala-del-gelsomino?date=2026-08-16&period=all-day&source=home",
+      "/spiagge/cala-del-gelsomino?date=2026-08-16&period=morning&source=home",
     );
   });
 

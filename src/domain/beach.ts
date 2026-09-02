@@ -12,6 +12,7 @@ export type BeachWebcam = {
   liveUrl?: string;
   provider?: string;
   posterUrl?: string;
+  verifiedLive?: boolean;
 };
 
 export type Beach = {
