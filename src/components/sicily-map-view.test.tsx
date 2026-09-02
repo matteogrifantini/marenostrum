@@ -2,20 +2,99 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { demoRecommendations } from "../data/demo-beaches";
 import { getDateOptions } from "../domain/date-selection";
+import type { BeachRecommendation } from "../domain/beach";
 import { SicilyMapView } from "./sicily-map-view";
 
 describe("SicilyMapView", () => {
   const dateOptions = getDateOptions(new Date("2026-08-20T08:00:00+02:00"));
+  const provinceRecommendations: BeachRecommendation[] = [
+    {
+      beach: {
+        slug: "mondello",
+        name: "Mondello",
+        municipality: "Palermo",
+        provinceCode: "PA",
+        coast: "Nord",
+        description: "Ampia spiaggia urbana.",
+        orientationDegrees: 350,
+        shelter: ["scirocco"],
+        tags: ["famiglie"],
+        access: "facile",
+        latitude: 38.1982,
+        longitude: 13.3269,
+      },
+      conditions: {
+        observedAt: "2026-08-20T08:00:00+02:00",
+        sourceQuality: "high",
+        windDirectionDegrees: 120,
+        windSpeedKmh: 10,
+        gustSpeedKmh: 15,
+        waveHeightMeters: 0.4,
+        weather: "sereno",
+        temperatureCelsius: 29,
+        date: "2026-08-20",
+        period: "all-day",
+      },
+      score: 82,
+      label: "Ottima",
+      reason: "Mare calmo e vento favorevole.",
+      confidence: "alta",
+      factors: {
+        wind: 28,
+        sea: 29,
+        weather: 25,
+      },
+    },
+    {
+      beach: {
+        slug: "san-vito-lo-capo",
+        name: "San Vito Lo Capo",
+        municipality: "San Vito Lo Capo",
+        provinceCode: "TP",
+        coast: "Nord-ovest",
+        description: "Baia ampia e sabbiosa.",
+        orientationDegrees: 320,
+        shelter: ["levante"],
+        tags: ["relax"],
+        access: "facile",
+        latitude: 38.1756,
+        longitude: 12.7342,
+      },
+      conditions: {
+        observedAt: "2026-08-20T08:00:00+02:00",
+        sourceQuality: "high",
+        windDirectionDegrees: 85,
+        windSpeedKmh: 14,
+        gustSpeedKmh: 18,
+        waveHeightMeters: 0.6,
+        weather: "sereno",
+        temperatureCelsius: 28,
+        date: "2026-08-20",
+        period: "all-day",
+      },
+      score: 76,
+      label: "Buona",
+      reason: "Condizioni generalmente favorevoli.",
+      confidence: "alta",
+      factors: {
+        wind: 24,
+        sea: 27,
+        weather: 25,
+      },
+    },
+  ];
 
   it("keeps the selected date and period visible in the shared controls", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
+        province="all"
         date="2026-08-21"
         period="morning"
         dateOptions={dateOptions}
         onDateChange={vi.fn()}
         onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
       />,
     );
 
@@ -39,11 +118,13 @@ describe("SicilyMapView", () => {
     render(
       <SicilyMapView
         recommendations={[recommendationWithoutCoordinates]}
+        province="all"
         date="2026-08-20"
         period="all-day"
         dateOptions={dateOptions}
         onDateChange={vi.fn()}
         onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
       />,
     );
 
@@ -58,11 +139,13 @@ describe("SicilyMapView", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
+        province="all"
         date="2026-08-20"
         period="all-day"
         dateOptions={dateOptions}
         onDateChange={onDateChange}
         onPeriodChange={onPeriodChange}
+        onProvinceChange={vi.fn()}
       />,
     );
 
@@ -79,11 +162,13 @@ describe("SicilyMapView", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
+        province="all"
         date="2026-08-20"
         period="all-day"
         dateOptions={dateOptions}
         onDateChange={vi.fn()}
         onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
       />,
     );
 
@@ -103,11 +188,13 @@ describe("SicilyMapView", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
+        province="all"
         date="2026-08-20"
         period="all-day"
         dateOptions={dateOptions}
         onDateChange={vi.fn()}
         onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
       />,
     );
 
@@ -120,11 +207,13 @@ describe("SicilyMapView", () => {
     render(
       <SicilyMapView
         recommendations={demoRecommendations}
+        province="all"
         date="2026-08-20"
         period="all-day"
         dateOptions={dateOptions}
         onDateChange={vi.fn()}
         onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
       />,
     );
 
@@ -139,6 +228,26 @@ describe("SicilyMapView", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /^Filtri/ }));
     expect(screen.getByRole("dialog", { name: "Affina la scelta" })).toBeInTheDocument();
+  });
+
+  it("keeps province selection and exposes a visible deterministic beach list", () => {
+    render(
+      <SicilyMapView
+        recommendations={provinceRecommendations}
+        province="PA"
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByRole("combobox", { name: "Provincia della mappa" })).toHaveValue("PA");
+    expect(screen.getByTestId("map-result-summary")).toHaveTextContent("1 spiaggia");
+    expect(screen.getByRole("button", { name: "Mondello" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "San Vito Lo Capo" })).not.toBeInTheDocument();
   });
 
 });

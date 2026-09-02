@@ -12,6 +12,7 @@ import {
 import type { MapNearbySelection } from "../domain/map-filtering";
 import {
   hasMapCoordinates,
+  sortMappableRecommendations,
   type MappableRecommendation,
 } from "../domain/map-markers";
 
@@ -295,8 +296,7 @@ export function LeafletBeachMap({
 
     ratingLayer.clearLayers();
     ratingMarkersRef.current.clear();
-    for (const recommendation of recommendations) {
-      if (!hasMapCoordinates(recommendation)) continue;
+    for (const recommendation of sortMappableRecommendations(recommendations)) {
       const { beach, score } = recommendation;
       const scoreValue = formatScoreOutOf100(score);
       const selected = beach.slug === selectedSlug;
@@ -304,13 +304,13 @@ export function LeafletBeachMap({
         icon: leaflet.divIcon({
           className: `map-rating-marker map-rating-marker--${scoreTone(score)}${selected ? " map-rating-marker--selected" : ""}`,
           html: `<span>${scoreValue}</span>`,
-          iconSize: [58, 38],
-          iconAnchor: [29, 19],
+          iconSize: [44, 30],
+          iconAnchor: [22, 15],
         }),
         title: `${beach.name}: voto ${scoreValue}`,
         alt: `${beach.name}: voto ${scoreValue}`,
         keyboard: true,
-        zIndexOffset: selected ? 1000 : 0,
+        zIndexOffset: selected ? 10000 : Math.round(score * 10),
       });
       marker.on("click", () => onSelectBeach(beach.slug));
       marker.bindTooltip(`${beach.name} · ${scoreValue}`, {

@@ -20,12 +20,12 @@ import type {
 } from "../../data/beach-content-repository";
 import { getSupabasePublicConfig } from "./config";
 
-type PublicBeachPublicationQuery<TSelf> = {
-  eq(column: "is_published", value: boolean): TSelf;
+type PublicBeachPublicationQuery = {
+  eq(column: "is_published", value: boolean): unknown;
   in(
     column: "publication_status",
-    values: readonly (typeof PUBLIC_BEACH_PUBLICATION_STATUSES)[number][],
-  ): TSelf;
+    values: (typeof PUBLIC_BEACH_PUBLICATION_STATUSES)[number][],
+  ): unknown;
 };
 
 export function createPublicClient() {
@@ -71,12 +71,12 @@ function throwReadError(message: string): never {
   throw new ForecastDataUnavailableError(message);
 }
 
-export function applyPublicBeachPublicationFilter<TQuery extends PublicBeachPublicationQuery<TQuery>>(
+export function applyPublicBeachPublicationFilter<TQuery extends PublicBeachPublicationQuery>(
   query: TQuery,
 ): TQuery {
-  return query
-    .eq("is_published", true)
-    .in("publication_status", [...PUBLIC_BEACH_PUBLICATION_STATUSES]);
+  query.eq("is_published", true);
+  query.in("publication_status", [...PUBLIC_BEACH_PUBLICATION_STATUSES]);
+  return query;
 }
 
 export async function createSupabaseForecastReadStore(): Promise<ForecastReadStore> {
@@ -88,7 +88,7 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
 
   return {
     async getPublishedBeaches() {
-      const { data, error } = await applyPublicBeachPublicationFilter(
+      const { data, error } = await applyPublicBeachPublicationFilter<any>(
         client
           .from("beaches")
           .select(
@@ -101,7 +101,7 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
     },
 
     async getPublishedBeachBySlug(slug) {
-      const { data, error } = await applyPublicBeachPublicationFilter(
+      const { data, error } = await applyPublicBeachPublicationFilter<any>(
         client
           .from("beaches")
           .select(
@@ -170,7 +170,7 @@ export async function createSupabaseBeachContentReadStore(): Promise<BeachConten
 
   return {
     async getPublishedBeachBySlug(slug) {
-      const { data, error } = await applyPublicBeachPublicationFilter(
+      const { data, error } = await applyPublicBeachPublicationFilter<any>(
         client.from("beaches").select("id"),
       )
         .eq("slug", slug)

@@ -7,10 +7,15 @@ import { MobileNav } from "./mobile-nav";
 import { SicilyMapView } from "./sicily-map-view";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
 import type { DateOption } from "../domain/date-selection";
+import {
+  normalizeProvinceCode,
+  type ProvinceSelection,
+} from "../domain/province-filter";
 
 type MapExperienceProps = {
   initialDate: string;
   initialPeriod: BeachPeriod;
+  initialProvince?: ProvinceSelection;
   dateOptions: DateOption[];
   recommendations: BeachRecommendation[];
   dataUnavailable?: boolean;
@@ -19,6 +24,7 @@ type MapExperienceProps = {
 export function MapExperience({
   initialDate,
   initialPeriod,
+  initialProvince = "all",
   dateOptions,
   recommendations,
   dataUnavailable = false,
@@ -29,18 +35,26 @@ export function MapExperience({
   const [, startTransition] = useTransition();
   const [date, setDate] = useState(initialDate);
   const [period, setPeriod] = useState<BeachPeriod>(initialPeriod);
+  const [province, setProvince] = useState<ProvinceSelection>(initialProvince);
 
   useEffect(() => {
     startTransition(() => {
       setDate(initialDate);
       setPeriod(initialPeriod);
+      setProvince(initialProvince);
     });
-  }, [initialDate, initialPeriod]);
+  }, [initialDate, initialPeriod, initialProvince]);
 
-  const updateQuery = (nextDate: string, nextPeriod: BeachPeriod) => {
+  const updateQuery = (
+    nextDate: string,
+    nextPeriod: BeachPeriod,
+    nextProvince: ProvinceSelection = province,
+  ) => {
     const nextParams = new URLSearchParams(searchParams.toString());
     nextParams.set("date", nextDate);
     nextParams.set("period", nextPeriod);
+    if (nextProvince === "all") nextParams.delete("province");
+    else nextParams.set("province", nextProvince);
     startTransition(() => {
       router.replace(`${pathname}?${nextParams.toString()}`, { scroll: false });
     });
@@ -54,6 +68,12 @@ export function MapExperience({
   const handlePeriodChange = (nextPeriod: BeachPeriod) => {
     setPeriod(nextPeriod);
     updateQuery(date, nextPeriod);
+  };
+
+  const handleProvinceChange = (value: ProvinceSelection) => {
+    const nextProvince = normalizeProvinceCode(value);
+    setProvince(nextProvince);
+    updateQuery(date, period, nextProvince);
   };
 
   return (
@@ -81,11 +101,13 @@ export function MapExperience({
           ) : (
             <SicilyMapView
               recommendations={recommendations}
+              province={province}
               date={date}
               period={period}
               dateOptions={dateOptions}
               onDateChange={handleDateChange}
               onPeriodChange={handlePeriodChange}
+              onProvinceChange={handleProvinceChange}
             />
           )}
         </div>

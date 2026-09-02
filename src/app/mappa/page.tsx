@@ -11,6 +11,7 @@ import {
   parsePeriodParam,
 } from "../../domain/date-selection";
 import type { BeachRecommendation } from "../../domain/beach";
+import { normalizeProvinceCode } from "../../domain/province-filter";
 
 export const metadata: Metadata = {
   title: "Mappa del Mare e del Vento in Sicilia",
@@ -33,6 +34,7 @@ export const metadata: Metadata = {
 type MappaSearchParams = {
   date?: string | string[];
   period?: string | string[];
+  province?: string | string[];
 };
 
 export const revalidate = 300;
@@ -50,6 +52,7 @@ export default async function MappaPage({
   const dateOptions = getDateOptions(new Date());
   const initialDate = parseDateParam(firstParam(query.date) ?? null, dateOptions[0].iso);
   const initialPeriod = parsePeriodParam(firstParam(query.period) ?? null);
+  const initialProvince = normalizeProvinceCode(firstParam(query.province));
   let recommendations: BeachRecommendation[];
   let dataUnavailable = false;
 
@@ -78,6 +81,7 @@ export default async function MappaPage({
       <MapExperience
         initialDate={initialDate}
         initialPeriod={initialPeriod}
+        initialProvince={initialProvince}
         dateOptions={dateOptions}
         recommendations={recommendations}
         dataUnavailable={dataUnavailable}

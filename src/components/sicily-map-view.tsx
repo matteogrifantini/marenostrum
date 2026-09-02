@@ -10,8 +10,13 @@ import {
 } from "../domain/beach-filters";
 import { MAP_POI_CATEGORIES, type MapPoiCategory } from "../domain/map-poi";
 import { filterMapRecommendations, type MapNearbySelection } from "../domain/map-filtering";
-import { hasMapCoordinates } from "../domain/map-markers";
+import { sortMappableRecommendations } from "../domain/map-markers";
 import type { DateOption } from "../domain/date-selection";
+import {
+  filterRecommendationsByProvince,
+  SICILIAN_PROVINCES,
+  type ProvinceSelection,
+} from "../domain/province-filter";
 import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { LeafletBeachMap } from "./leaflet-beach-map";
@@ -20,20 +25,24 @@ import { PeriodPicker } from "./period-picker";
 
 type SicilyMapViewProps = {
   recommendations: BeachRecommendation[];
+  province: ProvinceSelection;
   date: string;
   period: BeachPeriod;
   dateOptions: DateOption[];
   onDateChange: (date: string) => void;
   onPeriodChange: (period: BeachPeriod) => void;
+  onProvinceChange: (province: ProvinceSelection) => void;
 };
 
 export function SicilyMapView({
   recommendations,
+  province,
   date,
   period,
   dateOptions,
   onDateChange,
   onPeriodChange,
+  onProvinceChange,
 }: SicilyMapViewProps) {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
@@ -50,12 +59,16 @@ export function SicilyMapView({
     );
   };
 
+  const provinceRecommendations = useMemo(
+    () => filterRecommendationsByProvince(recommendations, province),
+    [province, recommendations],
+  );
   const visibleRecommendations = useMemo(
-    () => filterMapRecommendations(recommendations, filters, nearbySelection),
-    [filters, nearbySelection, recommendations],
+    () => filterMapRecommendations([...provinceRecommendations], filters, nearbySelection),
+    [filters, nearbySelection, provinceRecommendations],
   );
   const visibleMappableRecommendations = useMemo(
-    () => visibleRecommendations.filter(hasMapCoordinates),
+    () => sortMappableRecommendations([...visibleRecommendations]),
     [visibleRecommendations],
   );
   const activeFilterCount = filters.access.length + filters.tags.length + filters.services.length;
@@ -71,7 +84,25 @@ export function SicilyMapView({
       >
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <DayPicker options={dateOptions} value={date} onChange={onDateChange} />
-          <PeriodPicker value={period} onChange={onPeriodChange} />
+          <div className="flex flex-wrap items-center gap-2">
+            <PeriodPicker value={period} onChange={onPeriodChange} />
+            <label className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-[var(--control-surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.06)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
+              <span className="sr-only">Provincia della mappa</span>
+              <select
+                aria-label="Provincia della mappa"
+                value={province}
+                onChange={(event) => onProvinceChange(event.target.value as ProvinceSelection)}
+                className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
+              >
+                <option value="all">Tutta la Sicilia</option>
+                {SICILIAN_PROVINCES.map(({ code, label }) => (
+                  <option key={code} value={code}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
         </div>
 
         <div className="mt-3 grid gap-3 border-t border-[var(--line)] pt-3 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:items-center">
@@ -205,20 +236,53 @@ export function SicilyMapView({
           poiEnabled={poiEnabled}
           activePoiCategories={activePoiCategories}
         />
+      </section>
 
-        <div className="sr-only" aria-label="Rating delle spiagge sulla mappa">
-          {visibleMappableRecommendations.map(({ beach, score }) => (
-            <button
-              key={beach.slug}
-              type="button"
-              aria-label={`Spiaggia ${beach.name}, voto ${formatScoreOutOf100(score)} su 100`}
-              aria-pressed={selectedVisibleSlug === beach.slug}
-              onClick={() => setSelectedSlug(beach.slug)}
-            >
-              {beach.name}: {formatScoreOutOf100(score)}
-            </button>
-          ))}
+      <section className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[0_12px_34px_rgba(20,44,57,0.06)]">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p
+            data-testid="map-result-summary"
+            className="text-sm font-bold text-[var(--ink)]"
+          >
+            {visibleMappableRecommendations.length}{" "}
+            {visibleMappableRecommendations.length === 1 ? "spiaggia" : "spiagge"}
+          </p>
+          <div className="flex flex-wrap gap-2 text-xs font-semibold text-[var(--muted)]">
+            <span>80+ ottimo</span>
+            <span>60–79 buono</span>
+            <span>sotto 60 da valutare</span>
+          </div>
         </div>
+
+        {visibleMappableRecommendations.length === 0 ? (
+          <p className="mt-3 text-sm text-[var(--muted)]">
+            Nessuna spiaggia corrisponde ai filtri
+          </p>
+        ) : (
+          <details open className="mt-3 rounded-[1.1rem] border border-[var(--line)] bg-[var(--surface-muted)] px-4 py-3">
+            <summary className="cursor-pointer text-sm font-bold text-[var(--ink)]">
+              Elenco spiagge
+            </summary>
+            <div className="mt-3 flex flex-wrap gap-2" aria-label="Rating delle spiagge sulla mappa">
+              {visibleMappableRecommendations.map(({ beach, score }) => (
+                <button
+                  key={beach.slug}
+                  type="button"
+                  aria-pressed={selectedVisibleSlug === beach.slug}
+                  onClick={() => setSelectedSlug(beach.slug)}
+                  className={`inline-flex min-h-10 items-center rounded-full px-3 text-sm font-bold transition-colors ${
+                    selectedVisibleSlug === beach.slug
+                      ? "bg-[var(--ink)] text-white"
+                      : "bg-white text-[var(--ink)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.08)] hover:bg-[var(--surface)]"
+                  }`}
+                  title={`${formatScoreOutOf100(score)}/100`}
+                >
+                  {beach.name}
+                </button>
+              ))}
+            </div>
+          </details>
+        )}
       </section>
 
       <FilterSheet
