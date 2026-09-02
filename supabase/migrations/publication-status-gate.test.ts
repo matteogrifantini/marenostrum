@@ -13,7 +13,11 @@ describe("public publication status gate migration", () => {
     expect(migration).toMatch(
       /drop policy if exists "Conditions for published beaches are readable" on public\.beach_conditions;/,
     );
-    expect(migration).toMatch(/is_published = true/);
-    expect(migration).toMatch(/publication_status in \('verified', 'stale'\)/);
+    expect(migration).toMatch(
+      /create policy "Published beaches are readable"[\s\S]+using \(is_published = true and publication_status in \('verified', 'stale'\)\);/,
+    );
+    expect(migration).toMatch(
+      /create policy "Conditions for published beaches are readable"[\s\S]+beaches\.is_published = true[\s\S]+beaches\.publication_status in \('verified', 'stale'\)/,
+    );
   });
 });
