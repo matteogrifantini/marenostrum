@@ -120,6 +120,41 @@ function isPoiResponse(value: unknown): value is PoiResponse {
   return typeof value === "object" && value !== null;
 }
 
+type BeachMarkerModel = {
+  recommendation: MappableRecommendation;
+  className: string;
+  html: string;
+  iconSize: [number, number];
+  iconAnchor: [number, number];
+  title: string;
+  alt: string;
+  tooltip: string;
+  zIndexOffset: number;
+};
+
+export function buildBeachMarkerModels(
+  recommendations: BeachRecommendation[],
+  selectedSlug: string | null,
+): BeachMarkerModel[] {
+  return sortMappableRecommendations(recommendations).map((recommendation) => {
+    const { beach, score } = recommendation;
+    const scoreValue = formatScoreOutOf100(score);
+    const selected = beach.slug === selectedSlug;
+
+    return {
+      recommendation,
+      className: `map-rating-marker map-rating-marker--${scoreTone(score)}${selected ? " map-rating-marker--selected" : ""}`,
+      html: `<span>${scoreValue}</span>`,
+      iconSize: [44, 30],
+      iconAnchor: [22, 15],
+      title: `${beach.name}: voto ${scoreValue}`,
+      alt: `${beach.name}: voto ${scoreValue}`,
+      tooltip: `${beach.name} · ${scoreValue}`,
+      zIndexOffset: selected ? 10000 : Math.round(score * 10),
+    };
+  });
+}
+
 export function LeafletBeachMap({
   recommendations,
   selectedSlug,
@@ -296,24 +331,23 @@ export function LeafletBeachMap({
 
     ratingLayer.clearLayers();
     ratingMarkersRef.current.clear();
-    for (const recommendation of sortMappableRecommendations(recommendations)) {
-      const { beach, score } = recommendation;
-      const scoreValue = formatScoreOutOf100(score);
-      const selected = beach.slug === selectedSlug;
+    for (const markerModel of buildBeachMarkerModels(recommendations, selectedSlug)) {
+      const { recommendation, className, html, iconSize, iconAnchor, title, alt, tooltip, zIndexOffset } = markerModel;
+      const { beach } = recommendation;
       const marker = leaflet.marker([beach.latitude, beach.longitude], {
         icon: leaflet.divIcon({
-          className: `map-rating-marker map-rating-marker--${scoreTone(score)}${selected ? " map-rating-marker--selected" : ""}`,
-          html: `<span>${scoreValue}</span>`,
-          iconSize: [44, 30],
-          iconAnchor: [22, 15],
+          className,
+          html,
+          iconSize,
+          iconAnchor,
         }),
-        title: `${beach.name}: voto ${scoreValue}`,
-        alt: `${beach.name}: voto ${scoreValue}`,
+        title,
+        alt,
         keyboard: true,
-        zIndexOffset: selected ? 10000 : Math.round(score * 10),
+        zIndexOffset,
       });
       marker.on("click", () => onSelectBeach(beach.slug));
-      marker.bindTooltip(`${beach.name} · ${scoreValue}`, {
+      marker.bindTooltip(tooltip, {
         direction: "top",
         offset: [0, -16],
         className: "map-tooltip",

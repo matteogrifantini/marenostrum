@@ -21,6 +21,27 @@ type MapExperienceProps = {
   dataUnavailable?: boolean;
 };
 
+export function buildMapQueryHref({
+  pathname,
+  searchParams,
+  date,
+  period,
+  province,
+}: {
+  pathname: string;
+  searchParams: string;
+  date: string;
+  period: BeachPeriod;
+  province: ProvinceSelection;
+}) {
+  const nextParams = new URLSearchParams(searchParams);
+  nextParams.set("date", date);
+  nextParams.set("period", period);
+  if (province === "all") nextParams.delete("province");
+  else nextParams.set("province", province);
+  return `${pathname}?${nextParams.toString()}`;
+}
+
 export function MapExperience({
   initialDate,
   initialPeriod,
@@ -50,13 +71,17 @@ export function MapExperience({
     nextPeriod: BeachPeriod,
     nextProvince: ProvinceSelection = province,
   ) => {
-    const nextParams = new URLSearchParams(searchParams.toString());
-    nextParams.set("date", nextDate);
-    nextParams.set("period", nextPeriod);
-    if (nextProvince === "all") nextParams.delete("province");
-    else nextParams.set("province", nextProvince);
     startTransition(() => {
-      router.replace(`${pathname}?${nextParams.toString()}`, { scroll: false });
+      router.replace(
+        buildMapQueryHref({
+          pathname,
+          searchParams: searchParams.toString(),
+          date: nextDate,
+          period: nextPeriod,
+          province: nextProvince,
+        }),
+        { scroll: false },
+      );
     });
   };
 
