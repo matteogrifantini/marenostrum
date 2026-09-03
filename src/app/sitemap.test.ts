@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { TERRITORY_HUBS } from "../domain/territory-hubs";
 
 const { getAllPublishedBeachesMock } = vi.hoisted(() => ({
   getAllPublishedBeachesMock: vi.fn(),
@@ -67,6 +68,9 @@ describe("sitemap", () => {
         expect.objectContaining({ url: "https://marenostrum.app/privacy" }),
         expect.objectContaining({ url: "https://marenostrum.app/cookie" }),
         expect.objectContaining({ url: "https://marenostrum.app/termini" }),
+        ...TERRITORY_HUBS.map(({ slug }) =>
+          expect.objectContaining({ url: `https://marenostrum.app/localita/${slug}` }),
+        ),
       ]),
     );
     expect(result.some(({ url }) => url.includes("/spiagge/"))).toBe(false);
