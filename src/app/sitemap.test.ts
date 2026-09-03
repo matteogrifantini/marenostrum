@@ -20,6 +20,7 @@ describe("sitemap", () => {
       {
         slug: "mondello",
         provinceCode: "PA",
+        image: "/images/beaches/mondello.jpg",
         description: "Una spiaggia urbana con fondale basso e servizi vicini al centro di Palermo.",
         updatedAt: "2026-09-02T08:00:00.000Z",
       },
@@ -68,6 +69,7 @@ describe("sitemap", () => {
           priority: 0.85,
           changeFrequency: "daily",
           lastModified: new Date("2026-09-02T08:00:00.000Z"),
+          images: ["https://marenostrum.app/images/beaches/mondello.jpg"],
         }),
         expect.objectContaining({
           url: "https://marenostrum.app/spiagge/san-vito-lo-capo",

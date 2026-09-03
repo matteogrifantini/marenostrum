@@ -52,13 +52,27 @@ function latestBeachUpdate(beaches: readonly Beach[]) {
     .sort((left, right) => right.getTime() - left.getTime())[0];
 }
 
+function publicImageUrl(image: string | undefined) {
+  const normalized = image?.trim();
+  if (!normalized) return undefined;
+
+  try {
+    const url = new URL(normalized, BASE_URL);
+    return url.protocol === "https:" ? url.toString() : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function beachRoute(beach: Beach): MetadataRoute.Sitemap[number] {
   const lastModified = meaningfulDate(beach.updatedAt);
+  const image = publicImageUrl(beach.image);
   return {
     url: `${BASE_URL}/spiagge/${encodeURIComponent(beach.slug)}`,
     changeFrequency: "daily",
     priority: 0.85,
     ...(lastModified ? { lastModified } : {}),
+    ...(image ? { images: [image] } : {}),
   };
 }
 
