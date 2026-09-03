@@ -1,10 +1,13 @@
-export type SicilianWebcamVerificationRecord = {
+export type WebcamVerificationRecord = {
   source_url: string;
   status: "online" | "offline" | "unknown" | "stale";
   verification_note: string;
 };
 
-export type SicilianContentVerificationIssue = {
+/** @deprecated Use WebcamVerificationRecord for new national imports. */
+export type SicilianWebcamVerificationRecord = WebcamVerificationRecord;
+
+export type ContentVerificationIssue = {
   index: number;
   code:
     | "record_not_object"
@@ -15,6 +18,9 @@ export type SicilianContentVerificationIssue = {
     | "verification_note_missing";
   message: string;
 };
+
+/** @deprecated Use ContentVerificationIssue for new national imports. */
+export type SicilianContentVerificationIssue = ContentVerificationIssue;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -35,12 +41,12 @@ function isHttpUrl(value: unknown): value is string {
   }
 }
 
-export function validateSicilianWebcamVerificationCatalog(
+export function validateWebcamVerificationCatalog(
   input: unknown[],
   candidateSourceUrls: ReadonlySet<string>,
-): { records: SicilianWebcamVerificationRecord[]; issues: SicilianContentVerificationIssue[] } {
-  const records: SicilianWebcamVerificationRecord[] = [];
-  const issues: SicilianContentVerificationIssue[] = [];
+): { records: WebcamVerificationRecord[]; issues: ContentVerificationIssue[] } {
+  const records: WebcamVerificationRecord[] = [];
+  const issues: ContentVerificationIssue[] = [];
   const seenSources = new Set<string>();
 
   input.forEach((value, index) => {
@@ -70,9 +76,17 @@ export function validateSicilianWebcamVerificationCatalog(
     }
 
     if (issues.length === issueCountBefore) {
-      records.push(value as SicilianWebcamVerificationRecord);
+      records.push(value as WebcamVerificationRecord);
     }
   });
 
   return { records, issues };
+}
+
+/** @deprecated Use validateWebcamVerificationCatalog for new national imports. */
+export function validateSicilianWebcamVerificationCatalog(
+  input: unknown[],
+  candidateSourceUrls: ReadonlySet<string>,
+): { records: SicilianWebcamVerificationRecord[]; issues: SicilianContentVerificationIssue[] } {
+  return validateWebcamVerificationCatalog(input, candidateSourceUrls);
 }

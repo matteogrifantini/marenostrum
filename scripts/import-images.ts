@@ -4,8 +4,8 @@ import { createClient } from "@supabase/supabase-js";
 import beaches from "../data/catalog/sicilia/beaches.json";
 import imageAssets from "../data/catalog/sicilia/image-assets.json";
 import {
-  validateSicilianImageCatalog,
-  type SicilianImageAssetRecord,
+  validateImageCatalog,
+  type ImageAssetRecord,
 } from "../src/data/catalog-image-contract";
 
 const BEACH_SLUGS = new Set(beaches.map((beach) => beach.slug));
@@ -41,7 +41,7 @@ function createSupabaseAdminClient() {
   });
 }
 
-function getLocalAssetPath(asset: SicilianImageAssetRecord) {
+function getLocalAssetPath(asset: ImageAssetRecord) {
   const publicRoot = resolve(process.cwd(), "public");
   const assetPath = resolve(publicRoot, asset.image_path.replace(/^\/+/, ""));
   const assetRelativePath = relative(publicRoot, assetPath);
@@ -53,7 +53,7 @@ function getLocalAssetPath(asset: SicilianImageAssetRecord) {
   return assetPath;
 }
 
-function validateLocalAssets(records: SicilianImageAssetRecord[]) {
+function validateLocalAssets(records: ImageAssetRecord[]) {
   for (const record of records) {
     const path = getLocalAssetPath(record);
     if (!existsSync(path) || !statSync(path).isFile() || statSync(path).size === 0) {
@@ -64,7 +64,7 @@ function validateLocalAssets(records: SicilianImageAssetRecord[]) {
 
 async function loadDraftBeaches(
   client: ReturnType<typeof createSupabaseAdminClient>,
-  records: SicilianImageAssetRecord[],
+  records: ImageAssetRecord[],
 ) {
   const { data, error } = await client
     .from("beaches")
@@ -90,7 +90,7 @@ function isBlank(value: string | null) {
 
 function getExistingAction(
   row: BeachRow,
-  asset: SicilianImageAssetRecord,
+  asset: ImageAssetRecord,
 ) {
   const isExact = IMAGE_FIELDS.every((field) => row[field] === asset[field]);
   if (isExact) return "skip" as const;
@@ -103,7 +103,7 @@ function getExistingAction(
 
 function buildUpdatePlan(
   rowsBySlug: Map<string, BeachRow>,
-  records: SicilianImageAssetRecord[],
+  records: ImageAssetRecord[],
 ) {
   return records.map((asset) => {
     const row = rowsBySlug.get(asset.slug);
@@ -146,7 +146,7 @@ async function applyImageMetadata(
 
 async function verifyImageMetadata(
   client: ReturnType<typeof createSupabaseAdminClient>,
-  records: SicilianImageAssetRecord[],
+  records: ImageAssetRecord[],
 ) {
   const { data, error } = await client
     .from("beaches")
@@ -167,7 +167,7 @@ async function verifyImageMetadata(
 }
 
 async function main() {
-  const validation = validateSicilianImageCatalog(imageAssets, BEACH_SLUGS);
+  const validation = validateImageCatalog(imageAssets, BEACH_SLUGS);
   if (validation.issues.length > 0) {
     console.error(JSON.stringify({ mode: "rejected", issues: validation.issues }, null, 2));
     process.exitCode = 1;

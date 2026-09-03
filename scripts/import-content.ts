@@ -3,10 +3,10 @@ import { createClient } from "@supabase/supabase-js";
 import beaches from "../data/catalog/sicilia/beaches.json";
 import candidates from "../data/catalog/sicilia/content-candidates.json";
 import {
-  validateSicilianContentCatalog,
-  type SicilianMediaContentRecord,
-  type SicilianParkingContentRecord,
-  type SicilianWebcamContentRecord,
+  validateContentCatalog,
+  type MediaContentRecord,
+  type ParkingContentRecord,
+  type WebcamContentRecord,
 } from "../src/data/catalog-content-contract";
 
 const BEACH_SLUGS = new Set(beaches.map((beach) => beach.slug));
@@ -45,7 +45,7 @@ type MediaInsert = {
   id: string;
   beach_id: string;
   source_id: string;
-  kind: SicilianMediaContentRecord["kind"];
+  kind: MediaContentRecord["kind"];
   provider: string;
   provider_item_id: string | null;
   source_url: string;
@@ -201,7 +201,7 @@ async function loadOrCreateSources(
 }
 
 function buildParkingRows(
-  records: SicilianParkingContentRecord[],
+  records: ParkingContentRecord[],
   beachesBySlug: Map<string, BeachRow>,
   sourcesByKey: Map<string, SourceRow>,
   checkedAt: string,
@@ -230,7 +230,7 @@ function buildParkingRows(
 }
 
 function buildMediaRows(
-  records: SicilianMediaContentRecord[],
+  records: MediaContentRecord[],
   beachesBySlug: Map<string, BeachRow>,
   sourcesByKey: Map<string, SourceRow>,
   expiresAt: string,
@@ -259,7 +259,7 @@ function buildMediaRows(
 }
 
 function buildWebcamRows(
-  records: SicilianWebcamContentRecord[],
+  records: WebcamContentRecord[],
   beachesBySlug: Map<string, BeachRow>,
   sourcesByKey: Map<string, SourceRow>,
   checkedAt: string,
@@ -338,7 +338,7 @@ async function applyRows(
 }
 
 async function main() {
-  const validation = validateSicilianContentCatalog(candidates, BEACH_SLUGS);
+  const validation = validateContentCatalog(candidates, BEACH_SLUGS);
   if (validation.issues.length > 0) {
     console.error(JSON.stringify({ mode: "rejected", issues: validation.issues }, null, 2));
     process.exitCode = 1;

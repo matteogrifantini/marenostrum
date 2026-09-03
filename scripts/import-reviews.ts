@@ -3,8 +3,8 @@ import { createClient } from "@supabase/supabase-js";
 import beaches from "../data/catalog/sicilia/beaches.json";
 import candidates from "../data/catalog/sicilia/review-candidates.json";
 import {
-  validateSicilianReviewCatalog,
-  type SicilianReviewProfileCandidate,
+  validateReviewCatalog,
+  type ReviewProfileCandidate,
 } from "../src/data/catalog-review-contract";
 
 const BEACH_SLUGS = new Set(beaches.map((beach) => beach.slug));
@@ -122,7 +122,7 @@ async function loadExistingProfiles(
 }
 
 function buildRows(
-  records: SicilianReviewProfileCandidate[],
+  records: ReviewProfileCandidate[],
   beachesBySlug: Map<string, BeachRow>,
   existingByBeachId: Map<string, ExistingReviewProfileRow>,
   checkedAt: string,
@@ -195,7 +195,7 @@ async function applyRows(
 }
 
 async function main() {
-  const validation = validateSicilianReviewCatalog(candidates, BEACH_SLUGS);
+  const validation = validateReviewCatalog(candidates, BEACH_SLUGS);
   if (validation.issues.length > 0) {
     console.error(JSON.stringify({ mode: "rejected", issues: validation.issues }, null, 2));
     process.exitCode = 1;

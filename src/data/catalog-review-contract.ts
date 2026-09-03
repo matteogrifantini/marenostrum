@@ -1,4 +1,4 @@
-export type SicilianReviewProfileCandidate = {
+export type ReviewProfileCandidate = {
   slug: string;
   provider: "google";
   place_id: string | null;
@@ -6,7 +6,10 @@ export type SicilianReviewProfileCandidate = {
   notes: string;
 };
 
-export type SicilianReviewCatalogIssue = {
+/** @deprecated Use ReviewProfileCandidate for new national imports. */
+export type SicilianReviewProfileCandidate = ReviewProfileCandidate;
+
+export type ReviewCatalogIssue = {
   index: number;
   code:
     | "record_not_object"
@@ -20,6 +23,9 @@ export type SicilianReviewCatalogIssue = {
     | "maps_url_not_google";
   message: string;
 };
+
+/** @deprecated Use ReviewCatalogIssue for new national imports. */
+export type SicilianReviewCatalogIssue = ReviewCatalogIssue;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -40,12 +46,12 @@ function parseHttpUrl(value: unknown): URL | null {
   }
 }
 
-export function validateSicilianReviewCatalog(
+export function validateReviewCatalog(
   input: unknown[],
   beachSlugs: ReadonlySet<string>,
-): { records: SicilianReviewProfileCandidate[]; issues: SicilianReviewCatalogIssue[] } {
-  const records: SicilianReviewProfileCandidate[] = [];
-  const issues: SicilianReviewCatalogIssue[] = [];
+): { records: ReviewProfileCandidate[]; issues: ReviewCatalogIssue[] } {
+  const records: ReviewProfileCandidate[] = [];
+  const issues: ReviewCatalogIssue[] = [];
   const seenSlugs = new Set<string>();
 
   input.forEach((value, index) => {
@@ -77,7 +83,7 @@ export function validateSicilianReviewCatalog(
     const mapsUrl = parseHttpUrl(value.maps_url);
     if (!mapsUrl) {
       issues.push({ index, code: "maps_url_invalid", message: "maps_url must be an HTTP(S) URL" });
-    } else if (!['www.google.com', 'maps.google.com'].includes(mapsUrl.hostname)) {
+    } else if (!["www.google.com", "maps.google.com"].includes(mapsUrl.hostname)) {
       issues.push({ index, code: "maps_url_not_google", message: "maps_url must point to Google Maps" });
     }
 
@@ -86,7 +92,7 @@ export function validateSicilianReviewCatalog(
     }
 
     if (issues.length === issueCountBefore) {
-      records.push(value as SicilianReviewProfileCandidate);
+      records.push(value as ReviewProfileCandidate);
     }
   });
 
@@ -101,4 +107,12 @@ export function validateSicilianReviewCatalog(
   }
 
   return { records, issues };
+}
+
+/** @deprecated Use validateReviewCatalog for new national imports. */
+export function validateSicilianReviewCatalog(
+  input: unknown[],
+  beachSlugs: ReadonlySet<string>,
+): { records: SicilianReviewProfileCandidate[]; issues: SicilianReviewCatalogIssue[] } {
+  return validateReviewCatalog(input, beachSlugs);
 }

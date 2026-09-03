@@ -3,12 +3,12 @@ import beaches from "../data/catalog/sicilia/beaches.json";
 import candidates from "../data/catalog/sicilia/content-candidates.json";
 import verification from "../data/catalog/sicilia/content-verification.json";
 import {
-  validateSicilianContentCatalog,
-  type SicilianParkingContentRecord,
+  validateContentCatalog,
+  type ParkingContentRecord,
 } from "../src/data/catalog-content-contract";
 import {
-  validateSicilianWebcamVerificationCatalog,
-  type SicilianWebcamVerificationRecord,
+  validateWebcamVerificationCatalog,
+  type WebcamVerificationRecord,
 } from "../src/data/catalog-content-verification";
 
 const BEACH_SLUGS = new Set(beaches.map((beach) => beach.slug));
@@ -124,7 +124,7 @@ async function fetchOverpassElements(references: OsmReference[]) {
   return elements;
 }
 
-async function fetchOsmElements(records: SicilianParkingContentRecord[]) {
+async function fetchOsmElements(records: ParkingContentRecord[]) {
   const references = records.map((record) => osmReference(record.source_url));
   const byReference = new Map<string, OsmElement>();
   const grouped = new Map<"way" | "node", string[]>();
@@ -183,9 +183,9 @@ async function fetchOsmElements(records: SicilianParkingContentRecord[]) {
   }
 }
 
-async function verifyParkingCandidates(records: SicilianParkingContentRecord[]) {
+async function verifyParkingCandidates(records: ParkingContentRecord[]) {
   const elements = await fetchOsmElements(records);
-  const verified: Array<{ record: SicilianParkingContentRecord; element: OsmElement }> = [];
+  const verified: Array<{ record: ParkingContentRecord; element: OsmElement }> = [];
 
   for (const record of records) {
     const reference = osmReference(record.source_url);
@@ -283,8 +283,8 @@ async function applyVerifiedContent(
   client: ReturnType<typeof createSupabaseAdminClient>,
   beachesBySlug: Map<string, BeachRow>,
   sources: SourceRow[],
-  parkingVerification: Array<{ record: SicilianParkingContentRecord; element: OsmElement }>,
-  webcamVerification: SicilianWebcamVerificationRecord[],
+  parkingVerification: Array<{ record: ParkingContentRecord; element: OsmElement }>,
+  webcamVerification: WebcamVerificationRecord[],
 ) {
   const sourceByKey = new Map(sources.map((source) => [sourceKey(source.beach_id, source.source_url), source]));
   const rows = await loadContentRows(client, beachesBySlug, sources);
@@ -370,7 +370,7 @@ async function applyVerifiedContent(
 }
 
 async function main() {
-  const contentValidation = validateSicilianContentCatalog(candidates, BEACH_SLUGS);
+  const contentValidation = validateContentCatalog(candidates, BEACH_SLUGS);
   if (contentValidation.issues.length > 0) {
     console.error(JSON.stringify({ mode: "rejected", issues: contentValidation.issues }, null, 2));
     process.exitCode = 1;
@@ -378,7 +378,7 @@ async function main() {
   }
 
   const webcamCandidateSources = new Set(contentValidation.catalog.webcams.map((record) => record.source_url));
-  const webcamValidation = validateSicilianWebcamVerificationCatalog(
+  const webcamValidation = validateWebcamVerificationCatalog(
     verification.webcams,
     webcamCandidateSources,
   );
@@ -388,7 +388,7 @@ async function main() {
     return;
   }
 
-  let parkingVerification: Array<{ record: SicilianParkingContentRecord; element: OsmElement }>;
+  let parkingVerification: Array<{ record: ParkingContentRecord; element: OsmElement }>;
   try {
     parkingVerification = await verifyParkingCandidates(contentValidation.catalog.parking);
   } catch (error) {

@@ -5,12 +5,12 @@ import { createClient } from "@supabase/supabase-js";
 import beaches from "../data/catalog/sicilia/beaches.json";
 import imageAssets from "../data/catalog/sicilia/image-assets.json";
 import {
-  validateSicilianImageCatalog,
-  type SicilianImageAssetRecord,
+  validateImageCatalog,
+  type ImageAssetRecord,
 } from "../src/data/catalog-image-contract";
 import {
-  buildSicilianImageMediaCandidates,
-  type SicilianImageMediaCandidate,
+  buildImageMediaCandidates,
+  type ImageMediaCandidate,
 } from "../src/services/catalog-image-media-import";
 
 const BEACH_SLUGS = new Set(beaches.map((beach) => beach.slug));
@@ -38,7 +38,7 @@ type ExistingMediaRow = {
   publication_status: string;
 };
 
-type MediaInsert = Omit<SicilianImageMediaCandidate, "slug"> & {
+type MediaInsert = Omit<ImageMediaCandidate, "slug"> & {
   id: string;
   source_id: string;
 };
@@ -74,7 +74,7 @@ function createSupabaseAdminClient() {
   });
 }
 
-function getLocalAssetPath(asset: SicilianImageAssetRecord) {
+function getLocalAssetPath(asset: ImageAssetRecord) {
   const publicRoot = resolve(process.cwd(), "public");
   const assetPath = resolve(publicRoot, asset.image_path.replace(/^\/+/, ""));
   const assetRelativePath = relative(publicRoot, assetPath);
@@ -86,7 +86,7 @@ function getLocalAssetPath(asset: SicilianImageAssetRecord) {
   return assetPath;
 }
 
-function validateLocalAssets(records: SicilianImageAssetRecord[]) {
+function validateLocalAssets(records: ImageAssetRecord[]) {
   for (const record of records) {
     const path = getLocalAssetPath(record);
     if (!existsSync(path) || !statSync(path).isFile() || statSync(path).size === 0) {
@@ -116,7 +116,7 @@ async function loadBeaches(
 async function loadOrCreateSources(
   client: ReturnType<typeof createSupabaseAdminClient>,
   beachesBySlug: Map<string, BeachRow>,
-  assets: SicilianImageAssetRecord[],
+  assets: ImageAssetRecord[],
   checkedAt: string,
   nextCheckAt: string,
 ): Promise<Map<string, SourceRow>> {
@@ -171,7 +171,7 @@ async function loadOrCreateSources(
 }
 
 function buildRows(
-  candidates: SicilianImageMediaCandidate[],
+  candidates: ImageMediaCandidate[],
   sourcesByKey: Map<string, SourceRow>,
 ): MediaInsert[] {
   return candidates.map((candidate) => {
@@ -256,7 +256,7 @@ async function applyRows(
 }
 
 async function main() {
-  const validation = validateSicilianImageCatalog(imageAssets, BEACH_SLUGS);
+  const validation = validateImageCatalog(imageAssets, BEACH_SLUGS);
   if (validation.issues.length > 0) {
     console.error(JSON.stringify({ mode: "rejected", issues: validation.issues }, null, 2));
     process.exitCode = 1;
@@ -283,7 +283,7 @@ async function main() {
   const client = createSupabaseAdminClient();
   const beachesBySlug = await loadBeaches(client);
   const beachIds = new Map(Array.from(beachesBySlug.values()).map((beach) => [beach.slug, beach.id]));
-  const candidates = buildSicilianImageMediaCandidates(validation.records, beachIds, verifiedAt, expiresAt);
+  const candidates = buildImageMediaCandidates(validation.records, beachIds, verifiedAt, expiresAt);
   const sourcesByKey = await loadOrCreateSources(client, beachesBySlug, validation.records, verifiedAt, expiresAt);
   const rows = buildRows(candidates, sourcesByKey);
   await applyRows(client, rows);

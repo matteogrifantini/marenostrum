@@ -2,9 +2,9 @@ import { createClient } from "@supabase/supabase-js";
 import candidates from "../data/catalog/sicilia/beaches.json";
 import contents from "../data/catalog/sicilia/beach-content.json";
 import {
-  buildSicilianMasterDraftImport,
-  type SicilianMasterDraftBeachInsert,
-  type SicilianMasterDraftContentSource,
+  buildMasterDraftImport,
+  type MasterDraftBeachInsert,
+  type MasterDraftContentSource,
 } from "../src/services/catalog-master-import";
 
 function createAdminClient() {
@@ -22,8 +22,8 @@ function createAdminClient() {
 
 async function applyDraftImport(
   client: ReturnType<typeof createAdminClient>,
-  beaches: SicilianMasterDraftBeachInsert[],
-  sources: SicilianMasterDraftContentSource[],
+  beaches: MasterDraftBeachInsert[],
+  sources: MasterDraftContentSource[],
 ) {
   const slugs = beaches.map((beach) => beach.slug);
   const existingResult = await client
@@ -95,7 +95,7 @@ async function applyDraftImport(
 }
 
 async function main() {
-  const result = buildSicilianMasterDraftImport({
+  const result = buildMasterDraftImport({
     candidates,
     contents,
   });

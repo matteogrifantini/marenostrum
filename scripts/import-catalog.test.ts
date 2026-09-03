@@ -2,7 +2,7 @@ import catalog from "../data/catalog/sicilia/beaches.json";
 import { describe, expect, it } from "vitest";
 import { buildCatalogReport } from "./catalog-validation";
 
-describe("Sicilian catalog import report", () => {
+describe("national catalog import report", () => {
   it("reports the 80-record catalog as valid new draft candidates", () => {
     const report = buildCatalogReport(catalog);
 

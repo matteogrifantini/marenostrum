@@ -1,6 +1,6 @@
 # Mare Nostrum
 
-Guida ragionata alle spiagge siciliane: condizioni del mare, vento, accessibilità e una spiegazione semplice del perché una spiaggia è una buona scelta oggi.
+Guida ragionata alle spiagge italiane: condizioni del mare, vento, accessibilità e una spiegazione semplice del perché una spiaggia è una buona scelta oggi.
 
 Il progetto parte da un prototipo locale con dati demo. L’obiettivo tecnico è restare nel perimetro gratuito:
 

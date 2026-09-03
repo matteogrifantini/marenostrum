@@ -1,4 +1,4 @@
-export type SicilianParkingContentRecord = {
+export type ParkingContentRecord = {
   slug: string;
   name: string;
   facility_type: string;
@@ -11,7 +11,7 @@ export type SicilianParkingContentRecord = {
   source_url: string;
 };
 
-export type SicilianWebcamContentRecord = {
+export type WebcamContentRecord = {
   slug: string;
   name: string;
   provider: string;
@@ -25,7 +25,7 @@ export type SicilianWebcamContentRecord = {
   source_url: string;
 };
 
-export type SicilianMediaContentRecord = {
+export type MediaContentRecord = {
   slug: string;
   kind: "video" | "embed";
   provider: string;
@@ -37,13 +37,22 @@ export type SicilianMediaContentRecord = {
   notes: string;
 };
 
-export type SicilianContentCatalog = {
-  parking: SicilianParkingContentRecord[];
-  webcams: SicilianWebcamContentRecord[];
-  media: SicilianMediaContentRecord[];
+export type ContentCatalog = {
+  parking: ParkingContentRecord[];
+  webcams: WebcamContentRecord[];
+  media: MediaContentRecord[];
 };
 
-export type SicilianContentCatalogValidationIssue = {
+/** @deprecated Use the national content record names for new imports. */
+export type SicilianParkingContentRecord = ParkingContentRecord;
+/** @deprecated Use the national content record names for new imports. */
+export type SicilianWebcamContentRecord = WebcamContentRecord;
+/** @deprecated Use the national content record names for new imports. */
+export type SicilianMediaContentRecord = MediaContentRecord;
+/** @deprecated Use ContentCatalog for new imports. */
+export type SicilianContentCatalog = ContentCatalog;
+
+export type ContentCatalogValidationIssue = {
   index: number;
   collection: "parking" | "webcams" | "media" | "catalog";
   code:
@@ -58,11 +67,14 @@ export type SicilianContentCatalogValidationIssue = {
   message: string;
 };
 
-const SICILY_BOUNDS = {
+/** @deprecated Use ContentCatalogValidationIssue for new imports. */
+export type SicilianContentCatalogValidationIssue = ContentCatalogValidationIssue;
+
+const ITALY_BOUNDS = {
   minLatitude: 35,
-  maxLatitude: 39,
-  minLongitude: 11,
-  maxLongitude: 16,
+  maxLatitude: 48,
+  minLongitude: 6,
+  maxLongitude: 19,
 } as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -88,24 +100,24 @@ function isHttpUrl(value: unknown): value is string {
   }
 }
 
-function hasSicilianCoordinates(value: Record<string, unknown>): boolean {
+function hasItalianCoordinates(value: Record<string, unknown>): boolean {
   return (
     typeof value.latitude === "number" &&
     Number.isFinite(value.latitude) &&
-    value.latitude >= SICILY_BOUNDS.minLatitude &&
-    value.latitude <= SICILY_BOUNDS.maxLatitude &&
+    value.latitude >= ITALY_BOUNDS.minLatitude &&
+    value.latitude <= ITALY_BOUNDS.maxLatitude &&
     typeof value.longitude === "number" &&
     Number.isFinite(value.longitude) &&
-    value.longitude >= SICILY_BOUNDS.minLongitude &&
-    value.longitude <= SICILY_BOUNDS.maxLongitude
+    value.longitude >= ITALY_BOUNDS.minLongitude &&
+    value.longitude <= ITALY_BOUNDS.maxLongitude
   );
 }
 
 function addIssue(
-  issues: SicilianContentCatalogValidationIssue[],
+  issues: ContentCatalogValidationIssue[],
   index: number,
-  collection: SicilianContentCatalogValidationIssue["collection"],
-  code: SicilianContentCatalogValidationIssue["code"],
+  collection: ContentCatalogValidationIssue["collection"],
+  code: ContentCatalogValidationIssue["code"],
   message: string,
 ) {
   issues.push({ index, collection, code, message });
@@ -114,10 +126,10 @@ function addIssue(
 function validateCommonFields(
   value: Record<string, unknown>,
   index: number,
-  collection: SicilianContentCatalogValidationIssue["collection"],
+  collection: ContentCatalogValidationIssue["collection"],
   beachSlugs: ReadonlySet<string>,
   seenSources: Set<string>,
-  issues: SicilianContentCatalogValidationIssue[],
+  issues: ContentCatalogValidationIssue[],
 ) {
   if (!isNonEmptyString(value.slug)) {
     addIssue(issues, index, collection, "required_field_missing", "slug is required");
@@ -141,8 +153,8 @@ function validateParkingRecord(
   index: number,
   beachSlugs: ReadonlySet<string>,
   seenSources: Set<string>,
-): { record: SicilianParkingContentRecord | null; issues: SicilianContentCatalogValidationIssue[] } {
-  const issues: SicilianContentCatalogValidationIssue[] = [];
+): { record: ParkingContentRecord | null; issues: ContentCatalogValidationIssue[] } {
+  const issues: ContentCatalogValidationIssue[] = [];
   const collection = "parking" as const;
 
   if (!isRecord(value)) {
@@ -158,13 +170,13 @@ function validateParkingRecord(
     }
   }
 
-  if (!hasSicilianCoordinates(value)) {
+  if (!hasItalianCoordinates(value)) {
     addIssue(
       issues,
       index,
       collection,
       "coordinates_invalid",
-      "latitude/longitude must be finite coordinates within Sicily bounds",
+      "latitude/longitude must be finite coordinates within Italy bounds",
     );
   }
 
@@ -175,7 +187,7 @@ function validateParkingRecord(
   }
 
   if (issues.length > 0) return { record: null, issues };
-  return { record: value as SicilianParkingContentRecord, issues };
+  return { record: value as ParkingContentRecord, issues };
 }
 
 function validateWebcamRecord(
@@ -183,8 +195,8 @@ function validateWebcamRecord(
   index: number,
   beachSlugs: ReadonlySet<string>,
   seenSources: Set<string>,
-): { record: SicilianWebcamContentRecord | null; issues: SicilianContentCatalogValidationIssue[] } {
-  const issues: SicilianContentCatalogValidationIssue[] = [];
+): { record: WebcamContentRecord | null; issues: ContentCatalogValidationIssue[] } {
+  const issues: ContentCatalogValidationIssue[] = [];
   const collection = "webcams" as const;
 
   if (!isRecord(value)) {
@@ -208,18 +220,18 @@ function validateWebcamRecord(
     addIssue(issues, index, collection, "required_field_missing", "webcam candidates must start with status unknown");
   }
 
-  if (!hasSicilianCoordinates(value)) {
+  if (!hasItalianCoordinates(value)) {
     addIssue(
       issues,
       index,
       collection,
       "coordinates_invalid",
-      "latitude/longitude must be finite coordinates within Sicily bounds",
+      "latitude/longitude must be finite coordinates within Italy bounds",
     );
   }
 
   if (issues.length > 0) return { record: null, issues };
-  return { record: value as SicilianWebcamContentRecord, issues };
+  return { record: value as WebcamContentRecord, issues };
 }
 
 function validateMediaRecord(
@@ -227,8 +239,8 @@ function validateMediaRecord(
   index: number,
   beachSlugs: ReadonlySet<string>,
   seenSources: Set<string>,
-): { record: SicilianMediaContentRecord | null; issues: SicilianContentCatalogValidationIssue[] } {
-  const issues: SicilianContentCatalogValidationIssue[] = [];
+): { record: MediaContentRecord | null; issues: ContentCatalogValidationIssue[] } {
+  const issues: ContentCatalogValidationIssue[] = [];
   const collection = "media" as const;
 
   if (!isRecord(value)) {
@@ -267,15 +279,15 @@ function validateMediaRecord(
   }
 
   if (issues.length > 0) return { record: null, issues };
-  return { record: value as SicilianMediaContentRecord, issues };
+  return { record: value as MediaContentRecord, issues };
 }
 
-export function validateSicilianContentCatalog(
+export function validateContentCatalog(
   input: unknown,
   beachSlugs: ReadonlySet<string>,
-): { catalog: SicilianContentCatalog; issues: SicilianContentCatalogValidationIssue[] } {
-  const emptyCatalog: SicilianContentCatalog = { parking: [], webcams: [], media: [] };
-  const issues: SicilianContentCatalogValidationIssue[] = [];
+): { catalog: ContentCatalog; issues: ContentCatalogValidationIssue[] } {
+  const emptyCatalog: ContentCatalog = { parking: [], webcams: [], media: [] };
+  const issues: ContentCatalogValidationIssue[] = [];
 
   if (!isRecord(input)) {
     addIssue(issues, -1, "catalog", "record_not_object", "Content catalog must be an object");
@@ -296,9 +308,9 @@ export function validateSicilianContentCatalog(
     addIssue(issues, -1, "catalog", "required_field_missing", "media must be an array");
   }
 
-  const parkingRecords: SicilianParkingContentRecord[] = [];
-  const webcamRecords: SicilianWebcamContentRecord[] = [];
-  const mediaRecords: SicilianMediaContentRecord[] = [];
+  const parkingRecords: ParkingContentRecord[] = [];
+  const webcamRecords: WebcamContentRecord[] = [];
+  const mediaRecords: MediaContentRecord[] = [];
 
   if (Array.isArray(parking)) {
     const seenSources = new Set<string>();
@@ -331,4 +343,12 @@ export function validateSicilianContentCatalog(
     catalog: { parking: parkingRecords, webcams: webcamRecords, media: mediaRecords },
     issues,
   };
+}
+
+/** @deprecated Use validateContentCatalog for new national imports. */
+export function validateSicilianContentCatalog(
+  input: unknown,
+  beachSlugs: ReadonlySet<string>,
+): { catalog: SicilianContentCatalog; issues: SicilianContentCatalogValidationIssue[] } {
+  return validateContentCatalog(input, beachSlugs);
 }

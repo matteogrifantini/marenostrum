@@ -1,10 +1,10 @@
 import {
-  validateSicilianCatalog,
+  validateCatalog,
   type CatalogValidationIssue,
-  type SicilianCatalogRecord,
+  type CatalogRecord,
 } from "../data/catalog-contract";
 
-export type CatalogCandidateInsert = Omit<SicilianCatalogRecord, "notes"> & {
+export type CatalogCandidateInsert = Omit<CatalogRecord, "notes"> & {
   notes: string | null;
 };
 
@@ -14,7 +14,7 @@ export type CatalogCandidateWriteStore = {
 
 export class CatalogValidationError extends Error {
   constructor(public readonly issues: CatalogValidationIssue[]) {
-    super("Sicilian catalog validation failed");
+    super("National catalog validation failed");
     this.name = "CatalogValidationError";
   }
 }
@@ -26,7 +26,7 @@ export async function importCatalogCandidates({
   records: unknown[];
   store: CatalogCandidateWriteStore;
 }): Promise<{ candidates: number }> {
-  const validation = validateSicilianCatalog(records);
+  const validation = validateCatalog(records);
 
   if (validation.issues.length > 0) {
     throw new CatalogValidationError(validation.issues);
