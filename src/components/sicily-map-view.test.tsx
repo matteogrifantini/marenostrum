@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { demoRecommendations } from "../data/demo-beaches";
 import { getDateOptions } from "../domain/date-selection";
@@ -315,6 +315,11 @@ describe("SicilyMapView", () => {
     expect(screen.getByTestId("map-result-summary")).toHaveTextContent(
       "2 spiagge · Tutta la Sicilia",
     );
+    expect(
+      within(screen.getByRole("combobox", { name: "Provincia della mappa" })).getByRole("option", {
+        name: "Tutta la Sicilia",
+      }),
+    ).toHaveProperty("selected", true);
   });
 
   it("starts the beach disclosure list collapsed", () => {

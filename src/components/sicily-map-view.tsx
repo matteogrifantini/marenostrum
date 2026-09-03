@@ -17,7 +17,6 @@ import {
   SICILIAN_PROVINCES,
   type ProvinceSelection,
 } from "../domain/province-filter";
-import { buildNationalLocationLabel } from "../domain/seo/site-copy";
 import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { LeafletBeachMap } from "./leaflet-beach-map";
@@ -82,11 +81,8 @@ export function SicilyMapView({
     ? selectedSlug
     : null;
   const provinceLabel = province === "all"
-    ? buildNationalLocationLabel()
-    : buildNationalLocationLabel(
-        undefined,
-        SICILIAN_PROVINCES.find(({ code }) => code === province)?.label ?? province,
-      );
+    ? "Tutta la Sicilia"
+    : `Provincia di ${SICILIAN_PROVINCES.find(({ code }) => code === province)?.label ?? province}`;
 
   return (
     <div className="flex flex-col gap-4">
@@ -106,7 +102,7 @@ export function SicilyMapView({
                 onChange={(event) => onProvinceChange(event.target.value as ProvinceSelection)}
                 className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
               >
-                <option value="all">{buildNationalLocationLabel()}</option>
+                <option value="all">Tutta la Sicilia</option>
                 {SICILIAN_PROVINCES.map(({ code, label }) => (
                   <option key={code} value={code}>
                     {label}

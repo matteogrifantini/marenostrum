@@ -149,6 +149,14 @@ describe("BeachPage", () => {
       reels: expect.any(Array),
       webcam: null,
     });
+    const structuredData = JSON.parse(
+      document.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}",
+    ) as { address?: { addressLocality?: string; addressRegion?: string; addressCountry?: string } };
+    expect(structuredData.address).toMatchObject({
+      addressLocality: beach.municipality,
+      addressCountry: "IT",
+    });
+    expect(structuredData.address?.addressRegion).toBeUndefined();
   });
 
   it("starts detail content and community reads while the forecast is pending", async () => {
@@ -352,4 +360,3 @@ describe("BeachPage", () => {
     expect(metadata.title).toBe("Spiaggia non trovata");
   });
 });
-

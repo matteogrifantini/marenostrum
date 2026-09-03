@@ -162,7 +162,6 @@ export default async function BeachPage({
     address: {
       "@type": "PostalAddress",
       addressLocality: bundle.beach.municipality,
-      addressRegion: "Italia",
       addressCountry: "IT",
     },
     geo: {

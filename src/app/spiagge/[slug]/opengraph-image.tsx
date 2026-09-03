@@ -12,6 +12,12 @@ export const size = {
 };
 export const contentType = "image/png";
 
+function buildOgLocalityLabel(municipality?: string, provinceCode?: string) {
+  if (municipality && provinceCode) return `${municipality} (${provinceCode})`;
+  if (municipality) return municipality;
+  return "Località costiera";
+}
+
 export default async function Image({
   params,
 }: {
@@ -21,8 +27,9 @@ export default async function Image({
   const dateOptions = getDateOptions(new Date());
   const date = dateOptions[0].iso;
 
-  let beachName = "Spiaggia d'Italia";
-  let municipality = "Italia";
+  let beachName = "Spiaggia consigliata";
+  let municipality: string | undefined;
+  let provinceCode: string | undefined;
   let score = "85";
   let label = "Ottima scelta";
   let wind = "10 km/h";
@@ -39,6 +46,7 @@ export default async function Image({
     if (bundle?.beach) {
       beachName = bundle.beach.name;
       municipality = bundle.beach.municipality;
+      provinceCode = bundle.beach.provinceCode;
     }
     if (bundle?.selected) {
       score = formatScoreOutOf100(bundle.selected.score);
@@ -109,7 +117,7 @@ export default async function Image({
               color: "#ffc247",
             }}
           >
-            📍 {municipality}
+            📍 {buildOgLocalityLabel(municipality, provinceCode)}
           </div>
           <div
             style={{
