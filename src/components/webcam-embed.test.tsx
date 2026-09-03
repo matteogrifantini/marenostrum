@@ -27,12 +27,12 @@ describe("WebcamEmbed", () => {
     );
     expect(screen.getByText("Fonte esterna; verifica la disponibilità sul sito del provider")).toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /guarda lo streaming in diretta/i })).not.toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "Apri la pagina del provider" })).toHaveLength(2);
+    expect(screen.getAllByRole("link", { name: "Apri la pagina della webcam" })).toHaveLength(2);
 
     fireEvent.error(screen.getByRole("img"));
 
     expect(screen.getByText("Anteprima non disponibile")).toBeInTheDocument();
-    for (const link of screen.getAllByRole("link", { name: "Apri la pagina del provider" })) {
+    for (const link of screen.getAllByRole("link", { name: "Apri la pagina della webcam" })) {
       expect(link).toHaveAttribute("href", "https://provider.example/live");
     }
   });

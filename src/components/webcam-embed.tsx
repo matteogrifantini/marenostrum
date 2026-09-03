@@ -75,7 +75,7 @@ export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
                   <span className="grid size-9 place-items-center rounded-full bg-white/15 text-white shadow-sm">
                     <ExternalLink aria-hidden="true" size={16} />
                   </span>
-                  <span>Apri la pagina del provider</span>
+                  <span>Apri la pagina della webcam</span>
                 </>
               )}
             </a>
@@ -103,7 +103,7 @@ export function WebcamEmbed({ webcam, beachName }: WebcamEmbedProps) {
             rel="noopener noreferrer"
             className="detail-press inline-flex min-h-10 items-center gap-1.5 rounded-full bg-[var(--ink)] px-4 text-xs font-extrabold text-white shadow-sm transition-transform hover:bg-[var(--sea-deep)] active:scale-95"
           >
-            <span>Apri la pagina del provider</span>
+            <span>Apri la pagina della webcam</span>
             <ExternalLink size={14} aria-hidden="true" />
           </a>
         )}
