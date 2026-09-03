@@ -8,6 +8,7 @@ import {
   type DataSourceRow,
   type ForecastReadStore,
 } from "../../data/beach-repository";
+import type { CatalogScope } from "../../domain/catalog-scope";
 import { PUBLIC_BEACH_PUBLICATION_STATUSES } from "../../domain/publication-status";
 import type {
   BeachContentReadStore,
@@ -77,6 +78,9 @@ export function applyPublicBeachPublicationFilter(query: PublicBeachPublicationQ
   return query;
 }
 
+const PUBLIC_BEACH_SELECT =
+  "id, slug, name, municipality, country_code, region_code, region_name, region_slug, province_code, province_name, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts, publication_status, updated_at";
+
 export async function createSupabaseForecastReadStore(): Promise<ForecastReadStore> {
   const client = createPublicClient();
 
@@ -85,13 +89,17 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
   }
 
   return {
-    async getPublishedBeaches() {
+    async getPublishedBeaches(scope?: CatalogScope) {
+      if (scope?.kind === "nearby") {
+        throwReadError("Nearby beach scope is not available yet");
+      }
+
       const query = client
         .from("beaches")
-        .select(
-          "id, slug, name, municipality, province_code, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts, publication_status",
-        );
+        .select(PUBLIC_BEACH_SELECT);
       applyPublicBeachPublicationFilter(query);
+      if (scope?.kind === "region") query.eq("region_code", scope.regionCode);
+      if (scope?.kind === "province") query.eq("province_code", scope.provinceCode);
       const { data, error } = await query;
 
       if (error) throwReadError("Published beaches are unavailable");
@@ -101,9 +109,7 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
     async getPublishedBeachBySlug(slug) {
       const query = client
         .from("beaches")
-        .select(
-          "id, slug, name, municipality, province_code, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts, publication_status",
-        );
+        .select(PUBLIC_BEACH_SELECT);
       applyPublicBeachPublicationFilter(query);
       const { data, error } = await query
         .eq("slug", slug)
@@ -129,6 +135,8 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
       const PAGE_SIZE = 1000;
       const allRows: BeachConditionRow[] = [];
 
+      if (input.beachIds?.length === 0) return allRows;
+
       for (let from = 0; ; from += PAGE_SIZE) {
         let query = client
           .from("beach_conditions")
@@ -142,6 +150,9 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
 
         if (input.beachId) {
           query = query.eq("beach_id", input.beachId);
+        }
+        if (input.beachIds) {
+          query = query.in("beach_id", input.beachIds);
         }
 
         const { data, error } = await query;

@@ -155,6 +155,29 @@ describe("Supabase forecast repository", () => {
     });
   });
 
+  it("keeps the national geography fields when mapping a beach row", () => {
+    const rowWithGeography = {
+      ...beachRow,
+      country_code: "IT",
+      region_code: "IT-82",
+      region_name: "Sicilia",
+      region_slug: "sicilia",
+      province_code: "PA",
+      province_name: "Palermo",
+      updated_at: "2026-09-03T08:00:00Z",
+    } as BeachRow;
+
+    expect(mapBeachRow(rowWithGeography)).toMatchObject({
+      countryCode: "IT",
+      regionCode: "IT-82",
+      regionName: "Sicilia",
+      regionSlug: "sicilia",
+      provinceCode: "PA",
+      provinceName: "Palermo",
+      updatedAt: "2026-09-03T08:00:00Z",
+    });
+  });
+
   it("maps snake_case forecast values into finite numeric points", () => {
     expect(mapForecastRow(conditionRow(beachRow.id), "high")).toMatchObject({
       beachId: "beach-gelsomino",
@@ -238,6 +261,35 @@ describe("Supabase forecast repository", () => {
         store,
       ),
     ).resolves.toEqual([]);
+  });
+
+  it("passes a validated catalog scope and its beach ids to the forecast read", async () => {
+    let receivedScope: unknown;
+    let receivedBeachIds: string[] | undefined;
+    const store: ForecastReadStore = {
+      getPublishedBeaches: async (scope) => {
+        receivedScope = scope;
+        return [beachRow];
+      },
+      getSourceBySlug: async () => sourceRow,
+      getForecastRows: async (input) => {
+        receivedBeachIds = input.beachIds;
+        return [conditionRow(beachRow.id)];
+      },
+    };
+
+    await getBeachRecommendations(
+      {
+        date: "2026-08-20",
+        period: "morning",
+        now: new Date("2026-08-20T09:00:00Z"),
+        scope: { kind: "province", provinceCode: "PA" },
+      },
+      store,
+    );
+
+    expect(receivedScope).toEqual({ kind: "province", provinceCode: "PA" });
+    expect(receivedBeachIds).toEqual([beachRow.id]);
   });
 
   it("reports a recoverable error when the Open-Meteo source is missing", async () => {

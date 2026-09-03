@@ -9,6 +9,7 @@ import type {
 } from "../domain/beach";
 import type { ForecastPoint } from "../domain/forecast";
 import { aggregateForecast } from "../domain/forecast-aggregation";
+import type { CatalogScope } from "../domain/catalog-scope";
 import type { PublicationStatus } from "../domain/publication-status";
 import { scoreBeach } from "../domain/score";
 import { BEACH_WEBCAMS } from "./beach-webcams";
@@ -18,7 +19,12 @@ export type BeachRow = {
   slug: string;
   name: string;
   municipality: string;
+  country_code?: string | null;
+  region_code?: string | null;
+  region_name?: string | null;
+  region_slug?: string | null;
   province_code?: string | null;
+  province_name?: string | null;
   coast: string;
   description: string;
   orientation_degrees: number | string;
@@ -36,6 +42,7 @@ export type BeachRow = {
   warnings: string[];
   facts: string[];
   publication_status?: PublicationStatus | null;
+  updated_at?: string | null;
 };
 
 export type DataSourceRow = {
@@ -64,7 +71,7 @@ export type BeachConditionRow = {
 };
 
 export type ForecastReadStore = {
-  getPublishedBeaches(): Promise<BeachRow[]>;
+  getPublishedBeaches(scope?: CatalogScope): Promise<BeachRow[]>;
   getPublishedBeachBySlug?(slug: string): Promise<BeachRow | null>;
   getSourceBySlug(slug: string): Promise<DataSourceRow | null>;
   getForecastRows(input: {
@@ -72,6 +79,7 @@ export type ForecastReadStore = {
     from: string;
     to: string;
     beachId?: string;
+    beachIds?: string[];
   }): Promise<BeachConditionRow[]>;
 };
 
@@ -80,6 +88,7 @@ export type RecommendationQuery = {
   period: BeachPeriod;
   intent?: UserIntent;
   now?: Date;
+  scope?: CatalogScope;
 };
 
 export type RecommendationBySlugQuery = RecommendationQuery & {
@@ -132,7 +141,12 @@ export function mapBeachRow(row: BeachRow): Beach {
     slug: row.slug,
     name: row.name,
     municipality: row.municipality,
+    ...(row.country_code ? { countryCode: row.country_code } : {}),
+    ...(row.region_code ? { regionCode: row.region_code } : {}),
+    ...(row.region_name ? { regionName: row.region_name } : {}),
+    ...(row.region_slug ? { regionSlug: row.region_slug } : {}),
     ...(row.province_code ? { provinceCode: row.province_code } : {}),
+    ...(row.province_name ? { provinceName: row.province_name } : {}),
     coast: row.coast,
     description: row.description,
     orientationDegrees: finiteNumber(row.orientation_degrees, "beach orientation"),
@@ -146,6 +160,7 @@ export function mapBeachRow(row: BeachRow): Beach {
     imageLicense: row.image_license ?? undefined,
     latitude: finiteNumber(row.latitude, "beach latitude"),
     longitude: finiteNumber(row.longitude, "beach longitude"),
+    ...(row.updated_at ? { updatedAt: row.updated_at } : {}),
     services: row.services,
     warnings: row.warnings,
     facts: row.facts,
@@ -212,7 +227,7 @@ async function resolveStore(store: ForecastReadStore | undefined) {
 async function loadSourceAndRows(
   store: ForecastReadStore,
   date: string,
-  beachId?: string,
+  options: { beachId?: string; beachIds?: string[] } = {},
 ) {
   const source = await store.getSourceBySlug("open-meteo");
 
@@ -220,7 +235,7 @@ async function loadSourceAndRows(
     throw new ForecastDataUnavailableError("Open-Meteo forecast source is unavailable");
   }
 
-  const rows = await loadRowsForSource(store, source, date, beachId);
+  const rows = await loadRowsForSource(store, source, date, options);
 
   return { source, rows };
 }
@@ -229,13 +244,16 @@ async function loadRowsForSource(
   store: ForecastReadStore,
   source: DataSourceRow,
   date: string,
-  beachId?: string,
+  options: { beachId?: string; beachIds?: string[] } = {},
 ) {
+  if (options.beachIds?.length === 0) return [];
+
   const window = forecastWindow(date);
   const rows = await store.getForecastRows({
     sourceId: source.id,
     ...window,
-    ...(beachId ? { beachId } : {}),
+    ...(options.beachId ? { beachId: options.beachId } : {}),
+    ...(options.beachIds ? { beachIds: options.beachIds } : {}),
   });
 
   return rows;
@@ -259,12 +277,15 @@ async function fetchRecommendationsInternal(
   date: string,
   period: BeachPeriod,
   intent: UserIntent = "relax",
+  scope?: CatalogScope,
 ) {
   const store = await resolveStore(undefined);
-  const [beachRows, sourceAndRows] = await Promise.all([
-    store.getPublishedBeaches(),
-    loadSourceAndRows(store, date),
-  ]);
+  const beachRows = await store.getPublishedBeaches(scope);
+  const sourceAndRows = await loadSourceAndRows(
+    store,
+    date,
+    scope ? { beachIds: beachRows.map((row) => row.id) } : {},
+  );
   const beaches = beachRows.map(mapBeachRow);
   const pointsByBeachId = new Map<string, ForecastPoint[]>();
 
@@ -302,10 +323,12 @@ export async function getBeachRecommendations(
 ) {
   if (providedStore || query.now) {
     const store = await resolveStore(providedStore);
-    const [beachRows, sourceAndRows] = await Promise.all([
-      store.getPublishedBeaches(),
-      loadSourceAndRows(store, query.date),
-    ]);
+    const beachRows = await store.getPublishedBeaches(query.scope);
+    const sourceAndRows = await loadSourceAndRows(
+      store,
+      query.date,
+      query.scope ? { beachIds: beachRows.map((row) => row.id) } : {},
+    );
     const beaches = beachRows.map(mapBeachRow);
     const pointsByBeachId = new Map<string, ForecastPoint[]>();
 
@@ -331,7 +354,12 @@ export async function getBeachRecommendations(
       .sort((left, right) => right.score - left.score);
   }
 
-  return getCachedRecommendations(query.date, query.period, query.intent ?? "relax");
+  return getCachedRecommendations(
+    query.date,
+    query.period,
+    query.intent ?? "relax",
+    query.scope,
+  );
 }
 
 async function fetchBeachForecastBundleInternal(
@@ -364,7 +392,7 @@ async function fetchBeachForecastBundleInternal(
       throw new ForecastDataUnavailableError("Open-Meteo forecast source is unavailable");
     }
 
-    const rows = await loadRowsForSource(store, source, date, beachRow.id);
+    const rows = await loadRowsForSource(store, source, date, { beachId: beachRow.id });
     const points = rows.map((row) => mapForecastRow(row, source.quality));
     const now = new Date();
     const query = { slug, date, period, intent };
@@ -424,7 +452,7 @@ export async function getBeachForecastBundleBySlug(
         throw new ForecastDataUnavailableError("Open-Meteo forecast source is unavailable");
       }
 
-      const rows = await loadRowsForSource(store, source, query.date, beachRow.id);
+      const rows = await loadRowsForSource(store, source, query.date, { beachId: beachRow.id });
       const points = rows.map((row) => mapForecastRow(row, source.quality));
       const now = query.now ?? new Date();
       const selected = recommendationFor(beach, points, query, query.period, now);

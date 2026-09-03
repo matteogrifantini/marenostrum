@@ -19,7 +19,12 @@ export type Beach = {
   slug: string;
   name: string;
   municipality: string;
+  countryCode?: string;
+  regionCode?: string;
+  regionName?: string;
+  regionSlug?: string;
   provinceCode?: string;
+  provinceName?: string;
   coast: string;
   description: string;
   orientationDegrees: number;
@@ -32,6 +37,7 @@ export type Beach = {
   imageLicense?: string;
   latitude?: number;
   longitude?: number;
+  updatedAt?: string;
   orientationLabel?: string;
   services?: string[];
   warnings?: string[];
