@@ -20,6 +20,7 @@ Il branch non è ancora autorizzato al rilascio: non sono stati eseguiti push Gi
 - Aggiunti contratto geografico nazionale, selezione regione/provincia/vicino a me, query server-side bounded e bounds dinamici della mappa italiana.
 - Generalizzati contratti e script catalogo; i dry-run non promuovono candidate non verificate e non è stato fabbricato alcun lotto nazionale.
 - Limitata la sitemap a URL canonici e hub con contenuto sufficiente; hub vuote o placeholder ricevono `noindex, follow`.
+- La sitemap delle spiagge pubblicate include anche l’immagine HTTPS verificata quando presente, collegando l’asset alla relativa URL canonica senza accettare protocolli insicuri o malformati.
 - Le letture della sitemap e delle metadata hub bypassano la cache stale-while-revalidate, così un errore Supabase non può riapparire come contenuto stale o overlay dev.
 - Separato il date picker della home dalla barra filtri per evitare sovrapposizioni desktop.
 
@@ -49,6 +50,8 @@ Dev server eseguito con Node 22 su `http://127.0.0.1:3000`.
 - `/sitemap.xml`: in assenza di configurazione Supabase restituisce 5 sole route core; non emette URL spiaggia/hub inventati.
 
 La CLI `agent-browser` non è installata nell’ambiente; la stessa checklist è stata eseguita con Playwright headless e il browser persistente disponibile, includendo contenuto, overlay, titolo e interazione.
+
+La successiva ottimizzazione sitemap è stata verificata con Node 22: `npm test -- --run` passa con 111 file e 417 test; TypeScript, ESLint e build restano verdi.
 
 ## Database e catalogo
 
