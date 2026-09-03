@@ -71,9 +71,7 @@ function throwReadError(message: string): never {
   throw new ForecastDataUnavailableError(message);
 }
 
-export function applyPublicBeachPublicationFilter<TQuery extends PublicBeachPublicationQuery>(
-  query: TQuery,
-): TQuery {
+export function applyPublicBeachPublicationFilter(query: PublicBeachPublicationQuery): PublicBeachPublicationQuery {
   query.eq("is_published", true);
   query.in("publication_status", [...PUBLIC_BEACH_PUBLICATION_STATUSES]);
   return query;
@@ -88,26 +86,26 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
 
   return {
     async getPublishedBeaches() {
-      const { data, error } = await applyPublicBeachPublicationFilter<any>(
-        client
-          .from("beaches")
-          .select(
-            "id, slug, name, municipality, province_code, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts, publication_status",
-          ),
-      );
+      const query = client
+        .from("beaches")
+        .select(
+          "id, slug, name, municipality, province_code, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts, publication_status",
+        );
+      applyPublicBeachPublicationFilter(query);
+      const { data, error } = await query;
 
       if (error) throwReadError("Published beaches are unavailable");
       return (data ?? []) as BeachRow[];
     },
 
     async getPublishedBeachBySlug(slug) {
-      const { data, error } = await applyPublicBeachPublicationFilter<any>(
-        client
-          .from("beaches")
-          .select(
-            "id, slug, name, municipality, province_code, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts, publication_status",
-          ),
-      )
+      const query = client
+        .from("beaches")
+        .select(
+          "id, slug, name, municipality, province_code, coast, description, orientation_degrees, orientation_label, shelter, tags, access_level, image_path, image_alt, image_credit, image_license, latitude, longitude, services, warnings, facts, publication_status",
+        );
+      applyPublicBeachPublicationFilter(query);
+      const { data, error } = await query
         .eq("slug", slug)
         .maybeSingle();
 
@@ -170,9 +168,9 @@ export async function createSupabaseBeachContentReadStore(): Promise<BeachConten
 
   return {
     async getPublishedBeachBySlug(slug) {
-      const { data, error } = await applyPublicBeachPublicationFilter<any>(
-        client.from("beaches").select("id"),
-      )
+      const query = client.from("beaches").select("id");
+      applyPublicBeachPublicationFilter(query);
+      const { data, error } = await query
         .eq("slug", slug)
         .maybeSingle();
 
