@@ -11,6 +11,7 @@ import {
   normalizeProvinceCode,
   type ProvinceSelection,
 } from "../domain/province-filter";
+import { MAP_PAGE_DESCRIPTION, MAP_PAGE_TITLE } from "../domain/seo/site-copy";
 
 type MapExperienceProps = {
   initialDate: string;
@@ -107,10 +108,10 @@ export function MapExperience({
         <div className="mx-auto max-w-[1440px] px-4 pt-4 sm:px-8 sm:pt-6">
           <header className="mb-4">
             <h1 className="font-serif text-2xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-3xl">
-              Mappa del Mare in Sicilia
+              {MAP_PAGE_TITLE}
             </h1>
             <p className="mt-1 text-xs font-semibold text-[var(--muted)] sm:text-sm">
-              Rating delle condizioni e punti utili per il mare, direttamente sulla cartografia della Sicilia.
+              {MAP_PAGE_DESCRIPTION}
             </p>
           </header>
 

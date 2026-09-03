@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { getBeachForecastBundleBySlug } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
 import { formatScoreOutOf100 } from "../../../domain/score";
+import { SITE_NAME } from "../../../domain/seo/site-copy";
 
 export const runtime = "nodejs";
 export const alt = "Mare Nostrum — Previsioni Meteomarine";
@@ -20,8 +21,8 @@ export default async function Image({
   const dateOptions = getDateOptions(new Date());
   const date = dateOptions[0].iso;
 
-  let beachName = "Spiaggia della Sicilia";
-  let municipality = "Sicilia";
+  let beachName = "Spiaggia d'Italia";
+  let municipality = "Italia";
   let score = "85";
   let label = "Ottima scelta";
   let wind = "10 km/h";
@@ -81,7 +82,7 @@ export default async function Image({
             <span style={{ fontSize: "24px" }}>🌊</span>
           </div>
           <span style={{ fontSize: "28px", fontWeight: "700", letterSpacing: "-0.03em" }}>
-            Mare Nostrum
+            {SITE_NAME}
           </span>
           <span
             style={{
@@ -108,7 +109,7 @@ export default async function Image({
               color: "#ffc247",
             }}
           >
-            📍 {municipality} · Sicilia
+            📍 {municipality}
           </div>
           <div
             style={{

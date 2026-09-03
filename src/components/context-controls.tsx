@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown, LocateFixed, SlidersHorizontal } from "lucide-react";
+import { buildNationalLocationLabel } from "../domain/seo/site-copy";
 
 export type Proximity = "sicilia" | "nearby";
 
@@ -29,7 +30,7 @@ export function ContextControls({
               : "text-[var(--muted)] hover:text-[var(--ink)]",
           ].join(" ")}
         >
-          Tutta la Sicilia
+          {buildNationalLocationLabel()}
         </button>
         <button
           type="button"

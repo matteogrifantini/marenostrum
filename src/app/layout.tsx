@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PwaRegister } from "../components/pwa-register";
+import { SITE_DESCRIPTION, SITE_NAME } from "../domain/seo/site-copy";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,28 +21,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://marenostrum.app"),
   title: {
-    default: "Mare Nostrum — Scegli il mare giusto oggi in Sicilia",
-    template: "%s | Mare Nostrum",
+    default: SITE_DESCRIPTION,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Previsioni meteo mare in tempo reale per tutte le spiagge della Sicilia. Scopri dove il mare è calmo e quali spiagge sono riparate dal vento oggi.",
-  keywords: [
-    "spiagge sicilia",
-    "previsioni mare sicilia",
-    "mare calmo sicilia",
-    "vento spiagge sicilia",
-    "migliori spiagge sicilia",
-    "webcam spiagge sicilia",
-    "meteo mare sicilia",
-    "mare nostrum",
-    "mare calmo palermo",
-    "mare calmo trapani",
-    "mare calmo catania",
-    "mare calmo siracusa",
-    "mare calmo messina",
-    "mare calmo ragusa",
-    "mare calmo agrigento",
-  ],
+  description: SITE_DESCRIPTION,
   alternates: {
     canonical: "https://marenostrum.app",
   },
@@ -60,21 +43,19 @@ export const metadata: Metadata = {
     type: "website",
     locale: "it_IT",
     url: "https://marenostrum.app",
-    siteName: "Mare Nostrum",
-    title: "Mare Nostrum — Scegli il mare giusto oggi in Sicilia",
-    description:
-      "Previsioni meteo mare in tempo reale per tutte le spiagge della Sicilia. Scopri dove il mare è calmo e quali spiagge sono riparate dal vento oggi.",
+    siteName: SITE_NAME,
+    title: SITE_DESCRIPTION,
+    description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mare Nostrum — Scegli il mare giusto oggi in Sicilia",
-    description:
-      "Previsioni meteo mare in tempo reale per tutte le spiagge della Sicilia. Scopri dove il mare è calmo e quali spiagge sono riparate dal vento oggi.",
+    title: SITE_DESCRIPTION,
+    description: SITE_DESCRIPTION,
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Mare Nostrum",
+    title: SITE_NAME,
   },
   verification: {
     google: "google8695ec30da15de9c",
@@ -89,9 +70,8 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://marenostrum.app/#website",
       "url": "https://marenostrum.app",
-      "name": "Mare Nostrum",
-      "description":
-        "Previsioni meteo mare in tempo reale per tutte le spiagge della Sicilia. Scopri dove il mare è calmo e quali spiagge sono riparate dal vento oggi.",
+      "name": SITE_NAME,
+      "description": SITE_DESCRIPTION,
       "inLanguage": "it-IT",
       "potentialAction": {
         "@type": "SearchAction",
@@ -102,13 +82,13 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": "https://marenostrum.app/#organization",
-      "name": "Mare Nostrum",
+      "name": SITE_NAME,
       "url": "https://marenostrum.app",
       "logo": "https://marenostrum.app/icon.png",
     },
     {
       "@type": "WebApplication",
-      "name": "Mare Nostrum",
+      "name": SITE_NAME,
       "url": "https://marenostrum.app",
       "applicationCategory": "TravelApplication",
       "operatingSystem": "All",
@@ -143,4 +123,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-

@@ -44,7 +44,7 @@ export default function TerminiPage() {
           1. Oggetto e Natura del Servizio
         </h2>
         <p>
-          Mare Nostrum è una piattaforma digitale accessibile all&apos;indirizzo <code>marenostrum.app</code>, progettata per aiutare residenti e visitatori a consultare le condizioni meteomarine aggregate (vento, onde, temperatura, precipitazioni) delle spiagge della Sicilia.
+          Mare Nostrum è una piattaforma digitale accessibile all&apos;indirizzo <code>marenostrum.app</code>, progettata per aiutare residenti e visitatori a consultare le condizioni meteomarine aggregate (vento, onde, temperatura, precipitazioni) delle spiagge italiane.
         </p>
       </section>
 

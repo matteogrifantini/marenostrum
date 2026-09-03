@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
+import { SITE_DESCRIPTION, SITE_NAME } from "../domain/seo/site-copy";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Mare Nostrum — Scegli il mare giusto oggi",
-    short_name: "Mare Nostrum",
-    description:
-      "Previsioni meteomarine in tempo reale, vento, onde e qualità del mare per le migliori spiagge della Sicilia.",
+    short_name: SITE_NAME,
+    description: SITE_DESCRIPTION,
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

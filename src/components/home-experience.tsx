@@ -30,6 +30,7 @@ import {
   SICILIAN_PROVINCES,
   type ProvinceSelection,
 } from "../domain/province-filter";
+import { buildNationalLocationLabel } from "../domain/seo/site-copy";
 
 type HomeExperienceProps = {
   initialDate: string;
@@ -312,7 +313,7 @@ export function HomeExperience({
                     onChange={(event) => handleProvinceChange(event.target.value)}
                     className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
                   >
-                    <option value="all">Tutta la Sicilia</option>
+                    <option value="all">{buildNationalLocationLabel()}</option>
                     {SICILIAN_PROVINCES.map(({ code, label }) => (
                       <option key={code} value={code}>{label}</option>
                     ))}

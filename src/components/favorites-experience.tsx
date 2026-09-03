@@ -79,7 +79,7 @@ export function FavoritesExperience({
                 href="/#classifica"
                 className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--ink)] px-5 text-sm font-bold text-white shadow-md transition-[transform,background-color] active:scale-95 hover:bg-[var(--sea-deep)]"
               >
-                Esplora le spiagge della Sicilia
+                Esplora le spiagge in Italia
               </Link>
             </div>
           </div>

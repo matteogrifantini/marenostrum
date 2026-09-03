@@ -12,21 +12,24 @@ import {
 } from "../../domain/date-selection";
 import type { BeachRecommendation } from "../../domain/beach";
 import { normalizeProvinceCode } from "../../domain/province-filter";
+import {
+  MAP_PAGE_DESCRIPTION,
+  MAP_PAGE_TITLE,
+  SITE_NAME,
+} from "../../domain/seo/site-copy";
 
 export const metadata: Metadata = {
-  title: "Mappa del Mare e del Vento in Sicilia",
-  description:
-    "Mappa interattiva della Sicilia con rating delle condizioni, parcheggi, lidi e servizi utili per il mare.",
+  title: MAP_PAGE_TITLE,
+  description: MAP_PAGE_DESCRIPTION,
   alternates: {
     canonical: "https://marenostrum.app/mappa",
   },
   openGraph: {
-    title: "Mappa del Mare e del Vento in Sicilia — Mare Nostrum",
-    description:
-      "Rating delle spiagge e punti utili per il mare su una vera cartografia della Sicilia.",
+    title: `${MAP_PAGE_TITLE} | ${SITE_NAME}`,
+    description: MAP_PAGE_DESCRIPTION,
     url: "https://marenostrum.app/mappa",
     type: "website",
-    siteName: "Mare Nostrum",
+    siteName: SITE_NAME,
     locale: "it_IT",
   },
 };
