@@ -128,7 +128,7 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute("aria-pressed", "false");
     const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
-    const advice = screen.getByRole("note", { name: "Condizioni e balneabilità" });
+    const advice = screen.getByRole("note", { name: "Indice condizioni del mare" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
 
     expect(dayControls).toHaveClass("day-picker", "bg-[var(--control-surface)]", "grid-cols-4");
@@ -139,7 +139,9 @@ describe("BeachDetailExperience", () => {
     expect(dayControls.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice).toHaveAttribute("data-score-tone", "excellent");
-    expect(within(advice).getByText("100")).toBeInTheDocument();
+    expect(advice.querySelector('[data-score-value="100/100"]')).toBeInTheDocument();
+    expect(within(advice).getByText("Una sintesi di vento, onde e meteo per aiutarti a scegliere dove andare oggi.")).toBeInTheDocument();
+    expect(within(advice).getByText(/non è un bollettino ufficiale/i)).toBeInTheDocument();
 
     const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
     expect(periodControls.compareDocumentPosition(conditions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -215,9 +217,8 @@ describe("BeachDetailExperience", () => {
   ] as const)("shows the %s score instead of the all-day comparison", (period, score) => {
     renderDetail({ period, recommendation: selected });
 
-    const advice = screen.getByRole("note", { name: "Condizioni e balneabilità" });
-    expect(within(advice).getByText(score)).toBeInTheDocument();
-    expect(within(advice).queryByText("100")).not.toBeInTheDocument();
+    const advice = screen.getByRole("note", { name: "Indice condizioni del mare" });
+    expect(advice.querySelector(`[data-score-value="${score}/100"]`)).toBeInTheDocument();
   });
 
   it("derives the conditions title and concise aggregate metrics from the active date", () => {

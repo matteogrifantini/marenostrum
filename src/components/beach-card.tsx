@@ -5,6 +5,7 @@ import Link, { useLinkStatus } from "next/link";
 import { CloudSun, Navigation, Waves, Wind } from "lucide-react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { formatScoreOutOf100 } from "../domain/score";
+import { getScorePresentation } from "../domain/score-presentation";
 import { formatWeatherLabel } from "../lib/forecast-presentation";
 import { versionedMediaUrl } from "../lib/media-url";
 import { formatDistanceKm, formatWaveHeightMeters, formatWindSpeedKmh, useUserPreferences } from "../lib/user-preferences";
@@ -114,6 +115,7 @@ export function BeachCard({
   const waveMetric = formatWaveHeightMeters(conditions.waveHeightMeters, preferences.waveHeightUnit);
   const weatherLabel = formatWeatherLabel(conditions.weather);
   const featureChips = getBeachFeatureChips(beach);
+  const scorePresentation = getScorePresentation(recommendation);
 
   const windName = WIND_NAMES_ITALIAN[direction] ?? "";
   const isSheltered = beach.shelter?.includes(windName);
@@ -207,7 +209,7 @@ export function BeachCard({
 
             <div className="mt-2 flex min-w-0 items-center gap-2 pt-1 sm:mt-auto sm:gap-3 sm:pt-3">
               <div
-                aria-label={`Voto ${displayScore} su 100, ${recommendation.label}`}
+                aria-label={`${scorePresentation.title}: ${scorePresentation.scoreLabel}, ${scorePresentation.label}`}
                 data-score-tone={tone}
                 className={`grid size-9 shrink-0 place-items-center rounded-full shadow-[0_4px_12px_rgba(20,44,57,0.12)] sm:size-12 ${SCORE_TONE_CLASSES[tone]}`}
               >
@@ -217,6 +219,15 @@ export function BeachCard({
               </div>
 
               <div className="min-w-0 flex-1 space-y-0.5 pb-0.5 text-[0.63rem] font-bold leading-tight text-[var(--ink-soft)] sm:space-y-1 sm:text-xs">
+                <span className="block text-[0.55rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]">
+                  {scorePresentation.title}
+                </span>
+                <span className="block text-[0.68rem] font-extrabold text-[var(--ink)]">
+                  {scorePresentation.label}
+                </span>
+                <span className="block text-[0.58rem] font-semibold text-[var(--muted)]">
+                  {scorePresentation.factors.map((factor) => `${factor.label} ${factor.valueLabel}`).join(" · ")}
+                </span>
                 <div
                   aria-label={`Vento: ${direction}, ${windMetric}`}
                   className="flex min-w-0 items-center gap-1 sm:gap-1.5"

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type * as Leaflet from "leaflet";
 import type { BeachRecommendation } from "../domain/beach";
 import { formatScoreOutOf100 } from "../domain/score";
+import { getScorePresentation } from "../domain/score-presentation";
 import {
   MAP_POI_CATEGORIES,
   type MapPoi,
@@ -89,8 +90,14 @@ function createPoiPopup(place: MapPoi) {
 
 export function createBeachPopup(recommendation: MappableRecommendation) {
   const { beach, score, conditions } = recommendation;
+  const presentation = getScorePresentation(recommendation);
   const scoreValue = formatScoreOutOf100(score);
-  const location = `${beach.municipality}${beach.provinceCode ? ` (${beach.provinceCode})` : ""}`;
+  const location = [beach.municipality, beach.provinceName ?? beach.provinceCode, beach.regionName]
+    .filter((value): value is string => Boolean(value))
+    .join(" · ");
+  const factorLine = presentation.factors
+    .map((factor) => `${factor.label} ${factor.valueLabel}`)
+    .join(" · ");
   const webcamBadge = beach.webcam
     ? '<span style="background:#e2e8f0;color:#0f172a;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:800;margin-left:4px;">Webcam</span>'
     : "";
@@ -100,14 +107,18 @@ export function createBeachPopup(recommendation: MappableRecommendation) {
 
   return `<div class="map-popup map-popup--beach" style="min-width:200px;">
     <div class="map-popup__eyebrow" style="display:flex;align-items:center;justify-content:space-between;gap:4px;font-size:11px;color:#64748b;">
-      <span>${escapeHtml(location)}</span>
+      <span>${escapeHtml(location || "Italia")}</span>
       ${webcamBadge}
     </div>
     <strong style="font-size:15px;display:block;margin:3px 0 6px;color:#0f172a;">${escapeHtml(beach.name)}</strong>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-      <span class="map-popup__score" style="font-weight:800;font-size:17px;color:#082f3d;">${scoreValue}/100</span>
-      <span style="font-size:11px;font-weight:600;color:#475569;text-transform:capitalize;">${escapeHtml(conditions.weather || "")}</span>
+    <div style="margin-bottom:8px;">
+      <span class="map-popup__score" style="font-weight:800;font-size:17px;color:#082f3d;">${escapeHtml(`${scoreValue}/100 · ${presentation.label}`)}</span>
+      <span style="display:block;margin-top:4px;font-size:11px;font-weight:600;color:#475569;">${escapeHtml(presentation.title)}</span>
     </div>
+    <p style="margin:0 0 7px;font-size:11px;line-height:1.4;color:#475569;">${escapeHtml(presentation.explanation)}</p>
+    <p style="margin:0 0 5px;font-size:10px;font-weight:700;color:#334155;">${escapeHtml(factorLine)}</p>
+    <p style="margin:0 0 4px;font-size:10px;color:#64748b;">${escapeHtml(presentation.freshnessText)}</p>
+    <p style="margin:0 0 8px;font-size:10px;line-height:1.35;color:#64748b;">${escapeHtml(presentation.disclaimer)}</p>
     <div style="display:flex;gap:6px;margin-top:6px;">
       <a href="/spiagge/${encodeURIComponent(beach.slug)}?date=${dateParam}&period=${periodParam}&source=map" style="flex:1;text-align:center;background:#082f3d;color:white;padding:7px 10px;border-radius:10px;font-weight:700;font-size:12px;text-decoration:none;display:inline-block;">Vedi spiaggia</a>
       <a href="${directionsUrl}" target="_blank" rel="noopener noreferrer" style="background:#f1f5f9;color:#082f3d;padding:7px 10px;border-radius:10px;font-weight:700;font-size:12px;text-decoration:none;display:inline-flex;align-items:center;" title="Indicazioni stradali Google Maps">🗺️</a>
@@ -138,6 +149,7 @@ export function buildBeachMarkerModels(
   return sortMappableRecommendations(recommendations).map((recommendation) => {
     const { beach, score } = recommendation;
     const scoreValue = formatScoreOutOf100(score);
+    const presentation = getScorePresentation(recommendation);
     const selected = beach.slug === selectedSlug;
 
     return {
@@ -146,9 +158,9 @@ export function buildBeachMarkerModels(
       html: `<span>${scoreValue}</span>`,
       iconSize: [44, 30],
       iconAnchor: [22, 15],
-      title: `${beach.name}: voto ${scoreValue}`,
-      alt: `${beach.name}: voto ${scoreValue}`,
-      tooltip: `${beach.name} · ${scoreValue}`,
+      title: `${beach.name}: ${presentation.title} ${presentation.scoreLabel}`,
+      alt: `${beach.name}: ${presentation.title} ${presentation.scoreLabel}`,
+      tooltip: `${beach.name} · ${presentation.scoreLabel} · ${presentation.label}`,
       zIndexOffset: selected ? 10000 : Math.round(score * 10),
     };
   });

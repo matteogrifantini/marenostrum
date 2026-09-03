@@ -24,5 +24,9 @@ describe("createBeachPopup", () => {
 
     expect(html).toContain("Webcam");
     expect(html).not.toContain("LIVE");
+    expect(html).toContain("Indice condizioni del mare");
+    expect(html).toContain("Una sintesi di vento, onde e meteo");
+    expect(html).toContain("Vento 100/100");
+    expect(html).toContain("non è un bollettino ufficiale");
   });
 });
