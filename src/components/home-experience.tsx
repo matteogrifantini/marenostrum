@@ -392,10 +392,10 @@ export function HomeExperience({
             aria-busy={isUpdatingForecast}
             className="relative z-20 mx-auto mt-3 w-full max-w-4xl overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4"
           >
-            <div className="lg:flex lg:items-center lg:gap-3">
+            <div className="flex flex-col gap-3">
               <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 
-              <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">
+              <div className="flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3">
                 <PeriodPicker value={period} onChange={handlePeriodChange} />
                 <CatalogScopeControls
                   context="home"
