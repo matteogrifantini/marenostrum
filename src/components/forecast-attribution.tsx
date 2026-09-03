@@ -17,7 +17,7 @@ export function ForecastAttribution({
   return (
     <footer
       aria-label="Attribuzione previsioni"
-      className="mt-3 border-t border-[var(--line)] px-2 py-2 text-center text-[0.62rem] leading-4 text-[var(--muted)]"
+      className="mt-3 border-t border-[var(--line)] px-2 py-1 text-center text-[0.62rem] leading-4 text-[var(--muted)]"
     >
       <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1">
         <span>Fonti meteo:</span>
@@ -59,7 +59,7 @@ export function ForecastAttribution({
         ) : null}
       </div>
       {freshnessText || disclaimer ? (
-        <div className="mt-1 flex flex-col items-center gap-0.5">
+        <div className="mt-0.5 flex flex-col items-center gap-0">
           {freshnessText ? <p>{freshnessText}</p> : null}
           {disclaimer ? <p>{disclaimer}</p> : null}
         </div>

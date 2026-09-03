@@ -404,7 +404,10 @@ export function HomeExperience({
             <div className="flex flex-col gap-3">
               <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
 
-              <div className="flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3">
+              <div
+                data-testid="home-filter-toolbar"
+                className="grid grid-cols-2 items-center gap-2 border-t border-[var(--line)] pt-3 lg:flex lg:flex-wrap"
+              >
                 <PeriodPicker value={period} onChange={handlePeriodChange} />
                 <CatalogScopeControls
                   context="home"
@@ -418,7 +421,7 @@ export function HomeExperience({
                 <button
                   type="button"
                   onClick={() => setFilterSheetOpen(true)}
-                  className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-[var(--surface)] px-4 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+                  className="order-5 col-span-2 inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-4 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] lg:order-none lg:col-auto"
                 >
                   <SlidersHorizontal aria-hidden="true" size={16} />
                   Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}

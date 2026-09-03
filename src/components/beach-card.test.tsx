@@ -29,7 +29,7 @@ describe("BeachCard", () => {
       expect.stringContaining("cala-del-gelsomino.jpg"),
     );
     expect(screen.getByText("Noto · 18 km")).toBeInTheDocument();
-    expect(screen.getByLabelText(`Indice condizioni del mare: ${Math.round(demoRecommendations[0].score)}/100, Ottime condizioni`)).toHaveAttribute(
+    expect(screen.getByLabelText(`Indice Mare Nostrum: ${Math.round(demoRecommendations[0].score)}/100, Ottime condizioni`)).toHaveAttribute(
       "data-score-tone",
       "excellent",
     );
@@ -198,7 +198,7 @@ describe("BeachCard", () => {
       />,
     );
 
-    expect(screen.getByLabelText(new RegExp(`Indice condizioni del mare: ${score}/100`))).toHaveAttribute(
+    expect(screen.getByLabelText(new RegExp(`Indice Mare Nostrum: ${score}/100`))).toHaveAttribute(
       "data-score-tone",
       tone,
     );

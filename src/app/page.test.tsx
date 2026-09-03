@@ -376,6 +376,18 @@ describe("HomeExperience", () => {
     expect(dayGroup.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
   });
 
+  it("keeps the period and location filters in two columns on smaller screens", () => {
+    renderHome();
+
+    const toolbar = screen.getByTestId("home-filter-toolbar");
+    expect(toolbar).toHaveClass("grid", "grid-cols-2", "lg:flex", "lg:flex-wrap");
+    expect(screen.getByRole("combobox", { name: "Periodo" }).parentElement).toHaveClass(
+      "w-full",
+      "lg:w-auto",
+    );
+    expect(screen.getByRole("button", { name: "Filtri" })).toHaveClass("col-span-2", "lg:col-auto");
+  });
+
   it("filters by province from the main bar and persists the selection in the URL", () => {
     renderHome();
 

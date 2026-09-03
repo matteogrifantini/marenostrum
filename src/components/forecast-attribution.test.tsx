@@ -54,6 +54,18 @@ describe("ForecastAttribution", () => {
     expect(footer).toHaveTextContent(/Indice orientativo · non è un bollettino ufficiale/i);
   });
 
+  it("keeps the metadata close to the attribution divider", () => {
+    render(
+      <ForecastAttribution
+        freshnessText="Ultimo aggiornamento: oggi alle 10:00."
+        disclaimer="Indice orientativo · non è un bollettino ufficiale e non misura la qualità dell’acqua."
+      />,
+    );
+
+    expect(screen.getByRole("contentinfo", { name: "Attribuzione previsioni" })).toHaveClass("py-1");
+    expect(screen.getByText("Ultimo aggiornamento: oggi alle 10:00.").parentElement).toHaveClass("mt-0.5");
+  });
+
   it("is a neutral footer rather than a card", () => {
     render(<ForecastAttribution />);
 

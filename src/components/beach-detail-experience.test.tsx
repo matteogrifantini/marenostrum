@@ -85,6 +85,7 @@ describe("BeachDetailExperience", () => {
     const title = screen.getByRole("heading", { name: `Meteo del mare a ${beach.name}` });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
     expect(title).toHaveClass("text-xl");
+    expect(screen.queryByRole("heading", { name: `Condizioni del mare oggi a ${beach.name}` })).not.toBeInTheDocument();
     expect(title.compareDocumentPosition(dayControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(title.closest("section")).not.toBe(hero);
   });
@@ -123,8 +124,8 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("link", { name: "© OpenStreetMap contributors" })).toBeInTheDocument();
     expect(attribution).toHaveTextContent("Ultimo aggiornamento");
     expect(attribution).toHaveTextContent(/Indice orientativo · non è un bollettino ufficiale/i);
-    expect(within(screen.getByRole("note", { name: "Indice condizioni del mare" })).queryByText(/Ultimo aggiornamento/i)).not.toBeInTheDocument();
-    expect(within(screen.getByRole("note", { name: "Indice condizioni del mare" })).queryByText(/Indice orientativo/i)).not.toBeInTheDocument();
+    expect(within(screen.getByRole("note", { name: "Indice Mare Nostrum" })).queryByText(/Ultimo aggiornamento/i)).not.toBeInTheDocument();
+    expect(within(screen.getByRole("note", { name: "Indice Mare Nostrum" })).queryByText(/Indice orientativo/i)).not.toBeInTheDocument();
   });
 
   it("renders the live rain probability and Rome-local observation time", () => {
@@ -134,7 +135,7 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute("aria-pressed", "false");
     const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
-    const advice = screen.getByRole("note", { name: "Indice condizioni del mare" });
+    const advice = screen.getByRole("note", { name: "Indice Mare Nostrum" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
 
     expect(dayControls).toHaveClass("day-picker", "bg-[var(--control-surface)]", "grid-cols-4");
@@ -224,7 +225,7 @@ describe("BeachDetailExperience", () => {
   ] as const)("shows the %s score instead of the all-day comparison", (period, score) => {
     renderDetail({ period, recommendation: selected });
 
-    const advice = screen.getByRole("note", { name: "Indice condizioni del mare" });
+    const advice = screen.getByRole("note", { name: "Indice Mare Nostrum" });
     expect(advice.querySelector(`[data-score-value="${score}"]`)).toBeInTheDocument();
   });
 

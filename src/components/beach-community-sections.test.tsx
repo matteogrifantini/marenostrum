@@ -87,7 +87,7 @@ describe("BeachCommunitySections", () => {
     const reviews = screen.getByRole("region", { name: "Recensioni" });
     expect(within(reviews).getByText("Google Maps")).toBeInTheDocument();
     expect(within(reviews).getByText("Il profilo ufficiale su Google Maps non è ancora verificato.")).toBeInTheDocument();
-    expect(within(reviews).getByRole("link", { name: "Cerca Cala del Gelsomino su Google Maps" })).toHaveAttribute(
+    expect(within(reviews).getByRole("link", { name: "Verifica profilo Google Maps" })).toHaveAttribute(
       "href",
       "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino",
     );

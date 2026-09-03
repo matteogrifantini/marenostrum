@@ -167,7 +167,7 @@ export default async function Image({
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span style={{ fontSize: "16px", color: "rgba(255, 255, 255, 0.6)" }}>
-                Indice condizioni del mare
+                Indice Mare Nostrum
               </span>
               <span style={{ fontSize: "22px", fontWeight: "700" }}>{label}</span>
             </div>

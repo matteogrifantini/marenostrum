@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { CatalogScopeControls } from "./catalog-scope-controls";
 
 describe("CatalogScopeControls", () => {
-  it("uses two mobile columns and starts nearby in the left column", () => {
+  it("flattens into the shared mobile grid and orders nearby beside province", () => {
     render(
       <CatalogScopeControls
         context="home"
@@ -17,10 +17,25 @@ describe("CatalogScopeControls", () => {
     );
 
     const controls = screen.getByTestId("catalog-scope-controls");
-    expect(controls).toHaveClass("grid", "grid-cols-2", "w-full", "sm:flex", "sm:w-auto");
-    expect(screen.getByRole("combobox", { name: "Regione" }).parentElement).toHaveClass("w-full");
-    expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass("w-full");
-    expect(screen.getByTestId("nearby-control")).toHaveClass("col-start-1", "w-full");
+    expect(controls).toHaveClass("contents", "lg:flex", "lg:w-auto");
+    expect(screen.getByRole("combobox", { name: "Regione" }).parentElement).toHaveClass(
+      "order-2",
+      "w-full",
+      "lg:order-none",
+      "lg:w-auto",
+    );
+    expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass(
+      "order-4",
+      "w-full",
+      "lg:order-none",
+      "lg:w-auto",
+    );
+    expect(screen.getByTestId("nearby-control")).toHaveClass(
+      "order-3",
+      "w-full",
+      "lg:order-none",
+      "lg:w-auto",
+    );
   });
 
   it("makes the active nearby control fill its mobile column without moving it", () => {
@@ -37,7 +52,7 @@ describe("CatalogScopeControls", () => {
     );
 
     const nearby = screen.getByTestId("nearby-control");
-    expect(nearby).toHaveClass("col-start-1", "w-full");
+    expect(nearby).toHaveClass("order-3", "w-full", "lg:order-none", "lg:w-auto");
     expect(screen.getByRole("button", { name: "Vicino a me" })).toHaveClass("w-full", "px-4");
   });
 });

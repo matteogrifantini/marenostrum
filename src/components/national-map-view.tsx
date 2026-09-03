@@ -134,7 +134,10 @@ export function NationalMapView({
       >
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <DayPicker options={dateOptions} value={date} onChange={onDateChange} />
-          <div className="flex flex-wrap items-center gap-2">
+          <div
+            data-testid="map-filter-toolbar"
+            className="grid grid-cols-2 items-center gap-2 lg:flex lg:flex-wrap"
+          >
             <PeriodPicker value={period} onChange={onPeriodChange} />
             <CatalogScopeControls
               context="map"

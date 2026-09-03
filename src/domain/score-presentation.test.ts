@@ -11,7 +11,7 @@ describe("score presentation", () => {
       factors: { wind: 95, sea: 91, weather: 89 },
     });
 
-    expect(presentation.title).toBe("Indice condizioni del mare");
+    expect(presentation.title).toBe("Indice Mare Nostrum");
     expect(presentation.label).toBe("Ottime condizioni");
     expect(presentation.factors.map((factor) => factor.label)).toEqual([
       "Vento",

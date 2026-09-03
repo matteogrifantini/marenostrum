@@ -101,7 +101,7 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
                     >
                       {isVerifiedGoogleProfile
                         ? "Apri recensioni Google"
-                        : `Cerca ${beachName} su Google Maps`}
+                        : "Verifica profilo Google Maps"}
                     </a>
                   </>
                 );

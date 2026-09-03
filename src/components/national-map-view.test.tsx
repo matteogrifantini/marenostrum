@@ -125,6 +125,12 @@ describe("NationalMapView", () => {
       "true",
     );
     expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("morning");
+    expect(screen.getByTestId("map-filter-toolbar")).toHaveClass(
+      "grid",
+      "grid-cols-2",
+      "lg:flex",
+      "lg:flex-wrap",
+    );
   });
 
   it("exposes only geolocated recommendations as accessible rating markers", () => {

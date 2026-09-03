@@ -78,7 +78,7 @@ export function getScorePresentation(
   });
 
   return {
-    title: "Indice condizioni del mare",
+    title: "Indice Mare Nostrum",
     score: recommendation.score,
     scoreLabel: `${formatScoreOutOf100(recommendation.score)}/100`,
     label: publicLabel(recommendation.score),
