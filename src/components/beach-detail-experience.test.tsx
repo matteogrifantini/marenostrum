@@ -146,7 +146,16 @@ describe("BeachDetailExperience", () => {
     expect(dayControls.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice).toHaveAttribute("data-score-tone", "excellent");
-    expect(advice.querySelector('[data-score-value="100"]')).toBeInTheDocument();
+    const score = advice.querySelector('[data-score-value="100"]');
+    expect(score).toBeInTheDocument();
+    expect(score).toHaveClass(
+      "items-center",
+      "justify-center",
+      "text-[1.75rem]",
+      "sm:text-4xl",
+      "whitespace-nowrap",
+    );
+    expect(within(advice).queryByRole("list", { name: "Fattori dell’indice" })).not.toBeInTheDocument();
     expect(advice.querySelector('[data-score-denominator="true"]')).toBeInTheDocument();
     expect(within(advice).queryByText("Una sintesi di vento, onde e meteo per aiutarti a scegliere dove andare oggi.")).not.toBeInTheDocument();
     expect(within(advice).queryByText(/non è un bollettino ufficiale/i)).not.toBeInTheDocument();

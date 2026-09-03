@@ -341,20 +341,12 @@ function AdviceCard({
         <span className="flex shrink-0 items-end gap-1" aria-label={`${scoreValue}/100`}>
           <span
             data-score-value={scoreValue}
-            className={`grid size-16 place-items-center rounded-full text-center text-2xl font-black leading-none tabular-nums shadow-[0_7px_16px_rgba(20,44,57,0.14)] sm:size-[4.5rem] sm:text-3xl ${scoreBadgeClasses[tone]}`}
+            className={`flex size-16 items-center justify-center rounded-full text-center text-[1.75rem] font-black leading-none tabular-nums tracking-[-0.04em] whitespace-nowrap shadow-[0_7px_16px_rgba(20,44,57,0.14)] sm:size-[4.5rem] sm:text-4xl ${scoreBadgeClasses[tone]}`}
           >
             {scoreValue}
           </span>
           <span data-score-denominator="true" className="mb-1 text-xs font-extrabold text-[var(--muted)]">/100</span>
         </span>
-      </div>
-      <div className="mt-3 grid grid-cols-3 gap-1.5" role="list" aria-label="Fattori dell’indice">
-        {presentation.factors.map((factor) => (
-          <div key={factor.key} role="listitem" className="rounded-[0.8rem] bg-white/45 px-2.5 py-2">
-            <span className="block text-[0.62rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]">{factor.label}</span>
-            <strong className="mt-1 block text-sm text-[var(--ink)]">{factor.valueLabel}</strong>
-          </div>
-        ))}
       </div>
       <p className="mt-3 text-sm font-medium leading-6 text-[var(--ink-soft)]">{comment.text}</p>
     </article>

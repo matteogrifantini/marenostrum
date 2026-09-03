@@ -29,9 +29,16 @@ describe("BeachCard", () => {
       expect.stringContaining("cala-del-gelsomino.jpg"),
     );
     expect(screen.getByText("Noto · 18 km")).toBeInTheDocument();
-    expect(screen.getByLabelText(`Punteggio Mare Nostrum: ${Math.round(demoRecommendations[0].score)}/100, Ottime condizioni`)).toHaveAttribute(
-      "data-score-tone",
-      "excellent",
+    const score = screen.getByLabelText(
+      `Punteggio Mare Nostrum: ${Math.round(demoRecommendations[0].score)}/100, Ottime condizioni`,
+    );
+    expect(score).toHaveAttribute("data-score-tone", "excellent");
+    expect(score).toHaveClass("items-center", "justify-center");
+    expect(score.querySelector("strong")).toHaveClass(
+      "text-base",
+      "sm:text-xl",
+      "tabular-nums",
+      "whitespace-nowrap",
     );
     expect(screen.queryByText("Indice Mare Nostrum")).not.toBeInTheDocument();
     expect(screen.queryByLabelText(/^Vento:/)).not.toBeInTheDocument();
