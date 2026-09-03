@@ -416,7 +416,7 @@ export function LeafletBeachMap({
     if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return;
 
     const radius = Math.max(0.5, nearbySelection.radiusKm) * 1000;
-    const circle = leaflet.circle([latitude, longitude], {
+    leaflet.circle([latitude, longitude], {
       radius,
       color: "#0f7890",
       weight: 2,

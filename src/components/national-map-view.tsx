@@ -1,7 +1,7 @@
 "use client";
 
 import { SlidersHorizontal } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { formatScoreOutOf100 } from "../domain/score";
 import {
@@ -73,9 +73,15 @@ export function NationalMapView({
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
-  const [nearbySelection, setNearbySelection] = useState<MapNearbySelection | null>(() => nearbySelectionFromScope(scope));
+  const [uncontrolledNearbySelection, setUncontrolledNearbySelection] = useState<MapNearbySelection | null>(
+    () => nearbySelectionFromScope(scope),
+  );
   const [poiEnabled, setPoiEnabled] = useState(false);
   const [activePoiCategories, setActivePoiCategories] = useState<MapPoiCategory[]>([...MAP_POI_CATEGORIES]);
+
+  const nearbySelection = onNearbyChange
+    ? nearbySelectionFromScope(scope)
+    : uncontrolledNearbySelection;
 
   const togglePoiCategory = (category: MapPoiCategory) => {
     setActivePoiCategories((current) =>
@@ -85,12 +91,10 @@ export function NationalMapView({
     );
   };
 
-  useEffect(() => {
-    setNearbySelection(nearbySelectionFromScope(scope));
-  }, [scope]);
-
   const handleNearbyChange = (selection: NearbySelection | null) => {
-    setNearbySelection(selection);
+    if (!onNearbyChange) {
+      setUncontrolledNearbySelection(selection);
+    }
     onNearbyChange?.(selection);
   };
 
