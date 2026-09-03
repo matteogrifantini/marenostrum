@@ -83,6 +83,28 @@ describe("SicilyMapView", () => {
       },
     },
   ];
+  const duplicateNameRecommendations: BeachRecommendation[] = [
+    {
+      ...provinceRecommendations[0],
+      beach: {
+        ...provinceRecommendations[0].beach,
+        slug: "cala-rossa-favignana",
+        name: "Cala Rossa",
+        municipality: "Favignana",
+        provinceCode: "TP",
+      },
+    },
+    {
+      ...provinceRecommendations[1],
+      beach: {
+        ...provinceRecommendations[1].beach,
+        slug: "cala-rossa-ustica",
+        name: "Cala Rossa",
+        municipality: "Ustica",
+        provinceCode: "PA",
+      },
+    },
+  ];
 
   it("keeps the selected date and period visible in the shared controls", () => {
     render(
@@ -156,6 +178,29 @@ describe("SicilyMapView", () => {
 
     expect(onDateChange).toHaveBeenCalledWith("2026-08-21");
     expect(onPeriodChange).toHaveBeenCalledWith("afternoon");
+  });
+
+  it("emits the selected province through the province change callback", () => {
+    const onProvinceChange = vi.fn();
+
+    render(
+      <SicilyMapView
+        recommendations={provinceRecommendations}
+        province="all"
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+        onProvinceChange={onProvinceChange}
+      />,
+    );
+
+    fireEvent.change(screen.getByRole("combobox", { name: "Provincia della mappa" }), {
+      target: { value: "PA" },
+    });
+
+    expect(onProvinceChange).toHaveBeenCalledWith("PA");
   });
 
   it("keeps POI layers disabled by default and exposes toggle to activate them", () => {
@@ -245,9 +290,76 @@ describe("SicilyMapView", () => {
     );
 
     expect(screen.getByRole("combobox", { name: "Provincia della mappa" })).toHaveValue("PA");
-    expect(screen.getByTestId("map-result-summary")).toHaveTextContent("1 spiaggia");
-    expect(screen.getByRole("button", { name: "Mondello" })).toBeInTheDocument();
+    expect(screen.getByTestId("map-result-summary")).toHaveTextContent(
+      "1 spiaggia · Provincia di Palermo",
+    );
+    expect(screen.getByTestId("map-result-summary")).toHaveAttribute("aria-live", "polite");
+    expect(screen.getByRole("button", { name: "Mondello · Palermo (PA)" })).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "San Vito Lo Capo" })).not.toBeInTheDocument();
+  });
+
+  it("announces the whole-island scope in the map result summary", () => {
+    render(
+      <SicilyMapView
+        recommendations={provinceRecommendations}
+        province="all"
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByTestId("map-result-summary")).toHaveTextContent(
+      "2 spiagge · Tutta la Sicilia",
+    );
+  });
+
+  it("starts the beach disclosure list collapsed", () => {
+    render(
+      <SicilyMapView
+        recommendations={provinceRecommendations}
+        province="all"
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByText("Elenco spiagge").closest("details")).not.toHaveAttribute("open");
+  });
+
+  it("keeps contextual beach buttons selectable when names collide", () => {
+    render(
+      <SicilyMapView
+        recommendations={duplicateNameRecommendations}
+        province="all"
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
+      />,
+    );
+
+    const favignanaButton = screen.getByRole("button", {
+      name: "Cala Rossa · Favignana (TP)",
+    });
+    const usticaButton = screen.getByRole("button", {
+      name: "Cala Rossa · Ustica (PA)",
+    });
+
+    expect(favignanaButton).toHaveAttribute("type", "button");
+    expect(favignanaButton).toHaveAttribute("aria-pressed", "false");
+    fireEvent.click(favignanaButton);
+    expect(favignanaButton).toHaveAttribute("aria-pressed", "true");
+    expect(usticaButton).toHaveAttribute("aria-pressed", "false");
   });
 
 });

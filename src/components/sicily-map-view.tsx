@@ -34,6 +34,11 @@ type SicilyMapViewProps = {
   onProvinceChange: (province: ProvinceSelection) => void;
 };
 
+function formatMapBeachLabel(beach: BeachRecommendation["beach"]) {
+  const provinceCode = beach.provinceCode?.trim().toUpperCase();
+  return `${beach.name} · ${beach.municipality}${provinceCode ? ` (${provinceCode})` : ""}`;
+}
+
 export function SicilyMapView({
   recommendations,
   province,
@@ -75,6 +80,9 @@ export function SicilyMapView({
   const selectedVisibleSlug = selectedSlug && visibleMappableRecommendations.some(({ beach }) => beach.slug === selectedSlug)
     ? selectedSlug
     : null;
+  const provinceLabel = province === "all"
+    ? "Tutta la Sicilia"
+    : `Provincia di ${SICILIAN_PROVINCES.find(({ code }) => code === province)?.label ?? province}`;
 
   return (
     <div className="flex flex-col gap-4">
@@ -241,11 +249,14 @@ export function SicilyMapView({
       <section className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[0_12px_34px_rgba(20,44,57,0.06)]">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p
+            aria-live="polite"
             data-testid="map-result-summary"
             className="text-sm font-bold text-[var(--ink)]"
           >
             {visibleMappableRecommendations.length}{" "}
             {visibleMappableRecommendations.length === 1 ? "spiaggia" : "spiagge"}
+            {" · "}
+            {provinceLabel}
           </p>
           <div className="flex flex-wrap gap-2 text-xs font-semibold text-[var(--muted)]">
             <span>80+ ottimo</span>
@@ -259,7 +270,7 @@ export function SicilyMapView({
             Nessuna spiaggia corrisponde ai filtri
           </p>
         ) : (
-          <details open className="mt-3 rounded-[1.1rem] border border-[var(--line)] bg-[var(--surface-muted)] px-4 py-3">
+          <details className="mt-3 rounded-[1.1rem] border border-[var(--line)] bg-[var(--surface-muted)] px-4 py-3">
             <summary className="cursor-pointer text-sm font-bold text-[var(--ink)]">
               Elenco spiagge
             </summary>
@@ -277,7 +288,7 @@ export function SicilyMapView({
                   }`}
                   title={`${formatScoreOutOf100(score)}/100`}
                 >
-                  {beach.name}
+                  {formatMapBeachLabel(beach)}
                 </button>
               ))}
             </div>
