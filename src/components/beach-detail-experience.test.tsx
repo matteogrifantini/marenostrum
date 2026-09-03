@@ -148,7 +148,7 @@ describe("BeachDetailExperience", () => {
     expect(advice).toHaveAttribute("data-score-tone", "excellent");
     expect(advice.querySelector('[data-score-value="100"]')).toBeInTheDocument();
     expect(advice.querySelector('[data-score-denominator="true"]')).toBeInTheDocument();
-    expect(within(advice).getByText("Una sintesi di vento, onde e meteo per aiutarti a scegliere dove andare oggi.")).toBeInTheDocument();
+    expect(within(advice).queryByText("Una sintesi di vento, onde e meteo per aiutarti a scegliere dove andare oggi.")).not.toBeInTheDocument();
     expect(within(advice).queryByText(/non è un bollettino ufficiale/i)).not.toBeInTheDocument();
 
     const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
@@ -298,7 +298,8 @@ describe("BeachDetailExperience", () => {
 
     expect(screen.getByRole("region", { name: "La spiaggia" })).toBeInTheDocument();
     expect(accordionTrigger).toHaveAttribute("aria-expanded", "false");
-    expect(screen.queryByText("Sabbia chiara e ciottoli fini")).not.toBeInTheDocument();
+    expect(screen.getByRole("group", { name: "Anteprima della spiaggia" })).toHaveTextContent("Sabbia chiara e ciottoli fini");
+    expect(screen.getByRole("region", { name: "La spiaggia" }).querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "true");
 
     fireEvent.click(heroTrigger);
 
@@ -310,7 +311,7 @@ describe("BeachDetailExperience", () => {
     fireEvent.click(accordionTrigger);
 
     expect(screen.getAllByRole("button", { name: "Scopri la spiaggia" })[1]).toHaveAttribute("aria-expanded", "false");
-    expect(screen.queryByText("Sabbia chiara e ciottoli fini")).not.toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "La spiaggia" }).querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "true");
 
     if (originalScrollIntoView) {
       Object.defineProperty(HTMLElement.prototype, "scrollIntoView", originalScrollIntoView);

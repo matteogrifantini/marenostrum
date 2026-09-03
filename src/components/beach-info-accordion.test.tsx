@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { useRef } from "react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { useRef, useState } from "react";
 import { describe, expect, it } from "vitest";
 import type { Beach } from "../domain/beach";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
@@ -35,15 +35,16 @@ const detail: BeachDetailContent = {
   webcam: null,
 };
 
-function AccordionHarness() {
+function AccordionHarness({ open = true }: { open?: boolean }) {
   const panelRef = useRef<HTMLElement | null>(null);
+  const [isOpen, setIsOpen] = useState(open);
 
   return (
     <BeachInfoAccordion
       beach={beach}
       detail={detail}
-      open
-      onToggle={() => undefined}
+      open={isOpen}
+      onToggle={() => setIsOpen((current) => !current)}
       panelRef={panelRef}
     />
   );
@@ -58,5 +59,22 @@ describe("BeachInfoAccordion", () => {
 
     expect(cells.slice(0, 4).every((cell) => cell?.className.includes("border-b"))).toBe(true);
     expect(cells.slice(4).every((cell) => !cell?.className.includes("border-b"))).toBe(true);
+  });
+
+  it("keeps a short preview visible while the full beach information slides open", () => {
+    render(<AccordionHarness open={false} />);
+
+    const panel = screen.getByRole("region", { name: "La spiaggia" });
+    const preview = within(panel).getByRole("group", { name: "Anteprima della spiaggia" });
+    expect(within(preview).getByText("Una baia tra scogli e acqua trasparente.")).toBeInTheDocument();
+    expect(within(preview).getByText("Cala Rossa")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Scopri la spiaggia" })).toHaveAttribute("aria-expanded", "false");
+    expect(panel.querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "true");
+
+    fireEvent.click(screen.getByRole("button", { name: "Scopri la spiaggia" }));
+
+    expect(screen.getByRole("button", { name: "Scopri la spiaggia" })).toHaveAttribute("aria-expanded", "true");
+    expect(panel.querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "false");
+    expect(within(panel).getByText("Esposizione")).toBeInTheDocument();
   });
 });

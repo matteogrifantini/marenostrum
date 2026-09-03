@@ -44,36 +44,55 @@ export function BeachInfoAccordion({ beach, detail, open, onToggle, panelRef }: 
         </span>
       </button>
 
-      {open ? (
-        <div id="beach-info-accordion-content" className="mt-4 border-t border-[var(--line)] pt-5">
-          <div className="flex items-center gap-3">
-            <div className="min-w-0">
-              <h2 className="text-xl font-extrabold tracking-[-0.035em]">{beach.name}</h2>
-              <p className="mt-1 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--muted)]">
-                <MapPin aria-hidden="true" size={14} />
-                {beach.municipality} · costa {beach.coast.toLowerCase()}
-              </p>
-            </div>
+      <div role="group" aria-label="Anteprima della spiaggia" className="mt-3 rounded-[1rem] bg-[var(--surface-muted)]/55 p-3 sm:p-4">
+        <div className="flex items-center gap-3">
+          <div className="min-w-0">
+            <h2 className="text-xl font-extrabold tracking-[-0.035em]">{beach.name}</h2>
+            <p className="mt-1 inline-flex items-center gap-1.5 text-xs font-bold text-[var(--muted)]">
+              <MapPin aria-hidden="true" size={14} />
+              {beach.municipality} · costa {beach.coast.toLowerCase()}
+            </p>
           </div>
-          <p className="mt-4 text-sm leading-6 text-[var(--ink-soft)]">{beach.description}</p>
-
-          <div className="mt-4 grid grid-cols-2 border-t border-[var(--line)]">
-            {detail.facts.map((fact, index) => (
-              <div
-                key={`${fact.label}-${index}`}
-                className={`grid grid-cols-[2.35rem_1fr] gap-2 border-[var(--line)] px-2 py-4 sm:grid-cols-[2rem_1fr] ${index % 2 === 0 ? "border-r" : ""} ${index < detail.facts.length - 2 ? "border-b" : ""}`}
-              >
-                <span aria-hidden="true" className="detail-emoji detail-emoji-mobile">{fact.emoji}</span>
-                <div>
-                  <strong className="block text-xs">{fact.label}</strong>
-                  <span className="mt-1 block text-[0.68rem] leading-4 text-[var(--muted)]">{fact.value}</span>
-                </div>
-              </div>
+        </div>
+        <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--ink-soft)]">{beach.description}</p>
+        {detail.facts.length > 0 ? (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {detail.facts.slice(0, 2).map((fact, index) => (
+              <span key={`${fact.label}-${index}`} className="rounded-full bg-[var(--surface)] px-2.5 py-1 text-[0.68rem] font-bold text-[var(--ink-soft)]">
+                {fact.label}: {fact.value}
+              </span>
             ))}
           </div>
-          {detail.facts.length === 0 ? <p className="mt-4 text-sm text-[var(--muted)]">Nessuna informazione aggiuntiva disponibile.</p> : null}
+        ) : null}
+      </div>
+
+      <div
+        id="beach-info-accordion-content"
+        aria-hidden={!open}
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="mt-4 border-t border-[var(--line)] pt-5">
+            <p className="text-sm leading-6 text-[var(--ink-soft)]">{beach.description}</p>
+
+            <div className="mt-4 grid grid-cols-2 border-t border-[var(--line)]">
+              {detail.facts.map((fact, index) => (
+                <div
+                  key={`${fact.label}-${index}`}
+                  className={`grid grid-cols-[2.35rem_1fr] gap-2 border-[var(--line)] px-2 py-4 sm:grid-cols-[2rem_1fr] ${index % 2 === 0 ? "border-r" : ""} ${index < detail.facts.length - 2 ? "border-b" : ""}`}
+                >
+                  <span aria-hidden="true" className="detail-emoji detail-emoji-mobile">{fact.emoji}</span>
+                  <div>
+                    <strong className="block text-xs">{fact.label}</strong>
+                    <span className="mt-1 block text-[0.68rem] leading-4 text-[var(--muted)]">{fact.value}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {detail.facts.length === 0 ? <p className="mt-4 text-sm text-[var(--muted)]">Nessuna informazione aggiuntiva disponibile.</p> : null}
+          </div>
         </div>
-      ) : null}
+      </div>
     </section>
   );
 }

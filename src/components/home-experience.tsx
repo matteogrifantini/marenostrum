@@ -475,21 +475,10 @@ export function HomeExperience({
             ) : displayedRecommendations.length > 0 ? (
               <>
                 {showNationalPreviewIntro ? (
-                  <header className="mb-4 flex items-end justify-between gap-4 px-1">
-                    <div>
-                      <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.12em] text-[var(--muted)]">
-                        Selezione nazionale
-                      </p>
-                      <h2 className="mt-1 font-serif text-2xl font-semibold tracking-[-0.045em] text-[var(--ink)]">
-                        Le spiagge in evidenza in Italia
-                      </h2>
-                      <p className="mt-1 max-w-xl text-sm leading-6 text-[var(--muted)]">
-                        Parti da una selezione essenziale. Scegli una regione o una provincia per restringere la ricerca.
-                      </p>
-                    </div>
-                    <span className="hidden shrink-0 rounded-full bg-[var(--surface)] px-3 py-1.5 text-xs font-extrabold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] sm:inline-flex">
-                      {visibleRecommendations.length} in evidenza
-                    </span>
+                  <header className="mb-4 px-1">
+                    <h2 className="font-serif text-2xl font-semibold tracking-[-0.045em] text-[var(--ink)]">
+                      Le spiagge in evidenza in Italia
+                    </h2>
                   </header>
                 ) : null}
                 <ul

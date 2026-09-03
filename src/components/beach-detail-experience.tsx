@@ -222,7 +222,7 @@ export function BeachDetailExperience({
               />
             </div>
 
-      <AdviceCard recommendation={selectedRecommendation} dataUnavailable={dataUnavailable} />
+            <AdviceCard recommendation={selectedRecommendation} dataUnavailable={dataUnavailable} />
             <PeriodSelection
               value={selection.period}
               onChange={(nextPeriod) => replaceSelection(selection.date, nextPeriod)}
@@ -252,7 +252,7 @@ export function BeachDetailExperience({
               </div>
             )}
             <BeachLiveSections beach={beach} detail={detail} />
-            <BeachCommunitySections beachSlug={beach.slug} beachName={beach.name} detail={detail} />
+            <BeachCommunitySections beachName={beach.name} detail={detail} />
             <ForecastAttribution
               includeParkingSource={detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org"))}
               freshnessText={selectedRecommendation && !dataUnavailable ? getScorePresentation(selectedRecommendation).freshnessText : undefined}
@@ -348,7 +348,6 @@ function AdviceCard({
           <span data-score-denominator="true" className="mb-1 text-xs font-extrabold text-[var(--muted)]">/100</span>
         </span>
       </div>
-      <p className="mt-2 text-sm font-medium leading-6 text-[var(--ink-soft)]">{presentation.explanation}</p>
       <div className="mt-3 grid grid-cols-3 gap-1.5" role="list" aria-label="Fattori dell’indice">
         {presentation.factors.map((factor) => (
           <div key={factor.key} role="listitem" className="rounded-[0.8rem] bg-white/45 px-2.5 py-2">

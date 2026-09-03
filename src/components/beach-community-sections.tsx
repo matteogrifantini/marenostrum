@@ -1,23 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import type { User } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import type { BeachDetailContent, BeachReview } from "../domain/beach-detail-content";
-import { createClient as createSupabaseBrowserClient } from "../lib/supabase/client";
+import type { BeachDetailContent } from "../domain/beach-detail-content";
 import { versionedMediaUrl } from "../lib/media-url";
 import { BeachPhotoViewer } from "./beach-photo-viewer";
 
 type BeachCommunitySectionsProps = {
   detail: BeachDetailContent;
-  beachSlug?: string;
   beachName?: string;
 };
 
-export function BeachCommunitySections({ detail, beachSlug, beachName = "questa spiaggia" }: BeachCommunitySectionsProps) {
+export function BeachCommunitySections({ detail, beachName = "questa spiaggia" }: BeachCommunitySectionsProps) {
   const { reviewProfile } = detail;
-  const [reviews, setReviews] = useState(detail.reviews);
   const [selectedPhoto, setSelectedPhoto] = useState<BeachDetailContent["recentPhotos"][number] | null>(null);
+  const isVerifiedGoogleProfile =
+    reviewProfile?.provider.toLowerCase() === "google" && reviewProfile.verificationStatus === "verified";
 
   const openPhoto = (photo: BeachDetailContent["recentPhotos"][number]) => {
     setSelectedPhoto(photo);
@@ -43,73 +41,24 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
     return () => window.removeEventListener("popstate", handlePopState);
   }, [selectedPhoto]);
 
-  const handleReviewSaved = (review: SavedReview) => {
-    setReviews((current) => mergeSavedReview(current, review));
-  };
-
   return (
     <>
       <section aria-label="Recensioni">
         <SectionHeading title="Recensioni" />
-        <article className="detail-surface detail-enter p-4 sm:p-5">
-          {reviews ? (
-            <>
-              <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--muted)]">Recensioni della community</p>
-              <div className="flex justify-end">
-                <div className="text-right">
-                  <strong className="text-3xl tracking-[-0.05em]">{reviews.rating.toFixed(1)}</strong>
-                  <span aria-label={`${reviews.rating.toFixed(1)} stelle su 5`} className="block text-xs tracking-[0.08em] text-[var(--sun-dark)]">★★★★★</span>
-                </div>
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-[var(--surface-muted)] px-3 py-1.5 text-xs font-bold text-[var(--ink-soft)]"><span aria-hidden="true" className="emoji-readable-mobile">👍</span> {reviews.recommendedPercent}% la consiglia</span>
-                <span className="rounded-full bg-[var(--surface-muted)] px-3 py-1.5 text-xs font-bold text-[var(--ink-soft)]">{reviews.total} recensioni</span>
-              </div>
-              {reviews.items.slice(0, 2).map((review) => (
-                <figure key={review.id} className="mt-4 border-t border-[var(--line)] pt-4">
-                  <blockquote className="text-sm leading-6 text-[var(--ink-soft)]">“{review.text}”</blockquote>
-                  <figcaption className="mt-2 text-xs font-semibold text-[var(--muted)]">{review.author} · {review.age}</figcaption>
-                </figure>
-              ))}
-            </>
+        <article className="detail-surface detail-enter flex min-h-16 items-center justify-between gap-4 p-4 sm:p-5">
+          {isVerifiedGoogleProfile && reviewProfile ? (
+            <a
+              href={reviewProfile.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Apri recensioni Google"
+              className="inline-flex min-h-11 items-center rounded-full px-2 text-[var(--sun-dark)] transition-transform hover:scale-105 active:scale-95"
+            >
+              <span role="img" aria-label="Recensioni Google" className="text-lg tracking-[0.12em]">★★★★★</span>
+            </a>
           ) : (
-            <p className="text-sm leading-6 text-[var(--muted)]">Nessuna recensione locale disponibile.</p>
+            <p className="text-sm leading-6 text-[var(--muted)]">Nessuna recensione disponibile.</p>
           )}
-
-          {reviewProfile ? (
-            <div className="mt-4 border-t border-[var(--line)] pt-4">
-              {(() => {
-                const isVerifiedGoogleProfile =
-                  reviewProfile.provider.toLowerCase() === "google" &&
-                  reviewProfile.verificationStatus === "verified";
-
-                return (
-                  <>
-                    <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--muted)]">
-                      {isVerifiedGoogleProfile ? "Recensioni Google" : "Google Maps"}
-                    </p>
-                    <p className="mt-1 text-sm leading-6 text-[var(--ink-soft)]">
-                      {isVerifiedGoogleProfile
-                        ? "Leggi le recensioni e il punteggio direttamente su Google Maps."
-                        : "Il profilo ufficiale su Google Maps non è ancora verificato."}
-                    </p>
-                    <a
-                      href={reviewProfile.mapsUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-3 inline-flex min-h-11 items-center rounded-[0.85rem] bg-[var(--ink)] px-3 text-xs font-extrabold text-white transition-[transform,background-color] hover:bg-[var(--sea-deep)] active:scale-[0.98]"
-                    >
-                      {isVerifiedGoogleProfile
-                        ? "Apri recensioni Google"
-                        : "Verifica profilo Google Maps"}
-                    </a>
-                  </>
-                );
-              })()}
-            </div>
-          ) : null}
-
-          {beachSlug ? <InternalReviewForm beachSlug={beachSlug} onSaved={handleReviewSaved} /> : null}
         </article>
       </section>
 
@@ -144,126 +93,6 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
         />
       ) : null}
     </>
-  );
-}
-
-type SavedReview = {
-  id: string;
-  author: string;
-  rating: number;
-  text: string;
-};
-
-function mergeSavedReview(current: BeachDetailContent["reviews"], saved: SavedReview) {
-  const existing = current?.items.filter((item) => item.rating !== undefined) ?? [];
-  const items: BeachReview[] = [
-    { id: saved.id, author: saved.author, age: "adesso", text: saved.text, rating: saved.rating },
-    ...existing.filter((item) => item.id !== saved.id),
-  ];
-  const rating = Math.round((items.reduce((sum, item) => sum + (item.rating ?? 0), 0) / items.length) * 10) / 10;
-  const recommendedPercent = Math.round((items.filter((item) => (item.rating ?? 0) >= 4).length / items.length) * 100);
-
-  return { rating, recommendedPercent, total: items.length, items };
-}
-
-function InternalReviewForm({ beachSlug, onSaved }: { beachSlug: string; onSaved: (review: SavedReview) => void }) {
-  const [authState, setAuthState] = useState<"signed-in" | "signed-out">("signed-out");
-  const [rating, setRating] = useState(5);
-  const [body, setBody] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    const client = createSupabaseBrowserClient();
-    if (!client) return;
-
-    void client.auth.getUser()
-      .then(({ data }: { data: { user: User | null } }) => setAuthState(data.user ? "signed-in" : "signed-out"))
-      .catch(() => setAuthState("signed-out"));
-  }, []);
-
-  if (authState !== "signed-in") {
-    return (
-      <div className="mt-4 border-t border-[var(--line)] pt-4">
-        <p className="text-sm font-bold text-[var(--ink)]">Hai provato questa spiaggia?</p>
-        <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Accedi per lasciare una valutazione.</p>
-        <a
-          href="/impostazioni"
-          className="mt-3 inline-flex min-h-11 items-center rounded-[0.85rem] bg-[var(--surface-muted)] px-3 text-xs font-extrabold text-[var(--ink)] transition-[transform,background-color] hover:bg-[var(--sand-muted)] active:scale-[0.98]"
-        >
-          Accedi per recensire
-        </a>
-      </div>
-    );
-  }
-
-  async function submitReview() {
-    setStatus("submitting");
-    setErrorMessage("");
-
-    try {
-      const response = await fetch("/api/reviews", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ slug: beachSlug, rating, body }),
-      });
-      const payload: unknown = await response.json();
-      const review = payload && typeof payload === "object" && "review" in payload
-        ? (payload as { review?: SavedReview }).review
-        : undefined;
-
-      if (!response.ok || !review) {
-        const message = payload && typeof payload === "object" && "error" in payload
-          ? String((payload as { error?: unknown }).error ?? "Impossibile salvare")
-          : "Impossibile salvare";
-        throw new Error(message);
-      }
-
-      onSaved(review);
-      setBody("");
-      setStatus("idle");
-    } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Impossibile salvare");
-      setStatus("error");
-    }
-  }
-
-  return (
-    <div className="mt-4 border-t border-[var(--line)] pt-4">
-      <p className="text-sm font-bold text-[var(--ink)]">La tua valutazione</p>
-      <div role="group" aria-label="Scegli il voto da 1 a 5 stelle" className="mt-2 flex gap-1">
-        {Array.from({ length: 5 }, (_, index) => index + 1).map((value) => (
-          <button
-            key={value}
-            type="button"
-            aria-label={`${value} stelle`}
-            aria-pressed={rating === value}
-            onClick={() => setRating(value)}
-            className={`grid size-9 place-items-center rounded-full text-lg transition-[transform,background-color,color] active:scale-95 ${rating >= value ? "bg-[var(--sun-soft)] text-[var(--sun-dark)]" : "bg-[var(--surface-muted)] text-[var(--muted)]"}`}
-          >
-            ★
-          </button>
-        ))}
-      </div>
-      <label htmlFor={`review-body-${beachSlug}`} className="sr-only">Commento (facoltativo)</label>
-      <textarea
-        id={`review-body-${beachSlug}`}
-        value={body}
-        onChange={(event) => setBody(event.target.value)}
-        maxLength={500}
-        placeholder="Un commento breve (facoltativo)"
-        className="mt-3 min-h-20 w-full resize-y rounded-[0.85rem] border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5 text-sm text-[var(--ink)] outline-none focus:border-[var(--sun)] focus:ring-2 focus:ring-[rgba(255,194,71,0.2)]"
-      />
-      <button
-        type="button"
-        onClick={submitReview}
-        disabled={status === "submitting"}
-        className="mt-3 inline-flex min-h-11 items-center rounded-[0.85rem] bg-[var(--sun)] px-4 text-xs font-black text-[var(--ink)] transition-[transform,opacity] hover:opacity-90 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60"
-      >
-        {status === "submitting" ? "Salvo…" : "Pubblica valutazione"}
-      </button>
-      {status === "error" ? <p role="alert" className="mt-2 text-xs font-bold text-[var(--coral)]">{errorMessage}</p> : null}
-    </div>
   );
 }
 

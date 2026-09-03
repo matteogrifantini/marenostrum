@@ -128,11 +128,12 @@ describe("HomeExperience", () => {
     replace.mockReset();
   });
 
-  it("introduces the national catalog with a bounded beach selection", () => {
+  it("introduces the national catalog with a concise beach selection heading", () => {
     renderHome({ nationalPreview: true });
 
     expect(screen.getByRole("heading", { name: "Le spiagge in evidenza in Italia" })).toBeInTheDocument();
-    expect(screen.getByText(/Scegli una regione o una provincia per restringere la ricerca/i)).toBeInTheDocument();
+    expect(screen.queryByText("Selezione nazionale")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Scegli una regione o una provincia per restringere la ricerca/i)).not.toBeInTheDocument();
   });
 
   it("shows stale-data copy beside the forecast timestamp only for low confidence", () => {
