@@ -9,7 +9,7 @@
 
 La tranche locale è implementata e verificata sul branch dedicato. L’identità pubblica, la SEO per spiaggia, il punteggio spiegato, gli scope nazionali, la mappa e gli importer sono ora nazionali e compatibili con un catalogo progressivo.
 
-Il branch non è ancora autorizzato al rilascio: non sono stati eseguiti push GitHub, deploy Vercel o migration Supabase remota. La verifica live del catalogo resta bloccata dall’assenza di `.env.local` e dal database Docker locale non avviato.
+Il branch è stato pushato su GitHub e la Preview Vercel è pronta; le due migration nazionali sono state applicate al progetto Supabase corretto. Il branch non è ancora autorizzato alla promozione in produzione: la verifica E2E completa e il catalog readiness restano attività separate.
 
 ## Tranche implementate
 
@@ -53,25 +53,29 @@ La CLI `agent-browser` non è installata nell’ambiente; la stessa checklist è
 
 La successiva ottimizzazione sitemap è stata verificata con Node 22: `npm test -- --run` passa con 111 file e 417 test; TypeScript, ESLint e build restano verdi.
 
+La Preview Vercel del commit `535bd28` è `READY` su `marenostrum-dfkeqyvmv-matteo-grifantinis-projects.vercel.app`. Lo smoke browser reale ha verificato la mappa nazionale, il filtro `province=PA` con 41 spiagge, la pagina di Mondello con titolo non duplicato, heading `Meteo del mare a Mondello`, score `85/100` spiegato e forecast reale.
+
 ## Database e catalogo
 
-Migration locali da revisionare/applicare solo al release gate:
+Migration locali allineate alla cronologia remota del progetto `marenostrum`:
 
-- `supabase/migrations/20260903061918_national_geography_scope.sql`
-- `supabase/migrations/20260903065424_nearby_published_beaches.sql`
+- `supabase/migrations/20260903090527_national_geography_scope.sql`
+- `supabase/migrations/20260903090550_nearby_published_beaches.sql`
 
-I test statici verificano coordinate nazionali, publication gate, RLS child-table e funzione PostGIS `security invoker`. Non è stata eseguita una verifica contro il progetto Supabase remoto; non sono state cambiate righe remote.
+Le migration sono state applicate al progetto remoto corretto `hivenxncleensmvvhkou` (`marenostrum`, `eu-west-1`) e la cronologia remota le riporta rispettivamente come `national_geography_scope` e `nearby_published_beaches`. I test statici verificano coordinate nazionali, publication gate, RLS child-table e funzione PostGIS `security invoker`.
+
+La verifica read-only remota ha confermato le nuove colonne geografiche, 80 spiagge pubblicate in Italia, 10 policy figlie aggiornate, funzione presente con `SECURITY INVOKER`, grant di esecuzione per `anon` e 80 risultati entro 100 km dal punto di Palermo.
 
 I dry-run catalogo verificati durante Task 7 hanno prodotto: 80 record catalogo, 80 master beach/134 fonti, 19 parking, 5 webcam, 4 media, 80 profili review draft, 80 immagini locali e 80 candidati image-media, con zero scritture. `catalog:readiness` si ferma prima della chiamata remota perché `.env.local` non esiste.
 
 ## Azioni ancora necessarie prima della produzione
 
-1. Avviare/verificare un database locale o un ambiente staging con il progetto Supabase corretto, applicare le migration solo dopo review e controllare RLS, advisors e conteggi anonimi.
+1. Completare la review dei warning già presenti negli advisor Supabase (password compromesse disabilitate e indici FK mancanti) e mantenere il controllo RLS sui prossimi lotti.
 2. Eseguire `catalog:readiness` con configurazione autorizzata e promuovere soltanto spiagge con identità, geografia, contenuti, licenza immagine, fonte meteo e forecast verificati.
-3. Pubblicare una Preview Vercel del branch, fare smoke su una spiaggia reale e verificare HTML, canonical, JSON-LD, score, immagini e stato forecast.
+3. La Preview Vercel è stata pubblicata e verificata su una spiaggia reale; resta da eseguire lo smoke finale su HTML/canonical/JSON-LD/immagini con gli strumenti di crawl scelti dal team.
 4. Collegare gli E2E a un ambiente di test con catalogo pubblicato deterministico e portarli a 24/24 prima della promozione.
 5. Aggiungere nuove regioni/province per lotti verificati; dopo ogni lotto controllare sitemap e Search Console. Il codice non promette un posizionamento Google garantito.
 
 ## Decisione
 
-**Non portare ancora questo branch direttamente in produzione.** Il codice locale è verde sui test deterministici e sulla build, ma mancano la prova Supabase reale, la migration remota, la Preview Vercel e gli E2E con catalogo. Il branch è pronto per quel release gate, non per dichiarare una pubblicazione già avvenuta.
+**Non portare ancora questo branch direttamente in produzione.** Migration remota e Preview Vercel sono ora verificate; restano gli E2E completi con catalogo deterministico, una revisione finale dei warning degli advisor e la decisione esplicita di promozione in produzione. Il branch è pronto per quel release gate, non per dichiarare una pubblicazione già avvenuta.
