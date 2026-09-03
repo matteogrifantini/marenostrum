@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import catalogBeaches from "../../data/catalog/sicilia/beaches.json";
 import { getAllPublishedBeaches } from "../data/beach-repository";
 import { TERRITORY_HUBS } from "../domain/territory-hubs";
 
@@ -12,11 +11,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const published = await getAllPublishedBeaches();
     published.forEach((beach) => slugSet.add(beach.slug));
   } catch {
-    // Fallback to static catalog if DB is offline
-  }
-
-  if (slugSet.size === 0) {
-    catalogBeaches.forEach((beach) => slugSet.add(beach.slug));
   }
 
   const staticRoutes: MetadataRoute.Sitemap = [

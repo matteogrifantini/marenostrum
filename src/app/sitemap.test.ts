@@ -55,14 +55,20 @@ describe("sitemap", () => {
     );
   });
 
-  it("falls back gracefully to static catalog routes if database lookup fails", async () => {
+  it("keeps static core routes and no beach routes if database lookup fails", async () => {
     getAllPublishedBeachesMock.mockRejectedValue(new Error("DB error"));
 
     const result = await sitemap();
 
-    expect(result.length).toBeGreaterThan(11);
-    expect(result[0].url).toBe("https://marenostrum.app");
-    expect(result[1].url).toBe("https://marenostrum.app/mappa");
-    expect(result[2].url).toBe("https://marenostrum.app/localita/palermo");
+    expect(result).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ url: "https://marenostrum.app" }),
+        expect.objectContaining({ url: "https://marenostrum.app/mappa" }),
+        expect.objectContaining({ url: "https://marenostrum.app/privacy" }),
+        expect.objectContaining({ url: "https://marenostrum.app/cookie" }),
+        expect.objectContaining({ url: "https://marenostrum.app/termini" }),
+      ]),
+    );
+    expect(result.some(({ url }) => url.includes("/spiagge/"))).toBe(false);
   });
 });
