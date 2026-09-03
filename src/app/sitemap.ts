@@ -64,7 +64,7 @@ function beachRoute(beach: Beach): MetadataRoute.Sitemap[number] {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
-    const published = await getAllPublishedBeaches();
+    const published = await getAllPublishedBeaches(undefined, { bypassCache: true });
     const beachesByProvince = new Map<string, Beach[]>();
 
     for (const beach of published) {

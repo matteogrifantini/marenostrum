@@ -499,6 +499,10 @@ async function fetchAllPublishedBeachesInternal() {
   return beachRows.map(mapBeachRow);
 }
 
+export type PublishedBeachReadOptions = {
+  bypassCache?: boolean;
+};
+
 const getCachedAllPublishedBeaches = unstable_cache(
   fetchAllPublishedBeachesInternal,
   ["all-published-beaches-cache-v1"],
@@ -507,11 +511,16 @@ const getCachedAllPublishedBeaches = unstable_cache(
 
 export async function getAllPublishedBeaches(
   providedStore?: ForecastReadStore,
+  options: PublishedBeachReadOptions = {},
 ): Promise<Beach[]> {
   if (providedStore) {
     const store = await resolveStore(providedStore);
     const beachRows = await store.getPublishedBeaches();
     return beachRows.map(mapBeachRow);
+  }
+
+  if (options.bypassCache) {
+    return fetchAllPublishedBeachesInternal();
   }
 
   return getCachedAllPublishedBeaches();
