@@ -41,9 +41,9 @@ describe("BeachCard", () => {
       "whitespace-nowrap",
     );
     expect(screen.queryByText("Indice Mare Nostrum")).not.toBeInTheDocument();
-    expect(screen.queryByLabelText(/^Vento:/)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText(/^Onde:/)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText(/^Meteo:/)).not.toBeInTheDocument();
+    expect(screen.getByLabelText(/^Vento:/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Onde:/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Meteo:/)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Salva Cala del Gelsomino" })).toHaveAttribute(
       "aria-pressed",
       "false",
@@ -125,7 +125,7 @@ describe("BeachCard", () => {
     expect(screen.queryByRole("img", { name: "Foto di Cala del Gelsomino" })).not.toBeInTheDocument();
   });
 
-  it("omits detailed weather metrics from the compact card", () => {
+  it("shows compact weather metrics without duplicating the score factors", () => {
     const recommendation = {
       ...demoRecommendations[0],
       conditions: {
@@ -143,9 +143,12 @@ describe("BeachCard", () => {
       />,
     );
 
-    expect(screen.queryByLabelText(/^Vento:/)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText(/^Onde:/)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText(/^Meteo:/)).not.toBeInTheDocument();
+    expect(screen.getByLabelText(/^Vento:/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Onde:/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Meteo:/)).toBeInTheDocument();
+    expect(screen.queryByText(/Vento 100\/100/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Mare 100\/100/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Meteo 96\/100/)).not.toBeInTheDocument();
   });
 
   it("keeps a narrow mobile card from clipping the location", () => {
