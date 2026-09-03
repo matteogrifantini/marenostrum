@@ -11,6 +11,7 @@ import {
 
 type CatalogScopeControlsProps = {
   context: "home" | "map";
+  layout?: "inline" | "two-column";
   region: RegionSelection;
   province: ProvinceSelection;
   nearbySelection: NearbySelection | null;
@@ -21,6 +22,7 @@ type CatalogScopeControlsProps = {
 
 export function CatalogScopeControls({
   context,
+  layout = "inline",
   region,
   province,
   nearbySelection,
@@ -28,6 +30,7 @@ export function CatalogScopeControls({
   onProvinceChange,
   onNearbyChange,
 }: CatalogScopeControlsProps) {
+  const isTwoColumnLayout = layout === "two-column";
   const suffix = context === "map" ? " della mappa" : "";
   const visibleProvinces = region === "all"
     ? ITALIAN_PROVINCES
@@ -36,9 +39,9 @@ export function CatalogScopeControls({
   return (
     <div
       data-testid="catalog-scope-controls"
-      className="contents lg:flex lg:w-auto lg:flex-wrap lg:items-center lg:gap-2"
+      className={isTwoColumnLayout ? "contents" : "contents lg:flex lg:w-auto lg:flex-wrap lg:items-center lg:gap-2"}
     >
-      <label className="order-2 inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)] lg:order-none lg:w-auto lg:shrink-0">
+      <label className={`${isTwoColumnLayout ? "col-start-1 row-start-1" : "order-2 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
         <span className="sr-only">Regione{suffix}</span>
         <select
           aria-label={`Regione${suffix}`}
@@ -55,7 +58,7 @@ export function CatalogScopeControls({
         </select>
       </label>
 
-      <label className="order-4 inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)] lg:order-none lg:w-auto lg:shrink-0">
+      <label className={`${isTwoColumnLayout ? "col-start-1 row-start-2" : "order-4 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
         <span className="sr-only">Provincia{suffix}</span>
         <select
           aria-label={`Provincia${suffix}`}
@@ -75,7 +78,7 @@ export function CatalogScopeControls({
       <NearbyControl
         value={nearbySelection}
         onChange={onNearbyChange}
-        className="order-3 w-full lg:order-none lg:w-auto"
+        className={isTwoColumnLayout ? "col-start-2 row-start-1 w-full" : "order-3 w-full lg:order-none lg:w-auto"}
       />
     </div>
   );

@@ -221,9 +221,9 @@ export function BeachCard({
               <div
                 aria-label={`Punteggio Mare Nostrum: ${scorePresentation.scoreLabel}, ${scorePresentation.label}`}
                 data-score-tone={tone}
-                className={`flex size-9 shrink-0 items-center justify-center rounded-full shadow-[0_4px_12px_rgba(20,44,57,0.12)] sm:size-12 ${SCORE_TONE_CLASSES[tone]}`}
+                className={`flex size-10 shrink-0 items-center justify-center rounded-full shadow-[0_4px_12px_rgba(20,44,57,0.12)] sm:size-12 ${SCORE_TONE_CLASSES[tone]}`}
               >
-                <strong className="whitespace-nowrap font-serif text-base font-semibold leading-none tabular-nums tracking-[-0.04em] sm:text-xl">
+                <strong className="-translate-y-px whitespace-nowrap font-serif text-lg font-semibold leading-none tabular-nums tracking-[-0.04em] sm:text-xl">
                   {displayScore}
                 </strong>
               </div>

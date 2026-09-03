@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Info, MapPin, Play, Share2 } from "lucide-react";
+import { ArrowLeft, Check, MapPin, Play, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Beach, BeachPeriod } from "../domain/beach";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
@@ -17,11 +17,9 @@ type DetailHeroProps = {
   period?: BeachPeriod;
   homeDate?: string;
   distanceKm?: number;
-  infoOpen?: boolean;
-  onInfoToggle?: () => void;
 };
 
-export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = false, onInfoToggle }: DetailHeroProps) {
+export function DetailHero({ beach, detail, homeDate, distanceKm }: DetailHeroProps) {
   const [shared, setShared] = useState(false);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showReels, setShowReels] = useState(false);
@@ -150,21 +148,6 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
             <span>{beach.municipality}</span>
             {beach.coast && <><span aria-hidden="true" className="text-white/40">·</span><span className="text-white/80">{beach.coast}</span></>}
             {distanceKm === undefined ? null : <><span aria-hidden="true" className="text-white/40">·</span><span className="text-[var(--sun)]">{distanceKm} km da te</span></>}
-          </div>
-          <div className="pointer-events-auto mt-4 flex flex-wrap items-center gap-2.5">
-            {onInfoToggle ? (
-              <button
-                type="button"
-                aria-label="Scopri la spiaggia"
-                aria-expanded={infoOpen}
-                aria-controls="beach-info-accordion"
-                onClick={onInfoToggle}
-                className="detail-press inline-flex min-h-11 items-center gap-2 rounded-full border border-white/35 bg-white/15 px-4 text-sm font-bold text-white shadow-[0_8px_22px_rgba(6,28,35,0.18)] backdrop-blur-md transition-[background-color,border-color,transform] duration-200 ease-out hover:border-white/55 hover:bg-white/25 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                <Info aria-hidden="true" size={16} />
-                <span>Scopri la spiaggia</span>
-              </button>
-            ) : null}
           </div>
         </div>
       </section>

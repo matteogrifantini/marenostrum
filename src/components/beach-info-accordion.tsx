@@ -27,23 +27,6 @@ export function BeachInfoAccordion({ beach, detail, open, onToggle, panelRef }: 
       aria-label="La spiaggia"
       className="detail-surface detail-enter mt-4 scroll-mt-6 p-4 sm:p-5"
     >
-      <button
-        type="button"
-        aria-label="Scopri la spiaggia"
-        aria-expanded={open}
-        aria-controls="beach-info-accordion-content"
-        onClick={onToggle}
-        className="flex min-h-12 w-full items-center justify-between gap-4 text-left"
-      >
-        <span className="flex items-center gap-3">
-          <span aria-hidden="true" className="detail-emoji detail-emoji-mobile">🏖️</span>
-          <span className="text-base font-extrabold tracking-[-0.025em]">Scopri la spiaggia</span>
-        </span>
-        <span className={`grid size-10 shrink-0 place-items-center rounded-full bg-[var(--sun-soft)] text-[var(--sun-dark)] transition-transform duration-200 ease-out ${open ? "rotate-180" : ""}`}>
-          <ChevronDown aria-hidden="true" size={19} />
-        </span>
-      </button>
-
       <div role="group" aria-label="Anteprima della spiaggia" className="mt-3 rounded-[1rem] bg-[var(--surface-muted)]/55 p-3 sm:p-4">
         <div className="flex items-center gap-3">
           <div className="min-w-0">
@@ -65,6 +48,23 @@ export function BeachInfoAccordion({ beach, detail, open, onToggle, panelRef }: 
           </div>
         ) : null}
       </div>
+
+      <button
+        type="button"
+        aria-label="Scopri la spiaggia"
+        aria-expanded={open}
+        aria-controls="beach-info-accordion-content"
+        onClick={onToggle}
+        className="mt-3 flex min-h-12 w-full items-center justify-between gap-4 border-t border-[var(--line)] pt-3 text-left"
+      >
+        <span className="flex items-center gap-3">
+          <span aria-hidden="true" className="detail-emoji detail-emoji-mobile">🏖️</span>
+          <span className="text-base font-extrabold tracking-[-0.025em]">Scopri la spiaggia</span>
+        </span>
+        <span className={`grid size-10 shrink-0 place-items-center rounded-full bg-[var(--sun-soft)] text-[var(--sun-dark)] transition-transform duration-200 ease-out ${open ? "rotate-180" : ""}`}>
+          <ChevronDown aria-hidden="true" size={19} />
+        </span>
+      </button>
 
       <div
         id="beach-info-accordion-content"

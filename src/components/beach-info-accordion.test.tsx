@@ -66,14 +66,16 @@ describe("BeachInfoAccordion", () => {
 
     const panel = screen.getByRole("region", { name: "La spiaggia" });
     const preview = within(panel).getByRole("group", { name: "Anteprima della spiaggia" });
+    const trigger = screen.getByRole("button", { name: "Scopri la spiaggia" });
     expect(within(preview).getByText("Una baia tra scogli e acqua trasparente.")).toBeInTheDocument();
     expect(within(preview).getByText("Cala Rossa")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Scopri la spiaggia" })).toHaveAttribute("aria-expanded", "false");
+    expect(preview.compareDocumentPosition(trigger) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
     expect(panel.querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "true");
 
-    fireEvent.click(screen.getByRole("button", { name: "Scopri la spiaggia" }));
+    fireEvent.click(trigger);
 
-    expect(screen.getByRole("button", { name: "Scopri la spiaggia" })).toHaveAttribute("aria-expanded", "true");
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
     expect(panel.querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "false");
     expect(within(panel).getByText("Esposizione")).toBeInTheDocument();
   });

@@ -55,4 +55,35 @@ describe("CatalogScopeControls", () => {
     expect(nearby).toHaveClass("order-3", "w-full", "lg:order-none", "lg:w-auto");
     expect(screen.getByRole("button", { name: "Vicino a me" })).toHaveClass("w-full", "px-4");
   });
+
+  it("keeps region and province on the left and nearby on the right in the compact grid", () => {
+    render(
+      <CatalogScopeControls
+        context="home"
+        layout="two-column"
+        region="all"
+        province="all"
+        nearbySelection={null}
+        onRegionChange={vi.fn()}
+        onProvinceChange={vi.fn()}
+        onNearbyChange={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByRole("combobox", { name: "Regione" }).parentElement).toHaveClass(
+      "col-start-1",
+      "row-start-1",
+      "w-full",
+    );
+    expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass(
+      "col-start-1",
+      "row-start-2",
+      "w-full",
+    );
+    expect(screen.getByTestId("nearby-control")).toHaveClass(
+      "col-start-2",
+      "row-start-1",
+      "w-full",
+    );
+  });
 });

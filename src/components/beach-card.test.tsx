@@ -33,10 +33,12 @@ describe("BeachCard", () => {
       `Punteggio Mare Nostrum: ${Math.round(demoRecommendations[0].score)}/100, Ottime condizioni`,
     );
     expect(score).toHaveAttribute("data-score-tone", "excellent");
-    expect(score).toHaveClass("items-center", "justify-center");
+    expect(score).toHaveClass("size-10", "items-center", "justify-center");
     expect(score.querySelector("strong")).toHaveClass(
-      "text-base",
+      "text-lg",
       "sm:text-xl",
+      "leading-none",
+      "-translate-y-px",
       "tabular-nums",
       "whitespace-nowrap",
     );

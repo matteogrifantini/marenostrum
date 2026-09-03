@@ -406,26 +406,29 @@ export function HomeExperience({
 
               <div
                 data-testid="home-filter-toolbar"
-                className="grid grid-cols-2 items-center gap-2 border-t border-[var(--line)] pt-3 lg:flex lg:flex-wrap"
+                className="grid gap-2 border-t border-[var(--line)] pt-3"
               >
                 <PeriodPicker value={period} onChange={handlePeriodChange} />
-                <CatalogScopeControls
-                  context="home"
-                  region={region}
-                  province={province}
-                  nearbySelection={nearbySelection}
-                  onRegionChange={handleRegionChange}
-                  onProvinceChange={handleProvinceChange}
-                  onNearbyChange={handleNearbyChange}
-                />
-                <button
-                  type="button"
-                  onClick={() => setFilterSheetOpen(true)}
-                  className="order-5 col-span-2 inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-4 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] lg:order-none lg:col-auto"
-                >
-                  <SlidersHorizontal aria-hidden="true" size={16} />
-                  Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
-                </button>
+                <div className="grid grid-cols-2 gap-2">
+                  <CatalogScopeControls
+                    context="home"
+                    layout="two-column"
+                    region={region}
+                    province={province}
+                    nearbySelection={nearbySelection}
+                    onRegionChange={handleRegionChange}
+                    onProvinceChange={handleProvinceChange}
+                    onNearbyChange={handleNearbyChange}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setFilterSheetOpen(true)}
+                    className="col-start-2 row-start-2 inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-3 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+                  >
+                    <SlidersHorizontal aria-hidden="true" size={16} />
+                    Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
+                  </button>
+                </div>
               </div>
             </div>
             {/* Inline Nearby Radius (Visible only when position is active) */}

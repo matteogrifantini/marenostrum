@@ -1,6 +1,6 @@
 "use client";
 
-import { SlidersHorizontal } from "lucide-react";
+import { MapPin, Search, SlidersHorizontal, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { formatScoreOutOf100 } from "../domain/score";
@@ -71,6 +71,8 @@ export function NationalMapView({
   onNearbyChange,
 }: NationalMapViewProps) {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [beachSearch, setBeachSearch] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
   const [uncontrolledNearbySelection, setUncontrolledNearbySelection] = useState<MapNearbySelection | null>(
@@ -117,6 +119,21 @@ export function NationalMapView({
   const selectedVisibleSlug = selectedSlug && visibleMappableRecommendations.some(({ beach }) => beach.slug === selectedSlug)
     ? selectedSlug
     : null;
+  const searchResults = useMemo(() => {
+    const normalizedQuery = beachSearch.trim().toLocaleLowerCase("it-IT");
+    if (!normalizedQuery) return [];
+
+    return visibleMappableRecommendations
+      .filter(({ beach }) => [
+        beach.name,
+        beach.municipality,
+        beach.provinceCode ?? "",
+        beach.provinceName ?? "",
+      ].some((value) => value.toLocaleLowerCase("it-IT").includes(normalizedQuery)))
+      .slice(0, 8);
+  }, [beachSearch, visibleMappableRecommendations]);
+  const hasMapScope = Boolean(scope || region !== "all" || province !== "all" || nearbySelection);
+  const needsScopeSelection = !hasMapScope && recommendations.length === 0;
   const displayScope = scope ?? (
     province !== "all"
       ? { kind: "province", provinceCode: province } as const
@@ -124,7 +141,25 @@ export function NationalMapView({
         ? { kind: "region", regionCode: region } as const
         : null
   );
-  const scopeLabel = formatCatalogScopeLabel(displayScope);
+  const scopeLabel = needsScopeSelection ? "Scegli una regione" : formatCatalogScopeLabel(displayScope);
+
+  const handleMapSelectBeach = (slug: string) => {
+    setSelectedSlug(slug);
+    const selectedBeach = visibleMappableRecommendations.find(({ beach }) => beach.slug === slug)?.beach;
+    if (selectedBeach) setBeachSearch(formatMapBeachLabel(selectedBeach));
+  };
+
+  const handleBeachSearchChange = (value: string) => {
+    setBeachSearch(value);
+    setSearchOpen(true);
+    if (!value.trim()) setSelectedSlug(null);
+  };
+
+  const handleBeachSearchClear = () => {
+    setBeachSearch("");
+    setSelectedSlug(null);
+    setSearchOpen(false);
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -132,15 +167,16 @@ export function NationalMapView({
         aria-label="Controlli previsione mappa"
         className="relative z-20 overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.94)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4"
       >
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-3">
           <DayPicker options={dateOptions} value={date} onChange={onDateChange} />
+          <PeriodPicker value={period} onChange={onPeriodChange} />
           <div
             data-testid="map-filter-toolbar"
-            className="grid grid-cols-2 items-center gap-2 lg:flex lg:flex-wrap"
+            className="grid grid-cols-2 gap-2"
           >
-            <PeriodPicker value={period} onChange={onPeriodChange} />
             <CatalogScopeControls
               context="map"
+              layout="two-column"
               region={region}
               province={province}
               nearbySelection={nearbySelection}
@@ -148,34 +184,87 @@ export function NationalMapView({
               onProvinceChange={onProvinceChange}
               onNearbyChange={handleNearbyChange}
             />
+            <button
+              type="button"
+              onClick={() => setFilterSheetOpen(true)}
+              className="col-start-2 row-start-2 inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-3 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+            >
+              <SlidersHorizontal aria-hidden="true" size={16} />
+              Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
+            </button>
           </div>
         </div>
 
-        <div className="mt-3 grid gap-3 border-t border-[var(--line)] pt-3 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:items-center">
-          <label className="flex min-h-11 min-w-0 items-center rounded-full bg-[var(--control-surface)] px-4 text-sm font-bold text-[var(--ink)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.06)]">
-            <span className="sr-only">Cerca una spiaggia sulla mappa</span>
-            <select
+        <div className="mt-3 grid gap-2 border-t border-[var(--line)] pt-3">
+          <div className="relative">
+            <Search
+              aria-hidden="true"
+              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--muted)]"
+              size={18}
+              strokeWidth={2.2}
+            />
+            <input
+              id="map-beach-search"
+              type="search"
+              role="combobox"
               aria-label="Cerca una spiaggia sulla mappa"
-              value={selectedVisibleSlug ?? ""}
-              onChange={(event) => setSelectedSlug(event.target.value || null)}
-              className="min-h-11 w-full min-w-0 appearance-none bg-transparent outline-none focus-visible:ring-2 focus-visible:ring-[var(--sun)]"
-            >
-              <option value="">Cerca una spiaggia sulla mappa</option>
-              {visibleMappableRecommendations.map(({ beach }) => (
-                <option key={beach.slug} value={beach.slug}>
-                  {beach.name} · {beach.municipality}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button
-            type="button"
-            onClick={() => setFilterSheetOpen(true)}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-4 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
-          >
-            <SlidersHorizontal aria-hidden="true" size={16} />
-            Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
-          </button>
+              aria-autocomplete="list"
+              aria-controls="map-beach-search-results"
+              aria-describedby={!hasMapScope ? "map-beach-search-hint" : undefined}
+              aria-expanded={searchOpen && beachSearch.trim().length > 0}
+              value={beachSearch}
+              onChange={(event) => handleBeachSearchChange(event.target.value)}
+              onFocus={() => setSearchOpen(true)}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") {
+                  setSearchOpen(false);
+                  event.currentTarget.blur();
+                }
+              }}
+              placeholder="Cerca una spiaggia"
+              className="min-h-11 w-full rounded-full bg-[var(--control-surface)] pl-11 pr-11 text-sm font-bold text-[var(--ink)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.06)] outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-[var(--muted)] focus:border-[var(--sun)] focus:ring-2 focus:ring-[rgba(255,194,71,0.26)]"
+            />
+            {beachSearch ? (
+              <button
+                type="button"
+                aria-label="Cancella ricerca spiaggia"
+                onClick={handleBeachSearchClear}
+                className="absolute right-3 top-1/2 grid size-7 -translate-y-1/2 place-items-center rounded-full bg-[var(--surface)] text-[var(--muted)] hover:bg-[var(--line)] hover:text-[var(--ink)] active:scale-90"
+              >
+                <X aria-hidden="true" size={15} />
+              </button>
+            ) : null}
+            {searchOpen && beachSearch.trim() ? (
+              <div
+                id="map-beach-search-results"
+                role="listbox"
+                aria-label="Risultati ricerca spiaggia"
+                className="absolute inset-x-0 top-[calc(100%+0.4rem)] z-30 max-h-64 overflow-auto rounded-[1rem] border border-[var(--line)] bg-white p-1.5 shadow-[0_16px_40px_rgba(20,44,57,0.16)]"
+              >
+                {searchResults.length > 0 ? searchResults.map(({ beach }) => (
+                  <button
+                    key={beach.slug}
+                    type="button"
+                    role="option"
+                    aria-selected={selectedVisibleSlug === beach.slug}
+                    onClick={() => handleMapSelectBeach(beach.slug)}
+                    className="flex min-h-11 w-full items-center rounded-[0.75rem] px-3 text-left text-sm font-bold text-[var(--ink)] hover:bg-[var(--surface-muted)] focus-visible:bg-[var(--surface-muted)] focus-visible:outline-none"
+                  >
+                    {formatMapBeachLabel(beach)}
+                  </button>
+                )) : (
+                  <p className="px-3 py-3 text-sm font-semibold text-[var(--muted)]">
+                    Nessuna spiaggia trovata in questa selezione
+                  </p>
+                )}
+              </div>
+            ) : null}
+          </div>
+          {!hasMapScope ? (
+            <p id="map-beach-search-hint" className="px-2 text-xs font-semibold text-[var(--muted)]">
+              Seleziona una regione per cercare spiagge e punti utili.
+            </p>
+          ) : null}
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3">
@@ -269,6 +358,23 @@ export function NationalMapView({
 
       </section>
 
+      {needsScopeSelection ? (
+        <div
+          data-testid="map-scope-prompt"
+          role="note"
+          aria-label="Come iniziare"
+          className="flex items-start gap-3 rounded-[1.25rem] border border-[rgba(15,120,144,0.18)] bg-[var(--sea-soft)] p-4 text-[var(--ink)] shadow-[0_10px_28px_rgba(20,44,57,0.06)]"
+        >
+          <MapPin aria-hidden="true" className="mt-0.5 shrink-0 text-[var(--sea-deep)]" size={19} />
+          <div>
+            <p className="text-sm font-extrabold">Scegli una regione per esplorare la mappa</p>
+            <p className="mt-1 text-xs font-semibold leading-5 text-[var(--ink-soft)]">
+              Dopo la selezione mostreremo spiagge, parcheggi, lidi e servizi della zona. Oppure usa Vicino a me.
+            </p>
+          </div>
+        </div>
+      ) : null}
+
       <section
         aria-label="Mappa delle spiagge"
         className="relative isolate overflow-hidden rounded-[1.75rem] border border-[var(--line)] bg-[#d9e8e8] shadow-[0_16px_50px_rgba(20,44,57,0.1)]"
@@ -277,7 +383,7 @@ export function NationalMapView({
           recommendations={visibleRecommendations}
           scope={scope}
           selectedSlug={selectedVisibleSlug}
-          onSelectBeach={setSelectedSlug}
+          onSelectBeach={handleMapSelectBeach}
           nearbySelection={nearbySelection}
           poiEnabled={poiEnabled}
           activePoiCategories={activePoiCategories}

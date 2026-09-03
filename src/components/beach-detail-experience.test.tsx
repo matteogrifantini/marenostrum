@@ -301,25 +301,24 @@ describe("BeachDetailExperience", () => {
 
     renderDetail();
 
-    const triggers = screen.getAllByRole("button", { name: "Scopri la spiaggia" });
-    const heroTrigger = triggers[0];
-    const accordionTrigger = triggers[1];
+    const accordionTrigger = screen.getByRole("button", { name: "Scopri la spiaggia" });
 
     expect(screen.getByRole("region", { name: "La spiaggia" })).toBeInTheDocument();
     expect(accordionTrigger).toHaveAttribute("aria-expanded", "false");
-    expect(screen.getByRole("group", { name: "Anteprima della spiaggia" })).toHaveTextContent("Sabbia chiara e ciottoli fini");
+    const preview = screen.getByRole("group", { name: "Anteprima della spiaggia" });
+    expect(preview).toHaveTextContent("Sabbia chiara e ciottoli fini");
+    expect(preview.compareDocumentPosition(accordionTrigger) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(screen.getByRole("region", { name: "La spiaggia" }).querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "true");
 
-    fireEvent.click(heroTrigger);
+    fireEvent.click(accordionTrigger);
 
-    expect(heroTrigger).toHaveAttribute("aria-expanded", "true");
     expect(accordionTrigger).toHaveAttribute("aria-expanded", "true");
     expect(screen.getByText("Sabbia chiara e ciottoli fini")).toBeInTheDocument();
     expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });
 
     fireEvent.click(accordionTrigger);
 
-    expect(screen.getAllByRole("button", { name: "Scopri la spiaggia" })[1]).toHaveAttribute("aria-expanded", "false");
+    expect(accordionTrigger).toHaveAttribute("aria-expanded", "false");
     expect(screen.getByRole("region", { name: "La spiaggia" }).querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "true");
 
     if (originalScrollIntoView) {

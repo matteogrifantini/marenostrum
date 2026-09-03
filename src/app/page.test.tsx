@@ -321,11 +321,9 @@ describe("HomeExperience", () => {
   it("keeps the decision controls compact and removes editorial clutter", () => {
     renderHome();
 
-    expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("all-day");
+    expect(screen.getByRole("group", { name: "Periodo" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Tutto il giorno" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Filtri" })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Tutto il giorno" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Mattina" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Pomeriggio" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Tutta la Sicilia" })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Vicino a me" })).toBeInTheDocument();
     expect(screen.queryByRole("combobox", { name: "Distanza da me" })).not.toBeInTheDocument();
@@ -381,12 +379,22 @@ describe("HomeExperience", () => {
     renderHome();
 
     const toolbar = screen.getByTestId("home-filter-toolbar");
-    expect(toolbar).toHaveClass("grid", "grid-cols-2", "lg:flex", "lg:flex-wrap");
-    expect(screen.getByRole("combobox", { name: "Periodo" }).parentElement).toHaveClass(
+    expect(toolbar).toHaveClass("grid", "gap-2");
+    expect(screen.getByRole("group", { name: "Periodo" })).toHaveClass(
+      "grid",
+      "grid-cols-3",
       "w-full",
-      "lg:w-auto",
     );
-    expect(screen.getByRole("button", { name: "Filtri" })).toHaveClass("col-span-2", "lg:col-auto");
+    expect(screen.getByRole("combobox", { name: "Regione" }).parentElement).toHaveClass(
+      "col-start-1",
+      "row-start-1",
+    );
+    expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass(
+      "col-start-1",
+      "row-start-2",
+    );
+    expect(screen.getByTestId("nearby-control")).toHaveClass("col-start-2", "row-start-1");
+    expect(screen.getByRole("button", { name: "Filtri" })).toHaveClass("col-start-2", "row-start-2");
   });
 
   it("filters by province from the main bar and persists the selection in the URL", () => {
@@ -474,7 +482,7 @@ describe("HomeExperience", () => {
       "aria-pressed",
       "true",
     );
-    expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("morning");
+    expect(screen.getByRole("button", { name: "Mattina" })).toHaveAttribute("aria-pressed", "true");
   });
 
   it("shows the temporary-unavailable copy for unavailable forecast data", () => {

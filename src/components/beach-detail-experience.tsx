@@ -194,8 +194,6 @@ export function BeachDetailExperience({
             beach={beach}
             detail={detail}
             homeDate={navigationOrigin === "home" ? date : undefined}
-            infoOpen={beachInfoOpen}
-            onInfoToggle={() => setBeachInfoOpen((current) => !current)}
           />
 
           <div className="mx-auto mt-4 w-full max-w-[48rem] px-1 sm:mt-5 sm:px-2">

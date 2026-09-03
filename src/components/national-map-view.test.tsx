@@ -124,12 +124,11 @@ describe("NationalMapView", () => {
       "aria-pressed",
       "true",
     );
-    expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("morning");
+    expect(screen.getByRole("button", { name: "Mattina" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByTestId("map-filter-toolbar")).toHaveClass(
       "grid",
       "grid-cols-2",
-      "lg:flex",
-      "lg:flex-wrap",
+      "gap-2",
     );
   });
 
@@ -178,9 +177,7 @@ describe("NationalMapView", () => {
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Domani" }));
-    fireEvent.change(screen.getByRole("combobox", { name: "Periodo" }), {
-      target: { value: "afternoon" },
-    });
+    fireEvent.click(screen.getByRole("button", { name: "Pomeriggio" }));
 
     expect(onDateChange).toHaveBeenCalledWith("2026-08-21");
     expect(onPeriodChange).toHaveBeenCalledWith("afternoon");
@@ -272,13 +269,41 @@ describe("NationalMapView", () => {
       name: "Cerca una spiaggia sulla mappa",
     });
     expect(beachSearch).toHaveValue("");
-    fireEvent.change(beachSearch, { target: { value: demoRecommendations[1].beach.slug } });
-    expect(beachSearch).toHaveValue(demoRecommendations[1].beach.slug);
+    expect(beachSearch).toHaveAttribute("type", "search");
+    fireEvent.change(beachSearch, { target: { value: "Vendicari" } });
+    const suggestion = screen.getByRole("option", {
+      name: "Tonnara di Vendicari · Noto",
+    });
+    expect(suggestion).toBeInTheDocument();
+    fireEvent.click(suggestion);
+    expect(beachSearch).toHaveValue("Tonnara di Vendicari · Noto");
 
     expect(screen.getByRole("button", { name: /Vicino a me/ })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /^Filtri/ }));
     expect(screen.getByRole("dialog", { name: "Affina la scelta" })).toBeInTheDocument();
+  });
+
+  it("explains that a region is needed before showing the map catalog", () => {
+    render(
+      <NationalMapView
+        recommendations={[]}
+        province="all"
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByTestId("map-scope-prompt")).toHaveTextContent(
+      "Scegli una regione per esplorare la mappa",
+    );
+    expect(screen.getByTestId("map-scope-prompt")).toHaveTextContent(
+      "Oppure usa Vicino a me",
+    );
   });
 
   it("keeps province selection and exposes a visible deterministic beach list", () => {
