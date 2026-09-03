@@ -6,9 +6,14 @@ import { MobileNav } from "../../../components/mobile-nav";
 import { PageShell } from "../../../components/page-shell";
 import {
   ForecastDataUnavailableError,
+  getAllPublishedBeaches,
   getBeachRecommendations,
 } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
+import {
+  hasUniqueTerritoryHubDescription,
+  shouldIndexTerritoryHub,
+} from "../../../domain/seo/sitemap-policy";
 import { filterRecommendationsForHub, getTerritoryHub, TERRITORY_HUBS } from "../../../domain/territory-hubs";
 import type { BeachRecommendation } from "../../../domain/beach";
 
@@ -26,6 +31,19 @@ export async function generateMetadata({
   const hub = getTerritoryHub((await params).slug);
   if (!hub) return { title: "Area non trovata" };
 
+  let indexable = false;
+  try {
+    const publishedBeachCount = (await getAllPublishedBeaches()).filter(
+      (beach) => beach.provinceCode === hub.provinceCode,
+    ).length;
+    indexable = shouldIndexTerritoryHub({
+      publishedBeachCount,
+      hasUniqueDescription: hasUniqueTerritoryHubDescription(hub.description),
+    });
+  } catch {
+    indexable = false;
+  }
+
   return {
     title: `${hub.name}: vento, onde e condizioni`,
     description: `${hub.description} Previsioni meteomarine aggiornate su Mare Nostrum.`,
@@ -38,6 +56,7 @@ export async function generateMetadata({
       siteName: "Mare Nostrum",
       locale: "it_IT",
     },
+    robots: indexable ? undefined : { index: false, follow: true },
   };
 }
 
@@ -55,7 +74,11 @@ export default async function TerritoryHubPage({
 
   try {
     recommendations = filterRecommendationsForHub(
-      await getBeachRecommendations({ date, period: "all-day" }),
+      await getBeachRecommendations({
+        date,
+        period: "all-day",
+        scope: { kind: "province", provinceCode: hub.provinceCode },
+      }),
       hub,
     );
   } catch (error) {
