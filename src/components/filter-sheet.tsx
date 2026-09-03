@@ -85,7 +85,7 @@ export function FilterSheet({
 
         {(onToggleSheltered || onToggleWebcam) && (
           <fieldset className="mt-6">
-            <legend className="text-sm font-bold text-[var(--ink)]">Condizioni & Live</legend>
+            <legend className="text-sm font-bold text-[var(--ink)]">Condizioni & webcam</legend>
             <div className="mt-3 flex flex-wrap gap-2">
               {onToggleSheltered && (
                 <button

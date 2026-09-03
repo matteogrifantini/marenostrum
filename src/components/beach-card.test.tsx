@@ -66,6 +66,29 @@ describe("BeachCard", () => {
     );
   });
 
+  it("shows a neutral webcam badge without claiming live status", () => {
+    render(
+      <BeachCard
+        recommendation={{
+          ...demoRecommendations[0],
+          beach: {
+            ...demoRecommendations[0].beach,
+            webcam: {
+              title: "Spiaggia e Golfo di Mondello",
+              embedUrl: "https://provider.example/embed",
+              liveUrl: "https://provider.example/live",
+            },
+          },
+        }}
+        date="2026-08-15"
+        period="all-day"
+      />,
+    );
+
+    expect(screen.queryByText("WEBCAM")).toBeInTheDocument();
+    expect(screen.queryByText("LIVE")).not.toBeInTheDocument();
+  });
+
   it("shows the municipality without a fabricated distance when it is unavailable", () => {
     render(
       <BeachCard

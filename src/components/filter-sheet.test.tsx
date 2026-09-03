@@ -57,6 +57,7 @@ describe("FilterSheet", () => {
 
     expect(shelteredBtn).toBeInTheDocument();
     expect(webcamBtn).toBeInTheDocument();
+    expect(screen.getByText("Condizioni & webcam")).toBeInTheDocument();
 
     fireEvent.click(shelteredBtn);
     expect(onToggleSheltered).toHaveBeenCalledOnce();

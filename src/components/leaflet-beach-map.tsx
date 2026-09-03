@@ -11,7 +11,6 @@ import {
 } from "../domain/map-poi";
 import type { MapNearbySelection } from "../domain/map-filtering";
 import {
-  hasMapCoordinates,
   sortMappableRecommendations,
   type MappableRecommendation,
 } from "../domain/map-markers";
@@ -88,7 +87,7 @@ function createPoiPopup(place: MapPoi) {
   return `<div class="map-popup map-popup--poi"><div class="map-popup__eyebrow">${poiIcon(place.category)} ${label}</div><strong>${name}</strong><a href="${escapeHtml(place.sourceUrl)}" target="_blank" rel="noreferrer">Fonte OpenStreetMap</a></div>`;
 }
 
-function createBeachPopup(recommendation: MappableRecommendation) {
+export function createBeachPopup(recommendation: MappableRecommendation) {
   const { beach, score, conditions } = recommendation;
   const scoreValue = formatScoreOutOf100(score);
   const location = `${beach.municipality}${beach.provinceCode ? ` (${beach.provinceCode})` : ""}`;
