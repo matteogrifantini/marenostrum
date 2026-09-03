@@ -44,11 +44,12 @@ test.describe("Beach Detail Page", () => {
     await expect(page.getByRole("heading", { name: /Mondello/i, level: 1 })).toBeVisible();
   });
 
-  test("displays live webcam section when beach has webcam data", async ({ page }) => {
+  test("shows webcam section and neutral disclosure when beach has webcam data", async ({ page }) => {
     await page.goto("/spiagge/mondello");
 
-    const webcamHeading = page.getByRole("heading", { name: /Webcam in diretta/i });
+    const webcamHeading = page.getByRole("heading", { name: /Webcam ·/i });
     await expect(webcamHeading).toBeVisible();
-    await expect(page.getByText(/LIVE/i).first()).toBeVisible();
+    await expect(page.getByText(/Fonte esterna; verifica la disponibilità sul sito del provider/i)).toBeVisible();
+    await expect(page.getByText(/^LIVE$/)).not.toBeVisible();
   });
 });
