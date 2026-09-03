@@ -335,9 +335,9 @@ describe("BeachPage", () => {
       params: Promise.resolve({ slug: beach.slug }),
     });
 
-    expect(metadata.title).toBe(
-      "Meteo del mare a Cala del Gelsomino (Noto) oggi | Mare Nostrum",
-    );
+    expect(metadata.title).toEqual({
+      absolute: "Meteo del mare a Cala del Gelsomino (Noto) oggi | Mare Nostrum",
+    });
     expect(metadata.description).toContain(
       "Previsioni del mare oggi a Cala del Gelsomino, Noto: vento, onde",
     );

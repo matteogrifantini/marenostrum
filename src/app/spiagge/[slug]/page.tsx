@@ -63,7 +63,9 @@ export async function generateMetadata({
   const seo = buildBeachSeoMetadata(beach);
 
   return {
-    title: seo.title,
+    title: {
+      absolute: seo.title,
+    },
     description: seo.description,
     alternates: {
       canonical: seo.canonical,
