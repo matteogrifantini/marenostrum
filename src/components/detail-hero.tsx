@@ -28,6 +28,9 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
   const image = beach.image;
   const imageSrc = image ? versionedMediaUrl(image) : undefined;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
+  const localityParts = [beach.municipality, beach.provinceName, beach.regionName].filter(
+    (value): value is string => Boolean(value),
+  );
   const backHref = homeDate
     ? `/?date=${encodeURIComponent(homeDate)}&period=all-day#classifica`
     : "/?period=all-day#classifica";
@@ -151,7 +154,20 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
             {beach.coast && <><span aria-hidden="true" className="text-white/40">·</span><span className="text-white/80">{beach.coast}</span></>}
             {distanceKm === undefined ? null : <><span aria-hidden="true" className="text-white/40">·</span><span className="text-[var(--sun)]">{distanceKm} km da te</span></>}
           </div>
-          <h1 className="mt-2.5 max-w-[32rem] font-serif text-[clamp(2.7rem,11vw,4.8rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{beach.name}</h1>
+          <h1
+            aria-label={`Meteo del mare a ${beach.name}`}
+            className="mt-2.5 max-w-[38rem] font-serif text-[clamp(2.1rem,8vw,4.8rem)] font-semibold leading-[0.9] tracking-[-0.07em]"
+          >
+            <span className="block text-[0.42em] font-sans font-bold uppercase tracking-[0.09em] text-white/75">
+              Meteo del mare a
+            </span>
+            <span className="mt-1 block">{beach.name}</span>
+          </h1>
+          {localityParts.length > 1 ? (
+            <p className="mt-2 max-w-[34rem] text-sm font-semibold text-white/85">
+              {localityParts.join(" · ")}
+            </p>
+          ) : null}
           <div className="pointer-events-auto mt-4 flex flex-wrap items-center gap-2.5">
             {onInfoToggle ? (
               <button

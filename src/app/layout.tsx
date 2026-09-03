@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PwaRegister } from "../components/pwa-register";
+import { serializeJsonLd } from "../domain/seo/beach-seo";
 import { SITE_DESCRIPTION, SITE_NAME } from "../domain/seo/site-copy";
 import "./globals.css";
 
@@ -111,7 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col">

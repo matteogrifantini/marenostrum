@@ -33,6 +33,7 @@ describe("DetailHero", () => {
     );
 
     expect(screen.getByText("Noto")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Meteo del mare a Cala del Gelsomino" })).toBeInTheDocument();
     expect(screen.queryByText(/km da te/)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: `Guarda i video · ${detail.reels.length}` }));

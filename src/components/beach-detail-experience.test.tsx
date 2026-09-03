@@ -77,7 +77,7 @@ describe("BeachDetailExperience", () => {
   it("uses a wide desktop frame for the hero and a readable frame for the details", () => {
     renderDetail();
 
-    const hero = screen.getAllByRole("heading", { name: beach.name })[0].closest("section");
+    const hero = screen.getAllByRole("heading", { name: `Meteo del mare a ${beach.name}` })[0].closest("section");
     expect(hero).not.toBeNull();
     expect(hero?.parentElement).toHaveClass("max-w-[1440px]");
     expect(hero?.parentElement?.children[1]).toHaveClass("max-w-[48rem]");
@@ -271,7 +271,7 @@ describe("BeachDetailExperience", () => {
         "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.",
       ),
     ).toHaveLength(2);
-    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(1);
+    expect(screen.getAllByRole("heading", { name: `Meteo del mare a ${beach.name}` })).toHaveLength(1);
     expect(screen.getByRole("region", { name: "La spiaggia" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
   });
@@ -313,7 +313,7 @@ describe("BeachDetailExperience", () => {
   it("renders safe empty states when the beach has no community fixture", () => {
     renderDetail({ detail: emptyBeachDetailContent });
 
-    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(1);
+    expect(screen.getAllByRole("heading", { name: `Meteo del mare a ${beach.name}` })).toHaveLength(1);
     expect(screen.getByText("Nessuna segnalazione recente disponibile.")).toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "Webcam più vicina" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /Guarda i video/ })).not.toBeInTheDocument();

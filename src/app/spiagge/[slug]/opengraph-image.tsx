@@ -5,17 +5,22 @@ import { formatScoreOutOf100 } from "../../../domain/score";
 import { SITE_NAME } from "../../../domain/seo/site-copy";
 
 export const runtime = "nodejs";
-export const alt = "Mare Nostrum — Previsioni Meteomarine";
+export const alt = "Mare Nostrum — Meteo del mare";
 export const size = {
   width: 1200,
   height: 630,
 };
 export const contentType = "image/png";
 
-function buildOgLocalityLabel(municipality?: string, provinceCode?: string) {
-  if (municipality && provinceCode) return `${municipality} (${provinceCode})`;
-  if (municipality) return municipality;
-  return "Località costiera";
+function buildOgLocalityLabel(
+  municipality?: string,
+  provinceName?: string,
+  regionName?: string,
+) {
+  const parts = [municipality, provinceName, regionName].filter(
+    (value): value is string => Boolean(value),
+  );
+  return parts.length > 0 ? parts.join(" · ") : "Italia";
 }
 
 export default async function Image({
@@ -29,12 +34,13 @@ export default async function Image({
 
   let beachName = "Spiaggia consigliata";
   let municipality: string | undefined;
-  let provinceCode: string | undefined;
-  let score = "85";
-  let label = "Ottima scelta";
-  let wind = "10 km/h";
-  let wave = "0.4 m";
-  let weather = "Sereno";
+  let provinceName: string | undefined;
+  let regionName: string | undefined;
+  let score = "—";
+  let label = "Dati non disponibili";
+  let wind = "—";
+  let wave = "—";
+  let weather = "Dati non disponibili";
 
   try {
     const bundle = await getBeachForecastBundleBySlug({
@@ -46,7 +52,8 @@ export default async function Image({
     if (bundle?.beach) {
       beachName = bundle.beach.name;
       municipality = bundle.beach.municipality;
-      provinceCode = bundle.beach.provinceCode;
+      provinceName = bundle.beach.provinceName;
+      regionName = bundle.beach.regionName;
     }
     if (bundle?.selected) {
       score = formatScoreOutOf100(bundle.selected.score);
@@ -103,7 +110,7 @@ export default async function Image({
               borderRadius: "20px",
             }}
           >
-            Previsioni di Oggi
+            Meteo del mare oggi
           </span>
         </div>
 
@@ -117,7 +124,7 @@ export default async function Image({
               color: "#ffc247",
             }}
           >
-            📍 {buildOgLocalityLabel(municipality, provinceCode)}
+            📍 {buildOgLocalityLabel(municipality, provinceName, regionName)}
           </div>
           <div
             style={{
@@ -160,7 +167,7 @@ export default async function Image({
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span style={{ fontSize: "16px", color: "rgba(255, 255, 255, 0.6)" }}>
-                Voto Mare Nostrum
+                Indice condizioni del mare
               </span>
               <span style={{ fontSize: "22px", fontWeight: "700" }}>{label}</span>
             </div>

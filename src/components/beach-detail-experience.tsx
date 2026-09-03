@@ -217,6 +217,9 @@ export function BeachDetailExperience({
               />
             </div>
 
+            <h2 className="mt-4 px-1 text-lg font-bold tracking-[-0.03em] text-[var(--ink)]">
+              Condizioni del mare oggi a {beach.name}
+            </h2>
             <AdviceCard recommendation={selectedRecommendation} dataUnavailable={dataUnavailable} />
             <PeriodSelection
               value={selection.period}
