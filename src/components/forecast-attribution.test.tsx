@@ -40,6 +40,20 @@ describe("ForecastAttribution", () => {
     );
   });
 
+  it("keeps the update time and score note below the source links", () => {
+    render(
+      <ForecastAttribution
+        freshnessText="Ultimo aggiornamento: 3 settembre 2026, 10:00."
+        disclaimer="Indice orientativo · non è un bollettino ufficiale e non misura la qualità dell’acqua."
+      />,
+    );
+
+    const footer = screen.getByRole("contentinfo", { name: "Attribuzione previsioni" });
+    expect(footer).toHaveTextContent("Fonti meteo:");
+    expect(footer).toHaveTextContent("Ultimo aggiornamento: 3 settembre 2026, 10:00.");
+    expect(footer).toHaveTextContent(/Indice orientativo · non è un bollettino ufficiale/i);
+  });
+
   it("is a neutral footer rather than a card", () => {
     render(<ForecastAttribution />);
 

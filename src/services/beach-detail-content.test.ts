@@ -212,6 +212,57 @@ describe("buildBeachDetailContent", () => {
     });
   });
 
+  it("does not render the same published photo twice when catalog rows share a file", () => {
+    const detail = buildBeachDetailContent(
+      beach,
+      {
+        ...content,
+        media: [
+          {
+            id: "photo-primary",
+            beach_id: "beach-1",
+            source_id: "source-1",
+            kind: "photo",
+            provider: "Wikimedia Commons",
+            provider_item_id: "guidaloca-a",
+            source_url: "https://commons.wikimedia.org/wiki/File:Guidaloca.jpg",
+            media_url: "/images/beaches/guidaloca.jpg",
+            storage_path: null,
+            thumbnail_url: null,
+            credit: "Wikimedia Commons",
+            license: "CC BY-SA 4.0",
+            captured_at: null,
+            verified_at: "2026-08-24T23:25:10.791+00:00",
+            expires_at: null,
+            publication_status: "verified",
+          },
+          {
+            id: "photo-duplicate",
+            beach_id: "beach-1",
+            source_id: "source-1",
+            kind: "photo",
+            provider: "Wikimedia Commons",
+            provider_item_id: "guidaloca-b",
+            source_url: "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Guidaloca_-_panoramio.jpg",
+            media_url: "/images/beaches/guidaloca.jpg",
+            storage_path: null,
+            thumbnail_url: null,
+            credit: "Wikimedia Commons",
+            license: "CC BY-SA 4.0",
+            captured_at: null,
+            verified_at: "2026-08-22T09:22:33.406+00:00",
+            expires_at: null,
+            publication_status: "verified",
+          },
+        ],
+      },
+      [],
+    );
+
+    expect(detail.recentPhotos).toHaveLength(1);
+    expect(detail.recentPhotos[0]?.src).toBe("/images/beaches/guidaloca.jpg");
+  });
+
   it("aggregates authenticated community reviews without exposing user ids", () => {
     const rows: InternalReviewRow[] = [
       {

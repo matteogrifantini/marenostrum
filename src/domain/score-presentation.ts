@@ -61,7 +61,7 @@ function freshnessText(recommendation: BeachRecommendation) {
       ? " · Verifica l’ultimo aggiornamento prima di partire"
       : "";
 
-  return `Aggiornato il ${formatted}${freshnessWarning}.`;
+  return `Ultimo aggiornamento: ${formatted}${freshnessWarning}.`;
 }
 
 export function getScorePresentation(
@@ -85,7 +85,7 @@ export function getScorePresentation(
     explanation:
       "Una sintesi di vento, onde e meteo per aiutarti a scegliere dove andare oggi.",
     disclaimer:
-      "Indice orientativo: non è un bollettino ufficiale e non misura la qualità dell’acqua.",
+      "Indice orientativo · non è un bollettino ufficiale e non misura la qualità dell’acqua.",
     freshnessText: freshnessText(recommendation),
     factors,
   };

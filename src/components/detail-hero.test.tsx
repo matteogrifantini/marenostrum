@@ -33,7 +33,7 @@ describe("DetailHero", () => {
     );
 
     expect(screen.getByText("Noto")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Meteo del mare a Cala del Gelsomino" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Meteo del mare a Cala del Gelsomino" })).not.toBeInTheDocument();
     expect(screen.queryByText(/km da te/)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: `Guarda i video · ${detail.reels.length}` }));
@@ -81,6 +81,26 @@ describe("DetailHero", () => {
 
     expect(favorite).toHaveAttribute("aria-pressed", "true");
     expect(favorite).toHaveClass("text-[var(--score-poor)]");
+  });
+
+  it("keeps the Google Maps action as a pin beside the favorite without a duplicate directions label", () => {
+    const detail = getDemoBeachDetail(beach.slug)!;
+
+    render(
+      <DetailHero
+        beach={{ ...beach, latitude: 38.1982, longitude: 13.3269 }}
+        detail={detail}
+        period="all-day"
+      />,
+    );
+
+    const mapsLink = screen.getByRole("link", { name: "Apri in Google Maps" });
+    expect(mapsLink).toHaveAttribute(
+      "href",
+      "https://www.google.com/maps/dir/?api=1&destination=38.1982,13.3269",
+    );
+    expect(screen.queryByText("Indicazioni")).not.toBeInTheDocument();
+    expect(screen.queryByText("🗺️")).not.toBeInTheDocument();
   });
 
   it("does not substitute another beach image when the catalog image is missing", () => {

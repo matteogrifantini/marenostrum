@@ -215,13 +215,17 @@ function localMediaSource(media: MediaItemRow) {
 }
 
 function mapPhotos(beach: Beach, media: MediaItemRow[]) {
+  const seenSources = new Set<string>();
+
   return media
     .filter((item) => item.kind === "photo")
-    .map((item) => {
+    .flatMap((item) => {
       const source = localMediaSource(item);
-      if (!source) return null;
+      if (!source || seenSources.has(source)) return [];
 
-      return {
+      seenSources.add(source);
+
+      return [{
         id: item.id,
         src: source,
         alt: `Foto di ${beach.name}`,
@@ -230,9 +234,8 @@ function mapPhotos(beach: Beach, media: MediaItemRow[]) {
           "Verificata",
           "Data non disponibile",
         ),
-      };
+      }];
     })
-    .filter((photo): photo is NonNullable<typeof photo> => photo !== null);
 }
 
 function mapWebcam(beach: Beach, webcam: WebcamRow | undefined) {

@@ -46,6 +46,7 @@ describe("BeachCommunitySections", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(
       <BeachCommunitySections
+        beachName="Cala del Gelsomino"
         detail={{
           ...detail,
           reviews: null,
@@ -66,10 +67,11 @@ describe("BeachCommunitySections", () => {
     );
   });
 
-  it("labels an unverified Google search honestly", () => {
+  it("labels an unverified Google Maps search honestly", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(
       <BeachCommunitySections
+        beachName="Cala del Gelsomino"
         detail={{
           ...detail,
           reviews: null,
@@ -83,8 +85,9 @@ describe("BeachCommunitySections", () => {
     );
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
-    expect(within(reviews).getByText("Profilo Google da confermare.")).toBeInTheDocument();
-    expect(within(reviews).getByRole("link", { name: "Cerca su Google Maps" })).toHaveAttribute(
+    expect(within(reviews).getByText("Google Maps")).toBeInTheDocument();
+    expect(within(reviews).getByText("Il profilo ufficiale su Google Maps non è ancora verificato.")).toBeInTheDocument();
+    expect(within(reviews).getByRole("link", { name: "Cerca Cala del Gelsomino su Google Maps" })).toHaveAttribute(
       "href",
       "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino",
     );

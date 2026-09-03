@@ -39,6 +39,7 @@ type HomeExperienceProps = {
   initialProvince?: ProvinceSelection;
   dateOptions: DateOption[];
   recommendations: BeachRecommendation[];
+  nationalPreview?: boolean;
   dataUnavailable?: boolean;
 };
 
@@ -81,6 +82,7 @@ export function HomeExperience({
   initialProvince = "all",
   dateOptions,
   recommendations,
+  nationalPreview = false,
   dataUnavailable = false,
 }: HomeExperienceProps) {
   const scopeAware = initialScope !== undefined;
@@ -239,6 +241,13 @@ export function HomeExperience({
   const visibleRecommendations = useMemo(() => {
     return displayedRecommendations.slice(0, visibleCount);
   }, [displayedRecommendations, visibleCount]);
+
+  const showNationalPreviewIntro =
+    nationalPreview &&
+    scope === null &&
+    searchQuery.trim() === "" &&
+    activeFilterCount === 0 &&
+    !nearbySelection;
 
   const updateQuery = (
     nextDate: string,
@@ -462,6 +471,24 @@ export function HomeExperience({
               <BeachListLoading />
             ) : displayedRecommendations.length > 0 ? (
               <>
+                {showNationalPreviewIntro ? (
+                  <header className="mb-4 flex items-end justify-between gap-4 px-1">
+                    <div>
+                      <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.12em] text-[var(--muted)]">
+                        Selezione nazionale
+                      </p>
+                      <h2 className="mt-1 font-serif text-2xl font-semibold tracking-[-0.045em] text-[var(--ink)]">
+                        Le spiagge in evidenza in Italia
+                      </h2>
+                      <p className="mt-1 max-w-xl text-sm leading-6 text-[var(--muted)]">
+                        Parti da una selezione essenziale. Scegli una regione o una provincia per restringere la ricerca.
+                      </p>
+                    </div>
+                    <span className="hidden shrink-0 rounded-full bg-[var(--surface)] px-3 py-1.5 text-xs font-extrabold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] sm:inline-flex">
+                      {visibleRecommendations.length} in evidenza
+                    </span>
+                  </header>
+                ) : null}
                 <ul
                   aria-label="Spiagge consigliate"
                   data-testid="beach-ranking-grid"
@@ -505,15 +532,11 @@ export function HomeExperience({
                 <h3 className="font-serif text-3xl font-semibold tracking-[-0.05em]">
                   {forecastUnavailable
                     ? "Condizioni non disponibili"
-                    : scopeAware && scope === null && recommendations.length === 0
-                      ? "Scegli una zona per iniziare"
                     : "Nessuna spiaggia corrisponde"}
                 </h3>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
                   {forecastUnavailable
                     ? "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto."
-                    : scopeAware && scope === null && recommendations.length === 0
-                      ? "Seleziona una regione, una provincia oppure autorizza Vicino a me. Caricheremo solo le spiagge dell’area scelta."
                     : "Prova un altro nome, comune o costa, oppure rimuovi un filtro per vedere di nuovo tutte le condizioni disponibili."}
                 </p>
                 {!forecastUnavailable && (!scopeAware || scope !== null) && (

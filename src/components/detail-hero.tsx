@@ -28,9 +28,6 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
   const image = beach.image;
   const imageSrc = image ? versionedMediaUrl(image) : undefined;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
-  const localityParts = [beach.municipality, beach.provinceName, beach.regionName].filter(
-    (value): value is string => Boolean(value),
-  );
   const backHref = homeDate
     ? `/?date=${encodeURIComponent(homeDate)}&period=all-day#classifica`
     : "/?period=all-day#classifica";
@@ -126,11 +123,11 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
                 href={`https://www.google.com/maps/dir/?api=1&destination=${beach.latitude},${beach.longitude}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Indicazioni stradali su Google Maps"
+                aria-label="Apri in Google Maps"
                 className="detail-press grid size-11 place-items-center rounded-full bg-white/88 text-[var(--ink)] shadow-[0_6px_17px_rgba(8,47,61,0.13)] backdrop-blur-md hover:bg-white active:scale-95"
-                title="Indicazioni Google Maps"
+                title="Apri in Google Maps"
               >
-                <span className="text-base" aria-hidden="true">🗺️</span>
+                <MapPin aria-hidden="true" size={19} />
               </a>
             ) : null}
             <FavoriteToggle beachSlug={beach.slug} beachName={beach.name} />
@@ -154,20 +151,6 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
             {beach.coast && <><span aria-hidden="true" className="text-white/40">·</span><span className="text-white/80">{beach.coast}</span></>}
             {distanceKm === undefined ? null : <><span aria-hidden="true" className="text-white/40">·</span><span className="text-[var(--sun)]">{distanceKm} km da te</span></>}
           </div>
-          <h1
-            aria-label={`Meteo del mare a ${beach.name}`}
-            className="mt-2.5 max-w-[38rem] font-serif text-[clamp(2.1rem,8vw,4.8rem)] font-semibold leading-[0.9] tracking-[-0.07em]"
-          >
-            <span className="block text-[0.42em] font-sans font-bold uppercase tracking-[0.09em] text-white/75">
-              Meteo del mare a
-            </span>
-            <span className="mt-1 block">{beach.name}</span>
-          </h1>
-          {localityParts.length > 1 ? (
-            <p className="mt-2 max-w-[34rem] text-sm font-semibold text-white/85">
-              {localityParts.join(" · ")}
-            </p>
-          ) : null}
           <div className="pointer-events-auto mt-4 flex flex-wrap items-center gap-2.5">
             {onInfoToggle ? (
               <button
@@ -181,17 +164,6 @@ export function DetailHero({ beach, detail, homeDate, distanceKm, infoOpen = fal
                 <Info aria-hidden="true" size={16} />
                 <span>Scopri la spiaggia</span>
               </button>
-            ) : null}
-            {beach.latitude && beach.longitude ? (
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&destination=${beach.latitude},${beach.longitude}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="detail-press inline-flex min-h-11 items-center gap-2 rounded-full border border-white/35 bg-black/40 px-4 text-sm font-bold text-white shadow-[0_8px_22px_rgba(6,28,35,0.18)] backdrop-blur-md transition-[background-color,border-color,transform] duration-200 ease-out hover:bg-black/60 active:scale-[0.98]"
-              >
-                <span aria-hidden="true">🗺️</span>
-                <span>Indicazioni</span>
-              </a>
             ) : null}
           </div>
         </div>

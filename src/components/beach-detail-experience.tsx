@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState, useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { getBeachAiComment } from "../domain/beach-comment";
+import { formatScoreOutOf100 } from "../domain/score";
 import { getScorePresentation } from "../domain/score-presentation";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
 import type { DetailOrigin } from "../domain/detail-query";
@@ -197,7 +198,22 @@ export function BeachDetailExperience({
             onInfoToggle={() => setBeachInfoOpen((current) => !current)}
           />
 
-          <div className="relative z-10 mx-auto mt-3 w-full max-w-[48rem] px-1 pt-3 sm:px-2">
+          <div className="mx-auto mt-4 w-full max-w-[48rem] px-1 sm:mt-5 sm:px-2">
+            <h1 className="text-xl font-serif font-semibold leading-tight tracking-[-0.04em] text-[var(--ink)] sm:text-2xl">
+              Meteo del mare a {beach.name}
+            </h1>
+            {[beach.municipality, beach.provinceName, beach.regionName].filter(
+              (value): value is string => Boolean(value),
+            ).length > 1 ? (
+              <p className="mt-1 text-xs font-semibold text-[var(--muted)] sm:text-sm">
+                {[beach.municipality, beach.provinceName, beach.regionName]
+                  .filter((value): value is string => Boolean(value))
+                  .join(" · ")}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="relative z-10 mx-auto mt-2 w-full max-w-[48rem] px-1 pt-1 sm:px-2">
             <div aria-busy={isPending} className="space-y-2">
               <DayPicker
                 options={dateOptions}
@@ -242,6 +258,8 @@ export function BeachDetailExperience({
             <BeachCommunitySections beachSlug={beach.slug} beachName={beach.name} detail={detail} />
             <ForecastAttribution
               includeParkingSource={detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org"))}
+              freshnessText={selectedRecommendation && !dataUnavailable ? getScorePresentation(selectedRecommendation).freshnessText : undefined}
+              disclaimer={selectedRecommendation && !dataUnavailable ? getScorePresentation(selectedRecommendation).disclaimer : undefined}
             />
           </div>
         </div>
@@ -306,6 +324,7 @@ function AdviceCard({
   const comment = getBeachAiComment(recommendation);
   const presentation = getScorePresentation(recommendation);
   const tone = scoreTone(recommendation.score);
+  const scoreValue = formatScoreOutOf100(presentation.score);
 
   return (
     <article
@@ -322,11 +341,14 @@ function AdviceCard({
           </p>
           <strong className="mt-2 block text-xl tracking-[-0.035em] text-[var(--ink)]">{presentation.label}</strong>
         </div>
-        <span
-          data-score-value={presentation.scoreLabel}
-          className={`grid size-14 shrink-0 place-items-center rounded-full text-xl font-black shadow-[0_7px_16px_rgba(20,44,57,0.14)] ${scoreBadgeClasses[tone]}`}
-        >
-          {presentation.scoreLabel}
+        <span className="flex shrink-0 items-end gap-1" aria-label={`${scoreValue}/100`}>
+          <span
+            data-score-value={scoreValue}
+            className={`grid size-16 place-items-center rounded-full text-center text-2xl font-black leading-none tabular-nums shadow-[0_7px_16px_rgba(20,44,57,0.14)] sm:size-[4.5rem] sm:text-3xl ${scoreBadgeClasses[tone]}`}
+          >
+            {scoreValue}
+          </span>
+          <span data-score-denominator="true" className="mb-1 text-xs font-extrabold text-[var(--muted)]">/100</span>
         </span>
       </div>
       <p className="mt-2 text-sm font-medium leading-6 text-[var(--ink-soft)]">{presentation.explanation}</p>
@@ -339,8 +361,6 @@ function AdviceCard({
         ))}
       </div>
       <p className="mt-3 text-sm font-medium leading-6 text-[var(--ink-soft)]">{comment.text}</p>
-      <p className="mt-2 text-[0.68rem] font-semibold text-[var(--muted)]">{presentation.freshnessText}</p>
-      <p className="mt-2 text-[0.68rem] leading-4 text-[var(--muted)]">{presentation.disclaimer}</p>
     </article>
   );
 }

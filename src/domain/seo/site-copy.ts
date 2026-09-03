@@ -1,7 +1,7 @@
 export const SITE_NAME = "Mare Nostrum";
 export const SITE_DESCRIPTION = "Meteo del mare e condizioni delle spiagge in Italia | Mare Nostrum";
-export const MAP_PAGE_TITLE = "Scegli una zona";
-export const MAP_PAGE_DESCRIPTION = "Mappa delle spiagge e delle condizioni del mare";
+export const MAP_PAGE_TITLE = "Mappa delle spiagge d’Italia";
+export const MAP_PAGE_DESCRIPTION = "Esplora le spiagge d’Italia e le condizioni del mare";
 
 export function buildNationalLocationLabel(regionName?: string, provinceName?: string) {
   const parts = [provinceName, regionName].filter(

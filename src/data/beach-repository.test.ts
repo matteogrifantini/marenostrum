@@ -275,6 +275,30 @@ describe("Supabase forecast repository", () => {
     expect(recommendations[0].conditions.waveHeightMeters).toBe(0.3);
   });
 
+  it("supports a bounded national preview without returning the whole catalog", async () => {
+    const store = new FakeForecastReadStore(
+      [beachRow, vendicariRow],
+      sourceRow,
+      [conditionRow(beachRow.id), conditionRow(vendicariRow.id)],
+    );
+
+    const recommendations = await getBeachRecommendations(
+      {
+        date: "2026-08-20",
+        period: "all-day",
+        scope: null,
+        nationalPreview: true,
+        limit: 1,
+        now: new Date("2026-08-20T09:00:00Z"),
+      },
+      store,
+    );
+
+    expect(recommendations).toHaveLength(1);
+    expect(store.scopeCalls).toEqual([null]);
+    expect(recommendations[0]?.beach.slug).toBe("cala-del-gelsomino");
+  });
+
   it("returns no recommendations when the selected window has no forecast rows", async () => {
     const store = new FakeForecastReadStore([beachRow], sourceRow, []);
 

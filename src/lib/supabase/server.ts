@@ -89,7 +89,7 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
   }
 
   return {
-    async getPublishedBeaches(scope?: CatalogScope) {
+    async getPublishedBeaches(scope?: CatalogScope | null) {
       if (scope?.kind === "nearby") {
         const { data, error } = await client.rpc("nearby_published_beaches", {
           query_latitude: scope.latitude,

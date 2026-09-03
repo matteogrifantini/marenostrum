@@ -71,7 +71,7 @@ export type BeachConditionRow = {
 };
 
 export type ForecastReadStore = {
-  getPublishedBeaches(scope?: CatalogScope): Promise<BeachRow[]>;
+  getPublishedBeaches(scope?: CatalogScope | null): Promise<BeachRow[]>;
   getPublishedBeachBySlug?(slug: string): Promise<BeachRow | null>;
   getSourceBySlug(slug: string): Promise<DataSourceRow | null>;
   getForecastRows(input: {
@@ -89,6 +89,9 @@ export type RecommendationQuery = {
   intent?: UserIntent;
   now?: Date;
   scope?: CatalogScope | null;
+  /** Allow the homepage to request a small national introduction explicitly. */
+  nationalPreview?: boolean;
+  limit?: number;
 };
 
 export type RecommendationBySlugQuery = RecommendationQuery & {
@@ -278,6 +281,7 @@ async function fetchRecommendationsInternal(
   period: BeachPeriod,
   intent: UserIntent = "relax",
   scope?: CatalogScope,
+  limit?: number,
 ) {
   const store = await resolveStore(undefined);
   const beachRows = await store.getPublishedBeaches(scope);
@@ -297,7 +301,7 @@ async function fetchRecommendationsInternal(
 
   const now = new Date();
 
-  return beachRows
+  const recommendations = beachRows
     .map((row, index) =>
       recommendationFor(
         beaches[index],
@@ -309,6 +313,10 @@ async function fetchRecommendationsInternal(
     )
     .filter((recommendation): recommendation is BeachRecommendation => recommendation !== undefined)
     .sort((left, right) => right.score - left.score);
+
+  return limit === undefined
+    ? recommendations
+    : recommendations.slice(0, Math.max(0, Math.floor(limit)));
 }
 
 const getCachedRecommendations = unstable_cache(
@@ -321,7 +329,7 @@ export async function getBeachRecommendations(
   query: RecommendationQuery,
   providedStore?: ForecastReadStore,
 ) {
-  if (query.scope === null) return [];
+  if (query.scope === null && !query.nationalPreview) return [];
 
   if (providedStore || query.now) {
     const store = await resolveStore(providedStore);
@@ -342,7 +350,7 @@ export async function getBeachRecommendations(
 
     const now = query.now ?? new Date();
 
-    return beachRows
+    const recommendations = beachRows
       .map((row, index) =>
         recommendationFor(
           beaches[index],
@@ -354,13 +362,18 @@ export async function getBeachRecommendations(
       )
       .filter((recommendation): recommendation is BeachRecommendation => recommendation !== undefined)
       .sort((left, right) => right.score - left.score);
+
+    return query.limit === undefined
+      ? recommendations
+      : recommendations.slice(0, Math.max(0, Math.floor(query.limit)));
   }
 
   return getCachedRecommendations(
     query.date,
     query.period,
     query.intent ?? "relax",
-    query.scope,
+    query.scope ?? undefined,
+    query.limit,
   );
 }
 

@@ -78,24 +78,34 @@ export function BeachCommunitySections({ detail, beachSlug, beachName = "questa 
 
           {reviewProfile ? (
             <div className="mt-4 border-t border-[var(--line)] pt-4">
-              <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--muted)]">Recensioni Google</p>
-              <p className="mt-1 text-sm leading-6 text-[var(--ink-soft)]">
-                {reviewProfile.verificationStatus === "draft"
-                  ? "Profilo Google da confermare."
-                  : "Leggi le recensioni e il punteggio direttamente su Google Maps."}
-              </p>
-              <a
-                href={reviewProfile.mapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 inline-flex min-h-11 items-center rounded-[0.85rem] bg-[var(--ink)] px-3 text-xs font-extrabold text-white transition-[transform,background-color] hover:bg-[var(--sea-deep)] active:scale-[0.98]"
-              >
-                {reviewProfile.verificationStatus === "draft"
-                  ? "Cerca su Google Maps"
-                  : reviewProfile.provider.toLowerCase() === "google"
-                    ? "Apri recensioni Google"
-                    : "Apri recensioni"}
-              </a>
+              {(() => {
+                const isVerifiedGoogleProfile =
+                  reviewProfile.provider.toLowerCase() === "google" &&
+                  reviewProfile.verificationStatus === "verified";
+
+                return (
+                  <>
+                    <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--muted)]">
+                      {isVerifiedGoogleProfile ? "Recensioni Google" : "Google Maps"}
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-[var(--ink-soft)]">
+                      {isVerifiedGoogleProfile
+                        ? "Leggi le recensioni e il punteggio direttamente su Google Maps."
+                        : "Il profilo ufficiale su Google Maps non è ancora verificato."}
+                    </p>
+                    <a
+                      href={reviewProfile.mapsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 inline-flex min-h-11 items-center rounded-[0.85rem] bg-[var(--ink)] px-3 text-xs font-extrabold text-white transition-[transform,background-color] hover:bg-[var(--sea-deep)] active:scale-[0.98]"
+                    >
+                      {isVerifiedGoogleProfile
+                        ? "Apri recensioni Google"
+                        : `Cerca ${beachName} su Google Maps`}
+                    </a>
+                  </>
+                );
+              })()}
             </div>
           ) : null}
 

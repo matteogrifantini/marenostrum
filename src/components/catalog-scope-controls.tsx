@@ -34,14 +34,17 @@ export function CatalogScopeControls({
     : ITALIAN_PROVINCES.filter((item) => item.regionCode === region);
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <label className="inline-flex min-h-11 min-w-0 shrink-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
+    <div
+      data-testid="catalog-scope-controls"
+      className="grid w-full grid-cols-2 items-center gap-2 sm:flex sm:w-auto sm:flex-wrap"
+    >
+      <label className="inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
         <span className="sr-only">Regione{suffix}</span>
         <select
           aria-label={`Regione${suffix}`}
           value={region}
           onChange={(event) => onRegionChange(event.target.value as RegionSelection)}
-          className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
+          className="min-h-11 w-full min-w-0 appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
         >
           <option value="all">Scegli una regione</option>
           {ITALIAN_REGIONS.map(({ code, label }) => (
@@ -52,13 +55,13 @@ export function CatalogScopeControls({
         </select>
       </label>
 
-      <label className="inline-flex min-h-11 min-w-0 shrink-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
+      <label className="inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
         <span className="sr-only">Provincia{suffix}</span>
         <select
           aria-label={`Provincia${suffix}`}
           value={province}
           onChange={(event) => onProvinceChange(event.target.value as ProvinceSelection)}
-          className="min-h-11 min-w-0 max-w-[12rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
+          className="min-h-11 w-full min-w-0 appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
         >
           <option value="all">Scegli una provincia</option>
           {visibleProvinces.map(({ code, label }) => (
@@ -69,7 +72,11 @@ export function CatalogScopeControls({
         </select>
       </label>
 
-      <NearbyControl value={nearbySelection} onChange={onNearbyChange} />
+      <NearbyControl
+        value={nearbySelection}
+        onChange={onNearbyChange}
+        className="col-start-1 w-full sm:col-auto sm:w-auto"
+      />
     </div>
   );
 }

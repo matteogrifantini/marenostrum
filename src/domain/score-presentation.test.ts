@@ -32,7 +32,7 @@ describe("score presentation", () => {
       },
     });
 
-    expect(presentation.freshnessText).toMatch(/Aggiornato/i);
+    expect(presentation.freshnessText).toMatch(/Ultimo aggiornamento/i);
     expect(presentation.freshnessText).toMatch(/20 agosto 2026/i);
   });
 });

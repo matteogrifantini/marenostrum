@@ -67,6 +67,8 @@ export default async function HomePage({
       date: initialDate,
       period: initialPeriod,
       scope: initialScope,
+      nationalPreview: initialScope === null,
+      limit: initialScope === null ? 10 : undefined,
     });
   } catch (error) {
     if (!(error instanceof ForecastDataUnavailableError)) {
@@ -93,6 +95,7 @@ export default async function HomePage({
         initialProvince={initialProvince}
         dateOptions={dateOptions}
         recommendations={recommendations}
+        nationalPreview={initialScope === null}
         dataUnavailable={dataUnavailable}
       />
     </Suspense>
