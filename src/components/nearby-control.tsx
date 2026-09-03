@@ -102,16 +102,16 @@ export function NearbyControl({ value, onChange, className = "" }: NearbyControl
         onClick={handleClick}
         disabled={locationState === "requesting"}
         className={[
-          "inline-flex min-h-11 w-full items-center gap-1.5 rounded-full text-sm font-bold transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] sm:w-auto",
+          "inline-flex min-h-11 w-full items-center justify-center gap-1.5 rounded-full text-sm font-bold transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] sm:w-auto",
           isActive
             ? "bg-[var(--ink)] px-4 text-white shadow-[0_8px_20px_rgba(20,44,57,0.16)]"
             : "bg-[var(--surface)] px-3 text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] sm:px-4",
         ].join(" ")}
       >
         {locationState === "requesting" ? (
-          <Loader2 aria-hidden="true" size={15} className="animate-spin text-blue-500" />
+          <Loader2 aria-hidden="true" size={15} className="shrink-0 animate-spin text-blue-500" />
         ) : (
-          <LocateFixed aria-hidden="true" size={15} className={isActive ? "text-blue-400" : ""} />
+          <LocateFixed aria-hidden="true" size={15} className={`shrink-0 ${isActive ? "text-blue-400" : ""}`.trim()} />
         )}
         <span>{locationState === "requesting" ? "Posizione in corso…" : "Vicino a me"}</span>
       </button>

@@ -41,7 +41,7 @@ export function CatalogScopeControls({
       data-testid="catalog-scope-controls"
       className={isTwoColumnLayout ? "contents" : "contents lg:flex lg:w-auto lg:flex-wrap lg:items-center lg:gap-2"}
     >
-      <label className={`${isTwoColumnLayout ? "col-start-1 row-start-1" : "order-2 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
+      <label className={`${isTwoColumnLayout ? "col-start-1 row-start-1 lg:col-auto lg:row-auto" : "order-2 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
         <span className="sr-only">Regione{suffix}</span>
         <select
           aria-label={`Regione${suffix}`}
@@ -58,7 +58,7 @@ export function CatalogScopeControls({
         </select>
       </label>
 
-      <label className={`${isTwoColumnLayout ? "col-start-1 row-start-2" : "order-4 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
+      <label className={`${isTwoColumnLayout ? "col-start-1 row-start-2 lg:col-auto lg:row-auto" : "order-4 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
         <span className="sr-only">Provincia{suffix}</span>
         <select
           aria-label={`Provincia${suffix}`}
@@ -78,7 +78,7 @@ export function CatalogScopeControls({
       <NearbyControl
         value={nearbySelection}
         onChange={onNearbyChange}
-        className={isTwoColumnLayout ? "col-start-2 row-start-1 w-full" : "order-3 w-full lg:order-none lg:w-auto"}
+        className={isTwoColumnLayout ? "col-start-2 row-start-1 w-full lg:col-auto lg:row-auto" : "order-3 w-full lg:order-none lg:w-auto"}
       />
     </div>
   );

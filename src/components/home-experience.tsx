@@ -399,17 +399,24 @@ export function HomeExperience({
 
           <section
             aria-busy={isUpdatingForecast}
-            className="relative z-20 mx-auto mt-3 w-full max-w-4xl overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4"
+            className="relative z-20 mx-auto mt-3 w-full max-w-4xl overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:p-3"
           >
-            <div className="flex flex-col gap-3">
-              <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
+            <div
+              data-testid="home-control-layout"
+              className="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:gap-2"
+            >
+              <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+                <DayPicker options={dateOptions} value={date} onChange={handleDateChange} />
+              </div>
 
               <div
                 data-testid="home-filter-toolbar"
-                className="grid gap-2 border-t border-[var(--line)] pt-3"
+                className="grid gap-2 border-t border-[var(--line)] pt-3 lg:contents"
               >
-                <PeriodPicker value={period} onChange={handlePeriodChange} />
-                <div className="grid grid-cols-2 gap-2">
+                <div className="min-w-0 lg:col-start-2 lg:row-start-1">
+                  <PeriodPicker value={period} onChange={handlePeriodChange} />
+                </div>
+                <div className="grid grid-cols-2 gap-2 lg:col-span-2 lg:grid-cols-4">
                   <CatalogScopeControls
                     context="home"
                     layout="two-column"
@@ -423,7 +430,7 @@ export function HomeExperience({
                   <button
                     type="button"
                     onClick={() => setFilterSheetOpen(true)}
-                    className="col-start-2 row-start-2 inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-3 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+                    className="col-start-2 row-start-2 inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-3 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] lg:col-auto lg:row-auto"
                   >
                     <SlidersHorizontal aria-hidden="true" size={16} />
                     Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}

@@ -397,6 +397,27 @@ describe("HomeExperience", () => {
     expect(screen.getByRole("button", { name: "Filtri" })).toHaveClass("col-start-2", "row-start-2");
   });
 
+  it("compacts the home toolbar into two rows on desktop", () => {
+    renderHome();
+
+    const layout = screen.getByTestId("home-control-layout");
+    const toolbar = screen.getByTestId("home-filter-toolbar");
+    const dayGroup = screen.getByRole("group", { name: "Scegli il giorno" });
+    const periodGroup = screen.getByRole("group", { name: "Periodo" });
+    const locationGrid = screen.getByTestId("catalog-scope-controls").parentElement;
+
+    expect(layout).toHaveClass("lg:grid-cols-2", "lg:gap-2");
+    expect(toolbar).toHaveClass("lg:contents");
+    expect(dayGroup.parentElement).toHaveClass("lg:col-start-1", "lg:row-start-1");
+    expect(periodGroup.parentElement).toHaveClass("lg:col-start-2", "lg:row-start-1");
+    expect(locationGrid).toHaveClass("lg:col-span-2", "lg:grid-cols-4");
+    expect(screen.getByRole("combobox", { name: "Regione" }).parentElement).toHaveClass(
+      "lg:col-auto",
+      "lg:row-auto",
+    );
+    expect(screen.getByTestId("nearby-control")).toHaveClass("lg:col-auto", "lg:row-auto");
+  });
+
   it("filters by province from the main bar and persists the selection in the URL", () => {
     renderHome();
 
