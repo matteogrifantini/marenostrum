@@ -1,3 +1,5 @@
+import { getProvinceLabel, getRegionLabel } from "./province-filter";
+
 const ITALIAN_REGION_CODES = new Set([
   "IT-21", "IT-23", "IT-25", "IT-32", "IT-34", "IT-36", "IT-42", "IT-45", "IT-52", "IT-55",
   "IT-57", "IT-62", "IT-65", "IT-67", "IT-72", "IT-75", "IT-77", "IT-78", "IT-82", "IT-88",
@@ -19,6 +21,13 @@ export type CatalogScope =
   | { kind: "region"; regionCode: string }
   | { kind: "province"; provinceCode: string }
   | { kind: "nearby"; latitude: number; longitude: number; radiusKm: number };
+
+export function formatCatalogScopeLabel(scope: CatalogScope | null) {
+  if (!scope) return "Italia";
+  if (scope.kind === "region") return `Regione ${getRegionLabel(scope.regionCode)}`;
+  if (scope.kind === "province") return `Provincia di ${getProvinceLabel(scope.provinceCode)}`;
+  return `${scope.radiusKm} km da te`;
+}
 
 function singleValue(input: URLSearchParams, key: string) {
   const values = input.getAll(key);

@@ -1,23 +1,33 @@
 import { describe, expect, it } from "vitest";
 import type { BeachRecommendation } from "./beach";
-import { filterRecommendationsByProvince, normalizeProvinceCode, SICILIAN_PROVINCES } from "./province-filter";
+import {
+  filterRecommendationsByProvince,
+  normalizeProvinceCode,
+  ITALIAN_PROVINCES,
+} from "./province-filter";
 
 describe("province filter", () => {
-  it("exposes all Sicilian provinces in display order", () => {
-    expect(SICILIAN_PROVINCES.map((province) => province.code)).toEqual([
-      "AG",
-      "CL",
-      "CT",
-      "EN",
-      "ME",
-      "PA",
-      "RG",
-      "SR",
-      "TP",
-    ]);
+  it("exposes Italian provinces, including the current catalog provinces", () => {
+    expect(ITALIAN_PROVINCES.map((province) => province.code)).toEqual(
+      expect.arrayContaining([
+        "AG",
+        "CL",
+        "CT",
+        "EN",
+        "ME",
+        "PA",
+        "RG",
+        "SR",
+        "TP",
+        "RM",
+        "NA",
+        "VE",
+      ]),
+    );
+    expect(ITALIAN_PROVINCES.length).toBeGreaterThan(100);
   });
 
-  it("normalizes an unknown or empty query to the whole island", () => {
+  it("normalizes an unknown or empty query to the unselected national scope", () => {
     expect(normalizeProvinceCode(null)).toBe("all");
     expect(normalizeProvinceCode("not-a-province")).toBe("all");
     expect(normalizeProvinceCode("tp")).toBe("TP");

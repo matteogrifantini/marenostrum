@@ -122,7 +122,7 @@ describe("buildBeachDetailContent", () => {
     expect(detail.reviewProfile).toEqual({
       provider: "google",
       mapsUrl:
-        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia&query_place_id=ChIJexample",
+        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia&query_place_id=ChIJexample",
       verificationStatus: "verified",
     });
     expect(detail.webcam).toMatchObject({
@@ -178,7 +178,7 @@ describe("buildBeachDetailContent", () => {
     expect(detail.reviewProfile).toEqual({
       provider: "google",
       mapsUrl:
-        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia",
+        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia",
       verificationStatus: "draft",
     });
   });
@@ -203,7 +203,7 @@ describe("buildBeachDetailContent", () => {
       reviewProfile: {
         provider: "google",
         mapsUrl:
-          "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia",
+          "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia",
         verificationStatus: "draft",
       },
       recentPhotos: [],

@@ -254,10 +254,23 @@ function mapWebcam(beach: Beach, webcam: WebcamRow | undefined) {
   };
 }
 
+function beachLocationQuery(beach: Beach) {
+  return [
+    beach.name,
+    beach.municipality,
+    beach.provinceName,
+    beach.regionName,
+    "Italia",
+  ]
+    .map((value) => value?.trim())
+    .filter((value): value is string => Boolean(value))
+    .join(", ");
+}
+
 function reviewMapsUrl(beach: Beach, provider: string, placeId: string | null, fallbackUrl: string) {
   if (provider.trim().toLowerCase() !== "google") return fallbackUrl;
 
-  const query = `${beach.name}, ${beach.municipality}, Sicilia`;
+  const query = beachLocationQuery(beach);
   return placeId?.trim()
     ? buildGoogleMapsPlaceUrl(query, placeId)
     : buildGoogleMapsSearchUrl(query);
@@ -287,7 +300,7 @@ export function buildBeachDetailContent(
       }
     : {
         provider: "google",
-        mapsUrl: buildGoogleMapsSearchUrl(`${beach.name}, ${beach.municipality}, Sicilia`),
+        mapsUrl: buildGoogleMapsSearchUrl(beachLocationQuery(beach)),
         verificationStatus: "draft" as const,
       };
 

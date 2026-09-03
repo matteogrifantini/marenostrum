@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import type * as Leaflet from "leaflet";
 import type { BeachRecommendation } from "../domain/beach";
+import type { CatalogScope } from "../domain/catalog-scope";
+import { getMapBounds } from "../domain/map-bounds";
 import { formatScoreOutOf100 } from "../domain/score";
 import { getScorePresentation } from "../domain/score-presentation";
 import {
@@ -18,6 +20,7 @@ import {
 
 type LeafletBeachMapProps = {
   recommendations: BeachRecommendation[];
+  scope?: CatalogScope | null;
   selectedSlug: string | null;
   onSelectBeach: (slug: string) => void;
   nearbySelection: MapNearbySelection | null;
@@ -38,11 +41,6 @@ type PoiResponse = {
   reason?: PoiState | null;
   degraded?: boolean;
 };
-
-const SICILY_BOUNDS: Leaflet.LatLngBoundsExpression = [
-  [36.35, 11.25],
-  [38.85, 15.75],
-];
 
 const ESRI_IMAGERY_TILES =
   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
@@ -168,6 +166,7 @@ export function buildBeachMarkerModels(
 
 export function LeafletBeachMap({
   recommendations,
+  scope = null,
   selectedSlug,
   onSelectBeach,
   nearbySelection,
@@ -285,7 +284,7 @@ export function LeafletBeachMap({
       map = leaflet.map(containerRef.current, {
         zoomControl: false,
         attributionControl: false,
-        minZoom: 6,
+        minZoom: 5,
         maxZoom: 19,
         zoomSnap: 0.5,
         zoomDelta: 0.5,
@@ -312,7 +311,7 @@ export function LeafletBeachMap({
       ratingLayerRef.current = leaflet.layerGroup().addTo(map);
       poiLayerRef.current = leaflet.layerGroup().addTo(map);
       userLayerRef.current = leaflet.layerGroup().addTo(map);
-      map.fitBounds(SICILY_BOUNDS, { padding: [16, 16], maxZoom: 8.5 });
+      map.setView([41.8, 12.5], 5.5);
 
       const handleViewportChange = () => requestPlacesRef.current?.(map as Leaflet.Map);
       map.on("moveend", handleViewportChange);
@@ -334,6 +333,30 @@ export function LeafletBeachMap({
       setMapReady(false);
     };
   }, []);
+
+  useEffect(() => {
+    if (!mapReady || !mapRef.current) return;
+
+    const effectiveScope = scope ?? (
+      nearbySelection
+        ? {
+            kind: "nearby" as const,
+            latitude: nearbySelection.coordinates.latitude,
+            longitude: nearbySelection.coordinates.longitude,
+            radiusKm: nearbySelection.radiusKm,
+          }
+        : null
+    );
+    const bounds = getMapBounds(
+      recommendations.map(({ beach }) => beach),
+      effectiveScope,
+    );
+
+    mapRef.current.fitBounds(bounds, {
+      padding: [24, 24],
+      maxZoom: effectiveScope?.kind === "nearby" ? 13.5 : 12,
+    });
+  }, [mapReady, nearbySelection, recommendations, scope]);
 
   useEffect(() => {
     const leaflet = leafletRef.current;
@@ -414,7 +437,6 @@ export function LeafletBeachMap({
       .bindTooltip("La tua posizione", { direction: "top", offset: [0, -8] })
       .addTo(userLayer);
 
-    map.fitBounds(circle.getBounds(), { padding: [44, 44], maxZoom: 14 });
   }, [mapReady, nearbySelection]);
 
   return (

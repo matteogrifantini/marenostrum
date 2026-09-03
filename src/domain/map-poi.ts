@@ -36,11 +36,11 @@ type OverpassElement = {
   tags?: Record<string, unknown>;
 };
 
-const SICILY_BOUNDS = {
+const ITALY_BOUNDS = {
   south: 35.2,
-  west: 10.5,
-  north: 39.5,
-  east: 16.5,
+  west: 6.5,
+  north: 47.2,
+  east: 19,
 };
 
 export const MIN_POI_ZOOM = 12.5;
@@ -91,10 +91,10 @@ function parseBbox(value: string | null): MapBounds {
 
   const [south, west, north, east] = parts;
   if (
-    south < SICILY_BOUNDS.south ||
-    north > SICILY_BOUNDS.north ||
-    west < SICILY_BOUNDS.west ||
-    east > SICILY_BOUNDS.east
+    south < ITALY_BOUNDS.south ||
+    north > ITALY_BOUNDS.north ||
+    west < ITALY_BOUNDS.west ||
+    east > ITALY_BOUNDS.east
   ) {
     throw new Error("bbox fuori dall'area supportata");
   }
@@ -247,8 +247,8 @@ export function parseOverpassPlaces(
         ? element.center.lon
         : null;
     if (latitude === null || longitude === null) continue;
-    if (latitude < SICILY_BOUNDS.south || latitude > SICILY_BOUNDS.north) continue;
-    if (longitude < SICILY_BOUNDS.west || longitude > SICILY_BOUNDS.east) continue;
+    if (latitude < ITALY_BOUNDS.south || latitude > ITALY_BOUNDS.north) continue;
+    if (longitude < ITALY_BOUNDS.west || longitude > ITALY_BOUNDS.east) continue;
 
     const placeId = `${type}/${id}`;
     if (seen.has(placeId)) continue;

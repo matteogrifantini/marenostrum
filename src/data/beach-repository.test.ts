@@ -94,13 +94,17 @@ function conditionRow(
 }
 
 class FakeForecastReadStore implements ForecastReadStore {
+  scopeCalls: Parameters<ForecastReadStore["getPublishedBeaches"]>[0][] = [];
+  forecastInputs: Parameters<ForecastReadStore["getForecastRows"]>[0][] = [];
+
   constructor(
     private readonly beaches: BeachRow[],
     private readonly source: DataSourceRow | null,
     private readonly rows: ReturnType<typeof conditionRow>[],
   ) {}
 
-  async getPublishedBeaches() {
+  async getPublishedBeaches(scope?: Parameters<ForecastReadStore["getPublishedBeaches"]>[0]) {
+    this.scopeCalls.push(scope);
     return this.beaches;
   }
 
@@ -108,21 +112,40 @@ class FakeForecastReadStore implements ForecastReadStore {
     return slug === "open-meteo" ? this.source : null;
   }
 
-  async getForecastRows(input: {
-    sourceId: string;
-    from: string;
-    to: string;
-    beachId?: string;
-  }) {
+  async getForecastRows(input: Parameters<ForecastReadStore["getForecastRows"]>[0]) {
+    this.forecastInputs.push(input);
     return this.rows.filter(
       (row) =>
         row.source_id === input.sourceId &&
         row.forecast_at >= input.from &&
         row.forecast_at < input.to &&
-        (input.beachId === undefined || row.beach_id === input.beachId),
+        (input.beachId === undefined || row.beach_id === input.beachId) &&
+        (input.beachIds === undefined || input.beachIds.includes(row.beach_id)),
     );
   }
 }
+
+it("passes a province scope to the beach read and bounds the forecast read to its beach ids", async () => {
+  const store = new FakeForecastReadStore(
+    [beachRow, vendicariRow],
+    sourceRow,
+    [conditionRow(beachRow.id), conditionRow(vendicariRow.id)],
+  );
+  const scope = { kind: "province", provinceCode: "PA" } as const;
+
+  await getBeachRecommendations(
+    {
+      date: "2026-08-20",
+      period: "all-day",
+      scope,
+      now: new Date("2026-08-20T10:00:00Z"),
+    },
+    store,
+  );
+
+  expect(store.scopeCalls).toEqual([scope]);
+  expect(store.forecastInputs[0]?.beachIds).toEqual([beachRow.id, vendicariRow.id]);
+});
 
 it("uses a direct published beach lookup when the forecast store provides one", async () => {
   let listCalls = 0;

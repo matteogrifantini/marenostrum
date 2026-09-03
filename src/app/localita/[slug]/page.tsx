@@ -68,7 +68,7 @@ export default async function TerritoryHubPage({
       <main className="min-h-screen pb-24 lg:pb-10">
         <div className="mx-auto max-w-[1440px] px-4 py-6 sm:px-8 sm:py-10">
           <header className="mx-auto max-w-3xl">
-            <Link href="/" className="text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--sea-deep)] underline underline-offset-4">Mare Nostrum · Sicilia</Link>
+            <Link href="/" className="text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--sea-deep)] underline underline-offset-4">Mare Nostrum</Link>
             <p className="mt-5 text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--muted)]">{hub.eyebrow}</p>
             <h1 className="mt-2 font-serif text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">{hub.name}</h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)]">{hub.description}</p>
@@ -96,7 +96,7 @@ export default async function TerritoryHubPage({
           ) : (
             <section className="mx-auto mt-8 max-w-3xl rounded-[1.5rem] bg-[var(--surface)] p-8 text-center shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
               <h2 className="font-serif text-2xl font-semibold">Catalogo in espansione</h2>
-              <p className="mt-2 text-sm leading-6 text-[var(--muted)]">Stiamo verificando le prime spiagge di {hub.queryLabel}. Nel frattempo puoi esplorare la mappa della Sicilia.</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--muted)]">Stiamo verificando le prime spiagge di {hub.queryLabel}. Nel frattempo puoi esplorare la mappa nazionale.</p>
               <Link href="/mappa" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-[var(--ink)] px-5 text-sm font-extrabold text-white">Apri la mappa</Link>
             </section>
           )}

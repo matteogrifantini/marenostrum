@@ -91,7 +91,14 @@ export async function createSupabaseForecastReadStore(): Promise<ForecastReadSto
   return {
     async getPublishedBeaches(scope?: CatalogScope) {
       if (scope?.kind === "nearby") {
-        throwReadError("Nearby beach scope is not available yet");
+        const { data, error } = await client.rpc("nearby_published_beaches", {
+          query_latitude: scope.latitude,
+          query_longitude: scope.longitude,
+          query_radius_km: Math.min(100, Math.max(1, scope.radiusKm)),
+        });
+
+        if (error) throwReadError("Nearby beaches are unavailable");
+        return (data ?? []) as BeachRow[];
       }
 
       const query = client

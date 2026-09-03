@@ -7,12 +7,8 @@ import { BeachCard } from "./beach-card";
 import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { MobileNav } from "./mobile-nav";
-import {
-  NearbyControl,
-  getStoredNearbySelection,
-  setStoredNearbySelection,
-  type NearbySelection,
-} from "./nearby-control";
+import { setStoredNearbySelection, type NearbySelection } from "./nearby-control";
+import { CatalogScopeControls } from "./catalog-scope-controls";
 import { PageShell } from "./page-shell";
 import { PeriodPicker } from "./period-picker";
 import { ForecastAttribution } from "./forecast-attribution";
@@ -24,16 +20,22 @@ import {
 } from "../domain/beach-filters";
 import type { DateOption } from "../domain/date-selection";
 import { distanceKm } from "../lib/geo";
+import type { CatalogScope } from "../domain/catalog-scope";
+import { formatCatalogScopeLabel } from "../domain/catalog-scope";
 import {
   filterRecommendationsByProvince,
+  filterRecommendationsByRegion,
   normalizeProvinceCode,
-  SICILIAN_PROVINCES,
+  normalizeRegionCode,
   type ProvinceSelection,
+  type RegionSelection,
 } from "../domain/province-filter";
 
 type HomeExperienceProps = {
   initialDate: string;
   initialPeriod: BeachPeriod;
+  initialScope?: CatalogScope | null;
+  initialRegion?: RegionSelection;
   initialProvince?: ProvinceSelection;
   dateOptions: DateOption[];
   recommendations: BeachRecommendation[];
@@ -74,11 +76,15 @@ const WIND_MAP: Record<string, string> = {
 export function HomeExperience({
   initialDate,
   initialPeriod,
+  initialScope,
+  initialRegion,
   initialProvince = "all",
   dateOptions,
   recommendations,
   dataUnavailable = false,
 }: HomeExperienceProps) {
+  const scopeAware = initialScope !== undefined;
+  const resolvedInitialScope = initialScope ?? null;
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -86,21 +92,31 @@ export function HomeExperience({
   const [isNavigating, setIsNavigating] = useState(false);
   const [date, setDate] = useState(initialDate);
   const [period, setPeriod] = useState<BeachPeriod>(initialPeriod);
-  const [province, setProvince] = useState<ProvinceSelection>(initialProvince);
+  const [scope, setScope] = useState<CatalogScope | null>(resolvedInitialScope);
+  const [region, setRegion] = useState<RegionSelection>(
+    initialRegion ?? (initialScope?.kind === "region" ? normalizeRegionCode(initialScope.regionCode) : "all"),
+  );
+  const [province, setProvince] = useState<ProvinceSelection>(
+    initialScope?.kind === "province"
+      ? normalizeProvinceCode(initialScope.provinceCode)
+      : initialProvince,
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const [onlySheltered, setOnlySheltered] = useState(false);
   const [onlyWebcam, setOnlyWebcam] = useState(false);
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
-  const [nearbySelection, setNearbySelection] = useState<NearbySelection | null>(() => getStoredNearbySelection());
+  const [nearbySelection, setNearbySelection] = useState<NearbySelection | null>(() => (
+    initialScope?.kind === "nearby"
+      ? {
+          coordinates: { latitude: initialScope.latitude, longitude: initialScope.longitude },
+          radiusKm: initialScope.radiusKm,
+        }
+      : null
+  ));
   const [visibleCount, setVisibleCount] = useState(12);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const localInteractionRef = useRef(false);
-
-  const handleNearbyChange = (next: NearbySelection | null) => {
-    setNearbySelection(next);
-    setStoredNearbySelection(next);
-  };
 
   useEffect(() => {
     startTransition(() => {
@@ -112,16 +128,27 @@ export function HomeExperience({
 
       setDate(initialDate);
       setPeriod(initialPeriod);
-      setProvince(initialProvince);
+      setScope(initialScope ?? null);
+      setRegion(initialRegion ?? (initialScope?.kind === "region" ? normalizeRegionCode(initialScope.regionCode) : "all"));
+      setProvince(initialScope?.kind === "province" ? normalizeProvinceCode(initialScope.provinceCode) : initialProvince);
+      setNearbySelection(initialScope?.kind === "nearby"
+        ? {
+            coordinates: { latitude: initialScope.latitude, longitude: initialScope.longitude },
+            radiusKm: initialScope.radiusKm,
+          }
+        : null);
       setIsNavigating(false);
     });
-  }, [initialDate, initialPeriod, initialProvince]);
+  }, [initialDate, initialPeriod, initialProvince, initialRegion, initialScope]);
 
   const filteredRecommendations = useMemo(
     () => {
       const normalizedSearchQuery = searchQuery.trim().toLowerCase();
 
-      return filterRecommendationsByProvince(recommendations, province).filter((rec) => {
+      return filterRecommendationsByRegion(
+        filterRecommendationsByProvince(recommendations, province),
+        region,
+      ).filter((rec) => {
         const { beach, conditions } = rec;
         const searchMatches =
           !normalizedSearchQuery ||
@@ -149,7 +176,7 @@ export function HomeExperience({
         return matchesBeachFilters(beach, filters) && searchMatches && shelterMatches && webcamMatches;
       });
     },
-    [filters, onlySheltered, onlyWebcam, province, recommendations, searchQuery],
+    [filters, onlySheltered, onlyWebcam, province, region, recommendations, searchQuery],
   );
   const activeFilterCount =
     filters.access.length +
@@ -157,7 +184,7 @@ export function HomeExperience({
     filters.services.length +
     (onlySheltered ? 1 : 0) +
     (onlyWebcam ? 1 : 0);
-  const forecastUnavailable = dataUnavailable || recommendations.length === 0;
+  const forecastUnavailable = dataUnavailable || (!scopeAware && recommendations.length === 0);
   const isUpdatingForecast = isPending || isNavigating;
   const displayedRecommendations = useMemo<DisplayRecommendation[]>(() => {
     if (!nearbySelection) {
@@ -183,7 +210,7 @@ export function HomeExperience({
       .sort((left, right) => (left.distanceKm ?? Infinity) - (right.distanceKm ?? Infinity));
   }, [filteredRecommendations, nearbySelection]);
 
-  const filterKey = `${province}-${searchQuery}-${onlySheltered}-${onlyWebcam}-${date}-${period}-${nearbySelection?.radiusKm ?? "none"}-${JSON.stringify(filters)}`;
+  const filterKey = `${region}-${province}-${scope?.kind ?? "none"}-${searchQuery}-${onlySheltered}-${onlyWebcam}-${date}-${period}-${nearbySelection?.radiusKm ?? "none"}-${JSON.stringify(filters)}`;
   const [prevFilterKey, setPrevFilterKey] = useState(filterKey);
   if (filterKey !== prevFilterKey) {
     setPrevFilterKey(filterKey);
@@ -216,14 +243,25 @@ export function HomeExperience({
   const updateQuery = (
     nextDate: string,
     nextPeriod: BeachPeriod,
-    nextProvince: ProvinceSelection = province,
+    nextScope: CatalogScope | null = scope,
+    showLoading = true,
   ) => {
     const nextParams = new URLSearchParams(searchParams.toString());
     nextParams.set("date", nextDate);
     nextParams.set("period", nextPeriod);
-    if (nextProvince === "all") nextParams.delete("province");
-    else nextParams.set("province", nextProvince);
-    setIsNavigating(true);
+    nextParams.delete("region");
+    nextParams.delete("province");
+    nextParams.delete("lat");
+    nextParams.delete("lng");
+    nextParams.delete("radius");
+    if (nextScope?.kind === "region") nextParams.set("region", nextScope.regionCode);
+    if (nextScope?.kind === "province") nextParams.set("province", nextScope.provinceCode);
+    if (nextScope?.kind === "nearby") {
+      nextParams.set("lat", nextScope.latitude.toFixed(6));
+      nextParams.set("lng", nextScope.longitude.toFixed(6));
+      nextParams.set("radius", nextScope.radiusKm.toString());
+    }
+    setIsNavigating(showLoading);
     startTransition(() => {
       router.replace(`${pathname}?${nextParams.toString()}`, { scroll: false });
     });
@@ -232,19 +270,59 @@ export function HomeExperience({
   const handleDateChange = (nextDate: string) => {
     localInteractionRef.current = true;
     setDate(nextDate);
-    updateQuery(nextDate, period);
+    updateQuery(nextDate, period, scope);
   };
 
   const handlePeriodChange = (nextPeriod: BeachPeriod) => {
     localInteractionRef.current = true;
     setPeriod(nextPeriod);
-    updateQuery(date, nextPeriod);
+    updateQuery(date, nextPeriod, scope);
   };
 
-  const handleProvinceChange = (value: string) => {
+  const handleRegionChange = (value: RegionSelection) => {
+    localInteractionRef.current = true;
+    const nextRegion = normalizeRegionCode(value);
+    const nextScope = nextRegion === "all"
+      ? null
+      : { kind: "region", regionCode: nextRegion } as const;
+    setRegion(nextRegion);
+    setProvince("all");
+    setNearbySelection(null);
+    setScope(nextScope);
+    setStoredNearbySelection(null);
+    updateQuery(date, period, nextScope);
+  };
+
+  const handleProvinceChange = (value: ProvinceSelection) => {
+    localInteractionRef.current = true;
     const nextProvince = normalizeProvinceCode(value);
+    const nextScope = nextProvince === "all"
+      ? null
+      : { kind: "province", provinceCode: nextProvince } as const;
+    setRegion("all");
     setProvince(nextProvince);
-    updateQuery(date, period, nextProvince);
+    setNearbySelection(null);
+    setScope(nextScope);
+    setStoredNearbySelection(null);
+    updateQuery(date, period, nextScope);
+  };
+
+  const handleNearbyChange = (next: NearbySelection | null) => {
+    localInteractionRef.current = true;
+    const nextScope = next
+      ? {
+          kind: "nearby" as const,
+          latitude: next.coordinates.latitude,
+          longitude: next.coordinates.longitude,
+          radiusKm: Math.min(100, Math.max(1, next.radiusKm)),
+        }
+      : null;
+    setNearbySelection(next);
+    setStoredNearbySelection(next);
+    setRegion("all");
+    setProvince("all");
+    setScope(nextScope);
+    updateQuery(date, period, nextScope, false);
   };
 
   const handleResetAll = () => {
@@ -252,9 +330,14 @@ export function HomeExperience({
     setOnlySheltered(false);
     setOnlyWebcam(false);
     setFilters({ ...DEFAULT_BEACH_FILTERS });
-    handleNearbyChange(null);
-    if (province !== "all") {
-      handleProvinceChange("all");
+    if (scope !== null || province !== "all" || region !== "all") {
+      localInteractionRef.current = true;
+      setScope(null);
+      setRegion("all");
+      setProvince("all");
+      setNearbySelection(null);
+      setStoredNearbySelection(null);
+      updateQuery(date, period, null, false);
     }
   };
 
@@ -295,6 +378,16 @@ export function HomeExperience({
             </div>
           </section>
 
+          <p
+            aria-live="polite"
+            data-testid="home-scope-summary"
+            className="mx-auto mt-4 w-full max-w-4xl text-sm font-bold text-[var(--ink)]"
+          >
+            {displayedRecommendations.length} {displayedRecommendations.length === 1 ? "spiaggia" : "spiagge"}
+            {" · "}
+            {formatCatalogScopeLabel(scope)}
+          </p>
+
           <section
             aria-busy={isUpdatingForecast}
             className="relative z-20 mx-auto mt-3 w-full max-w-4xl overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.9)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4"
@@ -304,21 +397,15 @@ export function HomeExperience({
 
               <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3 lg:mt-0 lg:shrink-0 lg:border-t-0 lg:pt-0">
                 <PeriodPicker value={period} onChange={handlePeriodChange} />
-                <label className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
-                  <span className="sr-only">Provincia</span>
-                  <select
-                    aria-label="Provincia"
-                    value={province}
-                    onChange={(event) => handleProvinceChange(event.target.value)}
-                    className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
-                  >
-                    <option value="all">Tutta la Sicilia</option>
-                    {SICILIAN_PROVINCES.map(({ code, label }) => (
-                      <option key={code} value={code}>{label}</option>
-                    ))}
-                  </select>
-                </label>
-                <NearbyControl value={nearbySelection} onChange={handleNearbyChange} />
+                <CatalogScopeControls
+                  context="home"
+                  region={region}
+                  province={province}
+                  nearbySelection={nearbySelection}
+                  onRegionChange={handleRegionChange}
+                  onProvinceChange={handleProvinceChange}
+                  onNearbyChange={handleNearbyChange}
+                />
                 <button
                   type="button"
                   onClick={() => setFilterSheetOpen(true)}
@@ -418,14 +505,18 @@ export function HomeExperience({
                 <h3 className="font-serif text-3xl font-semibold tracking-[-0.05em]">
                   {forecastUnavailable
                     ? "Condizioni non disponibili"
+                    : scopeAware && scope === null && recommendations.length === 0
+                      ? "Scegli una zona per iniziare"
                     : "Nessuna spiaggia corrisponde"}
                 </h3>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
                   {forecastUnavailable
                     ? "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto."
+                    : scopeAware && scope === null && recommendations.length === 0
+                      ? "Seleziona una regione, una provincia oppure autorizza Vicino a me. Caricheremo solo le spiagge dell’area scelta."
                     : "Prova un altro nome, comune o costa, oppure rimuovi un filtro per vedere di nuovo tutte le condizioni disponibili."}
                 </p>
-                {!forecastUnavailable && (
+                {!forecastUnavailable && (!scopeAware || scope !== null) && (
                   <button
                     type="button"
                     onClick={handleResetAll}

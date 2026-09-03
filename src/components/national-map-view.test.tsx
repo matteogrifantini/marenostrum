@@ -3,9 +3,9 @@ import { describe, expect, it, vi } from "vitest";
 import { demoRecommendations } from "../data/demo-beaches";
 import { getDateOptions } from "../domain/date-selection";
 import type { BeachRecommendation } from "../domain/beach";
-import { SicilyMapView } from "./sicily-map-view";
+import { NationalMapView } from "./national-map-view";
 
-describe("SicilyMapView", () => {
+describe("NationalMapView", () => {
   const dateOptions = getDateOptions(new Date("2026-08-20T08:00:00+02:00"));
   const provinceRecommendations: BeachRecommendation[] = [
     {
@@ -108,7 +108,7 @@ describe("SicilyMapView", () => {
 
   it("keeps the selected date and period visible in the shared controls", () => {
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={demoRecommendations}
         province="all"
         date="2026-08-21"
@@ -138,7 +138,7 @@ describe("SicilyMapView", () => {
     };
 
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={[recommendationWithoutCoordinates]}
         province="all"
         date="2026-08-20"
@@ -159,7 +159,7 @@ describe("SicilyMapView", () => {
     const onPeriodChange = vi.fn();
 
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={demoRecommendations}
         province="all"
         date="2026-08-20"
@@ -184,7 +184,7 @@ describe("SicilyMapView", () => {
     const onProvinceChange = vi.fn();
 
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={provinceRecommendations}
         province="all"
         date="2026-08-20"
@@ -205,7 +205,7 @@ describe("SicilyMapView", () => {
 
   it("keeps POI layers disabled by default and exposes toggle to activate them", () => {
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={demoRecommendations}
         province="all"
         date="2026-08-20"
@@ -231,7 +231,7 @@ describe("SicilyMapView", () => {
 
   it("shows numeric ratings without the explanatory score legend", () => {
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={demoRecommendations}
         province="all"
         date="2026-08-20"
@@ -250,7 +250,7 @@ describe("SicilyMapView", () => {
 
   it("lets people choose a beach and open the nearby and factual filters", () => {
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={demoRecommendations}
         province="all"
         date="2026-08-20"
@@ -277,7 +277,7 @@ describe("SicilyMapView", () => {
 
   it("keeps province selection and exposes a visible deterministic beach list", () => {
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={provinceRecommendations}
         province="PA"
         date="2026-08-20"
@@ -300,7 +300,7 @@ describe("SicilyMapView", () => {
 
   it("announces the whole-island scope in the map result summary", () => {
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={provinceRecommendations}
         province="all"
         date="2026-08-20"
@@ -313,18 +313,18 @@ describe("SicilyMapView", () => {
     );
 
     expect(screen.getByTestId("map-result-summary")).toHaveTextContent(
-      "2 spiagge · Tutta la Sicilia",
+      "2 spiagge · Italia",
     );
     expect(
       within(screen.getByRole("combobox", { name: "Provincia della mappa" })).getByRole("option", {
-        name: "Tutta la Sicilia",
+        name: "Scegli una provincia",
       }),
     ).toHaveProperty("selected", true);
   });
 
   it("starts the beach disclosure list collapsed", () => {
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={provinceRecommendations}
         province="all"
         date="2026-08-20"
@@ -341,7 +341,7 @@ describe("SicilyMapView", () => {
 
   it("keeps contextual beach buttons selectable when names collide", () => {
     render(
-      <SicilyMapView
+      <NationalMapView
         recommendations={duplicateNameRecommendations}
         province="all"
         date="2026-08-20"

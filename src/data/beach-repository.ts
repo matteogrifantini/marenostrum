@@ -88,7 +88,7 @@ export type RecommendationQuery = {
   period: BeachPeriod;
   intent?: UserIntent;
   now?: Date;
-  scope?: CatalogScope;
+  scope?: CatalogScope | null;
 };
 
 export type RecommendationBySlugQuery = RecommendationQuery & {
@@ -321,6 +321,8 @@ export async function getBeachRecommendations(
   query: RecommendationQuery,
   providedStore?: ForecastReadStore,
 ) {
+  if (query.scope === null) return [];
+
   if (providedStore || query.now) {
     const store = await resolveStore(providedStore);
     const beachRows = await store.getPublishedBeaches(query.scope);

@@ -1,7 +1,7 @@
 "use client";
 
 import { SlidersHorizontal } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { formatScoreOutOf100 } from "../domain/score";
 import {
@@ -12,26 +12,34 @@ import { MAP_POI_CATEGORIES, type MapPoiCategory } from "../domain/map-poi";
 import { filterMapRecommendations, type MapNearbySelection } from "../domain/map-filtering";
 import { sortMappableRecommendations } from "../domain/map-markers";
 import type { DateOption } from "../domain/date-selection";
+import type { CatalogScope } from "../domain/catalog-scope";
+import { formatCatalogScopeLabel } from "../domain/catalog-scope";
 import {
+  filterRecommendationsByRegion,
   filterRecommendationsByProvince,
-  SICILIAN_PROVINCES,
   type ProvinceSelection,
+  type RegionSelection,
 } from "../domain/province-filter";
+import type { NearbySelection } from "./nearby-control";
+import { CatalogScopeControls } from "./catalog-scope-controls";
 import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { LeafletBeachMap } from "./leaflet-beach-map";
-import { NearbyControl } from "./nearby-control";
 import { PeriodPicker } from "./period-picker";
 
-type SicilyMapViewProps = {
+type NationalMapViewProps = {
   recommendations: BeachRecommendation[];
+  scope?: CatalogScope | null;
+  region?: RegionSelection;
   province: ProvinceSelection;
   date: string;
   period: BeachPeriod;
   dateOptions: DateOption[];
   onDateChange: (date: string) => void;
   onPeriodChange: (period: BeachPeriod) => void;
+  onRegionChange?: (region: RegionSelection) => void;
   onProvinceChange: (province: ProvinceSelection) => void;
+  onNearbyChange?: (selection: NearbySelection | null) => void;
 };
 
 function formatMapBeachLabel(beach: BeachRecommendation["beach"]) {
@@ -39,20 +47,33 @@ function formatMapBeachLabel(beach: BeachRecommendation["beach"]) {
   return `${beach.name} · ${beach.municipality}${provinceCode ? ` (${provinceCode})` : ""}`;
 }
 
-export function SicilyMapView({
+function nearbySelectionFromScope(scope: CatalogScope | null): MapNearbySelection | null {
+  return scope?.kind === "nearby"
+    ? {
+        coordinates: { latitude: scope.latitude, longitude: scope.longitude },
+        radiusKm: scope.radiusKm,
+      }
+    : null;
+}
+
+export function NationalMapView({
   recommendations,
+  scope = null,
+  region = "all",
   province,
   date,
   period,
   dateOptions,
   onDateChange,
   onPeriodChange,
+  onRegionChange = () => undefined,
   onProvinceChange,
-}: SicilyMapViewProps) {
+  onNearbyChange,
+}: NationalMapViewProps) {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [filters, setFilters] = useState<BeachFilters>({ ...DEFAULT_BEACH_FILTERS });
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
-  const [nearbySelection, setNearbySelection] = useState<MapNearbySelection | null>(null);
+  const [nearbySelection, setNearbySelection] = useState<MapNearbySelection | null>(() => nearbySelectionFromScope(scope));
   const [poiEnabled, setPoiEnabled] = useState(false);
   const [activePoiCategories, setActivePoiCategories] = useState<MapPoiCategory[]>([...MAP_POI_CATEGORIES]);
 
@@ -64,13 +85,25 @@ export function SicilyMapView({
     );
   };
 
-  const provinceRecommendations = useMemo(
-    () => filterRecommendationsByProvince(recommendations, province),
-    [province, recommendations],
+  useEffect(() => {
+    setNearbySelection(nearbySelectionFromScope(scope));
+  }, [scope]);
+
+  const handleNearbyChange = (selection: NearbySelection | null) => {
+    setNearbySelection(selection);
+    onNearbyChange?.(selection);
+  };
+
+  const scopeRecommendations = useMemo(
+    () => filterRecommendationsByProvince(
+      filterRecommendationsByRegion(recommendations, region),
+      province,
+    ),
+    [province, recommendations, region],
   );
   const visibleRecommendations = useMemo(
-    () => filterMapRecommendations([...provinceRecommendations], filters, nearbySelection),
-    [filters, nearbySelection, provinceRecommendations],
+    () => filterMapRecommendations([...scopeRecommendations], filters, nearbySelection),
+    [filters, nearbySelection, scopeRecommendations],
   );
   const visibleMappableRecommendations = useMemo(
     () => sortMappableRecommendations([...visibleRecommendations]),
@@ -80,9 +113,14 @@ export function SicilyMapView({
   const selectedVisibleSlug = selectedSlug && visibleMappableRecommendations.some(({ beach }) => beach.slug === selectedSlug)
     ? selectedSlug
     : null;
-  const provinceLabel = province === "all"
-    ? "Tutta la Sicilia"
-    : `Provincia di ${SICILIAN_PROVINCES.find(({ code }) => code === province)?.label ?? province}`;
+  const displayScope = scope ?? (
+    province !== "all"
+      ? { kind: "province", provinceCode: province } as const
+      : region !== "all"
+        ? { kind: "region", regionCode: region } as const
+        : null
+  );
+  const scopeLabel = formatCatalogScopeLabel(displayScope);
 
   return (
     <div className="flex flex-col gap-4">
@@ -94,22 +132,15 @@ export function SicilyMapView({
           <DayPicker options={dateOptions} value={date} onChange={onDateChange} />
           <div className="flex flex-wrap items-center gap-2">
             <PeriodPicker value={period} onChange={onPeriodChange} />
-            <label className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-[var(--control-surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.06)] focus-within:ring-2 focus-within:ring-[var(--sun)]">
-              <span className="sr-only">Provincia della mappa</span>
-              <select
-                aria-label="Provincia della mappa"
-                value={province}
-                onChange={(event) => onProvinceChange(event.target.value as ProvinceSelection)}
-                className="min-h-11 min-w-0 max-w-[11rem] appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
-              >
-                <option value="all">Tutta la Sicilia</option>
-                {SICILIAN_PROVINCES.map(({ code, label }) => (
-                  <option key={code} value={code}>
-                    {label}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <CatalogScopeControls
+              context="map"
+              region={region}
+              province={province}
+              nearbySelection={nearbySelection}
+              onRegionChange={onRegionChange}
+              onProvinceChange={onProvinceChange}
+              onNearbyChange={handleNearbyChange}
+            />
           </div>
         </div>
 
@@ -130,7 +161,6 @@ export function SicilyMapView({
               ))}
             </select>
           </label>
-          <NearbyControl value={nearbySelection} onChange={setNearbySelection} />
           <button
             type="button"
             onClick={() => setFilterSheetOpen(true)}
@@ -207,7 +237,7 @@ export function SicilyMapView({
                     key={radius}
                     type="button"
                     aria-pressed={isSelected}
-                    onClick={() => setNearbySelection({ ...nearbySelection, radiusKm: radius })}
+                    onClick={() => handleNearbyChange({ ...nearbySelection, radiusKm: radius })}
                     className={`inline-flex min-h-8 items-center rounded-full px-2.5 font-bold transition-colors ${
                       isSelected
                         ? "bg-[var(--ink)] text-white shadow-sm"
@@ -220,7 +250,7 @@ export function SicilyMapView({
               })}
               <button
                 type="button"
-                onClick={() => setNearbySelection(null)}
+                onClick={() => handleNearbyChange(null)}
                 className="inline-flex min-h-8 items-center rounded-full px-2 font-bold text-[var(--muted)] hover:text-red-600 active:scale-95"
                 title="Disattiva filtro vicino a me"
               >
@@ -238,6 +268,7 @@ export function SicilyMapView({
       >
         <LeafletBeachMap
           recommendations={visibleRecommendations}
+          scope={scope}
           selectedSlug={selectedVisibleSlug}
           onSelectBeach={setSelectedSlug}
           nearbySelection={nearbySelection}
@@ -256,7 +287,7 @@ export function SicilyMapView({
             {visibleMappableRecommendations.length}{" "}
             {visibleMappableRecommendations.length === 1 ? "spiaggia" : "spiagge"}
             {" · "}
-            {provinceLabel}
+            {scopeLabel}
           </p>
           <div className="flex flex-wrap gap-2 text-xs font-semibold text-[var(--muted)]">
             <span>80+ ottimo</span>

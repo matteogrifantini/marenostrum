@@ -11,7 +11,8 @@ import {
   parsePeriodParam,
 } from "../../domain/date-selection";
 import type { BeachRecommendation } from "../../domain/beach";
-import { normalizeProvinceCode } from "../../domain/province-filter";
+import { parseCatalogScope } from "../../domain/catalog-scope";
+import { normalizeProvinceCode, normalizeRegionCode, type RegionSelection } from "../../domain/province-filter";
 import {
   MAP_PAGE_DESCRIPTION,
   MAP_PAGE_TITLE,
@@ -37,13 +38,26 @@ export const metadata: Metadata = {
 type MappaSearchParams = {
   date?: string | string[];
   period?: string | string[];
+  region?: string | string[];
   province?: string | string[];
+  lat?: string | string[];
+  lng?: string | string[];
+  radius?: string | string[];
 };
 
 export const revalidate = 300;
 
 function firstParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
+}
+
+function parseScope(query: MappaSearchParams) {
+  const scopeParams = new URLSearchParams();
+  for (const key of ["region", "province", "lat", "lng", "radius"] as const) {
+    const value = firstParam(query[key]);
+    if (value !== undefined) scopeParams.set(key, value);
+  }
+  return parseCatalogScope(scopeParams);
 }
 
 export default async function MappaPage({
@@ -55,7 +69,13 @@ export default async function MappaPage({
   const dateOptions = getDateOptions(new Date());
   const initialDate = parseDateParam(firstParam(query.date) ?? null, dateOptions[0].iso);
   const initialPeriod = parsePeriodParam(firstParam(query.period) ?? null);
-  const initialProvince = normalizeProvinceCode(firstParam(query.province));
+  const initialScope = parseScope(query);
+  const initialRegion: RegionSelection = initialScope?.kind === "region"
+    ? normalizeRegionCode(initialScope.regionCode)
+    : "all";
+  const initialProvince = initialScope?.kind === "province"
+    ? normalizeProvinceCode(initialScope.provinceCode)
+    : "all";
   let recommendations: BeachRecommendation[];
   let dataUnavailable = false;
 
@@ -63,6 +83,7 @@ export default async function MappaPage({
     recommendations = await getBeachRecommendations({
       date: initialDate,
       period: initialPeriod,
+      scope: initialScope,
     });
   } catch (error) {
     if (!(error instanceof ForecastDataUnavailableError)) {
@@ -84,6 +105,8 @@ export default async function MappaPage({
       <MapExperience
         initialDate={initialDate}
         initialPeriod={initialPeriod}
+        initialScope={initialScope}
+        initialRegion={initialRegion}
         initialProvince={initialProvince}
         dateOptions={dateOptions}
         recommendations={recommendations}
