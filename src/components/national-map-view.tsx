@@ -25,6 +25,7 @@ import { CatalogScopeControls } from "./catalog-scope-controls";
 import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { LeafletBeachMap } from "./leaflet-beach-map";
+import { MapDayPeriodPicker } from "./map-day-period-picker";
 import { PeriodPicker } from "./period-picker";
 
 type NationalMapViewProps = {
@@ -168,11 +169,22 @@ export function NationalMapView({
         className="relative z-20 overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.94)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4"
       >
         <div className="flex flex-col gap-3">
-          <DayPicker options={dateOptions} value={date} onChange={onDateChange} />
-          <PeriodPicker value={period} onChange={onPeriodChange} />
+          <div data-testid="map-day-period-mobile" className="flex flex-col gap-3 lg:hidden">
+            <DayPicker options={dateOptions} value={date} onChange={onDateChange} />
+            <PeriodPicker value={period} onChange={onPeriodChange} />
+          </div>
+          <div data-testid="map-day-period-desktop" className="hidden lg:block">
+            <MapDayPeriodPicker
+              options={dateOptions}
+              date={date}
+              period={period}
+              onDateChange={onDateChange}
+              onPeriodChange={onPeriodChange}
+            />
+          </div>
           <div
             data-testid="map-filter-toolbar"
-            className="grid grid-cols-2 gap-2"
+            className="grid grid-cols-2 gap-2 lg:grid-cols-4"
           >
             <CatalogScopeControls
               context="map"
@@ -187,7 +199,7 @@ export function NationalMapView({
             <button
               type="button"
               onClick={() => setFilterSheetOpen(true)}
-              className="col-start-2 row-start-2 inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-3 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]"
+              className="col-start-2 row-start-2 inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-3 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] lg:col-auto lg:row-auto"
             >
               <SlidersHorizontal aria-hidden="true" size={16} />
               Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}

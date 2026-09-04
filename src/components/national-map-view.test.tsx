@@ -120,15 +120,21 @@ describe("NationalMapView", () => {
       />,
     );
 
-    expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute(
+    const desktopControls = within(screen.getByTestId("map-day-period-desktop"));
+    expect(desktopControls.getByRole("button", { name: "Domani" })).toHaveAttribute(
       "aria-pressed",
       "true",
     );
-    expect(screen.getByRole("button", { name: "Mattina" })).toHaveAttribute("aria-pressed", "true");
+    expect(desktopControls.getByRole("button", { name: "Mattina" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(desktopControls.getByRole("group", { name: "Periodo per Domani" })).toBeInTheDocument();
     expect(screen.getByTestId("map-filter-toolbar")).toHaveClass(
       "grid",
       "grid-cols-2",
       "gap-2",
+      "lg:grid-cols-4",
     );
   });
 
@@ -176,8 +182,9 @@ describe("NationalMapView", () => {
       />,
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "Domani" }));
-    fireEvent.click(screen.getByRole("button", { name: "Pomeriggio" }));
+    const desktopControls = within(screen.getByTestId("map-day-period-desktop"));
+    fireEvent.click(desktopControls.getByRole("button", { name: "Domani" }));
+    fireEvent.click(desktopControls.getByRole("button", { name: "Pomeriggio" }));
 
     expect(onDateChange).toHaveBeenCalledWith("2026-08-21");
     expect(onPeriodChange).toHaveBeenCalledWith("afternoon");
