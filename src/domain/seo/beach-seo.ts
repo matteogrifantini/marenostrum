@@ -21,8 +21,8 @@ function absoluteAssetUrl(value: string) {
 export function buildBeachSeoMetadata(beach: Beach): BeachSeoMetadata {
   const title = `Meteo del mare a ${beach.name} (${beach.municipality}) oggi | Mare Nostrum`;
   const description =
-    `Previsioni del mare oggi a ${beach.name}, ${beach.municipality}: ` +
-    "vento, onde, temperatura dell’acqua e condizioni della spiaggia.";
+    `Meteo del mare oggi a ${beach.name}, ${beach.municipality}: ` +
+    "previsioni di vento, onde, temperatura dell’acqua e condizioni della spiaggia per scegliere quando andare.";
   const canonical = canonicalFor(beach);
 
   return {

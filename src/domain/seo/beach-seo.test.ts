@@ -35,7 +35,7 @@ describe("beach SEO", () => {
     expect(buildBeachSeoMetadata(beach)).toMatchObject({
       title: "Meteo del mare a Mondello (Palermo) oggi | Mare Nostrum",
       canonical: "https://marenostrum.app/spiagge/mondello",
-      description: expect.stringMatching(/vento|onde|temperatura/i),
+      description: expect.stringMatching(/Meteo del mare oggi a Mondello, Palermo.*vento.*onde.*temperatura/i),
     });
   });
 

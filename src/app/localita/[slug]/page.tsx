@@ -36,6 +36,9 @@ export async function generateMetadata({
   const hub = getTerritoryHub((await params).slug);
   if (!hub) return { title: "Area non trovata" };
 
+  const pageDescription =
+    `${hub.description} Previsioni meteomarine aggiornate su Mare Nostrum. Scegli dove andare oggi.`;
+
   let indexable = false;
   try {
     const publishedBeachCount = (await getAllPublishedBeaches(undefined, { bypassCache: true })).filter(
@@ -51,11 +54,11 @@ export async function generateMetadata({
 
   return {
     title: `${hub.name}: vento, onde e condizioni`,
-    description: `${hub.description} Previsioni meteomarine aggiornate su Mare Nostrum.`,
+    description: pageDescription,
     alternates: { canonical: `${SITE_URL}/localita/${hub.slug}` },
     openGraph: {
       title: `${hub.name} — Mare Nostrum`,
-      description: hub.description,
+      description: pageDescription,
       url: `${SITE_URL}/localita/${hub.slug}`,
       type: "website",
       siteName: SITE_NAME,
@@ -72,7 +75,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${hub.name} — Mare Nostrum`,
-      description: hub.description,
+      description: pageDescription,
       images: [SITE_SOCIAL_IMAGE],
     },
     robots: indexable ? undefined : { index: false, follow: true },

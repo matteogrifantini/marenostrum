@@ -5,7 +5,8 @@ describe("map page metadata", () => {
   it("publishes national social metadata with a share image", () => {
     expect(metadata).toMatchObject({
       title: "Mappa delle spiagge d’Italia",
-      description: "Esplora le spiagge d’Italia e le condizioni del mare",
+      description:
+        "Esplora la mappa delle spiagge italiane: confronta vento, onde, temperatura dell’acqua, punti utili e condizioni del mare, regione per regione.",
       openGraph: expect.objectContaining({
         images: [
           expect.objectContaining({

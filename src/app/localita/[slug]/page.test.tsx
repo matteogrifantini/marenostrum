@@ -60,6 +60,7 @@ describe("TerritoryHubPage", () => {
       params: Promise.resolve({ slug: "palermo" }),
     });
 
+    expect(metadata.description).toContain("Scegli dove andare oggi.");
     expect(metadata.openGraph).toMatchObject({
       images: [
         expect.objectContaining({
