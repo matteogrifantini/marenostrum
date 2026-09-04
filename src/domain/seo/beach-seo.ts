@@ -75,6 +75,30 @@ export function buildBeachJsonLd(beach: Beach) {
   };
 }
 
+export function buildBeachBreadcrumbJsonLd(beach: Beach) {
+  const canonical = canonicalFor(beach);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${canonical}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Mare Nostrum",
+        item: MARE_NOSTRUM_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: beach.name,
+        item: canonical,
+      },
+    ],
+  };
+}
+
 export function serializeJsonLd(value: unknown) {
   return (JSON.stringify(value) ?? "").replace(/</g, "\\u003c");
 }

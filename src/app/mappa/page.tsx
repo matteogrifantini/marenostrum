@@ -16,6 +16,8 @@ import { normalizeProvinceCode, normalizeRegionCode, type RegionSelection } from
 import {
   MAP_PAGE_DESCRIPTION,
   MAP_PAGE_TITLE,
+  SITE_SOCIAL_IMAGE,
+  SITE_URL,
   SITE_NAME,
 } from "../../domain/seo/site-copy";
 
@@ -23,15 +25,29 @@ export const metadata: Metadata = {
   title: MAP_PAGE_TITLE,
   description: MAP_PAGE_DESCRIPTION,
   alternates: {
-    canonical: "https://marenostrum.app/mappa",
+    canonical: `${SITE_URL}/mappa`,
   },
   openGraph: {
     title: `${MAP_PAGE_TITLE} | ${SITE_NAME}`,
     description: MAP_PAGE_DESCRIPTION,
-    url: "https://marenostrum.app/mappa",
+    url: `${SITE_URL}/mappa`,
     type: "website",
     siteName: SITE_NAME,
     locale: "it_IT",
+    images: [
+      {
+        url: SITE_SOCIAL_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${MAP_PAGE_TITLE} | ${SITE_NAME}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${MAP_PAGE_TITLE} | ${SITE_NAME}`,
+    description: MAP_PAGE_DESCRIPTION,
+    images: [SITE_SOCIAL_IMAGE],
   },
 };
 

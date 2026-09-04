@@ -14,6 +14,11 @@ import {
   hasUniqueTerritoryHubDescription,
   shouldIndexTerritoryHub,
 } from "../../../domain/seo/sitemap-policy";
+import {
+  SITE_NAME,
+  SITE_SOCIAL_IMAGE,
+  SITE_URL,
+} from "../../../domain/seo/site-copy";
 import { filterRecommendationsForHub, getTerritoryHub, TERRITORY_HUBS } from "../../../domain/territory-hubs";
 import type { BeachRecommendation } from "../../../domain/beach";
 
@@ -47,14 +52,28 @@ export async function generateMetadata({
   return {
     title: `${hub.name}: vento, onde e condizioni`,
     description: `${hub.description} Previsioni meteomarine aggiornate su Mare Nostrum.`,
-    alternates: { canonical: `https://marenostrum.app/localita/${hub.slug}` },
+    alternates: { canonical: `${SITE_URL}/localita/${hub.slug}` },
     openGraph: {
       title: `${hub.name} — Mare Nostrum`,
       description: hub.description,
-      url: `https://marenostrum.app/localita/${hub.slug}`,
+      url: `${SITE_URL}/localita/${hub.slug}`,
       type: "website",
-      siteName: "Mare Nostrum",
+      siteName: SITE_NAME,
       locale: "it_IT",
+      images: [
+        {
+          url: SITE_SOCIAL_IMAGE,
+          width: 1200,
+          height: 630,
+          alt: `${hub.name} | ${SITE_NAME}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${hub.name} — Mare Nostrum`,
+      description: hub.description,
+      images: [SITE_SOCIAL_IMAGE],
     },
     robots: indexable ? undefined : { index: false, follow: true },
   };

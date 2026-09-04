@@ -1,8 +1,8 @@
 import { ImageResponse } from "next/og";
-import { MAP_PAGE_DESCRIPTION, SITE_DESCRIPTION, SITE_NAME } from "../domain/seo/site-copy";
+import { MAP_PAGE_DESCRIPTION, SITE_NAME, SITE_TITLE } from "../domain/seo/site-copy";
 
 export const runtime = "nodejs";
-export const alt = SITE_DESCRIPTION;
+export const alt = SITE_TITLE;
 export const size = {
   width: 1200,
   height: 630,
@@ -89,7 +89,7 @@ export default function Image() {
         >
           <span>✨ Modello Matematico Open-Meteo</span>
           <span>·</span>
-          <span>📍 21 Spiagge Monitorate</span>
+          <span>📍 Spiagge italiane</span>
           <span>·</span>
           <span>📱 Mobile-First</span>
         </div>

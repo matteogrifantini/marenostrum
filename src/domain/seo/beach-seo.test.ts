@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import type { Beach } from "../beach";
 import {
+  buildBeachBreadcrumbJsonLd,
   buildBeachJsonLd,
   buildBeachSeoMetadata,
   serializeJsonLd,
@@ -50,6 +51,28 @@ describe("beach SEO", () => {
     expect(JSON.stringify(buildBeachJsonLd({ ...beach, regionName: undefined }))).not.toMatch(
       /addressRegion.:.Sicilia/,
     );
+  });
+
+  it("builds a breadcrumb trail linked to the canonical beach page", () => {
+    expect(buildBeachBreadcrumbJsonLd(beach)).toEqual({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": "https://marenostrum.app/spiagge/mondello#breadcrumb",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Mare Nostrum",
+          item: "https://marenostrum.app",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Mondello",
+          item: "https://marenostrum.app/spiagge/mondello",
+        },
+      ],
+    });
   });
 
   it("escapes a closing script opener before embedding JSON-LD", () => {

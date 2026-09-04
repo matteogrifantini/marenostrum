@@ -11,6 +11,7 @@ import {
 import { getDateOptions } from "../../../domain/date-selection";
 import { normalizeDetailQuery, parseDetailOrigin } from "../../../domain/detail-query";
 import {
+  buildBeachBreadcrumbJsonLd,
   buildBeachJsonLd,
   buildBeachSeoMetadata,
   serializeJsonLd,
@@ -147,12 +148,17 @@ export default async function BeachPage({
   const detail = buildBeachDetailContent(bundle.beach, beachContent, communityReports);
 
   const structuredData = buildBeachJsonLd(bundle.beach);
+  const breadcrumbStructuredData = buildBeachBreadcrumbJsonLd(bundle.beach);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbStructuredData) }}
       />
       <BeachDetailExperience
         beach={bundle.beach}

@@ -50,6 +50,31 @@ describe("TerritoryHubPage", () => {
     expect(metadata.robots).toEqual({ index: false, follow: true });
   });
 
+  it("publishes a national social preview for an indexable territory hub", async () => {
+    getAllPublishedBeachesMock.mockResolvedValue([
+      { provinceCode: "PA" },
+      { provinceCode: "PA" },
+    ]);
+
+    const metadata = await generateMetadata({
+      params: Promise.resolve({ slug: "palermo" }),
+    });
+
+    expect(metadata.openGraph).toMatchObject({
+      images: [
+        expect.objectContaining({
+          url: "https://marenostrum.app/opengraph-image",
+          width: 1200,
+          height: 630,
+        }),
+      ],
+    });
+    expect(metadata.twitter).toMatchObject({
+      card: "summary_large_image",
+      images: ["https://marenostrum.app/opengraph-image"],
+    });
+  });
+
   it("keeps the territory page shell national while the hub remains location-specific", async () => {
     render(
       await TerritoryHubPage({

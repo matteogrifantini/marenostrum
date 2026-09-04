@@ -4,7 +4,12 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PwaRegister } from "../components/pwa-register";
 import { serializeJsonLd } from "../domain/seo/beach-seo";
-import { SITE_DESCRIPTION, SITE_NAME } from "../domain/seo/site-copy";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "../domain/seo/site-copy";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,14 +25,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://marenostrum.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: SITE_DESCRIPTION,
+    default: SITE_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   alternates: {
-    canonical: "https://marenostrum.app",
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
@@ -43,14 +48,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "it_IT",
-    url: "https://marenostrum.app",
+    url: SITE_URL,
     siteName: SITE_NAME,
-    title: SITE_DESCRIPTION,
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_DESCRIPTION,
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
   appleWebApp: {
@@ -69,28 +74,28 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marenostrum.app/#website",
-      "url": "https://marenostrum.app",
+      "@id": `${SITE_URL}/#website`,
+      "url": SITE_URL,
       "name": SITE_NAME,
       "description": SITE_DESCRIPTION,
       "inLanguage": "it-IT",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://marenostrum.app/?q={search_term_string}",
+        "target": `${SITE_URL}/?q={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
     },
     {
       "@type": "Organization",
-      "@id": "https://marenostrum.app/#organization",
+      "@id": `${SITE_URL}/#organization`,
       "name": SITE_NAME,
-      "url": "https://marenostrum.app",
-      "logo": "https://marenostrum.app/icon.png",
+      "url": SITE_URL,
+      "logo": `${SITE_URL}/icon.png`,
     },
     {
       "@type": "WebApplication",
       "name": SITE_NAME,
-      "url": "https://marenostrum.app",
+      "url": SITE_URL,
       "applicationCategory": "TravelApplication",
       "operatingSystem": "All",
       "offers": {
