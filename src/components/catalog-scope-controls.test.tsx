@@ -17,7 +17,8 @@ describe("CatalogScopeControls", () => {
 
     expect(screen.queryByRole("combobox", { name: "Regione" })).not.toBeInTheDocument();
     const provinceSelect = screen.getByRole("combobox", { name: "Provincia" });
-    expect(provinceSelect.parentElement).toHaveClass("col-span-2", "lg:col-auto");
+    expect(provinceSelect.parentElement).toHaveClass("col-start-1", "row-start-1", "lg:col-auto");
+    expect(screen.getByTestId("nearby-control")).toHaveClass("col-start-2", "row-start-1", "lg:col-auto");
 
     // Contains Sicily coastal provinces
     expect(screen.getByRole("option", { name: "Palermo" })).toBeInTheDocument();

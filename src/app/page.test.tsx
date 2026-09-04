@@ -388,10 +388,11 @@ describe("HomeExperience", () => {
     );
     expect(screen.queryByRole("combobox", { name: "Regione" })).not.toBeInTheDocument();
     expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass(
-      "col-span-2",
+      "col-start-1",
+      "row-start-1",
     );
-    expect(screen.getByTestId("nearby-control")).toHaveClass("col-start-1", "row-start-2");
-    expect(screen.getByRole("button", { name: "Filtri" })).toHaveClass("col-start-2", "row-start-2");
+    expect(screen.getByTestId("nearby-control")).toHaveClass("col-start-2", "row-start-1");
+    expect(screen.getByRole("button", { name: "Filtri" })).toHaveClass("col-span-2", "row-start-2");
   });
 
   it("compacts the home toolbar into two rows on desktop", () => {
