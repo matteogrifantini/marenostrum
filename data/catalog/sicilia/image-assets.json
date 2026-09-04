@@ -322,10 +322,10 @@
   {
     "slug": "capo-rossello",
     "image_path": "/images/beaches/capo-rossello.jpg",
-    "image_alt": "Scogliera e cala sabbiosa di Capo Rossello con mare calmo e limpido.",
-    "image_credit": "www.gironavigando.it",
-    "image_license": "CC BY 3.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Le_pergole_-_panoramio.jpg"
+    "image_alt": "Scogliera e cala sabbiosa di Capo Rossello con la storica Torre Monterosso e mare calmo e limpido.",
+    "image_credit": "LuckyLisp",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Torre_monterosso_realmonte-ag.jpg"
   },
   {
     "slug": "capomulini",
@@ -458,10 +458,10 @@
   {
     "slug": "faraglioni-dei-ciclopi",
     "image_path": "/images/beaches/faraglioni-dei-ciclopi.jpg",
-    "image_alt": "Scorcio panoramico e acque costiere di Faraglioni dei Ciclopi (Aci Castello).",
-    "image_credit": "Dispe",
-    "image_license": "CC BY-SA 4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_e_faraglioni_di_Aci_Trezza_(CT)_Italy.JPG"
+    "image_alt": "I celebri faraglioni dei Ciclopi e l isola Lachea che emergono dal mare limpido e calmo ad Aci Trezza.",
+    "image_credit": "Carlo Pelagalli",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Acitrezza,_Faraglioni_dei_Ciclopi_-_panoramio.jpg"
   },
   {
     "slug": "faro-santa-croce-augusta",
@@ -498,10 +498,10 @@
   {
     "slug": "foce-simeto",
     "image_path": "/images/beaches/foce-simeto.jpg",
-    "image_alt": "Scorcio panoramico e acque costiere di Oasi Foce del Simeto.",
-    "image_credit": "Derbrauni",
-    "image_license": "CC BY 4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Libera_3,_Catania_(01).jpg"
+    "image_alt": "Litorale sabbioso naturale e acque costiere protette dell Oasi Foce del Simeto.",
+    "image_credit": "SDC20",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Oasi_del_Simeto_sdc_1.jpg"
   },
   {
     "slug": "fondachello-mascali",
@@ -548,8 +548,8 @@
     "image_path": "/images/beaches/gioiosa-marea.jpg",
     "image_alt": "Promontorio roccioso e mare turchese limpido a Capo Calava e Gioiosa Marea.",
     "image_credit": "Gomera-b",
-    "image_license": "CC BY-SA 3.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Capo_Calav%C3%A0.jpg"
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Gioiosa_Marea.JPG"
   },
   {
     "slug": "guidaloca",
@@ -741,7 +741,7 @@
     "image_alt": "Spiaggia incontaminata e acque trasparenti nella riserva naturale di Vendicari presso Marianelli.",
     "image_credit": "Derbrauni",
     "image_license": "CC BY 4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Beach_of_Eloro_03.jpg"
+    "source_url": "https://commons.wikimedia.org/wiki/File:Beach_of_Eloro_02.jpg"
   },
   {
     "slug": "marina-di-avola",
@@ -1594,9 +1594,9 @@
   {
     "slug": "villaggio-aurora-catania",
     "image_path": "/images/beaches/villaggio-aurora-catania.jpg",
-    "image_alt": "Scorcio panoramico e acque costiere di San Francesco la Rena (Catania).",
+    "image_alt": "Ampia spiaggia sabbiosa dorata e mare calmo con il maestoso profilo dell Etna sullo sfondo lungo la costa sud di Catania.",
     "image_credit": "Gabriele Falco",
     "image_license": "CC BY 3.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Playa_(251757351).jpeg"
+    "source_url": "https://commons.wikimedia.org/wiki/File:Playa_Etna_(244613663).jpeg"
   }
 ]

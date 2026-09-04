@@ -756,7 +756,7 @@ Le copie locali del nuovo batch sono state scaricate da Wikimedia Commons tramit
 - **manfria** — `manfria.jpg`; autore: Codas; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Manfria_02.jpg>
 - **falconara-butera** — `falconara-butera.jpg`; autore: www.gironavigando.it; licenza: CC BY 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Falconara_-_panoramio.jpg>
 - **scala-dei-turchi** — `scala-dei-turchi.jpg`; autore: Lahiri Cappello; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Realmonte_(AG)_-_Scala_dei_turchi.jpg>
-- **capo-rossello** — `capo-rossello.jpg`; autore: www.gironavigando.it; licenza: CC BY 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Le_pergole_-_panoramio.jpg>
+- **capo-rossello** — `capo-rossello.jpg`; autore: LuckyLisp; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Torre_monterosso_realmonte-ag.jpg>
 - **giallonardo** — `giallonardo.jpg`; autore: Tiberio Frascari; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:112_113_Riserva_WWF_di_Torre_Salsa_(Sicilia).jpg>
 - **capomulini** — `capomulini.jpg`; autore: RitaL91; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Sea_at_Capo_Mulini.jpg>
 - **desusino** — `desusino.jpg`; autore: Satrebil100; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:FalconaraDesusino.jpg>
@@ -767,8 +767,8 @@ Le copie locali del nuovo batch sono state scaricate da Wikimedia Commons tramit
 - **punta-secca** — `punta-secca.jpg`; autore: Alexdechi; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Torre_Scalambri_di_Punta_Secca.jpg>
 - **fanusa** — `fanusa.jpg`; autore: Stella; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Costa_di_Siracusa_Fanusa_4.jpg>
 - **cava-d-aliga** — `cava-d-aliga.jpg`; autore: fab.; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Ragusa_cava_daliga_2.jpg>
-- **marianelli** — `marianelli.jpg`; autore: Derbrauni; licenza: CC BY 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Beach_of_Eloro_03.jpg>
-- **gioiosa-marea** — `gioiosa-marea.jpg`; autore: Gomera-b; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Capo_Calav%C3%A0.jpg>
+- **marianelli** — `marianelli.jpg`; autore: Derbrauni; licenza: CC BY 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Beach_of_Eloro_02.jpg>
+- **gioiosa-marea** — `gioiosa-marea.jpg`; autore: Gomera-b; licenza: Public domain; fonte: <https://commons.wikimedia.org/wiki/File:Gioiosa_Marea.JPG>
 - **ognina-catania** — `ognina-catania.jpg`; autore: Auregann; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Rocks_and_sea_on_the_lungomare_of_Catania.jpg>
 - **sampieri** — `sampieri.jpg`; autore: Marco M; licenza: CC BY-SA 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Sicilia_-_Dune_di_Sampieri.jpg>
 - **raganzino** — `raganzino.jpg`; autore: Brick84; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Pozzallo_spiaggia_Pietrenere_2.jpg>
@@ -869,17 +869,17 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Oasi Foce del Simeto
 
-- File: `foce-simeto.jpg` (fonte: `Spiaggia_Libera_3,_Catania_(01).jpg`)
-- Autore: Derbrauni
-- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_Libera_3,_Catania_(01).jpg>
-- Licenza: CC BY 4.0
+- File: `foce-simeto.jpg` (fonte: `Oasi del Simeto sdc 1.jpg`)
+- Autore: SDC20
+- Fonte: <https://commons.wikimedia.org/wiki/File:Oasi_del_Simeto_sdc_1.jpg>
+- Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ### Faraglioni dei Ciclopi
 
-- File: `faraglioni-dei-ciclopi.jpg` (fonte: `Costa e faraglioni di Aci Trezza (CT) Italy.JPG`)
-- Autore: Dispe
-- Fonte: <https://commons.wikimedia.org/wiki/File:Costa_e_faraglioni_di_Aci_Trezza_(CT)_Italy.JPG>
-- Licenza: CC BY-SA 4.0
+- File: `faraglioni-dei-ciclopi.jpg` (fonte: `Acitrezza, Faraglioni dei Ciclopi - panoramio.jpg`)
+- Autore: Carlo Pelagalli
+- Fonte: <https://commons.wikimedia.org/wiki/File:Acitrezza,_Faraglioni_dei_Ciclopi_-_panoramio.jpg>
+- Licenza: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
 
 ### Spiaggia di Primosole
 
@@ -890,10 +890,10 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### San Francesco la Rena
 
-- File: `villaggio-aurora-catania.jpg` (fonte: `Playa (251757351).jpeg`)
+- File: `villaggio-aurora-catania.jpg` (fonte: `Playa Etna (244613663).jpeg`)
 - Autore: Gabriele Falco
-- Fonte: <https://commons.wikimedia.org/wiki/File:Playa_(251757351).jpeg>
-- Licenza: CC BY 3.0
+- Fonte: <https://commons.wikimedia.org/wiki/File:Playa_Etna_(244613663).jpeg>
+- Licenza: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 
 ### Lido Azzurro
 
