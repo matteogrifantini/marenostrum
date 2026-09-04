@@ -33,9 +33,9 @@ const beach: Beach = {
 describe("beach SEO", () => {
   it("builds a stable beach-specific title, description, and canonical", () => {
     expect(buildBeachSeoMetadata(beach)).toMatchObject({
-      title: "Meteo del mare a Mondello (Palermo) oggi | Mare Nostrum",
+      title: "Meteo Mondello oggi (Palermo): Vento, Mare e Onde | Mare Nostrum",
       canonical: "https://marenostrum.app/spiagge/mondello",
-      description: expect.stringMatching(/Meteo del mare oggi a Mondello, Palermo.*vento.*onde.*temperatura/i),
+      description: expect.stringMatching(/Previsioni meteo e mare a Mondello \(Palermo\) per oggi.*vento.*onde/i),
     });
   });
 
@@ -53,7 +53,7 @@ describe("beach SEO", () => {
     );
   });
 
-  it("builds a breadcrumb trail linked to the canonical beach page", () => {
+  it("builds a hierarchical breadcrumb trail linked to the canonical beach page", () => {
     expect(buildBeachBreadcrumbJsonLd(beach)).toEqual({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -68,11 +68,31 @@ describe("beach SEO", () => {
         {
           "@type": "ListItem",
           position: 2,
+          name: "Sicilia",
+          item: "https://marenostrum.app/?region=sicilia",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
           name: "Mondello",
           item: "https://marenostrum.app/spiagge/mondello",
         },
       ],
     });
+
+    const favignanaBeach: Beach = {
+      ...beach,
+      slug: "cala-rossa-favignana",
+      name: "Cala Rossa",
+      municipality: "Favignana",
+    };
+    const favignanaBreadcrumb = buildBeachBreadcrumbJsonLd(favignanaBeach);
+    expect(favignanaBreadcrumb.itemListElement.map((item) => item.name)).toEqual([
+      "Mare Nostrum",
+      "Sicilia",
+      "Favignana",
+      "Cala Rossa",
+    ]);
   });
 
   it("escapes a closing script opener before embedding JSON-LD", () => {

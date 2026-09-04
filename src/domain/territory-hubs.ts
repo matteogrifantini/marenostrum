@@ -1,6 +1,7 @@
 export type TerritoryHub = {
   slug: string;
   provinceCode: string;
+  municipality?: string;
   name: string;
   eyebrow: string;
   description: string;
@@ -23,6 +24,15 @@ export const TERRITORY_HUBS: readonly TerritoryHub[] = [
     eyebrow: "Golfo, Egadi e Zingaro",
     description: "Scopri dove il mare è più tranquillo tra Trapani, Favignana, Scopello e San Vito Lo Capo.",
     queryLabel: "Trapani e provincia",
+  },
+  {
+    slug: "favignana",
+    provinceCode: "TP",
+    municipality: "Favignana",
+    name: "Spiagge a Favignana",
+    eyebrow: "Isole Egadi · Dove andare con il vento",
+    description: "Scopri dove il mare è più calmo a Favignana oggi: confronta vento, onde e riparo delle calette delle Egadi prima di partire.",
+    queryLabel: "Favignana e Isole Egadi",
   },
   {
     slug: "messina",
@@ -62,9 +72,17 @@ export function getTerritoryHub(slug: string) {
   return TERRITORY_HUBS.find((hub) => hub.slug === slug) ?? null;
 }
 
-export function filterRecommendationsForHub<T extends { beach: { provinceCode?: string } }>(
+export function filterRecommendationsForHub<T extends { beach: { provinceCode?: string; municipality?: string } }>(
   recommendations: readonly T[],
   hub: TerritoryHub,
 ) {
-  return recommendations.filter(({ beach }) => beach.provinceCode === hub.provinceCode);
+  return recommendations.filter(({ beach }) => {
+    if (hub.municipality) {
+      return (
+        beach.municipality?.toLowerCase() === hub.municipality.toLowerCase() &&
+        beach.provinceCode === hub.provinceCode
+      );
+    }
+    return beach.provinceCode === hub.provinceCode;
+  });
 }

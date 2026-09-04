@@ -10,7 +10,7 @@ describe("BeachCommunitySections", () => {
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
     expect(within(reviews).getAllByRole("heading", { name: "Recensioni" })).toHaveLength(1);
-    expect(within(reviews).getByText("Nessuna recensione disponibile.")).toBeInTheDocument();
+    expect(within(reviews).getByText("Recensioni su Google Maps")).toBeInTheDocument();
     expect(within(reviews).queryByText("Recensioni della community")).not.toBeInTheDocument();
     expect(within(reviews).queryByText(`${detail.reviews.total} recensioni`)).not.toBeInTheDocument();
     for (const review of detail.reviews.items) {
@@ -21,10 +21,11 @@ describe("BeachCommunitySections", () => {
     expect(within(reviews).queryByText("Accedi per recensire")).not.toBeInTheDocument();
   });
 
-  it("renders only a compact star link for a verified Google profile", () => {
+  it("renders verified stars and Google Maps review link for verified profile", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(
       <BeachCommunitySections
+        beachName="Cala del Gelsomino"
         detail={{
           ...detail,
           reviews: null,
@@ -38,18 +39,17 @@ describe("BeachCommunitySections", () => {
     );
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
-    expect(within(reviews).queryByText("Nessuna recensione disponibile.")).not.toBeInTheDocument();
-    expect(within(reviews).getByRole("link", { name: "Apri recensioni Google" })).toHaveAttribute(
-      "href",
-      "https://maps.google.com/?cid=1",
-    );
-    expect(within(reviews).getByLabelText("Recensioni Google")).toHaveTextContent("★★★★★");
+    expect(within(reviews).getByText("★★★★★")).toBeInTheDocument();
+    expect(
+      within(reviews).getByRole("link", { name: "Vedi recensioni di Cala del Gelsomino su Google Maps" }),
+    ).toHaveAttribute("href", "https://maps.google.com/?cid=1");
   });
 
-  it("does not expose an unverified Google search profile", () => {
+  it("renders an accessible link to Google Maps even for draft review profiles", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(
       <BeachCommunitySections
+        beachName="Cala del Gelsomino"
         detail={{
           ...detail,
           reviews: null,
@@ -63,9 +63,10 @@ describe("BeachCommunitySections", () => {
     );
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
-    expect(within(reviews).getByText("Nessuna recensione disponibile.")).toBeInTheDocument();
-    expect(within(reviews).queryByText("Google Maps")).not.toBeInTheDocument();
-    expect(within(reviews).queryByRole("link")).not.toBeInTheDocument();
+    expect(within(reviews).getByText("Recensioni su Google Maps")).toBeInTheDocument();
+    expect(
+      within(reviews).getByRole("link", { name: "Vedi recensioni di Cala del Gelsomino su Google Maps" }),
+    ).toHaveAttribute("href", "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino");
   });
 
   it("keeps recent beach photos in their separate content section", () => {

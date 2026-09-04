@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLink, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
@@ -45,19 +46,40 @@ export function BeachCommunitySections({ detail, beachName = "questa spiaggia" }
     <>
       <section aria-label="Recensioni">
         <SectionHeading title="Recensioni" />
-        <article className="detail-surface detail-enter flex min-h-16 items-center justify-between gap-4 p-4 sm:p-5">
-          {isVerifiedGoogleProfile && reviewProfile ? (
+        <article className="detail-surface detail-enter flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-[1.25rem]">
+          <div className="flex items-start gap-3.5">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[var(--surface-muted)] text-[var(--sea-deep)] shadow-sm">
+              <MapPin aria-hidden="true" size={20} />
+            </div>
+            <div className="space-y-0.5">
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-bold text-[var(--ink)]">
+                  Recensioni su Google Maps
+                </h3>
+                {isVerifiedGoogleProfile ? (
+                  <span className="inline-flex items-center gap-0.5 text-xs font-semibold text-[var(--sun-dark)]" aria-label="Valutazione verificata">
+                    <span role="img" aria-hidden="true">★★★★★</span>
+                  </span>
+                ) : null}
+              </div>
+              <p className="text-xs leading-relaxed text-[var(--muted)]">
+                Consulta valutazioni, foto e consigli recenti dei visitatori per {beachName}.
+              </p>
+            </div>
+          </div>
+          {reviewProfile?.mapsUrl ? (
             <a
               href={reviewProfile.mapsUrl}
               target="_blank"
-              rel="noreferrer"
-              aria-label="Apri recensioni Google"
-              className="inline-flex min-h-11 items-center rounded-full px-2 text-[var(--sun-dark)] transition-transform hover:scale-105 active:scale-95"
+              rel="noopener noreferrer"
+              aria-label={`Vedi recensioni di ${beachName} su Google Maps`}
+              className="detail-press inline-flex h-10 shrink-0 items-center justify-center gap-1.5 self-start sm:self-auto rounded-full bg-[var(--sea-deep)] px-4 text-xs font-bold text-white shadow-sm transition hover:bg-[var(--sea)] active:scale-95"
             >
-              <span role="img" aria-label="Recensioni Google" className="text-lg tracking-[0.12em]">★★★★★</span>
+              <span>Vedi su Google Maps</span>
+              <ExternalLink aria-hidden="true" size={14} />
             </a>
           ) : (
-            <p className="text-sm leading-6 text-[var(--muted)]">Nessuna recensione disponibile.</p>
+            <p className="text-xs text-[var(--muted)]">Nessun profilo disponibile.</p>
           )}
         </article>
       </section>

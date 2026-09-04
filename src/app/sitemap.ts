@@ -89,7 +89,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
 
     const territoryRoutes = TERRITORY_HUBS.flatMap((hub) => {
-      const beaches = beachesByProvince.get(hub.provinceCode) ?? [];
+      const beaches = hub.municipality
+        ? published.filter((b) => b.municipality?.toLowerCase() === hub.municipality?.toLowerCase())
+        : beachesByProvince.get(hub.provinceCode) ?? [];
       if (!shouldIndexTerritoryHub({
         publishedBeachCount: beaches.length,
         hasUniqueDescription: hasUniqueTerritoryHubDescription(hub.description),

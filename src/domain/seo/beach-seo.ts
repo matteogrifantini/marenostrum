@@ -19,10 +19,12 @@ function absoluteAssetUrl(value: string) {
 }
 
 export function buildBeachSeoMetadata(beach: Beach): BeachSeoMetadata {
-  const title = `Meteo del mare a ${beach.name} (${beach.municipality}) oggi | Mare Nostrum`;
+  const municipalityPart =
+    beach.municipality && beach.municipality !== beach.name ? ` (${beach.municipality})` : "";
+  const title = `Meteo ${beach.name} oggi${municipalityPart}: Vento, Mare e Onde | Mare Nostrum`;
   const description =
-    `Meteo del mare oggi a ${beach.name}, ${beach.municipality}: ` +
-    "previsioni di vento, onde, temperatura dell’acqua e condizioni della spiaggia per scegliere quando andare.";
+    `Previsioni meteo e mare a ${beach.name}${municipalityPart} per oggi: ` +
+    "intensità del vento, altezza onde, temperatura dell’acqua e condizioni della spiaggia per scegliere quando andare.";
   const canonical = canonicalFor(beach);
 
   return {
@@ -77,25 +79,45 @@ export function buildBeachJsonLd(beach: Beach) {
 
 export function buildBeachBreadcrumbJsonLd(beach: Beach) {
   const canonical = canonicalFor(beach);
+  const itemListElement = [
+    {
+      "@type": "ListItem" as const,
+      position: 1,
+      name: "Mare Nostrum",
+      item: MARE_NOSTRUM_URL,
+    },
+  ];
+
+  if (beach.regionName) {
+    itemListElement.push({
+      "@type": "ListItem" as const,
+      position: itemListElement.length + 1,
+      name: beach.regionName,
+      item: `${MARE_NOSTRUM_URL}/?region=${encodeURIComponent(beach.regionSlug ?? "sicilia")}`,
+    });
+  }
+
+  if (beach.municipality && beach.municipality.toLowerCase() === "favignana") {
+    itemListElement.push({
+      "@type": "ListItem" as const,
+      position: itemListElement.length + 1,
+      name: "Favignana",
+      item: `${MARE_NOSTRUM_URL}/localita/favignana`,
+    });
+  }
+
+  itemListElement.push({
+    "@type": "ListItem" as const,
+    position: itemListElement.length + 1,
+    name: beach.name,
+    item: canonical,
+  });
 
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "@id": `${canonical}#breadcrumb`,
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Mare Nostrum",
-        item: MARE_NOSTRUM_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: beach.name,
-        item: canonical,
-      },
-    ],
+    itemListElement,
   };
 }
 

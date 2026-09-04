@@ -42,7 +42,9 @@ export async function generateMetadata({
   let indexable = false;
   try {
     const publishedBeachCount = (await getAllPublishedBeaches(undefined, { bypassCache: true })).filter(
-      (beach) => beach.provinceCode === hub.provinceCode,
+      (beach) => hub.municipality
+        ? beach.municipality?.toLowerCase() === hub.municipality.toLowerCase()
+        : beach.provinceCode === hub.provinceCode,
     ).length;
     indexable = shouldIndexTerritoryHub({
       publishedBeachCount,
