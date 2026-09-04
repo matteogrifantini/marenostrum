@@ -78,7 +78,7 @@ export function CatalogScopeControls({
       <NearbyControl
         value={nearbySelection}
         onChange={onNearbyChange}
-        className={isTwoColumnLayout ? "col-start-2 row-start-1 w-full lg:col-auto lg:row-auto" : "order-3 w-full lg:order-none lg:w-auto"}
+        className={isTwoColumnLayout ? "col-start-2 row-start-1 w-full min-w-0 lg:col-auto lg:row-auto" : "order-3 w-full lg:order-none lg:w-auto"}
       />
     </div>
   );
