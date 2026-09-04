@@ -638,5 +638,253 @@
     "image_credit": "Salvo Di Fazio",
     "image_license": "Public domain",
     "source_url": "https://commons.wikimedia.org/wiki/File:Palermo,_visto_dal_golfo,_22_aprile_2012.jpg"
+  },
+  {
+    "slug": "baia-del-tono-milazzo",
+    "image_path": "/images/beaches/baia-del-tono-milazzo.jpg",
+    "image_alt": "Mare e costa di Baia del Tono, Milazzo.",
+    "image_credit": "Superchilum",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Vista_di_Tono_(Milazzo)_01.jpg"
+  },
+  {
+    "slug": "croce-di-mare-milazzo",
+    "image_path": "/images/beaches/croce-di-mare-milazzo.jpg",
+    "image_alt": "Mare e costa di Croce di Mare, Milazzo.",
+    "image_credit": "Effems",
+    "image_license": "CC0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Croce_di_Mare_(Milazzo)_05_05_2024_01.jpg"
+  },
+  {
+    "slug": "san-gregorio-capo-d-orlando",
+    "image_path": "/images/beaches/san-gregorio-capo-d-orlando.jpg",
+    "image_alt": "Mare e costa di San Gregorio, Capo d'Orlando.",
+    "image_credit": "Salvatore Messina",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Capo_d%27Orlando_-_Vista_di_San_Gregorio_dal_Monte_della_Madonna.JPG"
+  },
+  {
+    "slug": "capo-calava-gioiosa-marea",
+    "image_path": "/images/beaches/capo-calava-gioiosa-marea.jpg",
+    "image_alt": "Mare e costa di Capo Calavà, Gioiosa Marea.",
+    "image_credit": "Gomera-b",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Capo_Calav%C3%A0.jpg"
+  },
+  {
+    "slug": "laghetti-di-marinello",
+    "image_path": "/images/beaches/laghetti-di-marinello.jpg",
+    "image_alt": "Mare e costa di Laghetti di Marinello, Patti.",
+    "image_credit": "SpaOl",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Il_%22lembo_di_mare%22.jpg"
+  },
+  {
+    "slug": "mongiove-patti",
+    "image_path": "/images/beaches/mongiove-patti.jpg",
+    "image_alt": "Mare e costa di Mongiove, Patti.",
+    "image_credit": "Quibelloè",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Grotte_di_Mongiove,_Riserva_di_Marinello.jpg"
+  },
+  {
+    "slug": "spisone-taormina",
+    "image_path": "/images/beaches/spisone-taormina.jpg",
+    "image_alt": "Mare e costa di Spisone, Taormina.",
+    "image_credit": "Davidemara",
+    "image_license": "CC0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spisone_Taormina.jpg"
+  },
+  {
+    "slug": "isola-bella-taormina",
+    "image_path": "/images/beaches/isola-bella-taormina.jpg",
+    "image_alt": "Mare e costa di Isola Bella, Taormina.",
+    "image_credit": "Jeanne Griffin",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Isola_Bella,_Taormina,_Sicily_9-10-2024.jpg"
+  },
+  {
+    "slug": "mazzaro-taormina",
+    "image_path": "/images/beaches/mazzaro-taormina.jpg",
+    "image_alt": "Mare e costa di Mazzarò, Taormina.",
+    "image_credit": "Abxbay",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Mazzaro_seen_from_Taormina.JPG"
+  },
+  {
+    "slug": "letojanni",
+    "image_path": "/images/beaches/letojanni.jpg",
+    "image_alt": "Mare e costa di Letojanni, Letojanni.",
+    "image_credit": "gnuckx",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Letojanni-Messina-Sicilia-Italy_-_Creative_Commons_by_gnuckx_(4054212252).jpg"
+  },
+  {
+    "slug": "giardini-naxos",
+    "image_path": "/images/beaches/giardini-naxos.jpg",
+    "image_alt": "Mare e costa di Giardini Naxos, Giardini Naxos.",
+    "image_credit": "Jeanne Griffin",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Giardini_Naxos_bay_6-9-2024.jpg"
+  },
+  {
+    "slug": "sant-alessio-siculo",
+    "image_path": "/images/beaches/sant-alessio-siculo.jpg",
+    "image_alt": "Mare e costa di Sant'Alessio Siculo, Sant'Alessio Siculo.",
+    "image_credit": "Jeanne Griffin",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sant_Alessio_beach_17-6-2024.jpg"
+  },
+  {
+    "slug": "la-plaia-catania",
+    "image_path": "/images/beaches/la-plaia-catania.jpg",
+    "image_alt": "Mare e costa di La Plaia, Catania.",
+    "image_credit": "Derbrauni",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Libera_3,_Catania_(01).jpg"
+  },
+  {
+    "slug": "san-giovanni-li-cuti",
+    "image_path": "/images/beaches/san-giovanni-li-cuti.jpg",
+    "image_alt": "Mare e costa di San Giovanni Li Cuti, Catania.",
+    "image_credit": "Auregann",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Volcanic_rock_beach_in_San_Giovanni_li_Cuti,_Catania_2.jpg"
+  },
+  {
+    "slug": "aci-castello",
+    "image_path": "/images/beaches/aci-castello.jpg",
+    "image_alt": "Mare e costa di Aci Castello, Aci Castello.",
+    "image_credit": "gnuckx",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Swimming_in_the_Sea_Scogliera_Aci_Castello-Sicilia-Italy_-_Creative_Commons_by_gnuckx_(3742084926).jpg"
+  },
+  {
+    "slug": "santa-tecla-acireale",
+    "image_path": "/images/beaches/santa-tecla-acireale.jpg",
+    "image_alt": "Mare e costa di Santa Tecla, Acireale.",
+    "image_credit": "Berthold Werner",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Santa_Tecla_BW_2012-10-05_08-06-21.JPG"
+  },
+  {
+    "slug": "calamosche",
+    "image_path": "/images/beaches/calamosche.jpg",
+    "image_alt": "Mare e costa di Calamosche, Noto.",
+    "image_credit": "UminDaGuma",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Calamosche.jpg"
+  },
+  {
+    "slug": "eloro",
+    "image_path": "/images/beaches/eloro.jpg",
+    "image_alt": "Mare e costa di Eloro, Noto.",
+    "image_credit": "Derbrauni",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Beach_of_Eloro_03.jpg"
+  },
+  {
+    "slug": "vendicari",
+    "image_path": "/images/beaches/vendicari.jpg",
+    "image_alt": "Mare e costa di Vendicari, Noto.",
+    "image_credit": "Ugeorge",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Vendicari.jpg"
+  },
+  {
+    "slug": "san-lorenzo-vendicari",
+    "image_path": "/images/beaches/san-lorenzo-vendicari.jpg",
+    "image_alt": "Mare e costa di San Lorenzo, Noto.",
+    "image_credit": "Einaz80",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Rocky_beach_in_San_Lorenzo.jpg"
+  },
+  {
+    "slug": "fontane-bianche",
+    "image_path": "/images/beaches/fontane-bianche.jpg",
+    "image_alt": "Mare e costa di Fontane Bianche, Siracusa.",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Fontane_Bianche.JPG"
+  },
+  {
+    "slug": "arenella-siracusa",
+    "image_path": "/images/beaches/arenella-siracusa.jpg",
+    "image_alt": "Mare e costa di Arenella, Siracusa.",
+    "image_credit": "Derbrauni",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_dell%27Arenella_(Siracusa)_01.jpg"
+  },
+  {
+    "slug": "minareto-siracusa",
+    "image_path": "/images/beaches/minareto-siracusa.jpg",
+    "image_alt": "Mare e costa di Minareto, Siracusa.",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_del_Minareto.jpg"
+  },
+  {
+    "slug": "marina-di-ragusa",
+    "image_path": "/images/beaches/marina-di-ragusa.jpg",
+    "image_alt": "Mare e costa di Marina di Ragusa, Ragusa.",
+    "image_credit": "Giorgioleggio",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Baia_Marina_di_Ragusa-Autore_Giorgio_Leggio.jpg"
+  },
+  {
+    "slug": "maganuco",
+    "image_path": "/images/beaches/maganuco.jpg",
+    "image_alt": "Mare e costa di Maganuco, Modica.",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Maganuco.jpg"
+  },
+  {
+    "slug": "siculiana-marina",
+    "image_path": "/images/beaches/siculiana-marina.jpg",
+    "image_alt": "Mare e costa di Siculiana Marina, Siculiana.",
+    "image_credit": "sicilia-nostra.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Siculiana_Marina_-_panoramio.jpg"
+  },
+  {
+    "slug": "eraclea-minoa",
+    "image_path": "/images/beaches/eraclea-minoa.jpg",
+    "image_alt": "Mare e costa di Eraclea Minoa, Cattolica Eraclea.",
+    "image_credit": "José Luiz",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Beach_in_Eraclea_Minoa_-_Italy_2015_(2).JPG"
+  },
+  {
+    "slug": "marina-di-palma",
+    "image_path": "/images/beaches/marina-di-palma.jpg",
+    "image_alt": "Mare e costa di Marina di Palma, Palma di Montechiaro.",
+    "image_credit": "sicilia-nostra.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Marina_di_Palma_-_panoramio.jpg"
+  },
+  {
+    "slug": "cala-paradiso-licata",
+    "image_path": "/images/beaches/cala-paradiso-licata.jpg",
+    "image_alt": "Mare e costa di Cala Paradiso, Licata.",
+    "image_credit": "Salvatorebonvis",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cala_paradiso.jpg"
+  },
+  {
+    "slug": "manfria",
+    "image_path": "/images/beaches/manfria.jpg",
+    "image_alt": "Mare e costa di Manfria, Gela.",
+    "image_credit": "Codas",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Manfria_02.jpg"
+  },
+  {
+    "slug": "falconara-butera",
+    "image_path": "/images/beaches/falconara-butera.jpg",
+    "image_alt": "Mare e costa di Falconara, Butera.",
+    "image_credit": "www.gironavigando.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Falconara_-_panoramio.jpg"
   }
 ]

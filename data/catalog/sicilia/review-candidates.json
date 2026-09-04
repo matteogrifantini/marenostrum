@@ -558,5 +558,383 @@
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20del%20Corsaro%2C%20Palermo%2C%20Sicilia%20%4038.1062%2C13.3985",
     "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "baia-del-tono-milazzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Baia%20del%20Tono%2C%20Milazzo%2C%20Sicilia%20%4038.2632%2C15.2571",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "croce-di-mare-milazzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Croce%20di%20Mare%2C%20Milazzo%2C%20Sicilia%20%4038.2144%2C15.2395",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "san-gregorio-capo-d-orlando",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Gregorio%2C%20Capo%20d'Orlando%2C%20Sicilia%20%4038.1643%2C14.7461",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "gioiosa-marea",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Gioiosa%20Marea%2C%20Gioiosa%20Marea%2C%20Sicilia%20%4038.1692%2C14.8944",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "capo-calava-gioiosa-marea",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20Calav%C3%A0%2C%20Gioiosa%20Marea%2C%20Sicilia%20%4038.1624%2C14.9087",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "laghetti-di-marinello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Laghetti%20di%20Marinello%2C%20Patti%2C%20Sicilia%20%4038.1372%2C15.0477",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "mongiove-patti",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Mongiove%2C%20Patti%2C%20Sicilia%20%4038.1379%2C15.0577",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "spisone-taormina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spisone%2C%20Taormina%2C%20Sicilia%20%4037.8743%2C15.2927",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "isola-bella-taormina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20Bella%2C%20Taormina%2C%20Sicilia%20%4037.8525%2C15.3006",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "mazzaro-taormina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Mazzar%C3%B2%2C%20Taormina%2C%20Sicilia%20%4037.8597%2C15.299",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "letojanni",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Letojanni%2C%20Letojanni%2C%20Sicilia%20%4037.8849%2C15.3095",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "giardini-naxos",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Giardini%20Naxos%2C%20Giardini%20Naxos%2C%20Sicilia%20%4037.8283%2C15.2682",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "sant-alessio-siculo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Sant'Alessio%20Siculo%2C%20Sant'Alessio%20Siculo%2C%20Sicilia%20%4037.9261%2C15.3479",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "roccalumera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Roccalumera%2C%20Roccalumera%2C%20Sicilia%20%4037.934%2C15.421",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "la-plaia-catania",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=La%20Plaia%2C%20Catania%2C%20Sicilia%20%4037.4475%2C15.0876",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "san-giovanni-li-cuti",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Giovanni%20Li%20Cuti%2C%20Catania%2C%20Sicilia%20%4037.519%2C15.109",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "ognina-catania",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Ognina%2C%20Catania%2C%20Sicilia%20%4037.5316%2C15.1123",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "aci-trezza",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Aci%20Trezza%2C%20Aci%20Castello%2C%20Sicilia%20%4037.5663%2C15.1644",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "aci-castello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Aci%20Castello%2C%20Aci%20Castello%2C%20Sicilia%20%4037.5458%2C15.1445",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "capomulini",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20Mulini%2C%20Acireale%2C%20Sicilia%20%4037.5756%2C15.171",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "santa-maria-la-scala",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Santa%20Maria%20La%20Scala%2C%20Acireale%2C%20Sicilia%20%4037.6194%2C15.1749",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "santa-tecla-acireale",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Santa%20Tecla%2C%20Acireale%2C%20Sicilia%20%4037.6371%2C15.177",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "fondachello-mascali",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Fondachello%2C%20Mascali%2C%20Sicilia%20%4037.7636%2C15.2196",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "calamosche",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Calamosche%2C%20Noto%2C%20Sicilia%20%4036.8243%2C15.1056",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "eloro",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Eloro%2C%20Noto%2C%20Sicilia%20%4036.8389%2C15.1065",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "marianelli",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marianelli%2C%20Noto%2C%20Sicilia%20%4036.8341%2C15.1056",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "vendicari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Vendicari%2C%20Noto%2C%20Sicilia%20%4036.801%2C15.0965",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "san-lorenzo-vendicari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Lorenzo%2C%20Noto%2C%20Sicilia%20%4036.755%2C15.106",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "fontane-bianche",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Fontane%20Bianche%2C%20Siracusa%2C%20Sicilia%20%4036.9618%2C15.2077",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "arenella-siracusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Arenella%2C%20Siracusa%2C%20Sicilia%20%4036.9956%2C15.264",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "fanusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Fanusa%2C%20Siracusa%2C%20Sicilia%20%4037.0074%2C15.2761",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "minareto-siracusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Minareto%2C%20Siracusa%2C%20Sicilia%20%4037.0407%2C15.302",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "isola-delle-correnti",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20delle%20Correnti%2C%20Portopalo%20di%20Capo%20Passero%2C%20Sicilia%20%4036.6496%2C15.0816",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "marina-di-ragusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Ragusa%2C%20Ragusa%2C%20Sicilia%20%4036.782%2C14.556",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "donnalucata",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Donnalucata%2C%20Scicli%2C%20Sicilia%20%4036.762%2C14.635",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "sampieri",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Sampieri%2C%20Scicli%2C%20Sicilia%20%4036.7182%2C14.735",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cava-d-aliga",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cava%20d'Aliga%2C%20Scicli%2C%20Sicilia%20%4036.7279%2C14.6851",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "punta-secca",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Punta%20Secca%2C%20Santa%20Croce%20Camerina%2C%20Sicilia%20%4036.7898%2C14.491",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "caucana",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Caucana%2C%20Santa%20Croce%20Camerina%2C%20Sicilia%20%4036.7874%2C14.5065",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "maganuco",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Maganuco%2C%20Modica%2C%20Sicilia%20%4036.7168%2C14.8164",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "raganzino",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Raganzino%2C%20Pozzallo%2C%20Sicilia%20%4036.7212%2C14.8351",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "san-leone",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Leone%2C%20Agrigento%2C%20Sicilia%20%4037.2599%2C13.5885",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "scala-dei-turchi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Scala%20dei%20Turchi%2C%20Realmonte%2C%20Sicilia%20%4037.288%2C13.4777",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "capo-rossello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20Rossello%2C%20Realmonte%2C%20Sicilia%20%4037.2944%2C13.4562",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "giallonardo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Giallonardo%2C%20Siculiana%2C%20Sicilia%20%4037.319%2C13.4162",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "siculiana-marina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Siculiana%20Marina%2C%20Siculiana%2C%20Sicilia%20%4037.3417%2C13.3812",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "eraclea-minoa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Eraclea%20Minoa%2C%20Cattolica%20Eraclea%2C%20Sicilia%20%4037.3905%2C13.278",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "marina-di-palma",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Palma%2C%20Palma%20di%20Montechiaro%2C%20Sicilia%20%4037.1716%2C13.7187",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "mollarella",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Mollarella%2C%20Licata%2C%20Sicilia%20%4037.106%2C13.885",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "cala-paradiso-licata",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Paradiso%2C%20Licata%2C%20Sicilia%20%4037.1107%2C13.8641",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "manfria",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Manfria%2C%20Gela%2C%20Sicilia%20%4037.098%2C14.1407",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "macchitella",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Macchitella%2C%20Gela%2C%20Sicilia%20%4037.0758%2C14.2101",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "falconara-butera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Falconara%2C%20Butera%2C%20Sicilia%20%4037.1079%2C14.0412",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
+  },
+  {
+    "slug": "desusino",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Desusino%2C%20Butera%2C%20Sicilia%20%4037.1094%2C14.0798",
+    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta della spiaggia devono essere verificati manualmente prima della pubblicazione."
   }
 ]

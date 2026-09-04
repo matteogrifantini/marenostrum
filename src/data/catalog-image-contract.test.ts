@@ -8,8 +8,8 @@ describe("Sicilian image assets", () => {
     const result = validateSicilianImageCatalog(assets, new Set(catalog.map((beach) => beach.slug)));
 
     expect(result.issues).toEqual([]);
-    expect(result.records).toHaveLength(80);
-    expect(new Set(result.records.map((record) => record.slug)).size).toBe(80);
+    expect(result.records).toHaveLength(assets.length);
+    expect(new Set(result.records.map((record) => record.slug)).size).toBe(assets.length);
   });
 
   it("rejects duplicate paths and incomplete attribution", () => {

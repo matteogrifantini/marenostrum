@@ -719,3 +719,39 @@ visiva per privilegiare acqua leggibile e una resa più luminosa nelle card.
 - Licenza: [Public domain](https://commons.wikimedia.org/wiki/File:Palermo,_visto_dal_golfo,_22_aprile_2012.jpg)
 - Scaricata: 2026-08-25
 - Modifiche: nessuna modifica ai pixel originali; l’app applica crop e resize in visualizzazione.
+
+## Nuova ricognizione costiera del 4 settembre 2026
+
+Le copie locali del nuovo batch sono state scaricate da Wikimedia Commons tramite il manifest sopra. La revisione visiva ha verificato soggetto costiero e resa dell'acqua; non rappresenta una misura attuale della qualità dell'acqua.
+
+- **baia-del-tono-milazzo** — `baia-del-tono-milazzo.jpg`; autore: Superchilum; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Vista_di_Tono_(Milazzo)_01.jpg>
+- **croce-di-mare-milazzo** — `croce-di-mare-milazzo.jpg`; autore: Effems; licenza: CC0; fonte: <https://commons.wikimedia.org/wiki/File:Croce_di_Mare_(Milazzo)_05_05_2024_01.jpg>
+- **san-gregorio-capo-d-orlando** — `san-gregorio-capo-d-orlando.jpg`; autore: Salvatore Messina; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Capo_d%27Orlando_-_Vista_di_San_Gregorio_dal_Monte_della_Madonna.JPG>
+- **capo-calava-gioiosa-marea** — `capo-calava-gioiosa-marea.jpg`; autore: Gomera-b; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Capo_Calav%C3%A0.jpg>
+- **laghetti-di-marinello** — `laghetti-di-marinello.jpg`; autore: SpaOl; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Il_%22lembo_di_mare%22.jpg>
+- **mongiove-patti** — `mongiove-patti.jpg`; autore: Quibelloè; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Grotte_di_Mongiove,_Riserva_di_Marinello.jpg>
+- **spisone-taormina** — `spisone-taormina.jpg`; autore: Davidemara; licenza: CC0; fonte: <https://commons.wikimedia.org/wiki/File:Spisone_Taormina.jpg>
+- **isola-bella-taormina** — `isola-bella-taormina.jpg`; autore: Jeanne Griffin; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Isola_Bella,_Taormina,_Sicily_9-10-2024.jpg>
+- **mazzaro-taormina** — `mazzaro-taormina.jpg`; autore: Abxbay; licenza: Public domain; fonte: <https://commons.wikimedia.org/wiki/File:Mazzaro_seen_from_Taormina.JPG>
+- **letojanni** — `letojanni.jpg`; autore: gnuckx; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Letojanni-Messina-Sicilia-Italy_-_Creative_Commons_by_gnuckx_(4054212252).jpg>
+- **giardini-naxos** — `giardini-naxos.jpg`; autore: Jeanne Griffin; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Giardini_Naxos_bay_6-9-2024.jpg>
+- **sant-alessio-siculo** — `sant-alessio-siculo.jpg`; autore: Jeanne Griffin; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Sant_Alessio_beach_17-6-2024.jpg>
+- **la-plaia-catania** — `la-plaia-catania.jpg`; autore: Derbrauni; licenza: CC BY 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_Libera_3,_Catania_(01).jpg>
+- **san-giovanni-li-cuti** — `san-giovanni-li-cuti.jpg`; autore: Auregann; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Volcanic_rock_beach_in_San_Giovanni_li_Cuti,_Catania_2.jpg>
+- **aci-castello** — `aci-castello.jpg`; autore: gnuckx; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Swimming_in_the_Sea_Scogliera_Aci_Castello-Sicilia-Italy_-_Creative_Commons_by_gnuckx_(3742084926).jpg>
+- **santa-tecla-acireale** — `santa-tecla-acireale.jpg`; autore: Berthold Werner; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Santa_Tecla_BW_2012-10-05_08-06-21.JPG>
+- **calamosche** — `calamosche.jpg`; autore: UminDaGuma; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Calamosche.jpg>
+- **eloro** — `eloro.jpg`; autore: Derbrauni; licenza: CC BY 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Beach_of_Eloro_03.jpg>
+- **vendicari** — `vendicari.jpg`; autore: Ugeorge; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_Vendicari.jpg>
+- **san-lorenzo-vendicari** — `san-lorenzo-vendicari.jpg`; autore: Einaz80; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Rocky_beach_in_San_Lorenzo.jpg>
+- **fontane-bianche** — `fontane-bianche.jpg`; autore: Davide Mauro; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_Fontane_Bianche.JPG>
+- **arenella-siracusa** — `arenella-siracusa.jpg`; autore: Derbrauni; licenza: CC BY 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_dell%27Arenella_(Siracusa)_01.jpg>
+- **minareto-siracusa** — `minareto-siracusa.jpg`; autore: Davide Mauro; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_del_Minareto.jpg>
+- **marina-di-ragusa** — `marina-di-ragusa.jpg`; autore: Giorgioleggio; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Baia_Marina_di_Ragusa-Autore_Giorgio_Leggio.jpg>
+- **maganuco** — `maganuco.jpg`; autore: Davide Mauro; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_Maganuco.jpg>
+- **siculiana-marina** — `siculiana-marina.jpg`; autore: sicilia-nostra.it; licenza: CC BY 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Siculiana_Marina_-_panoramio.jpg>
+- **eraclea-minoa** — `eraclea-minoa.jpg`; autore: José Luiz; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Beach_in_Eraclea_Minoa_-_Italy_2015_(2).JPG>
+- **marina-di-palma** — `marina-di-palma.jpg`; autore: sicilia-nostra.it; licenza: CC BY 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Marina_di_Palma_-_panoramio.jpg>
+- **cala-paradiso-licata** — `cala-paradiso-licata.jpg`; autore: Salvatorebonvis; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Cala_paradiso.jpg>
+- **manfria** — `manfria.jpg`; autore: Codas; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Manfria_02.jpg>
+- **falconara-butera** — `falconara-butera.jpg`; autore: www.gironavigando.it; licenza: CC BY 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Falconara_-_panoramio.jpg>

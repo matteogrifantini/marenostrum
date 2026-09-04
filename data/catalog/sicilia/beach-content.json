@@ -3383,5 +3383,2841 @@
         "role": "primary"
       }
     ]
+  },
+  {
+    "slug": "baia-del-tono-milazzo",
+    "description": "La Baia del Tono apre un tratto ampio della costa di Milazzo tra sabbia, piccoli ciottoli e il promontorio del Capo. È una scheda utile per leggere il mare della baia e organizzare l'accesso, lasciando a una verifica locale i servizi stagionali.",
+    "orientation_degrees": 60,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "panorama",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il tratto rappresentato è indicativo; accessi e servizi vanno verificati sul posto."
+    ],
+    "facts": [
+      "Suolo — Sabbia e piccoli ciottoli",
+      "Fondale — Sabbioso e digradante vicino alla riva",
+      "Esposizione — Nord-est, orientamento indicativo del tratto",
+      "Servizi — lungomare, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso generalmente semplice dalla viabilità costiera; parcheggi e concessioni sono da controllare in stagione.",
+      "Ambiente — Baia settentrionale di Milazzo, con il promontorio e la Grotta di Polifemo sullo sfondo."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.2632&mlon=15.2571#map=16/38.2632/15.2571",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "croce-di-mare-milazzo",
+    "description": "Croce di Mare è un punto roccioso della costa di Milazzo, adatto a chi cerca un affaccio aperto e un ingresso al mare più naturale. La scheda distingue la scogliera dai tratti sabbiosi e segnala l'accesso da verificare.",
+    "orientation_degrees": 35,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "scogliera",
+      "tramonto",
+      "snorkeling",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "passeggiata costiera"
+    ],
+    "warnings": [
+      "Rocce e accessi irregolari richiedono calzature adatte e attenzione al moto ondoso."
+    ],
+    "facts": [
+      "Suolo — Roccia vulcanica e piattaforme costiere",
+      "Fondale — Roccioso, con profondità variabile",
+      "Esposizione — Nord-est, orientamento indicativo del tratto",
+      "Servizi — passeggiata costiera; disponibilità da verificare in stagione",
+      "Accesso — Accesso da percorsi costieri e punti rocciosi; non è un arenile attrezzato.",
+      "Ambiente — Scogliera urbana di Milazzo con affaccio sulle Eolie e sul promontorio."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.2144&mlon=15.2395#map=16/38.2144/15.2395",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "san-gregorio-capo-d-orlando",
+    "description": "San Gregorio raccoglie un piccolo tratto marinaro di Capo d'Orlando tra calette, scogli e il porto turistico. È una base panoramica per esplorare la costa tirrenica, con accessi diversi da controllare prima della visita.",
+    "orientation_degrees": 315,
+    "orientation_label": "Nord-ovest",
+    "shelter": [
+      "levante",
+      "scirocco"
+    ],
+    "tags": [
+      "borgo marinaro",
+      "panorama",
+      "ciottoli",
+      "porto"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "ristorazione in zona"
+    ],
+    "warnings": [
+      "La posizione comprende più accessi costieri tra borgo e porto turistico."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e sabbia nei tratti accessibili",
+      "Fondale — Misto, con fondale che diventa più profondo verso il largo",
+      "Esposizione — Nord-ovest, orientamento indicativo del tratto",
+      "Servizi — lungomare, ristorazione in zona; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla frazione; scegliere il punto di ingresso in base a spiaggia, scogliera o porto.",
+      "Ambiente — Frazione marinara di Capo d'Orlando affacciata sul Tirreno e sulle Isole Eolie."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.1643&mlon=14.7461#map=16/38.1643/14.7461",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "gioiosa-marea",
+    "description": "Il litorale di Gioiosa Marea alterna spiaggia, ghiaia e scorci aperti sul Tirreno. La scheda serve a orientarsi tra i diversi tratti del comune e non sostituisce la verifica dell'accesso puntuale.",
+    "orientation_degrees": 285,
+    "orientation_label": "Ovest",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "litorale",
+      "panorama",
+      "sabbia",
+      "tramonto"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il litorale comprende più tratti: la foto e il punto mappa sono rappresentativi."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia",
+      "Fondale — Digradante, con profondità variabile lungo il litorale",
+      "Esposizione — Ovest, orientamento indicativo del tratto",
+      "Servizi — lungomare, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso semplice dalla viabilità urbana e dal lungomare; verificare il tratto pubblico scelto.",
+      "Ambiente — Lungomare tirrenico ai piedi dei Nebrodi, con vista verso le isole Eolie."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.1692&mlon=14.8944#map=16/38.1692/14.8944",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "capo-calava-gioiosa-marea",
+    "description": "Capo Calavà concentra in pochi chilometri promontorio, calette e mare aperto. Il punto rappresentativo aiuta a leggere l'esposizione del tratto e la varietà degli accessi lungo la costa di Gioiosa Marea.",
+    "orientation_degrees": 290,
+    "orientation_label": "Nord-ovest",
+    "shelter": [
+      "levante",
+      "scirocco"
+    ],
+    "tags": [
+      "promontorio",
+      "caletta",
+      "snorkeling",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "ristorazione stagionale"
+    ],
+    "warnings": [
+      "Promontorio e calette hanno accessi diversi; attenzione ai tratti rocciosi."
+    ],
+    "facts": [
+      "Suolo — Ghiaia e roccia costiera",
+      "Fondale — Roccioso e trasparente nei punti riparati",
+      "Esposizione — Nord-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, ristorazione stagionale; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da viabilità e sentieri locali; verificare il percorso fino alla caletta.",
+      "Ambiente — Promontorio di Capo Calavà tra costa alta, calette e vista sulle Eolie."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.1624&mlon=14.9087#map=16/38.1624/14.9087",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "laghetti-di-marinello",
+    "description": "I Laghetti di Marinello sono una fascia costiera dinamica sotto Tindari, dove sabbia, specchi d'acqua e mare aperto cambiano con le condizioni naturali. Il punto mappa è rappresentativo della Riserva e va letto insieme alle regole di accesso.",
+    "orientation_degrees": 300,
+    "orientation_label": "Nord-ovest",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "riserva",
+      "laguna",
+      "sabbia",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "sentieri",
+      "servizi stagionali in zona"
+    ],
+    "warnings": [
+      "L'accesso e la conformazione dei laghetti cambiano con maree, correnti e stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia, laguna e ciottoli",
+      "Fondale — Basso nelle lingue di sabbia; variabile vicino alla costa",
+      "Esposizione — Nord-ovest, orientamento indicativo del tratto",
+      "Servizi — sentieri, servizi stagionali in zona; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato tramite sentieri o servizi stagionali; verificare regole e collegamenti alla Riserva.",
+      "Ambiente — Riserva naturale sotto il promontorio di Tindari, tra laghetti costieri e spiagge mobili."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.1372&mlon=15.0477#map=16/38.1372/15.0477",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "mongiove-patti",
+    "description": "Mongiove è un tratto roccioso della costa di Patti, noto per le grotte e gli scorci sul Tirreno. La scheda separa il paesaggio costiero dall'idea di spiaggia attrezzata e invita a verificare il percorso reale.",
+    "orientation_degrees": 305,
+    "orientation_label": "Nord-ovest",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "grotte",
+      "scogliera",
+      "acqua trasparente",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "sentieri costieri"
+    ],
+    "warnings": [
+      "Grotte e rocce richiedono attenzione; non confondere il punto panoramico con un accesso balneare attrezzato."
+    ],
+    "facts": [
+      "Suolo — Ciottoli, ghiaia e roccia",
+      "Fondale — Roccioso nei pressi delle grotte, più digradante nei tratti di spiaggia",
+      "Esposizione — Nord-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, sentieri costieri; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da percorsi locali; verificare il sentiero e l'eventuale divieto di transito stagionale.",
+      "Ambiente — Costa di Mongiove tra grotte marine, Tindari e il litorale di Patti."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.1379&mlon=15.0577#map=16/38.1379/15.0577",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "spisone-taormina",
+    "description": "Spisone è una delle baie più ampie del versante taorminese, con ciottoli, sabbia e accessi stagionali. La scheda mette al centro il mare della baia e mantiene separata la verifica dei singoli lidi.",
+    "orientation_degrees": 120,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "baia",
+      "ciottoli",
+      "lido",
+      "vista"
+    ],
+    "access_level": "facile",
+    "services": [
+      "stabilimenti stagionali",
+      "parcheggi in zona"
+    ],
+    "warnings": [
+      "Affollamento, accessi e servizi possono cambiare durante la stagione estiva."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e sabbia",
+      "Fondale — Misto e digradante nei tratti di lido",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — stabilimenti stagionali, parcheggi in zona; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile da viabilità e strutture della baia; controllare il tratto pubblico disponibile.",
+      "Ambiente — Ampia baia sotto Taormina, con pendii verdi e vista sulla costa ionica."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.8743&mlon=15.2927#map=16/37.8743/15.2927",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "isola-bella-taormina",
+    "description": "Isola Bella unisce una piccola baia di ciottoli, roccia e acqua leggibile alla riserva naturale dell'isolotto. È una destinazione da visitare con attenzione agli accessi e alla tutela del sito.",
+    "orientation_degrees": 135,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "riserva",
+      "caletta",
+      "snorkeling",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "funivia in zona",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "L'accesso alla caletta può richiedere scale e percorsi; verificare regole della Riserva."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e roccia",
+      "Fondale — Roccioso e trasparente, con fondale irregolare",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — funivia in zona, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da scale e percorsi della baia; controllare apertura e condizioni del sentiero.",
+      "Ambiente — Isolotto e baia protetta ai piedi di Taormina, con vegetazione mediterranea."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.8525&mlon=15.3006#map=16/37.8525/15.3006",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "mazzaro-taormina",
+    "description": "Mazzarò è una baia raccolta sotto Taormina, con ciottoli, roccia e servizi stagionali. Il mare è il riferimento della scheda; funivia, scale e affollamento rendono utile pianificare l'accesso.",
+    "orientation_degrees": 125,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "baia",
+      "ciottoli",
+      "funivia",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "funivia",
+      "stabilimenti stagionali"
+    ],
+    "warnings": [
+      "La baia è compatta e può essere molto affollata; verificare accessi e parcheggi."
+    ],
+    "facts": [
+      "Suolo — Ciottoli e sabbia",
+      "Fondale — Roccioso e digradante nella baia",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — funivia, stabilimenti stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato con funivia, scale o viabilità locale; il punto di ingresso va scelto prima della visita.",
+      "Ambiente — Baia di Mazzarò tra Taormina, Isola Bella e la costa ionica."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.8597&mlon=15.299#map=16/37.8597/15.299",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "letojanni",
+    "description": "Il litorale di Letojanni offre una lunga successione di spiaggia, lungomare e servizi con vista sulla costa ionica. La scheda aiuta a individuare il tratto di mare, mentre accessi e concessioni restano da verificare.",
+    "orientation_degrees": 115,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "litorale",
+      "sabbia",
+      "lungomare",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "stabilimenti stagionali",
+      "ristorazione"
+    ],
+    "warnings": [
+      "Il punto è rappresentativo del lungo litorale; servizi e arenile pubblico vanno distinti in loco."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia",
+      "Fondale — Digradante, con profondità variabile lungo il litorale",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — lungomare, stabilimenti stagionali, ristorazione; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dal lungomare e dalla viabilità urbana; verificare il tratto libero più vicino.",
+      "Ambiente — Litorale urbano di Letojanni affacciato sulla baia di Taormina."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.8849&mlon=15.3095#map=16/37.8849/15.3095",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "giardini-naxos",
+    "description": "Giardini Naxos si sviluppa lungo una baia ampia, tra spiagge, porticcioli e un lungomare ricco di servizi. La pagina identifica il mare della baia e chiarisce che il punto non sostituisce la scelta del singolo accesso.",
+    "orientation_degrees": 105,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "lungomare",
+      "panorama"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "ristorazione",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il litorale comprende più spiagge e porticcioli; il punto mappa è rappresentativo."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia",
+      "Fondale — Digradante vicino a riva, variabile tra i diversi lidi",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — lungomare, ristorazione, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile da lungomare e strade urbane; scegliere il tratto in base a spiaggia libera o lido.",
+      "Ambiente — Ampia baia ionica ai piedi dell'Etna, con vista verso Taormina e Capo Schisò."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.8283&mlon=15.2682#map=16/37.8283/15.2682",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "sant-alessio-siculo",
+    "description": "Sant'Alessio Siculo combina un litorale di ghiaia e ciottoli con il profilo del castello sul promontorio. È una tappa leggibile anche senza conoscere la zona, grazie al riferimento diretto al mare e al lungomare.",
+    "orientation_degrees": 115,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "castello",
+      "ciottoli",
+      "panorama",
+      "litorale"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "servizi stagionali",
+      "ristorazione"
+    ],
+    "warnings": [
+      "Il litorale è esposto: verificare il moto ondoso e il tratto pubblico scelto."
+    ],
+    "facts": [
+      "Suolo — Ghiaia e ciottoli",
+      "Fondale — Misto e digradante nei tratti di spiaggia",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — lungomare, servizi stagionali, ristorazione; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dal lungomare e dalle strade del comune; parcheggi e concessioni sono stagionali.",
+      "Ambiente — Litorale di Sant'Alessio sotto il castello bizantino e il promontorio costiero."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.9261&mlon=15.3479#map=16/37.9261/15.3479",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "roccalumera",
+    "description": "Roccalumera è un litorale ionico continuo, con ghiaia, ciottoli e servizi distribuiti lungo il paese. Il punto è una sintesi geografica: prima della pubblicazione va associato a un accesso preciso.",
+    "orientation_degrees": 110,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "litorale",
+      "lungomare",
+      "ciottoli",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "servizi stagionali",
+      "ristorazione"
+    ],
+    "warnings": [
+      "La scheda rappresenta il litorale comunale; verificare il singolo accesso e le condizioni del mare."
+    ],
+    "facts": [
+      "Suolo — Ghiaia e ciottoli",
+      "Fondale — Digradante, con fondale misto",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — lungomare, servizi stagionali, ristorazione; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità costiera e dal lungomare; distinguere spiaggia libera e concessioni.",
+      "Ambiente — Litorale ionico urbano tra Capo Alì e Santa Teresa di Riva."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.934&mlon=15.421#map=16/37.934/15.421",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/itinerario/tindari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "la-plaia-catania",
+    "description": "La Plaia è il grande litorale sabbioso di Catania, con accessi, stabilimenti e servizi distribuiti lungo la costa. La scheda mette in evidenza il mare e la spiaggia, lasciando da verificare il singolo ingresso.",
+    "orientation_degrees": 105,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "sabbia",
+      "litorale",
+      "servizi",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "stabilimenti",
+      "parcheggi",
+      "ristorazione"
+    ],
+    "warnings": [
+      "L'area comprende più accessi e stabilimenti; il punto mappa è rappresentativo."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — stabilimenti, parcheggi, ristorazione; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità costiera e dagli stabilimenti; verificare il tratto libero disponibile.",
+      "Ambiente — Ampio litorale sabbioso a sud del centro di Catania, con vista sull'Etna."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.4475&mlon=15.0876#map=16/37.4475/15.0876",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "san-giovanni-li-cuti",
+    "description": "San Giovanni Li Cuti è un piccolo borgo marinaro dove la costa lavica sostituisce il classico arenile. La pagina chiarisce subito il tipo di accesso e il carattere roccioso del mare catanese.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "roccia lavica",
+      "borgo",
+      "scogliera",
+      "snorkeling"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "borgo marinaro",
+      "ristorazione",
+      "passeggiata"
+    ],
+    "warnings": [
+      "Roccia lavica e accessi irregolari richiedono attenzione, soprattutto con mare mosso."
+    ],
+    "facts": [
+      "Suolo — Roccia vulcanica e ciottoli neri",
+      "Fondale — Roccioso e irregolare",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — borgo marinaro, ristorazione, passeggiata; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da banchine e rocce; non è una spiaggia sabbiosa tradizionale.",
+      "Ambiente — Borgo marinaro di Catania con scogliera lavica e piccolo approdo."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.519&mlon=15.109#map=16/37.519/15.109",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "ognina-catania",
+    "description": "Ognina è il tratto portuale e roccioso della costa nord di Catania, con scorci sul mare aperto e sul borgo. La scheda evita di confondere il porto con una spiaggia e demanda la verifica ai singoli accessi.",
+    "orientation_degrees": 95,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "porto",
+      "scogliera",
+      "borgo",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "porto",
+      "ristorazione",
+      "lungomare"
+    ],
+    "warnings": [
+      "Porto e scogliera hanno funzioni diverse: verificare dove è consentita la balneazione."
+    ],
+    "facts": [
+      "Suolo — Roccia lavica e banchine",
+      "Fondale — Roccioso, con piccoli tratti accessibili",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — porto, ristorazione, lungomare; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da banchine e percorsi urbani; balneazione e punti di ingresso sono da distinguere.",
+      "Ambiente — Porto storico e costa lavica di Catania tra Ognina e la scogliera."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.5316&mlon=15.1123#map=16/37.5316/15.1123",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "aci-trezza",
+    "description": "Aci Trezza è una costa lavica dominata dai Faraglioni dei Ciclopi, con piattaforme rocciose e un borgo marinaro vivo. La pagina presenta il mare come esperienza di costa, non come lido sabbioso.",
+    "orientation_degrees": 95,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "faraglioni",
+      "roccia lavica",
+      "borgo",
+      "snorkeling"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "lungomare",
+      "ristorazione",
+      "noleggio barche"
+    ],
+    "warnings": [
+      "La costa è rocciosa e comprende aree portuali; verificare il punto balneabile."
+    ],
+    "facts": [
+      "Suolo — Roccia lavica e ciottoli",
+      "Fondale — Roccioso, con fondale irregolare",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — lungomare, ristorazione, noleggio barche; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da piattaforme e rocce del borgo; non tutti gli affacci sono balneabili.",
+      "Ambiente — Borgo dei Malavoglia e area dei Faraglioni dei Ciclopi nella Riserva marina."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.5663&mlon=15.1644#map=16/37.5663/15.1644",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "aci-castello",
+    "description": "Aci Castello mette insieme mare aperto, scogliera lavica e il castello normanno sul promontorio. È una scheda pensata per chi cerca un punto costiero riconoscibile e vuole sapere subito che l'accesso è roccioso.",
+    "orientation_degrees": 100,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "castello",
+      "scogliera",
+      "roccia lavica",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "lungomare",
+      "ristorazione",
+      "piattaforme"
+    ],
+    "warnings": [
+      "Scogliera e profondità richiedono prudenza; seguire i divieti locali."
+    ],
+    "facts": [
+      "Suolo — Roccia lavica",
+      "Fondale — Roccioso e profondo in prossimità della scogliera",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — lungomare, ristorazione, piattaforme; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da piattaforme, scalette e percorsi urbani; verificare il punto di ingresso.",
+      "Ambiente — Scogliera lavica attorno al castello normanno e al borgo costiero."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.5458&mlon=15.1445#map=16/37.5458/15.1445",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "capomulini",
+    "description": "Capo Mulini è un borgo costiero di Acireale tra porto, rocce laviche e piccole insenature. La scheda aiuta a distinguere un affaccio sul mare da una spiaggia con accesso semplice.",
+    "orientation_degrees": 105,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "borgo marinaro",
+      "scogliera",
+      "porto",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "ristorazione",
+      "porto",
+      "passeggiata"
+    ],
+    "warnings": [
+      "La costa alterna porto e scogliera; verificare il tratto effettivamente balneabile."
+    ],
+    "facts": [
+      "Suolo — Roccia lavica e ciottoli",
+      "Fondale — Roccioso, con piccole insenature",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — ristorazione, porto, passeggiata; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da strade e percorsi del borgo; molte aree sono rocciose o portuali.",
+      "Ambiente — Borgo marinaro ai piedi della Timpa, tra porto e costa lavica."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.5756&mlon=15.171#map=16/37.5756/15.171",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "santa-maria-la-scala",
+    "description": "Santa Maria La Scala è un borgo marinaro incastonato sotto la Timpa, con piattaforme laviche e vista sullo Ionio. Il contenuto anticipa il carattere roccioso così l'utente non si aspetta una spiaggia di sabbia.",
+    "orientation_degrees": 100,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "borgo marinaro",
+      "scogliera",
+      "timpa",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "ristorazione",
+      "porto",
+      "passeggiata"
+    ],
+    "warnings": [
+      "Accessi, scalinate e scogli possono essere scivolosi; verificare il punto di balneazione."
+    ],
+    "facts": [
+      "Suolo — Roccia lavica e ciottoli",
+      "Fondale — Roccioso e irregolare",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — ristorazione, porto, passeggiata; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato tramite strade e scalinate del borgo; non è un arenile sabbioso continuo.",
+      "Ambiente — Borgo marinaro sotto la Riserva della Timpa, sulla costa di Acireale."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.6194&mlon=15.1749#map=16/37.6194/15.1749",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "santa-tecla-acireale",
+    "description": "Santa Tecla è un piccolo borgo sulla costa di Acireale, con scogliera lavica e scorci aperti sullo Ionio. La scheda rende visibile il contesto costiero e segnala che l'accesso non è quello di un lido sabbioso.",
+    "orientation_degrees": 95,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "borgo",
+      "scogliera",
+      "timpa",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "ristorazione",
+      "passeggiata costiera"
+    ],
+    "warnings": [
+      "Il litorale è roccioso e gli accessi possono richiedere scale o percorsi locali."
+    ],
+    "facts": [
+      "Suolo — Roccia lavica e ciottoli",
+      "Fondale — Roccioso, con piccole baie",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — ristorazione, passeggiata costiera; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da viabilità e percorsi del borgo; verificare il punto di ingresso sicuro.",
+      "Ambiente — Borgo costiero di Acireale affacciato sul mare ai piedi della Timpa."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.6371&mlon=15.177#map=16/37.6371/15.177",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "fondachello-mascali",
+    "description": "Fondachello è il litorale di Mascali ai piedi dell'Etna, con ghiaia, sabbia scura e servizi stagionali. La pagina presenta il tratto di mare in modo diretto e lascia da confermare il singolo accesso.",
+    "orientation_degrees": 95,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "litorale",
+      "Etna",
+      "ghiaia",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "stabilimenti stagionali",
+      "parcheggi"
+    ],
+    "warnings": [
+      "Il tratto è esposto e comprende più accessi; verificare arenile e servizi in stagione."
+    ],
+    "facts": [
+      "Suolo — Ghiaia e sabbia scura",
+      "Fondale — Digradante, con fondo misto",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — lungomare, stabilimenti stagionali, parcheggi; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità costiera; scegliere tra tratti liberi e stabilimenti verificati.",
+      "Ambiente — Litorale di Mascali tra il mare ionico e il profilo dell'Etna."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.7636&mlon=15.2196#map=16/37.7636/15.2196",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania — Turismo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://turismo.comune.catania.it/territorio/il-mare/stabilimenti-balneari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "calamosche",
+    "description": "Calamosche è una caletta della Riserva di Vendicari, chiusa tra due promontori e caratterizzata da sabbia chiara e fondale misto. È una delle schede più leggibili per chi cerca acqua e natura, ma l'accesso resta a piedi.",
+    "orientation_degrees": 105,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "riserva",
+      "caletta",
+      "acqua trasparente",
+      "snorkeling"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "sentiero",
+      "area protetta"
+    ],
+    "warnings": [
+      "La spiaggia si raggiunge a piedi; verificare accesso, parcheggio e regole della Riserva."
+    ],
+    "facts": [
+      "Suolo — Sabbia chiara e ciottoli",
+      "Fondale — Sabbioso e roccioso ai lati della caletta",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — sentiero, area protetta; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da sentiero pedonale; portare acqua e verificare le regole della Riserva.",
+      "Ambiente — Caletta della Riserva di Vendicari tra promontori rocciosi e macchia mediterranea."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.8243&mlon=15.1056#map=16/36.8243/15.1056",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "eloro",
+    "description": "La spiaggia di Eloro si apre lungo la costa di Vendicari tra sabbia, dune e resti archeologici. Il contenuto collega il mare al contesto naturale senza promettere servizi che non sono stati verificati.",
+    "orientation_degrees": 100,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "riserva",
+      "sabbia",
+      "natura",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "sentiero",
+      "area protetta"
+    ],
+    "warnings": [
+      "Accesso e servizi sono legati alla Riserva e possono cambiare in stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — sentiero, area protetta; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da sentiero; verificare parcheggio, orari e regole della Riserva.",
+      "Ambiente — Arenile lungo la Riserva di Vendicari, vicino all'area archeologica di Eloro."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.8389&mlon=15.1065#map=16/36.8389/15.1065",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "marianelli",
+    "description": "Marianelli è un tratto naturale della costa di Vendicari, tra dune, sabbia e macchia mediterranea. La scheda privilegia il carattere selvaggio del mare e rende esplicita l'assenza di servizi stabili.",
+    "orientation_degrees": 100,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "riserva",
+      "selvaggia",
+      "dune",
+      "sabbia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "sentiero",
+      "area protetta"
+    ],
+    "warnings": [
+      "Spiaggia naturale senza servizi stabili; verificare accesso e condizioni del sentiero."
+    ],
+    "facts": [
+      "Suolo — Sabbia e dune",
+      "Fondale — Sabbioso, con fondale basso vicino alla riva",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — sentiero, area protetta; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato a piedi da sentieri della Riserva; prepararsi in autonomia.",
+      "Ambiente — Tratto selvaggio della costa di Vendicari tra dune e macchia mediterranea."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.8341&mlon=15.1056#map=16/36.8341/15.1056",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "vendicari",
+    "description": "Vendicari è un sistema costiero protetto, non una sola spiaggia: tonnara, dune, zone umide e diversi accessi convivono nello stesso paesaggio. La scheda chiarisce questa dimensione prima di parlare del mare.",
+    "orientation_degrees": 105,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "riserva",
+      "tonnara",
+      "dune",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "sentieri",
+      "area protetta",
+      "parcheggio in area di accesso"
+    ],
+    "warnings": [
+      "Verificare regole, ticket, accessi e divieti della Riserva prima della visita."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ciottoli",
+      "Fondale — Basso e sabbioso nei tratti di arenile",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — sentieri, area protetta, parcheggio in area di accesso; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da ingressi e sentieri della Riserva; il punto mappa non indica un singolo varco.",
+      "Ambiente — Riserva naturale con tonnara, dune, zone umide e spiagge del litorale di Noto."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.801&mlon=15.0965#map=16/36.801/15.0965",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "san-lorenzo-vendicari",
+    "description": "San Lorenzo alterna sabbia, scogli bassi e calette nel tratto di costa tra Vendicari e Marzamemi. Il riferimento geografico aiuta chi cerca mare e accesso semplice, senza confondere i diversi arenili della zona.",
+    "orientation_degrees": 105,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "sabbia",
+      "roccia",
+      "marzamemi",
+      "snorkeling"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi in zona",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "La costa alterna spiaggia e roccia; verificare il tratto libero e le condizioni di accesso."
+    ],
+    "facts": [
+      "Suolo — Sabbia e roccia",
+      "Fondale — Misto, con scogli affioranti in alcuni tratti",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dai percorsi locali, ma il singolo ingresso e i parcheggi vanno confermati.",
+      "Ambiente — Litorale tra la Riserva di Vendicari e Marzamemi, con calette e scogli bassi."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.755&mlon=15.106#map=16/36.755/15.106",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "fontane-bianche",
+    "description": "Fontane Bianche è una baia sabbiosa a sud di Siracusa, con fondale basso e servizi distribuiti lungo il litorale. La scheda mostra subito che si tratta di una spiaggia organizzata e non di una caletta isolata.",
+    "orientation_degrees": 115,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "sabbia",
+      "baia",
+      "famiglie",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "stabilimenti",
+      "parcheggi",
+      "ristorazione"
+    ],
+    "warnings": [
+      "Affollamento e accessi cambiano in alta stagione; distinguere i tratti pubblici."
+    ],
+    "facts": [
+      "Suolo — Sabbia chiara",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — stabilimenti, parcheggi, ristorazione; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile da viabilità e stabilimenti; verificare parcheggio e arenile libero.",
+      "Ambiente — Baia sabbiosa a sud di Siracusa con insenature e vegetazione mediterranea."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.9618&mlon=15.2077#map=16/36.9618/15.2077",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "arenella-siracusa",
+    "description": "Arenella è un litorale di Siracusa con spiaggia, fondale basso e servizi stagionali. Il contenuto offre un riferimento chiaro al mare e ricorda che il litorale comprende più accessi.",
+    "orientation_degrees": 110,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "ponente",
+      "maestrale"
+    ],
+    "tags": [
+      "sabbia",
+      "baia",
+      "famiglie",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "stabilimenti",
+      "parcheggi",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il punto è rappresentativo del litorale: verificare accesso pubblico e concessioni."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ciottoli",
+      "Fondale — Sabbioso e basso vicino alla riva",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — stabilimenti, parcheggi, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità locale; scegliere il tratto in base a spiaggia libera o stabilimento.",
+      "Ambiente — Litorale residenziale a sud di Siracusa tra spiaggia e piccole insenature."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.9956&mlon=15.264#map=16/36.9956/15.264",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "fanusa",
+    "description": "Fanusa raccoglie calette e scogli della costa sud di Siracusa, con un carattere più naturale rispetto ai litorali sabbiosi vicini. La scheda anticipa la varietà del terreno e la necessità di scegliere il varco corretto.",
+    "orientation_degrees": 100,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "scogliera",
+      "calette",
+      "snorkeling",
+      "natura"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "accessi locali"
+    ],
+    "warnings": [
+      "La costa è articolata e non tutti i varchi sono balneabili; prestare attenzione agli scogli."
+    ],
+    "facts": [
+      "Suolo — Roccia, ghiaia e piccoli tratti sabbiosi",
+      "Fondale — Roccioso e variabile",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, accessi locali; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da strade e sentieri locali; verificare il varco prima di scendere alla costa.",
+      "Ambiente — Costa della Penisola della Maddalena tra Fanusa, Arenella e il Plemmirio."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.0074&mlon=15.2761#map=16/37.0074/15.2761",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "minareto-siracusa",
+    "description": "Minareto è un punto roccioso della Penisola della Maddalena, con calette e acqua più leggibile nei tratti riparati. Il contenuto spiega subito che l'esperienza è di scogliera e non di spiaggia urbana.",
+    "orientation_degrees": 100,
+    "orientation_label": "Est",
+    "shelter": [
+      "scirocco",
+      "levante"
+    ],
+    "tags": [
+      "Plemmirio",
+      "scogliera",
+      "caletta",
+      "snorkeling"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "accessi naturali"
+    ],
+    "warnings": [
+      "Scogli e dislivelli richiedono attenzione; verificare divieti e accessi della costa protetta."
+    ],
+    "facts": [
+      "Suolo — Roccia e ghiaia",
+      "Fondale — Roccioso e trasparente nei tratti riparati",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, accessi naturali; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da percorsi e scogli; non è garantito un arenile attrezzato.",
+      "Ambiente — Calette della Penisola della Maddalena vicino all'area marina del Plemmirio."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.0407&mlon=15.302#map=16/37.0407/15.302",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "isola-delle-correnti",
+    "description": "L'Isola delle Correnti è il punto più meridionale della Sicilia, con spiaggia, roccia bassa e un paesaggio segnato dall'incontro delle acque. La pagina rende esplicita la presenza di correnti prima di qualsiasi consiglio balneare.",
+    "orientation_degrees": 160,
+    "orientation_label": "Sud",
+    "shelter": [
+      "ponente",
+      "levante"
+    ],
+    "tags": [
+      "estremo sud",
+      "isola",
+      "sabbia",
+      "panorama"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi in zona",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il nome richiama l'incontro delle correnti: verificare sempre il mare prima di entrare in acqua."
+    ],
+    "facts": [
+      "Suolo — Sabbia e roccia bassa",
+      "Fondale — Sabbioso e roccioso, soggetto a correnti",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla spiaggia e dalla viabilità locale; attenzione a correnti e tratti rocciosi.",
+      "Ambiente — Punta più meridionale della Sicilia, dove Ionio e Mediterraneo si incontrano attorno all'isolotto."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.6496&mlon=15.0816#map=16/36.6496/15.0816",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/riserva-di-vendicari/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "marina-di-ragusa",
+    "description": "Marina di Ragusa è un lungo arenile urbano con sabbia, lungomare e servizi. La scheda evidenzia fin da subito la necessità di non sovrapporre la spiaggia ai tratti portuali soggetti a divieto.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "litorale",
+      "sabbia",
+      "lungomare",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "stabilimenti",
+      "ristorazione",
+      "parcheggi"
+    ],
+    "warnings": [
+      "Evitare il tratto portuale soggetto a divieto e verificare il punto libero più vicino."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e generalmente digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — lungomare, stabilimenti, ristorazione, parcheggi; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dal lungomare; verificare il tratto pubblico e i divieti stagionali presso il porto.",
+      "Ambiente — Ampio litorale urbano di Ragusa con porto turistico e lungomare."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.782&mlon=14.556#map=16/36.782/14.556",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ragusa",
+        "source_type": "municipal-bathing-notice",
+        "source_url": "https://www.comune.ragusa.it/it/news/stagione-balneare-2026-emessa-lordinanza-per-i-divieti-di-balneazione-nel-litorale-di-ragusa?type=2",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "donnalucata",
+    "description": "Donnalucata è un borgo marinaro di Scicli con spiaggia, porto e passeggiata costiera. La scheda aiuta a cercare il mare senza confondere l'accesso balneare con le banchine del porto.",
+    "orientation_degrees": 175,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "borgo marinaro",
+      "sabbia",
+      "lungomare",
+      "passeggiata"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "ristorazione",
+      "parcheggi"
+    ],
+    "warnings": [
+      "Il borgo comprende spiaggia e porto: verificare il tratto di balneazione scelto."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia",
+      "Fondale — Digradante, con fondale misto verso il porto",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — lungomare, ristorazione, parcheggi; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità urbana e dal lungomare; distinguere l'area portuale.",
+      "Ambiente — Borgo marinaro di Scicli tra arenile, porto e lungomare."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.762&mlon=14.635#map=16/36.762/14.635",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ragusa",
+        "source_type": "municipal-bathing-notice",
+        "source_url": "https://www.comune.ragusa.it/it/news/stagione-balneare-2026-emessa-lordinanza-per-i-divieti-di-balneazione-nel-litorale-di-ragusa?type=2",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "sampieri",
+    "description": "Sampieri offre una spiaggia ampia accanto al borgo e alla fornace Penna, con un paesaggio costiero riconoscibile. Il contenuto dà priorità alla spiaggia e indica cosa verificare prima dell'arrivo.",
+    "orientation_degrees": 175,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "sabbia",
+      "borgo",
+      "fornace",
+      "passeggiata"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "ristorazione",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il litorale è aperto: verificare il moto ondoso e il tratto pubblico in stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — lungomare, ristorazione, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dal borgo e dal lungomare; parcheggi e servizi sono stagionali.",
+      "Ambiente — Spiaggia ampia presso il borgo di Sampieri e la fornace Penna."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7182&mlon=14.735#map=16/36.7182/14.735",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ragusa",
+        "source_type": "municipal-bathing-notice",
+        "source_url": "https://www.comune.ragusa.it/it/news/stagione-balneare-2026-emessa-lordinanza-per-i-divieti-di-balneazione-nel-litorale-di-ragusa?type=2",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "cava-d-aliga",
+    "description": "Cava d'Aliga è un tratto costiero raccolto tra Sampieri e Donnalucata, con calette, sabbia e piccoli ciottoli. La scheda resta puntuale sul litorale e non attribuisce servizi non verificati.",
+    "orientation_degrees": 170,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "caletta",
+      "sabbia",
+      "borgo",
+      "panorama"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi in zona",
+      "ristorazione stagionale"
+    ],
+    "warnings": [
+      "La costa comprende più calette e accessi; verificare il tratto esatto."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ciottoli",
+      "Fondale — Misto e digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, ristorazione stagionale; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile da strade locali, con disponibilità di parcheggio da controllare.",
+      "Ambiente — Piccolo litorale residenziale tra Sampieri e Donnalucata."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7279&mlon=14.6851#map=16/36.7279/14.6851",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ragusa",
+        "source_type": "municipal-bathing-notice",
+        "source_url": "https://www.comune.ragusa.it/it/news/stagione-balneare-2026-emessa-lordinanza-per-i-divieti-di-balneazione-nel-litorale-di-ragusa?type=2",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "punta-secca",
+    "description": "Punta Secca è un borgo marinaro riconoscibile per il faro e la linea di costa bassa. La pagina parla del mare e della spiaggia senza affidarsi soltanto ai riferimenti televisivi della località.",
+    "orientation_degrees": 170,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "borgo",
+      "sabbia",
+      "faro",
+      "panorama"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "ristorazione",
+      "parcheggi"
+    ],
+    "warnings": [
+      "La notorietà del borgo non sostituisce la verifica del tratto di spiaggia e dei servizi."
+    ],
+    "facts": [
+      "Suolo — Sabbia e roccia bassa",
+      "Fondale — Sabbioso con scogli affioranti",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — lungomare, ristorazione, parcheggi; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dal lungomare e dal borgo; verificare parcheggi e arenile libero.",
+      "Ambiente — Borgo marinaro di Santa Croce Camerina con faro e affaccio sul Mediterraneo."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7898&mlon=14.491#map=16/36.7898/14.491",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ragusa",
+        "source_type": "municipal-bathing-notice",
+        "source_url": "https://www.comune.ragusa.it/it/news/stagione-balneare-2026-emessa-lordinanza-per-i-divieti-di-balneazione-nel-litorale-di-ragusa?type=2",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "caucana",
+    "description": "Caucana combina un litorale basso con il contesto archeologico della costa di Santa Croce Camerina. La scheda rende chiaro che il punto rappresenta una zona costiera e non un'unica concessione.",
+    "orientation_degrees": 175,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "sabbia",
+      "archeologia",
+      "caletta",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi in zona",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il tratto costiero è articolato; verificare l'accesso pubblico e l'eventuale presenza di scogli."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ciottoli",
+      "Fondale — Sabbioso e poco profondo nei pressi della riva",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile da viabilità locale; il singolo varco va associato alla spiaggia corretta.",
+      "Ambiente — Litorale vicino all'area archeologica di Caucana, tra spiagge e piccole insenature."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7874&mlon=14.5065#map=16/36.7874/14.5065",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ragusa",
+        "source_type": "municipal-bathing-notice",
+        "source_url": "https://www.comune.ragusa.it/it/news/stagione-balneare-2026-emessa-lordinanza-per-i-divieti-di-balneazione-nel-litorale-di-ragusa?type=2",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "maganuco",
+    "description": "Maganuco è una baia sabbiosa del litorale di Modica, pensata per chi cerca un accesso semplice e un fondale che degrada verso il largo. La scheda distingue le informazioni geografiche dai servizi da confermare.",
+    "orientation_degrees": 175,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "sabbia",
+      "baia",
+      "servizi",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi",
+      "servizi stagionali",
+      "ristorazione in zona"
+    ],
+    "warnings": [
+      "Verificare accessi, parcheggi e tratti di spiaggia libera prima dell'arrivo."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — parcheggi, servizi stagionali, ristorazione in zona; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità costiera; servizi e parcheggi possono essere stagionali.",
+      "Ambiente — Baia sabbiosa del litorale di Modica, tra Marina di Modica e Pozzallo."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7168&mlon=14.8164#map=16/36.7168/14.8164",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ragusa",
+        "source_type": "municipal-bathing-notice",
+        "source_url": "https://www.comune.ragusa.it/it/news/stagione-balneare-2026-emessa-lordinanza-per-i-divieti-di-balneazione-nel-litorale-di-ragusa?type=2",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "raganzino",
+    "description": "Raganzino è un tratto urbano del litorale di Pozzallo con sabbia, lungomare e servizi vicini. Il contenuto anticipa la differenza tra spiaggia e area portuale, utile per una ricerca più precisa.",
+    "orientation_degrees": 175,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "litorale",
+      "sabbia",
+      "lungomare",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "parcheggi",
+      "ristorazione",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il punto è rappresentativo del lungomare: verificare il tratto libero e le condizioni locali."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — lungomare, parcheggi, ristorazione, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dal lungomare; distinguere spiaggia balneabile e aree portuali.",
+      "Ambiente — Litorale urbano di Pozzallo tra spiaggia, lungomare e porto."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7212&mlon=14.8351#map=16/36.7212/14.8351",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ragusa",
+        "source_type": "municipal-bathing-notice",
+        "source_url": "https://www.comune.ragusa.it/it/news/stagione-balneare-2026-emessa-lordinanza-per-i-divieti-di-balneazione-nel-litorale-di-ragusa?type=2",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "san-leone",
+    "description": "San Leone è il principale litorale di Agrigento, con spiaggia, lungomare e servizi. La scheda collega subito il mare alla città e alla Valle dei Templi, senza ridurre la località a un solo stabilimento.",
+    "orientation_degrees": 210,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "litorale",
+      "sabbia",
+      "lungomare",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "stabilimenti",
+      "ristorazione",
+      "parcheggi"
+    ],
+    "warnings": [
+      "Il litorale comprende più tratti e può essere esposto; verificare accesso e divieti locali."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — lungomare, stabilimenti, ristorazione, parcheggi; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile da lungomare e strade urbane; scegliere il tratto libero o attrezzato.",
+      "Ambiente — Litorale balneare di Agrigento vicino alla Valle dei Templi."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.2599&mlon=13.5885#map=16/37.2599/13.5885",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "scala-dei-turchi",
+    "description": "La Scala dei Turchi è una falesia di marna bianca sopra il mare di Realmonte, con spiagge ai lati del promontorio. La pagina chiarisce che il paesaggio e la balneazione non coincidono con l'accesso alla falesia.",
+    "orientation_degrees": 205,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "falesia",
+      "panorama",
+      "sabbia",
+      "geologia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "ristorazione stagionale"
+    ],
+    "warnings": [
+      "La marna è fragile e soggetta a divieti di accesso; rispettare sempre le delimitazioni."
+    ],
+    "facts": [
+      "Suolo — Sabbia e marna bianca",
+      "Fondale — Sabbioso e basso nei tratti di spiaggia",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, ristorazione stagionale; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da percorsi e scale; verificare i divieti sulla falesia e il punto di balneazione.",
+      "Ambiente — Falesia bianca di Realmonte affacciata su un tratto sabbioso del Mediterraneo."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.288&mlon=13.4777#map=16/37.288/13.4777",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "capo-rossello",
+    "description": "Capo Rossello è un promontorio di Realmonte tra falesie, rocce e piccole baie. La scheda racconta il mare della costa e segnala con chiarezza che l'accesso può richiedere un percorso.",
+    "orientation_degrees": 210,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "scogliera",
+      "caletta",
+      "panorama",
+      "acqua trasparente"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "sentieri costieri"
+    ],
+    "warnings": [
+      "Dislivelli e rocce richiedono attenzione; verificare il sentiero e l'accesso pubblico."
+    ],
+    "facts": [
+      "Suolo — Roccia, ghiaia e sabbia",
+      "Fondale — Roccioso e sabbioso nelle piccole baie",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, sentieri costieri; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da viabilità e percorsi costieri; non tutti i punti sono attrezzati.",
+      "Ambiente — Promontorio costiero di Realmonte tra falesie, calette e mare aperto."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.2944&mlon=13.4562#map=16/37.2944/13.4562",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "giallonardo",
+    "description": "Giallonardo è una baia della costa di Siculiana tra sabbia, roccia e paesaggio naturale. Il contenuto anticipa l'accesso meno urbano e aiuta a distinguere la spiaggia dai tratti protetti vicini.",
+    "orientation_degrees": 220,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "baia",
+      "natura",
+      "sabbia",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "sentieri"
+    ],
+    "warnings": [
+      "Il tratto naturale ha servizi limitati; verificare il percorso fino alla spiaggia."
+    ],
+    "facts": [
+      "Suolo — Sabbia e roccia",
+      "Fondale — Sabbioso e digradante nella baia",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, sentieri; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da strade locali e percorsi; portare il necessario e verificare il varco.",
+      "Ambiente — Baia della costa di Siculiana tra Giallonardo, Pergole e Torre Salsa."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.319&mlon=13.4162#map=16/37.319/13.4162",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "siculiana-marina",
+    "description": "Siculiana Marina offre un litorale aperto tra spiaggia e promontori della costa agrigentina. La pagina mantiene il focus sul mare e indica quali aspetti pratici devono essere controllati prima della visita.",
+    "orientation_degrees": 220,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "litorale",
+      "sabbia",
+      "panorama",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi",
+      "ristorazione stagionale",
+      "accessi locali"
+    ],
+    "warnings": [
+      "Verificare il tratto di arenile pubblico e le condizioni del mare prima dell'ingresso."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ciottoli",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi, ristorazione stagionale, accessi locali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità locale; parcheggi e servizi possono essere stagionali.",
+      "Ambiente — Litorale di Siculiana tra spiaggia, promontori e la Riserva di Torre Salsa."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.3417&mlon=13.3812#map=16/37.3417/13.3812",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "eraclea-minoa",
+    "description": "Eraclea Minoa è una lunga spiaggia tra pineta, dune e l'area archeologica, con un paesaggio costiero ampio e poco urbano. Il contenuto mostra cosa aspettarsi e lascia da verificare i servizi stagionali.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "pineta",
+      "sabbia",
+      "natura",
+      "archeologia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "sentieri",
+      "ristorazione stagionale"
+    ],
+    "warnings": [
+      "La spiaggia è lunga e naturale; verificare accessi, ombra e servizi effettivi."
+    ],
+    "facts": [
+      "Suolo — Sabbia chiara",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, sentieri, ristorazione stagionale; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da strade e percorsi nella pineta; verificare il punto di arrivo all'arenile.",
+      "Ambiente — Lunga spiaggia sotto la pineta e l'area archeologica di Eraclea Minoa."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.3905&mlon=13.278#map=16/37.3905/13.278",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "marina-di-palma",
+    "description": "Marina di Palma raccoglie baie e tratti rocciosi della costa di Palma di Montechiaro, con accessi non tutti uguali. La scheda fa da anteprima geografica e non attribuisce un unico servizio all'intero litorale.",
+    "orientation_degrees": 205,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "scogliera",
+      "panorama"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi in zona",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "La costa comprende più calette e accessi; verificare il punto pubblico scelto."
+    ],
+    "facts": [
+      "Suolo — Sabbia e roccia",
+      "Fondale — Sabbioso e digradante nelle baie",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile o moderato secondo il tratto; verificare viabilità e percorso fino alla spiaggia.",
+      "Ambiente — Costa di Palma di Montechiaro tra piccole baie, roccia e mare aperto."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.1716&mlon=13.7187#map=16/37.1716/13.7187",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "mollarella",
+    "description": "Mollarella è una baia del litorale di Licata tra arenile e promontori rocciosi. La scheda è una candidatura territoriale: prima della pubblicazione va associata a una foto e a un accesso esatto del tratto.",
+    "orientation_degrees": 205,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "scogliera",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi",
+      "servizi stagionali",
+      "ristorazione in zona"
+    ],
+    "warnings": [
+      "Verificare il singolo accesso e l'eventuale presenza di concessioni o divieti."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata e roccia",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi, servizi stagionali, ristorazione in zona; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità costiera; parcheggi e servizi vanno confermati in stagione.",
+      "Ambiente — Baia del litorale di Licata tra arenile, promontori e calette."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.106&mlon=13.885#map=16/37.106/13.885",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "cala-paradiso-licata",
+    "description": "Cala Paradiso è una caletta rocciosa del litorale di Licata, con piccole insenature e acqua leggibile quando il mare è riparato. Il contenuto anticipa il carattere naturale e l'accesso meno immediato.",
+    "orientation_degrees": 210,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "caletta",
+      "scogliera",
+      "acqua trasparente",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "sentieri costieri"
+    ],
+    "warnings": [
+      "Accessi rocciosi e dislivelli: usare calzature adatte e verificare il percorso."
+    ],
+    "facts": [
+      "Suolo — Roccia e ghiaia",
+      "Fondale — Roccioso e trasparente nelle insenature",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, sentieri costieri; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da sentieri e tratti rocciosi; non è garantita la presenza di servizi.",
+      "Ambiente — Caletta rocciosa del litorale di Licata tra falesie basse e mare aperto."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.1107&mlon=13.8641#map=16/37.1107/13.8641",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Visit Sicily",
+        "source_type": "regional-tourism",
+        "source_url": "https://www.visitsicily.info/spiagge-bandiera-blu/",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "manfria",
+    "description": "Manfria è un tratto aperto del litorale di Gela, riconoscibile per la torre costiera e la spiaggia. La scheda collega il mare al punto paesaggistico senza presumere che ogni accesso abbia gli stessi servizi.",
+    "orientation_degrees": 190,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "torre",
+      "sabbia",
+      "panorama",
+      "litorale"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggi in zona",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "Il litorale è ampio e comprende più accessi; verificare il tratto pubblico scelto."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile dalla viabilità locale; servizi e parcheggi possono essere stagionali.",
+      "Ambiente — Litorale di Gela riconoscibile per la Torre di Manfria e la costa aperta."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.098&mlon=14.1407#map=16/37.098/14.1407",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://www.comune.butera.cl.it/home/vivere/luoghi/Luogo-3.html",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "macchitella",
+    "description": "Macchitella è un tratto urbano della costa di Gela con spiaggia, lungomare e accessi distribuiti. La candidatura resta draft finché non saranno confermate foto e corrispondenza del singolo punto.",
+    "orientation_degrees": 185,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "litorale",
+      "sabbia",
+      "lungomare",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lungomare",
+      "parcheggi",
+      "servizi stagionali"
+    ],
+    "warnings": [
+      "La costa urbana comprende più tratti e accessi; verificare il punto di balneazione."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — lungomare, parcheggi, servizi stagionali; disponibilità da verificare in stagione",
+      "Accesso — Accesso facile da strade e lungomare; verificare arenile libero, parcheggi e servizi.",
+      "Ambiente — Litorale urbano di Gela sul Golfo omonimo, tra lungomare e spiaggia."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.0758&mlon=14.2101#map=16/37.0758/14.2101",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://www.comune.butera.cl.it/home/vivere/luoghi/Luogo-3.html",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "falconara-butera",
+    "description": "Falconara è una baia della costa di Butera dominata dal castello e affacciata sul Golfo di Gela. Il contenuto rende leggibile il paesaggio e mantiene prudente la descrizione degli accessi.",
+    "orientation_degrees": 190,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "castello",
+      "baia",
+      "sabbia",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "accessi locali"
+    ],
+    "warnings": [
+      "Promontorio, spiaggia e accessi possono appartenere a tratti diversi della costa di Butera."
+    ],
+    "facts": [
+      "Suolo — Sabbia e ghiaia",
+      "Fondale — Misto e digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, accessi locali; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato dalla viabilità costiera; verificare percorso e disponibilità del tratto pubblico.",
+      "Ambiente — Baia di Butera sotto il Castello di Falconara, sul Golfo di Gela."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.1079&mlon=14.0412#map=16/37.1079/14.0412",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://www.comune.butera.cl.it/home/vivere/luoghi/Luogo-3.html",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "desusino",
+    "description": "Desusino è un tratto naturale della costa di Butera, tra spiaggia e dune basse sul Golfo di Gela. La scheda è pronta per la verifica territoriale, ma non va pubblicata senza foto e accesso puntuali.",
+    "orientation_degrees": 190,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "grecale"
+    ],
+    "tags": [
+      "natura",
+      "sabbia",
+      "litorale",
+      "panorama"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggi in zona",
+      "accessi locali"
+    ],
+    "warnings": [
+      "Tratto naturale con servizi limitati; verificare accesso e condizioni della strada."
+    ],
+    "facts": [
+      "Suolo — Sabbia e dune basse",
+      "Fondale — Sabbioso e digradante",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — parcheggi in zona, accessi locali; disponibilità da verificare in stagione",
+      "Accesso — Accesso moderato da strade locali; verificare la praticabilità e il punto effettivo di arenile.",
+      "Ambiente — Costa naturale di Butera tra spiaggia, dune basse e il Golfo di Gela."
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.1094&mlon=14.0798#map=16/37.1094/14.0798",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://www.comune.butera.cl.it/home/vivere/luoghi/Luogo-3.html",
+        "role": "access"
+      }
+    ]
   }
 ]

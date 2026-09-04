@@ -14,8 +14,8 @@ describe("Sicilian master content", () => {
 
     expect(candidateResult.issues).toEqual([]);
     expect(contentResult.issues).toEqual([]);
-    expect(contentResult.records).toHaveLength(80);
-    expect(new Set(contentResult.records.map((record) => record.slug)).size).toBe(80);
+    expect(contentResult.records).toHaveLength(134);
+    expect(new Set(contentResult.records.map((record) => record.slug)).size).toBe(134);
     expect(contentResult.records.map((record) => record.slug)).toEqual(
       candidateResult.records.map((record) => record.slug),
     );
@@ -37,7 +37,7 @@ describe("Sicilian master content", () => {
     const result = evaluateSicilianMasterCatalog(candidates, content);
 
     expect(result.eligible).toEqual([]);
-    expect(result.blocked).toHaveLength(80);
+    expect(result.blocked).toHaveLength(134);
     expect(result.blocked.every(({ reasons }) => reasons.includes("candidate_not_verified"))).toBe(true);
   });
 });
