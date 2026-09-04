@@ -1070,5 +1070,533 @@
     "image_credit": "Derbrauni",
     "image_license": "CC BY 4.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_San_Marco_di_Calatabiano_06.jpg"
+  },
+  {
+    "slug": "capo-peloro-messina",
+    "image_path": "/images/beaches/capo-peloro-messina.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Capo Peloro (Messina).",
+    "image_credit": "Xxlstier",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Capo_Peloro_(Messina)_02.jpg"
+  },
+  {
+    "slug": "santa-teresa-di-riva",
+    "image_path": "/images/beaches/santa-teresa-di-riva.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Santa Teresa di Riva (Santa Teresa di Riva).",
+    "image_credit": "Aynos Siderale",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Small_boat_to_the_dusk_on_beach_of_Santa_Teresa_di_Riva.JPG"
+  },
+  {
+    "slug": "piscina-di-venere-milazzo",
+    "image_path": "/images/beaches/piscina-di-venere-milazzo.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Piscina di Venere (Milazzo).",
+    "image_credit": "Effems",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Capo_Milazzo_23_07_2020_29.jpg"
+  },
+  {
+    "slug": "canneto-lipari",
+    "image_path": "/images/beaches/canneto-lipari.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Canneto (Lipari).",
+    "image_credit": "kuhnmi",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Beach_Taxi_(26488963435).jpg"
+  },
+  {
+    "slug": "sabbie-nere-vulcano",
+    "image_path": "/images/beaches/sabbie-nere-vulcano.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Sabbie Nere (Lipari).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Sabbie_nere_01.jpg"
+  },
+  {
+    "slug": "pollara-salina",
+    "image_path": "/images/beaches/pollara-salina.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Pollara (Malfa).",
+    "image_credit": "Bernard Gagnon",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Coasts_of_Salina.jpg"
+  },
+  {
+    "slug": "san-marco-calatabiano",
+    "image_path": "/images/beaches/san-marco-calatabiano.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di San Marco (Calatabiano).",
+    "image_credit": "Derbrauni",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_San_Marco_di_Calatabiano_01.jpg"
+  },
+  {
+    "slug": "marina-di-cottone",
+    "image_path": "/images/beaches/marina-di-cottone.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Marina di Cottone (Fiumefreddo di Sicilia).",
+    "image_credit": "Emanuele Rosso from Bologna, Italy",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Fiumefreddo.jpg"
+  },
+  {
+    "slug": "torre-archirafi",
+    "image_path": "/images/beaches/torre-archirafi.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Torre Archirafi (Riposto).",
+    "image_credit": "User:Emme17",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lungomare_Riposto_2.jpg"
+  },
+  {
+    "slug": "stazzo-acireale",
+    "image_path": "/images/beaches/stazzo-acireale.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Stazzo (Acireale).",
+    "image_credit": "gnuckx",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Stazzo-Catania-Sicilia-Italy_(3617362157).jpg"
+  },
+  {
+    "slug": "pozzillo-acireale",
+    "image_path": "/images/beaches/pozzillo-acireale.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Pozzillo (Acireale).",
+    "image_credit": "WikiCMEtnensis",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Pozzillo_visto_dal_mare.jpg"
+  },
+  {
+    "slug": "praiola-giarre",
+    "image_path": "/images/beaches/praiola-giarre.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Praiola (Giarre).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_della_Praiola.jpg"
+  },
+  {
+    "slug": "foce-simeto",
+    "image_path": "/images/beaches/foce-simeto.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Oasi Foce del Simeto (Catania).",
+    "image_credit": "SDC20",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Oasi_del_Simeto_sdc_10.jpg"
+  },
+  {
+    "slug": "faraglioni-dei-ciclopi",
+    "image_path": "/images/beaches/faraglioni-dei-ciclopi.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Faraglioni dei Ciclopi (Aci Castello).",
+    "image_credit": "Dispe",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_e_faraglioni_di_Aci_Trezza_(CT)_Italy.JPG"
+  },
+  {
+    "slug": "primosole-catania",
+    "image_path": "/images/beaches/primosole-catania.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Primosole (Catania).",
+    "image_credit": "Derbrauni",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Libera_3%2C_Catania_(02).jpg"
+  },
+  {
+    "slug": "villaggio-aurora-catania",
+    "image_path": "/images/beaches/villaggio-aurora-catania.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di San Francesco la Rena (Catania).",
+    "image_credit": "Gabriele Falco",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Playa_(251757351).jpeg"
+  },
+  {
+    "slug": "lido-azzurro-catania",
+    "image_path": "/images/beaches/lido-azzurro-catania.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Lido Azzurro (Catania).",
+    "image_credit": "andrea",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Plaia_catania_(6315200434).jpg"
+  },
+  {
+    "slug": "marina-di-avola",
+    "image_path": "/images/beaches/marina-di-avola.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Marina di Avola (Avola).",
+    "image_credit": "gnuckx",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Avola-Syracuse-Sicilia-Italy_-_Creative_Commons_by_gnuckx_(3858126802).jpg"
+  },
+  {
+    "slug": "pantanello-avola",
+    "image_path": "/images/beaches/pantanello-avola.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Pantanello (Avola).",
+    "image_credit": "gnuckx",
+    "image_license": "CC0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:License_Free_Photo_-_Creative_Commons_by_gnuckx_(11640714145).jpg"
+  },
+  {
+    "slug": "gallina-avola",
+    "image_path": "/images/beaches/gallina-avola.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Gallina (Avola).",
+    "image_credit": "MasDom",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sizilien_(Gallina%2C_Syracuse).jpg"
+  },
+  {
+    "slug": "calabernardo-noto",
+    "image_path": "/images/beaches/calabernardo-noto.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Calabernardo (Noto).",
+    "image_credit": "Civis Ferdinandeo",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Calabernardo.JPG"
+  },
+  {
+    "slug": "morghella-pachino",
+    "image_path": "/images/beaches/morghella-pachino.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Morghella (Pachino).",
+    "image_credit": "trolvag",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Portopalo_di_Capo_Passero_SR%2C_Sicily%2C_Italy_-_panoramio.jpg"
+  },
+  {
+    "slug": "marzamemi-spinazza",
+    "image_path": "/images/beaches/marzamemi-spinazza.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia della Spinazza (Pachino).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_a_nord_di_Marzamemi.jpg"
+  },
+  {
+    "slug": "punta-delle-formiche",
+    "image_path": "/images/beaches/punta-delle-formiche.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Punta delle Formiche (Pachino).",
+    "image_credit": "Einaz80",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:The_sea_at_Portopalo_di_Capo_Passero.jpg"
+  },
+  {
+    "slug": "costa-dell-ambra",
+    "image_path": "/images/beaches/costa-dell-ambra.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Costa dell'Ambra (Portopalo di Capo Passero).",
+    "image_credit": "www.gironavigando.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Puntorio%2C_96018_Pachino_SR%2C_Italy_-_panoramio.jpg"
+  },
+  {
+    "slug": "terrauzza-siracusa",
+    "image_path": "/images/beaches/terrauzza-siracusa.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Terrauzza (Siracusa).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_sbocco_32.jpg"
+  },
+  {
+    "slug": "faro-santa-croce-augusta",
+    "image_path": "/images/beaches/faro-santa-croce-augusta.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Faro Santa Croce (Augusta).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_nord_da_Faro_Santa_Croce_2.jpg"
+  },
+  {
+    "slug": "scoglitti-lanterna",
+    "image_path": "/images/beaches/scoglitti-lanterna.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia della Lanterna (Vittoria).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Scoglitti.jpg"
+  },
+  {
+    "slug": "kammarana-scoglitti",
+    "image_path": "/images/beaches/kammarana-scoglitti.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Kammarana (Vittoria).",
+    "image_credit": "Andrea Comisi",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Museo_archeologico_regionale_e_spiaggia_di_Kamarina.JPG"
+  },
+  {
+    "slug": "punta-cirica-ispica",
+    "image_path": "/images/beaches/punta-cirica-ispica.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Punta Cirica (Ispica).",
+    "image_credit": "Gmelfi",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:SpiaggiaFaraglioniCiriga.jpg"
+  },
+  {
+    "slug": "casuzze",
+    "image_path": "/images/beaches/casuzze.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Casuzze (Santa Croce Camerina).",
+    "image_credit": "giomodica",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:IL_mare_dalla_casa_di_Montalbano_-_panoramio.jpg"
+  },
+  {
+    "slug": "foce-fiume-irminio",
+    "image_path": "/images/beaches/foce-fiume-irminio.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Riserva Foce Fiume Irminio (Scicli).",
+    "image_credit": "Auregann",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Riserva_naturale_Macchia_Foresta_del_Fiume_Irminio_-_febbraio_2026_-_WLE2026_01.jpg"
+  },
+  {
+    "slug": "playa-grande-scicli",
+    "image_path": "/images/beaches/playa-grande-scicli.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Playa Grande (Scicli).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Foce_del_fiume_Irminio.jpg"
+  },
+  {
+    "slug": "spinasanta-donnalucata",
+    "image_path": "/images/beaches/spinasanta-donnalucata.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Spinasanta (Scicli).",
+    "image_credit": "Emanuela Meme Giudic…",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Donna_Lucata_-_panoramio_(9).jpg"
+  },
+  {
+    "slug": "costa-di-carro-scicli",
+    "image_path": "/images/beaches/costa-di-carro-scicli.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Costa di Carro (Scicli).",
+    "image_credit": "Eugenio Bonifacio",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cava_d'aliga_-_panoramio.jpg"
+  },
+  {
+    "slug": "pisciotto-sampieri",
+    "image_path": "/images/beaches/pisciotto-sampieri.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia del Pisciotto (Scicli).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Fornace_Penna.jpg"
+  },
+  {
+    "slug": "marina-di-modica",
+    "image_path": "/images/beaches/marina-di-modica.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Marina di Modica (Modica).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_di_Marina_di_Modica_al_tramonto.jpg"
+  },
+  {
+    "slug": "pietrenere-pozzallo",
+    "image_path": "/images/beaches/pietrenere-pozzallo.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Pietrenere (Pozzallo).",
+    "image_credit": "Beric Dondarrion",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Pozzallo-Beach-2020.jpg"
+  },
+  {
+    "slug": "santa-maria-del-focallo",
+    "image_path": "/images/beaches/santa-maria-del-focallo.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Santa Maria del Focallo (Ispica).",
+    "image_credit": "Codas",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Tramonto_alla_spiaggia_di_Santa_Maria_del_Focallo.jpg"
+  },
+  {
+    "slug": "porto-palo-menfi",
+    "image_path": "/images/beaches/porto-palo-menfi.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Porto Palo di Menfi (Menfi).",
+    "image_credit": "Trolvag",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Porto_Palo_beach%2C_Menfi.jpg"
+  },
+  {
+    "slug": "le-solette-menfi",
+    "image_path": "/images/beaches/le-solette-menfi.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Le Solette (Menfi).",
+    "image_credit": "trolvag",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Cipollazzo%2C_Menfi_AG%2C_Sicily%2C_Italy_-_panoramio.jpg"
+  },
+  {
+    "slug": "san-marco-sciacca",
+    "image_path": "/images/beaches/san-marco-sciacca.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di San Marco (Sciacca).",
+    "image_credit": "isabella from Catania",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_macauda_(1799761084).jpg"
+  },
+  {
+    "slug": "timpi-russi-sciacca",
+    "image_path": "/images/beaches/timpi-russi-sciacca.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Timpi Russi (Sciacca).",
+    "image_credit": "Tiberio Frascari",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:296Sciacca_(Ag)_spiaggia_di_Timpi_russi-_Sicily.jpg"
+  },
+  {
+    "slug": "sovareto-sciacca",
+    "image_path": "/images/beaches/sovareto-sciacca.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Sovareto (Sciacca).",
+    "image_credit": "Salvatore Migliari",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sciacca%2C_Spiaggia_Sciaccamare_-_panoramio.jpg"
+  },
+  {
+    "slug": "seccagrande-ribera",
+    "image_path": "/images/beaches/seccagrande-ribera.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Seccagrande (Ribera).",
+    "image_credit": "www.gironavigando.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Seccagrande_-_La_curva_-_panoramio.jpg"
+  },
+  {
+    "slug": "bovo-marina-montallegro",
+    "image_path": "/images/beaches/bovo-marina-montallegro.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Bovo Marina (Montallegro).",
+    "image_credit": "José Luiz",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Platani_delta_seen_from_Eraclea_Minoa_-_Italy_2015.JPG"
+  },
+  {
+    "slug": "le-pergole-realmonte",
+    "image_path": "/images/beaches/le-pergole-realmonte.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Le Pergole (Realmonte).",
+    "image_credit": "www.gironavigando.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Le_pergole_-_panoramio.jpg"
+  },
+  {
+    "slug": "lido-azzurro-porto-empedocle",
+    "image_path": "/images/beaches/lido-azzurro-porto-empedocle.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Lido Azzurro (Porto Empedocle).",
+    "image_credit": "Unknown authorUnknown author",
+    "image_license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Porto_Empedocle._Spiaggia_Lido_e_Stabilimento_balneare.jpg"
+  },
+  {
+    "slug": "punta-bianca-agrigento",
+    "image_path": "/images/beaches/punta-bianca-agrigento.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Punta Bianca (Agrigento).",
+    "image_credit": "www.gironavigando.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Punta_Bianca_-_panoramio.jpg"
+  },
+  {
+    "slug": "spiaggia-dei-conigli-lampedusa",
+    "image_path": "/images/beaches/spiaggia-dei-conigli-lampedusa.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia dei Conigli (Lampedusa e Linosa).",
+    "image_credit": "Figiu",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_Isola_dei_Coniglio_Lampedusa.JPG"
+  },
+  {
+    "slug": "marina-di-butera",
+    "image_path": "/images/beaches/marina-di-butera.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Marina di Butera (Butera).",
+    "image_credit": "~ federica f. from Borgo Maggiore, San Marino",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Marina_di_Butera_-_Sicily.jpg"
+  },
+  {
+    "slug": "tenutella-butera",
+    "image_path": "/images/beaches/tenutella-butera.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia Tenutella (Butera).",
+    "image_credit": "Jos Dielis",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Bay_(9523638480).jpg"
+  },
+  {
+    "slug": "passo-marina-butera",
+    "image_path": "/images/beaches/passo-marina-butera.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Passo Marina (Butera).",
+    "image_credit": "Jos Dielis",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Quiet_(9520854261).jpg"
+  },
+  {
+    "slug": "punta-due-rocche-butera",
+    "image_path": "/images/beaches/punta-due-rocche-butera.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Punta Due Rocche (Butera).",
+    "image_credit": "Jos Dielis",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Due_Rocche_(9520852551).jpg"
+  },
+  {
+    "slug": "cava-d-oro-butera",
+    "image_path": "/images/beaches/cava-d-oro-butera.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Cava d'Oro (Butera).",
+    "image_credit": "Andrea Rapisarda from Catania, Italy",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Mare_di_Sicilia.jpg"
+  },
+  {
+    "slug": "lungomare-federico-ii-gela",
+    "image_path": "/images/beaches/lungomare-federico-ii-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Lungomare Federico II (Gela).",
+    "image_credit": "Codas",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lungomare_Federico_II_di_Svevia%2C_Gela.jpg"
+  },
+  {
+    "slug": "montelungo-gela",
+    "image_path": "/images/beaches/montelungo-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Montelungo (Gela).",
+    "image_credit": "Mjrko Gelous",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Montelungo_Gela.jpg"
+  },
+  {
+    "slug": "roccazzelle-gela",
+    "image_path": "/images/beaches/roccazzelle-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Roccazzelle (Gela).",
+    "image_credit": "Alessandro451",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Gela_tramonto.JPG"
+  },
+  {
+    "slug": "femmina-morta-gela",
+    "image_path": "/images/beaches/femmina-morta-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Femmina Morta (Gela).",
+    "image_credit": "Alessandro451",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Gela_Manfria2008.JPG"
+  },
+  {
+    "slug": "piana-marina-gela",
+    "image_path": "/images/beaches/piana-marina-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Piana Marina (Gela).",
+    "image_credit": "www.gironavigando.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Piana_Marina_-_panoramio.jpg"
+  },
+  {
+    "slug": "foce-biviere-gela",
+    "image_path": "/images/beaches/foce-biviere-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia Foce Biviere (Gela).",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Riserva_biviere_di_Gela_01.jpg"
+  },
+  {
+    "slug": "spinasanta-gela",
+    "image_path": "/images/beaches/spinasanta-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spinasanta (Gela).",
+    "image_credit": "Wikimedia Commons",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Tratto_costa_gelese.jpg"
+  },
+  {
+    "slug": "san-nicola-gela",
+    "image_path": "/images/beaches/san-nicola-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di San Nicola (Gela).",
+    "image_credit": "AbelDionis",
+    "image_license": "CC0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lungomare_di_Gela.jpg"
+  },
+  {
+    "slug": "lido-la-conchiglia-gela",
+    "image_path": "/images/beaches/lido-la-conchiglia-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Lido La Conchiglia (Gela).",
+    "image_credit": "Eannatum",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:La_conchiglia.jpg"
+  },
+  {
+    "slug": "contrada-rizzuto-gela",
+    "image_path": "/images/beaches/contrada-rizzuto-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Contrada Rizzuto (Gela).",
+    "image_credit": "Spicegirls",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Golfo_di_gela.JPG"
+  },
+  {
+    "slug": "bulala-gela",
+    "image_path": "/images/beaches/bulala-gela.jpg",
+    "image_alt": "Scorcio panoramico e acque costiere di Spiaggia di Bulala (Gela).",
+    "image_credit": "Mjrko Gelous",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Dune_a_Gela.jpg"
   }
 ]

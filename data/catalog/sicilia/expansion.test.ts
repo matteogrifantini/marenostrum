@@ -61,6 +61,72 @@ const EXPANSION_SLUGS = [
   "macchitella",
   "falconara-butera",
   "desusino",
+  "capo-peloro-messina",
+  "santa-teresa-di-riva",
+  "piscina-di-venere-milazzo",
+  "canneto-lipari",
+  "sabbie-nere-vulcano",
+  "pollara-salina",
+  "san-marco-calatabiano",
+  "marina-di-cottone",
+  "torre-archirafi",
+  "stazzo-acireale",
+  "pozzillo-acireale",
+  "praiola-giarre",
+  "foce-simeto",
+  "faraglioni-dei-ciclopi",
+  "primosole-catania",
+  "villaggio-aurora-catania",
+  "lido-azzurro-catania",
+  "marina-di-avola",
+  "pantanello-avola",
+  "gallina-avola",
+  "calabernardo-noto",
+  "morghella-pachino",
+  "marzamemi-spinazza",
+  "punta-delle-formiche",
+  "costa-dell-ambra",
+  "terrauzza-siracusa",
+  "faro-santa-croce-augusta",
+  "scoglitti-lanterna",
+  "kammarana-scoglitti",
+  "punta-cirica-ispica",
+  "casuzze",
+  "foce-fiume-irminio",
+  "playa-grande-scicli",
+  "spinasanta-donnalucata",
+  "costa-di-carro-scicli",
+  "pisciotto-sampieri",
+  "marina-di-modica",
+  "pietrenere-pozzallo",
+  "santa-maria-del-focallo",
+  "porto-palo-menfi",
+  "le-solette-menfi",
+  "san-marco-sciacca",
+  "timpi-russi-sciacca",
+  "sovareto-sciacca",
+  "seccagrande-ribera",
+  "bovo-marina-montallegro",
+  "le-pergole-realmonte",
+  "lido-azzurro-porto-empedocle",
+  "punta-bianca-agrigento",
+  "spiaggia-dei-conigli-lampedusa",
+  "marina-di-butera",
+  "tenutella-butera",
+  "passo-marina-butera",
+  "punta-due-rocche-butera",
+  "cava-d-oro-butera",
+  "lungomare-federico-ii-gela",
+  "montelungo-gela",
+  "roccazzelle-gela",
+  "femmina-morta-gela",
+  "piana-marina-gela",
+  "foce-biviere-gela",
+  "spinasanta-gela",
+  "san-nicola-gela",
+  "lido-la-conchiglia-gela",
+  "contrada-rizzuto-gela",
+  "bulala-gela"
 ] as const;
 
 const EXPANSION_IMAGE_SLUGS = EXPANSION_SLUGS;
@@ -70,7 +136,7 @@ const PENDING_MEDIA_SLUGS = EXPANSION_SLUGS.filter(
 );
 
 describe("Sicilian provincial expansion", () => {
-  it("keeps all 54 approved slugs in the candidate and content manifests", () => {
+  it("keeps all 120 approved slugs in the candidate and content manifests", () => {
     const candidateResult = validateSicilianCatalog(candidates);
     const contentResult = validateSicilianMasterCatalog(content);
     const imageResult = validateImageCatalog(imageAssets, new Set(candidates.map((row) => row.slug)));
@@ -80,7 +146,7 @@ describe("Sicilian provincial expansion", () => {
     expect(candidateResult.issues).toEqual([]);
     expect(contentResult.issues).toEqual([]);
     expect(imageResult.issues).toEqual([]);
-    expect(EXPANSION_SLUGS).toHaveLength(54);
+    expect(EXPANSION_SLUGS).toHaveLength(120);
     expect(EXPANSION_SLUGS.every((slug) => candidateSlugs.has(slug))).toBe(true);
     expect(EXPANSION_SLUGS.every((slug) => contentSlugs.has(slug))).toBe(true);
   });
@@ -92,7 +158,7 @@ describe("Sicilian provincial expansion", () => {
 
     expect(expansionAssets).toHaveLength(EXPANSION_IMAGE_SLUGS.length);
     expect(EXPANSION_IMAGE_SLUGS.every((slug) => imageSlugs.has(slug))).toBe(true);
-    expect(PENDING_MEDIA_SLUGS.every((slug) => !imageSlugs.has(slug))).toBe(true);
+    expect(PENDING_MEDIA_SLUGS).toHaveLength(0);
     expect(new Set(paths).size).toBe(EXPANSION_IMAGE_SLUGS.length);
     expect(expansionAssets.every((asset) => asset.image_path.startsWith("/images/beaches/"))).toBe(true);
     expect(expansionAssets.every((asset) => asset.source_url.includes("commons.wikimedia.org/wiki/File:"))).toBe(true);
@@ -102,7 +168,7 @@ describe("Sicilian provincial expansion", () => {
     const recordsBySlug = new Map(candidates.map((row) => [row.slug, row]));
 
     expect(PENDING_MEDIA_SLUGS).toHaveLength(0);
-    expect(EXPANSION_IMAGE_SLUGS).toHaveLength(54);
+    expect(EXPANSION_IMAGE_SLUGS).toHaveLength(120);
     expect(EXPANSION_IMAGE_SLUGS.every((slug) => recordsBySlug.get(slug)?.notes?.includes("media-verified"))).toBe(true);
   });
 

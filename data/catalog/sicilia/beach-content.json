@@ -6219,5 +6219,3656 @@
         "role": "access"
       }
     ]
+  },
+  {
+    "slug": "capo-peloro-messina",
+    "description": "Iconica punta dello Stretto di Messina dove si incontrano Tirreno e Ionio; sabbia chiara, mare blu cobalto e vista spettacolare sulla Calabria.",
+    "orientation_degrees": 45,
+    "orientation_label": "Nord-est",
+    "shelter": [
+      "ostro",
+      "mezzogiorno",
+      "libeccio",
+      "ponente"
+    ],
+    "tags": [
+      "stretto",
+      "panorama",
+      "sabbia",
+      "storia",
+      "correnti"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio",
+      "lidi attrezzati",
+      "bar e ristoranti",
+      "docce"
+    ],
+    "warnings": [
+      "Correnti di marea molto intense nello Stretto; prestare massima cautela a largo."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata mista a ghiaia fine",
+      "Fondale — Ghiaioso e profondo fin da riva, caratterizzato da correnti di marea",
+      "Esposizione — Nord-est, orientamento indicativo del tratto",
+      "Servizi — Tratti di spiaggia libera e lidi attrezzati stagionali",
+      "Accesso — Facile dal borgo di Torre Faro con aree pedonali e parcheggi dedicati",
+      "Ambiente — Punta nord-orientale della Sicilia tra Mar Tirreno e Ionio, con vista diretta sulla costa calabra"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.2678&mlon=15.6517#map=16/38.2678/15.6517",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Messina",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Messina",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "santa-teresa-di-riva",
+    "description": "Ampia spiaggia ionica della riviera peloritana premiata con la Bandiera Blu, ideale per nuotare in acque pulite e profonde.",
+    "orientation_degrees": 135,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "maestrale",
+      "tramontana",
+      "ponente"
+    ],
+    "tags": [
+      "bandiera-blu",
+      "lungomare",
+      "ciottoli",
+      "famiglie",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "lungomare pedonale",
+      "parcheggio",
+      "docce",
+      "accessibile"
+    ],
+    "warnings": [
+      "Fondale che digrada rapidamente a pochi metri dalla battigia."
+    ],
+    "facts": [
+      "Suolo — Sabbia mista a ciottoli levigati",
+      "Fondale — Misto ghiaia e ciottoli, rapidamente profondo e limpidissimo",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati, noleggio ombrelloni, bar e docce pubbliche lungo il lungomare",
+      "Accesso — Facile e diretto dal lungomare cittadino con rampe accessibili e parcheggi",
+      "Ambiente — Ampio litorale ionico insignito della Bandiera Blu, incorniciato dai monti Peloritani"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.9405&mlon=15.3642#map=16/37.9405/15.3642",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Santa Teresa di Riva",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Santa%20Teresa%20di%20Riva",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "piscina-di-venere-milazzo",
+    "description": "Laguna naturale racchiusa tra falesie e scogli basaltici sulla punta estrema di Capo Milazzo, un vero acquario a cielo aperto.",
+    "orientation_degrees": 315,
+    "orientation_label": "Nord-ovest",
+    "shelter": [
+      "scirocco",
+      "levante",
+      "ostro"
+    ],
+    "tags": [
+      "piscina-naturale",
+      "snorkeling",
+      "scogli",
+      "natura",
+      "riserva"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "nessuno"
+    ],
+    "warnings": [
+      "Percorso a piedi su sentiero e gradini di roccia; indossare scarpe adatte ed evitare con mare mosso."
+    ],
+    "facts": [
+      "Suolo — Roccia vulcanica, calcare e scogli levigati",
+      "Fondale — Roccioso e cristallino, ricco di flora e fauna marina",
+      "Esposizione — Nord-ovest, orientamento indicativo del tratto",
+      "Servizi — Nessun servizio presente, ambiente naturale protetto",
+      "Accesso — Moderato, raggiungibile tramite sentiero naturalistico scalinato da Capo Milazzo (circa 15-20 minuti)",
+      "Ambiente — Laguna naturale incastonata nella punta estrema del promontorio di Capo Milazzo, affacciata sulle Isole Eolie"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.269&mlon=15.2372#map=16/38.269/15.2372",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Milazzo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Milazzo",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "canneto-lipari",
+    "description": "La spiaggia più celebre e frequentata di Lipari, con sabbia scura, ciottoli e un mare limpido ideale per nuotate e sport acquatici.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "eolie",
+      "sabbia-scura",
+      "servizi",
+      "snorkeling",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "noleggio barche",
+      "bar",
+      "ristoranti",
+      "bus"
+    ],
+    "warnings": [
+      "Durante l'alta stagione il traffico nautico può essere frequente; nuotare nelle zone delimitate."
+    ],
+    "facts": [
+      "Suolo — Sabbia vulcanica scura e ciottoli fini",
+      "Fondale — Ghiaioso e sabbioso, subito profondo e trasparente",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Stabilimenti balneari, noleggio natanti, bar, ristoranti e noleggio ombrelloni",
+      "Accesso — Facile dal lungomare di Canneto con fermata bus e parcheggi nelle vicinanze",
+      "Ambiente — Baia suggestiva della costa orientale di Lipari con vista sull'isola di Panarea"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.4891&mlon=14.9602#map=16/38.4891/14.9602",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Lipari",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Lipari",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "sabbie-nere-vulcano",
+    "description": "Celebre litorale di sabbia finissima e nera d'origine vulcanica, affacciato su acque tranquille e cristalline con spettacolari tramonti.",
+    "orientation_degrees": 270,
+    "orientation_label": "Ovest",
+    "shelter": [
+      "levante",
+      "grecale",
+      "scirocco"
+    ],
+    "tags": [
+      "eolie",
+      "vulcanica",
+      "sabbia-nera",
+      "tramonto",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "noleggio ombrelloni",
+      "bar",
+      "noleggio pedalò"
+    ],
+    "warnings": [
+      "La sabbia nera nelle ore centrali estive diventa rovente; usare calzature da spiaggia."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine vulcanica nerissima",
+      "Fondale — Sabbioso, digradante dolcemente con fondale calmo e riparato",
+      "Esposizione — Ovest, orientamento indicativo del tratto",
+      "Servizi — Lidi balneari, noleggio pedalò, bar sul mare e servizi",
+      "Accesso — Facile dal porto di Ponente a Vulcano, a pochi minuti a piedi dal centro",
+      "Ambiente — Baia naturale di Ponente dominata dal cratere della Fossa di Vulcano"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.4172&mlon=14.9575#map=16/38.4172/14.9575",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Lipari",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Lipari",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "pollara-salina",
+    "description": "Anfiteatro naturale a picco sul mare nell'antico cratere di Salina; acque verde smeraldo e scogliere mozzafiato rese celebri dal cinema.",
+    "orientation_degrees": 315,
+    "orientation_label": "Nord-ovest",
+    "shelter": [
+      "scirocco",
+      "levante",
+      "ostro"
+    ],
+    "tags": [
+      "eolie",
+      "scogliere",
+      "snorkeling",
+      "natura",
+      "tramonto"
+    ],
+    "access_level": "difficile",
+    "services": [
+      "nessuno"
+    ],
+    "warnings": [
+      "Discesa e risalita faticose su gradini ripidi; possibile caduta massi sotto la falesia."
+    ],
+    "facts": [
+      "Suolo — Ciottoli vulcanici scuri e grandi massi levigati",
+      "Fondale — Roccioso e smeraldo con archi naturali e grotte sottomarine",
+      "Esposizione — Nord-ovest, orientamento indicativo del tratto",
+      "Servizi — Nessun servizio in spiaggia; portare acqua e rifornimenti",
+      "Accesso — Difficile, attraverso una scalinata ripida dal borgo di Pollara lungo il costone a strapiombo",
+      "Ambiente — Cratere vulcanico sprofondato a mezzaluna, celebre per il film Il Postino e per tramonti indimenticabili"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=38.5802&mlon=14.8016#map=16/38.5802/14.8016",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Malfa",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Malfa",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "san-marco-calatabiano",
+    "description": "Ampia spiaggia naturale tra la foce dell'Alcantara e Giardini Naxos, poco affollata e incorniciata da macchia mediterranea ed Etna.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "natura",
+      "tranquillità",
+      "ciottoli",
+      "fiume",
+      "etna"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "parcheggio",
+      "chiosco"
+    ],
+    "warnings": [
+      "Fondale che scende rapidamente; correnti fresche alla foce dell'Alcantara."
+    ],
+    "facts": [
+      "Suolo — Sabbia mista a ciottoli di fiume e ghiaia",
+      "Fondale — Ciottoloso e digradante, mare trasparente e rinfrescato dalle acque dell'Alcantara",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Tratti liberi e alcuni lidi attrezzati con parcheggio e punti ristoro",
+      "Accesso — Facile dalle strade costiere di Calatabiano con ampie aree di sosta sterrate",
+      "Ambiente — Litorale selvaggio e poco antropizzato alla foce del fiume Alcantara con vista sull'Etna e Taormina"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.8183&mlon=15.2608#map=16/37.8183/15.2608",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Calatabiano",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Calatabiano",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "marina-di-cottone",
+    "description": "Famosa spiaggia ionica Bandiera Blu di Fiumefreddo, rinomata per la purezza dell'acqua rinfrescata da risorgive sotterranee.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "bandiera-blu",
+      "eucalipti",
+      "ghiaia",
+      "famiglie",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "parcheggio",
+      "docce",
+      "bar",
+      "pineta"
+    ],
+    "warnings": [
+      "Temperatura dell'acqua sensibilmente più fredda per via delle sorgenti sottomarine."
+    ],
+    "facts": [
+      "Suolo — Sabbia vulcanica grossolana e ghiaietto fine",
+      "Fondale — Ghiaioso e profondo, caratterizzato da sorgenti d'acqua dolce fredda",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Stabilimenti balneari, docce, noleggio ombrelloni, bar e parcheggio custodito",
+      "Accesso — Facile da Fiumefreddo di Sicilia attraversando la fascia alberata di eucalipti",
+      "Ambiente — Litorale Bandiera Blu costeggiato da un boschetto di eucalipti e riserva naturale delle Fiumefreddo"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.795&mlon=15.244#map=16/37.795/15.244",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Fiumefreddo di Sicilia",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Fiumefreddo%20di%20Sicilia",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "torre-archirafi",
+    "description": "Scogliera e ciottoli lavici in un caratteristico borgo di pescatori alle pendici dell'Etna, con piattaforme solarium in estate.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "borgo",
+      "scogliera",
+      "pescatori",
+      "solarium",
+      "etna"
+    ],
+    "access_level": "facile",
+    "services": [
+      "solarium",
+      "bar e ristoranti",
+      "parcheggio",
+      "passeggiata"
+    ],
+    "warnings": [
+      "Accesso al mare da scogli o scalette; consigliate scarpette da scoglio."
+    ],
+    "facts": [
+      "Suolo — Ciottoli lavici neri e scogliera basaltica",
+      "Fondale — Roccioso e vulcanico, limpidissimo e profondo fin dalla riva",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Lidi su piattaforma in legno in stagione, bar e ristoranti sul lungomare",
+      "Accesso — Facile dal lungomare pedonale del borgo con scalette e pontili d'accesso",
+      "Ambiente — Borgo marinaro tradizionale con porticciolo e panorama aperto su Taormina e la Calabria"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.7125&mlon=15.212#map=16/37.7125/15.212",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Riposto",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Riposto",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "stazzo-acireale",
+    "description": "Suggestivo borgo marinaro della costa acese caratterizzato da calette di lava scura e mare cristallino ideale per tuffi e snorkeling.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "scogliera",
+      "snorkeling",
+      "borgo",
+      "tuffi",
+      "vulcanica"
+    ],
+    "access_level": "facile",
+    "services": [
+      "solarium",
+      "bar",
+      "ristoranti",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Fondale roccioso con scogli appuntiti; prestare attenzione con moto ondoso formato."
+    ],
+    "facts": [
+      "Suolo — Rocce laviche nere e piccole insenature basaltiche",
+      "Fondale — Roccioso, ricco di anfratti sommersi e fauna marina",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Piattaforme prendisole comunali e private, bar e trattorie di pesce nelle vicinanze",
+      "Accesso — Facile dalle discese e viuzze del borgo marinaro di Stazzo",
+      "Ambiente — Costa lavica scaturita dalle antiche eruzioni etnee sulla Riviera dei Ciclopi"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.6433&mlon=15.1762#map=16/37.6433/15.1762",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Acireale",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Acireale",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "pozzillo-acireale",
+    "description": "Incantevole borgo di pescatori incastonato tra giardini di limoni e scogliere laviche, con acque limpide e sorgive.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "borgo",
+      "scogliera",
+      "snorkeling",
+      "limoni",
+      "tranquillità"
+    ],
+    "access_level": "facile",
+    "services": [
+      "pontili",
+      "solarium",
+      "bar",
+      "ristoranti"
+    ],
+    "warnings": [
+      "Ingresso in acqua principalmente da scoglio o pontile; consigliate calzature protettive."
+    ],
+    "facts": [
+      "Suolo — Scogliera di basalto lavico e calette di ciottoli",
+      "Fondale — Roccioso, cristallino e profondo, con sorgenti minerali sotterranee",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Piattaforme estive, pontili, chioschi e locali tipici nel borgo",
+      "Accesso — Facile dal porticciolo e dalle strade del centro abitato di Pozzillo",
+      "Ambiente — Borgo costiero rinomato per le sue acque minerali e le scogliere a picco sullo Ionio"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.6582&mlon=15.1873#map=16/37.6582/15.1873",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Acireale",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Acireale",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "praiola-giarre",
+    "description": "Fascino selvaggio di una spiaggia vulcanica nera sovrastata da falesie d'argilla e agrumeti, con l'Etna che domina l'orizzonte.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "vulcanica",
+      "ciottoli-neri",
+      "falesia",
+      "natura",
+      "etna"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio",
+      "chiosco estivo"
+    ],
+    "warnings": [
+      "Fondale ripido a pochi passi dalla battigia e scarpata retrostante friabile."
+    ],
+    "facts": [
+      "Suolo — Ghiaia nera vulcanica e ciottoli scuri",
+      "Fondale — Ciottoloso e rapidamente profondo, acque limpide e aperte",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Prevalentemente spiaggia libera con chiosco e servizi essenziali estivi",
+      "Accesso — Moderato da stradina rurale tra i limoneti con discesa verso la riva",
+      "Ambiente — Costone argilloso sovrastato da coltivazioni di agrumi e vista maestosa sul cono dell'Etna"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.6835&mlon=15.2012#map=16/37.6835/15.2012",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Giarre",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Giarre",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "foce-simeto",
+    "description": "Spiaggia selvaggia e protetta inserita nella più importante riserva ornitologica della Sicilia orientale, tra canneti e dune intatte.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "riserva",
+      "dune",
+      "sabbia",
+      "birdwatching",
+      "selvaggia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "nessuno",
+      "centro visite riserva"
+    ],
+    "warnings": [
+      "Area naturale protetta; rispettare i sentieri e le dune evitando di disturbare la fauna nidificante."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata e cordoni dunali",
+      "Fondale — Sabbioso e poco profondo a riva, aperto alle correnti del golfo",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Spiaggia completamente libera e incontaminata senza servizi",
+      "Accesso — Moderato, attraverso i sentieri della Riserva Naturale Oasi del Simeto (circa 15 minuti a piedi)",
+      "Ambiente — Zona umida protetta di rilevanza internazionale per l'avifauna migratoria"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.4005&mlon=15.0865#map=16/37.4005/15.0865",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Catania",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "faraglioni-dei-ciclopi",
+    "description": "Uno degli scenari marini più celebri del Mediterraneo, legato al mito di Polifemo; scogliere laviche e mare turchese tutelato dall'AMP.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "area-marina-protetta",
+      "mitologia",
+      "faraglioni",
+      "snorkeling",
+      "diving"
+    ],
+    "access_level": "facile",
+    "services": [
+      "solarium",
+      "noleggio canoe",
+      "diving center",
+      "bar e ristoranti",
+      "escursioni barca"
+    ],
+    "warnings": [
+      "Fondale roccioso e profondo; regolamentazione AMP per pesca e navigazione."
+    ],
+    "facts": [
+      "Suolo — Scogliere laviche ciclopiche e piattaforme in legno",
+      "Fondale — Fondale vulcanico profondo, eccezionale per trasparenza e biodiversità protetta",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Solarium in legno attrezzati, noleggio canoe, pedalò, barche e diving center",
+      "Accesso — Facile dal lungomare di Aci Trezza tramite pontili e scivoli",
+      "Ambiente — Area Marina Protetta Isole Ciclopi con i monumentali faraglioni basaltici e l'Isola Lachea"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.5615&mlon=15.163#map=16/37.5615/15.163",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Aci Castello",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Aci%20Castello",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "primosole-catania",
+    "description": "Ampia distesa di sabbia dorata nella parte sud del litorale catanese, perfetta per chi cerca ampi spazi e mare aperto.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "sabbia",
+      "dune",
+      "spazio",
+      "famiglie",
+      "passeggiate"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio",
+      "lidi",
+      "bar",
+      "spiaggia libera attrezzata"
+    ],
+    "warnings": [
+      "Possibile presenza di moto ondoso vivace con venti di scirocco e levante."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata finissima con dune costiere",
+      "Fondale — Sabbioso, dolcemente digradante ideale per lunghe passeggiate in acqua",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Spiagge libere attrezzate comunali e stabilimenti balneari con bar",
+      "Accesso — Facile da Viale Kennedy e dalla statale 114 con ampi parcheggi",
+      "Ambiente — Tratto meridionale della Plaia di Catania caratterizzato da ampiezze notevoli e dune naturali"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.4175&mlon=15.0825#map=16/37.4175/15.0825",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Catania",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "villaggio-aurora-catania",
+    "description": "Tratto sabbioso e accogliente della Plaia di Catania, molto amato dalle famiglie per il fondale basso e i servizi completi.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "servizi",
+      "fondale-basso",
+      "sport"
+    ],
+    "access_level": "facile",
+    "services": [
+      "stabilimenti",
+      "parcheggio",
+      "giochi bimbi",
+      "bar",
+      "ristorante"
+    ],
+    "warnings": [
+      "Frequente affollamento nei fine settimana di luglio e agosto."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata",
+      "Fondale — Sabbioso e poco profondo per diverse decine di metri",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Lidi balneari, campetti sportivi, bar e ristoranti",
+      "Accesso — Facile dagli accessi di Viale Kennedy attraverso le stradine del Villaggio Aurora",
+      "Ambiente — Litorale balneare della Plaia con vista spettacolare sull'Etna innevato o fumante"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.452&mlon=15.086#map=16/37.452/15.086",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Catania",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "lido-azzurro-catania",
+    "description": "Il cuore storico della Plaia di Catania: un arenile vastissimo dotato di ogni comfort per giornate di mare, relax e sport.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "servizi",
+      "sabbia",
+      "animazione",
+      "famiglie",
+      "accessibile"
+    ],
+    "access_level": "facile",
+    "services": [
+      "stabilimenti balneari",
+      "cabine",
+      "bar",
+      "ristoranti",
+      "bus urbano",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Zone di spiaggia privata prevalenti rispetto ai varchi liberi."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine e compatta",
+      "Fondale — Sabbioso a pendenza graduale, ideale per nuotatori di ogni livello",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Grandi stabilimenti storici con cabine, piscine, ristoranti, bar e animazione",
+      "Accesso — Facile da Viale Kennedy con fermate dei bus urbani e parcheggi dedicati",
+      "Ambiente — Cuore pulsante della balneazione estiva catanese con ampia vista panoramica sul golfo"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.472&mlon=15.0845#map=16/37.472/15.0845",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Catania",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Catania",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "marina-di-avola",
+    "description": "Spiaggia urbana accogliente e dorata di Avola, ideale per famiglie con bambini grazie alle acque calme e ai fondali bassi.",
+    "orientation_degrees": 135,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "maestrale",
+      "tramontana",
+      "ponente"
+    ],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "servizi",
+      "fondale-basso",
+      "lungomare"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "lungomare",
+      "parcheggio",
+      "pista ciclabile",
+      "docce"
+    ],
+    "warnings": [
+      "Affollata nei mesi di punta estivi."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine",
+      "Fondale — Sabbioso, digradante lentamente e molto sicuro",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — Lidi balneari, docce, noleggio pedalò, bar e ristoranti sul lungomare",
+      "Accesso — Facile dal lungomare Tremoli di Avola con parcheggi e piste ciclabili",
+      "Ambiente — Golfo di Noto con mare calmo e vista panoramica sulla costa siracusana"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.9045&mlon=15.1432#map=16/36.9045/15.1432",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Avola",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Avola",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "pantanello-avola",
+    "description": "La cartolina di Avola: una suggestiva baia a mezzaluna con sabbia soffice, acque turchesi e fondale digradante protetto dalle scogliere.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "famiglie",
+      "riparata",
+      "turchese"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "bar",
+      "docce",
+      "parcheggio",
+      "noleggio canoe"
+    ],
+    "warnings": [
+      "Parcheggi limitati in alta stagione; preferire le prime ore del mattino."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata finissima",
+      "Fondale — Sabbioso e digradante, acque trasparenti e protette",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Lidi, noleggio lettini, chioschi, docce e noleggio canoe",
+      "Accesso — Facile dal centro di Avola con parcheggio limitrofo e discese pedonali",
+      "Ambiente — Baia naturale a ferro di cavallo riparata da due promontori rocciosi bassi"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.914&mlon=15.139#map=16/36.914/15.139",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Avola",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Avola",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "gallina-avola",
+    "description": "Splendida baia incastonata tra alte scogliere bianche e una fresca pineta, con sabbia fine e mare cristallino smeraldo.",
+    "orientation_degrees": 135,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "maestrale",
+      "tramontana",
+      "ponente"
+    ],
+    "tags": [
+      "falesie",
+      "pineta",
+      "sabbia",
+      "snorkeling",
+      "natura"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lido",
+      "bar",
+      "parcheggio",
+      "pineta"
+    ],
+    "warnings": [
+      "Attenzione ai tratti sotto falesia; rispettare le aree segnalate."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata chiara incorniciata da falesie bianche",
+      "Fondale — Sabbioso con rocce ai lati, acque limpidissime color smeraldo",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — Stabilimento balneare, chiosco bar, parcheggi privati a pagamento",
+      "Accesso — Facile attraverso la pineta e sentieri gradinati che scendono all'arenile",
+      "Ambiente — Insenatura naturale protetta da falesie di pietra bianca e pineta mediterranea"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.9385&mlon=15.1578#map=16/36.9385/15.1578",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Avola",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Avola",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "calabernardo-noto",
+    "description": "Tranquilla località marinara a pochi chilometri da Noto, con piccole calette sabbiose e scogliere piatte accarezzate da acque limpide.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "borgo",
+      "tranquillità",
+      "snorkeling",
+      "scogliere",
+      "pescatori"
+    ],
+    "access_level": "facile",
+    "services": [
+      "bar",
+      "ristoranti",
+      "parcheggio",
+      "spiaggia libera"
+    ],
+    "warnings": [
+      "Ingresso in acqua scivoloso nei punti rocciosi con alghe."
+    ],
+    "facts": [
+      "Suolo — Sabbia mista a scogli bassi e calette rocciose",
+      "Fondale — Misto sabbia e roccia, trasparenza elevata ideale per maschera e boccaglio",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Chioschi, ristorantini tipici nel borgo e noleggio ombrelloni",
+      "Accesso — Facile dal lungomare del piccolo borgo marinaro di Calabernardo",
+      "Ambiente — Tranquillo borgo marinaro alla foce del fiume Asinaro vicino all'antica Eloro"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.8667&mlon=15.1275#map=16/36.8667/15.1275",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Noto",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Noto",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "morghella-pachino",
+    "description": "Ampia spiaggia sabbiosa tra Pachino e Portopalo di Capo Passero, delimitata da suggestive saline storiche e mare limpido.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "sabbia",
+      "saline",
+      "fenicotteri",
+      "spazio",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "parcheggio",
+      "ristorante",
+      "bar"
+    ],
+    "warnings": [
+      "Esposta alle brezze di levante."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata e ampie dune",
+      "Fondale — Sabbioso, digradante dolcemente con acque azzurre e trasparenti",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati con bar, ristorante, parcheggio e ampi spazi liberi",
+      "Accesso — Facile dalla strada provinciale Pachino-Portopalo con accesso diretto",
+      "Ambiente — Litorale aperto affiancato da un'antica salina dismessa rifugio di fenicotteri"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.6965&mlon=15.115#map=16/36.6965/15.115",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Pachino",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Pachino",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "marzamemi-spinazza",
+    "description": "La spiaggia principale di Marzamemi: sabbia dorata, mare trasparente e la comodità di raggiungere a piedi il celebre borgo marinaro.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "borgo",
+      "marzamemi",
+      "sabbia",
+      "servizi",
+      "movida"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "noleggio barche",
+      "bar",
+      "ristoranti",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Molto frequentata nel periodo estivo."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata chiara",
+      "Fondale — Sabbioso, acque limpide e turchesi a pendenza moderata",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati, noleggio gommoni, cocktail bar e ristoranti a piedi",
+      "Accesso — Facile dal lungomare nord di Marzamemi, raggiungibile comodamente a piedi dal borgo",
+      "Ambiente — Costa immediata dello storico borgo marinaro di Marzamemi e della Tonnara"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.749&mlon=15.1215#map=16/36.749/15.1215",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Pachino",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Pachino",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "punta-delle-formiche",
+    "description": "Oasi selvaggia con promontorio calcareo che protegge piccole insenature di sabbia e scogliere modellate dal mare cristallino.",
+    "orientation_degrees": 135,
+    "orientation_label": "Sud-est",
+    "shelter": [
+      "maestrale",
+      "tramontana",
+      "ponente"
+    ],
+    "tags": [
+      "selvaggia",
+      "scogli",
+      "snorkeling",
+      "natura",
+      "promontorio"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio sterrato"
+    ],
+    "warnings": [
+      "Nessun servizio di salvataggio o punti ombra naturali; portare acqua e ombrellone."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine e promontorio roccioso calcareo",
+      "Fondale — Sabbia e roccia, con scogli affioranti e fondali trasparenti come piscine",
+      "Esposizione — Sud-est, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera naturale senza servizi stabili",
+      "Accesso — Moderato tramite stradella sterrata dalla litoranea e breve sentiero a piedi",
+      "Ambiente — Promontorio naturale incontaminato con isolotti e calette riparate dal vento"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.666&mlon=15.093#map=16/36.666/15.093",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Pachino",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Pachino",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "costa-dell-ambra",
+    "description": "Chilometri di dune dorate e mare cristallino affacciato sul Canale di Sicilia, paradiso per bagnanti e amanti del kitesurf.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "dune",
+      "sabbia-ambrata",
+      "kitesurf",
+      "tramonto",
+      "spazio"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "kitesurf school",
+      "bar",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Venti pomeridiani frequenti molto amati dai surfisti."
+    ],
+    "facts": [
+      "Suolo — Sabbia ambrata finissima e dune basse",
+      "Fondale — Sabbioso, dolcemente digradante e bagnato dal Canale di Sicilia",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Famosi beach club alternati a chilometri di spiaggia completamente libera",
+      "Accesso — Facile dalla litoranea di Portopalo attraverso parcheggi e passerelle sulle dune",
+      "Ambiente — Litorale incontaminato all'estremità meridionale dell'isola di fronte al faro delle Correnti"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.6715&mlon=15.045#map=16/36.6715/15.045",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Portopalo di Capo Passero",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Portopalo%20di%20Capo%20Passero",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "terrauzza-siracusa",
+    "description": "Scogliere comode e calette riservate nell'Area Marina Protetta del Plemmirio, paradiso per lo snorkeling e bagni rigeneranti.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "plemmirio",
+      "area-marina-protetta",
+      "snorkeling",
+      "scogliere",
+      "trasparenza"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio stradale"
+    ],
+    "warnings": [
+      "Regole severe AMP; divieto di asportazione di conchiglie o ciottoli."
+    ],
+    "facts": [
+      "Suolo — Scogliere bianche levigate, calette di sassi e sabbia",
+      "Fondale — Roccioso e smeraldo con ricca biodiversità marina",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera, chiosco stagionale nelle vicinanze",
+      "Accesso — Moderato attraverso i varchi di via Blanco e sentieri tra le villette costiere",
+      "Ambiente — Costa settentrionale dell'Area Marina Protetta del Plemmirio"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.009&mlon=15.3085#map=16/37.009/15.3085",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Siracusa",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Siracusa",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "faro-santa-croce-augusta",
+    "description": "Celebre scogliera calcarea ai piedi del faro di Augusta, con acque profonde e limpidissime famose per tuffi ed esplorazioni subacquee.",
+    "orientation_degrees": 90,
+    "orientation_label": "Est",
+    "shelter": [
+      "ponente",
+      "maestrale",
+      "libeccio"
+    ],
+    "tags": [
+      "scogliera",
+      "tuffi",
+      "faro",
+      "snorkeling",
+      "deep-sea"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "bar",
+      "solarium",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Accesso al mare diretto in acqua profonda; sconsigliato a nuotatori inesperti o bambini."
+    ],
+    "facts": [
+      "Suolo — Scogliera calcarea piatta e pontili naturali",
+      "Fondale — Roccioso, profondo fin da subito e trasparente come cristallo",
+      "Esposizione — Est, orientamento indicativo del tratto",
+      "Servizi — Chioschi bar, piattaforme e solarium stagionali",
+      "Accesso — Facile dal piazzale del faro con ampie possibilità di sosta",
+      "Ambiente — Scogliera aperta con spettacolare vista sul cono dell'Etna e sul golfo di Catania"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.2435&mlon=15.253#map=16/37.2435/15.253",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Augusta",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Augusta",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "scoglitti-lanterna",
+    "description": "La spiaggia del faro di Scoglitti: un grande arenile sabbioso con mare calmo, ideale per famiglie e passeggiate al tramonto.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "faro",
+      "lungomare",
+      "fondale-basso"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "docce",
+      "bar",
+      "parcheggio",
+      "ristoranti"
+    ],
+    "warnings": [
+      "Venti pomeridiani da ponente possono sollevare onde moderate."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata",
+      "Fondale — Sabbioso e basso per molti metri, ideale per la balneazione sicura",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati, docce, noleggio ombrelloni, bar e ristoranti sul lungomare",
+      "Accesso — Facile e diretto dal lungomare di Scoglitti",
+      "Ambiente — Litorale cittadino adiacente al faro e al porto peschereccio"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.8872&mlon=14.4255#map=16/36.8872/14.4255",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Vittoria",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Vittoria",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "kammarana-scoglitti",
+    "description": "Spiaggia dorata intrisa di storia archeologica ai piedi del promontorio dell'antica Camarina, tra dune e mare limpido.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "archeologia",
+      "dune",
+      "sabbia",
+      "storia",
+      "tranquillità"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio",
+      "spiaggia libera"
+    ],
+    "warnings": [
+      "Assenza di zone d'ombra; munirsi di attrezzatura da spiaggia."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata e dune selvagge",
+      "Fondale — Sabbioso, digradante dolcemente",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera; servizi disponibili a breve distanza a Scoglitti",
+      "Accesso — Facile dalla strada costiera per Kamarina con discese sull'arenile",
+      "Ambiente — Litorale storico ai piedi della collina dell'antica colonia greca di Camarina"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.877&mlon=14.437#map=16/36.877/14.437",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Vittoria",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Vittoria",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "punta-cirica-ispica",
+    "description": "Uno dei luoghi più spettacolari della costa iblea: faraglioni bianchi, grotte marine scavate dalle onde e calette d'acqua turchese.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "faraglioni",
+      "falesie",
+      "grotte",
+      "snorkeling",
+      "fotografia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio sterrato"
+    ],
+    "warnings": [
+      "Accesso su sentiero naturale; prestare attenzione sul ciglio delle falesie."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata racchiusa tra falesie di tufo bianco",
+      "Fondale — Sabbioso e scogliere con calette e grotte marine",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Spiaggia completamente libera e incontaminata",
+      "Accesso — Moderato da stradelle sterrate da Ispica con sentieri gradinati nella roccia",
+      "Ambiente — Meraviglia geologica con faraglioni e falesie d'arenaria bianca a picco sul mare"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.6865&mlon=14.978#map=16/36.6865/14.978",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ispica",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Ispica",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "casuzze",
+    "description": "Spiaggia familiare per eccellenza, con sabbia soffice, acque poco profonde e tutti i comfort per una giornata di totale relax.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "servizi",
+      "fondale-basso",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "bar",
+      "docce",
+      "parcheggio",
+      "giochi"
+    ],
+    "warnings": [
+      "Molto frequentata nei mesi di luglio e agosto."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata soffice",
+      "Fondale — Sabbioso, molto basso e sicuro per i bambini",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Stabilimenti balneari, chioschi, noleggio pedalò e docce",
+      "Accesso — Facile dal centro abitato con lungomare pedonale",
+      "Ambiente — Borgo turistico estivo a metà strada tra Punta Secca e Marina di Ragusa"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7905&mlon=14.4985#map=16/36.7905/14.4985",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Santa Croce Camerina",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Santa%20Croce%20Camerina",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "foce-fiume-irminio",
+    "description": "Oasi naturalistica protetta dove il fiume Irminio sfocia in mare tra fitti boschetti di macchia mediterranea e dune solitarie.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "riserva",
+      "dune",
+      "natura",
+      "fiume",
+      "tranquillità"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "centro visite",
+      "sentieri"
+    ],
+    "warnings": [
+      "Divieto assoluto di piantare ombrelloni o accendere fuochi all'interno dell'area di riserva."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata e ciottoli fluviali alla foce",
+      "Fondale — Sabbioso, acque pulitissime e incontaminate",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Nessun servizio in spiaggia; sentieri naturalistici guidati",
+      "Accesso — Moderato dal centro visite della riserva con passeggiata lungo il sentiero botanico",
+      "Ambiente — Riserva Naturale Speciale Macchia Foresta del Fiume Irminio, con vegetazione dunaia rara"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7725&mlon=14.594#map=16/36.7725/14.594",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Scicli",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Scicli",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "playa-grande-scicli",
+    "description": "Ampia spiaggia sabbiosa dorata a ridosso della riserva dell'Irminio, tranquilla e adatta sia a famiglie sia a lunghe camminate sul bagnasciuga.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "sabbia",
+      "tranquillità",
+      "passeggiate",
+      "famiglie",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "parcheggio",
+      "bar",
+      "docce"
+    ],
+    "warnings": [
+      "Tratti di spiaggia libera ampi ma esposti ai venti occidentali."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine",
+      "Fondale — Sabbioso a pendenza graduale",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati, noleggio lettini, bar e chiosco",
+      "Accesso — Facile dal borgo di Playa Grande con parcheggi nelle vicinanze",
+      "Ambiente — Borgo residenziale estivo confinante con l'area naturale protetta dell'Irminio"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.768&mlon=14.605#map=16/36.768/14.605",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Scicli",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Scicli",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "spinasanta-donnalucata",
+    "description": "Tratto di costa rilassante e poco affollato a breve distanza da Donnalucata, ideale per chi cerca silenzio e mare cristallino.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "tranquillità",
+      "sabbia",
+      "relax",
+      "libera",
+      "spazio"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio",
+      "chiosco stagionale"
+    ],
+    "warnings": [
+      "Pochi servizi strutturati; portare ciò che serve per la giornata."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine color oro",
+      "Fondale — Sabbioso, digradante con trasparenza limpida",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Spiaggia prevalentemente libera con noleggio ombrelloni stagionale",
+      "Accesso — Facile dalle stradelle litoranee a est di Donnalucata",
+      "Ambiente — Litorale tranquillo e distensivo con basse scogliere naturali"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.755&mlon=14.652#map=16/36.755/14.652",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Scicli",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Scicli",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "costa-di-carro-scicli",
+    "description": "Splendido parco naturale costiero ideale per camminate panoramiche, bagni nelle piscine naturali di roccia e tramonti sul mare.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "parco-naturale",
+      "scogliera",
+      "trekking",
+      "tramonto",
+      "selvaggia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "pista pedonale",
+      "panchine panoramiche"
+    ],
+    "warnings": [
+      "Accesso al mare da scoglio; prestare attenzione in caso di mare mosso."
+    ],
+    "facts": [
+      "Suolo — Scogliera calcarea bassa intervallata da piccole insenature sabbiose",
+      "Fondale — Roccioso e trasparente, ricco di flora e fauna",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Parco costiero naturale protetto senza stabilimenti",
+      "Accesso — Moderato tramite pista ciclo-pedonale sterrata da Sampieri o Cava d'Aliga",
+      "Ambiente — Parco naturale costiero con sentieri panoramici tra macchia mediterranea e onde"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.735&mlon=14.708#map=16/36.735/14.708",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Scicli",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Scicli",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "pisciotto-sampieri",
+    "description": "Spiaggia da sogno sovrastata dalla cattedrale laica della Fornace Penna; dune dorate, acque calme e un'atmosfera cinematografica unica.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "fornace-penna",
+      "montalbano",
+      "sabbia",
+      "dune",
+      "aperitivo"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "bar",
+      "parcheggio",
+      "ristorante"
+    ],
+    "warnings": [
+      "Monumento Fornace Penna inagibile e recintato per motivi di sicurezza; non avvicinarsi."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata finissima e dune protette",
+      "Fondale — Sabbioso, dolcemente digradante e trasparente",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Tratti liberi e stabilimenti balneari d'atmosfera con bar e aperitivi",
+      "Accesso — Facile dalla litoranea per Sampieri con parcheggio custodito",
+      "Ambiente — Dominata dalla suggestiva archeologia industriale della Fornace Penna"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.712&mlon=14.7525#map=16/36.712/14.7525",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Scicli",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Scicli",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "marina-di-modica",
+    "description": "La rinomata località balneare di Modica, con la sua grande spiaggia a mezzaluna, acque limpide e una piacevole vita serale estiva.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "surf",
+      "lungomare",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "scuola surf",
+      "lungomare",
+      "bar",
+      "ristoranti",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Spot ventoso apprezzato dagli amanti del surf quando spira vento da terra."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata soffice",
+      "Fondale — Sabbioso, digradante gradualmente e protetto dalla baia",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati, docce, noleggio surf e windsurf, bar e ristoranti sul lungomare",
+      "Accesso — Facile dal lungomare e da Piazza Mediterraneo con ampi parcheggi",
+      "Ambiente — Ampia baia a mezzaluna con vivace lungomare pedonale e scogliere esterne"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.7085&mlon=14.78#map=16/36.7085/14.78",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Modica",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Modica",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "pietrenere-pozzallo",
+    "description": "La celebre spiaggia Bandiera Blu di Pozzallo: un vastissimo tappeto di sabbia dorata con fondale basso e ogni servizio per il relax.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "bandiera-blu",
+      "lungomare",
+      "sabbia",
+      "famiglie",
+      "accessibile"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "accessibile disabili",
+      "docce",
+      "bar",
+      "lungomare",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Molto affollata in luglio e agosto."
+    ],
+    "facts": [
+      "Suolo — Sabbia finissima e dorata",
+      "Fondale — Sabbioso e molto basso, perfetto per nuotate tranquille e bambini",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Numerosi lidi balneari, docce, giochi per bambini, campo da beach volley, bar e ristoranti",
+      "Accesso — Facile dal lungomare Pietrenere di Pozzallo con rampe accessibili a tutti",
+      "Ambiente — Ampia spiaggia cittadina Bandiera Blu con palme e vivace passeggiata costiera"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.729&mlon=14.85#map=16/36.729/14.85",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Pozzallo",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Pozzallo",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "santa-maria-del-focallo",
+    "description": "Spiaggia Bandiera Blu infinita e dorata, incorniciata da dune con gigli marini e boschi di acacie, ideale per famiglie e amanti degli ampi spazi.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "bandiera-blu",
+      "dune",
+      "sabbia",
+      "acacie",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "parcheggio",
+      "bar",
+      "docce",
+      "spiaggia libera"
+    ],
+    "warnings": [
+      "Litorale molto esteso; identificare con cura il proprio varco d'accesso."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine e cordoni dunali fioriti",
+      "Fondale — Sabbioso e poco profondo per diverse decine di metri",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Stabilimenti balneari, noleggio ombrelloni, bar, ristoranti e lunghi tratti liberi",
+      "Accesso — Facile dalla litoranea di Ispica con comodi parcheggi e varchi tra le dune",
+      "Ambiente — Chilometri di costa Bandiera Blu protetta da boschetti di acacia ed eucalipto"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=36.709&mlon=14.935#map=16/36.709/14.935",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ispica",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Ispica",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "porto-palo-menfi",
+    "description": "Storica Bandiera Blu siciliana, con sabbia finissima, mare trasparente e l'atmosfera autentica di un antico villaggio di pescatori.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "bandiera-blu",
+      "borgo",
+      "sabbia",
+      "famiglie",
+      "pescatori"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "ristoranti",
+      "pista ciclabile",
+      "parcheggio",
+      "docce"
+    ],
+    "warnings": [
+      "Parcheggi a pagamento in alta stagione."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata e ciottoli piatti",
+      "Fondale — Sabbioso a pendenza graduale con acque cristalline",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati, docce, noleggio natanti, ristoranti di pesce e bar",
+      "Accesso — Facile dal borgo marinaro di Porto Palo con parcheggi e pista ciclabile",
+      "Ambiente — Borgo marinaro Bandiera Blu continuativa con la storica torre di avvistamento"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.5815&mlon=12.9095#map=16/37.5815/12.9095",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Menfi",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Menfi",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "le-solette-menfi",
+    "description": "Una delle spiagge più selvagge e incontaminate della Sicilia occidentale, incastonata tra vigneti e affacciata su acque caraibiche.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "selvaggia",
+      "natura",
+      "vigneti",
+      "trasparenza",
+      "paradiso"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "nessuno"
+    ],
+    "warnings": [
+      "Nessun servizio in spiaggia; indispensabile portare acqua e cibo a sufficienza."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata soffice e piccoli scogli ai lati",
+      "Fondale — Sabbioso e cristallino, trasparenza spettacolare",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Completamente libera e selvaggia, nessun servizio presente",
+      "Accesso — Moderato, raggiungibile a piedi tramite sentiero panoramico tra vigne e macchia mediterranea (circa 15 minuti)",
+      "Ambiente — Paradiso naturale nascosto tra colline di vigneti coltivati fino al mare"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.576&mlon=12.875#map=16/37.576/12.875",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Menfi",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Menfi",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "san-marco-sciacca",
+    "description": "Ampia baia sabbiosa alle porte di Sciacca, protetta dal promontorio di Capo San Marco e bagnata da acque pulite e vivaci.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "servizi",
+      "famiglie",
+      "tramonto"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "ristoranti",
+      "bar",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Esposta a venti da ponente e maestrale."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine e tratti di ciottoli",
+      "Fondale — Sabbioso, digradante con acque limpide e aperte",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Stabilimenti balneari, ristoranti sul mare, noleggio pedalò e bar",
+      "Accesso — Facile dalla strada per Capo San Marco con parcheggi dedicati",
+      "Ambiente — Baia suggestiva delimitata dal promontorio di Capo San Marco"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.502&mlon=13.041#map=16/37.502/13.041",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Sciacca",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Sciacca",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "timpi-russi-sciacca",
+    "description": "Spettacolare tratto costiero noto per le falesie d'argilla rossa che incorniciano la spiaggia, creando un paesaggio suggestivo e insolito.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "argilla-rossa",
+      "falesie",
+      "fotografia",
+      "natura",
+      "tranquillità"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio"
+    ],
+    "warnings": [
+      "Non sostare a ridosso delle falesie per rischio distacco detriti."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata scura ai piedi di pareti d'argilla rossa",
+      "Fondale — Misto sabbia e roccia, mare limpido",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera con pochi servizi stagionali",
+      "Accesso — Moderato tramite discese pedonali dalla contrada San Giorgio",
+      "Ambiente — Falesie di roccia rossastra che creano un contrasto cromatico unico con il mare"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.495&mlon=13.125#map=16/37.495/13.125",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Sciacca",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Sciacca",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "sovareto-sciacca",
+    "description": "Elegante e raccolta baia di sabbia dorata incastonata tra rocce e macchia mediterranea, riparata dai venti e con acque limpide.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "famiglie",
+      "riparata",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "bar",
+      "ristorante",
+      "docce",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Accesso tramite scalinate, prestare attenzione con passeggini."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata",
+      "Fondale — Sabbioso, dolcemente digradante e riparato",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati con bar, ristorazione, noleggio ombrelloni e docce",
+      "Accesso — Facile attraverso gli accessi dedicati e scalinate tra il verde",
+      "Ambiente — Insenatura naturale protetta da costoni rocciosi con giardini mediterranei"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.498&mlon=13.109#map=16/37.498/13.109",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Sciacca",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Sciacca",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "seccagrande-ribera",
+    "description": "Il litorale estivo di Ribera: una lunga spiaggia di ciottoli e sabbia costeggiata da un vivace lungomare ideale per passeggiate serali.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "lungomare",
+      "ciottoli",
+      "passeggiata",
+      "famiglie",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "lungomare pedonale",
+      "bar",
+      "ristoranti",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Consigliate scarpette da scoglio per entrare in acqua sui ciottoli."
+    ],
+    "facts": [
+      "Suolo — Ciottoli levigati e sabbia",
+      "Fondale — Ghiaioso e digradante, mare trasparente e pulito",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Lidi, noleggio lettini, ristoranti, bar e gelaterie sul lungomare",
+      "Accesso — Facile dal lungomare Gagarin con ampi marciapiedi e parcheggi",
+      "Ambiente — Località balneare di Ribera con lungo viale lungomare pedonale"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.442&mlon=13.242#map=16/37.442/13.242",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Ribera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Ribera",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "bovo-marina-montallegro",
+    "description": "Meravigliosa spiaggia naturale immersa in una rigogliosa pineta costiera, con sabbia soffice, mare turchese e vista su Capo Bianco.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "pineta",
+      "dune",
+      "sabbia",
+      "natura",
+      "relax"
+    ],
+    "access_level": "facile",
+    "services": [
+      "chiosco",
+      "noleggio ombrelloni",
+      "pineta attrezzata",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Seguire i sentieri per tutelare l'ecosistema dunale."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata finissima e alte dune",
+      "Fondale — Sabbioso, digradante gradualmente e molto trasparente",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Chioschi stagionali, noleggio ombrelloni, lidi ecologici e parcheggio",
+      "Accesso — Facile attraverso la pineta litoranea con sentieri in legno",
+      "Ambiente — Contigua alla riserva di Eraclea Minoa con pineta fitta e falesie di Capo Bianco"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.382&mlon=13.289#map=16/37.382/13.289",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Montallegro",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Montallegro",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "le-pergole-realmonte",
+    "description": "Piccole insenature sabbiose gioiello ai piedi della Torre di Monterosso, con falesie chiare e un'atmosfera intima e suggestiva.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "calette",
+      "torre",
+      "falesie",
+      "snorkeling",
+      "romantica"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio sterrato"
+    ],
+    "warnings": [
+      "Spazi ridotti in alta stagione; raggiungere la caletta nelle prime ore del giorno."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine racchiusa tra falesie calcaree",
+      "Fondale — Sabbioso e ciottoloso con rocce affioranti e acque trasparenti",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera; chiosco nelle vicinanze in stagione",
+      "Accesso — Moderato tramite sentiero che scende dal promontorio della Torre di Monterosso",
+      "Ambiente — Calette romantiche protette dalla storica torre d'avvistamento del XVI secolo"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.2915&mlon=13.435#map=16/37.2915/13.435",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Realmonte",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Realmonte",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "lido-azzurro-porto-empedocle",
+    "description": "Ampio e vivace arenile di Porto Empedocle amato dalle famiglie, reso celebre dalle atmosfere dei romanzi del Commissario Montalbano.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "servizi",
+      "montalbano",
+      "lungomare"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "bar",
+      "ristoranti",
+      "docce",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Molto frequentata nei weekend estivi."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata finissima",
+      "Fondale — Sabbioso, dolcemente digradante e ideale per bambini",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Grandi stabilimenti balneari, bar, ristoranti, docce e noleggio pedalò",
+      "Accesso — Facile dal lungomare di Porto Empedocle con parcheggi e rampe",
+      "Ambiente — La storica spiaggia della Vigata letteraria creata dalla penna di Andrea Camilleri"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.288&mlon=13.515#map=16/37.288/13.515",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Porto Empedocle",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Porto%20Empedocle",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "punta-bianca-agrigento",
+    "description": "Un monumento naturale spettacolare: una scogliera candida di marna bianca immersa in acque turchesi incontaminate, lontana dalla folla.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "marna-bianca",
+      "selvaggia",
+      "snorkeling",
+      "fotografia",
+      "riserva"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "nessuno"
+    ],
+    "warnings": [
+      "Strada d'accesso sconnessa; indossare scarpe adatte e portare acqua e protezione solare."
+    ],
+    "facts": [
+      "Suolo — Sperone di marna bianca calcareo-argillosa e calette di ghiaia",
+      "Fondale — Roccioso e smeraldo, ricco di fauna marina e anfratti",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Riserva naturale incontaminata, nessun servizio presente",
+      "Accesso — Moderato, tramite strada sterrata e sentiero a piedi panoramico (circa 15 minuti)",
+      "Ambiente — Straordinario sperone bianco che si protende nel mare cobalto, gemello selvaggio della Scala dei Turchi"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.215&mlon=13.672#map=16/37.215/13.672",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Agrigento",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Agrigento",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "spiaggia-dei-conigli-lampedusa",
+    "description": "Regolarmente eletta tra le spiagge più belle del mondo: sabbia candida, acque turchesi trasparenti e natura marina protetta incomparabile.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "caraibica",
+      "tartarughe",
+      "pelagie",
+      "riserva",
+      "paradiso"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "punto ristoro all'inizio sentiero",
+      "servizio navetta",
+      "noleggio ombrelloni all'accesso"
+    ],
+    "warnings": [
+      "Accesso contingentato su prenotazione in alta stagione; proteggere il sito di nidificazione delle tartarughe."
+    ],
+    "facts": [
+      "Suolo — Sabbia bianca finissima caraibica",
+      "Fondale — Sabbioso e bassissimo per decine di metri, trasparenza assoluta e colori turchesi",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Riserva naturale protetta; noleggio ombrelloni limitato all'ingresso, nessun bar sulla sabbia",
+      "Accesso — Moderato, sentiero pedonale panoramico in discesa di circa 15-20 minuti dal punto di sosta",
+      "Ambiente — Area Marina Protetta Isole Pelagie e sito di deposizione della tartaruga marina Caretta caretta"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=35.5125&mlon=12.5585#map=16/35.5125/12.5585",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Lampedusa e Linosa",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Lampedusa%20e%20Linosa",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "marina-di-butera",
+    "description": "Ampia spiaggia sabbiosa dorata affacciata sul Golfo di Gela, ideale per giornate rilassanti e bagni in acque calde e tranquille.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "sabbia",
+      "spazio",
+      "tranquillità",
+      "famiglie",
+      "golfo"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "parcheggio",
+      "bar"
+    ],
+    "warnings": [
+      "Esposta a venti meridionali."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata",
+      "Fondale — Sabbioso, digradante dolcemente",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati e spiaggia libera",
+      "Accesso — Facile dalle strade costiere di Marina di Butera",
+      "Ambiente — Litorale centrale del Golfo di Gela con orizzonte aperto"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.1085&mlon=14.095#map=16/37.1085/14.095",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Butera",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "tenutella-butera",
+    "description": "Suggestivo tratto di arenile dunale nel comune di Butera, con sabbia soffice, dune fiorite e ampi spazi per il relax.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "dune",
+      "sabbia",
+      "tranquillità",
+      "natura",
+      "spazio"
+    ],
+    "access_level": "facile",
+    "services": [
+      "chiosco stagionale",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Rispettare le dune evitando il calpestio della flora protetta."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata e dune basse",
+      "Fondale — Sabbioso a pendenza graduale",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Chioschi estivi e lunghi tratti di spiaggia libera",
+      "Accesso — Facile dalle contrade costiere attraverso brevi raccordi",
+      "Ambiente — Litorale dunale costellato da gigli di mare e vegetazione pioniera"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.107&mlon=14.113#map=16/37.107/14.113",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Butera",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "passo-marina-butera",
+    "description": "Tranquillo lido sabbioso situato al confine tra Butera e Gela, perfetto per chi cerca serenità e bagni lontani dalla calca.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "sabbia",
+      "tranquillità",
+      "libera",
+      "relax",
+      "spazio"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio sterrato"
+    ],
+    "warnings": [
+      "Pochi servizi sul posto; organizzarsi con ombrellone e bevande."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata",
+      "Fondale — Sabbioso e digradante dolcemente",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Spiaggia prevalentemente libera",
+      "Accesso — Facile tramite stradella interpoderale dalla statale 115",
+      "Ambiente — Tratto costiero tranquillo al confine orientale del territorio di Butera"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.106&mlon=14.125#map=16/37.106/14.125",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Butera",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "punta-due-rocche-butera",
+    "description": "Pittoresca caletta delimitata da due formazioni rocciose gemelle tra Falconara e Desusino, con acque calme e fondali limpidi.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "scogli",
+      "caletta",
+      "snorkeling",
+      "natura",
+      "fotografia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio sterrato"
+    ],
+    "warnings": [
+      "Attenzione agli scogli scivolosi in battigia."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata e due formazioni rocciose affioranti",
+      "Fondale — Misto sabbia e roccia, ottimo per osservare piccoli pesci",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera naturale",
+      "Accesso — Moderato tramite sentiero che scende dalla costa alta",
+      "Ambiente — Caratteristica insenatura protetta da due scogli gemelli protesi nel golfo"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.109&mlon=14.058#map=16/37.109/14.058",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Butera",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "cava-d-oro-butera",
+    "description": "Spiaggia dorata e poco battuta all'estremità occidentale del litorale di Butera, dominata da calanchi costieri e mare aperto.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "selvaggia",
+      "sabbia",
+      "tranquillità",
+      "confine",
+      "spazio"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio"
+    ],
+    "warnings": [
+      "Assenza totale di punti ristoro."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata e cordoni argillosi",
+      "Fondale — Sabbioso e aperto sul Canale di Sicilia",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera",
+      "Accesso — Moderato da strade poderali al confine con Licata",
+      "Ambiente — Costa naturale al limite occidentale della provincia di Caltanissetta"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.1105&mlon=14.025#map=16/37.1105/14.025",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Butera",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Butera",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "lungomare-federico-ii-gela",
+    "description": "La spiaggia centrale di Gela: un arenile vastissimo con sabbia fine, fondali dolci e tutti i servizi balneari sul lungomare cittadino.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "lungomare",
+      "sabbia",
+      "servizi",
+      "famiglie",
+      "accessibile"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "docce",
+      "bar",
+      "ristoranti",
+      "pista ciclabile",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Frequente affollamento nelle ore pomeridiane estive."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata finissima",
+      "Fondale — Sabbioso, digradante dolcemente e sicuro",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi balneari, docce, bar, ristoranti, noleggio pedalò e pista ciclabile",
+      "Accesso — Facile e diretto dal lungomare cittadino con ampi marciapiedi e rampe",
+      "Ambiente — Litorale urbano centrale di Gela costeggiato dalla passeggiata intitolata a Federico II"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.0655&mlon=14.249#map=16/37.0655/14.249",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "montelungo-gela",
+    "description": "Una delle spiagge più amate di Gela, incorniciata dal verde promontorio di Montelungo con acque limpide e sabbia dorata.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "baia",
+      "sabbia",
+      "promontorio",
+      "famiglie",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "bar",
+      "parcheggio",
+      "ristorazione"
+    ],
+    "warnings": [
+      "Moto ondoso vivace con venti meridionali sostenuti."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata soffice",
+      "Fondale — Sabbioso, digradante con trasparenza limpida",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati e tratti di spiaggia libera con bar",
+      "Accesso — Facile dalla statale litoranea con comode aree di parcheggio",
+      "Ambiente — Baia panoramica dominata dal promontorio di Montelungo"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.079&mlon=14.212#map=16/37.079/14.212",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "roccazzelle-gela",
+    "description": "Ampio arenile sabbioso situato nella zona residenziale estiva a ovest di Gela, ideale per famiglie e bagni tranquilli.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "famiglie",
+      "sabbia",
+      "tranquillità",
+      "estate",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "bar",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Attenzione alle correnti in caso di mare agitato."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine",
+      "Fondale — Sabbioso e poco profondo a riva",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi balneari estivi, bar e spiaggia libera",
+      "Accesso — Facile dal quartiere residenziale estivo di Roccazzelle",
+      "Ambiente — Costa sabbiosa aperta tra la città e la torre di Manfria"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.0875&mlon=14.185#map=16/37.0875/14.185",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "femmina-morta-gela",
+    "description": "Spiaggia sabbiosa e rilassante caratterizzata da dune basse e vegetazione pioniera, con acque trasparenti e ritmi lenti.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "dune",
+      "sabbia",
+      "relax",
+      "natura",
+      "spazio"
+    ],
+    "access_level": "facile",
+    "services": [
+      "parcheggio"
+    ],
+    "warnings": [
+      "Pochi punti ombra; munirsi di ombrellone."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine e dune costiere basse",
+      "Fondale — Sabbioso a pendenza graduale",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Spiaggia prevalentemente libera",
+      "Accesso — Facile attraverso le stradelle di accesso all'arenile",
+      "Ambiente — Tratto costiero naturale che precede le scogliere di Manfria"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.091&mlon=14.168#map=16/37.091/14.168",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "piana-marina-gela",
+    "description": "Esteso litorale sabbioso dorato ideale per lunghe passeggiate e giornate di mare in libertà a pochi minuti dal centro abitato.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "sabbia",
+      "spazio",
+      "passeggiate",
+      "famiglie",
+      "tranquillità"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Esposta al moto ondoso con venti da sud."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata",
+      "Fondale — Sabbioso e digradante lentamente",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi stagionali e ampi spazi liberi",
+      "Accesso — Facile dagli accessi della contrada Piana Marina",
+      "Ambiente — Vasta piana costiera con visuale panoramica sull'intero golfo"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.098&mlon=14.148#map=16/37.098/14.148",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "foce-biviere-gela",
+    "description": "Litorale dunale intatto affacciato sul mare di fronte al più grande lago costiero della Sicilia, santuario di fenicotteri e uccelli acquatici.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "riserva",
+      "dune",
+      "fenicotteri",
+      "natura",
+      "incontaminata"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "centro visite riserva"
+    ],
+    "warnings": [
+      "Zona di alto pregio ambientale; divieto di abbandono rifiuti e rispetto assoluto della fauna."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata naturale e dune costiere intatte",
+      "Fondale — Sabbioso, aperto e incontaminato",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Area protetta priva di servizi commerciali",
+      "Accesso — Moderato tramite i sentieri costieri a ridosso dell'area protetta",
+      "Ambiente — Fronte mare della Riserva Naturale Orientata Biviere di Gela, sito RAMSAR di importanza internazionale"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.018&mlon=14.342#map=16/37.018/14.342",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "spinasanta-gela",
+    "description": "Spiaggia sabbiosa molto amata e frequentata per la comodità dei servizi, la sabbia fine e la vicinanza alla città.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "sabbia",
+      "servizi",
+      "famiglie",
+      "comodità",
+      "estate"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi attrezzati",
+      "bar",
+      "docce",
+      "parcheggio"
+    ],
+    "warnings": [
+      "Affollamento nei fine settimana di luglio e agosto."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata",
+      "Fondale — Sabbioso, digradante dolcemente",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi attrezzati con noleggio ombrelloni, bar e docce",
+      "Accesso — Facile dal popoloso quartiere estivo di Spinasanta",
+      "Ambiente — Litorale balneare frequentato e vivace della costa occidentale gelese"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.085&mlon=14.198#map=16/37.085/14.198",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "san-nicola-gela",
+    "description": "Spiaggia urbana accogliente e protetta, caratterizzata da acque calme e sabbia chiara con tutti i servizi a portata di mano.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "urbana",
+      "sabbia",
+      "acque-calme",
+      "famiglie",
+      "servizi"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi",
+      "bar",
+      "parcheggio",
+      "docce"
+    ],
+    "warnings": [
+      "Vicinanza alla zona portuale ovest; rispettare le delimitazioni balneari."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata fine",
+      "Fondale — Sabbioso, calmo e protetto a tratti dai moli",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Stabilimenti balneari, chioschi bar e noleggio pedalò",
+      "Accesso — Facile dagli accessi pedonali a ridosso della zona portuale ovest",
+      "Ambiente — Tratto costiero protetto tra la città storica e la fascia balneare"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.072&mlon=14.231#map=16/37.072/14.231",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "lido-la-conchiglia-gela",
+    "description": "Il tratto più celebre e storico della balneazione gelese, custode di memorie estive e affacciato su acque dorate e sicure.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "storica",
+      "pontile",
+      "sabbia",
+      "lungomare",
+      "famiglie"
+    ],
+    "access_level": "facile",
+    "services": [
+      "lidi storici",
+      "bar",
+      "docce",
+      "lungomare"
+    ],
+    "warnings": [
+      "Struttura del pontile inagibile; divieto di arrampicarsi o avvicinarsi sotto la struttura."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata",
+      "Fondale — Sabbioso, molto basso e sicuro",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Lidi storici, chioschi, docce e passeggiata a mare",
+      "Accesso — Facile dal lungomare nei pressi dello storico pontile",
+      "Ambiente — Luogo simbolo della balneazione gelese degli anni d'oro, con la vista del pontile sul golfo"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.0635&mlon=14.258#map=16/37.0635/14.258",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "contrada-rizzuto-gela",
+    "description": "Tratto selvaggio e poco battuto del litorale orientale di Gela, perfetto per chi cerca solitudine, ampiezza e aria di mare aperto.",
+    "orientation_degrees": 225,
+    "orientation_label": "Sud-ovest",
+    "shelter": [
+      "tramontana",
+      "grecale",
+      "levante"
+    ],
+    "tags": [
+      "selvaggia",
+      "sabbia",
+      "spazio",
+      "tranquillità",
+      "libera"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "parcheggio sterrato"
+    ],
+    "warnings": [
+      "Nessun servizio presente sul posto."
+    ],
+    "facts": [
+      "Suolo — Sabbia dorata mista a conchiglie",
+      "Fondale — Sabbioso, digradante gradualmente",
+      "Esposizione — Sud-ovest, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera naturale",
+      "Accesso — Moderato da strade secondarie a est dell'abitato",
+      "Ambiente — Vasta spiaggia aperta e selvaggia della fascia costiera orientale di Gela"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.038&mlon=14.305#map=16/37.038/14.305",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
+  },
+  {
+    "slug": "bulala-gela",
+    "description": "Suggestivo sistema dunale incontaminato tra sabbia dorata e gigli marini, celebre per la ricchezza di flora costiera e la totale tranquillità.",
+    "orientation_degrees": 180,
+    "orientation_label": "Sud",
+    "shelter": [
+      "tramontana",
+      "maestrale",
+      "grecale"
+    ],
+    "tags": [
+      "dune",
+      "fossili",
+      "sabbia",
+      "natura",
+      "selvaggia"
+    ],
+    "access_level": "moderato",
+    "services": [
+      "nessuno"
+    ],
+    "warnings": [
+      "Ambiente dunale fragile; non danneggiare la vegetazione e non abbandonare rifiuti."
+    ],
+    "facts": [
+      "Suolo — Sabbia fine dorata con alte formazioni dunali",
+      "Fondale — Sabbioso, aperto e bagnato da acque limpide",
+      "Esposizione — Sud, orientamento indicativo del tratto",
+      "Servizi — Spiaggia libera naturale senza insediamenti",
+      "Accesso — Moderato da stradelle sterrate che attraversano la piana agricola",
+      "Ambiente — Costa dunale incontaminata ricca di reperti fossili marini e vegetazione di macchia"
+    ],
+    "sources": [
+      {
+        "source_name": "Regione Siciliana — DDG n. 388/2026",
+        "source_type": "regional-bathing-decree",
+        "source_url": "https://www.regione.sicilia.it/istituzioni/servizi-informativi/decreti-e-direttive/ddg-n-388-23-marzo-2026",
+        "role": "primary"
+      },
+      {
+        "source_name": "OpenStreetMap",
+        "source_type": "osm",
+        "source_url": "https://www.openstreetmap.org/?mlat=37.05&mlon=14.285#map=16/37.05/14.285",
+        "role": "coordinate-cross-check"
+      },
+      {
+        "source_name": "Comune di Gela",
+        "source_type": "municipal-tourism",
+        "source_url": "https://it.wikipedia.org/wiki/Gela",
+        "role": "access"
+      }
+    ]
   }
 ]
