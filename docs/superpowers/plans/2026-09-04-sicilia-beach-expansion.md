@@ -95,7 +95,7 @@ Change the catalog expectations from 80 to 134 and add exact new-province assert
 ### Task 4: Import and verify reviewed photo assets
 
 **Files:**
-- Create: `public/images/beaches/<34 distinct slug>.jpg`
+- Create: `public/images/beaches/<31 distinct slug>.jpg`
 - Modify: `data/catalog/sicilia/image-assets.json`
 - Modify: `public/images/beaches/ATTRIBUTIONS.md`
 
@@ -136,11 +136,11 @@ Change the catalog expectations from 80 to 134 and add exact new-province assert
 
 - [ ] **Step 2: Run static checks**
 
-  Run `npm run typecheck`, `npm run lint`, and `npm run build`.
+  Run `npx tsc --noEmit`, `npm run lint`, and `npm run build`.
 
 - [ ] **Step 3: Run no-write importer checks**
 
-  Run `npm run catalog:content:validate`, `npm run catalog:master:validate`, `npm run catalog:images:validate`, `npm run catalog:images:media:validate`, and the existing catalog readiness/dry-run commands exposed in `package.json`. Do not pass `--apply` and do not touch Supabase or Vercel.
+  Run `npm run catalog:validate`, `npm run catalog:content:validate`, `npm run catalog:master:validate`, `npm run catalog:reviews:validate`, `npm run catalog:images:validate`, and `npm run catalog:images:media:validate`. Do not pass `--apply`, write to Supabase, or promote a Vercel deployment to production.
 
 - [ ] **Step 4: Inspect the final diff and status**
 

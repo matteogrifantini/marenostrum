@@ -3,8 +3,9 @@
 ## Stato
 
 Ricognizione eseguita sul branch `codex/marenostrum-production-hardening`. Il
-batch è draft-only: nessuna scrittura su Supabase, nessun deploy Vercel e
-nessuna spiaggia è stata resa pubblica.
+batch è draft-only: nessuna scrittura su Supabase e nessuna spiaggia è stata
+resa pubblica. Il commit è stato pushato e la preview Vercel del branch è
+disponibile, ma non è stata eseguita alcuna promozione Vercel in produzione.
 
 Sono state aggiunte 54 candidature source-backed, portando il manifest da 80 a
 134 record. La distribuzione delle nuove candidature è: ME 14, CT 9, SR 10,
