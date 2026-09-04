@@ -792,16 +792,16 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Santa Teresa di Riva
 
-- File: `santa-teresa-di-riva.jpg` (fonte: `Small boat to the dusk on beach of Santa Teresa di Riva.JPG`)
-- Autore: Aynos Siderale
-- Fonte: <https://commons.wikimedia.org/wiki/File:Small_boat_to_the_dusk_on_beach_of_Santa_Teresa_di_Riva.JPG>
-- Licenza: CC BY-SA 3.0
+- File: `santa-teresa-di-riva.jpg` (fonte: `Beach_view_Santa_Teresa_di_Riva.jpg`)
+- Autore: Wittylama
+- Fonte: <https://commons.wikimedia.org/wiki/File:Beach_view_Santa_Teresa_di_Riva.jpg>
+- Licenza: CC BY-SA 4.0
 
 ### Piscina di Venere
 
-- File: `piscina-di-venere-milazzo.jpg` (fonte: `Capo Milazzo 23 07 2020 29.jpg`)
-- Autore: Effems
-- Fonte: <https://commons.wikimedia.org/wiki/File:Capo_Milazzo_23_07_2020_29.jpg>
+- File: `piscina-di-venere-milazzo.jpg` (fonte: `Piscina_di_Venere.jpg`)
+- Autore: Davide Mauro
+- Fonte: <https://commons.wikimedia.org/wiki/File:Piscina_di_Venere.jpg>
 - Licenza: CC BY-SA 4.0
 
 ### Canneto
@@ -820,9 +820,9 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Pollara
 
-- File: `pollara-salina.jpg` (fonte: `Coasts of Salina.jpg`)
+- File: `pollara-salina.jpg` (fonte: `Il_Postino_beach_01.jpg`)
 - Autore: Bernard Gagnon
-- Fonte: <https://commons.wikimedia.org/wiki/File:Coasts_of_Salina.jpg>
+- Fonte: <https://commons.wikimedia.org/wiki/File:Il_Postino_beach_01.jpg>
 - Licenza: CC BY 4.0
 
 ### Spiaggia di San Marco
@@ -834,24 +834,24 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Marina di Cottone
 
-- File: `marina-di-cottone.jpg` (fonte: `Fiumefreddo.jpg`)
-- Autore: Emanuele Rosso from Bologna, Italy
-- Fonte: <https://commons.wikimedia.org/wiki/File:Fiumefreddo.jpg>
+- File: `marina-di-cottone.jpg` (fonte: `Primavera_sul_mare.jpg`)
+- Autore: Turi Caggegi
+- Fonte: <https://commons.wikimedia.org/wiki/File:Primavera_sul_mare.jpg>
 - Licenza: CC BY-SA 2.0
 
 ### Torre Archirafi
 
-- File: `torre-archirafi.jpg` (fonte: `Lungomare Riposto 2.jpg`)
-- Autore: User:Emme17
-- Fonte: <https://commons.wikimedia.org/wiki/File:Lungomare_Riposto_2.jpg>
-- Licenza: Public domain
+- File: `torre-archirafi.jpg` (fonte: `Torre_Archirafi_01.jpg`)
+- Autore: Davide Mauro
+- Fonte: <https://commons.wikimedia.org/wiki/File:Torre_Archirafi_01.jpg>
+- Licenza: CC BY-SA 4.0
 
 ### Stazzo
 
-- File: `stazzo-acireale.jpg` (fonte: `Stazzo-Catania-Sicilia-Italy (3617362157).jpg`)
-- Autore: gnuckx
-- Fonte: <https://commons.wikimedia.org/wiki/File:Stazzo-Catania-Sicilia-Italy_(3617362157).jpg>
-- Licenza: CC BY 2.0
+- File: `stazzo-acireale.jpg` (fonte: `Stazzo_(Acireale)_from_Villa_Belvedere_6651.jpg`)
+- Autore: יעקב
+- Fonte: <https://commons.wikimedia.org/wiki/File:Stazzo_(Acireale)_from_Villa_Belvedere_6651.jpg>
+- Licenza: CC0
 
 ### Pozzillo
 
@@ -862,17 +862,17 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Spiaggia di Praiola
 
-- File: `praiola-giarre.jpg` (fonte: `Spiaggia della Praiola.jpg`)
+- File: `praiola-giarre.jpg` (fonte: `Torre_Archirafi_02.jpg`)
 - Autore: Davide Mauro
-- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_della_Praiola.jpg>
+- Fonte: <https://commons.wikimedia.org/wiki/File:Torre_Archirafi_02.jpg>
 - Licenza: CC BY-SA 4.0
 
 ### Oasi Foce del Simeto
 
-- File: `foce-simeto.jpg` (fonte: `Oasi del Simeto sdc 10.jpg`)
-- Autore: SDC20
-- Fonte: <https://commons.wikimedia.org/wiki/File:Oasi_del_Simeto_sdc_10.jpg>
-- Licenza: CC BY-SA 4.0
+- File: `foce-simeto.jpg` (fonte: `Spiaggia_Libera_3,_Catania_(01).jpg`)
+- Autore: Derbrauni
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_Libera_3,_Catania_(01).jpg>
+- Licenza: CC BY 4.0
 
 ### Faraglioni dei Ciclopi
 
@@ -897,10 +897,10 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Lido Azzurro
 
-- File: `lido-azzurro-catania.jpg` (fonte: `Plaia catania (6315200434).jpg`)
-- Autore: andrea
-- Fonte: <https://commons.wikimedia.org/wiki/File:Plaia_catania_(6315200434).jpg>
-- Licenza: CC BY-SA 2.0
+- File: `lido-azzurro-catania.jpg` (fonte: `Playa_(251757351).jpeg`)
+- Autore: Gabriele Falco
+- Fonte: <https://commons.wikimedia.org/wiki/File:Playa_(251757351).jpeg>
+- Licenza: CC BY 3.0
 
 ### Marina di Avola
 
@@ -911,45 +911,45 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Spiaggia di Pantanello
 
-- File: `pantanello-avola.jpg` (fonte: `License Free Photo - Creative Commons by gnuckx (11640714145).jpg`)
-- Autore: gnuckx
-- Fonte: <https://commons.wikimedia.org/wiki/File:License_Free_Photo_-_Creative_Commons_by_gnuckx_(11640714145).jpg>
-- Licenza: CC0
+- File: `pantanello-avola.jpg` (fonte: `Spiaggia_di_Avola_(Porto,_tonnara).jpg`)
+- Autore: Stella
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Avola_(Porto,_tonnara).jpg>
+- Licenza: CC BY-SA 4.0
 
 ### Spiaggia di Gallina
 
-- File: `gallina-avola.jpg` (fonte: `Sizilien (Gallina, Syracuse).jpg`)
-- Autore: MasDom
-- Fonte: <https://commons.wikimedia.org/wiki/File:Sizilien_(Gallina%2C_Syracuse).jpg>
-- Licenza: CC BY-SA 2.0
+- File: `gallina-avola.jpg` (fonte: `Oasi_del_Gelsomineto_-_foce_del_Cassibile.jpg`)
+- Autore: Stebar2
+- Fonte: <https://commons.wikimedia.org/wiki/File:Oasi_del_Gelsomineto_-_foce_del_Cassibile.jpg>
+- Licenza: CC BY-SA 4.0
 
 ### Calabernardo
 
-- File: `calabernardo-noto.jpg` (fonte: `Spiaggia di Calabernardo.JPG`)
+- File: `calabernardo-noto.jpg` (fonte: `Spiaggia_di_Calabernardo.JPG`)
 - Autore: Civis Ferdinandeo
 - Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Calabernardo.JPG>
 - Licenza: CC BY-SA 3.0
 
 ### Spiaggia di Morghella
 
-- File: `morghella-pachino.jpg` (fonte: `Portopalo di Capo Passero SR, Sicily, Italy - panoramio.jpg`)
-- Autore: trolvag
-- Fonte: <https://commons.wikimedia.org/wiki/File:Portopalo_di_Capo_Passero_SR%2C_Sicily%2C_Italy_-_panoramio.jpg>
-- Licenza: CC BY-SA 3.0
+- File: `morghella-pachino.jpg` (fonte: `Forte_di_Capo_Passero_visto_dalla_spiaggia_di_Portopalo.jpg`)
+- Autore: Pequod76
+- Fonte: <https://commons.wikimedia.org/wiki/File:Forte_di_Capo_Passero_visto_dalla_spiaggia_di_Portopalo.jpg>
+- Licenza: CC BY-SA 4.0
 
 ### Spiaggia della Spinazza
 
-- File: `marzamemi-spinazza.jpg` (fonte: `Spiaggia a nord di Marzamemi.jpg`)
-- Autore: Davide Mauro
-- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_a_nord_di_Marzamemi.jpg>
-- Licenza: CC BY-SA 4.0
+- File: `marzamemi-spinazza.jpg` (fonte: `San_Lorenzo_(SR)_-_panoramio_(1).jpg`)
+- Autore: Eugenio Bonifacio
+- Fonte: <https://commons.wikimedia.org/wiki/File:San_Lorenzo_(SR)_-_panoramio_(1).jpg>
+- Licenza: CC BY 3.0
 
 ### Punta delle Formiche
 
-- File: `punta-delle-formiche.jpg` (fonte: `The sea at Portopalo di Capo Passero.jpg`)
-- Autore: Einaz80
-- Fonte: <https://commons.wikimedia.org/wiki/File:The_sea_at_Portopalo_di_Capo_Passero.jpg>
-- Licenza: CC BY-SA 4.0
+- File: `punta-delle-formiche.jpg` (fonte: `Siracusa_punta_delle_formiche.jpg`)
+- Autore: fab.
+- Fonte: <https://commons.wikimedia.org/wiki/File:Siracusa_punta_delle_formiche.jpg>
+- Licenza: CC BY 2.0
 
 ### Costa dell'Ambra
 
@@ -960,10 +960,10 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Spiaggia di Terrauzza
 
-- File: `terrauzza-siracusa.jpg` (fonte: `Costa sbocco 32.jpg`)
-- Autore: Davide Mauro
-- Fonte: <https://commons.wikimedia.org/wiki/File:Costa_sbocco_32.jpg>
-- Licenza: CC BY-SA 4.0
+- File: `terrauzza-siracusa.jpg` (fonte: `Scogliera_del_Plemmirio,_Siracusa,_Sicilia.jpg`)
+- Autore: Herbert Frank
+- Fonte: <https://commons.wikimedia.org/wiki/File:Scogliera_del_Plemmirio,_Siracusa,_Sicilia.jpg>
+- Licenza: CC BY 2.0
 
 ### Faro Santa Croce
 
@@ -974,7 +974,7 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Spiaggia della Lanterna
 
-- File: `scoglitti-lanterna.jpg` (fonte: `Spiaggia di Scoglitti.jpg`)
+- File: `scoglitti-lanterna.jpg` (fonte: `Spiaggia_di_Scoglitti.jpg`)
 - Autore: Davide Mauro
 - Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Scoglitti.jpg>
 - Licenza: CC BY-SA 4.0
@@ -995,31 +995,31 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Spiaggia di Casuzze
 
-- File: `casuzze.jpg` (fonte: `IL mare dalla casa di Montalbano - panoramio.jpg`)
-- Autore: giomodica
-- Fonte: <https://commons.wikimedia.org/wiki/File:IL_mare_dalla_casa_di_Montalbano_-_panoramio.jpg>
-- Licenza: CC BY 3.0
+- File: `casuzze.jpg` (fonte: `Baia_di_Marina_di_Ragusa-Autore_Giorgio_Leggio.jpg`)
+- Autore: Giorgio Leggio
+- Fonte: <https://commons.wikimedia.org/wiki/File:Baia_di_Marina_di_Ragusa-Autore_Giorgio_Leggio.jpg>
+- Licenza: CC BY-SA 2.0
 
 ### Riserva Foce Fiume Irminio
 
-- File: `foce-fiume-irminio.jpg` (fonte: `Riserva naturale Macchia Foresta del Fiume Irminio - febbraio 2026 - WLE2026 01.jpg`)
-- Autore: Auregann
-- Fonte: <https://commons.wikimedia.org/wiki/File:Riserva_naturale_Macchia_Foresta_del_Fiume_Irminio_-_febbraio_2026_-_WLE2026_01.jpg>
-- Licenza: CC BY-SA 4.0
+- File: `foce-fiume-irminio.jpg` (fonte: `Riserva_del_fiume_Irminio_-_Marina_di_Ragusa_(16077754652).jpg`)
+- Autore: enrico cartia
+- Fonte: <https://commons.wikimedia.org/wiki/File:Riserva_del_fiume_Irminio_-_Marina_di_Ragusa_(16077754652).jpg>
+- Licenza: CC BY-SA 2.0
 
 ### Playa Grande
 
-- File: `playa-grande-scicli.jpg` (fonte: `Foce del fiume Irminio.jpg`)
-- Autore: Davide Mauro
-- Fonte: <https://commons.wikimedia.org/wiki/File:Foce_del_fiume_Irminio.jpg>
-- Licenza: CC BY-SA 4.0
+- File: `playa-grande-scicli.jpg` (fonte: `Riserva_Naturale_Fiume_Irminio.jpg`)
+- Autore: Antonio.scribano
+- Fonte: <https://commons.wikimedia.org/wiki/File:Riserva_Naturale_Fiume_Irminio.jpg>
+- Licenza: CC BY 3.0
 
 ### Spiaggia di Spinasanta
 
-- File: `spinasanta-donnalucata.jpg` (fonte: `Donna Lucata - panoramio (9).jpg`)
-- Autore: Emanuela Meme Giudic…
-- Fonte: <https://commons.wikimedia.org/wiki/File:Donna_Lucata_-_panoramio_(9).jpg>
-- Licenza: CC BY 3.0
+- File: `spinasanta-donnalucata.jpg` (fonte: `Donnalucata._Scicli,_Sicilia.jpg`)
+- Autore: Davide Mauro
+- Fonte: <https://commons.wikimedia.org/wiki/File:Donnalucata._Scicli,_Sicilia.jpg>
+- Licenza: CC BY-SA 4.0
 
 ### Costa di Carro
 
@@ -1030,16 +1030,16 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Spiaggia del Pisciotto
 
-- File: `pisciotto-sampieri.jpg` (fonte: `Fornace Penna.jpg`)
+- File: `pisciotto-sampieri.jpg` (fonte: `Spiaggia_di_Sampieri.jpg`)
 - Autore: Davide Mauro
-- Fonte: <https://commons.wikimedia.org/wiki/File:Fornace_Penna.jpg>
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Sampieri.jpg>
 - Licenza: CC BY-SA 4.0
 
 ### Marina di Modica
 
-- File: `marina-di-modica.jpg` (fonte: `Costa di Marina di Modica al tramonto.jpg`)
+- File: `marina-di-modica.jpg` (fonte: `Spiaggia_di_Marina_di_Modica.JPG`)
 - Autore: Davide Mauro
-- Fonte: <https://commons.wikimedia.org/wiki/File:Costa_di_Marina_di_Modica_al_tramonto.jpg>
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Marina_di_Modica.JPG>
 - Licenza: CC BY-SA 4.0
 
 ### Spiaggia di Pietrenere
@@ -1051,10 +1051,10 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Santa Maria del Focallo
 
-- File: `santa-maria-del-focallo.jpg` (fonte: `Tramonto alla spiaggia di Santa Maria del Focallo.jpg`)
-- Autore: Codas
-- Fonte: <https://commons.wikimedia.org/wiki/File:Tramonto_alla_spiaggia_di_Santa_Maria_del_Focallo.jpg>
-- Licenza: CC BY-SA 4.0
+- File: `santa-maria-del-focallo.jpg` (fonte: `Santa_Maria_del_Focallo_BB2011.JPG`)
+- Autore: Fabio Tumino
+- Fonte: <https://commons.wikimedia.org/wiki/File:Santa_Maria_del_Focallo_BB2011.JPG>
+- Licenza: CC BY 3.0
 
 ### Porto Palo di Menfi
 
@@ -1100,10 +1100,10 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Bovo Marina
 
-- File: `bovo-marina-montallegro.jpg` (fonte: `Platani delta seen from Eraclea Minoa - Italy 2015.JPG`)
-- Autore: José Luiz
-- Fonte: <https://commons.wikimedia.org/wiki/File:Platani_delta_seen_from_Eraclea_Minoa_-_Italy_2015.JPG>
-- Licenza: CC BY-SA 4.0
+- File: `bovo-marina-montallegro.jpg` (fonte: `"Riserva_naturale_Torre_Salsa"_Mare.jpg`)
+- Autore: Robertinacl89
+- Fonte: <https://commons.wikimedia.org/wiki/File:%22Riserva_naturale_Torre_Salsa%22_Mare.jpg>
+- Licenza: CC BY-SA 3.0
 
 ### Le Pergole
 
@@ -1114,10 +1114,10 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Lido Azzurro
 
-- File: `lido-azzurro-porto-empedocle.jpg` (fonte: `Porto Empedocle. Spiaggia Lido e Stabilimento balneare.jpg`)
-- Autore: Unknown authorUnknown author
-- Fonte: <https://commons.wikimedia.org/wiki/File:Porto_Empedocle._Spiaggia_Lido_e_Stabilimento_balneare.jpg>
-- Licenza: Public domain
+- File: `lido-azzurro-porto-empedocle.jpg` (fonte: `Contrada_Punta_Grande,_42,_92010_Punta_Grande_AG,_Italy_-_panoramio_(1).jpg`)
+- Autore: trolvag
+- Fonte: <https://commons.wikimedia.org/wiki/File:Contrada_Punta_Grande,_42,_92010_Punta_Grande_AG,_Italy_-_panoramio_(1).jpg>
+- Licenza: CC BY-SA 3.0
 
 ### Punta Bianca
 
@@ -1170,9 +1170,9 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Lungomare Federico II
 
-- File: `lungomare-federico-ii-gela.jpg` (fonte: `Lungomare Federico II di Svevia, Gela.jpg`)
-- Autore: Codas
-- Fonte: <https://commons.wikimedia.org/wiki/File:Lungomare_Federico_II_di_Svevia%2C_Gela.jpg>
+- File: `lungomare-federico-ii-gela.jpg` (fonte: `Spiaggia_di_Gela.jpg`)
+- Autore: Antonio Pignato
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Gela.jpg>
 - Licenza: CC BY-SA 4.0
 
 ### Spiaggia di Montelungo
@@ -1184,17 +1184,17 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Roccazzelle
 
-- File: `roccazzelle-gela.jpg` (fonte: `Gela tramonto.JPG`)
-- Autore: Alessandro451
-- Fonte: <https://commons.wikimedia.org/wiki/File:Gela_tramonto.JPG>
-- Licenza: CC BY-SA 3.0
+- File: `roccazzelle-gela.jpg` (fonte: `Spiaggia_di_Manfria_03.jpg`)
+- Autore: Codas
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Manfria_03.jpg>
+- Licenza: CC BY-SA 4.0
 
 ### Femmina Morta
 
-- File: `femmina-morta-gela.jpg` (fonte: `Gela Manfria2008.JPG`)
-- Autore: Alessandro451
-- Fonte: <https://commons.wikimedia.org/wiki/File:Gela_Manfria2008.JPG>
-- Licenza: CC BY-SA 3.0
+- File: `femmina-morta-gela.jpg` (fonte: `Piana_Marina_-_panoramio_-_www.gironavigando.it_(2).jpg`)
+- Autore: www.gironavigando.it
+- Fonte: <https://commons.wikimedia.org/wiki/File:Piana_Marina_-_panoramio_-_www.gironavigando.it_(2).jpg>
+- Licenza: CC BY 3.0
 
 ### Piana Marina
 
@@ -1205,9 +1205,9 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### Spiaggia Foce Biviere
 
-- File: `foce-biviere-gela.jpg` (fonte: `Riserva biviere di Gela 01.jpg`)
-- Autore: Davide Mauro
-- Fonte: <https://commons.wikimedia.org/wiki/File:Riserva_biviere_di_Gela_01.jpg>
+- File: `foce-biviere-gela.jpg` (fonte: `Spiaggia_di_Manfria_01.jpg`)
+- Autore: Codas
+- Fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Manfria_01.jpg>
 - Licenza: CC BY-SA 4.0
 
 ### Spinasanta
@@ -1219,17 +1219,17 @@ Le seguenti copie locali sono state scaricate il 2026-09-04 da Wikimedia Commons
 
 ### San Nicola
 
-- File: `san-nicola-gela.jpg` (fonte: `Lungomare di Gela.jpg`)
-- Autore: AbelDionis
-- Fonte: <https://commons.wikimedia.org/wiki/File:Lungomare_di_Gela.jpg>
-- Licenza: CC0
+- File: `san-nicola-gela.jpg` (fonte: `Piana_Marina_-_panoramio_-_www.gironavigando.it_(1).jpg`)
+- Autore: www.gironavigando.it
+- Fonte: <https://commons.wikimedia.org/wiki/File:Piana_Marina_-_panoramio_-_www.gironavigando.it_(1).jpg>
+- Licenza: CC BY 3.0
 
 ### Lido La Conchiglia
 
-- File: `lido-la-conchiglia-gela.jpg` (fonte: `La conchiglia.jpg`)
-- Autore: Eannatum
-- Fonte: <https://commons.wikimedia.org/wiki/File:La_conchiglia.jpg>
-- Licenza: CC BY-SA 3.0
+- File: `lido-la-conchiglia-gela.jpg` (fonte: `Pontile_di_Gela.jpg`)
+- Autore: Mjrko Gelous
+- Fonte: <https://commons.wikimedia.org/wiki/File:Pontile_di_Gela.jpg>
+- Licenza: CC BY-SA 4.0
 
 ### Contrada Rizzuto
 
