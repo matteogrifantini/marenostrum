@@ -183,7 +183,7 @@ export function NationalMapView({
               <PeriodPicker value={period} onChange={onPeriodChange} />
             </div>
 
-            <div className="grid grid-cols-2 gap-2 lg:col-span-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-2 lg:col-span-2 lg:grid-cols-3">
               <CatalogScopeControls
                 context="map"
                 layout="two-column"
@@ -193,6 +193,7 @@ export function NationalMapView({
                 onRegionChange={onRegionChange}
                 onProvinceChange={onProvinceChange}
                 onNearbyChange={handleNearbyChange}
+                showRegion={false}
               />
               <button
                 type="button"

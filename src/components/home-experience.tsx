@@ -417,7 +417,7 @@ export function HomeExperience({
                 <div className="min-w-0 lg:col-start-2 lg:row-start-1">
                   <PeriodPicker value={period} onChange={handlePeriodChange} />
                 </div>
-                <div className="grid grid-cols-2 gap-2 lg:col-span-2 lg:grid-cols-4">
+                <div className="grid grid-cols-2 gap-2 lg:col-span-2 lg:grid-cols-3">
                   <CatalogScopeControls
                     context="home"
                     layout="two-column"
@@ -427,6 +427,7 @@ export function HomeExperience({
                     onRegionChange={handleRegionChange}
                     onProvinceChange={handleProvinceChange}
                     onNearbyChange={handleNearbyChange}
+                    showRegion={false}
                   />
                   <button
                     type="button"

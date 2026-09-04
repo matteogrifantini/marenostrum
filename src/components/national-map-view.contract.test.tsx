@@ -23,7 +23,7 @@ describe("NationalMapView", () => {
       />,
     );
 
-    expect(screen.getByRole("combobox", { name: "Regione della mappa" })).toHaveValue("all");
+    expect(screen.queryByRole("combobox", { name: "Regione della mappa" })).not.toBeInTheDocument();
     expect(screen.getByRole("combobox", { name: "Provincia della mappa" })).toHaveValue("all");
     expect(screen.getByTestId("map-result-summary")).toHaveTextContent("3 spiagge · Italia");
     expect(screen.queryByText("Tutta la Sicilia")).not.toBeInTheDocument();

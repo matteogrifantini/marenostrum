@@ -3,7 +3,32 @@ import { describe, expect, it, vi } from "vitest";
 import { CatalogScopeControls } from "./catalog-scope-controls";
 
 describe("CatalogScopeControls", () => {
-  it("flattens into the shared mobile grid and orders nearby beside province", () => {
+  it("hides region selector and displays Sicily coastal provinces by default", () => {
+    render(
+      <CatalogScopeControls
+        context="home"
+        layout="two-column"
+        province="all"
+        nearbySelection={null}
+        onProvinceChange={vi.fn()}
+        onNearbyChange={vi.fn()}
+      />,
+    );
+
+    expect(screen.queryByRole("combobox", { name: "Regione" })).not.toBeInTheDocument();
+    const provinceSelect = screen.getByRole("combobox", { name: "Provincia" });
+    expect(provinceSelect.parentElement).toHaveClass("col-span-2", "lg:col-auto");
+
+    // Contains Sicily coastal provinces
+    expect(screen.getByRole("option", { name: "Palermo" })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: "Trapani" })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: "Messina" })).toBeInTheDocument();
+    // Excludes other Italian regions/provinces when region filter is deactivated
+    expect(screen.queryByRole("option", { name: "Milano" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: "Roma" })).not.toBeInTheDocument();
+  });
+
+  it("flattens into the shared mobile grid and orders nearby beside province when showRegion is enabled", () => {
     render(
       <CatalogScopeControls
         context="home"
@@ -13,6 +38,7 @@ describe("CatalogScopeControls", () => {
         onRegionChange={vi.fn()}
         onProvinceChange={vi.fn()}
         onNearbyChange={vi.fn()}
+        showRegion={true}
       />,
     );
 
@@ -42,21 +68,19 @@ describe("CatalogScopeControls", () => {
     render(
       <CatalogScopeControls
         context="home"
-        region="all"
         province="all"
         nearbySelection={{ coordinates: { latitude: 41.9, longitude: 12.5 }, radiusKm: 25 }}
-        onRegionChange={vi.fn()}
         onProvinceChange={vi.fn()}
         onNearbyChange={vi.fn()}
       />,
     );
 
     const nearby = screen.getByTestId("nearby-control");
-    expect(nearby).toHaveClass("order-3", "w-full", "lg:order-none", "lg:w-auto");
+    expect(nearby).toHaveClass("w-full");
     expect(screen.getByRole("button", { name: "Vicino a me" })).toHaveClass("w-full", "px-4");
   });
 
-  it("keeps region and province on the left and nearby on the right in the compact grid", () => {
+  it("keeps region and province on the left and nearby on the right in the compact grid when showRegion is true", () => {
     render(
       <CatalogScopeControls
         context="home"
@@ -67,6 +91,7 @@ describe("CatalogScopeControls", () => {
         onRegionChange={vi.fn()}
         onProvinceChange={vi.fn()}
         onNearbyChange={vi.fn()}
+        showRegion={true}
       />,
     );
 

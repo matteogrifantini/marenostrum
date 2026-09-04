@@ -386,15 +386,11 @@ describe("HomeExperience", () => {
       "grid-cols-3",
       "w-full",
     );
-    expect(screen.getByRole("combobox", { name: "Regione" }).parentElement).toHaveClass(
-      "col-start-1",
-      "row-start-1",
-    );
+    expect(screen.queryByRole("combobox", { name: "Regione" })).not.toBeInTheDocument();
     expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass(
-      "col-start-1",
-      "row-start-2",
+      "col-span-2",
     );
-    expect(screen.getByTestId("nearby-control")).toHaveClass("col-start-2", "row-start-1");
+    expect(screen.getByTestId("nearby-control")).toHaveClass("col-start-1", "row-start-2");
     expect(screen.getByRole("button", { name: "Filtri" })).toHaveClass("col-start-2", "row-start-2");
   });
 
@@ -411,8 +407,9 @@ describe("HomeExperience", () => {
     expect(toolbar).toHaveClass("lg:contents");
     expect(dayGroup.parentElement).toHaveClass("lg:col-start-1", "lg:row-start-1");
     expect(periodGroup.parentElement).toHaveClass("lg:col-start-2", "lg:row-start-1");
-    expect(locationGrid).toHaveClass("lg:col-span-2", "lg:grid-cols-4");
-    expect(screen.getByRole("combobox", { name: "Regione" }).parentElement).toHaveClass(
+    expect(locationGrid).toHaveClass("lg:col-span-2", "lg:grid-cols-3");
+    expect(screen.queryByRole("combobox", { name: "Regione" })).not.toBeInTheDocument();
+    expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass(
       "lg:col-auto",
       "lg:row-auto",
     );
