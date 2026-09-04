@@ -112,4 +112,35 @@ describe("CatalogScopeControls", () => {
       "w-full",
     );
   });
+
+  it("renders a centered visible label matching the selected province", () => {
+    const { rerender } = render(
+      <CatalogScopeControls
+        context="home"
+        province="all"
+        nearbySelection={null}
+        onProvinceChange={vi.fn()}
+        onNearbyChange={vi.fn()}
+      />,
+    );
+
+    const getVisibleLabel = () =>
+      screen.getByTestId("catalog-scope-controls").querySelector("span[aria-hidden='true']");
+
+    expect(getVisibleLabel()).toHaveTextContent("Scegli una provincia");
+    expect(getVisibleLabel()).toHaveClass("text-center", "truncate");
+
+    rerender(
+      <CatalogScopeControls
+        context="home"
+        province="PA"
+        nearbySelection={null}
+        onProvinceChange={vi.fn()}
+        onNearbyChange={vi.fn()}
+      />,
+    );
+
+    expect(getVisibleLabel()).toHaveTextContent("Palermo");
+    expect(getVisibleLabel()).toHaveClass("text-center", "truncate");
+  });
 });
