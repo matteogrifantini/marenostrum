@@ -25,7 +25,6 @@ import { CatalogScopeControls } from "./catalog-scope-controls";
 import { DayPicker } from "./day-picker";
 import { FilterSheet } from "./filter-sheet";
 import { LeafletBeachMap } from "./leaflet-beach-map";
-import { MapDayPeriodPicker } from "./map-day-period-picker";
 import { PeriodPicker } from "./period-picker";
 
 type NationalMapViewProps = {
@@ -166,44 +165,44 @@ export function NationalMapView({
     <div className="flex flex-col gap-4">
       <section
         aria-label="Controlli previsione mappa"
-        className="relative z-20 overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.94)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4"
+        className="relative z-20 overflow-visible rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.94)] p-3 shadow-[0_14px_44px_rgba(20,44,57,0.07)] backdrop-blur-xl sm:p-4 lg:p-3"
       >
-        <div className="flex flex-col gap-3">
-          <div data-testid="map-day-period-mobile" className="flex flex-col gap-3 lg:hidden">
+        <div
+          data-testid="map-control-layout"
+          className="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:gap-2"
+        >
+          <div className="min-w-0 lg:col-start-1 lg:row-start-1">
             <DayPicker options={dateOptions} value={date} onChange={onDateChange} />
-            <PeriodPicker value={period} onChange={onPeriodChange} />
           </div>
-          <div data-testid="map-day-period-desktop" className="hidden lg:block">
-            <MapDayPeriodPicker
-              options={dateOptions}
-              date={date}
-              period={period}
-              onDateChange={onDateChange}
-              onPeriodChange={onPeriodChange}
-            />
-          </div>
+
           <div
             data-testid="map-filter-toolbar"
-            className="grid grid-cols-2 gap-2 lg:grid-cols-4"
+            className="grid gap-2 border-t border-[var(--line)] pt-3 lg:contents"
           >
-            <CatalogScopeControls
-              context="map"
-              layout="two-column"
-              region={region}
-              province={province}
-              nearbySelection={nearbySelection}
-              onRegionChange={onRegionChange}
-              onProvinceChange={onProvinceChange}
-              onNearbyChange={handleNearbyChange}
-            />
-            <button
-              type="button"
-              onClick={() => setFilterSheetOpen(true)}
-              className="col-start-2 row-start-2 inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-3 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] lg:col-auto lg:row-auto"
-            >
-              <SlidersHorizontal aria-hidden="true" size={16} />
-              Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
-            </button>
+            <div className="min-w-0 lg:col-start-2 lg:row-start-1">
+              <PeriodPicker value={period} onChange={onPeriodChange} />
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 lg:col-span-2 lg:grid-cols-4">
+              <CatalogScopeControls
+                context="map"
+                layout="two-column"
+                region={region}
+                province={province}
+                nearbySelection={nearbySelection}
+                onRegionChange={onRegionChange}
+                onProvinceChange={onProvinceChange}
+                onNearbyChange={handleNearbyChange}
+              />
+              <button
+                type="button"
+                onClick={() => setFilterSheetOpen(true)}
+                className="col-start-2 row-start-2 inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-[var(--surface)] px-3 text-sm font-bold text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] transition-[transform,background-color,color] duration-200 ease-out hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] lg:col-auto lg:row-auto"
+              >
+                <SlidersHorizontal aria-hidden="true" size={16} />
+                Filtri{activeFilterCount ? ` · ${activeFilterCount}` : ""}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -222,7 +221,6 @@ export function NationalMapView({
               aria-label="Cerca una spiaggia sulla mappa"
               aria-autocomplete="list"
               aria-controls="map-beach-search-results"
-              aria-describedby={!hasMapScope ? "map-beach-search-hint" : undefined}
               aria-expanded={searchOpen && beachSearch.trim().length > 0}
               value={beachSearch}
               onChange={(event) => handleBeachSearchChange(event.target.value)}
@@ -272,11 +270,6 @@ export function NationalMapView({
               </div>
             ) : null}
           </div>
-          {!hasMapScope ? (
-            <p id="map-beach-search-hint" className="px-2 text-xs font-semibold text-[var(--muted)]">
-              Seleziona una regione per cercare spiagge e punti utili.
-            </p>
-          ) : null}
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[var(--line)] pt-3">

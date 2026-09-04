@@ -120,22 +120,31 @@ describe("NationalMapView", () => {
       />,
     );
 
-    const desktopControls = within(screen.getByTestId("map-day-period-desktop"));
-    expect(desktopControls.getByRole("button", { name: "Domani" })).toHaveAttribute(
+    const controlLayout = within(screen.getByTestId("map-control-layout"));
+    expect(screen.getByTestId("map-control-layout")).toHaveClass(
+      "flex",
+      "lg:grid",
+      "lg:grid-cols-2",
+      "lg:gap-2",
+    );
+    expect(controlLayout.getByRole("button", { name: "Domani" })).toHaveAttribute(
       "aria-pressed",
       "true",
     );
-    expect(desktopControls.getByRole("button", { name: "Mattina" })).toHaveAttribute(
+    expect(controlLayout.getByRole("button", { name: "Mattina" })).toHaveAttribute(
       "aria-pressed",
       "true",
     );
-    expect(desktopControls.getByRole("group", { name: "Periodo per Domani" })).toBeInTheDocument();
+    expect(controlLayout.getByRole("group", { name: "Scegli il giorno" })).toBeInTheDocument();
+    expect(controlLayout.getByRole("group", { name: "Periodo" })).toBeInTheDocument();
     expect(screen.getByTestId("map-filter-toolbar")).toHaveClass(
       "grid",
-      "grid-cols-2",
       "gap-2",
-      "lg:grid-cols-4",
+      "border-t",
+      "pt-3",
+      "lg:contents",
     );
+    expect(screen.queryByText("Seleziona una regione per cercare spiagge e punti utili.")).not.toBeInTheDocument();
   });
 
   it("exposes only geolocated recommendations as accessible rating markers", () => {
@@ -182,9 +191,9 @@ describe("NationalMapView", () => {
       />,
     );
 
-    const desktopControls = within(screen.getByTestId("map-day-period-desktop"));
-    fireEvent.click(desktopControls.getByRole("button", { name: "Domani" }));
-    fireEvent.click(desktopControls.getByRole("button", { name: "Pomeriggio" }));
+    const controlLayout = within(screen.getByTestId("map-control-layout"));
+    fireEvent.click(controlLayout.getByRole("button", { name: "Domani" }));
+    fireEvent.click(controlLayout.getByRole("button", { name: "Pomeriggio" }));
 
     expect(onDateChange).toHaveBeenCalledWith("2026-08-21");
     expect(onPeriodChange).toHaveBeenCalledWith("afternoon");
