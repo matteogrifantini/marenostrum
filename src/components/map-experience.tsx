@@ -26,6 +26,7 @@ type MapExperienceProps = {
   dateOptions: DateOption[];
   recommendations: BeachRecommendation[];
   dataUnavailable?: boolean;
+  showRegion?: boolean;
 };
 
 export function buildMapQueryHref({
@@ -68,6 +69,7 @@ export function MapExperience({
   dateOptions,
   recommendations,
   dataUnavailable = false,
+  showRegion = false,
 }: MapExperienceProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -197,6 +199,7 @@ export function MapExperience({
               onRegionChange={handleRegionChange}
               onProvinceChange={handleProvinceChange}
               onNearbyChange={handleNearbyChange}
+              showRegion={showRegion}
             />
           )}
         </div>

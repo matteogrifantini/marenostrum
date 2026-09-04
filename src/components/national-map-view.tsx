@@ -40,6 +40,7 @@ type NationalMapViewProps = {
   onRegionChange?: (region: RegionSelection) => void;
   onProvinceChange: (province: ProvinceSelection) => void;
   onNearbyChange?: (selection: NearbySelection | null) => void;
+  showRegion?: boolean;
 };
 
 function formatMapBeachLabel(beach: BeachRecommendation["beach"]) {
@@ -69,6 +70,7 @@ export function NationalMapView({
   onRegionChange = () => undefined,
   onProvinceChange,
   onNearbyChange,
+  showRegion = false,
 }: NationalMapViewProps) {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [beachSearch, setBeachSearch] = useState("");
@@ -141,7 +143,11 @@ export function NationalMapView({
         ? { kind: "region", regionCode: region } as const
         : null
   );
-  const scopeLabel = needsScopeSelection ? "Scegli una regione" : formatCatalogScopeLabel(displayScope);
+  const scopePromptTitle = showRegion
+    ? "Scegli una regione per esplorare la mappa"
+    : "Scegli una provincia per esplorare la mappa";
+  const defaultScopePromptLabel = showRegion ? "Scegli una regione" : "Scegli una provincia";
+  const scopeLabel = needsScopeSelection ? defaultScopePromptLabel : formatCatalogScopeLabel(displayScope);
 
   const handleMapSelectBeach = (slug: string) => {
     setSelectedSlug(slug);
@@ -193,7 +199,7 @@ export function NationalMapView({
                 onRegionChange={onRegionChange}
                 onProvinceChange={onProvinceChange}
                 onNearbyChange={handleNearbyChange}
-                showRegion={false}
+                showRegion={showRegion}
               />
               <button
                 type="button"
@@ -373,7 +379,7 @@ export function NationalMapView({
         >
           <MapPin aria-hidden="true" className="mt-0.5 shrink-0 text-[var(--sea-deep)]" size={19} />
           <div>
-            <p className="text-sm font-extrabold">Scegli una regione per esplorare la mappa</p>
+            <p className="text-sm font-extrabold">{scopePromptTitle}</p>
             <p className="mt-1 text-xs font-semibold leading-5 text-[var(--ink-soft)]">
               Dopo la selezione mostreremo spiagge, parcheggi, lidi e servizi della zona. Oppure usa Vicino a me.
             </p>

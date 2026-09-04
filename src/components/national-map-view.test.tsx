@@ -300,7 +300,7 @@ describe("NationalMapView", () => {
     expect(screen.getByRole("dialog", { name: "Affina la scelta" })).toBeInTheDocument();
   });
 
-  it("explains that a region is needed before showing the map catalog", () => {
+  it("explains that a province is needed before showing the map catalog when region selection is disabled", () => {
     render(
       <NationalMapView
         recommendations={[]}
@@ -311,6 +311,29 @@ describe("NationalMapView", () => {
         onDateChange={vi.fn()}
         onPeriodChange={vi.fn()}
         onProvinceChange={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByTestId("map-scope-prompt")).toHaveTextContent(
+      "Scegli una provincia per esplorare la mappa",
+    );
+    expect(screen.getByTestId("map-scope-prompt")).toHaveTextContent(
+      "Oppure usa Vicino a me",
+    );
+  });
+
+  it("explains that a region is needed before showing the map catalog when region selection is enabled", () => {
+    render(
+      <NationalMapView
+        recommendations={[]}
+        province="all"
+        date="2026-08-20"
+        period="all-day"
+        dateOptions={dateOptions}
+        onDateChange={vi.fn()}
+        onPeriodChange={vi.fn()}
+        onProvinceChange={vi.fn()}
+        showRegion={true}
       />,
     );
 

@@ -100,6 +100,7 @@ export default async function MappaPage({
       date: initialDate,
       period: initialPeriod,
       scope: initialScope,
+      nationalPreview: initialScope === null,
     });
   } catch (error) {
     if (!(error instanceof ForecastDataUnavailableError)) {
