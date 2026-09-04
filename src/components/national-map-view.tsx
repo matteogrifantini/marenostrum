@@ -123,7 +123,7 @@ export function NationalMapView({
     const normalizedQuery = beachSearch.trim().toLocaleLowerCase("it-IT");
     if (!normalizedQuery) return [];
 
-    return visibleMappableRecommendations
+    return recommendations
       .filter(({ beach }) => [
         beach.name,
         beach.municipality,
@@ -131,7 +131,7 @@ export function NationalMapView({
         beach.provinceName ?? "",
       ].some((value) => value.toLocaleLowerCase("it-IT").includes(normalizedQuery)))
       .slice(0, 8);
-  }, [beachSearch, visibleMappableRecommendations]);
+  }, [beachSearch, recommendations]);
   const hasMapScope = Boolean(scope || region !== "all" || province !== "all" || nearbySelection);
   const needsScopeSelection = !hasMapScope && recommendations.length === 0;
   const displayScope = scope ?? (

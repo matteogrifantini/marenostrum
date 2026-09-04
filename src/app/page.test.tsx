@@ -351,6 +351,41 @@ describe("HomeExperience", () => {
     expect(screen.queryByRole("heading", { name: "Cala del Gelsomino" })).not.toBeInTheDocument();
   });
 
+  it("searches across all beaches in the catalog regardless of province filter", () => {
+    renderHome({
+      initialProvince: "PA",
+      recommendations: [
+        ...recommendations,
+        {
+          beach: {
+            slug: "mondello",
+            name: "Mondello",
+            municipality: "Palermo",
+            coast: "Nord-ovest",
+            description: "Sabbia bianca.",
+            orientationDegrees: 0,
+            shelter: ["scirocco"],
+            tags: ["sabbia"],
+            access: "facile",
+            image: "/images/beaches/mondello.jpg",
+            provinceCode: "PA",
+          },
+          conditions: recommendations[0].conditions,
+          score: 95,
+          label: "Ottima scelta",
+          reason: "Calmo.",
+          confidence: "alta",
+          factors: { wind: 90, sea: 90, weather: 90 },
+        },
+      ],
+    });
+
+    const search = screen.getByRole("searchbox", { name: "Cerca una spiaggia" });
+    fireEvent.change(search, { target: { value: "Vendicari" } });
+
+    expect(screen.getByRole("heading", { name: "Tonnara di Vendicari" })).toBeInTheDocument();
+  });
+
   it("supports multiple factual filters at the same time", () => {
     renderHome();
 

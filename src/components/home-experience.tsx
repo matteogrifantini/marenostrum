@@ -147,10 +147,14 @@ export function HomeExperience({
     () => {
       const normalizedSearchQuery = searchQuery.trim().toLowerCase();
 
-      return filterRecommendationsByRegion(
-        filterRecommendationsByProvince(recommendations, province),
-        region,
-      ).filter((rec) => {
+      const baseRecommendations = normalizedSearchQuery
+        ? recommendations
+        : filterRecommendationsByRegion(
+            filterRecommendationsByProvince(recommendations, province),
+            region,
+          );
+
+      return baseRecommendations.filter((rec) => {
         const { beach, conditions } = rec;
         const searchMatches =
           !normalizedSearchQuery ||
@@ -189,7 +193,8 @@ export function HomeExperience({
   const forecastUnavailable = dataUnavailable || (!scopeAware && recommendations.length === 0);
   const isUpdatingForecast = isPending || isNavigating;
   const displayedRecommendations = useMemo<DisplayRecommendation[]>(() => {
-    if (!nearbySelection) {
+    const hasSearchQuery = Boolean(searchQuery.trim());
+    if (!nearbySelection || hasSearchQuery) {
       return filteredRecommendations.map((recommendation) => ({ recommendation }));
     }
 
@@ -210,7 +215,7 @@ export function HomeExperience({
         }];
       })
       .sort((left, right) => (left.distanceKm ?? Infinity) - (right.distanceKm ?? Infinity));
-  }, [filteredRecommendations, nearbySelection]);
+  }, [filteredRecommendations, nearbySelection, searchQuery]);
 
   const filterKey = `${region}-${province}-${scope?.kind ?? "none"}-${searchQuery}-${onlySheltered}-${onlyWebcam}-${date}-${period}-${nearbySelection?.radiusKm ?? "none"}-${JSON.stringify(filters)}`;
   const [prevFilterKey, setPrevFilterKey] = useState(filterKey);

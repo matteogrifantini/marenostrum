@@ -68,7 +68,6 @@ export default async function HomePage({
       period: initialPeriod,
       scope: initialScope,
       nationalPreview: initialScope === null,
-      limit: initialScope === null ? 10 : undefined,
     });
   } catch (error) {
     if (!(error instanceof ForecastDataUnavailableError)) {

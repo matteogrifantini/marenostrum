@@ -44,13 +44,13 @@ export function CatalogScopeControls({
       className={isTwoColumnLayout ? "contents" : "contents lg:flex lg:w-auto lg:flex-wrap lg:items-center lg:gap-2"}
     >
       {showRegion && onRegionChange ? (
-        <label className={`${isTwoColumnLayout ? "col-start-1 row-start-1 lg:col-auto lg:row-auto" : "order-2 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
+        <label className={`${isTwoColumnLayout ? "col-start-1 row-start-1 lg:col-auto lg:row-auto" : "order-2 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
           <span className="sr-only">Regione{suffix}</span>
           <select
             aria-label={`Regione${suffix}`}
             value={region}
             onChange={(event) => onRegionChange(event.target.value as RegionSelection)}
-            className="min-h-11 w-full min-w-0 appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none lg:w-auto lg:max-w-[11rem]"
+            className="min-h-11 w-full min-w-0 appearance-none rounded-full bg-transparent px-2 py-2 text-center text-xs font-bold text-[var(--ink-soft)] outline-none sm:px-3 sm:text-sm lg:w-auto lg:max-w-[11rem]"
           >
             <option value="all">Scegli una regione</option>
             {ITALIAN_REGIONS.map(({ code, label }) => (
@@ -62,13 +62,13 @@ export function CatalogScopeControls({
         </label>
       ) : null}
 
-      <label className={`${isTwoColumnLayout ? (showRegion ? "col-start-1 row-start-2" : "col-start-1 row-start-1") + " lg:col-auto lg:row-auto" : "order-4 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] px-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
+      <label className={`${isTwoColumnLayout ? (showRegion ? "col-start-1 row-start-2" : "col-start-1 row-start-1") + " lg:col-auto lg:row-auto" : "order-4 lg:order-none lg:w-auto lg:shrink-0"} inline-flex min-h-11 w-full min-w-0 items-center rounded-full bg-[var(--surface)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] focus-within:ring-2 focus-within:ring-[var(--sun)]`}>
         <span className="sr-only">Provincia{suffix}</span>
         <select
           aria-label={`Provincia${suffix}`}
           value={province}
           onChange={(event) => onProvinceChange(event.target.value as ProvinceSelection)}
-          className="min-h-11 w-full min-w-0 appearance-none rounded-full bg-transparent px-3 py-2 text-sm font-bold text-[var(--ink-soft)] outline-none"
+          className="min-h-11 w-full min-w-0 appearance-none rounded-full bg-transparent px-2 py-2 text-center text-xs font-bold text-[var(--ink-soft)] outline-none sm:px-3 sm:text-sm"
         >
           <option value="all">Scegli una provincia</option>
           {visibleProvinces.map(({ code, label }) => (
