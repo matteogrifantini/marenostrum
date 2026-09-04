@@ -28,31 +28,14 @@ contenuti e candidati Google sono allineati a 134 record.
 
 ## Immagini e licenze
 
-Il manifest immagini contiene 111 asset locali complessivi, di cui 31 nuovi
-asset Wikimedia Commons con credito, licenza e pagina sorgente registrati in:
+Il manifest immagini contiene **134 asset locali complessivi** (100% di copertura del catalogo siciliano, 54/54 sull'espansione provinciale). Tutte le 23 candidature precedentemente `media-pending` sono state verificate visivamente secondo lo standard editoriale rigoroso ("mare calmo, limpido e cristallino, luce solare nitida"), approvate, ridimensionate a una larghezza massima di 1920 px e registrate con attribuzione, licenza e pagina sorgente in:
 
 - `data/catalog/sicilia/image-assets.json`
 - `public/images/beaches/ATTRIBUTIONS.md`
 
-Sono state mantenute solo immagini in cui mare o costa sono il soggetto
-principale, l’acqua appare calma o poco increspata, la resa è sufficientemente
-chiara e la località è ragionevolmente supportata. Questo è un controllo
-editoriale statico: una foto non dimostra la qualità attuale dell’acqua, la
-balneabilità, l’accesso o la presenza di servizi.
+Sono state mantenute solo immagini in cui mare o costa sono il soggetto principale, l’acqua appare calma o limpida, la resa è luminosa e la località è fedele al litorale di riferimento. Non ci sono candidature `media-pending` residue nel catalogo siciliano.
 
-Le 23 candidature ancora `media-pending` sono:
-
-```text
-gioiosa-marea, roccalumera
-ognina-catania, aci-trezza, capomulini, santa-maria-la-scala, fondachello-mascali
-marianelli, fanusa, isola-delle-correnti
-donnalucata, sampieri, cava-d-aliga, punta-secca, caucana, raganzino
-san-leone, scala-dei-turchi, mollarella
-macchitella, capo-rossello, giallonardo, desusino
-```
-
-Non sono stati usati duplicati, fallback generici, immagini da Google/Booking,
-immagini stock o Supabase Storage.
+Non sono stati usati duplicati, fallback generici, immagini da Google/Booking, immagini stock o upload remoti su Supabase Storage.
 
 ## Google e community
 
@@ -77,8 +60,8 @@ Eseguite con il runtime Node 24 bundled del workspace:
   tutto draft.
 - `npm run catalog:reviews:validate` — 134 profili Google draft, 0 Place ID
   verificati.
-- `npm run catalog:images:validate` — 111 asset, 111 file locali, 0 scritture.
-- `npm run catalog:images:media:validate` — 111 media candidati, 0 scritture.
+- `npm run catalog:images:validate` — 134 asset, 134 file locali, 0 scritture, all_draft: true.
+- `npm run catalog:images:media:validate` — 134 media candidati, 0 scritture, publication_status: verified.
 - `git diff --check` — nessun errore.
 
 La build locale e i dry-run non verificano la connessione live: nel worktree
@@ -114,9 +97,9 @@ docs/superpowers/specs/2026-09-02-production-hardening-design.md
 1. Ripristinare le variabili d’ambiente senza inserirle nel repository e
    verificare esplicitamente il progetto Supabase corretto.
 2. Controllare manualmente coordinate, accessi e divieti 2026 per le 54 nuove
-   candidature.
-3. Trovare e validare una foto esatta per le 23 righe `media-pending`; non
-   promuoverle usando un’immagine generica.
+   candidature prima di qualsiasi promozione pubblica.
+3. Copertura fotografica: completata al 100% (134/134 spiagge con immagini locali
+   validate Commons e attestate come `media-verified`).
 4. Verificare manualmente i 134 risultati Google Maps e valorizzare i Place ID
    solo quando la corrispondenza è certa.
 5. Ripetere tutti i dry-run con `.env.local` presente, poi applicare in modo

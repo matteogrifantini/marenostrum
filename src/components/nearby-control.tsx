@@ -84,7 +84,9 @@ export function NearbyControl({ value, onChange, className = "" }: NearbyControl
         const radiusKm = DEFAULT_RADIUS_KM;
         onChange({ coordinates: nextCoordinates, radiusKm });
         setTimeout(() => {
-          document.getElementById("classifica")?.scrollIntoView({ behavior: "smooth" });
+          if (typeof document !== "undefined") {
+            document.getElementById("classifica")?.scrollIntoView({ behavior: "smooth" });
+          }
         }, 100);
       },
       () => {

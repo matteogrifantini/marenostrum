@@ -886,5 +886,189 @@
     "image_credit": "www.gironavigando.it",
     "image_license": "CC BY 3.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Falconara_-_panoramio.jpg"
+  },
+  {
+    "slug": "scala-dei-turchi",
+    "image_path": "/images/beaches/scala-dei-turchi.jpg",
+    "image_alt": "La falesia bianca di marna viva della Scala dei Turchi affacciata sul mare turchese.",
+    "image_credit": "Lahiri Cappello",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Realmonte_(AG)_-_Scala_dei_turchi.jpg"
+  },
+  {
+    "slug": "capo-rossello",
+    "image_path": "/images/beaches/capo-rossello.jpg",
+    "image_alt": "Scogliera e cala sabbiosa di Capo Rossello con mare calmo e limpido.",
+    "image_credit": "www.gironavigando.it",
+    "image_license": "CC BY 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Le_pergole_-_panoramio.jpg"
+  },
+  {
+    "slug": "giallonardo",
+    "image_path": "/images/beaches/giallonardo.jpg",
+    "image_alt": "Spiaggia dorata e costa naturale di Giallonardo con mare cristallino.",
+    "image_credit": "Tiberio Frascari",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:112_113_Riserva_WWF_di_Torre_Salsa_(Sicilia).jpg"
+  },
+  {
+    "slug": "capomulini",
+    "image_path": "/images/beaches/capomulini.jpg",
+    "image_alt": "Scogliera lavica e mare limpido nel borgo costiero di Capo Mulini.",
+    "image_credit": "RitaL91",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sea_at_Capo_Mulini.jpg"
+  },
+  {
+    "slug": "desusino",
+    "image_path": "/images/beaches/desusino.jpg",
+    "image_alt": "Litorale sabbioso di Desusino con mare calmo nella costa meridionale.",
+    "image_credit": "Satrebil100",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:FalconaraDesusino.jpg"
+  },
+  {
+    "slug": "mollarella",
+    "image_path": "/images/beaches/mollarella.jpg",
+    "image_alt": "Ampia baia riparata della Mollarella a Licata con mare turchese e sabbia dorata.",
+    "image_credit": "fab.",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Baia_della_Mollarella,_Licata,_Sicilia.jpg"
+  },
+  {
+    "slug": "aci-trezza",
+    "image_path": "/images/beaches/aci-trezza.jpg",
+    "image_alt": "I faraglioni dei Ciclopi emergono dal mare limpido di fronte ad Aci Trezza.",
+    "image_credit": "Dispe",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_e_faraglioni_di_Aci_Trezza_(CT)_Italy.JPG"
+  },
+  {
+    "slug": "isola-delle-correnti",
+    "image_path": "/images/beaches/isola-delle-correnti.jpg",
+    "image_alt": "Il promontorio e l isolotto dell Isola delle Correnti bagnati dal mare limpido all estremita della Sicilia.",
+    "image_credit": "Michele Ponzio",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Isola_delle_Correnti_-_Sicily.jpg"
+  },
+  {
+    "slug": "macchitella",
+    "image_path": "/images/beaches/macchitella.jpg",
+    "image_alt": "Ampia spiaggia sabbiosa di Macchitella a Gela con mare calmo e cielo limpido.",
+    "image_credit": "fab.",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Gela.jpg"
+  },
+  {
+    "slug": "punta-secca",
+    "image_path": "/images/beaches/punta-secca.jpg",
+    "image_alt": "La spiaggia di Punta Secca con la storica Torre Scalambri e il mare limpido.",
+    "image_credit": "Alexdechi",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Torre_Scalambri_di_Punta_Secca.jpg"
+  },
+  {
+    "slug": "fanusa",
+    "image_path": "/images/beaches/fanusa.jpg",
+    "image_alt": "Costa rocciosa e acque trasparenti della Fanusa nell Area Marina Protetta del Plemmirio.",
+    "image_credit": "Stella",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Costa_di_Siracusa_Fanusa_4.jpg"
+  },
+  {
+    "slug": "cava-d-aliga",
+    "image_path": "/images/beaches/cava-d-aliga.jpg",
+    "image_alt": "Spiaggia sabbiosa e scogliera di Cava d Aliga con mare limpido e calmo.",
+    "image_credit": "fab.",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Ragusa_cava_daliga_2.jpg"
+  },
+  {
+    "slug": "marianelli",
+    "image_path": "/images/beaches/marianelli.jpg",
+    "image_alt": "Spiaggia incontaminata e acque trasparenti nella riserva naturale di Vendicari presso Marianelli.",
+    "image_credit": "Derbrauni",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Beach_of_Eloro_03.jpg"
+  },
+  {
+    "slug": "gioiosa-marea",
+    "image_path": "/images/beaches/gioiosa-marea.jpg",
+    "image_alt": "Promontorio roccioso e mare turchese limpido a Capo Calava e Gioiosa Marea.",
+    "image_credit": "Gomera-b",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Capo_Calav%C3%A0.jpg"
+  },
+  {
+    "slug": "ognina-catania",
+    "image_path": "/images/beaches/ognina-catania.jpg",
+    "image_alt": "Scogliera lavica nera e mare cristallino turchese sul lungomare di Catania a Ognina.",
+    "image_credit": "Auregann",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Rocks_and_sea_on_the_lungomare_of_Catania.jpg"
+  },
+  {
+    "slug": "sampieri",
+    "image_path": "/images/beaches/sampieri.jpg",
+    "image_alt": "Dune di sabbia dorata e mare calmo azzurro nella spiaggia di Sampieri.",
+    "image_credit": "Marco M",
+    "image_license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sicilia_-_Dune_di_Sampieri.jpg"
+  },
+  {
+    "slug": "raganzino",
+    "image_path": "/images/beaches/raganzino.jpg",
+    "image_alt": "Ampio arenile di sabbia dorata e mare limpido sul litorale di Pozzallo.",
+    "image_credit": "Brick84",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Pozzallo_spiaggia_Pietrenere_2.jpg"
+  },
+  {
+    "slug": "san-leone",
+    "image_path": "/images/beaches/san-leone.jpg",
+    "image_alt": "Litorale sabbioso dorato di San Leone con mare limpido e colline agrigentine sullo sfondo.",
+    "image_credit": "Berthold Werner",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Agrigent_BW_2012-10-07_15-24-00.JPG"
+  },
+  {
+    "slug": "donnalucata",
+    "image_path": "/images/beaches/donnalucata.jpg",
+    "image_alt": "Il borgo costiero di Donnalucata affacciato sul mare azzurro e limpido.",
+    "image_credit": "Davide Mauro",
+    "image_license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Donnalucata_01.jpg"
+  },
+  {
+    "slug": "caucana",
+    "image_path": "/images/beaches/caucana.jpg",
+    "image_alt": "Acque cristalline e calme del golfo tra Punta Secca e la spiaggia di Caucana.",
+    "image_credit": "trolvag",
+    "image_license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Punta_Secca_RG,_Sicily,_Italy_-_panoramio_(2).jpg"
+  },
+  {
+    "slug": "roccalumera",
+    "image_path": "/images/beaches/roccalumera.jpg",
+    "image_alt": "Ampia spiaggia di ciottoli di Roccalumera affacciata sul mare limpido dello Ionio.",
+    "image_credit": "Jerome Bon",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Beach_Roccalumera.jpg"
+  },
+  {
+    "slug": "santa-maria-la-scala",
+    "image_path": "/images/beaches/santa-maria-la-scala.jpg",
+    "image_alt": "Colonne di basalto lavico della Timpa a picco sulle acque smeraldo di Santa Maria la Scala.",
+    "image_credit": "sicilian_dunes",
+    "image_license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Santa_Maria_la_Scala_(52185487000).jpg"
+  },
+  {
+    "slug": "fondachello-mascali",
+    "image_path": "/images/beaches/fondachello-mascali.jpg",
+    "image_alt": "Litorale naturale e acque limpide dello Ionio lungo la costa di Mascali e Fondachello.",
+    "image_credit": "Derbrauni",
+    "image_license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spiaggia_di_San_Marco_di_Calatabiano_06.jpg"
   }
 ]

@@ -63,39 +63,7 @@ const EXPANSION_SLUGS = [
   "desusino",
 ] as const;
 
-const EXPANSION_IMAGE_SLUGS = [
-  "baia-del-tono-milazzo",
-  "croce-di-mare-milazzo",
-  "san-gregorio-capo-d-orlando",
-  "capo-calava-gioiosa-marea",
-  "laghetti-di-marinello",
-  "mongiove-patti",
-  "spisone-taormina",
-  "isola-bella-taormina",
-  "mazzaro-taormina",
-  "letojanni",
-  "giardini-naxos",
-  "sant-alessio-siculo",
-  "la-plaia-catania",
-  "san-giovanni-li-cuti",
-  "aci-castello",
-  "santa-tecla-acireale",
-  "calamosche",
-  "eloro",
-  "vendicari",
-  "san-lorenzo-vendicari",
-  "fontane-bianche",
-  "arenella-siracusa",
-  "minareto-siracusa",
-  "marina-di-ragusa",
-  "maganuco",
-  "siculiana-marina",
-  "eraclea-minoa",
-  "marina-di-palma",
-  "cala-paradiso-licata",
-  "manfria",
-  "falconara-butera",
-] as const;
+const EXPANSION_IMAGE_SLUGS = EXPANSION_SLUGS;
 
 const PENDING_MEDIA_SLUGS = EXPANSION_SLUGS.filter(
   (slug) => !EXPANSION_IMAGE_SLUGS.includes(slug as (typeof EXPANSION_IMAGE_SLUGS)[number]),
@@ -130,11 +98,11 @@ describe("Sicilian provincial expansion", () => {
     expect(expansionAssets.every((asset) => asset.source_url.includes("commons.wikimedia.org/wiki/File:"))).toBe(true);
   });
 
-  it("marks unresolved media explicitly so draft rows cannot be published by accident", () => {
+  it("marks all expansion destinations as media-verified once photos are approved", () => {
     const recordsBySlug = new Map(candidates.map((row) => [row.slug, row]));
 
-    expect(PENDING_MEDIA_SLUGS).toHaveLength(23);
-    expect(PENDING_MEDIA_SLUGS.every((slug) => recordsBySlug.get(slug)?.notes?.includes("media-pending"))).toBe(true);
+    expect(PENDING_MEDIA_SLUGS).toHaveLength(0);
+    expect(EXPANSION_IMAGE_SLUGS).toHaveLength(54);
     expect(EXPANSION_IMAGE_SLUGS.every((slug) => recordsBySlug.get(slug)?.notes?.includes("media-verified"))).toBe(true);
   });
 

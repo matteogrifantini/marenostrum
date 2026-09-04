@@ -755,3 +755,26 @@ Le copie locali del nuovo batch sono state scaricate da Wikimedia Commons tramit
 - **cala-paradiso-licata** — `cala-paradiso-licata.jpg`; autore: Salvatorebonvis; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Cala_paradiso.jpg>
 - **manfria** — `manfria.jpg`; autore: Codas; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_Manfria_02.jpg>
 - **falconara-butera** — `falconara-butera.jpg`; autore: www.gironavigando.it; licenza: CC BY 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Falconara_-_panoramio.jpg>
+- **scala-dei-turchi** — `scala-dei-turchi.jpg`; autore: Lahiri Cappello; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Realmonte_(AG)_-_Scala_dei_turchi.jpg>
+- **capo-rossello** — `capo-rossello.jpg`; autore: www.gironavigando.it; licenza: CC BY 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Le_pergole_-_panoramio.jpg>
+- **giallonardo** — `giallonardo.jpg`; autore: Tiberio Frascari; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:112_113_Riserva_WWF_di_Torre_Salsa_(Sicilia).jpg>
+- **capomulini** — `capomulini.jpg`; autore: RitaL91; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Sea_at_Capo_Mulini.jpg>
+- **desusino** — `desusino.jpg`; autore: Satrebil100; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:FalconaraDesusino.jpg>
+- **mollarella** — `mollarella.jpg`; autore: fab.; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Baia_della_Mollarella,_Licata,_Sicilia.jpg>
+- **aci-trezza** — `aci-trezza.jpg`; autore: Dispe; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Costa_e_faraglioni_di_Aci_Trezza_(CT)_Italy.JPG>
+- **isola-delle-correnti** — `isola-delle-correnti.jpg`; autore: Michele Ponzio; licenza: CC BY-SA 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Isola_delle_Correnti_-_Sicily.jpg>
+- **macchitella** — `macchitella.jpg`; autore: fab.; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Gela.jpg>
+- **punta-secca** — `punta-secca.jpg`; autore: Alexdechi; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Torre_Scalambri_di_Punta_Secca.jpg>
+- **fanusa** — `fanusa.jpg`; autore: Stella; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Costa_di_Siracusa_Fanusa_4.jpg>
+- **cava-d-aliga** — `cava-d-aliga.jpg`; autore: fab.; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Ragusa_cava_daliga_2.jpg>
+- **marianelli** — `marianelli.jpg`; autore: Derbrauni; licenza: CC BY 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Beach_of_Eloro_03.jpg>
+- **gioiosa-marea** — `gioiosa-marea.jpg`; autore: Gomera-b; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Capo_Calav%C3%A0.jpg>
+- **ognina-catania** — `ognina-catania.jpg`; autore: Auregann; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Rocks_and_sea_on_the_lungomare_of_Catania.jpg>
+- **sampieri** — `sampieri.jpg`; autore: Marco M; licenza: CC BY-SA 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Sicilia_-_Dune_di_Sampieri.jpg>
+- **raganzino** — `raganzino.jpg`; autore: Brick84; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Pozzallo_spiaggia_Pietrenere_2.jpg>
+- **san-leone** — `san-leone.jpg`; autore: Berthold Werner; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Agrigent_BW_2012-10-07_15-24-00.JPG>
+- **donnalucata** — `donnalucata.jpg`; autore: Davide Mauro; licenza: CC BY-SA 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Donnalucata_01.jpg>
+- **caucana** — `caucana.jpg`; autore: trolvag; licenza: CC BY-SA 3.0; fonte: <https://commons.wikimedia.org/wiki/File:Punta_Secca_RG,_Sicily,_Italy_-_panoramio_(2).jpg>
+- **roccalumera** — `roccalumera.jpg`; autore: Jerome Bon; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Beach_Roccalumera.jpg>
+- **santa-maria-la-scala** — `santa-maria-la-scala.jpg`; autore: sicilian_dunes; licenza: CC BY 2.0; fonte: <https://commons.wikimedia.org/wiki/File:Santa_Maria_la_Scala_(52185487000).jpg>
+- **fondachello-mascali** — `fondachello-mascali.jpg`; autore: Derbrauni; licenza: CC BY 4.0; fonte: <https://commons.wikimedia.org/wiki/File:Spiaggia_di_San_Marco_di_Calatabiano_06.jpg>
