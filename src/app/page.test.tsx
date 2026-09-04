@@ -132,7 +132,7 @@ describe("HomeExperience", () => {
     renderHome({ nationalPreview: true });
 
     expect(screen.getByRole("heading", { level: 1, name: "Meteo del mare in Italia" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Le spiagge in evidenza in Italia" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Le spiagge in evidenza in Sicilia" })).toBeInTheDocument();
     expect(screen.queryByText("Selezione nazionale")).not.toBeInTheDocument();
     expect(screen.queryByText(/Scegli una regione o una provincia per restringere la ricerca/i)).not.toBeInTheDocument();
   });

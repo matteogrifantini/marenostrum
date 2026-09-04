@@ -488,7 +488,7 @@ export function HomeExperience({
                 {showNationalPreviewIntro ? (
                   <header className="mb-4 px-1">
                     <h2 className="font-serif text-2xl font-semibold tracking-[-0.045em] text-[var(--ink)]">
-                      Le spiagge in evidenza in Italia
+                      Le spiagge in evidenza in Sicilia
                     </h2>
                   </header>
                 ) : null}
