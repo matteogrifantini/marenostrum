@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { buildSicilianImageMediaCandidates } from "./catalog-image-media-import";
 
 describe("Sicilian catalog image media", () => {
-  it("builds one verified, attributed local photo for every beach", () => {
+  it("builds one verified, attributed local photo for every manifest asset", () => {
     const beachIds = new Map(catalog.map((beach) => [beach.slug, `id-${beach.slug}`]));
     const rows = buildSicilianImageMediaCandidates(
       assets,
@@ -13,8 +13,8 @@ describe("Sicilian catalog image media", () => {
       "2027-08-22T00:00:00.000Z",
     );
 
-    expect(rows).toHaveLength(80);
-    expect(new Set(rows.map((row) => row.slug)).size).toBe(80);
+    expect(rows).toHaveLength(assets.length);
+    expect(new Set(rows.map((row) => row.slug)).size).toBe(assets.length);
     expect(rows.every((row) => row.kind === "photo")).toBe(true);
     expect(rows.every((row) => row.publication_status === "verified")).toBe(true);
     expect(rows.every((row) => row.media_url.startsWith("/images/beaches/"))).toBe(true);

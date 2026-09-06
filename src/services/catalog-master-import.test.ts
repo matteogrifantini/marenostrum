@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import content from "../../data/catalog/sicilia/beach-content.json";
 import {
+  buildMasterDraftImport,
   buildSicilianMasterDraftImport,
 } from "./catalog-master-import";
 
@@ -71,5 +72,35 @@ describe("buildSicilianMasterDraftImport", () => {
     expect(result.blocked).toEqual([
       { slug: "balestrate", reasons: ["coordinates_required"] },
     ]);
+  });
+});
+
+describe("buildMasterDraftImport", () => {
+  it("carries national geography into a non-Sicilian draft row", () => {
+    const result = buildMasterDraftImport({
+      candidates: [{
+        ...candidate,
+        slug: "baia-del-silenzio",
+        name: "Baia del Silenzio",
+        region: "Liguria",
+        province: "GE",
+        municipality: "Sestri Levante",
+        latitude: 44.2734,
+        longitude: 9.3936,
+      }],
+      contents: [{
+        ...content.find((record) => record.slug === "balestrate"),
+        slug: "baia-del-silenzio",
+      }],
+    });
+
+    expect(result.blocked).toEqual([]);
+    expect(result.beaches[0]).toMatchObject({
+      country_code: "IT",
+      region_code: "IT-42",
+      region_name: "Liguria",
+      region_slug: "liguria",
+      province_code: "GE",
+    });
   });
 });

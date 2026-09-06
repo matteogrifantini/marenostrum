@@ -94,13 +94,17 @@ function conditionRow(
 }
 
 class FakeForecastReadStore implements ForecastReadStore {
+  scopeCalls: Parameters<ForecastReadStore["getPublishedBeaches"]>[0][] = [];
+  forecastInputs: Parameters<ForecastReadStore["getForecastRows"]>[0][] = [];
+
   constructor(
     private readonly beaches: BeachRow[],
     private readonly source: DataSourceRow | null,
     private readonly rows: ReturnType<typeof conditionRow>[],
   ) {}
 
-  async getPublishedBeaches() {
+  async getPublishedBeaches(scope?: Parameters<ForecastReadStore["getPublishedBeaches"]>[0]) {
+    this.scopeCalls.push(scope);
     return this.beaches;
   }
 
@@ -108,21 +112,40 @@ class FakeForecastReadStore implements ForecastReadStore {
     return slug === "open-meteo" ? this.source : null;
   }
 
-  async getForecastRows(input: {
-    sourceId: string;
-    from: string;
-    to: string;
-    beachId?: string;
-  }) {
+  async getForecastRows(input: Parameters<ForecastReadStore["getForecastRows"]>[0]) {
+    this.forecastInputs.push(input);
     return this.rows.filter(
       (row) =>
         row.source_id === input.sourceId &&
         row.forecast_at >= input.from &&
         row.forecast_at < input.to &&
-        (input.beachId === undefined || row.beach_id === input.beachId),
+        (input.beachId === undefined || row.beach_id === input.beachId) &&
+        (input.beachIds === undefined || input.beachIds.includes(row.beach_id)),
     );
   }
 }
+
+it("passes a province scope to the beach read and bounds the forecast read to its beach ids", async () => {
+  const store = new FakeForecastReadStore(
+    [beachRow, vendicariRow],
+    sourceRow,
+    [conditionRow(beachRow.id), conditionRow(vendicariRow.id)],
+  );
+  const scope = { kind: "province", provinceCode: "PA" } as const;
+
+  await getBeachRecommendations(
+    {
+      date: "2026-08-20",
+      period: "all-day",
+      scope,
+      now: new Date("2026-08-20T10:00:00Z"),
+    },
+    store,
+  );
+
+  expect(store.scopeCalls).toEqual([scope]);
+  expect(store.forecastInputs[0]?.beachIds).toEqual([beachRow.id, vendicariRow.id]);
+});
 
 it("uses a direct published beach lookup when the forecast store provides one", async () => {
   let listCalls = 0;
@@ -152,6 +175,29 @@ describe("Supabase forecast repository", () => {
       latitude: 36.9436,
       longitude: 15.1953,
       services: ["Parcheggio vicino", "Bar stagionale", "Pineta"],
+    });
+  });
+
+  it("keeps the national geography fields when mapping a beach row", () => {
+    const rowWithGeography = {
+      ...beachRow,
+      country_code: "IT",
+      region_code: "IT-82",
+      region_name: "Sicilia",
+      region_slug: "sicilia",
+      province_code: "PA",
+      province_name: "Palermo",
+      updated_at: "2026-09-03T08:00:00Z",
+    } as BeachRow;
+
+    expect(mapBeachRow(rowWithGeography)).toMatchObject({
+      countryCode: "IT",
+      regionCode: "IT-82",
+      regionName: "Sicilia",
+      regionSlug: "sicilia",
+      provinceCode: "PA",
+      provinceName: "Palermo",
+      updatedAt: "2026-09-03T08:00:00Z",
     });
   });
 
@@ -229,6 +275,30 @@ describe("Supabase forecast repository", () => {
     expect(recommendations[0].conditions.waveHeightMeters).toBe(0.3);
   });
 
+  it("supports a bounded national preview without returning the whole catalog", async () => {
+    const store = new FakeForecastReadStore(
+      [beachRow, vendicariRow],
+      sourceRow,
+      [conditionRow(beachRow.id), conditionRow(vendicariRow.id)],
+    );
+
+    const recommendations = await getBeachRecommendations(
+      {
+        date: "2026-08-20",
+        period: "all-day",
+        scope: null,
+        nationalPreview: true,
+        limit: 1,
+        now: new Date("2026-08-20T09:00:00Z"),
+      },
+      store,
+    );
+
+    expect(recommendations).toHaveLength(1);
+    expect(store.scopeCalls).toEqual([null]);
+    expect(recommendations[0]?.beach.slug).toBe("cala-del-gelsomino");
+  });
+
   it("returns no recommendations when the selected window has no forecast rows", async () => {
     const store = new FakeForecastReadStore([beachRow], sourceRow, []);
 
@@ -238,6 +308,35 @@ describe("Supabase forecast repository", () => {
         store,
       ),
     ).resolves.toEqual([]);
+  });
+
+  it("passes a validated catalog scope and its beach ids to the forecast read", async () => {
+    let receivedScope: unknown;
+    let receivedBeachIds: string[] | undefined;
+    const store: ForecastReadStore = {
+      getPublishedBeaches: async (scope) => {
+        receivedScope = scope;
+        return [beachRow];
+      },
+      getSourceBySlug: async () => sourceRow,
+      getForecastRows: async (input) => {
+        receivedBeachIds = input.beachIds;
+        return [conditionRow(beachRow.id)];
+      },
+    };
+
+    await getBeachRecommendations(
+      {
+        date: "2026-08-20",
+        period: "morning",
+        now: new Date("2026-08-20T09:00:00Z"),
+        scope: { kind: "province", provinceCode: "PA" },
+      },
+      store,
+    );
+
+    expect(receivedScope).toEqual({ kind: "province", provinceCode: "PA" });
+    expect(receivedBeachIds).toEqual([beachRow.id]);
   });
 
   it("reports a recoverable error when the Open-Meteo source is missing", async () => {

@@ -77,10 +77,17 @@ describe("BeachDetailExperience", () => {
   it("uses a wide desktop frame for the hero and a readable frame for the details", () => {
     renderDetail();
 
-    const hero = screen.getAllByRole("heading", { name: beach.name })[0].closest("section");
+    const hero = screen.getByRole("button", { name: `Apri foto di ${beach.name}` }).closest("section");
     expect(hero).not.toBeNull();
     expect(hero?.parentElement).toHaveClass("max-w-[1440px]");
     expect(hero?.parentElement?.children[1]).toHaveClass("max-w-[48rem]");
+
+    const title = screen.getByRole("heading", { name: `Meteo del mare a ${beach.name}` });
+    const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
+    expect(title).toHaveClass("text-xl");
+    expect(screen.queryByRole("heading", { name: `Condizioni del mare oggi a ${beach.name}` })).not.toBeInTheDocument();
+    expect(title.compareDocumentPosition(dayControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(title.closest("section")).not.toBe(hero);
   });
 
   it("shows stale-data copy without the routine timestamp", () => {
@@ -115,10 +122,10 @@ describe("BeachDetailExperience", () => {
     expect(attribution).toHaveTextContent("Fonti meteo:");
     expect(attribution).toHaveTextContent("Parcheggi:");
     expect(screen.getByRole("link", { name: "© OpenStreetMap contributors" })).toBeInTheDocument();
-    expect(
-      screen.queryByText("Previsioni indicative: non usare per la navigazione."),
-    ).not.toBeInTheDocument();
-    expect(screen.queryByText("Mare Nostrum aggrega ed elabora i dati.")).not.toBeInTheDocument();
+    expect(attribution).toHaveTextContent("Ultimo aggiornamento");
+    expect(attribution).toHaveTextContent(/Indice orientativo · non è un bollettino ufficiale/i);
+    expect(within(screen.getByRole("note", { name: "Indice Mare Nostrum" })).queryByText(/Ultimo aggiornamento/i)).not.toBeInTheDocument();
+    expect(within(screen.getByRole("note", { name: "Indice Mare Nostrum" })).queryByText(/Indice orientativo/i)).not.toBeInTheDocument();
   });
 
   it("renders the live rain probability and Rome-local observation time", () => {
@@ -128,7 +135,7 @@ describe("BeachDetailExperience", () => {
     expect(screen.getByRole("button", { name: "Oggi" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Domani" })).toHaveAttribute("aria-pressed", "false");
     const periodControls = screen.getByRole("group", { name: "Scegli la fascia oraria" });
-    const advice = screen.getByRole("note", { name: "Condizioni e balneabilità" });
+    const advice = screen.getByRole("note", { name: "Indice Mare Nostrum" });
     const dayControls = screen.getByRole("group", { name: "Scegli il giorno" });
 
     expect(dayControls).toHaveClass("day-picker", "bg-[var(--control-surface)]", "grid-cols-4");
@@ -139,7 +146,19 @@ describe("BeachDetailExperience", () => {
     expect(dayControls.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice.compareDocumentPosition(periodControls) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(advice).toHaveAttribute("data-score-tone", "excellent");
-    expect(within(advice).getByText("100")).toBeInTheDocument();
+    const score = advice.querySelector('[data-score-value="100"]');
+    expect(score).toBeInTheDocument();
+    expect(score).toHaveClass(
+      "items-center",
+      "justify-center",
+      "text-[1.75rem]",
+      "sm:text-4xl",
+      "whitespace-nowrap",
+    );
+    expect(within(advice).queryByRole("list", { name: "Fattori dell’indice" })).not.toBeInTheDocument();
+    expect(advice.querySelector('[data-score-denominator="true"]')).toBeInTheDocument();
+    expect(within(advice).queryByText("Una sintesi di vento, onde e meteo per aiutarti a scegliere dove andare oggi.")).not.toBeInTheDocument();
+    expect(within(advice).queryByText(/non è un bollettino ufficiale/i)).not.toBeInTheDocument();
 
     const conditions = screen.getByRole("region", { name: "Condizioni meteo" });
     expect(periodControls.compareDocumentPosition(conditions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -215,9 +234,8 @@ describe("BeachDetailExperience", () => {
   ] as const)("shows the %s score instead of the all-day comparison", (period, score) => {
     renderDetail({ period, recommendation: selected });
 
-    const advice = screen.getByRole("note", { name: "Condizioni e balneabilità" });
-    expect(within(advice).getByText(score)).toBeInTheDocument();
-    expect(within(advice).queryByText("100")).not.toBeInTheDocument();
+    const advice = screen.getByRole("note", { name: "Indice Mare Nostrum" });
+    expect(advice.querySelector(`[data-score-value="${score}"]`)).toBeInTheDocument();
   });
 
   it("derives the conditions title and concise aggregate metrics from the active date", () => {
@@ -271,7 +289,7 @@ describe("BeachDetailExperience", () => {
         "Condizioni temporaneamente non disponibili. Riprova tra qualche minuto.",
       ),
     ).toHaveLength(2);
-    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(1);
+    expect(screen.getAllByRole("heading", { name: `Meteo del mare a ${beach.name}` })).toHaveLength(1);
     expect(screen.getByRole("region", { name: "La spiaggia" })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Recensioni" })).toBeInTheDocument();
   });
@@ -283,25 +301,25 @@ describe("BeachDetailExperience", () => {
 
     renderDetail();
 
-    const triggers = screen.getAllByRole("button", { name: "Scopri la spiaggia" });
-    const heroTrigger = triggers[0];
-    const accordionTrigger = triggers[1];
+    const accordionTrigger = screen.getByRole("button", { name: "Scopri la spiaggia" });
 
     expect(screen.getByRole("region", { name: "La spiaggia" })).toBeInTheDocument();
     expect(accordionTrigger).toHaveAttribute("aria-expanded", "false");
-    expect(screen.queryByText("Sabbia chiara e ciottoli fini")).not.toBeInTheDocument();
+    const preview = screen.getByRole("group", { name: "Anteprima della spiaggia" });
+    expect(preview).toHaveTextContent("Sabbia chiara e ciottoli fini");
+    expect(preview.compareDocumentPosition(accordionTrigger) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getByRole("region", { name: "La spiaggia" }).querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "true");
 
-    fireEvent.click(heroTrigger);
+    fireEvent.click(accordionTrigger);
 
-    expect(heroTrigger).toHaveAttribute("aria-expanded", "true");
     expect(accordionTrigger).toHaveAttribute("aria-expanded", "true");
     expect(screen.getByText("Sabbia chiara e ciottoli fini")).toBeInTheDocument();
     expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });
 
     fireEvent.click(accordionTrigger);
 
-    expect(screen.getAllByRole("button", { name: "Scopri la spiaggia" })[1]).toHaveAttribute("aria-expanded", "false");
-    expect(screen.queryByText("Sabbia chiara e ciottoli fini")).not.toBeInTheDocument();
+    expect(accordionTrigger).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getByRole("region", { name: "La spiaggia" }).querySelector("#beach-info-accordion-content")).toHaveAttribute("aria-hidden", "true");
 
     if (originalScrollIntoView) {
       Object.defineProperty(HTMLElement.prototype, "scrollIntoView", originalScrollIntoView);
@@ -313,7 +331,7 @@ describe("BeachDetailExperience", () => {
   it("renders safe empty states when the beach has no community fixture", () => {
     renderDetail({ detail: emptyBeachDetailContent });
 
-    expect(screen.getAllByRole("heading", { name: beach.name })).toHaveLength(1);
+    expect(screen.getAllByRole("heading", { name: `Meteo del mare a ${beach.name}` })).toHaveLength(1);
     expect(screen.getByText("Nessuna segnalazione recente disponibile.")).toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "Webcam più vicina" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /Guarda i video/ })).not.toBeInTheDocument();

@@ -1,15 +1,16 @@
 import {
-  validateSicilianCatalog,
-  type SicilianCatalogRecord,
-  type SicilianProvince,
+  validateCatalog,
+  type CatalogRecord,
+  type CatalogValidationIssue,
 } from "../data/catalog-contract";
 import {
-  validateSicilianMasterCatalog,
-  type SicilianBeachMasterRecord,
-  type SicilianMasterCatalogValidationIssue,
+  validateMasterCatalog,
+  type BeachMasterRecord,
+  type MasterCatalogValidationIssue,
 } from "../data/catalog-master-contract";
+import { ITALIAN_REGIONS } from "../domain/province-filter";
 
-export type SicilianMasterDraftBeachInsert = {
+export type MasterDraftBeachInsert = {
   slug: string;
   name: string;
   municipality: string;
@@ -19,21 +20,24 @@ export type SicilianMasterDraftBeachInsert = {
   orientation_label: string;
   shelter: string[];
   tags: string[];
-  access_level: SicilianBeachMasterRecord["access_level"];
+  access_level: BeachMasterRecord["access_level"];
   latitude: number;
   longitude: number;
   is_published: false;
   services: string[];
   warnings: string[];
   facts: string[];
-  region_slug: "sicilia";
-  province_code: SicilianProvince;
+  country_code: "IT";
+  region_code: string;
+  region_name: string;
+  region_slug: string;
+  province_code: CatalogRecord["province"];
   publication_status: "draft";
   last_verified_at: string;
   next_review_at: string;
 };
 
-export type SicilianMasterDraftContentSource = {
+export type MasterDraftContentSource = {
   beach_slug: string;
   source_name: string;
   source_type: string;
@@ -44,28 +48,59 @@ export type SicilianMasterDraftContentSource = {
   notes: string;
 };
 
-export type SicilianMasterDraftImportResult = {
-  beaches: SicilianMasterDraftBeachInsert[];
-  sources: SicilianMasterDraftContentSource[];
+export type MasterDraftImportResult = {
+  beaches: MasterDraftBeachInsert[];
+  sources: MasterDraftContentSource[];
   blocked: Array<{ slug: string; reasons: string[] }>;
 };
 
-export class SicilianMasterCatalogValidationError extends Error {
+/** @deprecated Use MasterDraftBeachInsert for new national imports. */
+export type SicilianMasterDraftBeachInsert = MasterDraftBeachInsert;
+/** @deprecated Use MasterDraftContentSource for new national imports. */
+export type SicilianMasterDraftContentSource = MasterDraftContentSource;
+/** @deprecated Use MasterDraftImportResult for new national imports. */
+export type SicilianMasterDraftImportResult = MasterDraftImportResult;
+
+export class MasterCatalogValidationError extends Error {
   constructor(
-    public readonly candidateIssues: ReturnType<typeof validateSicilianCatalog>["issues"],
-    public readonly contentIssues: SicilianMasterCatalogValidationIssue[],
+    public readonly candidateIssues: CatalogValidationIssue[],
+    public readonly contentIssues: MasterCatalogValidationIssue[],
   ) {
-    super("Sicilian master catalog validation failed");
+    super("National master catalog validation failed");
+    this.name = "MasterCatalogValidationError";
+  }
+}
+
+/** @deprecated Use MasterCatalogValidationError for new national imports. */
+export class SicilianMasterCatalogValidationError extends MasterCatalogValidationError {
+  constructor(
+    candidateIssues: CatalogValidationIssue[],
+    contentIssues: MasterCatalogValidationIssue[],
+  ) {
+    super(candidateIssues, contentIssues);
     this.name = "SicilianMasterCatalogValidationError";
   }
 }
 
+function regionSlug(region: string) {
+  return region
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function regionCode(region: CatalogRecord["region"]) {
+  return ITALIAN_REGIONS.find(({ label }) => label === region)?.code ?? "";
+}
+
 function isCompleteCandidate(
-  candidate: SicilianCatalogRecord,
-): candidate is SicilianCatalogRecord & {
+  candidate: CatalogRecord,
+): candidate is CatalogRecord & {
   latitude: number;
   longitude: number;
-  access_level: NonNullable<SicilianCatalogRecord["access_level"]>;
+  access_level: NonNullable<CatalogRecord["access_level"]>;
 } {
   return (
     typeof candidate.latitude === "number" &&
@@ -77,9 +112,9 @@ function isCompleteCandidate(
 }
 
 function draftBeachFromRecords(
-  candidate: SicilianCatalogRecord,
-  content: SicilianBeachMasterRecord,
-): SicilianMasterDraftBeachInsert {
+  candidate: CatalogRecord,
+  content: BeachMasterRecord,
+): MasterDraftBeachInsert {
   if (!isCompleteCandidate(candidate)) {
     throw new Error(`Candidate ${candidate.slug} is incomplete`);
   }
@@ -101,7 +136,10 @@ function draftBeachFromRecords(
     services: content.services,
     warnings: content.warnings,
     facts: content.facts,
-    region_slug: "sicilia",
+    country_code: "IT",
+    region_code: regionCode(candidate.region),
+    region_name: candidate.region,
+    region_slug: regionSlug(candidate.region),
     province_code: candidate.province,
     publication_status: "draft",
     last_verified_at: candidate.verified_at,
@@ -110,9 +148,9 @@ function draftBeachFromRecords(
 }
 
 function sourceRowsFromContent(
-  candidate: SicilianCatalogRecord,
-  content: SicilianBeachMasterRecord,
-): SicilianMasterDraftContentSource[] {
+  candidate: CatalogRecord,
+  content: BeachMasterRecord,
+): MasterDraftContentSource[] {
   return content.sources.map((source) => ({
     beach_slug: candidate.slug,
     source_name: source.source_name,
@@ -125,27 +163,27 @@ function sourceRowsFromContent(
   }));
 }
 
-export function buildSicilianMasterDraftImport({
+export function buildMasterDraftImport({
   candidates,
   contents,
 }: {
   candidates: unknown[];
   contents: unknown[];
-}): SicilianMasterDraftImportResult {
-  const candidateValidation = validateSicilianCatalog(candidates);
-  const contentValidation = validateSicilianMasterCatalog(contents);
+}): MasterDraftImportResult {
+  const candidateValidation = validateCatalog(candidates);
+  const contentValidation = validateMasterCatalog(contents);
 
   if (candidateValidation.issues.length > 0 || contentValidation.issues.length > 0) {
-    throw new SicilianMasterCatalogValidationError(
+    throw new MasterCatalogValidationError(
       candidateValidation.issues,
       contentValidation.issues,
     );
   }
 
   const contentBySlug = new Map(contentValidation.records.map((record) => [record.slug, record]));
-  const beaches: SicilianMasterDraftBeachInsert[] = [];
-  const sources: SicilianMasterDraftContentSource[] = [];
-  const blocked: SicilianMasterDraftImportResult["blocked"] = [];
+  const beaches: MasterDraftBeachInsert[] = [];
+  const sources: MasterDraftContentSource[] = [];
+  const blocked: MasterDraftImportResult["blocked"] = [];
 
   candidateValidation.records.forEach((candidate) => {
     const reasons: string[] = [];
@@ -181,4 +219,12 @@ export function buildSicilianMasterDraftImport({
   });
 
   return { beaches, sources, blocked };
+}
+
+/** @deprecated Use buildMasterDraftImport for new national imports. */
+export function buildSicilianMasterDraftImport(input: {
+  candidates: unknown[];
+  contents: unknown[];
+}): SicilianMasterDraftImportResult {
+  return buildMasterDraftImport(input);
 }

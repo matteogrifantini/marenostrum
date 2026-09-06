@@ -5,9 +5,15 @@ import Link, { useLinkStatus } from "next/link";
 import { CloudSun, Navigation, Waves, Wind } from "lucide-react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { formatScoreOutOf100 } from "../domain/score";
+import { getScorePresentation } from "../domain/score-presentation";
 import { formatWeatherLabel } from "../lib/forecast-presentation";
 import { versionedMediaUrl } from "../lib/media-url";
-import { formatDistanceKm, formatWaveHeightMeters, formatWindSpeedKmh, useUserPreferences } from "../lib/user-preferences";
+import {
+  formatDistanceKm,
+  formatWaveHeightMeters,
+  formatWindSpeedKmh,
+  useUserPreferences,
+} from "../lib/user-preferences";
 import { FavoriteToggle } from "./favorite-toggle";
 
 type BeachCardProps = {
@@ -97,29 +103,36 @@ function getBeachFeatureChips(beach: Beach) {
 export function BeachCard({
   recommendation,
   date,
+  period,
   distanceKm,
   eager = false,
 }: BeachCardProps) {
   const preferences = useUserPreferences();
   const { beach, conditions } = recommendation;
-  const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=all-day&source=home`;
+  const detailHref = `/spiagge/${beach.slug}?date=${encodeURIComponent(date)}&period=${encodeURIComponent(period)}&source=home`;
   const image = beach.image;
   const imageSrc = image ? versionedMediaUrl(image) : undefined;
   const imageAlt = beach.imageAlt ?? `Foto di ${beach.name}`;
   const displayScore = formatScoreOutOf100(recommendation.score);
   const tone = scoreTone(recommendation.score);
   const direction = windDirection(conditions.windDirectionDegrees);
-  const windMetric = formatWindSpeedKmh(conditions.windSpeedKmh, preferences.distanceUnit);
-  const waveMetric = formatWaveHeightMeters(conditions.waveHeightMeters, preferences.waveHeightUnit);
+  const windMetric = formatWindSpeedKmh(
+    conditions.windSpeedKmh,
+    preferences.distanceUnit,
+  );
+  const waveMetric = formatWaveHeightMeters(
+    conditions.waveHeightMeters,
+    preferences.waveHeightUnit,
+  );
   const weatherLabel = formatWeatherLabel(conditions.weather);
   const featureChips = getBeachFeatureChips(beach);
+  const scorePresentation = getScorePresentation(recommendation);
 
   const windName = WIND_NAMES_ITALIAN[direction] ?? "";
   const isSheltered = beach.shelter?.includes(windName);
   const seaStateLabel = conditions.seaState
     ? conditions.seaState.charAt(0).toUpperCase() + conditions.seaState.slice(1)
     : "Calmo";
-
   const googleMapsUrl =
     beach.latitude != null && beach.longitude != null
       ? `https://www.google.com/maps/dir/?api=1&destination=${beach.latitude},${beach.longitude}`
@@ -187,9 +200,8 @@ export function BeachCard({
               {(featureChips.length > 0 || beach.webcam) && (
                 <div className="mt-1 flex flex-wrap items-center gap-1 sm:mt-2">
                   {beach.webcam && (
-                    <span className="inline-flex items-center gap-1 rounded bg-red-600 px-1.5 py-0.5 text-[0.55rem] font-black uppercase text-white shadow-xs">
-                      <span className="size-1.5 animate-pulse rounded-full bg-white" />
-                      LIVE
+                    <span className="inline-flex items-center rounded bg-[var(--surface-muted)] px-1.5 py-0.5 text-[0.55rem] font-black uppercase text-[var(--ink-soft)] shadow-xs">
+                      WEBCAM
                     </span>
                   )}
                   {featureChips.map((chip) => (
@@ -207,21 +219,29 @@ export function BeachCard({
 
             <div className="mt-2 flex min-w-0 items-center gap-2 pt-1 sm:mt-auto sm:gap-3 sm:pt-3">
               <div
-                aria-label={`Voto ${displayScore} su 100, ${recommendation.label}`}
+                aria-label={`Punteggio Mare Nostrum: ${scorePresentation.scoreLabel}, ${scorePresentation.label}`}
                 data-score-tone={tone}
-                className={`grid size-9 shrink-0 place-items-center rounded-full shadow-[0_4px_12px_rgba(20,44,57,0.12)] sm:size-12 ${SCORE_TONE_CLASSES[tone]}`}
+                className={`flex size-10 shrink-0 items-center justify-center rounded-full shadow-[0_4px_12px_rgba(20,44,57,0.12)] sm:size-12 ${SCORE_TONE_CLASSES[tone]}`}
               >
-                <strong className="font-serif text-sm font-semibold leading-none tracking-[-0.04em] sm:text-lg">
+                <strong className="-translate-y-px whitespace-nowrap font-serif text-lg font-semibold leading-none tabular-nums tracking-[-0.04em] sm:text-xl">
                   {displayScore}
                 </strong>
               </div>
 
               <div className="min-w-0 flex-1 space-y-0.5 pb-0.5 text-[0.63rem] font-bold leading-tight text-[var(--ink-soft)] sm:space-y-1 sm:text-xs">
+                <span className="block text-[0.68rem] font-extrabold text-[var(--ink)]">
+                  {scorePresentation.label}
+                </span>
                 <div
                   aria-label={`Vento: ${direction}, ${windMetric}`}
                   className="flex min-w-0 items-center gap-1 sm:gap-1.5"
                 >
-                  <Wind aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={13} strokeWidth={2.2} />
+                  <Wind
+                    aria-hidden="true"
+                    className="shrink-0 text-[var(--sea)]"
+                    size={13}
+                    strokeWidth={2.2}
+                  />
                   <span className="min-w-0 break-words whitespace-normal">
                     {direction} · {windMetric}
                   </span>
@@ -230,7 +250,12 @@ export function BeachCard({
                   aria-label={`Onde: ${waveMetric}`}
                   className="flex min-w-0 items-center gap-1 sm:gap-1.5"
                 >
-                  <Waves aria-hidden="true" className="shrink-0 text-[var(--sea)]" size={13} strokeWidth={2.2} />
+                  <Waves
+                    aria-hidden="true"
+                    className="shrink-0 text-[var(--sea)]"
+                    size={13}
+                    strokeWidth={2.2}
+                  />
                   <span className="min-w-0 break-words whitespace-normal">
                     {waveMetric} · {seaStateLabel}
                   </span>
@@ -239,7 +264,12 @@ export function BeachCard({
                   aria-label={`Meteo: ${weatherLabel}, ${Math.round(conditions.temperatureCelsius)}°C`}
                   className="flex min-w-0 items-center gap-1 sm:gap-1.5"
                 >
-                  <CloudSun aria-hidden="true" className="shrink-0 text-[var(--sun-dark)]" size={13} strokeWidth={2.2} />
+                  <CloudSun
+                    aria-hidden="true"
+                    className="shrink-0 text-[var(--sun-dark)]"
+                    size={13}
+                    strokeWidth={2.2}
+                  />
                   <span className="min-w-0 break-words whitespace-normal">
                     {weatherLabel} · {Math.round(conditions.temperatureCelsius)}°C
                   </span>

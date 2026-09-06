@@ -3,7 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import type * as Leaflet from "leaflet";
 import type { BeachRecommendation } from "../domain/beach";
+import type { CatalogScope } from "../domain/catalog-scope";
+import { getMapBounds } from "../domain/map-bounds";
 import { formatScoreOutOf100 } from "../domain/score";
+import { getScorePresentation } from "../domain/score-presentation";
 import {
   MAP_POI_CATEGORIES,
   type MapPoi,
@@ -11,12 +14,13 @@ import {
 } from "../domain/map-poi";
 import type { MapNearbySelection } from "../domain/map-filtering";
 import {
-  hasMapCoordinates,
+  sortMappableRecommendations,
   type MappableRecommendation,
 } from "../domain/map-markers";
 
 type LeafletBeachMapProps = {
   recommendations: BeachRecommendation[];
+  scope?: CatalogScope | null;
   selectedSlug: string | null;
   onSelectBeach: (slug: string) => void;
   nearbySelection: MapNearbySelection | null;
@@ -37,11 +41,6 @@ type PoiResponse = {
   reason?: PoiState | null;
   degraded?: boolean;
 };
-
-const SICILY_BOUNDS: Leaflet.LatLngBoundsExpression = [
-  [36.35, 11.25],
-  [38.85, 15.75],
-];
 
 const ESRI_IMAGERY_TILES =
   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
@@ -87,12 +86,18 @@ function createPoiPopup(place: MapPoi) {
   return `<div class="map-popup map-popup--poi"><div class="map-popup__eyebrow">${poiIcon(place.category)} ${label}</div><strong>${name}</strong><a href="${escapeHtml(place.sourceUrl)}" target="_blank" rel="noreferrer">Fonte OpenStreetMap</a></div>`;
 }
 
-function createBeachPopup(recommendation: MappableRecommendation) {
+export function createBeachPopup(recommendation: MappableRecommendation) {
   const { beach, score, conditions } = recommendation;
+  const presentation = getScorePresentation(recommendation);
   const scoreValue = formatScoreOutOf100(score);
-  const location = `${beach.municipality}${beach.provinceCode ? ` (${beach.provinceCode})` : ""}`;
+  const location = [beach.municipality, beach.provinceName ?? beach.provinceCode, beach.regionName]
+    .filter((value): value is string => Boolean(value))
+    .join(" · ");
+  const factorLine = presentation.factors
+    .map((factor) => `${factor.label} ${factor.valueLabel}`)
+    .join(" · ");
   const webcamBadge = beach.webcam
-    ? '<span style="background:#dc2626;color:white;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:800;margin-left:4px;">🔴 LIVE</span>'
+    ? '<span style="background:#e2e8f0;color:#0f172a;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:800;margin-left:4px;">Webcam</span>'
     : "";
   const dateParam = encodeURIComponent(conditions.date ?? "");
   const periodParam = encodeURIComponent(conditions.period ?? "all-day");
@@ -100,14 +105,18 @@ function createBeachPopup(recommendation: MappableRecommendation) {
 
   return `<div class="map-popup map-popup--beach" style="min-width:200px;">
     <div class="map-popup__eyebrow" style="display:flex;align-items:center;justify-content:space-between;gap:4px;font-size:11px;color:#64748b;">
-      <span>${escapeHtml(location)}</span>
+      <span>${escapeHtml(location || "Italia")}</span>
       ${webcamBadge}
     </div>
     <strong style="font-size:15px;display:block;margin:3px 0 6px;color:#0f172a;">${escapeHtml(beach.name)}</strong>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-      <span class="map-popup__score" style="font-weight:800;font-size:17px;color:#082f3d;">${scoreValue}/100</span>
-      <span style="font-size:11px;font-weight:600;color:#475569;text-transform:capitalize;">${escapeHtml(conditions.weather || "")}</span>
+    <div style="margin-bottom:8px;">
+      <span class="map-popup__score" style="font-weight:800;font-size:17px;color:#082f3d;">${escapeHtml(`${scoreValue}/100 · ${presentation.label}`)}</span>
+      <span style="display:block;margin-top:4px;font-size:11px;font-weight:600;color:#475569;">${escapeHtml(presentation.title)}</span>
     </div>
+    <p style="margin:0 0 7px;font-size:11px;line-height:1.4;color:#475569;">${escapeHtml(presentation.explanation)}</p>
+    <p style="margin:0 0 5px;font-size:10px;font-weight:700;color:#334155;">${escapeHtml(factorLine)}</p>
+    <p style="margin:0 0 4px;font-size:10px;color:#64748b;">${escapeHtml(presentation.freshnessText)}</p>
+    <p style="margin:0 0 8px;font-size:10px;line-height:1.35;color:#64748b;">${escapeHtml(presentation.disclaimer)}</p>
     <div style="display:flex;gap:6px;margin-top:6px;">
       <a href="/spiagge/${encodeURIComponent(beach.slug)}?date=${dateParam}&period=${periodParam}&source=map" style="flex:1;text-align:center;background:#082f3d;color:white;padding:7px 10px;border-radius:10px;font-weight:700;font-size:12px;text-decoration:none;display:inline-block;">Vedi spiaggia</a>
       <a href="${directionsUrl}" target="_blank" rel="noopener noreferrer" style="background:#f1f5f9;color:#082f3d;padding:7px 10px;border-radius:10px;font-weight:700;font-size:12px;text-decoration:none;display:inline-flex;align-items:center;" title="Indicazioni stradali Google Maps">🗺️</a>
@@ -119,8 +128,45 @@ function isPoiResponse(value: unknown): value is PoiResponse {
   return typeof value === "object" && value !== null;
 }
 
+type BeachMarkerModel = {
+  recommendation: MappableRecommendation;
+  className: string;
+  html: string;
+  iconSize: [number, number];
+  iconAnchor: [number, number];
+  title: string;
+  alt: string;
+  tooltip: string;
+  zIndexOffset: number;
+};
+
+export function buildBeachMarkerModels(
+  recommendations: BeachRecommendation[],
+  selectedSlug: string | null,
+): BeachMarkerModel[] {
+  return sortMappableRecommendations(recommendations).map((recommendation) => {
+    const { beach, score } = recommendation;
+    const scoreValue = formatScoreOutOf100(score);
+    const presentation = getScorePresentation(recommendation);
+    const selected = beach.slug === selectedSlug;
+
+    return {
+      recommendation,
+      className: `map-rating-marker map-rating-marker--${scoreTone(score)}${selected ? " map-rating-marker--selected" : ""}`,
+      html: `<span>${scoreValue}</span>`,
+      iconSize: [44, 30],
+      iconAnchor: [22, 15],
+      title: `${beach.name}: ${presentation.title} ${presentation.scoreLabel}`,
+      alt: `${beach.name}: ${presentation.title} ${presentation.scoreLabel}`,
+      tooltip: `${beach.name} · ${presentation.scoreLabel} · ${presentation.label}`,
+      zIndexOffset: selected ? 10000 : Math.round(score * 10),
+    };
+  });
+}
+
 export function LeafletBeachMap({
   recommendations,
+  scope = null,
   selectedSlug,
   onSelectBeach,
   nearbySelection,
@@ -238,7 +284,7 @@ export function LeafletBeachMap({
       map = leaflet.map(containerRef.current, {
         zoomControl: false,
         attributionControl: false,
-        minZoom: 6,
+        minZoom: 5,
         maxZoom: 19,
         zoomSnap: 0.5,
         zoomDelta: 0.5,
@@ -265,7 +311,7 @@ export function LeafletBeachMap({
       ratingLayerRef.current = leaflet.layerGroup().addTo(map);
       poiLayerRef.current = leaflet.layerGroup().addTo(map);
       userLayerRef.current = leaflet.layerGroup().addTo(map);
-      map.fitBounds(SICILY_BOUNDS, { padding: [16, 16], maxZoom: 8.5 });
+      map.setView([41.8, 12.5], 5.5);
 
       const handleViewportChange = () => requestPlacesRef.current?.(map as Leaflet.Map);
       map.on("moveend", handleViewportChange);
@@ -289,31 +335,53 @@ export function LeafletBeachMap({
   }, []);
 
   useEffect(() => {
+    if (!mapReady || !mapRef.current) return;
+
+    const effectiveScope = scope ?? (
+      nearbySelection
+        ? {
+            kind: "nearby" as const,
+            latitude: nearbySelection.coordinates.latitude,
+            longitude: nearbySelection.coordinates.longitude,
+            radiusKm: nearbySelection.radiusKm,
+          }
+        : null
+    );
+    const bounds = getMapBounds(
+      recommendations.map(({ beach }) => beach),
+      effectiveScope,
+    );
+
+    mapRef.current.fitBounds(bounds, {
+      padding: [24, 24],
+      maxZoom: effectiveScope?.kind === "nearby" ? 13.5 : 12,
+    });
+  }, [mapReady, nearbySelection, recommendations, scope]);
+
+  useEffect(() => {
     const leaflet = leafletRef.current;
     const ratingLayer = ratingLayerRef.current;
     if (!mapReady || !leaflet || !ratingLayer) return;
 
     ratingLayer.clearLayers();
     ratingMarkersRef.current.clear();
-    for (const recommendation of recommendations) {
-      if (!hasMapCoordinates(recommendation)) continue;
-      const { beach, score } = recommendation;
-      const scoreValue = formatScoreOutOf100(score);
-      const selected = beach.slug === selectedSlug;
+    for (const markerModel of buildBeachMarkerModels(recommendations, selectedSlug)) {
+      const { recommendation, className, html, iconSize, iconAnchor, title, alt, tooltip, zIndexOffset } = markerModel;
+      const { beach } = recommendation;
       const marker = leaflet.marker([beach.latitude, beach.longitude], {
         icon: leaflet.divIcon({
-          className: `map-rating-marker map-rating-marker--${scoreTone(score)}${selected ? " map-rating-marker--selected" : ""}`,
-          html: `<span>${scoreValue}</span>`,
-          iconSize: [58, 38],
-          iconAnchor: [29, 19],
+          className,
+          html,
+          iconSize,
+          iconAnchor,
         }),
-        title: `${beach.name}: voto ${scoreValue}`,
-        alt: `${beach.name}: voto ${scoreValue}`,
+        title,
+        alt,
         keyboard: true,
-        zIndexOffset: selected ? 1000 : 0,
+        zIndexOffset,
       });
       marker.on("click", () => onSelectBeach(beach.slug));
-      marker.bindTooltip(`${beach.name} · ${scoreValue}`, {
+      marker.bindTooltip(tooltip, {
         direction: "top",
         offset: [0, -16],
         className: "map-tooltip",
@@ -348,7 +416,7 @@ export function LeafletBeachMap({
     if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return;
 
     const radius = Math.max(0.5, nearbySelection.radiusKm) * 1000;
-    const circle = leaflet.circle([latitude, longitude], {
+    leaflet.circle([latitude, longitude], {
       radius,
       color: "#0f7890",
       weight: 2,
@@ -369,7 +437,6 @@ export function LeafletBeachMap({
       .bindTooltip("La tua posizione", { direction: "top", offset: [0, -8] })
       .addTo(userLayer);
 
-    map.fitBounds(circle.getBounds(), { padding: [44, 44], maxZoom: 14 });
   }, [mapReady, nearbySelection]);
 
   return (

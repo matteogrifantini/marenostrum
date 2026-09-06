@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import { getPeriodLabel } from "../domain/date-selection";
 import type { BeachPeriod } from "../domain/beach";
 
@@ -9,29 +8,37 @@ const periods: BeachPeriod[] = ["all-day", "morning", "afternoon"];
 type PeriodPickerProps = {
   value: BeachPeriod;
   onChange: (value: BeachPeriod) => void;
+  className?: string;
 };
 
-export function PeriodPicker({ value, onChange }: PeriodPickerProps) {
+export function PeriodPicker({ value, onChange, className = "" }: PeriodPickerProps) {
   return (
-    <label className="relative inline-flex min-h-11 max-w-[12rem] min-w-0 items-center rounded-full bg-[var(--control-surface)] text-[var(--ink)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.06)]">
-      <span className="sr-only">Periodo</span>
-      <select
-        aria-label="Periodo"
-        value={value}
-        onChange={(event) => onChange(event.target.value as BeachPeriod)}
-        className="min-h-11 min-w-0 max-w-full appearance-none rounded-full bg-transparent py-2 pl-4 pr-10 text-sm font-bold outline-none focus-visible:ring-2 focus-visible:ring-[var(--sun)]"
-      >
-        {periods.map((period) => (
-          <option key={period} value={period}>
+    <div
+      aria-label="Periodo"
+      className={`grid min-h-11 w-full min-w-0 grid-cols-3 gap-1 rounded-full bg-[var(--control-surface)] p-1 ${className}`.trim()}
+      role="group"
+    >
+      {periods.map((period) => {
+        const selected = period === value;
+
+        return (
+          <button
+            key={period}
+            type="button"
+            aria-label={getPeriodLabel(period)}
+            aria-pressed={selected}
+            onClick={() => onChange(period)}
+            className={[
+              "min-h-11 min-w-0 rounded-full px-2 py-2 text-center text-xs font-bold leading-4 transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] sm:text-sm",
+              selected
+                ? "bg-[var(--ink)] text-white shadow-[0_8px_20px_rgba(20,44,57,0.16)]"
+                : "bg-transparent text-[var(--ink-soft)] hover:bg-[var(--surface)] hover:text-[var(--ink)]",
+            ].join(" ")}
+          >
             {getPeriodLabel(period)}
-          </option>
-        ))}
-      </select>
-      <ChevronDown
-        aria-hidden="true"
-        size={16}
-        className="pointer-events-none absolute right-3 text-[var(--muted)]"
-      />
-    </label>
+          </button>
+        );
+      })}
+    </div>
   );
 }

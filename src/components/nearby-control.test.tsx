@@ -55,6 +55,16 @@ describe("NearbyControl", () => {
     expect(onChange).toHaveBeenCalledWith(null);
   });
 
+  it("centers the location icon and label inside the control", () => {
+    const onChange = vi.fn<(selection: NearbySelection | null) => void>();
+
+    render(<NearbyControl value={null} onChange={onChange} />);
+
+    const button = screen.getByRole("button", { name: "Vicino a me" });
+    expect(button).toHaveClass("justify-center");
+    expect(button.querySelector("svg")).toHaveClass("shrink-0");
+  });
+
   it("displays alert if location permission is denied by user", () => {
     const onChange = vi.fn<(selection: NearbySelection | null) => void>();
     const getCurrentPosition = vi.fn((_success: PositionCallback, error?: PositionErrorCallback) => {

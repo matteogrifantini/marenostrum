@@ -29,18 +29,28 @@ describe("BeachCard", () => {
       expect.stringContaining("cala-del-gelsomino.jpg"),
     );
     expect(screen.getByText("Noto · 18 km")).toBeInTheDocument();
-    expect(screen.getByLabelText(`Voto ${demoRecommendations[0].score} su 100, Ottima scelta`)).toHaveAttribute(
-      "data-score-tone",
-      "excellent",
+    const score = screen.getByLabelText(
+      `Punteggio Mare Nostrum: ${Math.round(demoRecommendations[0].score)}/100, Ottime condizioni`,
     );
-    expect(screen.getByLabelText("Vento: NO, 7 km/h")).toBeInTheDocument();
-    expect(screen.getByLabelText("Onde: 0.2 m")).toBeInTheDocument();
+    expect(score).toHaveAttribute("data-score-tone", "excellent");
+    expect(score).toHaveClass("size-10", "items-center", "justify-center");
+    expect(score.querySelector("strong")).toHaveClass(
+      "text-lg",
+      "sm:text-xl",
+      "leading-none",
+      "-translate-y-px",
+      "tabular-nums",
+      "whitespace-nowrap",
+    );
+    expect(screen.queryByText("Indice Mare Nostrum")).not.toBeInTheDocument();
+    expect(screen.getByLabelText(/^Vento:/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Onde:/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Meteo:/)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Salva Cala del Gelsomino" })).toHaveAttribute(
       "aria-pressed",
       "false",
     );
     expect(screen.queryByText("Raffiche")).not.toBeInTheDocument();
-    expect(screen.getByLabelText(/Meteo: Sereno/i)).toHaveTextContent(/Sereno/i);
     expect(screen.queryByText("Mare calmo")).not.toBeInTheDocument();
     expect(screen.queryByText("Parcheggio limitato")).not.toBeInTheDocument();
     expect(
@@ -51,7 +61,7 @@ describe("BeachCard", () => {
     );
   });
 
-  it("opens a homepage-selected beach on all-day while preserving its date origin", () => {
+  it("preserves the homepage-selected period while preserving its date origin", () => {
     render(
       <BeachCard
         recommendation={demoRecommendations[0]}
@@ -62,8 +72,31 @@ describe("BeachCard", () => {
 
     expect(screen.getByRole("link", { name: /apri la scheda di cala del gelsomino/i })).toHaveAttribute(
       "href",
-      "/spiagge/cala-del-gelsomino?date=2026-08-16&period=all-day&source=home",
+      "/spiagge/cala-del-gelsomino?date=2026-08-16&period=morning&source=home",
     );
+  });
+
+  it("shows a neutral webcam badge without claiming live status", () => {
+    render(
+      <BeachCard
+        recommendation={{
+          ...demoRecommendations[0],
+          beach: {
+            ...demoRecommendations[0].beach,
+            webcam: {
+              title: "Spiaggia e Golfo di Mondello",
+              embedUrl: "https://provider.example/embed",
+              liveUrl: "https://provider.example/live",
+            },
+          },
+        }}
+        date="2026-08-15"
+        period="all-day"
+      />,
+    );
+
+    expect(screen.queryByText("WEBCAM")).toBeInTheDocument();
+    expect(screen.queryByText("LIVE")).not.toBeInTheDocument();
   });
 
   it("shows the municipality without a fabricated distance when it is unavailable", () => {
@@ -94,7 +127,7 @@ describe("BeachCard", () => {
     expect(screen.queryByRole("img", { name: "Foto di Cala del Gelsomino" })).not.toBeInTheDocument();
   });
 
-  it("uses the same concise aggregate metric text visually and in accessible labels", () => {
+  it("shows compact weather metrics without duplicating the score factors", () => {
     const recommendation = {
       ...demoRecommendations[0],
       conditions: {
@@ -112,13 +145,15 @@ describe("BeachCard", () => {
       />,
     );
 
-    expect(screen.getByLabelText("Vento: NO, 12 km/h")).toHaveTextContent(
-      "NO · 12 km/h",
-    );
-    expect(screen.getByLabelText("Onde: 0.3 m")).toHaveTextContent("0.3 m");
+    expect(screen.getByLabelText(/^Vento:/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Onde:/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Meteo:/)).toBeInTheDocument();
+    expect(screen.queryByText(/Vento 100\/100/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Mare 100\/100/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Meteo 96\/100/)).not.toBeInTheDocument();
   });
 
-  it("keeps a narrow mobile card from clipping the location and wind metric", () => {
+  it("keeps a narrow mobile card from clipping the location", () => {
     const recommendation = {
       ...demoRecommendations[0],
       beach: { ...demoRecommendations[0].beach, municipality: "Palermo" },
@@ -139,7 +174,6 @@ describe("BeachCard", () => {
     );
 
     expect(screen.getByText("Palermo · 8.1 km")).not.toHaveClass("truncate");
-    expect(screen.getByText("E · 8.1 km/h")).not.toHaveClass("truncate");
   });
 
   it("shows immediate feedback while the beach detail link is pending", () => {
@@ -175,7 +209,7 @@ describe("BeachCard", () => {
       />,
     );
 
-    expect(screen.getByLabelText(new RegExp(`Voto ${score} su 100`))).toHaveAttribute(
+    expect(screen.getByLabelText(new RegExp(`Punteggio Mare Nostrum: ${score}/100`))).toHaveAttribute(
       "data-score-tone",
       tone,
     );

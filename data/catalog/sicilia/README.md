@@ -10,7 +10,9 @@ This directory contains versioned, source-backed candidate records for the Mare 
 - Do not add passwords, API keys, personal data, copied reviews, or unlicensed media.
 - Keep the exact source URL and the date checked for every candidate.
 
-The active catalog contains 50 draft candidates: 24 in Trapani and 26 in Palermo. This is the original 21-beach pilot plus 29 newly added named beaches and coves from the two target provinces. The importer is additive and idempotent; it does not delete existing catalog records.
+The catalog now contains 134 draft candidates: 39 in Trapani, 41 in Palermo, 14 in Messina, 9 in Catania, 10 in Syracuse, 8 in Ragusa, 9 in Agrigento and 4 in Caltanissetta. The latest reconnaissance adds 54 named coastal destinations across the six provinces that were not yet represented; Enna is intentionally excluded because it is inland. The importer is additive and idempotent; it does not delete existing catalog records.
+
+The 54 new rows remain `draft`. Thirty-one have a distinct local Wikimedia Commons asset with recorded credit and license; twenty-three are explicitly marked `media-pending` because no photo of the exact stretch passed the visual gate for sea/coast subject, calm water and clear presentation. A pending row must not be published until its image and access point are verified.
 
 The historical verification pass for that removed 29-record expansion is documented in
 [`docs/sicilia-catalog-verification-2026-08-23.md`](../../../docs/sicilia-catalog-verification-2026-08-23.md).
@@ -26,7 +28,7 @@ Only the `:verify:apply` command updates draft content statuses; unresolved
 webcams and all media remain draft.
 
 `review-candidates.json` contiene un collegamento di ricerca Google Maps per
-ciascuna delle 50 spiagge attive. Sono profili `draft` con `place_id` nullo: il link
+ciascuna delle 134 spiagge candidate. Sono profili `draft` con `place_id` nullo: il link
 usa nome, comune e coordinate per facilitare la verifica manuale, ma non prova
 che il risultato sia l'attività corretta. `npm run catalog:reviews:validate`
 esegue il controllo senza scrivere; `npm run catalog:reviews:apply` salva i

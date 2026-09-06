@@ -1,7 +1,7 @@
 import {
-  validateSicilianCatalog,
+  validateCatalog,
   type CatalogValidationIssue,
-  type SicilianCatalogRecord,
+  type CatalogRecord,
 } from "../src/data/catalog-contract";
 
 export type CatalogReportSummary = {
@@ -14,13 +14,13 @@ export type CatalogReportSummary = {
 };
 
 export type CatalogReport = {
-  records: SicilianCatalogRecord[];
+  records: CatalogRecord[];
   issues: CatalogValidationIssue[];
   summary: CatalogReportSummary;
 };
 
 export function buildCatalogReport(input: unknown[]): CatalogReport {
-  const validation = validateSicilianCatalog(input);
+  const validation = validateCatalog(input);
   const issueIndexes = new Set(validation.issues.map((issue) => issue.index));
   const duplicateIssues = validation.issues.filter(
     (issue) => issue.code === "duplicate_slug",

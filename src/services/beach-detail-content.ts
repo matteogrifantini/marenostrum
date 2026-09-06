@@ -215,13 +215,17 @@ function localMediaSource(media: MediaItemRow) {
 }
 
 function mapPhotos(beach: Beach, media: MediaItemRow[]) {
+  const seenSources = new Set<string>();
+
   return media
     .filter((item) => item.kind === "photo")
-    .map((item) => {
+    .flatMap((item) => {
       const source = localMediaSource(item);
-      if (!source) return null;
+      if (!source || seenSources.has(source)) return [];
 
-      return {
+      seenSources.add(source);
+
+      return [{
         id: item.id,
         src: source,
         alt: `Foto di ${beach.name}`,
@@ -230,9 +234,8 @@ function mapPhotos(beach: Beach, media: MediaItemRow[]) {
           "Verificata",
           "Data non disponibile",
         ),
-      };
+      }];
     })
-    .filter((photo): photo is NonNullable<typeof photo> => photo !== null);
 }
 
 function mapWebcam(beach: Beach, webcam: WebcamRow | undefined) {
@@ -254,13 +257,38 @@ function mapWebcam(beach: Beach, webcam: WebcamRow | undefined) {
   };
 }
 
+function beachLocationQuery(beach: Beach) {
+  return [
+    beach.name,
+    beach.municipality,
+    beach.provinceName,
+    beach.regionName,
+    "Italia",
+  ]
+    .map((value) => value?.trim())
+    .filter((value): value is string => Boolean(value))
+    .join(", ");
+}
+
 function reviewMapsUrl(beach: Beach, provider: string, placeId: string | null, fallbackUrl: string) {
   if (provider.trim().toLowerCase() !== "google") return fallbackUrl;
 
-  const query = `${beach.name}, ${beach.municipality}, Sicilia`;
+  const query = beachLocationQuery(beach);
   return placeId?.trim()
     ? buildGoogleMapsPlaceUrl(query, placeId)
     : buildGoogleMapsSearchUrl(query);
+}
+
+function parseNumericRating(value: number | string | null | undefined): number | null {
+  if (value === null || value === undefined || value === "") return null;
+  const num = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(num) && num >= 1 && num <= 5 ? Math.round(num * 10) / 10 : null;
+}
+
+function parseReviewCount(value: number | string | null | undefined): number | null {
+  if (value === null || value === undefined || value === "") return null;
+  const num = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(num) && num >= 0 ? Math.floor(num) : null;
 }
 
 export function buildBeachDetailContent(
@@ -284,11 +312,15 @@ export function buildBeachDetailContent(
           content.reviewProfile.verification_status === "archived"
             ? "draft" as const
             : content.reviewProfile.verification_status,
+        rating: parseNumericRating(content.reviewProfile.rating),
+        reviewCount: parseReviewCount(content.reviewProfile.review_count),
       }
     : {
         provider: "google",
-        mapsUrl: buildGoogleMapsSearchUrl(`${beach.name}, ${beach.municipality}, Sicilia`),
+        mapsUrl: buildGoogleMapsSearchUrl(beachLocationQuery(beach)),
         verificationStatus: "draft" as const,
+        rating: null,
+        reviewCount: null,
       };
 
   return {

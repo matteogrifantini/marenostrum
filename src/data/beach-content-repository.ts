@@ -76,6 +76,8 @@ export type ReviewProfileRow = {
   checked_at: string | null;
   next_check_at: string | null;
   notes: string | null;
+  rating?: number | string | null;
+  review_count?: number | string | null;
 };
 
 export type InternalReviewRow = {

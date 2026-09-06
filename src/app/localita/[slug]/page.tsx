@@ -6,9 +6,19 @@ import { MobileNav } from "../../../components/mobile-nav";
 import { PageShell } from "../../../components/page-shell";
 import {
   ForecastDataUnavailableError,
+  getAllPublishedBeaches,
   getBeachRecommendations,
 } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
+import {
+  hasUniqueTerritoryHubDescription,
+  shouldIndexTerritoryHub,
+} from "../../../domain/seo/sitemap-policy";
+import {
+  SITE_NAME,
+  SITE_SOCIAL_IMAGE,
+  SITE_URL,
+} from "../../../domain/seo/site-copy";
 import { filterRecommendationsForHub, getTerritoryHub, TERRITORY_HUBS } from "../../../domain/territory-hubs";
 import type { BeachRecommendation } from "../../../domain/beach";
 
@@ -26,18 +36,51 @@ export async function generateMetadata({
   const hub = getTerritoryHub((await params).slug);
   if (!hub) return { title: "Area non trovata" };
 
+  const pageDescription =
+    `${hub.description} Previsioni meteomarine aggiornate su Mare Nostrum. Scegli dove andare oggi.`;
+
+  let indexable = false;
+  try {
+    const publishedBeachCount = (await getAllPublishedBeaches(undefined, { bypassCache: true })).filter(
+      (beach) => hub.municipality
+        ? beach.municipality?.toLowerCase() === hub.municipality.toLowerCase()
+        : beach.provinceCode === hub.provinceCode,
+    ).length;
+    indexable = shouldIndexTerritoryHub({
+      publishedBeachCount,
+      hasUniqueDescription: hasUniqueTerritoryHubDescription(hub.description),
+    });
+  } catch {
+    indexable = false;
+  }
+
   return {
     title: `${hub.name}: vento, onde e condizioni`,
-    description: `${hub.description} Previsioni meteomarine aggiornate su Mare Nostrum.`,
-    alternates: { canonical: `https://marenostrum.app/localita/${hub.slug}` },
+    description: pageDescription,
+    alternates: { canonical: `${SITE_URL}/localita/${hub.slug}` },
     openGraph: {
       title: `${hub.name} — Mare Nostrum`,
-      description: hub.description,
-      url: `https://marenostrum.app/localita/${hub.slug}`,
+      description: pageDescription,
+      url: `${SITE_URL}/localita/${hub.slug}`,
       type: "website",
-      siteName: "Mare Nostrum",
+      siteName: SITE_NAME,
       locale: "it_IT",
+      images: [
+        {
+          url: SITE_SOCIAL_IMAGE,
+          width: 1200,
+          height: 630,
+          alt: `${hub.name} | ${SITE_NAME}`,
+        },
+      ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${hub.name} — Mare Nostrum`,
+      description: pageDescription,
+      images: [SITE_SOCIAL_IMAGE],
+    },
+    robots: indexable ? undefined : { index: false, follow: true },
   };
 }
 
@@ -55,7 +98,11 @@ export default async function TerritoryHubPage({
 
   try {
     recommendations = filterRecommendationsForHub(
-      await getBeachRecommendations({ date, period: "all-day" }),
+      await getBeachRecommendations({
+        date,
+        period: "all-day",
+        scope: { kind: "province", provinceCode: hub.provinceCode },
+      }),
       hub,
     );
   } catch (error) {
@@ -68,7 +115,7 @@ export default async function TerritoryHubPage({
       <main className="min-h-screen pb-24 lg:pb-10">
         <div className="mx-auto max-w-[1440px] px-4 py-6 sm:px-8 sm:py-10">
           <header className="mx-auto max-w-3xl">
-            <Link href="/" className="text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--sea-deep)] underline underline-offset-4">Mare Nostrum · Sicilia</Link>
+            <Link href="/" className="text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--sea-deep)] underline underline-offset-4">Mare Nostrum</Link>
             <p className="mt-5 text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--muted)]">{hub.eyebrow}</p>
             <h1 className="mt-2 font-serif text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">{hub.name}</h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)]">{hub.description}</p>
@@ -96,7 +143,7 @@ export default async function TerritoryHubPage({
           ) : (
             <section className="mx-auto mt-8 max-w-3xl rounded-[1.5rem] bg-[var(--surface)] p-8 text-center shadow-[0_18px_60px_rgba(20,44,57,0.08)]">
               <h2 className="font-serif text-2xl font-semibold">Catalogo in espansione</h2>
-              <p className="mt-2 text-sm leading-6 text-[var(--muted)]">Stiamo verificando le prime spiagge di {hub.queryLabel}. Nel frattempo puoi esplorare la mappa siciliana.</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--muted)]">Stiamo verificando le prime spiagge di {hub.queryLabel}. Nel frattempo puoi esplorare la mappa nazionale.</p>
               <Link href="/mappa" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-[var(--ink)] px-5 text-sm font-extrabold text-white">Apri la mappa</Link>
             </section>
           )}

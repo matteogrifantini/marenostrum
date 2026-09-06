@@ -128,6 +128,15 @@ describe("HomeExperience", () => {
     replace.mockReset();
   });
 
+  it("introduces the national catalog with a concise beach selection heading", () => {
+    renderHome({ nationalPreview: true });
+
+    expect(screen.getByRole("heading", { level: 1, name: "Meteo del mare in Italia" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Le spiagge in evidenza in Sicilia" })).toBeInTheDocument();
+    expect(screen.queryByText("Selezione nazionale")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Scegli una regione o una provincia per restringere la ricerca/i)).not.toBeInTheDocument();
+  });
+
   it("shows stale-data copy beside the forecast timestamp only for low confidence", () => {
     const staleRecommendation = { ...recommendations[0], confidence: "bassa" as const };
 
@@ -313,11 +322,9 @@ describe("HomeExperience", () => {
   it("keeps the decision controls compact and removes editorial clutter", () => {
     renderHome();
 
-    expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("all-day");
+    expect(screen.getByRole("group", { name: "Periodo" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Tutto il giorno" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Filtri" })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Tutto il giorno" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Mattina" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Pomeriggio" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Tutta la Sicilia" })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Vicino a me" })).toBeInTheDocument();
     expect(screen.queryByRole("combobox", { name: "Distanza da me" })).not.toBeInTheDocument();
@@ -344,6 +351,41 @@ describe("HomeExperience", () => {
     expect(screen.queryByRole("heading", { name: "Cala del Gelsomino" })).not.toBeInTheDocument();
   });
 
+  it("searches across all beaches in the catalog regardless of province filter", () => {
+    renderHome({
+      initialProvince: "PA",
+      recommendations: [
+        ...recommendations,
+        {
+          beach: {
+            slug: "mondello",
+            name: "Mondello",
+            municipality: "Palermo",
+            coast: "Nord-ovest",
+            description: "Sabbia bianca.",
+            orientationDegrees: 0,
+            shelter: ["scirocco"],
+            tags: ["sabbia"],
+            access: "facile",
+            image: "/images/beaches/mondello.jpg",
+            provinceCode: "PA",
+          },
+          conditions: recommendations[0].conditions,
+          score: 95,
+          label: "Ottima scelta",
+          reason: "Calmo.",
+          confidence: "alta",
+          factors: { wind: 90, sea: 90, weather: 90 },
+        },
+      ],
+    });
+
+    const search = screen.getByRole("searchbox", { name: "Cerca una spiaggia" });
+    fireEvent.change(search, { target: { value: "Vendicari" } });
+
+    expect(screen.getByRole("heading", { name: "Tonnara di Vendicari" })).toBeInTheDocument();
+  });
+
   it("supports multiple factual filters at the same time", () => {
     renderHome();
 
@@ -367,6 +409,47 @@ describe("HomeExperience", () => {
 
     expect(search.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
     expect(dayGroup.closest("section")).toHaveClass("mx-auto", "max-w-4xl");
+  });
+
+  it("keeps the period and location filters in two columns on smaller screens", () => {
+    renderHome();
+
+    const toolbar = screen.getByTestId("home-filter-toolbar");
+    expect(toolbar).toHaveClass("grid", "gap-2");
+    expect(screen.getByRole("group", { name: "Periodo" })).toHaveClass(
+      "grid",
+      "grid-cols-3",
+      "w-full",
+    );
+    expect(screen.queryByRole("combobox", { name: "Regione" })).not.toBeInTheDocument();
+    expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass(
+      "col-start-1",
+      "row-start-1",
+    );
+    expect(screen.getByTestId("nearby-control")).toHaveClass("col-start-2", "row-start-1");
+    expect(screen.getByRole("button", { name: "Filtri" })).toHaveClass("col-span-2", "row-start-2");
+  });
+
+  it("compacts the home toolbar into two rows on desktop", () => {
+    renderHome();
+
+    const layout = screen.getByTestId("home-control-layout");
+    const toolbar = screen.getByTestId("home-filter-toolbar");
+    const dayGroup = screen.getByRole("group", { name: "Scegli il giorno" });
+    const periodGroup = screen.getByRole("group", { name: "Periodo" });
+    const locationGrid = screen.getByTestId("catalog-scope-controls").parentElement;
+
+    expect(layout).toHaveClass("lg:grid-cols-2", "lg:gap-2");
+    expect(toolbar).toHaveClass("lg:contents");
+    expect(dayGroup.parentElement).toHaveClass("lg:col-start-1", "lg:row-start-1");
+    expect(periodGroup.parentElement).toHaveClass("lg:col-start-2", "lg:row-start-1");
+    expect(locationGrid).toHaveClass("lg:col-span-2", "lg:grid-cols-3");
+    expect(screen.queryByRole("combobox", { name: "Regione" })).not.toBeInTheDocument();
+    expect(screen.getByRole("combobox", { name: "Provincia" }).parentElement).toHaveClass(
+      "lg:col-auto",
+      "lg:row-auto",
+    );
+    expect(screen.getByTestId("nearby-control")).toHaveClass("lg:col-auto", "lg:row-auto");
   });
 
   it("filters by province from the main bar and persists the selection in the URL", () => {
@@ -454,7 +537,7 @@ describe("HomeExperience", () => {
       "aria-pressed",
       "true",
     );
-    expect(screen.getByRole("combobox", { name: "Periodo" })).toHaveValue("morning");
+    expect(screen.getByRole("button", { name: "Mattina" })).toHaveAttribute("aria-pressed", "true");
   });
 
   it("shows the temporary-unavailable copy for unavailable forecast data", () => {

@@ -9,7 +9,10 @@ export function BeachScore({ score, label }: BeachScoreProps) {
   const displayScore = formatScoreOutOf100(score);
 
   return (
-    <div aria-label={`Voto ${displayScore} su 100, ${label}`}>
+    <div aria-label={`Indice Mare Nostrum: ${displayScore}/100, ${label}`}>
+      <span className="block text-[0.62rem] font-extrabold uppercase tracking-[0.08em] text-[var(--muted)]">
+        Indice Mare Nostrum
+      </span>
       <span className="flex items-baseline gap-1">
         <strong className="font-serif text-[2.8rem] font-semibold leading-none tracking-[-0.06em] text-[var(--ink)]">
           {displayScore}

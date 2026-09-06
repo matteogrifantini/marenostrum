@@ -122,8 +122,10 @@ describe("buildBeachDetailContent", () => {
     expect(detail.reviewProfile).toEqual({
       provider: "google",
       mapsUrl:
-        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia&query_place_id=ChIJexample",
+        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia&query_place_id=ChIJexample",
       verificationStatus: "verified",
+      rating: null,
+      reviewCount: null,
     });
     expect(detail.webcam).toMatchObject({
       name: "Webcam del porto",
@@ -178,8 +180,10 @@ describe("buildBeachDetailContent", () => {
     expect(detail.reviewProfile).toEqual({
       provider: "google",
       mapsUrl:
-        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia",
+        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia",
       verificationStatus: "draft",
+      rating: null,
+      reviewCount: null,
     });
   });
 
@@ -203,13 +207,66 @@ describe("buildBeachDetailContent", () => {
       reviewProfile: {
         provider: "google",
         mapsUrl:
-          "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia",
+          "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia",
         verificationStatus: "draft",
+        rating: null,
+        reviewCount: null,
       },
       recentPhotos: [],
       reels: [],
       webcam: null,
     });
+  });
+
+  it("does not render the same published photo twice when catalog rows share a file", () => {
+    const detail = buildBeachDetailContent(
+      beach,
+      {
+        ...content,
+        media: [
+          {
+            id: "photo-primary",
+            beach_id: "beach-1",
+            source_id: "source-1",
+            kind: "photo",
+            provider: "Wikimedia Commons",
+            provider_item_id: "guidaloca-a",
+            source_url: "https://commons.wikimedia.org/wiki/File:Guidaloca.jpg",
+            media_url: "/images/beaches/guidaloca.jpg",
+            storage_path: null,
+            thumbnail_url: null,
+            credit: "Wikimedia Commons",
+            license: "CC BY-SA 4.0",
+            captured_at: null,
+            verified_at: "2026-08-24T23:25:10.791+00:00",
+            expires_at: null,
+            publication_status: "verified",
+          },
+          {
+            id: "photo-duplicate",
+            beach_id: "beach-1",
+            source_id: "source-1",
+            kind: "photo",
+            provider: "Wikimedia Commons",
+            provider_item_id: "guidaloca-b",
+            source_url: "https://commons.wikimedia.org/wiki/File:Spiaggia_di_Guidaloca_-_panoramio.jpg",
+            media_url: "/images/beaches/guidaloca.jpg",
+            storage_path: null,
+            thumbnail_url: null,
+            credit: "Wikimedia Commons",
+            license: "CC BY-SA 4.0",
+            captured_at: null,
+            verified_at: "2026-08-22T09:22:33.406+00:00",
+            expires_at: null,
+            publication_status: "verified",
+          },
+        ],
+      },
+      [],
+    );
+
+    expect(detail.recentPhotos).toHaveLength(1);
+    expect(detail.recentPhotos[0]?.src).toBe("/images/beaches/guidaloca.jpg");
   });
 
   it("aggregates authenticated community reviews without exposing user ids", () => {
@@ -315,5 +372,37 @@ describe("buildBeachDetailContent", () => {
       { emoji: "🥾", label: "Accesso", value: "Sentiero e discesa rocciosa" },
       { emoji: "🌿", label: "Ambiente", value: "Macchia mediterranea e costa selvaggia" },
     ]);
+  });
+
+  it("maps Google review rating and review count from row", () => {
+    const detail = buildBeachDetailContent(
+      beach,
+      {
+        ...content,
+        reviewProfile: {
+          id: "review-1",
+          beach_id: "beach-1",
+          provider: "google",
+          place_id: "ChIJexample",
+          maps_url: "https://maps.google.com/?cid=1",
+          verification_status: "verified",
+          checked_at: "2026-09-06T00:00:00Z",
+          next_check_at: "2026-10-06T00:00:00Z",
+          notes: "verified",
+          rating: 4.7,
+          review_count: 1840,
+        },
+      },
+      [],
+    );
+
+    expect(detail.reviewProfile).toEqual({
+      provider: "google",
+      mapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia&query_place_id=ChIJexample",
+      verificationStatus: "verified",
+      rating: 4.7,
+      reviewCount: 1840,
+    });
   });
 });

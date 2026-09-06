@@ -149,6 +149,14 @@ describe("BeachPage", () => {
       reels: expect.any(Array),
       webcam: null,
     });
+    const structuredData = JSON.parse(
+      document.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}",
+    ) as { address?: { addressLocality?: string; addressRegion?: string; addressCountry?: string } };
+    expect(structuredData.address).toMatchObject({
+      addressLocality: beach.municipality,
+      addressCountry: "IT",
+    });
+    expect(structuredData.address?.addressRegion).toBeUndefined();
   });
 
   it("starts detail content and community reads while the forecast is pending", async () => {
@@ -327,15 +335,18 @@ describe("BeachPage", () => {
       params: Promise.resolve({ slug: beach.slug }),
     });
 
-    expect(metadata.title).toBe(
-      "Meteo Mare Cala del Gelsomino (Noto) oggi: vento, onde e condizioni",
+    expect(metadata.title).toEqual({
+      absolute: "Meteo Cala del Gelsomino oggi (Noto): Vento, Mare e Onde | Mare Nostrum",
+    });
+    expect(metadata.description).toContain(
+      "Previsioni meteo e mare a Cala del Gelsomino (Noto) per oggi: intensità del vento, altezza onde",
     );
-    expect(metadata.description).toContain("Cala del Gelsomino a Noto (Sud-est)");
     expect(metadata.alternates).toEqual({
       canonical: "https://marenostrum.app/spiagge/cala-del-gelsomino",
     });
     expect(metadata.openGraph).toMatchObject({
-      title: "Meteo Mare Cala del Gelsomino (Noto)",
+      title: "Meteo Cala del Gelsomino oggi (Noto): Vento, Mare e Onde | Mare Nostrum",
+      description: expect.stringContaining("temperatura dell’acqua"),
       url: "https://marenostrum.app/spiagge/cala-del-gelsomino",
       type: "website",
       siteName: "Mare Nostrum",
@@ -352,4 +363,3 @@ describe("BeachPage", () => {
     expect(metadata.title).toBe("Spiaggia non trovata");
   });
 });
-

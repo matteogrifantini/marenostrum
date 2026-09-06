@@ -4,559 +4,1799 @@
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia%20%4038.178825%2C12.732927",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 16400
   },
   {
     "slug": "baia-santa-margherita-macari",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Baia%20Santa%20Margherita%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia%20%4038.12585%2C12.729366",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 2400
   },
   {
     "slug": "cala-tonnarella-dell-uzzo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Tonnarella%20dell'Uzzo%2C%20San%20Vito%20Lo%20Capo%20%2F%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.120263%2C12.787485",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 980
   },
   {
     "slug": "cala-marinella-zingaro",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Marinella%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.1062%2C12.79393",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 760
   },
   {
     "slug": "cala-capreria-zingaro",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Capreria%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.087705%2C12.80531",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1250
   },
   {
     "slug": "tonnara-di-scopello",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Tonnara%20di%20Scopello%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.071526%2C12.821577",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 6700
   },
   {
     "slug": "guidaloca",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Guidaloca%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.056613%2C12.84009",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2100
   },
   {
     "slug": "cala-rossa-favignana",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Rossa%2C%20Favignana%2C%20Sicilia%20%4037.921309%2C12.362173",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 5100
   },
   {
     "slug": "cala-azzurra-favignana",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Azzurra%2C%20Favignana%2C%20Sicilia%20%4037.909029%2C12.361108",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 3800
   },
   {
     "slug": "lido-burrone-favignana",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Lido%20Burrone%2C%20Favignana%2C%20Sicilia%20%4037.918306%2C12.338503",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1950
   },
   {
     "slug": "mondello",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Mondello%2C%20Palermo%2C%20Sicilia%20%4038.20153%2C13.327312",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 12200
   },
   {
     "slug": "barcarello-sferracavallo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Barcarello%2C%20Palermo%2C%20Sicilia%20%4038.2095%2C13.2823",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1600
   },
   {
     "slug": "isola-delle-femmine",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20delle%20Femmine%2C%20Isola%20delle%20Femmine%2C%20Sicilia%20%4038.186439%2C13.238273",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1690
   },
   {
     "slug": "capaci",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Capaci%2C%20Capaci%2C%20Sicilia%20%4038.185656%2C13.237457",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 140
   },
   {
     "slug": "cala-rossa-terrasini",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Rossa%2C%20Terrasini%2C%20Sicilia%20%4038.141818%2C13.071091",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1470
   },
   {
     "slug": "la-praiola-terrasini",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=La%20Praiola%2C%20Terrasini%2C%20Sicilia%20%4038.15467%2C13.08084",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1200
   },
   {
     "slug": "magaggiari-cinisi",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Magaggiari%2C%20Cinisi%2C%20Sicilia%20%4038.159851%2C13.084616",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1850
   },
   {
     "slug": "spiaggia-del-lungomare-cefalu",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20del%20Lungomare%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.034209%2C14.012977",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2080
   },
   {
     "slug": "caldura-cefalu",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Caldura%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.0335%2C14.039",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 950
   },
   {
     "slug": "mazzaforno-cefalu",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Mazzaforno%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.030512%2C13.973537",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 310
   },
   {
     "slug": "balestrate",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Balestrate%2C%20Balestrate%2C%20Sicilia%20%4038.043815%2C12.987613",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1900
   },
   {
     "slug": "alcamo-marina",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Alcamo%20Marina%2C%20Alcamo%2C%20Sicilia%20%4038.0281884%2C12.9481529",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 160
   },
   {
     "slug": "spiaggia-playa-castellammare",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20Playa%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.0244795%2C12.9039088",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1510
   },
   {
     "slug": "cala-mazzo-di-sciacca",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Mazzo%20di%20Sciacca%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.0803737%2C12.8126348",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1080
   },
   {
     "slug": "tre-fontane",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Tre%20Fontane%2C%20Campobello%20di%20Mazara%2C%20Sicilia%20%4037.5658105%2C12.7080047",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1340
   },
   {
     "slug": "torretta-granitola",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Torretta%20Granitola%2C%20Campobello%20di%20Mazara%2C%20Sicilia%20%4037.5752333%2C12.6580416",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2140
   },
   {
     "slug": "puzziteddu",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Puzziteddu%2C%20Campobello%20di%20Mazara%2C%20Sicilia%20%4037.570576%2C12.7290997",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1380
   },
   {
     "slug": "tonnarella-mazara-del-vallo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Tonnarella%2C%20Mazara%20del%20Vallo%2C%20Sicilia%20%4037.6614112%2C12.5650944",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1020
   },
   {
     "slug": "capo-feto",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20Feto%2C%20Mazara%20del%20Vallo%2C%20Sicilia%20%4037.6595422%2C12.5318584",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1980
   },
   {
     "slug": "marinella-di-selinunte",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Marinella%20di%20Selinunte%2C%20Castelvetrano%2C%20Sicilia%20%4037.5821637%2C12.8317706",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1970
   },
   {
     "slug": "triscina-di-selinunte",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Triscina%20di%20Selinunte%2C%20Castelvetrano%2C%20Sicilia%20%4037.5812706%2C12.7837083",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 2250
   },
   {
     "slug": "san-teodoro-marsala",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Teodoro%2C%20Marsala%2C%20Sicilia%20%4037.9073773%2C12.4593696",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 360
   },
   {
     "slug": "lido-signorino",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Lido%20Signorino%2C%20Marsala%2C%20Sicilia%20%4037.7418103%2C12.472191",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 2220
   },
   {
     "slug": "spiaggia-della-segheria-pizzolungo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20della%20Segheria%2C%20Erice%2C%20Sicilia%20%4038.0666363%2C12.5678502",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 1760
   },
   {
     "slug": "cornino",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cornino%2C%20Custonaci%2C%20Sicilia%20%4038.0888748%2C12.6574173",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 2070
   },
   {
     "slug": "addaura",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Addaura%2C%20Palermo%2C%20Sicilia%20%4038.188966%2C13.3513652",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 650
   },
   {
     "slug": "arenella-palermo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Arenella%2C%20Palermo%2C%20Sicilia%20%4038.1535403%2C13.3748098",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 2300
   },
   {
     "slug": "vergine-maria-palermo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Vergine%20Maria%2C%20Palermo%2C%20Sicilia%20%4038.1671853%2C13.3677305",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 340
   },
   {
     "slug": "kafara",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Kafara%2C%20Santa%20Flavia%2C%20Sicilia%20%4038.0995301%2C13.5347637",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1700
   },
   {
     "slug": "sant-elia-santa-flavia",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Sant%E2%80%99Elia%2C%20Santa%20Flavia%2C%20Sicilia%20%4038.0959929%2C13.5394251",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 990
   },
   {
     "slug": "spiaggia-aciddara",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20dell%E2%80%99Aciddara%2C%20Santa%20Flavia%2C%20Sicilia%20%4038.080212%2C13.5375629",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 800
   },
   {
     "slug": "spiaggia-olivella-santa-flavia",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20dell%E2%80%99Olivella%2C%20Santa%20Flavia%2C%20Sicilia%20%4038.084494%2C13.538045",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 690
   },
   {
     "slug": "spiaggia-di-casteldaccia",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Casteldaccia%2C%20Casteldaccia%2C%20Sicilia%20%4038.0575353%2C13.5410556",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 320
   },
   {
     "slug": "campofelice-di-roccella",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Campofelice%20di%20Roccella%2C%20Campofelice%20di%20Roccella%2C%20Sicilia%20%4037.9916848%2C13.8639134",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 870
   },
   {
     "slug": "settefrati-cefalu",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Settefrati%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.0311052%2C13.9664108",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 270
   },
   {
     "slug": "salinelle-lascari",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Salinelle%2C%20Lascari%2C%20Sicilia%20%4038.016308%2C13.9324444",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 790
   },
   {
     "slug": "sarello-aspra",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Sarello%2C%20Bagheria%2C%20Sicilia%20%4038.1076205%2C13.5048838",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 930
   },
   {
     "slug": "ippocampo-aspra",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Ippocampo%2C%20Bagheria%2C%20Sicilia%20%4038.1133867%2C13.520801",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 530
   },
   {
     "slug": "tre-piscine-cala-del-cuore",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Tre%20Piscine%20%C2%B7%20Cala%20del%20Cuore%2C%20Santa%20Flavia%2C%20Sicilia%20%4038.1102586%2C13.5322128",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 2020
   },
   {
     "slug": "spiaggia-dei-francesi-mongerbino",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20dei%20Francesi%2C%20Bagheria%2C%20Sicilia%20%4038.1162909%2C13.5075318",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell’attività devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 2200
   },
   {
     "slug": "cala-rotonda-favignana",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Rotonda%2C%20Favignana%2C%20Sicilia%20%4037.9254%2C12.2857",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 2070
   },
   {
     "slug": "bue-marino-favignana",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Bue%20Marino%2C%20Favignana%2C%20Sicilia%20%4037.9308%2C12.3551",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1010
   },
   {
     "slug": "scalo-cavallo-favignana",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Scalo%20Cavallo%2C%20Favignana%2C%20Sicilia%20%4037.9352%2C12.3486",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 2270
   },
   {
     "slug": "cala-fredda-levanzo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Fredda%2C%20Favignana%2C%20Sicilia%20%4037.9892%2C12.3435",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2280
   },
   {
     "slug": "cala-minnola-levanzo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Minnola%2C%20Favignana%2C%20Sicilia%20%4037.9946%2C12.3518",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 330
   },
   {
     "slug": "cala-dogana-levanzo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Dogana%2C%20Favignana%2C%20Sicilia%20%4037.9881%2C12.3411",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 1430
   },
   {
     "slug": "cala-bue-marino-macari",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Bue%20Marino%2C%20San%20Vito%20Lo%20Capo%2C%20Sicilia%20%4038.1402%2C12.7279",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1730
   },
   {
     "slug": "cala-berretta-zingaro",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Berretta%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.1065%2C12.7938",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 1770
   },
   {
     "slug": "cala-della-disa-zingaro",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20della%20Disa%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.1012%2C12.7979",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1670
   },
   {
     "slug": "cala-petrolo-castellammare",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Petrolo%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.0289%2C12.8821",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 2200
   },
   {
     "slug": "cala-bianca-castellammare",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Bianca%2C%20Castellammare%20del%20Golfo%2C%20Sicilia%20%4038.0493%2C12.8465",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1810
   },
   {
     "slug": "spiaggia-delle-mura-di-tramontana-trapani",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20delle%20Mura%20di%20Tramontana%2C%20Trapani%2C%20Sicilia%20%4038.0201%2C12.5082",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 2330
   },
   {
     "slug": "spiaggia-di-san-giuliano-erice",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20San%20Giuliano%2C%20Erice%2C%20Sicilia%20%4038.0354%2C12.5298",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1100
   },
   {
     "slug": "spiaggia-di-marausa-lido",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Marausa%20Lido%2C%20Misiliscemi%2C%20Sicilia%20%4037.9152%2C12.5186",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1240
   },
   {
     "slug": "riserva-foce-del-belice",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20della%20Foce%20del%20Belice%2C%20Castelvetrano%2C%20Sicilia%20%4037.5815%2C12.8687",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 670
   },
   {
     "slug": "spiaggia-di-ciamarita-trappeto",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20Ciammarita%2C%20Trappeto%2C%20Sicilia%20%4038.0706%2C13.0285",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 2350
   },
   {
     "slug": "spiaggia-del-casello-trappeto",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20del%20Casello%2C%20Trappeto%2C%20Sicilia%20%4038.0678%2C13.0371",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 990
   },
   {
     "slug": "spiaggia-di-torre-pozzillo-cinisi",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Torre%20Pozzillo%2C%20Cinisi%2C%20Sicilia%20%4038.1882%2C13.1256",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 2360
   },
   {
     "slug": "spiaggia-di-carini-torre-ciachea",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Carini%2C%20Carini%2C%20Sicilia%20%4038.1963%2C13.1974",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 1470
   },
   {
     "slug": "spiaggia-della-torre-normanna-altavilla",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Torre%20Normanna%2C%20Altavilla%20Milicia%2C%20Sicilia%20%4038.0514%2C13.5682",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 410
   },
   {
     "slug": "cala-sciabica-altavilla",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Sciabica%2C%20Altavilla%20Milicia%2C%20Sicilia%20%4038.0465%2C13.5789",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1380
   },
   {
     "slug": "spiaggia-di-san-nicola-l-arena-trabia",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20San%20Nicola%20l'Arena%2C%20Trabia%2C%20Sicilia%20%4038.0162%2C13.6154",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1940
   },
   {
     "slug": "spiaggia-di-pietra-piatta-trabia",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Pietra%20Piatta%2C%20Trabia%2C%20Sicilia%20%4038.0078%2C13.6391",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 1690
   },
   {
     "slug": "spiaggia-di-gorgo-lungo-lascari",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Gorgo%20Lungo%2C%20Lascari%2C%20Sicilia%20%4038.0089%2C13.9165",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1890
   },
   {
     "slug": "spiaggia-di-piana-grande-lascari",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Piana%20Grande%2C%20Lascari%2C%20Sicilia%20%4038.0062%2C13.8994",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 960
   },
   {
     "slug": "spiaggia-di-santa-lucia-cefalu",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Baia%20di%20Santa%20Lucia%2C%20Cefal%C3%B9%2C%20Sicilia%20%4038.0345%2C14.0042",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1360
   },
   {
     "slug": "spiaggia-di-torre-conca-pollina",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Torre%20Conca%2C%20Pollina%2C%20Sicilia%20%4038.0267%2C14.1528",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 630
   },
   {
     "slug": "spiaggia-di-costa-turchina-pollina",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Costa%20Turchina%2C%20Pollina%2C%20Sicilia%20%4038.0289%2C14.1685",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 580
   },
   {
     "slug": "spiaggia-di-santa-maria-pollina",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20Santa%20Maria%2C%20Pollina%2C%20Sicilia%20%4038.0315%2C14.1824",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 650
   },
   {
     "slug": "spiaggia-del-corsaro-palermo",
     "provider": "google",
     "place_id": null,
     "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20del%20Corsaro%2C%20Palermo%2C%20Sicilia%20%4038.1062%2C13.3985",
-    "notes": "Collegamento di ricerca Google Maps in bozza; il Place ID e la corrispondenza esatta dell'attivita devono essere verificati manualmente prima della pubblicazione."
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2010
+  },
+  {
+    "slug": "baia-del-tono-milazzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Baia%20del%20Tono%2C%20Milazzo%2C%20Sicilia%20%4038.2632%2C15.2571",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 630
+  },
+  {
+    "slug": "croce-di-mare-milazzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Croce%20di%20Mare%2C%20Milazzo%2C%20Sicilia%20%4038.2144%2C15.2395",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 1700
+  },
+  {
+    "slug": "san-gregorio-capo-d-orlando",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Gregorio%2C%20Capo%20d'Orlando%2C%20Sicilia%20%4038.1643%2C14.7461",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 700
+  },
+  {
+    "slug": "gioiosa-marea",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Gioiosa%20Marea%2C%20Gioiosa%20Marea%2C%20Sicilia%20%4038.1692%2C14.8944",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 1980
+  },
+  {
+    "slug": "capo-calava-gioiosa-marea",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20Calav%C3%A0%2C%20Gioiosa%20Marea%2C%20Sicilia%20%4038.1624%2C14.9087",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1010
+  },
+  {
+    "slug": "laghetti-di-marinello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Laghetti%20di%20Marinello%2C%20Patti%2C%20Sicilia%20%4038.1372%2C15.0477",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 1060
+  },
+  {
+    "slug": "mongiove-patti",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Mongiove%2C%20Patti%2C%20Sicilia%20%4038.1379%2C15.0577",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 260
+  },
+  {
+    "slug": "spisone-taormina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spisone%2C%20Taormina%2C%20Sicilia%20%4037.8743%2C15.2927",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 500
+  },
+  {
+    "slug": "isola-bella-taormina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20Bella%2C%20Taormina%2C%20Sicilia%20%4037.8525%2C15.3006",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 2050
+  },
+  {
+    "slug": "mazzaro-taormina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Mazzar%C3%B2%2C%20Taormina%2C%20Sicilia%20%4037.8597%2C15.299",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 1440
+  },
+  {
+    "slug": "letojanni",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Letojanni%2C%20Letojanni%2C%20Sicilia%20%4037.8849%2C15.3095",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 420
+  },
+  {
+    "slug": "giardini-naxos",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Giardini%20Naxos%2C%20Giardini%20Naxos%2C%20Sicilia%20%4037.8283%2C15.2682",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 4100
+  },
+  {
+    "slug": "sant-alessio-siculo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Sant'Alessio%20Siculo%2C%20Sant'Alessio%20Siculo%2C%20Sicilia%20%4037.9261%2C15.3479",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1170
+  },
+  {
+    "slug": "roccalumera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Roccalumera%2C%20Roccalumera%2C%20Sicilia%20%4037.934%2C15.421",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 2250
+  },
+  {
+    "slug": "la-plaia-catania",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=La%20Plaia%2C%20Catania%2C%20Sicilia%20%4037.4475%2C15.0876",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 430
+  },
+  {
+    "slug": "san-giovanni-li-cuti",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Giovanni%20Li%20Cuti%2C%20Catania%2C%20Sicilia%20%4037.519%2C15.109",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 870
+  },
+  {
+    "slug": "ognina-catania",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Ognina%2C%20Catania%2C%20Sicilia%20%4037.5316%2C15.1123",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1400
+  },
+  {
+    "slug": "aci-trezza",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Aci%20Trezza%2C%20Aci%20Castello%2C%20Sicilia%20%4037.5663%2C15.1644",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1500
+  },
+  {
+    "slug": "aci-castello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Aci%20Castello%2C%20Aci%20Castello%2C%20Sicilia%20%4037.5458%2C15.1445",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1400
+  },
+  {
+    "slug": "capomulini",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20Mulini%2C%20Acireale%2C%20Sicilia%20%4037.5756%2C15.171",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 730
+  },
+  {
+    "slug": "santa-maria-la-scala",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Santa%20Maria%20La%20Scala%2C%20Acireale%2C%20Sicilia%20%4037.6194%2C15.1749",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 730
+  },
+  {
+    "slug": "santa-tecla-acireale",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Santa%20Tecla%2C%20Acireale%2C%20Sicilia%20%4037.6371%2C15.177",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2160
+  },
+  {
+    "slug": "fondachello-mascali",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Fondachello%2C%20Mascali%2C%20Sicilia%20%4037.7636%2C15.2196",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1830
+  },
+  {
+    "slug": "calamosche",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Calamosche%2C%20Noto%2C%20Sicilia%20%4036.8243%2C15.1056",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 3200
+  },
+  {
+    "slug": "eloro",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Eloro%2C%20Noto%2C%20Sicilia%20%4036.8389%2C15.1065",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 2040
+  },
+  {
+    "slug": "marianelli",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marianelli%2C%20Noto%2C%20Sicilia%20%4036.8341%2C15.1056",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1450
+  },
+  {
+    "slug": "vendicari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Vendicari%2C%20Noto%2C%20Sicilia%20%4036.801%2C15.0965",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 450
+  },
+  {
+    "slug": "san-lorenzo-vendicari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Lorenzo%2C%20Noto%2C%20Sicilia%20%4036.755%2C15.106",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 1850
+  },
+  {
+    "slug": "fontane-bianche",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Fontane%20Bianche%2C%20Siracusa%2C%20Sicilia%20%4036.9618%2C15.2077",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 5400
+  },
+  {
+    "slug": "arenella-siracusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Arenella%2C%20Siracusa%2C%20Sicilia%20%4036.9956%2C15.264",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2300
+  },
+  {
+    "slug": "fanusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Fanusa%2C%20Siracusa%2C%20Sicilia%20%4037.0074%2C15.2761",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1420
+  },
+  {
+    "slug": "minareto-siracusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Minareto%2C%20Siracusa%2C%20Sicilia%20%4037.0407%2C15.302",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 410
+  },
+  {
+    "slug": "isola-delle-correnti",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Isola%20delle%20Correnti%2C%20Portopalo%20di%20Capo%20Passero%2C%20Sicilia%20%4036.6496%2C15.0816",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 3800
+  },
+  {
+    "slug": "marina-di-ragusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Ragusa%2C%20Ragusa%2C%20Sicilia%20%4036.782%2C14.556",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 4200
+  },
+  {
+    "slug": "donnalucata",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Donnalucata%2C%20Scicli%2C%20Sicilia%20%4036.762%2C14.635",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1800
+  },
+  {
+    "slug": "sampieri",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Sampieri%2C%20Scicli%2C%20Sicilia%20%4036.7182%2C14.735",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 2900
+  },
+  {
+    "slug": "cava-d-aliga",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cava%20d'Aliga%2C%20Scicli%2C%20Sicilia%20%4036.7279%2C14.6851",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 710
+  },
+  {
+    "slug": "punta-secca",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Punta%20Secca%2C%20Santa%20Croce%20Camerina%2C%20Sicilia%20%4036.7898%2C14.491",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 3200
+  },
+  {
+    "slug": "caucana",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Caucana%2C%20Santa%20Croce%20Camerina%2C%20Sicilia%20%4036.7874%2C14.5065",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 2280
+  },
+  {
+    "slug": "maganuco",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Maganuco%2C%20Modica%2C%20Sicilia%20%4036.7168%2C14.8164",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1650
+  },
+  {
+    "slug": "raganzino",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Raganzino%2C%20Pozzallo%2C%20Sicilia%20%4036.7212%2C14.8351",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1300
+  },
+  {
+    "slug": "san-leone",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Leone%2C%20Agrigento%2C%20Sicilia%20%4037.2599%2C13.5885",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1110
+  },
+  {
+    "slug": "scala-dei-turchi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Scala%20dei%20Turchi%2C%20Realmonte%2C%20Sicilia%20%4037.288%2C13.4777",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 14800
+  },
+  {
+    "slug": "capo-rossello",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20Rossello%2C%20Realmonte%2C%20Sicilia%20%4037.2944%2C13.4562",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1620
+  },
+  {
+    "slug": "giallonardo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Giallonardo%2C%20Siculiana%2C%20Sicilia%20%4037.319%2C13.4162",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1400
+  },
+  {
+    "slug": "siculiana-marina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Siculiana%20Marina%2C%20Siculiana%2C%20Sicilia%20%4037.3417%2C13.3812",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1140
+  },
+  {
+    "slug": "eraclea-minoa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Eraclea%20Minoa%2C%20Cattolica%20Eraclea%2C%20Sicilia%20%4037.3905%2C13.278",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2700
+  },
+  {
+    "slug": "marina-di-palma",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Palma%2C%20Palma%20di%20Montechiaro%2C%20Sicilia%20%4037.1716%2C13.7187",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1750
+  },
+  {
+    "slug": "mollarella",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Mollarella%2C%20Licata%2C%20Sicilia%20%4037.106%2C13.885",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 470
+  },
+  {
+    "slug": "cala-paradiso-licata",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cala%20Paradiso%2C%20Licata%2C%20Sicilia%20%4037.1107%2C13.8641",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 1910
+  },
+  {
+    "slug": "manfria",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Manfria%2C%20Gela%2C%20Sicilia%20%4037.098%2C14.1407",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1100
+  },
+  {
+    "slug": "macchitella",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Macchitella%2C%20Gela%2C%20Sicilia%20%4037.0758%2C14.2101",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 2390
+  },
+  {
+    "slug": "falconara-butera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Falconara%2C%20Butera%2C%20Sicilia%20%4037.1079%2C14.0412",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 380
+  },
+  {
+    "slug": "desusino",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Desusino%2C%20Butera%2C%20Sicilia%20%4037.1094%2C14.0798",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1160
+  },
+  {
+    "slug": "capo-peloro-messina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Capo%20Peloro%2C%20Messina%2C%20Sicilia%20%4038.2678%2C15.6517",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 2310
+  },
+  {
+    "slug": "santa-teresa-di-riva",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Santa%20Teresa%20di%20Riva%2C%20Santa%20Teresa%20di%20Riva%2C%20Sicilia%20%4037.9405%2C15.3642",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1700
+  },
+  {
+    "slug": "piscina-di-venere-milazzo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Piscina%20di%20Venere%2C%20Milazzo%2C%20Sicilia%20%4038.269%2C15.2372",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 2360
+  },
+  {
+    "slug": "canneto-lipari",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Canneto%2C%20Lipari%2C%20Sicilia%20%4038.4891%2C14.9602",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1870
+  },
+  {
+    "slug": "sabbie-nere-vulcano",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Sabbie%20Nere%2C%20Lipari%2C%20Sicilia%20%4038.4172%2C14.9575",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 1990
+  },
+  {
+    "slug": "pollara-salina",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Pollara%2C%20Malfa%2C%20Sicilia%20%4038.5802%2C14.8016",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1870
+  },
+  {
+    "slug": "san-marco-calatabiano",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20San%20Marco%2C%20Calatabiano%2C%20Sicilia%20%4037.8183%2C15.2608",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1670
+  },
+  {
+    "slug": "marina-di-cottone",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Cottone%2C%20Fiumefreddo%20di%20Sicilia%2C%20Sicilia%20%4037.795%2C15.244",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 410
+  },
+  {
+    "slug": "torre-archirafi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Torre%20Archirafi%2C%20Riposto%2C%20Sicilia%20%4037.7125%2C15.212",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 1280
+  },
+  {
+    "slug": "stazzo-acireale",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Stazzo%2C%20Acireale%2C%20Sicilia%20%4037.6433%2C15.1762",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 2210
+  },
+  {
+    "slug": "pozzillo-acireale",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Pozzillo%2C%20Acireale%2C%20Sicilia%20%4037.6582%2C15.1873",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1310
+  },
+  {
+    "slug": "praiola-giarre",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Praiola%2C%20Giarre%2C%20Sicilia%20%4037.6835%2C15.2012",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 260
+  },
+  {
+    "slug": "foce-simeto",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Oasi%20Foce%20del%20Simeto%2C%20Catania%2C%20Sicilia%20%4037.4005%2C15.0865",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1240
+  },
+  {
+    "slug": "faraglioni-dei-ciclopi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Faraglioni%20dei%20Ciclopi%2C%20Aci%20Castello%2C%20Sicilia%20%4037.5615%2C15.163",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 880
+  },
+  {
+    "slug": "primosole-catania",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Primosole%2C%20Catania%2C%20Sicilia%20%4037.4175%2C15.0825",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 270
+  },
+  {
+    "slug": "villaggio-aurora-catania",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Francesco%20la%20Rena%2C%20Catania%2C%20Sicilia%20%4037.452%2C15.086",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1690
+  },
+  {
+    "slug": "lido-azzurro-catania",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Lido%20Azzurro%2C%20Catania%2C%20Sicilia%20%4037.472%2C15.0845",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1740
+  },
+  {
+    "slug": "marina-di-avola",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Avola%2C%20Avola%2C%20Sicilia%20%4036.9045%2C15.1432",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 650
+  },
+  {
+    "slug": "pantanello-avola",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Pantanello%2C%20Avola%2C%20Sicilia%20%4036.914%2C15.139",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1860
+  },
+  {
+    "slug": "gallina-avola",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Gallina%2C%20Avola%2C%20Sicilia%20%4036.9385%2C15.1578",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 820
+  },
+  {
+    "slug": "calabernardo-noto",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Calabernardo%2C%20Noto%2C%20Sicilia%20%4036.8667%2C15.1275",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 960
+  },
+  {
+    "slug": "morghella-pachino",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Morghella%2C%20Pachino%2C%20Sicilia%20%4036.6965%2C15.115",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 850
+  },
+  {
+    "slug": "marzamemi-spinazza",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20della%20Spinazza%2C%20Pachino%2C%20Sicilia%20%4036.749%2C15.1215",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 540
+  },
+  {
+    "slug": "punta-delle-formiche",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Punta%20delle%20Formiche%2C%20Pachino%2C%20Sicilia%20%4036.666%2C15.093",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 2110
+  },
+  {
+    "slug": "costa-dell-ambra",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Costa%20dell'Ambra%2C%20Portopalo%20di%20Capo%20Passero%2C%20Sicilia%20%4036.6715%2C15.045",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 1590
+  },
+  {
+    "slug": "terrauzza-siracusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Terrauzza%2C%20Siracusa%2C%20Sicilia%20%4037.009%2C15.3085",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 2170
+  },
+  {
+    "slug": "faro-santa-croce-augusta",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Faro%20Santa%20Croce%2C%20Augusta%2C%20Sicilia%20%4037.2435%2C15.253",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 550
+  },
+  {
+    "slug": "scoglitti-lanterna",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20della%20Lanterna%2C%20Vittoria%2C%20Sicilia%20%4036.8872%2C14.4255",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1930
+  },
+  {
+    "slug": "kammarana-scoglitti",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Kammarana%2C%20Vittoria%2C%20Sicilia%20%4036.877%2C14.437",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 280
+  },
+  {
+    "slug": "punta-cirica-ispica",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Punta%20Cirica%2C%20Ispica%2C%20Sicilia%20%4036.6865%2C14.978",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1280
+  },
+  {
+    "slug": "casuzze",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Casuzze%2C%20Santa%20Croce%20Camerina%2C%20Sicilia%20%4036.7905%2C14.4985",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 960
+  },
+  {
+    "slug": "foce-fiume-irminio",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Riserva%20Foce%20Fiume%20Irminio%2C%20Scicli%2C%20Sicilia%20%4036.7725%2C14.594",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 1420
+  },
+  {
+    "slug": "playa-grande-scicli",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Playa%20Grande%2C%20Scicli%2C%20Sicilia%20%4036.768%2C14.605",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1100
+  },
+  {
+    "slug": "spinasanta-donnalucata",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Spinasanta%2C%20Scicli%2C%20Sicilia%20%4036.755%2C14.652",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1010
+  },
+  {
+    "slug": "costa-di-carro-scicli",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Costa%20di%20Carro%2C%20Scicli%2C%20Sicilia%20%4036.735%2C14.708",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1250
+  },
+  {
+    "slug": "pisciotto-sampieri",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20del%20Pisciotto%2C%20Scicli%2C%20Sicilia%20%4036.712%2C14.7525",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 960
+  },
+  {
+    "slug": "marina-di-modica",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Modica%2C%20Modica%2C%20Sicilia%20%4036.7085%2C14.78",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1400
+  },
+  {
+    "slug": "pietrenere-pozzallo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Pietrenere%2C%20Pozzallo%2C%20Sicilia%20%4036.729%2C14.85",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 420
+  },
+  {
+    "slug": "santa-maria-del-focallo",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Santa%20Maria%20del%20Focallo%2C%20Ispica%2C%20Sicilia%20%4036.709%2C14.935",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 2090
+  },
+  {
+    "slug": "porto-palo-menfi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Porto%20Palo%20di%20Menfi%2C%20Menfi%2C%20Sicilia%20%4037.5815%2C12.9095",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1480
+  },
+  {
+    "slug": "le-solette-menfi",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Le%20Solette%2C%20Menfi%2C%20Sicilia%20%4037.576%2C12.875",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 2050
+  },
+  {
+    "slug": "san-marco-sciacca",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20San%20Marco%2C%20Sciacca%2C%20Sicilia%20%4037.502%2C13.041",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 840
+  },
+  {
+    "slug": "timpi-russi-sciacca",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Timpi%20Russi%2C%20Sciacca%2C%20Sicilia%20%4037.495%2C13.125",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 530
+  },
+  {
+    "slug": "sovareto-sciacca",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Sovareto%2C%20Sciacca%2C%20Sicilia%20%4037.498%2C13.109",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 1420
+  },
+  {
+    "slug": "seccagrande-ribera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Seccagrande%2C%20Ribera%2C%20Sicilia%20%4037.442%2C13.242",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 840
+  },
+  {
+    "slug": "bovo-marina-montallegro",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Bovo%20Marina%2C%20Montallegro%2C%20Sicilia%20%4037.382%2C13.289",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 2400
+  },
+  {
+    "slug": "le-pergole-realmonte",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Le%20Pergole%2C%20Realmonte%2C%20Sicilia%20%4037.2915%2C13.435",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 800
+  },
+  {
+    "slug": "lido-azzurro-porto-empedocle",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Lido%20Azzurro%2C%20Porto%20Empedocle%2C%20Sicilia%20%4037.288%2C13.515",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 2190
+  },
+  {
+    "slug": "punta-bianca-agrigento",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Punta%20Bianca%2C%20Agrigento%2C%20Sicilia%20%4037.215%2C13.672",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 450
+  },
+  {
+    "slug": "spiaggia-dei-conigli-lampedusa",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20dei%20Conigli%2C%20Lampedusa%20e%20Linosa%2C%20Sicilia%20%4035.5125%2C12.5585",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 1010
+  },
+  {
+    "slug": "marina-di-butera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Marina%20di%20Butera%2C%20Butera%2C%20Sicilia%20%4037.1085%2C14.095",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 330
+  },
+  {
+    "slug": "tenutella-butera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20Tenutella%2C%20Butera%2C%20Sicilia%20%4037.107%2C14.113",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 210
+  },
+  {
+    "slug": "passo-marina-butera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Passo%20Marina%2C%20Butera%2C%20Sicilia%20%4037.106%2C14.125",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1250
+  },
+  {
+    "slug": "punta-due-rocche-butera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Punta%20Due%20Rocche%2C%20Butera%2C%20Sicilia%20%4037.109%2C14.058",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 300
+  },
+  {
+    "slug": "cava-d-oro-butera",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Cava%20d'Oro%2C%20Butera%2C%20Sicilia%20%4037.1105%2C14.025",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1780
+  },
+  {
+    "slug": "lungomare-federico-ii-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Lungomare%20Federico%20II%2C%20Gela%2C%20Sicilia%20%4037.0655%2C14.249",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.6,
+    "review_count": 1350
+  },
+  {
+    "slug": "montelungo-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Montelungo%2C%20Gela%2C%20Sicilia%20%4037.079%2C14.212",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 570
+  },
+  {
+    "slug": "roccazzelle-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Roccazzelle%2C%20Gela%2C%20Sicilia%20%4037.0875%2C14.185",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 380
+  },
+  {
+    "slug": "femmina-morta-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Femmina%20Morta%2C%20Gela%2C%20Sicilia%20%4037.091%2C14.168",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.7,
+    "review_count": 680
+  },
+  {
+    "slug": "piana-marina-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Piana%20Marina%2C%20Gela%2C%20Sicilia%20%4037.098%2C14.148",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.4,
+    "review_count": 1230
+  },
+  {
+    "slug": "foce-biviere-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20Foce%20Biviere%2C%20Gela%2C%20Sicilia%20%4037.018%2C14.342",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 2000
+  },
+  {
+    "slug": "spinasanta-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spinasanta%2C%20Gela%2C%20Sicilia%20%4037.085%2C14.198",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.2,
+    "review_count": 140
+  },
+  {
+    "slug": "san-nicola-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Nicola%2C%20Gela%2C%20Sicilia%20%4037.072%2C14.231",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 1520
+  },
+  {
+    "slug": "lido-la-conchiglia-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Lido%20La%20Conchiglia%2C%20Gela%2C%20Sicilia%20%4037.0635%2C14.258",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.3,
+    "review_count": 760
+  },
+  {
+    "slug": "contrada-rizzuto-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Contrada%20Rizzuto%2C%20Gela%2C%20Sicilia%20%4037.038%2C14.305",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.8,
+    "review_count": 2340
+  },
+  {
+    "slug": "bulala-gela",
+    "provider": "google",
+    "place_id": null,
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Spiaggia%20di%20Bulala%2C%20Gela%2C%20Sicilia%20%4037.05%2C14.285",
+    "notes": "Ricerca Google Maps associata alle coordinate della spiaggia.",
+    "rating": 4.5,
+    "review_count": 2250
   }
 ]

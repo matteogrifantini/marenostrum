@@ -17,8 +17,31 @@ describe("sitemap", () => {
 
   it("returns static core routes and dynamic beach routes", async () => {
     getAllPublishedBeachesMock.mockResolvedValue([
-      { slug: "cala-rossa-favignana" },
-      { slug: "spiaggia-del-lungomare-cefalu" },
+      {
+        slug: "mondello",
+        provinceCode: "PA",
+        image: "/images/beaches/mondello.jpg",
+        description: "Una spiaggia urbana con fondale basso e servizi vicini al centro di Palermo.",
+        updatedAt: "2026-09-02T08:00:00.000Z",
+      },
+      {
+        slug: "addaura",
+        provinceCode: "PA",
+        description: "Una costa rocciosa e luminosa dove confrontare vento, onde e accesso al mare.",
+        updatedAt: "2026-09-01T08:00:00.000Z",
+      },
+      {
+        slug: "san-vito-lo-capo",
+        provinceCode: "TP",
+        description: "Una baia ampia da valutare con previsioni del mare e condizioni aggiornate.",
+        updatedAt: "2026-08-31T08:00:00.000Z",
+      },
+      {
+        slug: "castelluzzo",
+        provinceCode: "TP",
+        description: "Una costa aperta per confrontare vento, onde e cielo prima di partire.",
+        updatedAt: "2026-08-30T08:00:00.000Z",
+      },
     ]);
 
     const result = await sitemap();
@@ -42,27 +65,47 @@ describe("sitemap", () => {
           priority: 0.3,
         }),
         expect.objectContaining({
-          url: "https://marenostrum.app/spiagge/cala-rossa-favignana",
+          url: "https://marenostrum.app/spiagge/mondello",
           priority: 0.85,
           changeFrequency: "daily",
+          lastModified: new Date("2026-09-02T08:00:00.000Z"),
+          images: ["https://marenostrum.app/images/beaches/mondello.jpg"],
         }),
         expect.objectContaining({
-          url: "https://marenostrum.app/spiagge/spiaggia-del-lungomare-cefalu",
+          url: "https://marenostrum.app/spiagge/san-vito-lo-capo",
           priority: 0.85,
           changeFrequency: "daily",
         }),
+        expect.objectContaining({ url: "https://marenostrum.app/localita/palermo" }),
+        expect.objectContaining({ url: "https://marenostrum.app/localita/trapani" }),
       ]),
     );
+    expect(result.some(({ url }) => url.includes("?"))).toBe(false);
+    expect(result.some(({ url }) => url === "https://marenostrum.app/localita/messina")).toBe(false);
+    expect(result.some(({ url }) => url === "https://marenostrum.app/localita/siracusa")).toBe(false);
   });
 
-  it("falls back gracefully to static catalog routes if database lookup fails", async () => {
+  it("keeps only static core routes and reports a catalog failure", async () => {
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => undefined);
     getAllPublishedBeachesMock.mockRejectedValue(new Error("DB error"));
 
-    const result = await sitemap();
+    try {
+      const result = await sitemap();
 
-    expect(result.length).toBeGreaterThan(11);
-    expect(result[0].url).toBe("https://marenostrum.app");
-    expect(result[1].url).toBe("https://marenostrum.app/mappa");
-    expect(result[2].url).toBe("https://marenostrum.app/localita/palermo");
+      expect(result).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ url: "https://marenostrum.app" }),
+          expect.objectContaining({ url: "https://marenostrum.app/mappa" }),
+          expect.objectContaining({ url: "https://marenostrum.app/privacy" }),
+          expect.objectContaining({ url: "https://marenostrum.app/cookie" }),
+          expect.objectContaining({ url: "https://marenostrum.app/termini" }),
+        ]),
+      );
+      expect(result.some(({ url }) => url.includes("/spiagge/"))).toBe(false);
+      expect(result.some(({ url }) => url.includes("/localita/"))).toBe(false);
+      expect(errorSpy).toHaveBeenCalledWith("Sitemap beach catalog lookup failed", expect.any(Error));
+    } finally {
+      errorSpy.mockRestore();
+    }
   });
 });

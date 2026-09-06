@@ -3,6 +3,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PwaRegister } from "../components/pwa-register";
+import { serializeJsonLd } from "../domain/seo/beach-seo";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "../domain/seo/site-copy";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,32 +25,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://marenostrum.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Mare Nostrum — Scegli il mare giusto oggi in Sicilia",
-    template: "%s | Mare Nostrum",
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Previsioni meteo mare in tempo reale per tutte le spiagge della Sicilia. Scopri dove il mare è calmo e quali spiagge sono riparate dal vento oggi.",
-  keywords: [
-    "spiagge sicilia",
-    "previsioni mare sicilia",
-    "mare calmo sicilia",
-    "vento spiagge sicilia",
-    "migliori spiagge sicilia",
-    "webcam spiagge sicilia",
-    "meteo mare sicilia",
-    "mare nostrum",
-    "mare calmo palermo",
-    "mare calmo trapani",
-    "mare calmo catania",
-    "mare calmo siracusa",
-    "mare calmo messina",
-    "mare calmo ragusa",
-    "mare calmo agrigento",
-  ],
+  description: SITE_DESCRIPTION,
   alternates: {
-    canonical: "https://marenostrum.app",
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
@@ -59,22 +48,20 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "it_IT",
-    url: "https://marenostrum.app",
-    siteName: "Mare Nostrum",
-    title: "Mare Nostrum — Scegli il mare giusto oggi in Sicilia",
-    description:
-      "Previsioni meteo mare in tempo reale per tutte le spiagge della Sicilia. Scopri dove il mare è calmo e quali spiagge sono riparate dal vento oggi.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mare Nostrum — Scegli il mare giusto oggi in Sicilia",
-    description:
-      "Previsioni meteo mare in tempo reale per tutte le spiagge della Sicilia. Scopri dove il mare è calmo e quali spiagge sono riparate dal vento oggi.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Mare Nostrum",
+    title: SITE_NAME,
   },
   verification: {
     google: "google8695ec30da15de9c",
@@ -87,29 +74,28 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marenostrum.app/#website",
-      "url": "https://marenostrum.app",
-      "name": "Mare Nostrum",
-      "description":
-        "Previsioni meteo mare in tempo reale per tutte le spiagge della Sicilia. Scopri dove il mare è calmo e quali spiagge sono riparate dal vento oggi.",
+      "@id": `${SITE_URL}/#website`,
+      "url": SITE_URL,
+      "name": SITE_NAME,
+      "description": SITE_DESCRIPTION,
       "inLanguage": "it-IT",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://marenostrum.app/?q={search_term_string}",
+        "target": `${SITE_URL}/?q={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
     },
     {
       "@type": "Organization",
-      "@id": "https://marenostrum.app/#organization",
-      "name": "Mare Nostrum",
-      "url": "https://marenostrum.app",
-      "logo": "https://marenostrum.app/icon.png",
+      "@id": `${SITE_URL}/#organization`,
+      "name": SITE_NAME,
+      "url": SITE_URL,
+      "logo": `${SITE_URL}/icon.png`,
     },
     {
       "@type": "WebApplication",
-      "name": "Mare Nostrum",
-      "url": "https://marenostrum.app",
+      "name": SITE_NAME,
+      "url": SITE_URL,
       "applicationCategory": "TravelApplication",
       "operatingSystem": "All",
       "offers": {
@@ -131,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col">
@@ -143,4 +129,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-

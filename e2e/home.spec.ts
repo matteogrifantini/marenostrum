@@ -70,7 +70,7 @@ test.describe("Home Page & Core Interactions", () => {
     expect(href).toContain("destination=");
   });
 
-  test("allows filtering by sheltered and webcam live in filter sheet", async ({ page }) => {
+  test("allows filtering by sheltered and webcam in filter sheet", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
@@ -78,8 +78,8 @@ test.describe("Home Page & Core Interactions", () => {
     const filterBtn = page.getByRole("button", { name: /Filtri/i });
     await filterBtn.click();
 
-    // Click "Con Webcam Live" inside sheet
-    const webcamFilter = page.getByRole("button", { name: /Con Webcam Live/i });
+    // Click "Con webcam" inside sheet
+    const webcamFilter = page.getByRole("button", { name: /Con webcam/i });
     await expect(webcamFilter).toBeVisible();
     await webcamFilter.click();
     await expect(webcamFilter).toHaveAttribute("aria-pressed", "true");

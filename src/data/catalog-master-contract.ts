@@ -1,13 +1,13 @@
 import type { BeachAccess } from "../domain/beach";
 
-export type SicilianBeachMasterSource = {
+export type BeachMasterSource = {
   source_name: string;
   source_type: string;
   source_url: string;
   role: "primary" | "coordinate-cross-check" | "access";
 };
 
-export type SicilianBeachMasterRecord = {
+export type BeachMasterRecord = {
   slug: string;
   description: string;
   orientation_degrees: number;
@@ -18,10 +18,15 @@ export type SicilianBeachMasterRecord = {
   services: string[];
   warnings: string[];
   facts: string[];
-  sources: SicilianBeachMasterSource[];
+  sources: BeachMasterSource[];
 };
 
-export type SicilianMasterCatalogValidationIssue = {
+/** @deprecated Use BeachMasterSource for new national imports. */
+export type SicilianBeachMasterSource = BeachMasterSource;
+/** @deprecated Use BeachMasterRecord for new national imports. */
+export type SicilianBeachMasterRecord = BeachMasterRecord;
+
+export type MasterCatalogValidationIssue = {
   index: number;
   code:
     | "record_not_object"
@@ -39,13 +44,19 @@ export type SicilianMasterCatalogValidationIssue = {
   message: string;
 };
 
-export type SicilianMasterCatalogEvaluation = {
-  eligible: SicilianBeachMasterRecord[];
+/** @deprecated Use MasterCatalogValidationIssue for new national imports. */
+export type SicilianMasterCatalogValidationIssue = MasterCatalogValidationIssue;
+
+export type MasterCatalogEvaluation = {
+  eligible: BeachMasterRecord[];
   blocked: Array<{ slug: string; reasons: string[] }>;
 };
 
+/** @deprecated Use MasterCatalogEvaluation for new national imports. */
+export type SicilianMasterCatalogEvaluation = MasterCatalogEvaluation;
+
 const accessLevels = new Set<BeachAccess>(["facile", "moderato", "difficile"]);
-const sourceRoles = new Set<SicilianBeachMasterSource["role"]>([
+const sourceRoles = new Set<BeachMasterSource["role"]>([
   "primary",
   "coordinate-cross-check",
   "access",
@@ -84,9 +95,9 @@ function isHttpUrl(value: unknown): value is string {
 }
 
 function addIssue(
-  issues: SicilianMasterCatalogValidationIssue[],
+  issues: MasterCatalogValidationIssue[],
   index: number,
-  code: SicilianMasterCatalogValidationIssue["code"],
+  code: MasterCatalogValidationIssue["code"],
   message: string,
 ) {
   issues.push({ index, code, message });
@@ -96,8 +107,8 @@ function validateMasterRecord(
   value: unknown,
   index: number,
   seenSlugs: Set<string>,
-): { record: SicilianBeachMasterRecord | null; issues: SicilianMasterCatalogValidationIssue[] } {
-  const issues: SicilianMasterCatalogValidationIssue[] = [];
+): { record: BeachMasterRecord | null; issues: MasterCatalogValidationIssue[] } {
+  const issues: MasterCatalogValidationIssue[] = [];
 
   if (!isRecord(value)) {
     addIssue(issues, index, "record_not_object", "Master record must be an object");
@@ -168,7 +179,7 @@ function validateMasterRecord(
         !isNonEmptyString(source.source_type) ||
         !isHttpUrl(source.source_url) ||
         typeof source.role !== "string" ||
-        !sourceRoles.has(source.role as SicilianBeachMasterSource["role"])
+        !sourceRoles.has(source.role as BeachMasterSource["role"])
       ) {
         addIssue(issues, index, "source_invalid", "sources must contain valid source metadata");
         break;
@@ -181,17 +192,17 @@ function validateMasterRecord(
   }
 
   return {
-    record: value as SicilianBeachMasterRecord,
+    record: value as BeachMasterRecord,
     issues,
   };
 }
 
-export function validateSicilianMasterCatalog(input: unknown[]): {
-  records: SicilianBeachMasterRecord[];
-  issues: SicilianMasterCatalogValidationIssue[];
+export function validateMasterCatalog(input: unknown[]): {
+  records: BeachMasterRecord[];
+  issues: MasterCatalogValidationIssue[];
 } {
-  const records: SicilianBeachMasterRecord[] = [];
-  const issues: SicilianMasterCatalogValidationIssue[] = [];
+  const records: BeachMasterRecord[] = [];
+  const issues: MasterCatalogValidationIssue[] = [];
   const seenSlugs = new Set<string>();
 
   input.forEach((value, index) => {
@@ -218,13 +229,13 @@ function hasAccess(candidate: Record<string, unknown>): candidate is Record<stri
   return typeof candidate.access_level === "string" && accessLevels.has(candidate.access_level as BeachAccess);
 }
 
-export function evaluateSicilianMasterCatalog(
+export function evaluateMasterCatalog(
   candidates: unknown[],
   contents: unknown[],
-): SicilianMasterCatalogEvaluation {
-  const eligible: SicilianBeachMasterRecord[] = [];
+): MasterCatalogEvaluation {
+  const eligible: BeachMasterRecord[] = [];
   const blocked: Array<{ slug: string; reasons: string[] }> = [];
-  const validatedContents = validateSicilianMasterCatalog(contents);
+  const validatedContents = validateMasterCatalog(contents);
   const contentBySlug = new Map(validatedContents.records.map((record) => [record.slug, record]));
 
   candidates.forEach((candidateValue) => {
@@ -255,4 +266,20 @@ export function evaluateSicilianMasterCatalog(
   });
 
   return { eligible, blocked };
+}
+
+/** @deprecated Use validateMasterCatalog for new national imports. */
+export function validateSicilianMasterCatalog(input: unknown[]): {
+  records: SicilianBeachMasterRecord[];
+  issues: SicilianMasterCatalogValidationIssue[];
+} {
+  return validateMasterCatalog(input);
+}
+
+/** @deprecated Use evaluateMasterCatalog for new national imports. */
+export function evaluateSicilianMasterCatalog(
+  candidates: unknown[],
+  contents: unknown[],
+): SicilianMasterCatalogEvaluation {
+  return evaluateMasterCatalog(candidates, contents);
 }

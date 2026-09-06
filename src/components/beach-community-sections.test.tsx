@@ -4,48 +4,28 @@ import { getDemoBeachDetail } from "../data/demo-beach-details";
 import { BeachCommunitySections } from "./beach-community-sections";
 
 describe("BeachCommunitySections", () => {
-  it("shows review previews without duplicate headings or voting copy", () => {
+  it("keeps internal review text, totals and publishing controls out of the detail", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(<BeachCommunitySections detail={detail} />);
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
     expect(within(reviews).getAllByRole("heading", { name: "Recensioni" })).toHaveLength(1);
-    expect(within(reviews).getByText(detail.reviews.rating.toFixed(1))).toBeInTheDocument();
-    expect(within(reviews).getByText(`${detail.reviews.total} recensioni`)).toBeInTheDocument();
-    for (const review of detail.reviews.items.slice(0, 2)) {
-      expect(within(reviews).getByText(`“${review.text}”`)).toBeInTheDocument();
+    expect(within(reviews).getByText("Recensioni su Google Maps")).toBeInTheDocument();
+    expect(within(reviews).queryByText("Recensioni della community")).not.toBeInTheDocument();
+    expect(within(reviews).queryByText(`${detail.reviews.total} recensioni`)).not.toBeInTheDocument();
+    for (const review of detail.reviews.items) {
+      expect(within(reviews).queryByText(`“${review.text}”`)).not.toBeInTheDocument();
     }
-    expect(within(reviews).queryByText("Questa spiaggia fa per te?")).not.toBeInTheDocument();
-    expect(within(reviews).queryByRole("button", { name: "Mi piace" })).not.toBeInTheDocument();
-    expect(within(reviews).queryByRole("button", { name: "Non mi piace" })).not.toBeInTheDocument();
+    expect(within(reviews).queryByText("La tua valutazione")).not.toBeInTheDocument();
+    expect(within(reviews).queryByRole("textbox")).not.toBeInTheDocument();
+    expect(within(reviews).queryByText("Accedi per recensire")).not.toBeInTheDocument();
   });
 
-  it("renders recent photos from community members", () => {
-    const detail = getDemoBeachDetail("cala-del-gelsomino")!;
-    render(<BeachCommunitySections detail={detail} />);
-
-    const photos = screen.getByRole("region", { name: "Foto aggiunte di recente" });
-    expect(within(photos).getAllByRole("img")).toHaveLength(detail.recentPhotos.length);
-  });
-
-  it("opens a recent beach photo in the viewer", () => {
-    const detail = getDemoBeachDetail("cala-del-gelsomino")!;
-    render(<BeachCommunitySections beachName="Cala del Gelsomino" detail={detail} />);
-
-    const photos = screen.getByRole("region", { name: "Foto aggiunte di recente" });
-    fireEvent.click(within(photos).getByRole("button", { name: `Apri foto di ${detail.recentPhotos[0].alt}` }));
-
-    const dialog = screen.getByRole("dialog", { name: "Foto di Cala del Gelsomino" });
-    expect(within(dialog).getByRole("img", { name: detail.recentPhotos[0].alt })).toBeInTheDocument();
-
-    fireEvent.click(within(dialog).getByRole("button", { name: "Chiudi foto" }));
-    expect(screen.queryByRole("dialog", { name: "Foto di Cala del Gelsomino" })).not.toBeInTheDocument();
-  });
-
-  it("links to a verified external review profile without fabricating local reviews", () => {
+  it("renders verified stars and Google Maps review link for verified profile", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(
       <BeachCommunitySections
+        beachName="Cala del Gelsomino"
         detail={{
           ...detail,
           reviews: null,
@@ -59,17 +39,17 @@ describe("BeachCommunitySections", () => {
     );
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
-    expect(within(reviews).getByText("Nessuna recensione locale disponibile.")).toBeInTheDocument();
-    expect(within(reviews).getByRole("link", { name: "Apri recensioni Google" })).toHaveAttribute(
-      "href",
-      "https://maps.google.com/?cid=1",
-    );
+    expect(within(reviews).getByText("★★★★★")).toBeInTheDocument();
+    expect(
+      within(reviews).getByRole("link", { name: "Vedi recensioni di Cala del Gelsomino su Google Maps" }),
+    ).toHaveAttribute("href", "https://maps.google.com/?cid=1");
   });
 
-  it("labels an unverified Google search honestly", () => {
+  it("renders an accessible link to Google Maps even for draft review profiles", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(
       <BeachCommunitySections
+        beachName="Cala del Gelsomino"
         detail={{
           ...detail,
           reviews: null,
@@ -83,47 +63,49 @@ describe("BeachCommunitySections", () => {
     );
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
-    expect(within(reviews).getByText("Profilo Google da confermare.")).toBeInTheDocument();
-    expect(within(reviews).getByRole("link", { name: "Cerca su Google Maps" })).toHaveAttribute(
-      "href",
-      "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino",
-    );
+    expect(within(reviews).getByText("Recensioni su Google Maps")).toBeInTheDocument();
+    expect(
+      within(reviews).getByRole("link", { name: "Vedi recensioni di Cala del Gelsomino su Google Maps" }),
+    ).toHaveAttribute("href", "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino");
   });
 
-  it("shows the authenticated community review entry point separately from Google Maps", async () => {
+  it("renders the numeric rating badge and formatted review count when available", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(
       <BeachCommunitySections
-        beachSlug="cala-del-gelsomino"
+        beachName="Cala del Gelsomino"
         detail={{
           ...detail,
-          reviews: {
-            rating: 4.5,
-            recommendedPercent: 100,
-            total: 2,
-            items: [
-              { id: "review-1", author: "Matteo", age: "adesso", text: "Acqua limpida.", rating: 5 },
-              { id: "review-2", author: "Sara", age: "ieri", text: "Molto piacevole.", rating: 4 },
-            ],
-          },
+          reviews: null,
           reviewProfile: {
             provider: "google",
             mapsUrl: "https://maps.google.com/?cid=1",
             verificationStatus: "verified",
+            rating: 4.6,
+            reviewCount: 1420,
           },
         }}
       />,
     );
 
     const reviews = screen.getByRole("region", { name: "Recensioni" });
-    expect(within(reviews).getByText("Recensioni della community")).toBeInTheDocument();
-    expect(within(reviews).getByRole("link", { name: "Apri recensioni Google" })).toHaveAttribute(
-      "href",
-      "https://maps.google.com/?cid=1",
-    );
-    expect(await within(reviews).findByRole("link", { name: "Accedi per recensire" })).toHaveAttribute(
-      "href",
-      "/impostazioni",
-    );
+    expect(within(reviews).getByTestId("google-review-rating")).toHaveTextContent("4.6");
+    expect(within(reviews).getByTestId("google-review-rating")).toHaveTextContent("1.420 recensioni");
+    expect(within(reviews).getByText("Valutazione complessiva dei visitatori su Google Maps per Cala del Gelsomino.")).toBeInTheDocument();
+  });
+
+  it("keeps recent beach photos in their separate content section", () => {
+    const detail = getDemoBeachDetail("cala-del-gelsomino")!;
+    render(<BeachCommunitySections beachName="Cala del Gelsomino" detail={detail} />);
+
+    const photos = screen.getByRole("region", { name: "Foto aggiunte di recente" });
+    expect(within(photos).getAllByRole("img")).toHaveLength(detail.recentPhotos.length);
+
+    fireEvent.click(within(photos).getByRole("button", { name: `Apri foto di ${detail.recentPhotos[0].alt}` }));
+    const dialog = screen.getByRole("dialog", { name: "Foto di Cala del Gelsomino" });
+    expect(within(dialog).getByRole("img", { name: detail.recentPhotos[0].alt })).toBeInTheDocument();
+
+    fireEvent.click(within(dialog).getByRole("button", { name: "Chiudi foto" }));
+    expect(screen.queryByRole("dialog", { name: "Foto di Cala del Gelsomino" })).not.toBeInTheDocument();
   });
 });

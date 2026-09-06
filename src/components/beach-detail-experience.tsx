@@ -6,6 +6,7 @@ import { useRef, useState, useTransition } from "react";
 import type { Beach, BeachPeriod, BeachRecommendation } from "../domain/beach";
 import { getBeachAiComment } from "../domain/beach-comment";
 import { formatScoreOutOf100 } from "../domain/score";
+import { getScorePresentation } from "../domain/score-presentation";
 import type { BeachDetailContent } from "../domain/beach-detail-content";
 import type { DetailOrigin } from "../domain/detail-query";
 import type { DateOption } from "../domain/date-selection";
@@ -69,10 +70,6 @@ function directionName(degrees: number) {
   return directionNames[Math.round((degrees % 360) / 45) % directionNames.length];
 }
 
-function displayScore(score: number) {
-  return formatScoreOutOf100(score);
-}
-
 function scoreTone(score: number): ScoreTone {
   if (score >= 90) return "excellent";
   if (score >= 75) return "good";
@@ -115,13 +112,6 @@ const conditionIconClasses: Record<ConditionAccent, string> = {
   sun: "bg-[var(--sun-soft)] text-[var(--sun-dark)]",
   warm: "bg-[var(--score-poor-soft)] text-[var(--coral)]",
 };
-
-function scoreHeadline(score: number) {
-  if (score >= 80) return "Ottima scelta";
-  if (score >= 70) return "Condizioni accettabili";
-  if (score >= 55) return "Da valutare con attenzione";
-  return "Meglio scegliere un’altra spiaggia";
-}
 
 function periodSummary(
   recommendation: BeachRecommendation | undefined,
@@ -204,11 +194,24 @@ export function BeachDetailExperience({
             beach={beach}
             detail={detail}
             homeDate={navigationOrigin === "home" ? date : undefined}
-            infoOpen={beachInfoOpen}
-            onInfoToggle={() => setBeachInfoOpen((current) => !current)}
           />
 
-          <div className="relative z-10 mx-auto mt-3 w-full max-w-[48rem] px-1 pt-3 sm:px-2">
+          <div className="mx-auto mt-4 w-full max-w-[48rem] px-1 sm:mt-5 sm:px-2">
+            <h1 className="text-xl font-serif font-semibold leading-tight tracking-[-0.04em] text-[var(--ink)] sm:text-2xl">
+              Meteo del mare a {beach.name}
+            </h1>
+            {[beach.municipality, beach.provinceName, beach.regionName].filter(
+              (value): value is string => Boolean(value),
+            ).length > 1 ? (
+              <p className="mt-1 text-xs font-semibold text-[var(--muted)] sm:text-sm">
+                {[beach.municipality, beach.provinceName, beach.regionName]
+                  .filter((value): value is string => Boolean(value))
+                  .join(" · ")}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="relative z-10 mx-auto mt-2 w-full max-w-[48rem] px-1 pt-1 sm:px-2">
             <div aria-busy={isPending} className="space-y-2">
               <DayPicker
                 options={dateOptions}
@@ -247,9 +250,11 @@ export function BeachDetailExperience({
               </div>
             )}
             <BeachLiveSections beach={beach} detail={detail} />
-            <BeachCommunitySections beachSlug={beach.slug} beachName={beach.name} detail={detail} />
+            <BeachCommunitySections beachName={beach.name} detail={detail} />
             <ForecastAttribution
               includeParkingSource={detail.parkings.some((parking) => parking.sourceUrl?.includes("openstreetmap.org"))}
+              freshnessText={selectedRecommendation && !dataUnavailable ? getScorePresentation(selectedRecommendation).freshnessText : undefined}
+              disclaimer={selectedRecommendation && !dataUnavailable ? getScorePresentation(selectedRecommendation).disclaimer : undefined}
             />
           </div>
         </div>
@@ -312,7 +317,9 @@ function AdviceCard({
   }
 
   const comment = getBeachAiComment(recommendation);
+  const presentation = getScorePresentation(recommendation);
   const tone = scoreTone(recommendation.score);
+  const scoreValue = formatScoreOutOf100(presentation.score);
 
   return (
     <article
@@ -325,15 +332,21 @@ function AdviceCard({
         <div className="min-w-0">
           <p id="mare-nostrum-advice-title" className="flex items-center gap-2 text-[0.68rem] font-extrabold uppercase tracking-[0.1em] text-[var(--muted)]">
             <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-[0.65rem] bg-white/45 text-base shadow-[inset_0_0_0_1px_rgba(8,47,61,0.04)]"><Compass size={16} className="text-[var(--sea)]" /></span>
-            Condizioni e balneabilità
+            {presentation.title}
           </p>
-          <strong className="mt-2 block text-xl tracking-[-0.035em] text-[var(--ink)]">{scoreHeadline(recommendation.score)}</strong>
+          <strong className="mt-2 block text-xl tracking-[-0.035em] text-[var(--ink)]">{presentation.label}</strong>
         </div>
-        <span className={`grid size-14 shrink-0 place-items-center rounded-full text-xl font-black shadow-[0_7px_16px_rgba(20,44,57,0.14)] ${scoreBadgeClasses[tone]}`}>
-          {displayScore(recommendation.score)}
+        <span className="flex shrink-0 items-end gap-1" aria-label={`${scoreValue}/100`}>
+          <span
+            data-score-value={scoreValue}
+            className={`flex size-16 items-center justify-center rounded-full text-center text-[1.75rem] font-black leading-none tabular-nums tracking-[-0.04em] whitespace-nowrap shadow-[0_7px_16px_rgba(20,44,57,0.14)] sm:size-[4.5rem] sm:text-4xl ${scoreBadgeClasses[tone]}`}
+          >
+            {scoreValue}
+          </span>
+          <span data-score-denominator="true" className="mb-1 text-xs font-extrabold text-[var(--muted)]">/100</span>
         </span>
       </div>
-      <p className="mt-2 text-sm font-medium leading-6 text-[var(--ink-soft)]">{comment.text}</p>
+      <p className="mt-3 text-sm font-medium leading-6 text-[var(--ink-soft)]">{comment.text}</p>
     </article>
   );
 }
@@ -431,11 +444,13 @@ function DayPart({ label, recommendation, summary }: { label: string; recommenda
     ? scoreSurfaceClasses[scoreTone(recommendation.score)]
     : "bg-[var(--surface-muted)]/70";
   const emojiClass = weatherAccentClasses(weather);
+  const presentation = recommendation ? getScorePresentation(recommendation) : undefined;
 
   return (
     <div className={`rounded-[0.9rem] p-3 ${surfaceClass}`}>
       <div className="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.08em]"><span className="text-[var(--ink)]">{label}</span><span role="img" aria-label={`Meteo ${weatherLabel}`} className={`grid size-10 place-items-center rounded-[0.75rem] text-2xl leading-none shadow-[0_4px_10px_rgba(20,44,57,0.1)] ${emojiClass}`}>{emoji}</span></div>
-      <strong className="mt-2 block text-3xl leading-none tracking-[-0.05em]">{recommendation ? displayScore(recommendation.score) : "—"}</strong>
+      <strong className="mt-2 block text-3xl leading-none tracking-[-0.05em]">{presentation?.scoreLabel ?? "—"}</strong>
+      {presentation ? <span className="mt-1 block text-[0.65rem] font-extrabold text-[var(--ink)]">{presentation.label}</span> : null}
       <p className="mt-2 text-[0.68rem] leading-4 text-[var(--ink-soft)]">{summary}</p>
     </div>
   );

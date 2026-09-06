@@ -1,8 +1,8 @@
 import type { BeachWebcam } from "../domain/beach";
 
 /**
- * Mappatura accurata ed esclusiva delle sole spiagge che dispongono
- * di una vera webcam live attiva e verificata al 100% (nessun errore 404).
+ * Mappatura statica delle spiagge con una pagina provider dedicata alla webcam.
+ * Lo stato live e la disponibilita delle anteprime non sono verificati qui.
  */
 export const BEACH_WEBCAMS: Record<string, BeachWebcam> = {
   // Spiaggia di Mondello (Palermo)

@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { MAP_PAGE_DESCRIPTION, SITE_NAME, SITE_TITLE } from "../domain/seo/site-copy";
 
 export const runtime = "nodejs";
-export const alt = "Mare Nostrum — Scegli il mare giusto oggi in Sicilia";
+export const alt = SITE_TITLE;
 export const size = {
   width: 1200,
   height: 630,
@@ -40,7 +41,7 @@ export default function Image() {
             <span style={{ fontSize: "28px" }}>🌊</span>
           </div>
           <span style={{ fontSize: "36px", fontWeight: "700", letterSpacing: "-0.04em" }}>
-            Mare Nostrum
+            {SITE_NAME}
           </span>
         </div>
 
@@ -54,7 +55,7 @@ export default function Image() {
               color: "#ffc247",
             }}
           >
-            Sicilia · Previsioni Meteomarine Reali
+            Italia · Previsioni Meteomarine
           </div>
           <div
             style={{
@@ -73,7 +74,7 @@ export default function Image() {
               color: "rgba(255, 255, 255, 0.8)",
             }}
           >
-            Vento, onde e qualità del mare per le migliori spiagge della Sicilia in un&apos;unica scelta chiara.
+            {MAP_PAGE_DESCRIPTION}
           </div>
         </div>
 
@@ -88,7 +89,7 @@ export default function Image() {
         >
           <span>✨ Modello Matematico Open-Meteo</span>
           <span>·</span>
-          <span>📍 21 Spiagge Monitorate</span>
+          <span>📍 Spiagge italiane</span>
           <span>·</span>
           <span>📱 Mobile-First</span>
         </div>

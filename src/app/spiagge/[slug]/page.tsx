@@ -10,6 +10,12 @@ import {
 } from "../../../data/beach-repository";
 import { getDateOptions } from "../../../domain/date-selection";
 import { normalizeDetailQuery, parseDetailOrigin } from "../../../domain/detail-query";
+import {
+  buildBeachBreadcrumbJsonLd,
+  buildBeachJsonLd,
+  buildBeachSeoMetadata,
+  serializeJsonLd,
+} from "../../../domain/seo/beach-seo";
 import { buildBeachDetailContent } from "../../../services/beach-detail-content";
 import { getCommunityReportsForBeach } from "../../../services/community-reports";
 
@@ -55,35 +61,28 @@ export async function generateMetadata({
     };
   }
 
-  const title = `Meteo Mare ${beach.name} (${beach.municipality}) oggi: vento, onde e condizioni`;
-  const description = `${beach.name} a ${beach.municipality} (${beach.coast}). Previsioni meteomarine in tempo reale, vento, altezza onde, temperatura acqua e caratteristiche della spiaggia.`;
-  const canonicalUrl = `https://marenostrum.app/spiagge/${beach.slug}`;
-  const ogImage = beach.image
-    ? beach.image.startsWith("http")
-      ? beach.image
-      : `https://marenostrum.app${beach.image}`
-    : undefined;
+  const seo = buildBeachSeoMetadata(beach);
 
   return {
-    title,
-    description,
+    title: {
+      absolute: seo.title,
+    },
+    description: seo.description,
     alternates: {
-      canonical: canonicalUrl,
+      canonical: seo.canonical,
     },
     openGraph: {
-      title: `Meteo Mare ${beach.name} (${beach.municipality})`,
-      description,
-      url: canonicalUrl,
+      title: seo.ogTitle,
+      description: seo.ogDescription,
+      url: seo.canonical,
       type: "website",
       siteName: "Mare Nostrum",
       locale: "it_IT",
-      images: ogImage ? [{ url: ogImage, alt: beach.name }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title: `Meteo Mare ${beach.name} (${beach.municipality})`,
-      description,
-      images: ogImage ? [ogImage] : undefined,
+      title: seo.ogTitle,
+      description: seo.ogDescription,
     },
   };
 }
@@ -148,36 +147,18 @@ export default async function BeachPage({
 
   const detail = buildBeachDetailContent(bundle.beach, beachContent, communityReports);
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": ["Beach", "TouristAttraction"],
-    name: bundle.beach.name,
-    description: bundle.beach.description,
-    url: `https://marenostrum.app/spiagge/${bundle.beach.slug}`,
-    image: bundle.beach.image
-      ? bundle.beach.image.startsWith("http")
-        ? bundle.beach.image
-        : `https://marenostrum.app${bundle.beach.image}`
-      : undefined,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: bundle.beach.municipality,
-      addressRegion: "Sicilia",
-      addressCountry: "IT",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: bundle.beach.latitude,
-      longitude: bundle.beach.longitude,
-    },
-    publicAccess: true,
-  };
+  const structuredData = buildBeachJsonLd(bundle.beach);
+  const breadcrumbStructuredData = buildBeachBreadcrumbJsonLd(bundle.beach);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbStructuredData) }}
       />
       <BeachDetailExperience
         beach={bundle.beach}
@@ -194,4 +175,3 @@ export default async function BeachPage({
     </>
   );
 }
-

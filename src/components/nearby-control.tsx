@@ -54,9 +54,10 @@ export type NearbySelection = {
 type NearbyControlProps = {
   value: NearbySelection | null;
   onChange: (selection: NearbySelection | null) => void;
+  className?: string;
 };
 
-export function NearbyControl({ value, onChange }: NearbyControlProps) {
+export function NearbyControl({ value, onChange, className = "" }: NearbyControlProps) {
   const [locationState, setLocationState] = useState<LocationState>(value ? "granted" : "idle");
   const isActive = value !== null;
 
@@ -83,7 +84,9 @@ export function NearbyControl({ value, onChange }: NearbyControlProps) {
         const radiusKm = DEFAULT_RADIUS_KM;
         onChange({ coordinates: nextCoordinates, radiusKm });
         setTimeout(() => {
-          document.getElementById("classifica")?.scrollIntoView({ behavior: "smooth" });
+          if (typeof document !== "undefined") {
+            document.getElementById("classifica")?.scrollIntoView({ behavior: "smooth" });
+          }
         }, 100);
       },
       () => {
@@ -94,23 +97,23 @@ export function NearbyControl({ value, onChange }: NearbyControlProps) {
   };
 
   return (
-    <div className="relative shrink-0">
+    <div data-testid="nearby-control" className={`relative shrink-0 ${className}`.trim()}>
       <button
         type="button"
         aria-pressed={isActive}
         onClick={handleClick}
         disabled={locationState === "requesting"}
         className={[
-          "inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-sm font-bold transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] sm:px-4",
+          "inline-flex min-h-11 w-full items-center justify-center gap-1.5 rounded-full text-xs font-bold transition-[transform,background-color,color,box-shadow] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)] sm:text-sm",
           isActive
-            ? "bg-[var(--ink)] text-white shadow-[0_8px_20px_rgba(20,44,57,0.16)]"
-            : "bg-[var(--surface)] text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)]",
+            ? "bg-[var(--ink)] px-4 text-white shadow-[0_8px_20px_rgba(20,44,57,0.16)]"
+            : "bg-[var(--surface)] px-3 text-[var(--ink-soft)] shadow-[inset_0_0_0_1px_rgba(20,44,57,0.07)] hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] sm:px-4",
         ].join(" ")}
       >
         {locationState === "requesting" ? (
-          <Loader2 aria-hidden="true" size={15} className="animate-spin text-blue-500" />
+          <Loader2 aria-hidden="true" size={15} className="shrink-0 animate-spin text-blue-500" />
         ) : (
-          <LocateFixed aria-hidden="true" size={15} className={isActive ? "text-blue-400" : ""} />
+          <LocateFixed aria-hidden="true" size={15} className={`shrink-0 ${isActive ? "text-blue-400" : ""}`.trim()} />
         )}
         <span>{locationState === "requesting" ? "Posizione in corso…" : "Vicino a me"}</span>
       </button>

@@ -53,10 +53,11 @@ describe("FilterSheet", () => {
     );
 
     const shelteredBtn = screen.getByRole("button", { name: /Riparate oggi dal vento/i });
-    const webcamBtn = screen.getByRole("button", { name: /Con Webcam Live/i });
+    const webcamBtn = screen.getByRole("button", { name: /Con webcam/i });
 
     expect(shelteredBtn).toBeInTheDocument();
     expect(webcamBtn).toBeInTheDocument();
+    expect(screen.getByText("Condizioni & webcam")).toBeInTheDocument();
 
     fireEvent.click(shelteredBtn);
     expect(onToggleSheltered).toHaveBeenCalledOnce();

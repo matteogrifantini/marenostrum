@@ -78,15 +78,6 @@ function seaLabel(conditions: BeachConditions) {
   return `mare ${seaStateFor(conditions)}`;
 }
 
-function recommendationVerdict(score: number, weather: BeachConditions["weather"]) {
-  if (weather === "pioggia") return "una giornata sconsigliata per la balneazione";
-  if (weather === "nuvoloso") return score >= 60 ? "una scelta discreta ma con cielo coperto" : "una giornata poco favorevole";
-  if (score >= 80) return "una scelta eccellente";
-  if (score >= 65) return "una buona scelta";
-  if (score >= 45) return "una spiaggia da valutare con cautela";
-  return "una giornata poco favorevole";
-}
-
 function buildAdviceSummary(score: number, conditions: BeachConditions, sheltered: boolean) {
   if (conditions.weather === "pioggia") {
     return "Con pioggia prevista, la balneazione è sconsigliata: meglio organizzare un piano alternativo.";
@@ -98,7 +89,7 @@ function buildAdviceSummary(score: number, conditions: BeachConditions, sheltere
     return "Condizioni ottimali: mare limpido e calmo, ideale per nuotare e sostare in spiaggia.";
   }
   if (score >= 65) {
-    return "Buona balneabilità: condizioni favorevoli per godersi la spiaggia.";
+    return "Condizioni favorevoli per godersi la spiaggia.";
   }
   if (score >= 45) {
     return sheltered

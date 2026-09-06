@@ -2,7 +2,7 @@
 
 import { ChevronDown, LocateFixed, SlidersHorizontal } from "lucide-react";
 
-export type Proximity = "sicilia" | "nearby";
+export type Proximity = "national" | "nearby";
 
 type ContextControlsProps = {
   proximity: Proximity;
@@ -20,16 +20,16 @@ export function ContextControls({
       <div className="inline-flex min-h-11 rounded-full bg-white/75 p-1 shadow-[inset_0_0_0_1px_rgba(20,44,57,0.08)]">
         <button
           type="button"
-          aria-pressed={proximity === "sicilia"}
-          onClick={() => onProximityChange("sicilia")}
+          aria-pressed={proximity === "national"}
+          onClick={() => onProximityChange("national")}
           className={[
             "min-h-9 rounded-full px-4 text-sm font-bold transition-[transform,background-color,color] duration-200 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sun)]",
-            proximity === "sicilia"
+            proximity === "national"
               ? "bg-white text-[var(--ink)] shadow-[0_4px_12px_rgba(20,44,57,0.08)]"
               : "text-[var(--muted)] hover:text-[var(--ink)]",
           ].join(" ")}
         >
-          Tutta la Sicilia
+          Tutta Italia
         </button>
         <button
           type="button"

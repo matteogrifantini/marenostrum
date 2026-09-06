@@ -11,34 +11,69 @@ import {
   parsePeriodParam,
 } from "../../domain/date-selection";
 import type { BeachRecommendation } from "../../domain/beach";
+import { parseCatalogScope } from "../../domain/catalog-scope";
+import { normalizeProvinceCode, normalizeRegionCode, type RegionSelection } from "../../domain/province-filter";
+import {
+  MAP_PAGE_DESCRIPTION,
+  MAP_PAGE_TITLE,
+  SITE_SOCIAL_IMAGE,
+  SITE_URL,
+  SITE_NAME,
+} from "../../domain/seo/site-copy";
 
 export const metadata: Metadata = {
-  title: "Mappa del Mare e del Vento in Sicilia",
-  description:
-    "Mappa interattiva della Sicilia con rating delle condizioni, parcheggi, lidi e servizi utili per il mare.",
+  title: MAP_PAGE_TITLE,
+  description: MAP_PAGE_DESCRIPTION,
   alternates: {
-    canonical: "https://marenostrum.app/mappa",
+    canonical: `${SITE_URL}/mappa`,
   },
   openGraph: {
-    title: "Mappa del Mare e del Vento in Sicilia — Mare Nostrum",
-    description:
-      "Rating delle spiagge e punti utili per il mare su una vera cartografia della Sicilia.",
-    url: "https://marenostrum.app/mappa",
+    title: `${MAP_PAGE_TITLE} | ${SITE_NAME}`,
+    description: MAP_PAGE_DESCRIPTION,
+    url: `${SITE_URL}/mappa`,
     type: "website",
-    siteName: "Mare Nostrum",
+    siteName: SITE_NAME,
     locale: "it_IT",
+    images: [
+      {
+        url: SITE_SOCIAL_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${MAP_PAGE_TITLE} | ${SITE_NAME}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${MAP_PAGE_TITLE} | ${SITE_NAME}`,
+    description: MAP_PAGE_DESCRIPTION,
+    images: [SITE_SOCIAL_IMAGE],
   },
 };
 
 type MappaSearchParams = {
   date?: string | string[];
   period?: string | string[];
+  region?: string | string[];
+  province?: string | string[];
+  lat?: string | string[];
+  lng?: string | string[];
+  radius?: string | string[];
 };
 
 export const revalidate = 300;
 
 function firstParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
+}
+
+function parseScope(query: MappaSearchParams) {
+  const scopeParams = new URLSearchParams();
+  for (const key of ["region", "province", "lat", "lng", "radius"] as const) {
+    const value = firstParam(query[key]);
+    if (value !== undefined) scopeParams.set(key, value);
+  }
+  return parseCatalogScope(scopeParams);
 }
 
 export default async function MappaPage({
@@ -50,6 +85,13 @@ export default async function MappaPage({
   const dateOptions = getDateOptions(new Date());
   const initialDate = parseDateParam(firstParam(query.date) ?? null, dateOptions[0].iso);
   const initialPeriod = parsePeriodParam(firstParam(query.period) ?? null);
+  const initialScope = parseScope(query);
+  const initialRegion: RegionSelection = initialScope?.kind === "region"
+    ? normalizeRegionCode(initialScope.regionCode)
+    : "all";
+  const initialProvince = initialScope?.kind === "province"
+    ? normalizeProvinceCode(initialScope.provinceCode)
+    : "all";
   let recommendations: BeachRecommendation[];
   let dataUnavailable = false;
 
@@ -57,6 +99,8 @@ export default async function MappaPage({
     recommendations = await getBeachRecommendations({
       date: initialDate,
       period: initialPeriod,
+      scope: initialScope,
+      nationalPreview: initialScope === null,
     });
   } catch (error) {
     if (!(error instanceof ForecastDataUnavailableError)) {
@@ -78,6 +122,9 @@ export default async function MappaPage({
       <MapExperience
         initialDate={initialDate}
         initialPeriod={initialPeriod}
+        initialScope={initialScope}
+        initialRegion={initialRegion}
+        initialProvince={initialProvince}
         dateOptions={dateOptions}
         recommendations={recommendations}
         dataUnavailable={dataUnavailable}

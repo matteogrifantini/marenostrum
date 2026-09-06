@@ -1,6 +1,6 @@
-import type { SicilianImageAssetRecord } from "../data/catalog-image-contract";
+import type { ImageAssetRecord } from "../data/catalog-image-contract";
 
-export type SicilianImageMediaCandidate = {
+export type ImageMediaCandidate = {
   slug: string;
   beach_id: string;
   kind: "photo";
@@ -16,12 +16,15 @@ export type SicilianImageMediaCandidate = {
   publication_status: "verified";
 };
 
-export function buildSicilianImageMediaCandidates(
-  assets: SicilianImageAssetRecord[],
+/** @deprecated Use ImageMediaCandidate for new national imports. */
+export type SicilianImageMediaCandidate = ImageMediaCandidate;
+
+export function buildImageMediaCandidates(
+  assets: ImageAssetRecord[],
   beachIds: ReadonlyMap<string, string>,
   verifiedAt: string,
   expiresAt: string,
-): SicilianImageMediaCandidate[] {
+): ImageMediaCandidate[] {
   return assets.map((asset) => {
     const beachId = beachIds.get(asset.slug);
     if (!beachId) throw new Error(`Beach id missing for ${asset.slug}`);
@@ -42,4 +45,14 @@ export function buildSicilianImageMediaCandidates(
       publication_status: "verified",
     };
   });
+}
+
+/** @deprecated Use buildImageMediaCandidates for new national imports. */
+export function buildSicilianImageMediaCandidates(
+  assets: ImageAssetRecord[],
+  beachIds: ReadonlyMap<string, string>,
+  verifiedAt: string,
+  expiresAt: string,
+): SicilianImageMediaCandidate[] {
+  return buildImageMediaCandidates(assets, beachIds, verifiedAt, expiresAt);
 }

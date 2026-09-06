@@ -9,7 +9,7 @@ describe("BeachLiveSections", () => {
     vi.unstubAllGlobals();
   });
 
-  it("shows three reports first without redundant live-status copy", () => {
+  it("shows parking before three reports without redundant live-status copy", () => {
     const recommendation = demoRecommendations[0];
     const detail = getDemoBeachDetail(recommendation.beach.slug)!;
     render(<BeachLiveSections beach={recommendation.beach} detail={detail} />);
@@ -20,6 +20,8 @@ describe("BeachLiveSections", () => {
     expect(screen.queryByText("Aggiornamenti da chi è sul posto")).not.toBeInTheDocument();
 
     const reports = screen.getByRole("list", { name: "Segnalazioni recenti" });
+    const parking = screen.getByRole("region", { name: "Parcheggi vicini" });
+    expect(parking.compareDocumentPosition(reports) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(within(reports).getAllByRole("listitem")).toHaveLength(3);
     expect(within(reports).getByText("12 min fa")).toHaveClass("text-xs");
 

@@ -1,4 +1,4 @@
-export type SicilianImageAssetRecord = {
+export type ImageAssetRecord = {
   slug: string;
   image_path: string;
   image_alt: string;
@@ -7,7 +7,10 @@ export type SicilianImageAssetRecord = {
   source_url: string;
 };
 
-export type SicilianImageCatalogIssue = {
+/** @deprecated Use ImageAssetRecord for new national imports. */
+export type SicilianImageAssetRecord = ImageAssetRecord;
+
+export type ImageCatalogIssue = {
   index: number;
   code:
     | "record_not_object"
@@ -18,6 +21,9 @@ export type SicilianImageCatalogIssue = {
     | "source_url_invalid";
   message: string;
 };
+
+/** @deprecated Use ImageCatalogIssue for new national imports. */
+export type SicilianImageCatalogIssue = ImageCatalogIssue;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -38,12 +44,12 @@ function isHttpUrl(value: unknown): value is string {
   }
 }
 
-export function validateSicilianImageCatalog(
+export function validateImageCatalog(
   input: unknown[],
   beachSlugs: ReadonlySet<string>,
-): { records: SicilianImageAssetRecord[]; issues: SicilianImageCatalogIssue[] } {
-  const records: SicilianImageAssetRecord[] = [];
-  const issues: SicilianImageCatalogIssue[] = [];
+): { records: ImageAssetRecord[]; issues: ImageCatalogIssue[] } {
+  const records: ImageAssetRecord[] = [];
+  const issues: ImageCatalogIssue[] = [];
   const seenSlugs = new Set<string>();
   const seenPaths = new Set<string>();
 
@@ -85,9 +91,17 @@ export function validateSicilianImageCatalog(
     }
 
     if (issues.length === issueCountBefore) {
-      records.push(value as SicilianImageAssetRecord);
+      records.push(value as ImageAssetRecord);
     }
   });
 
   return { records, issues };
+}
+
+/** @deprecated Use validateImageCatalog for new national imports. */
+export function validateSicilianImageCatalog(
+  input: unknown[],
+  beachSlugs: ReadonlySet<string>,
+): { records: SicilianImageAssetRecord[]; issues: SicilianImageCatalogIssue[] } {
+  return validateImageCatalog(input, beachSlugs);
 }
