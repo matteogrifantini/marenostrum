@@ -225,6 +225,40 @@ function normalizeDirectionDegrees(degrees: number): number {
 }
 
 export const MAX_OPEN_METEO_BATCH_SIZE = 25;
+const OPEN_METEO_FETCH_MAX_ATTEMPTS = 3;
+
+function isRetryableOpenMeteoStatus(status: number): boolean {
+  return status === 429 || status >= 500;
+}
+
+async function fetchOpenMeteoResponse(
+  url: URL,
+  fetcher: typeof fetch,
+): Promise<Response> {
+  let attempt = 0;
+
+  while (attempt < OPEN_METEO_FETCH_MAX_ATTEMPTS) {
+    try {
+      const response = await fetcher(url, { cache: "no-store" });
+
+      if (
+        response.ok ||
+        !isRetryableOpenMeteoStatus(response.status) ||
+        attempt === OPEN_METEO_FETCH_MAX_ATTEMPTS - 1
+      ) {
+        return response;
+      }
+    } catch (error) {
+      if (attempt === OPEN_METEO_FETCH_MAX_ATTEMPTS - 1) {
+        throw error;
+      }
+    }
+
+    attempt += 1;
+  }
+
+  return payloadError("open-meteo request failed unexpectedly");
+}
 
 async function fetchOpenMeteoBatch(
   beaches: OpenMeteoBeach[],
@@ -233,8 +267,8 @@ async function fetchOpenMeteoBatch(
   const { weather, marine } = buildOpenMeteoUrls(beaches);
   const fetcher = options.fetcher ?? fetch;
   const [weatherResponse, marineResponse] = await Promise.all([
-    fetcher(weather, { cache: "no-store" }),
-    fetcher(marine, { cache: "no-store" }),
+    fetchOpenMeteoResponse(weather, fetcher),
+    fetchOpenMeteoResponse(marine, fetcher),
   ]);
   const [weatherPayload, marinePayload] = await Promise.all([
     parseResponse(weatherResponse, "weather"),
