@@ -23,6 +23,7 @@
     "catalog:content:verify:apply": "tsx --env-file-if-exists=.env.local scripts/verify-content.ts --apply",
     "catalog:reviews:validate": "tsx --env-file-if-exists=.env.local scripts/import-reviews.ts --dry-run",
     "catalog:reviews:apply": "tsx --env-file-if-exists=.env.local scripts/import-reviews.ts --apply",
+    "catalog:reviews:sync": "tsx --env-file-if-exists=.env.local scripts/sync-google-reviews.ts",
     "catalog:images:validate": "tsx --env-file-if-exists=.env.local scripts/import-images.ts --dry-run",
     "catalog:images:apply": "tsx --env-file-if-exists=.env.local scripts/import-images.ts --apply",
     "catalog:images:media:validate": "tsx --env-file-if-exists=.env.local scripts/import-image-media.ts --dry-run",

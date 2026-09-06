@@ -4,6 +4,8 @@ export type ReviewProfileCandidate = {
   place_id: string | null;
   maps_url: string;
   notes: string;
+  rating?: number | null;
+  review_count?: number | null;
 };
 
 /** @deprecated Use ReviewProfileCandidate for new national imports. */
@@ -20,7 +22,9 @@ export type ReviewCatalogIssue = {
     | "provider_invalid"
     | "place_id_invalid"
     | "maps_url_invalid"
-    | "maps_url_not_google";
+    | "maps_url_not_google"
+    | "rating_invalid"
+    | "review_count_invalid";
   message: string;
 };
 
@@ -89,6 +93,27 @@ export function validateReviewCatalog(
 
     if (!isNonEmptyString(value.notes)) {
       issues.push({ index, code: "required_field_missing", message: "notes is required" });
+    }
+
+    if (value.rating !== undefined && value.rating !== null) {
+      if (
+        typeof value.rating !== "number" ||
+        !Number.isFinite(value.rating) ||
+        value.rating < 1 ||
+        value.rating > 5
+      ) {
+        issues.push({ index, code: "rating_invalid", message: "rating must be a number between 1 and 5" });
+      }
+    }
+
+    if (value.review_count !== undefined && value.review_count !== null) {
+      if (
+        typeof value.review_count !== "number" ||
+        !Number.isFinite(value.review_count) ||
+        value.review_count < 0
+      ) {
+        issues.push({ index, code: "review_count_invalid", message: "review_count must be a non-negative integer" });
+      }
     }
 
     if (issues.length === issueCountBefore) {
