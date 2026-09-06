@@ -233,4 +233,32 @@ describe("fetchOpenMeteoForecasts", () => {
 
     expect(fetcher).toHaveBeenCalledTimes(2);
   });
+
+  it("retries transient provider failures before succeeding", async () => {
+    const calls = { weather: 0, marine: 0 };
+    const fetcher = vi.fn(async (input: RequestInfo | URL) => {
+      const url = new URL(
+        typeof input === "string" ? input : input instanceof URL ? input.href : input.url,
+      );
+
+      if (url.hostname === "api.open-meteo.com") {
+        calls.weather += 1;
+        return calls.weather === 1
+          ? response({ reason: "unavailable" }, 503)
+          : response(weatherPayload());
+      }
+
+      calls.marine += 1;
+      return calls.marine === 1 ? response({ reason: "unavailable" }, 503) : response(marinePayload());
+    });
+
+    const points = await fetchOpenMeteoForecasts(beaches, {
+      sourceId: "open-meteo-source",
+      fetcher,
+    });
+
+    expect(points).toHaveLength(4);
+    expect(calls.weather).toBe(2);
+    expect(calls.marine).toBe(2);
+  });
 });
