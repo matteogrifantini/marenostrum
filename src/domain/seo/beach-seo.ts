@@ -18,13 +18,54 @@ function absoluteAssetUrl(value: string) {
   return value.startsWith("http") ? value : `${MARE_NOSTRUM_URL}${value}`;
 }
 
+export function buildBeachSeoTitle(beach: Beach): string {
+  const brand = "Mare Nostrum";
+  const hasDistinctMuni = Boolean(
+    beach.municipality && beach.municipality.trim().toLowerCase() !== beach.name.trim().toLowerCase(),
+  );
+
+  if (hasDistinctMuni) {
+    const candidateWithMuni = `Meteo ${beach.name} (${beach.municipality}): Mare e Vento | ${brand}`;
+    if (candidateWithMuni.length <= 60) {
+      return candidateWithMuni;
+    }
+  }
+
+  const candidateRich = `Meteo ${beach.name}: Mare, Vento e Onde | ${brand}`;
+  if (candidateRich.length <= 60) {
+    return candidateRich;
+  }
+
+  const candidateCompact = `Meteo ${beach.name}: Mare e Vento | ${brand}`;
+  if (candidateCompact.length <= 60) {
+    return candidateCompact;
+  }
+
+  return `Meteo ${beach.name} | ${brand}`;
+}
+
+export function buildBeachSeoDescription(beach: Beach): string {
+  const hasDistinctMuni = Boolean(
+    beach.municipality && beach.municipality.trim().toLowerCase() !== beach.name.trim().toLowerCase(),
+  );
+  const location = hasDistinctMuni ? `${beach.name} (${beach.municipality})` : beach.name;
+
+  const candidateWithMuni = `Meteo mare a ${location} oggi: scopri vento, altezza onde, temperatura acqua e se il mare è calmo per fare il bagno. Previsioni su Mare Nostrum.`;
+  if (candidateWithMuni.length <= 158) {
+    return candidateWithMuni;
+  }
+
+  const candidateWithoutMuni = `Meteo mare a ${beach.name} oggi: scopri vento, altezza onde, temperatura acqua e se il mare è calmo per fare il bagno. Previsioni su Mare Nostrum.`;
+  if (candidateWithoutMuni.length <= 158) {
+    return candidateWithoutMuni;
+  }
+
+  return `Meteo mare e onde a ${beach.name} oggi: vento, altezza onde, temperatura acqua e condizioni per il bagno. Aggiornato su Mare Nostrum.`;
+}
+
 export function buildBeachSeoMetadata(beach: Beach): BeachSeoMetadata {
-  const municipalityPart =
-    beach.municipality && beach.municipality !== beach.name ? ` (${beach.municipality})` : "";
-  const title = `Meteo ${beach.name} oggi${municipalityPart}: Vento, Mare e Onde | Mare Nostrum`;
-  const description =
-    `Previsioni meteo e mare a ${beach.name}${municipalityPart} per oggi: ` +
-    "intensità del vento, altezza onde, temperatura dell’acqua e condizioni della spiaggia per scegliere quando andare.";
+  const title = buildBeachSeoTitle(beach);
+  const description = buildBeachSeoDescription(beach);
   const canonical = canonicalFor(beach);
 
   return {

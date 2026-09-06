@@ -21,21 +21,6 @@ function staticRoutes(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
     },
-    {
-      url: `${BASE_URL}/privacy`,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${BASE_URL}/cookie`,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${BASE_URL}/termini`,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
   ];
 }
 

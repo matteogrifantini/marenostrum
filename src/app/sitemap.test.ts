@@ -53,16 +53,8 @@ describe("sitemap", () => {
           priority: 1.0,
         }),
         expect.objectContaining({
-          url: "https://marenostrum.app/privacy",
-          priority: 0.3,
-        }),
-        expect.objectContaining({
-          url: "https://marenostrum.app/cookie",
-          priority: 0.3,
-        }),
-        expect.objectContaining({
-          url: "https://marenostrum.app/termini",
-          priority: 0.3,
+          url: "https://marenostrum.app/mappa",
+          priority: 0.9,
         }),
         expect.objectContaining({
           url: "https://marenostrum.app/spiagge/mondello",
@@ -81,6 +73,9 @@ describe("sitemap", () => {
       ]),
     );
     expect(result.some(({ url }) => url.includes("?"))).toBe(false);
+    expect(result.some(({ url }) => url === "https://marenostrum.app/privacy")).toBe(false);
+    expect(result.some(({ url }) => url === "https://marenostrum.app/cookie")).toBe(false);
+    expect(result.some(({ url }) => url === "https://marenostrum.app/termini")).toBe(false);
     expect(result.some(({ url }) => url === "https://marenostrum.app/localita/messina")).toBe(false);
     expect(result.some(({ url }) => url === "https://marenostrum.app/localita/siracusa")).toBe(false);
   });
@@ -92,15 +87,10 @@ describe("sitemap", () => {
     try {
       const result = await sitemap();
 
-      expect(result).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ url: "https://marenostrum.app" }),
-          expect.objectContaining({ url: "https://marenostrum.app/mappa" }),
-          expect.objectContaining({ url: "https://marenostrum.app/privacy" }),
-          expect.objectContaining({ url: "https://marenostrum.app/cookie" }),
-          expect.objectContaining({ url: "https://marenostrum.app/termini" }),
-        ]),
-      );
+      expect(result).toEqual([
+        expect.objectContaining({ url: "https://marenostrum.app", priority: 1.0 }),
+        expect.objectContaining({ url: "https://marenostrum.app/mappa", priority: 0.9 }),
+      ]);
       expect(result.some(({ url }) => url.includes("/spiagge/"))).toBe(false);
       expect(result.some(({ url }) => url.includes("/localita/"))).toBe(false);
       expect(errorSpy).toHaveBeenCalledWith("Sitemap beach catalog lookup failed", expect.any(Error));

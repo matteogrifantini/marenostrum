@@ -12,7 +12,7 @@ import {
 describe("site copy", () => {
   it("exposes national public copy without forcing a regional fallback", () => {
     expect(SITE_NAME).toBe("Mare Nostrum");
-    expect(SITE_TITLE).toBe("Meteo mare Italia: vento, onde e spiagge | Mare Nostrum");
+    expect(SITE_TITLE).toBe("Mare Nostrum — Previsioni Meteo Mare, Vento e Onde Spiagge");
     expect(SITE_TITLE.length).toBeLessThanOrEqual(60);
     expect(SITE_DESCRIPTION).not.toMatch(/Sicilia/i);
     expect(SITE_DESCRIPTION).not.toBe(SITE_TITLE);

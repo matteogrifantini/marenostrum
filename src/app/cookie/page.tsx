@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://marenostrum.app/cookie",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function CookiePage() {

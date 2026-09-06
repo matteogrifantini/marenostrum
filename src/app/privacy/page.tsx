@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://marenostrum.app/privacy",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 const PRIVACY_EMAIL = process.env.NEXT_PUBLIC_PRIVACY_EMAIL?.trim() || null;

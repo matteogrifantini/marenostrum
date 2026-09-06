@@ -32,11 +32,36 @@ const beach: Beach = {
 
 describe("beach SEO", () => {
   it("builds a stable beach-specific title, description, and canonical", () => {
-    expect(buildBeachSeoMetadata(beach)).toMatchObject({
-      title: "Meteo Mondello oggi (Palermo): Vento, Mare e Onde | Mare Nostrum",
+    const seo = buildBeachSeoMetadata(beach);
+    expect(seo).toMatchObject({
+      title: "Meteo Mondello (Palermo): Mare e Vento | Mare Nostrum",
       canonical: "https://marenostrum.app/spiagge/mondello",
-      description: expect.stringMatching(/Previsioni meteo e mare a Mondello \(Palermo\) per oggi.*vento.*onde/i),
+      description: expect.stringMatching(/Meteo mare a Mondello \(Palermo\) oggi.*vento.*onde/i),
     });
+    expect(seo.title.length).toBeLessThanOrEqual(60);
+    expect(seo.description.length).toBeLessThanOrEqual(158);
+  });
+
+  it("strictly enforces Google SERP length constraints (< 60 chars title, <= 158 chars description) for long names", () => {
+    const longBeach: Beach = {
+      ...beach,
+      name: "Spiaggia dell'Isola dei Conigli",
+      municipality: "Lampedusa e Linosa",
+    };
+    const seo = buildBeachSeoMetadata(longBeach);
+    expect(seo.title.length).toBeLessThanOrEqual(60);
+    expect(seo.description.length).toBeLessThanOrEqual(158);
+    expect(seo.title).toContain("Mare Nostrum");
+
+    const sameMuniBeach: Beach = {
+      ...beach,
+      name: "San Vito Lo Capo",
+      municipality: "San Vito Lo Capo",
+    };
+    const sameMuniSeo = buildBeachSeoMetadata(sameMuniBeach);
+    expect(sameMuniSeo.title).toBe("Meteo San Vito Lo Capo: Mare, Vento e Onde | Mare Nostrum");
+    expect(sameMuniSeo.title.length).toBeLessThanOrEqual(60);
+    expect(sameMuniSeo.description.length).toBeLessThanOrEqual(158);
   });
 
   it("uses verified dynamic geography without a regional fallback", () => {

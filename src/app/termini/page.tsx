@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://marenostrum.app/termini",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function TerminiPage() {

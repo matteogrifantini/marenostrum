@@ -359,7 +359,7 @@ export function HomeExperience({
     <PageShell>
       <main className="min-h-screen pb-24 lg:pb-8">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8">
-          <h1 className="sr-only">Meteo del mare in Italia</h1>
+          <h1 className="sr-only">Mare Nostrum — Previsioni meteo mare, vento, onde e spiagge in Italia</h1>
           <section className="mx-auto mt-4 w-full max-w-4xl sm:mt-6">
             <label htmlFor="beach-search" className="sr-only">
               Cerca una spiaggia

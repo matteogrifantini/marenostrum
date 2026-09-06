@@ -1,8 +1,8 @@
 export const SITE_NAME = "Mare Nostrum";
 export const SITE_URL = "https://marenostrum.app";
-export const SITE_TITLE = "Meteo mare Italia: vento, onde e spiagge | Mare Nostrum";
+export const SITE_TITLE = "Mare Nostrum — Previsioni Meteo Mare, Vento e Onde Spiagge";
 export const SITE_DESCRIPTION =
-  "Previsioni meteo mare in Italia: confronta vento, onde, temperatura dell’acqua e condizioni aggiornate per scegliere dove andare oggi, spiaggia per spiaggia.";
+  "Mare Nostrum è la guida meteomarina alle spiagge d’Italia: scopri in tempo reale vento, altezza onde, temperatura acqua e dove il mare è calmo oggi.";
 export const SITE_SOCIAL_IMAGE = `${SITE_URL}/opengraph-image`;
 export const MAP_PAGE_TITLE = "Mappa delle spiagge d’Italia";
 export const MAP_PAGE_DESCRIPTION =

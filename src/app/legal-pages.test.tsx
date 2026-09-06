@@ -29,6 +29,10 @@ describe("Legal Pages", () => {
       expect(privacyMetadata.alternates).toEqual({
         canonical: "https://marenostrum.app/privacy",
       });
+      expect(privacyMetadata.robots).toEqual({
+        index: false,
+        follow: true,
+      });
     });
   });
 
@@ -58,6 +62,10 @@ describe("Legal Pages", () => {
       expect(cookieMetadata.alternates).toEqual({
         canonical: "https://marenostrum.app/cookie",
       });
+      expect(cookieMetadata.robots).toEqual({
+        index: false,
+        follow: true,
+      });
     });
   });
 
@@ -83,6 +91,10 @@ describe("Legal Pages", () => {
       expect(terminiMetadata.title).toBe("Termini e Condizioni d'Uso");
       expect(terminiMetadata.alternates).toEqual({
         canonical: "https://marenostrum.app/termini",
+      });
+      expect(terminiMetadata.robots).toEqual({
+        index: false,
+        follow: true,
       });
     });
   });

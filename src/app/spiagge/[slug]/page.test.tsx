@@ -336,17 +336,17 @@ describe("BeachPage", () => {
     });
 
     expect(metadata.title).toEqual({
-      absolute: "Meteo Cala del Gelsomino oggi (Noto): Vento, Mare e Onde | Mare Nostrum",
+      absolute: "Meteo Cala del Gelsomino (Noto): Mare e Vento | Mare Nostrum",
     });
     expect(metadata.description).toContain(
-      "Previsioni meteo e mare a Cala del Gelsomino (Noto) per oggi: intensità del vento, altezza onde",
+      "Meteo mare a Cala del Gelsomino (Noto) oggi: scopri vento, altezza onde, temperatura acqua",
     );
     expect(metadata.alternates).toEqual({
       canonical: "https://marenostrum.app/spiagge/cala-del-gelsomino",
     });
     expect(metadata.openGraph).toMatchObject({
-      title: "Meteo Cala del Gelsomino oggi (Noto): Vento, Mare e Onde | Mare Nostrum",
-      description: expect.stringContaining("temperatura dell’acqua"),
+      title: "Meteo Cala del Gelsomino (Noto): Mare e Vento | Mare Nostrum",
+      description: expect.stringContaining("temperatura acqua"),
       url: "https://marenostrum.app/spiagge/cala-del-gelsomino",
       type: "website",
       siteName: "Mare Nostrum",
