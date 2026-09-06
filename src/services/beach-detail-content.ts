@@ -279,6 +279,18 @@ function reviewMapsUrl(beach: Beach, provider: string, placeId: string | null, f
     : buildGoogleMapsSearchUrl(query);
 }
 
+function parseNumericRating(value: number | string | null | undefined): number | null {
+  if (value === null || value === undefined || value === "") return null;
+  const num = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(num) && num >= 1 && num <= 5 ? Math.round(num * 10) / 10 : null;
+}
+
+function parseReviewCount(value: number | string | null | undefined): number | null {
+  if (value === null || value === undefined || value === "") return null;
+  const num = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(num) && num >= 0 ? Math.floor(num) : null;
+}
+
 export function buildBeachDetailContent(
   beach: Beach,
   content: BeachContent | null,
@@ -300,11 +312,15 @@ export function buildBeachDetailContent(
           content.reviewProfile.verification_status === "archived"
             ? "draft" as const
             : content.reviewProfile.verification_status,
+        rating: parseNumericRating(content.reviewProfile.rating),
+        reviewCount: parseReviewCount(content.reviewProfile.review_count),
       }
     : {
         provider: "google",
         mapsUrl: buildGoogleMapsSearchUrl(beachLocationQuery(beach)),
         verificationStatus: "draft" as const,
+        rating: null,
+        reviewCount: null,
       };
 
   return {

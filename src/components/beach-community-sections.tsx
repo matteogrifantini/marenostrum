@@ -17,6 +17,13 @@ export function BeachCommunitySections({ detail, beachName = "questa spiaggia" }
   const [selectedPhoto, setSelectedPhoto] = useState<BeachDetailContent["recentPhotos"][number] | null>(null);
   const isVerifiedGoogleProfile =
     reviewProfile?.provider.toLowerCase() === "google" && reviewProfile.verificationStatus === "verified";
+  const ratingValue = reviewProfile?.rating;
+  const hasRating = typeof ratingValue === "number" && ratingValue > 0;
+  const formattedRating = hasRating ? ratingValue.toFixed(1) : null;
+  const countValue = reviewProfile?.reviewCount;
+  const formattedCount = typeof countValue === "number"
+    ? new Intl.NumberFormat("it-IT", { useGrouping: true }).format(countValue)
+    : null;
 
   const openPhoto = (photo: BeachDetailContent["recentPhotos"][number]) => {
     setSelectedPhoto(photo);
@@ -62,8 +69,25 @@ export function BeachCommunitySections({ detail, beachName = "questa spiaggia" }
                   </span>
                 ) : null}
               </div>
+              {hasRating ? (
+                <div className="flex flex-wrap items-baseline gap-2 pt-0.5" data-testid="google-review-rating">
+                  <span className="text-xl font-black tracking-tight text-[var(--ink)]">
+                    {formattedRating}
+                  </span>
+                  <span className="text-xs font-bold text-[var(--sun-dark)]" aria-label={`Valutazione: ${formattedRating} su 5`}>
+                    ★★★★★
+                  </span>
+                  {formattedCount ? (
+                    <span className="text-xs font-semibold text-[var(--muted)]">
+                      ({formattedCount} {countValue === 1 ? "recensione" : "recensioni"})
+                    </span>
+                  ) : null}
+                </div>
+              ) : null}
               <p className="text-xs leading-relaxed text-[var(--muted)]">
-                Consulta valutazioni, foto e consigli recenti dei visitatori per {beachName}.
+                {hasRating
+                  ? `Valutazione complessiva dei visitatori su Google Maps per ${beachName}.`
+                  : `Consulta valutazioni, foto e consigli recenti dei visitatori per ${beachName}.`}
               </p>
             </div>
           </div>

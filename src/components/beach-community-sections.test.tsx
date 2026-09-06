@@ -69,6 +69,31 @@ describe("BeachCommunitySections", () => {
     ).toHaveAttribute("href", "https://www.google.com/maps/search/?api=1&query=Cala%20del%20Gelsomino");
   });
 
+  it("renders the numeric rating badge and formatted review count when available", () => {
+    const detail = getDemoBeachDetail("cala-del-gelsomino")!;
+    render(
+      <BeachCommunitySections
+        beachName="Cala del Gelsomino"
+        detail={{
+          ...detail,
+          reviews: null,
+          reviewProfile: {
+            provider: "google",
+            mapsUrl: "https://maps.google.com/?cid=1",
+            verificationStatus: "verified",
+            rating: 4.6,
+            reviewCount: 1420,
+          },
+        }}
+      />,
+    );
+
+    const reviews = screen.getByRole("region", { name: "Recensioni" });
+    expect(within(reviews).getByTestId("google-review-rating")).toHaveTextContent("4.6");
+    expect(within(reviews).getByTestId("google-review-rating")).toHaveTextContent("1.420 recensioni");
+    expect(within(reviews).getByText("Valutazione complessiva dei visitatori su Google Maps per Cala del Gelsomino.")).toBeInTheDocument();
+  });
+
   it("keeps recent beach photos in their separate content section", () => {
     const detail = getDemoBeachDetail("cala-del-gelsomino")!;
     render(<BeachCommunitySections beachName="Cala del Gelsomino" detail={detail} />);

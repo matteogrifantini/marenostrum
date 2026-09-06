@@ -246,7 +246,7 @@ export async function createSupabaseBeachContentReadStore(): Promise<BeachConten
     async getReviewProfiles(beachId) {
       const { data, error } = await client
         .from("review_profiles")
-        .select("id, beach_id, provider, place_id, maps_url, verification_status, checked_at, next_check_at, notes")
+        .select("id, beach_id, provider, place_id, maps_url, verification_status, checked_at, next_check_at, notes, rating, review_count")
         .eq("beach_id", beachId)
         .in("verification_status", ["draft", "verified", "stale"])
         .order("checked_at", { ascending: false, nullsFirst: false });

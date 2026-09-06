@@ -410,12 +410,14 @@ async function main() {
       id: existingId ?? deterministicUuid(`review:google:${candidate.slug}`),
       beach_id: beachId,
       provider: "google",
-      place_id: null,
+      place_id: review.place_id ?? null,
       maps_url: review.maps_url,
-      verification_status: "draft",
+      verification_status: review.rating ? "verified" : "draft",
       checked_at: nowIso,
       next_check_at: nextReviewIso,
-      notes: "Ricerca Google Maps associata alle coordinate della spiaggia.",
+      notes: review.notes ?? "Ricerca Google Maps associata alle coordinate della spiaggia.",
+      rating: review.rating ?? null,
+      review_count: review.review_count ?? null,
     };
   });
 

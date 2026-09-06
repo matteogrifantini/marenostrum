@@ -124,6 +124,8 @@ describe("buildBeachDetailContent", () => {
       mapsUrl:
         "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia&query_place_id=ChIJexample",
       verificationStatus: "verified",
+      rating: null,
+      reviewCount: null,
     });
     expect(detail.webcam).toMatchObject({
       name: "Webcam del porto",
@@ -180,6 +182,8 @@ describe("buildBeachDetailContent", () => {
       mapsUrl:
         "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia",
       verificationStatus: "draft",
+      rating: null,
+      reviewCount: null,
     });
   });
 
@@ -205,6 +209,8 @@ describe("buildBeachDetailContent", () => {
         mapsUrl:
           "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia",
         verificationStatus: "draft",
+        rating: null,
+        reviewCount: null,
       },
       recentPhotos: [],
       reels: [],
@@ -366,5 +372,37 @@ describe("buildBeachDetailContent", () => {
       { emoji: "🥾", label: "Accesso", value: "Sentiero e discesa rocciosa" },
       { emoji: "🌿", label: "Ambiente", value: "Macchia mediterranea e costa selvaggia" },
     ]);
+  });
+
+  it("maps Google review rating and review count from row", () => {
+    const detail = buildBeachDetailContent(
+      beach,
+      {
+        ...content,
+        reviewProfile: {
+          id: "review-1",
+          beach_id: "beach-1",
+          provider: "google",
+          place_id: "ChIJexample",
+          maps_url: "https://maps.google.com/?cid=1",
+          verification_status: "verified",
+          checked_at: "2026-09-06T00:00:00Z",
+          next_check_at: "2026-10-06T00:00:00Z",
+          notes: "verified",
+          rating: 4.7,
+          review_count: 1840,
+        },
+      },
+      [],
+    );
+
+    expect(detail.reviewProfile).toEqual({
+      provider: "google",
+      mapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=San%20Vito%20Lo%20Capo%2C%20San%20Vito%20Lo%20Capo%2C%20Italia&query_place_id=ChIJexample",
+      verificationStatus: "verified",
+      rating: 4.7,
+      reviewCount: 1840,
+    });
   });
 });
